@@ -5,9 +5,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
   ],
   rules: {
-    'indent': ['error', 2, {
-      ignoredNodes,
-    }],
+    'indent': ['error', 2],
     'no-trailing-spaces': 'error',
     'semi': ['error', 'always'],
     'curly': 'error',
