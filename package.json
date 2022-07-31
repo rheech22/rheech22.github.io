@@ -23,7 +23,8 @@
     "gatsby-transformer-remark": "^5.19.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "styled-reset": "^4.4.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",

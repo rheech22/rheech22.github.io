@@ -1,4 +1,5 @@
 import { Link } from "gatsby";
+import styled from "styled-components";
 
 interface PostPreviewProps {
   path?: string | null;
@@ -6,16 +7,20 @@ interface PostPreviewProps {
   excerpt?: string | null;
 }
 
+const Container = styled.li`
+  
+`;
+
 const PostPreview = ({
   path = '',
   title = '',
   excerpt = '',
 }: PostPreviewProps) => {
   return (
-    <li>
+    <Container>
       <Link to={path ?? ''}>{title}</Link>
       <p>{excerpt}</p>
-    </li>
+    </Container>
   );
 };
 
