@@ -1,6 +1,6 @@
 import { graphql, PageProps } from "gatsby";
 
-export default ({ data }: PageProps<Queries.TemplateQuery>) => {
+export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
   return (
@@ -16,7 +16,7 @@ export default ({ data }: PageProps<Queries.TemplateQuery>) => {
 };
 
 export const query = graphql`
-  query Template($path: String!) {
+  query template($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {

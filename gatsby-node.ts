@@ -8,8 +8,8 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
 
   const postTemplate = path.resolve(`src/templates/post.tsx`);
 
-  const result = await graphql<Queries.CreatePageQuery>(`
-    query CreatePage {
+  const result = await graphql<Queries.createPageQuery>(`
+    query createPage {
       allMarkdownRemark(
         limit: 1000
       ) {

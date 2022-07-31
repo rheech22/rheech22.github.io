@@ -2674,22 +2674,22 @@ type StringQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['String']>;
 };
 
-type IndexQueryVariables = Exact<{ [key: string]: never; }>;
+type getPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type IndexQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly title: string | null, readonly path: string | null } | null } }> } };
+type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly title: string | null, readonly path: string | null } | null } }> } };
 
-type TemplateQueryVariables = Exact<{
+type templateQueryVariables = Exact<{
   path: Scalars['String'];
 }>;
 
 
-type TemplateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null } | null } | null };
+type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null } | null } | null };
 
-type CreatePageQueryVariables = Exact<{ [key: string]: never; }>;
+type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type CreatePageQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly frontmatter: { readonly path: string | null } | null } }> } };
+type createPageQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly frontmatter: { readonly path: string | null } | null } }> } };
 
 
 }

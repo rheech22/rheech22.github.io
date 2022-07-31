@@ -11,7 +11,7 @@ const PostPreviews = () => {
   return (
     <StaticQuery
       query={graphql`
-        query Index {
+        query getPosts {
           allMarkdownRemark {
             edges {
               node {
@@ -26,8 +26,9 @@ const PostPreviews = () => {
           }
         }
       `}
-      render={(data: Queries.IndexQuery) => {
+      render={(data: Queries.getPostsQuery) => {
         const { edges: posts } = data.allMarkdownRemark;
+
         return (
           <Container>
             {posts && posts
