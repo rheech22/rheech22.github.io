@@ -1,17 +1,24 @@
 import { graphql, PageProps } from "gatsby";
+import { red } from "../styles/mixins";
+import styled from "styled-components";
+import Layout from "../components/Layout";
+
+const Post = styled.main`
+  ${red}
+`;
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
   return (
-    <div>
+    <Layout>
       {post && (
-        <article>
+        <Post>
           <h1>{post.frontmatter?.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-        </article>
+        </Post>
       )}
-    </div>
+    </Layout>
   );
 };
 

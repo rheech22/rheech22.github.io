@@ -7,7 +7,7 @@ const Container = styled.main``;
 
 export default () => {
   return (
-    <Layout theme='dark'>
+    <Layout>
       <Container>
         <PostPreviews />
       </Container>
