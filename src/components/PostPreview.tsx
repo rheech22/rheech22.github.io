@@ -6,17 +6,20 @@ const Container = styled.li``;
 interface PostPreviewProps {
   path?: string | null;
   title?: string | null;
+  date?: string | null;
   excerpt?: string | null;
 }
 
 const PostPreview = ({
   path = '',
   title = '',
+  date = '',
   excerpt = '',
 }: PostPreviewProps) => {
   return (
     <Container>
       <Link to={path ?? ''}>{title}</Link>
+      <span>{date}</span>
       <p>{excerpt}</p>
     </Container>
   );

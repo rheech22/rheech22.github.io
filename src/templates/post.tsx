@@ -1,11 +1,7 @@
 import { graphql, PageProps } from "gatsby";
-import { red } from "../styles/mixins";
-import styled from "styled-components";
 import Layout from "../components/Layout";
 
-const Post = styled.main`
-  ${red}
-`;
+
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
@@ -13,10 +9,17 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   return (
     <Layout>
       {post && (
-        <Post>
+        <>
           <h1>{post.frontmatter?.title}</h1>
+          <span>{post.frontmatter?.date}</span>
           <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-        </Post>
+          <hr />
+          <ul>
+            {post.frontmatter?.tags?.map((tag, i)=> (
+              <li key={i}>{tag}</li>
+            ))}
+          </ul>
+        </>
       )}
     </Layout>
   );
@@ -28,7 +31,9 @@ export const query = graphql`
       html
       frontmatter {
         path
+        date
         title
+        tags
       }
     }
   }

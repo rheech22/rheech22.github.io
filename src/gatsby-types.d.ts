@@ -568,7 +568,9 @@ type FileFieldsEnum =
   | 'childMarkdownRemark.excerpt'
   | 'childMarkdownRemark.excerptAst'
   | 'childMarkdownRemark.fileAbsolutePath'
+  | 'childMarkdownRemark.frontmatter.date'
   | 'childMarkdownRemark.frontmatter.path'
+  | 'childMarkdownRemark.frontmatter.tags'
   | 'childMarkdownRemark.frontmatter.title'
   | 'childMarkdownRemark.headings'
   | 'childMarkdownRemark.headings.depth'
@@ -625,7 +627,9 @@ type FileFieldsEnum =
   | 'childrenMarkdownRemark.excerpt'
   | 'childrenMarkdownRemark.excerptAst'
   | 'childrenMarkdownRemark.fileAbsolutePath'
+  | 'childrenMarkdownRemark.frontmatter.date'
   | 'childrenMarkdownRemark.frontmatter.path'
+  | 'childrenMarkdownRemark.frontmatter.tags'
   | 'childrenMarkdownRemark.frontmatter.title'
   | 'childrenMarkdownRemark.headings'
   | 'childrenMarkdownRemark.headings.depth'
@@ -1074,7 +1078,9 @@ type MarkdownRemarkFieldsEnum =
   | 'excerpt'
   | 'excerptAst'
   | 'fileAbsolutePath'
+  | 'frontmatter.date'
   | 'frontmatter.path'
+  | 'frontmatter.tags'
   | 'frontmatter.title'
   | 'headings'
   | 'headings.depth'
@@ -1159,12 +1165,24 @@ type MarkdownRemarkFilterListInput = {
 };
 
 type MarkdownRemarkFrontmatter = {
+  readonly date: Maybe<Scalars['Date']>;
   readonly path: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
 };
 
+
+type MarkdownRemarkFrontmatter_dateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
 type MarkdownRemarkFrontmatterFilterInput = {
+  readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -2677,14 +2695,14 @@ type StringQueryOperatorInput = {
 type getPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly title: string | null, readonly path: string | null } | null } }> } };
+type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly path: string | null } | null } }> } };
 
 type templateQueryVariables = Exact<{
   path: Scalars['String'];
 }>;
 
 
-type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null } | null } | null };
+type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
 
 type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 

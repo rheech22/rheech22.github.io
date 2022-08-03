@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { mainElementBreakPoints } from "../styles/mixins";
 import reset from 'styled-reset';
+import Header from "./Header";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -9,9 +11,11 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     
     main {
-      max-width: 840px;
+      /* display: flex;
+      flex-wrap: wrap; */
       padding: 0 40px;
       margin: 0 auto;
+      ${mainElementBreakPoints}
     }
   }
 `;
@@ -28,7 +32,10 @@ const Layout = ({
   return (
     <>
       <GlobalStyle theme={theme} />
-      {children}
+      <Header/>
+      <main>
+        {children}
+      </main>
     </>
   );
 };

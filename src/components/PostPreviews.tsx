@@ -9,13 +9,16 @@ const Container = styled.ul`
 
 const GET_POST = graphql`
     query getPosts {
-          allMarkdownRemark {
+          allMarkdownRemark (
+            sort: { order: DESC, fields: [frontmatter___date] }
+          ){
             edges {
               node {
                 excerpt(pruneLength: 250)
                 id
                 frontmatter {
                   title
+                  date
                   path
                 }
               }
@@ -36,6 +39,7 @@ const PostPreviews = () => {
           <PostPreview
             key={post.id}
             path={post.frontmatter?.path}
+            date={post.frontmatter?.date}
             title={post.frontmatter?.title}
             excerpt={post.excerpt}
           />

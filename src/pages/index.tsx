@@ -1,16 +1,16 @@
-import styled from 'styled-components';
-
 import PostPreviews from '../components/PostPreviews';
 import Layout from '../components/Layout';
-
-const Container = styled.main``;
+import { globalContext } from '../context';
+import { useContext } from 'react';
 
 export default () => {
+  const { queryText } = useContext(globalContext);
+
+  console.log(queryText);
+
   return (
     <Layout>
-      <Container>
-        <PostPreviews />
-      </Container>
+      <PostPreviews />
     </Layout>
   );
 };
