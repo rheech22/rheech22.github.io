@@ -1,19 +1,23 @@
-import { useContext } from "react";
-import { globalContext } from "../context";
+import { useState } from "react";
+import { useSearchDispatch } from "../contexts/SearchContext";
 import Button from "./Button";
 import Textbox from "./Textbox";
 
 const Search = () => {
-  const { queryText } = useContext(globalContext);
+  const dispatch = useSearchDispatch();
+  const [input, setInput] = useState('');
 
-  const handleSubmit = () => console.log('submit!');
-  const handleChange = (value: string) => console.log(value);
+  const handleChange = (value: string) => setInput(value);
 
-  console.log(queryText);
+  const handleSubmit = () => {
+    dispatch?.(input);
+    setInput('');
+  };
+
 
   return (
     <div>
-      <Textbox onChange={handleChange} placeholder='search posts...'/>
+      <Textbox onChange={handleChange} value={input} placeholder='search posts...'/>
       <Button innerText="submit" onClick={handleSubmit}/>
     </div>
   );

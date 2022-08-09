@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { mainElementBreakPoints } from "../styles/mixins";
 import reset from 'styled-reset';
 import Header from "./Header";
+import { SearchContextProvider } from "../contexts/SearchContext";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -32,10 +33,12 @@ const Layout = ({
   return (
     <>
       <GlobalStyle theme={theme} />
-      <Header/>
-      <main>
-        {children}
-      </main>
+      <SearchContextProvider>
+        <Header/>
+        <main>
+          {children}
+        </main>
+      </SearchContextProvider>
     </>
   );
 };
