@@ -570,7 +570,6 @@ type FileFieldsEnum =
   | 'childMarkdownRemark.fileAbsolutePath'
   | 'childMarkdownRemark.frontmatter.date'
   | 'childMarkdownRemark.frontmatter.path'
-  | 'childMarkdownRemark.frontmatter.tags'
   | 'childMarkdownRemark.frontmatter.title'
   | 'childMarkdownRemark.headings'
   | 'childMarkdownRemark.headings.depth'
@@ -629,7 +628,6 @@ type FileFieldsEnum =
   | 'childrenMarkdownRemark.fileAbsolutePath'
   | 'childrenMarkdownRemark.frontmatter.date'
   | 'childrenMarkdownRemark.frontmatter.path'
-  | 'childrenMarkdownRemark.frontmatter.tags'
   | 'childrenMarkdownRemark.frontmatter.title'
   | 'childrenMarkdownRemark.headings'
   | 'childrenMarkdownRemark.headings.depth'
@@ -1080,7 +1078,6 @@ type MarkdownRemarkFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter.date'
   | 'frontmatter.path'
-  | 'frontmatter.tags'
   | 'frontmatter.title'
   | 'headings'
   | 'headings.depth'
@@ -1167,7 +1164,6 @@ type MarkdownRemarkFilterListInput = {
 type MarkdownRemarkFrontmatter = {
   readonly date: Maybe<Scalars['Date']>;
   readonly path: Maybe<Scalars['String']>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
 };
 
@@ -1182,7 +1178,6 @@ type MarkdownRemarkFrontmatter_dateArgs = {
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
-  readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -2702,7 +2697,7 @@ type templateQueryVariables = Exact<{
 }>;
 
 
-type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
+type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null } | null } | null };
 
 type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -2,8 +2,6 @@
 path: "/hello2"
 date: "2022-08-03"
 title: "My Second Gatsby Post"
-tags:
-  - etc
 ---
 
 The standard Lorem Ipsum passage, used since the 1500s

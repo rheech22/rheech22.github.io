@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { mainElementBreakPoints } from "../styles/mixins";
 import reset from 'styled-reset';
 import Header from "./Header";
-import { SearchContextProvider } from "../contexts/SearchContext";
+import { PostContextProvider } from "../contexts/PostContext";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -33,12 +33,12 @@ const Layout = ({
   return (
     <>
       <GlobalStyle theme={theme} />
-      <SearchContextProvider>
+      <PostContextProvider>
         <Header/>
         <main>
           {children}
         </main>
-      </SearchContextProvider>
+      </PostContextProvider>
     </>
   );
 };

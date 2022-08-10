@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from "gatsby";
 import PostPreview from './PostPreview';
-import { useSearch } from '../contexts/SearchContext';
-import { useEffect, useState } from 'react';
+import { usePostDispatch } from '../contexts/PostContext';
+import { useEffect } from 'react';
 
 const Container = styled.ul`
   border: 1px solid black;
@@ -28,39 +28,29 @@ const GET_POST = graphql`
   }
  `;
 
-type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
-
 const PostPreviews = () => {
   const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
+
   const { edges } = data.allMarkdownRemark;
 
-  const keyword = useSearch();
-  const [posts, setPosts] = useState<Posts>(edges);
+  const dispatch = usePostDispatch();
 
-  useEffect(()=> {
-    if (keyword) {
-      const filteredPosts = edges
-        .filter(({ node: { frontmatter } })=>
-          frontmatter?.title?.toLowerCase()
-            .includes(keyword.toLowerCase()));
-
-      setPosts(filteredPosts);
+  useEffect(()=>{
+    if (edges.length) {
+      dispatch?.({
+        name: 'posts',
+        payload: edges,
+      });
     }
-  }, [keyword]);
-
-  // 검색 결과가 히스토리 푸시없이 나오기 때문에 뒤로가기 안먹힘
+  }, [edges]);
 
   if (!edges.length) {
     return <Container><p>게시글 없음</p></Container>;
   }
 
-  if (!posts.length) {
-    return <Container><p>검색결과 없음</p></Container>;
-  }
-
   return (
     <Container>
-      {posts && posts
+      {edges && edges
         .map(({ node: post }) =>
           <PostPreview
             key={post.id}

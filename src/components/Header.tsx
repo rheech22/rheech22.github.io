@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
-import Search from "./Search";
+import SearchBar from "./SearchBar";
 
 const Container = styled.header`
   ${flex('center')}
@@ -13,7 +13,7 @@ const Container = styled.header`
 const Header = () => {
   return (
     <Container>
-      <Search />
+      <SearchBar />
     </Container>
   );
 };

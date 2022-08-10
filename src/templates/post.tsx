@@ -12,13 +12,8 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
         <>
           <h1>{post.frontmatter?.title}</h1>
           <span>{post.frontmatter?.date}</span>
-          <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
           <hr />
-          <ul>
-            {post.frontmatter?.tags?.map((tag, i)=> (
-              <li key={i}>{tag}</li>
-            ))}
-          </ul>
+          <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
         </>
       )}
     </Layout>
@@ -33,7 +28,6 @@ export const query = graphql`
         path
         date
         title
-        tags
       }
     }
   }
