@@ -28,10 +28,6 @@ export const PostContextProvider = ({ children }: { children: JSX.Element | JSX.
 
   };
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   return (
     <PostContext.Provider value={state}>
       <PostDispatchContext.Provider value={handleChangeState}>

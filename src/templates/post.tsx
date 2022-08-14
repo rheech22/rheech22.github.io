@@ -7,7 +7,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout>
+    <>
       {post && (
         <>
           <h1>{post.frontmatter?.title}</h1>
@@ -16,7 +16,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
         </>
       )}
-    </Layout>
+    </>
   );
 };
 
