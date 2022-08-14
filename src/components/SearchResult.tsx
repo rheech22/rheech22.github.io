@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PostPreview from './PostPreview';
-import { Posts, usePostContext } from '../contexts/PostContext';
+import { initialState, Posts, usePostContext } from '../contexts/PostContext';
 import { useEffect, useState } from 'react';
 
 const Container = styled.ul`
@@ -8,19 +8,17 @@ const Container = styled.ul`
 `;
 
 const SearchResult = () => {
-  const { posts, keyword } = usePostContext()!;
+  const { posts, keyword } = usePostContext() ?? initialState;
 
   const [filteredPosts, setFilteredPosts] = useState<Posts>(posts);
 
   useEffect(()=> {
-    if (keyword) {
-      const filteredPosts = posts
-        .filter(({ node: { frontmatter } })=>
-          frontmatter?.title?.toLowerCase()
-            .includes(keyword.toLowerCase()));
+    const filteredPosts = posts
+      .filter(({ node: { frontmatter } })=>
+        frontmatter?.title?.toLowerCase()
+          .includes(keyword.toLowerCase()));
 
-      setFilteredPosts(filteredPosts);
-    }
+    setFilteredPosts(filteredPosts);
   }, [keyword]);
 
   if (!filteredPosts.length) {

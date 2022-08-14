@@ -1,11 +1,4 @@
 import { Link } from "gatsby";
 
-import Layout from "../components/Layout";
+export default () => (<Link to="/">Go home</Link>);
 
-export default () => {
-  return (
-    <Layout>
-      <Link to="/">Go home</Link>
-    </Layout>
-  );
-};

@@ -1,7 +1,6 @@
 import { navigate } from "gatsby";
-import { useState } from "react";
+import React, { useState } from "react";
 import { usePostDispatch } from "../contexts/PostContext";
-import Button from "./Button";
 import Textbox from "./Textbox";
 
 const SearchBar = () => {
@@ -10,7 +9,8 @@ const SearchBar = () => {
 
   const handleChange = (value: string) => setInput(value);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     dispatch?.({
       name: 'keyword',
       payload: input,
@@ -20,10 +20,10 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <Textbox onChange={handleChange} value={input} placeholder='search posts...'/>
-      <Button innerText="submit" onClick={handleSubmit}/>
-    </div>
+      <input type="submit" hidden />
+    </form>
   );
 };
 
