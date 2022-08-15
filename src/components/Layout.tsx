@@ -1,10 +1,12 @@
+import { useState } from "react";
+import { PostContextProvider } from "../contexts/PostContext";
+
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { mainElementBreakPoints } from "../styles/mixins";
-import reset from 'styled-reset';
-import Header from "./Header";
-import { PostContextProvider } from "../contexts/PostContext";
 import { dark, light, Theme } from "../styles/themes";
-import { useEffect, useState } from "react";
+import reset from 'styled-reset';
+
+import Header from "./Header";
 
 interface GlobalStyle {
   theme: Theme
@@ -44,12 +46,20 @@ interface LayoutProps {
   theme?: string;
 }
 
+
 const Layout = ({
   children,
 }: LayoutProps) => {
-  const [isDark, setIsDark] = useState(false);
+  const deviceDarkModePreference = `${window.matchMedia('(prefers-color-scheme: dark)').matches}`;
+  const userDarkModePreference = localStorage.getItem('isDark') ?? deviceDarkModePreference ?? 'true';
+  const initialState = JSON.parse(userDarkModePreference);
 
-  const changeDisplayMode = () => setIsDark(prev => !prev);
+  const [isDark, setIsDark] = useState<boolean>(initialState);
+
+  const changeDisplayMode = () => {
+    setIsDark(prev => !prev);
+    localStorage.setItem('isDark', JSON.stringify(!isDark));
+  };
 
   return (
     <>
