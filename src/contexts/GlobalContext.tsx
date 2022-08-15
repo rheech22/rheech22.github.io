@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from 'react';
-import { isDarkTheme } from "../utils/localStorage";
+import useDarkTheme from "../hooks/useDarkTheme";
 
 export type DispatchContext = ({ name, payload }: { name: string; payload: Posts | string | boolean }) => void;
 export type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
@@ -13,7 +13,7 @@ export type State = {
 export const initialState: State = {
   posts: [],
   keyword: '',
-  isDark: isDarkTheme(),
+  isDark: true,
 };
 
 export const GlobalContext = createContext<State | null>(null);
@@ -24,6 +24,7 @@ export const useDispatch = () => useContext(DispatchContext);
 
 export const GlobalContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
   const [state, setState] = useState(initialState);
+  const isDark = useDarkTheme();
 
   const handleChangeState = ({ name, payload }: { name: string; payload: Posts | string | boolean })=>{
     setState(prev => ({
@@ -31,6 +32,13 @@ export const GlobalContextProvider = ({ children }: { children: JSX.Element | JS
       [name]: payload,
     }));
   };
+
+  useEffect(()=> {
+    handleChangeState({
+      name: 'isDark',
+      payload: isDark,
+    });
+  }, [isDark]);
 
   return (
     <GlobalContext.Provider value={state}>
