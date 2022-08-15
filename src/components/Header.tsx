@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import { useState } from "react";
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
@@ -5,17 +6,28 @@ import Button from "./Button";
 import SearchBar from "./SearchBar";
 
 const Container = styled.header`
-  ${flex('center')}
+  position: fixed;
+  ${flex('center', 'space-between')}
   width: 100%;
   height: 50px;
   background-color: blue;
+  padding: 0 10px;
 
-  & > button {
-    margin-left: auto;
+  & > a {
+    color: inherit;
+    text-decoration: none;
+
+    & > h1 {
+      color: white;
+    }
   }
 `;
 
-const Header = () => {
+interface HeaderProps {
+  changeDisplayMode: ()=> void;
+}
+
+const Header = ({ changeDisplayMode }: HeaderProps) => {
   const [input, setInput] = useState('');
   const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
 
@@ -29,7 +41,10 @@ const Header = () => {
   return (
     <Container>
       <SearchBar isSearchButtonClicked={isSearchButtonClicked} onClose={handleClick} input={input} onChange={handleChange} />
-      <h1>Devlog</h1>
+      <Link to="/">
+        <h1>Devlog</h1>
+      </Link>
+      <Button innerText="toggle" onClick={changeDisplayMode}/>
       <Button innerText="Search" onClick={handleClick}/>
     </Container>
   );

@@ -5,7 +5,7 @@ import { usePostDispatch } from '../contexts/PostContext';
 import { useEffect } from 'react';
 
 const Container = styled.ul`
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 const GET_POST = graphql`

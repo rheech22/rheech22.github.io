@@ -1,25 +1,43 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { mainElementBreakPoints } from "../styles/mixins";
 import reset from 'styled-reset';
 import Header from "./Header";
 import { PostContextProvider } from "../contexts/PostContext";
+import { dark, light, Theme } from "../styles/themes";
+import { useEffect, useState } from "react";
 
-const GlobalStyle = createGlobalStyle`
+interface GlobalStyle {
+  theme: Theme
+}
+
+const GlobalStyle = createGlobalStyle<GlobalStyle>`
   ${reset}
+  
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    background-color: ${props => (props.theme === 'dark' ? "black" : "white")};
-    color: ${props => (props.theme === 'dark' ? "white" : "black")};
+    background-color: ${({ theme }) => (theme.bgColor)};
+    color: ${({ theme }) => (theme.color)};
     min-height: 100%;
     
     main {
       /* display: flex;
       flex-wrap: wrap; */
-      padding: 0 40px;
+      padding: 50px 40px;
       margin: 0 auto;
       ${mainElementBreakPoints}
     }
+
+    a {
+      &:visited {
+        color: unset;
+      }
+    }
   }
 `;
+
 
 interface LayoutProps {
   children: JSX.Element | null;
@@ -28,17 +46,22 @@ interface LayoutProps {
 
 const Layout = ({
   children,
-  theme = 'dark',
 }: LayoutProps) => {
+  const [isDark, setIsDark] = useState(false);
+
+  const changeDisplayMode = () => setIsDark(prev => !prev);
+
   return (
     <>
-      <GlobalStyle theme={theme} />
-      <PostContextProvider>
-        <Header/>
-        <main>
-          {children}
-        </main>
-      </PostContextProvider>
+      <ThemeProvider theme={isDark ? dark : light }>
+        <GlobalStyle/>
+        <PostContextProvider>
+          <Header changeDisplayMode={changeDisplayMode}/>
+          <main>
+            {children}
+          </main>
+        </PostContextProvider>
+      </ThemeProvider>
     </>
   );
 };

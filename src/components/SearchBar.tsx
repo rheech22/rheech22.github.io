@@ -1,5 +1,4 @@
 import { navigate } from "gatsby";
-import React, { useState } from "react";
 import styled from "styled-components";
 import { usePostDispatch } from "../contexts/PostContext";
 import Button from "./Button";
@@ -26,7 +25,7 @@ const Container = styled.form<ContainerProps>`
 
   & > button:last-of-type {
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
   }

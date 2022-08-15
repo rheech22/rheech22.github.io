@@ -1,7 +1,4 @@
 import { graphql, PageProps } from "gatsby";
-import Layout from "../components/Layout";
-
-
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
