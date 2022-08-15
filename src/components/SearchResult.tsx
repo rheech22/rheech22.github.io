@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import PostPreview from './PostPreview';
-import { initialState, Posts, usePostContext } from '../contexts/PostContext';
+import { initialState, Posts, useGlobalContext } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
-import FetchMore from './FetchMore';
+import LoadMore from './LoadMore';
 
 const Container = styled.ul`
   border: 1px solid black;
 `;
 
 const SearchResult = () => {
-  const { posts, keyword } = usePostContext() ?? initialState;
+  const { posts, keyword } = useGlobalContext() ?? initialState;
 
   const [filteredPosts, setFilteredPosts] = useState<Posts>(posts);
   const [offset, setOffset] = useState(10);
 
-  const fetchMore = () => {
+  const loadMore = () => {
     if (offset > filteredPosts.length) return;
     setOffset(prev => prev + 10);
   };
@@ -45,7 +45,7 @@ const SearchResult = () => {
             excerpt={post.excerpt}
           />
         )}
-      <FetchMore fetch={fetchMore}/>
+      <LoadMore load={loadMore}/>
     </Container>
   );
 };

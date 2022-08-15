@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './src/components/Layout';
-import { PostContextProvider } from './src/contexts/PostContext';
+import { GlobalContextProvider } from './src/contexts/GlobalContext';
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
   console.log("new pathname", location.pathname);
@@ -9,8 +9,8 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
 
 export const wrapPageElement = ({ element, props }) => {
   return (
-    <PostContextProvider>
+    <GlobalContextProvider>
       <Layout {...props}>{element}</Layout>
-    </PostContextProvider>
+    </GlobalContextProvider>
   );
 };

@@ -1,11 +1,11 @@
 import React, { createRef, useLayoutEffect } from 'react';
 
-interface UtterancesProps {
+interface Comments {
   repo: string;
   theme: string;
 }
 
-const Utterances = React.memo(({ repo, theme }: UtterancesProps) => {
+const Comments = React.memo(({ repo, theme }: Comments) => {
   const containerRef = createRef<HTMLDivElement>();
 
   useLayoutEffect(() => {
@@ -42,4 +42,4 @@ const Utterances = React.memo(({ repo, theme }: UtterancesProps) => {
 });
 
 
-export default Utterances;
+export default Comments;

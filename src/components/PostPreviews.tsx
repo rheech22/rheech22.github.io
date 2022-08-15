@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from "gatsby";
 import PostPreview from './PostPreview';
-import { usePostDispatch } from '../contexts/PostContext';
+import { useDispatch } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
-import FetchMore from './FetchMore';
+import LoadMore from './LoadMore';
 
 const Container = styled.ul`
   margin-top: 24px;
@@ -34,11 +34,11 @@ const PostPreviews = () => {
 
   const { edges } = data.allMarkdownRemark;
 
-  const dispatch = usePostDispatch();
+  const dispatch = useDispatch();
 
   const [offset, setOffset] = useState(10);
 
-  const fetchMore = () => {
+  const loadMore = () => {
     if (offset > edges.length) return;
     setOffset(prev => prev + 10);
   };
@@ -67,7 +67,7 @@ const PostPreviews = () => {
             excerpt={post.excerpt}
           />
         )}
-      <FetchMore fetch={fetchMore}/>
+      <LoadMore load={loadMore}/>
     </Container>
   );
 };

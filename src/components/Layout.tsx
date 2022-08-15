@@ -1,5 +1,5 @@
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-import { initialState, usePostContext, usePostDispatch } from "../contexts/PostContext";
+import { initialState, useGlobalContext, useDispatch } from "../contexts/GlobalContext";
 
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { mainElementBreakPoints } from "../styles/mixins";
@@ -48,8 +48,8 @@ interface LayoutProps {
 const Layout = ({
   children,
 }: LayoutProps) => {
-  const { isDark } = usePostContext() ?? initialState;
-  const dispatch = usePostDispatch();
+  const { isDark } = useGlobalContext() ?? initialState;
+  const dispatch = useDispatch();
 
   const changeDisplayMode = () => {
     dispatch?.({
@@ -62,15 +62,13 @@ const Layout = ({
   deckDeckGoHighlightElement();
 
   return (
-    <>
-      <ThemeProvider theme={isDark ? dark : light }>
-        <GlobalStyle/>
-        <Header changeDisplayMode={changeDisplayMode}/>
-        <main>
-          {children}
-        </main>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={isDark ? dark : light }>
+      <GlobalStyle/>
+      <Header changeDisplayMode={changeDisplayMode}/>
+      <main>
+        {children}
+      </main>
+    </ThemeProvider>
   );
 };
 

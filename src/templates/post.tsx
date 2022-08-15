@@ -1,7 +1,9 @@
 import { graphql, PageProps } from "gatsby";
+
+import { initialState, useGlobalContext } from "../contexts/GlobalContext";
+import Comments from "../components/Comments";
+
 import styled from "styled-components";
-import Utterances from "../components/Utterances";
-import { initialState, usePostContext } from "../contexts/PostContext";
 import { flex } from "../styles/mixins";
 
 const Container = styled.article`
@@ -32,7 +34,7 @@ const Container = styled.article`
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
-  const { isDark } = usePostContext() ?? initialState;
+  const { isDark } = useGlobalContext() ?? initialState;
 
   const theme = isDark ? 'github-dark-orange' : 'boxy-light';
 
@@ -43,7 +45,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <h1>{post.frontmatter?.title}</h1>
           <span>{post.frontmatter?.date}</span>
           <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-          <Utterances repo="rheech22/comments" theme={theme}/>
+          <Comments repo="rheech22/comments" theme={theme}/>
         </Container>
       )}
     </>

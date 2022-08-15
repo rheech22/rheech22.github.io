@@ -16,13 +16,13 @@ export const initialState: State = {
   isDark: isDarkTheme(),
 };
 
-export const PostContext = createContext<State | null>(null);
-export const PostDispatchContext = createContext<DispatchContext | null>(null);
+export const GlobalContext = createContext<State | null>(null);
+export const DispatchContext = createContext<DispatchContext | null>(null);
 
-export const usePostContext = () => useContext(PostContext);
-export const usePostDispatch = () => useContext(PostDispatchContext);
+export const useGlobalContext = () => useContext(GlobalContext);
+export const useDispatch = () => useContext(DispatchContext);
 
-export const PostContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
+export const GlobalContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
   const [state, setState] = useState(initialState);
 
   const handleChangeState = ({ name, payload }: { name: string; payload: Posts | string | boolean })=>{
@@ -33,10 +33,10 @@ export const PostContextProvider = ({ children }: { children: JSX.Element | JSX.
   };
 
   return (
-    <PostContext.Provider value={state}>
-      <PostDispatchContext.Provider value={handleChangeState}>
+    <GlobalContext.Provider value={state}>
+      <DispatchContext.Provider value={handleChangeState}>
         {children}
-      </PostDispatchContext.Provider>
-    </PostContext.Provider>
+      </DispatchContext.Provider>
+    </GlobalContext.Provider>
   );
 };

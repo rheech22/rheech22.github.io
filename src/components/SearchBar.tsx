@@ -1,6 +1,6 @@
 import { navigate } from "gatsby";
 import styled from "styled-components";
-import { usePostDispatch } from "../contexts/PostContext";
+import { useDispatch } from "../contexts/GlobalContext";
 import Button from "./Button";
 import Textbox from "./Textbox";
 
@@ -39,7 +39,7 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ isSearchButtonClicked, onClose, input, onChange }: SearchBarProps) => {
-  const dispatch = usePostDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
