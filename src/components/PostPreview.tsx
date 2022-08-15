@@ -1,9 +1,34 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { flex } from "../styles/mixins";
 
 const Container = styled.li`
+  height: 134px;
+  
   & > a {
-    /* color: ${({ theme }) => (theme.color)}; */
+    ${flex('', '', 'column')}
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 5px;
+
+    &:hover {
+      color: red;
+    }
+    
+    h2 {
+      font-size: 28px;
+    }
+    
+    span {
+      font-size: 12px;
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+  
+    p {
+      font-weight: 400;
+      overflow-y: hidden;
+    }
   }
 `;
 
@@ -22,9 +47,11 @@ const PostPreview = ({
 }: PostPreviewProps) => {
   return (
     <Container>
-      <Link to={path ?? ''}>{title}</Link>
-      <span>{date}</span>
-      <p>{excerpt}</p>
+      <Link to={path ?? ''}>
+        <h2>{title}</h2>
+        <span>{date}</span>
+        <p>{excerpt}</p>
+      </Link>
     </Container>
   );
 };

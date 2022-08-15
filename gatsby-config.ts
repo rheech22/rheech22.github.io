@@ -19,7 +19,14 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [],
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              theme: "monokai",
+            },
+          },
+        ],
       },
     },
   ],

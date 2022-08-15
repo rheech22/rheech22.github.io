@@ -8,10 +8,10 @@ import SearchBar from "./SearchBar";
 const Container = styled.header`
   position: fixed;
   ${flex('center', 'space-between')}
+  padding: 0 10px;
   width: 100%;
   height: 50px;
   background-color: blue;
-  padding: 0 10px;
 
   & > a {
     color: inherit;

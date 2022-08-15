@@ -9,7 +9,6 @@ module.exports = {
     "@typescript-eslint/indent": ["error", 2],
     'no-trailing-spaces': 'error',
     'semi': ['error', 'always'],
-    'curly': 'error',
     'brace-style': 'error',
     'no-multi-spaces': 'error',
     'space-infix-ops': 'error',

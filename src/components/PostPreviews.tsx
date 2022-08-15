@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from "gatsby";
 import PostPreview from './PostPreview';
 import { usePostDispatch } from '../contexts/PostContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import FetchMore from './FetchMore';
 
 const Container = styled.ul`
-  /* border: 1px solid black; */
+  margin-top: 24px;
 `;
 
 const GET_POST = graphql`
@@ -35,6 +36,13 @@ const PostPreviews = () => {
 
   const dispatch = usePostDispatch();
 
+  const [offset, setOffset] = useState(10);
+
+  const fetchMore = () => {
+    if (offset > edges.length) return;
+    setOffset(prev => prev + 10);
+  };
+
   useEffect(()=>{
     if (edges.length) {
       dispatch?.({
@@ -44,13 +52,12 @@ const PostPreviews = () => {
     }
   }, [edges]);
 
-  if (!edges.length) {
-    return <Container><p>게시글 없음</p></Container>;
-  }
+  if (!edges.length) return <Container><p>게시글 없음</p></Container>;
 
   return (
     <Container>
       {edges && edges
+        .slice(0, offset)
         .map(({ node: post }) =>
           <PostPreview
             key={post.id}
@@ -60,6 +67,7 @@ const PostPreviews = () => {
             excerpt={post.excerpt}
           />
         )}
+      <FetchMore fetch={fetchMore}/>
     </Container>
   );
 };

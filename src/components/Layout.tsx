@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { PostContextProvider } from "../contexts/PostContext";
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+import { initialState, usePostContext, usePostDispatch } from "../contexts/PostContext";
 
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { mainElementBreakPoints } from "../styles/mixins";
@@ -23,19 +23,17 @@ const GlobalStyle = createGlobalStyle<GlobalStyle>`
     background-color: ${({ theme }) => (theme.bgColor)};
     color: ${({ theme }) => (theme.color)};
     min-height: 100%;
+    min-width: 550px;
     
     main {
-      /* display: flex;
-      flex-wrap: wrap; */
-      padding: 50px 40px;
       margin: 0 auto;
+      padding: 50px 40px;
       ${mainElementBreakPoints}
+      font-size: 16px;
     }
 
     a {
-      &:visited {
-        color: unset;
-      }
+      color: unset;
     }
   }
 `;
@@ -50,27 +48,27 @@ interface LayoutProps {
 const Layout = ({
   children,
 }: LayoutProps) => {
-  const deviceDarkModePreference = `${window.matchMedia('(prefers-color-scheme: dark)').matches}`;
-  const userDarkModePreference = localStorage.getItem('isDark') ?? deviceDarkModePreference ?? 'true';
-  const initialState = JSON.parse(userDarkModePreference);
-
-  const [isDark, setIsDark] = useState<boolean>(initialState);
+  const { isDark } = usePostContext() ?? initialState;
+  const dispatch = usePostDispatch();
 
   const changeDisplayMode = () => {
-    setIsDark(prev => !prev);
+    dispatch?.({
+      name: 'isDark',
+      payload: !isDark,
+    });
     localStorage.setItem('isDark', JSON.stringify(!isDark));
   };
+
+  deckDeckGoHighlightElement();
 
   return (
     <>
       <ThemeProvider theme={isDark ? dark : light }>
         <GlobalStyle/>
-        <PostContextProvider>
-          <Header changeDisplayMode={changeDisplayMode}/>
-          <main>
-            {children}
-          </main>
-        </PostContextProvider>
+        <Header changeDisplayMode={changeDisplayMode}/>
+        <main>
+          {children}
+        </main>
       </ThemeProvider>
     </>
   );
