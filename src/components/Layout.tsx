@@ -1,4 +1,4 @@
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+import { defineCustomElements as highlightCodeBlock } from "@deckdeckgo/highlight-code/dist/loader";
 import { initialState, useGlobalContext, useDispatch } from "../contexts/GlobalContext";
 
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyle>`
     color: ${({ theme }) => (theme.color)};
     min-height: 100%;
     min-width: 550px;
+    font-family: sans-serif;
     
     main {
       margin: 0 auto;
@@ -59,7 +60,7 @@ const Layout = ({
     localStorage.setItem('isDark', JSON.stringify(!isDark));
   };
 
-  deckDeckGoHighlightElement();
+  highlightCodeBlock();
 
   return (
     <ThemeProvider theme={isDark ? dark : light }>

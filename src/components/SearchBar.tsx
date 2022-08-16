@@ -1,12 +1,27 @@
 import { navigate } from "gatsby";
-import styled from "styled-components";
+
+import { forwardRef } from "react";
 import { useDispatch } from "../contexts/GlobalContext";
-import Button from "./Button";
+
+import styled, { keyframes } from "styled-components";
+import { XIcon } from '@heroicons/react/outline';
+
 import Textbox from "./Textbox";
+import Button from "./Button";
 
 interface ContainerProps {
   isSearchButtonClicked: boolean
 }
+
+const fadeIn = keyframes`
+  from {
+    transform: translateY(-50px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+`;
 
 const Container = styled.form<ContainerProps>`
   display: ${(props) => props.isSearchButtonClicked ? 'block' : 'none' };
@@ -14,12 +29,16 @@ const Container = styled.form<ContainerProps>`
   left: 0;
   width: 100%;
   height: 50px;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transform: translateY(-50px);
+  animation: ${fadeIn} 0.5s forwards;
 
   & > input {
-    font-size: 20px;
+    font-size: 18px;
     width: 100%;
     height: 100%;
-    padding: 0 10px;
+    padding: 0 50px 0 10px;
     border: none;
   }
 
@@ -28,6 +47,11 @@ const Container = styled.form<ContainerProps>`
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    opacity: 0.5;
+    
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 
@@ -38,7 +62,12 @@ interface SearchBarProps {
   onChange: (value: string) => void
 }
 
-const SearchBar = ({ isSearchButtonClicked, onClose, input, onChange }: SearchBarProps) => {
+const SearchBar = forwardRef<HTMLFormElement, SearchBarProps>(({
+  isSearchButtonClicked,
+  onClose,
+  input,
+  onChange,
+}, ref) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -52,12 +81,14 @@ const SearchBar = ({ isSearchButtonClicked, onClose, input, onChange }: SearchBa
   };
 
   return (
-    <Container onSubmit={handleSubmit} isSearchButtonClicked={isSearchButtonClicked} >
-      <Textbox onChange={onChange} value={input} placeholder='Search'/>
+    <Container ref={ref} onSubmit={handleSubmit} isSearchButtonClicked={isSearchButtonClicked} >
+      <Textbox onChange={onChange} value={input} placeholder='Search' />
       <Button type="submit" hidden />
-      <Button innerText="close" onClick={onClose}/>
+      <Button onClick={onClose}>
+        <XIcon />
+      </Button>
     </Container>
   );
-};
+});
 
 export default SearchBar;

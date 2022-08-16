@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from "gatsby";
-import PostPreview from './PostPreview';
+import PostPreview from '../components/PostPreview';
 import { useDispatch } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
-import LoadMore from './LoadMore';
+import LoadMore from '../components/LoadMore';
 
 const Container = styled.ul`
   margin-top: 24px;

@@ -1,4 +1,4 @@
-import SearchResult from '../components/SearchResult';
+import SearchResult from '../containers/SearchResult';
 
 export default () => (<SearchResult />);
 

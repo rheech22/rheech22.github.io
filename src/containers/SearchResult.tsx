@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import PostPreview from './PostPreview';
+import PostPreview from '../components/PostPreview';
 import { initialState, Posts, useGlobalContext } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
-import LoadMore from './LoadMore';
+import LoadMore from '../components/LoadMore';
 
 const Container = styled.ul`
-  border: 1px solid black;
+  margin-top: 24px;
 `;
 
 const SearchResult = () => {

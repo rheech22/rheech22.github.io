@@ -1,24 +1,64 @@
 import { Link } from "gatsby";
 import { useState } from "react";
+
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
+import { SearchIcon } from '@heroicons/react/outline';
+
 import Button from "./Button";
 import SearchBar from "./SearchBar";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 const Container = styled.header`
   position: fixed;
-  ${flex('center', 'space-between')}
+  ${flex('center', 'flex-end')}
   padding: 0 10px;
   width: 100%;
   height: 50px;
-  background-color: blue;
+  background-color: #130f40;
 
   & > a {
     color: inherit;
     text-decoration: none;
+    margin-right: auto;
 
     & > h1 {
       color: white;
+      font-size: 20px;
+    }
+  }
+
+  button {
+    border: none;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    background: none;
+    cursor: pointer;
+  }
+
+  & > button {
+    &:nth-of-type(1) {
+      border-radius: 50%;
+      background-image: linear-gradient(to right, #fceabb 0%, #f8b500 51%, #fceabb 100%);
+      background-size: 200% auto;
+      box-shadow: 0px 0px 27px #eee;
+      transition: 1s;
+  
+      &:hover {
+        background-position: right center;
+        text-decoration: none;
+      }
+    }
+
+    &:last-of-type {
+      margin-left: 10px;
+      color: #eee;
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 `;
@@ -38,14 +78,29 @@ const Header = ({ changeDisplayMode }: HeaderProps) => {
     setIsSearchButtonClicked(prev => !prev);
   };
 
+  const shutSearchButton = () => {
+    if (isSearchButtonClicked === false) return;
+    handleClick();
+  };
+
+  const searchRef = useOutsideClick(shutSearchButton);
+
   return (
     <Container>
-      <SearchBar isSearchButtonClicked={isSearchButtonClicked} onClose={handleClick} input={input} onChange={handleChange} />
+      <SearchBar
+        ref={searchRef}
+        input={input}
+        onClose={handleClick}
+        onChange={handleChange}
+        isSearchButtonClicked={isSearchButtonClicked}
+      />
       <Link to="/">
-        <h1>Devlog</h1>
+        <h1>CHLOG</h1>
       </Link>
-      <Button innerText="toggle" onClick={changeDisplayMode}/>
-      <Button innerText="Search" onClick={handleClick}/>
+      <Button onClick={changeDisplayMode}/>
+      <Button onClick={handleClick}>
+        <SearchIcon />
+      </Button>
     </Container>
   );
 };

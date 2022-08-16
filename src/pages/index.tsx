@@ -1,3 +1,3 @@
-import PostPreviews from '../components/PostPreviews';
+import PostPreviews from '../containers/PostPreviews';
 
 export default () => (<PostPreviews />);
