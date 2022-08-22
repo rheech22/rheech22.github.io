@@ -1,6 +1,6 @@
 type ButtonTypes = React.ButtonHTMLAttributes<HTMLButtonElement>['type']
 
-interface ButtonProps {
+interface Props {
   children?: string | JSX.Element;
   type?: ButtonTypes;
   hidden?: boolean;
@@ -12,7 +12,7 @@ const Button = ({
   hidden,
   children,
   onClick,
-}: ButtonProps) => {
+}: Props) => {
   return (
     <button type={type} onClick={onClick} hidden={hidden}>
       {children}

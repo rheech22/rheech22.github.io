@@ -12,6 +12,50 @@ import Button from "./Button";
 import SearchBar from "./SearchBar";
 import useOutsideClick from "../hooks/useOutsideClick";
 
+interface Props {
+  changeDisplayMode: ()=> void;
+}
+
+const Header = ({ changeDisplayMode }: Props) => {
+  const [input, setInput] = useState('');
+  const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
+
+  const handleChange = (value: string) => setInput(value);
+
+  const handleClick = () => {
+    handleChange('');
+    setIsSearchButtonClicked(prev => !prev);
+  };
+
+  const shutSearchButton = () => {
+    if (isSearchButtonClicked === false) return;
+    handleClick();
+  };
+
+  const searchRef = useOutsideClick(shutSearchButton);
+
+  return (
+    <Container>
+      <SearchBar
+        ref={searchRef}
+        input={input}
+        onClose={handleClick}
+        onChange={handleChange}
+        isSearchButtonClicked={isSearchButtonClicked}
+      />
+      <Link to="/">
+        <h1>CHLOG</h1>
+      </Link>
+      <Button onClick={changeDisplayMode}/>
+      <Button onClick={handleClick}>
+        <SearchIcon />
+      </Button>
+    </Container>
+  );
+};
+
+export default Header;
+
 const Container = styled.header`
   position: fixed;
   z-index: 99;
@@ -65,47 +109,3 @@ const Container = styled.header`
     }
   }
 `;
-
-interface HeaderProps {
-  changeDisplayMode: ()=> void;
-}
-
-const Header = ({ changeDisplayMode }: HeaderProps) => {
-  const [input, setInput] = useState('');
-  const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
-
-  const handleChange = (value: string) => setInput(value);
-
-  const handleClick = () => {
-    handleChange('');
-    setIsSearchButtonClicked(prev => !prev);
-  };
-
-  const shutSearchButton = () => {
-    if (isSearchButtonClicked === false) return;
-    handleClick();
-  };
-
-  const searchRef = useOutsideClick(shutSearchButton);
-
-  return (
-    <Container>
-      <SearchBar
-        ref={searchRef}
-        input={input}
-        onClose={handleClick}
-        onChange={handleChange}
-        isSearchButtonClicked={isSearchButtonClicked}
-      />
-      <Link to="/">
-        <h1>CHLOG</h1>
-      </Link>
-      <Button onClick={changeDisplayMode}/>
-      <Button onClick={handleClick}>
-        <SearchIcon />
-      </Button>
-    </Container>
-  );
-};
-
-export default Header;

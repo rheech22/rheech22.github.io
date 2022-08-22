@@ -3,26 +3,55 @@ import { navigate } from "gatsby";
 import { forwardRef } from "react";
 import { useDispatch } from "../contexts/GlobalContext";
 
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { fadeIn } from "../styles/keyframes";
 import { headerHeight } from "../styles/measures";
 import { XIcon } from '@heroicons/react/outline';
 
 import Textbox from "./Textbox";
 import Button from "./Button";
 
+interface Props {
+  isSearchButtonClicked: boolean
+  input: string;
+  onClose: () => void
+  onChange: (value: string) => void
+}
+
+const SearchBar = forwardRef<HTMLFormElement, Props>(({
+  isSearchButtonClicked,
+  onClose,
+  input,
+  onChange,
+}, ref) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch?.({
+      name: 'keyword',
+      payload: input,
+    });
+    onChange('');
+    navigate('/search');
+  };
+
+  return (
+    <Container ref={ref} onSubmit={handleSubmit} isSearchButtonClicked={isSearchButtonClicked} >
+      <Textbox onChange={onChange} value={input} placeholder='Search' />
+      <Button type="submit" hidden />
+      <Button onClick={onClose}>
+        <XIcon />
+      </Button>
+    </Container>
+  );
+});
+
+export default SearchBar;
+
 interface ContainerProps {
   isSearchButtonClicked: boolean
 }
-
-const fadeIn = keyframes`
-  from {
-    transform: translateY(-50px);
-  }
-
-  to {
-    transform: translateY(0px);
-  }
-`;
 
 const Container = styled.form<ContainerProps>`
   display: ${(props) => props.isSearchButtonClicked ? 'block' : 'none' };
@@ -55,41 +84,3 @@ const Container = styled.form<ContainerProps>`
     }
   }
 `;
-
-interface SearchBarProps {
-  isSearchButtonClicked: boolean
-  input: string;
-  onClose: () => void
-  onChange: (value: string) => void
-}
-
-const SearchBar = forwardRef<HTMLFormElement, SearchBarProps>(({
-  isSearchButtonClicked,
-  onClose,
-  input,
-  onChange,
-}, ref) => {
-  const dispatch = useDispatch();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    dispatch?.({
-      name: 'keyword',
-      payload: input,
-    });
-    onChange('');
-    navigate('/search');
-  };
-
-  return (
-    <Container ref={ref} onSubmit={handleSubmit} isSearchButtonClicked={isSearchButtonClicked} >
-      <Textbox onChange={onChange} value={input} placeholder='Search' />
-      <Button type="submit" hidden />
-      <Button onClick={onClose}>
-        <XIcon />
-      </Button>
-    </Container>
-  );
-});
-
-export default SearchBar;

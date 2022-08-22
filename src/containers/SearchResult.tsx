@@ -4,10 +4,6 @@ import { initialState, Posts, useGlobalContext } from '../contexts/GlobalContext
 import { useEffect, useState } from 'react';
 import LoadMore from '../components/LoadMore';
 
-const Container = styled.ul`
-  margin-top: 40px;
-`;
-
 const SearchResult = () => {
   const { posts, keyword } = useGlobalContext() ?? initialState;
 
@@ -55,3 +51,7 @@ const SearchResult = () => {
 };
 
 export default SearchResult;
+
+const Container = styled.ul`
+  margin-top: 40px;
+`;

@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
-interface LoadMoreProps {
+interface Props {
   load: ()=> void;
 }
 
-const LoadMore = ({ load }: LoadMoreProps) => {
+const LoadMore = ({ load }: Props) => {
   const loadMoreTrigger = useRef(null);
 
   useEffect(() => {

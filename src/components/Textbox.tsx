@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface TextboxProps {
+interface Props {
   name?: string;
   value?: string;
   placeholder?: string;
@@ -11,12 +11,6 @@ interface TextboxProps {
   disabled?: boolean;
 }
 
-const Input = styled.input`
-  &:focus {
-    outline: none;
-  }
-`;
-
 const Textbox = ({
   name,
   value,
@@ -26,7 +20,7 @@ const Textbox = ({
   maxLength,
   autoFocus,
   disabled,
-}: TextboxProps) => {
+}: Props) => {
   return (
     <Input
       type='text'
@@ -43,3 +37,9 @@ const Textbox = ({
 };
 
 export default Textbox;
+
+const Input = styled.input`
+  &:focus {
+    outline: none;
+  }
+`;

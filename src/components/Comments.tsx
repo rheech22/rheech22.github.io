@@ -1,11 +1,11 @@
-import React, { createRef, useLayoutEffect } from 'react';
+import { createRef, useLayoutEffect, memo } from 'react';
 
-interface Comments {
+interface Props {
   repo: string;
   theme: string;
 }
 
-const Comments = React.memo(({ repo, theme }: Comments) => {
+const Comments = memo(({ repo, theme }: Props) => {
   const containerRef = createRef<HTMLDivElement>();
 
   useLayoutEffect(() => {

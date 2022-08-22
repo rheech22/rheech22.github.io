@@ -5,10 +5,6 @@ import { useDispatch } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
 import LoadMore from '../components/LoadMore';
 
-const Container = styled.ul`
-  margin-top: 40px;
-`;
-
 const GET_POST = graphql`
   query getPosts {
     allMarkdownRemark (
@@ -74,3 +70,7 @@ const PostPreviews = () => {
 };
 
 export default PostPreviews;
+
+const Container = styled.ul`
+  margin-top: 40px;
+`;

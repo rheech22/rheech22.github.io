@@ -7,9 +7,7 @@ interface Props {
 
 const SEO = ({ title }: Props) => {
   return (
-    <Helmet
-      title={title}
-    />
+    <Helmet title={title} />
   );
 };
 
