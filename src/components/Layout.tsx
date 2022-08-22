@@ -7,6 +7,7 @@ import { dark, light, Theme } from "../styles/themes";
 import reset from 'styled-reset';
 
 import Header from "./Header";
+import { headerHeight } from "../styles/measures";
 
 interface GlobalStyle {
   theme: Theme
@@ -24,13 +25,15 @@ const GlobalStyle = createGlobalStyle<GlobalStyle>`
     color: ${({ theme }) => (theme.color)};
     min-height: 100%;
     min-width: 550px;
-    font-family: sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
     
     main {
       margin: 0 auto;
-      padding: 50px 40px;
-      ${mainElementBreakPoints}
+      padding: ${headerHeight} 40px;
+      width: 720px;
       font-size: 16px;
+      /* ${mainElementBreakPoints} */
     }
 
     a {

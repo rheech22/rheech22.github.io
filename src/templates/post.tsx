@@ -4,32 +4,46 @@ import { initialState, useGlobalContext } from "../contexts/GlobalContext";
 import Comments from "../components/Comments";
 
 import styled from "styled-components";
-import { flex } from "../styles/mixins";
+import { flex, horizontalDivider } from "../styles/mixins";
+import { darkSub } from "../styles/colors";
 
 const Container = styled.article`
   ${flex('', '', 'column')};
   margin-top: 24px;
 
-  h1 {
+  & > h1 {
+    height: 48px;
     font-size: 32px;
-    margin-bottom: 5px;
+    font-weight: 600;
   }
 
   span {
-    font-weight: 300;
+    font-size: 14px;
+    color: ${darkSub};
     margin-bottom: 16px;
   }
 
   div {
-    font-size: 20px;
-    line-height: 1.7;
+    font-size: 18px;
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      ${horizontalDivider}
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
   }
 
   deckgo-highlight-code {
     font-size: 16px;
   }
 `;
-
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;

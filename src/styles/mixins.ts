@@ -16,3 +16,7 @@ export const mainElementBreakPoints = () => css`
     max-width: 1240px;
   }
 `;
+
+export const horizontalDivider = () => css`
+  border-bottom: 1px solid #21262d;
+`;

@@ -1,9 +1,11 @@
 import { Link } from "gatsby";
+
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
 
 const Container = styled.li`
-  height: 134px;
+  /* height: 134px; */
+  padding: 24px 0;
   
   & > a {
     ${flex('', '', 'column')}

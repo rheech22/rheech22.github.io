@@ -22,7 +22,6 @@
 - [ ] 검색 엔진 최적화
 - [ ] 연관된 글 보여주기 - 그래프 라이브러리 활용?
 
-
 ## Findings
 
 - [StaticQuery](https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/)에는 variables를 전달할 수 없음(대신 페이지가 아닌 컴포넌트에서 사용 가능)

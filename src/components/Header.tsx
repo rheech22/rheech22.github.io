@@ -3,6 +3,9 @@ import { useState } from "react";
 
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
+import { headerBold } from "../styles/fonts";
+import { headerBg, headerLogo } from "../styles/colors";
+import { headerHeight } from "../styles/measures";
 import { SearchIcon } from '@heroicons/react/outline';
 
 import Button from "./Button";
@@ -14,17 +17,16 @@ const Container = styled.header`
   ${flex('center', 'flex-end')}
   padding: 0 10px;
   width: 100%;
-  height: 50px;
-  background-color: #130f40;
+  height: ${headerHeight};
+  background-color: ${headerBg};
 
   & > a {
-    color: inherit;
+    color: ${headerLogo};
     text-decoration: none;
     margin-right: auto;
 
     & > h1 {
-      color: white;
-      font-size: 20px;
+      ${headerBold}
     }
   }
 

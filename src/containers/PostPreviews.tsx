@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import LoadMore from '../components/LoadMore';
 
 const Container = styled.ul`
-  margin-top: 24px;
+  margin-top: 40px;
 `;
 
 const GET_POST = graphql`

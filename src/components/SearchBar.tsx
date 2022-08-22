@@ -4,6 +4,7 @@ import { forwardRef } from "react";
 import { useDispatch } from "../contexts/GlobalContext";
 
 import styled, { keyframes } from "styled-components";
+import { headerHeight } from "../styles/measures";
 import { XIcon } from '@heroicons/react/outline';
 
 import Textbox from "./Textbox";
@@ -28,10 +29,10 @@ const Container = styled.form<ContainerProps>`
   position: fixed;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: ${headerHeight};
   z-index: 2;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  transform: translateY(-50px);
+  transform: translateY(${headerHeight});
   animation: ${fadeIn} 0.5s forwards;
 
   & > input {
