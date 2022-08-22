@@ -6,6 +6,7 @@ const config: GatsbyConfig = {
     siteUrl: `https://rheechlog.gatsbyjs.io/`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
 
     {

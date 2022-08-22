@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import LoadMore from '../components/LoadMore';
 
 const Container = styled.ul`
-  margin-top: 24px;
+  margin-top: 40px;
 `;
 
 const SearchResult = () => {
@@ -21,9 +21,13 @@ const SearchResult = () => {
 
   useEffect(()=> {
     const filteredPosts = posts
-      .filter(({ node: { frontmatter } })=>
-        frontmatter?.title?.toLowerCase()
-          .includes(keyword.toLowerCase()));
+      .filter(({ node: { frontmatter, html } })=> {
+        const hasTitle = frontmatter?.title?.toLowerCase()
+          .includes(keyword.toLowerCase());
+        const hasContent = html?.toLowerCase()
+          .includes(keyword.toLowerCase());
+        return (hasTitle || hasContent);
+      });
 
     setFilteredPosts(filteredPosts);
   }, [keyword]);

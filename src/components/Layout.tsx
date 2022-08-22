@@ -8,6 +8,7 @@ import reset from 'styled-reset';
 
 import Header from "./Header";
 import { headerHeight } from "../styles/measures";
+import SEO from "./SEO";
 
 interface GlobalStyle {
   theme: Theme
@@ -68,6 +69,7 @@ const Layout = ({
   return (
     <ThemeProvider theme={isDark ? dark : light }>
       <GlobalStyle/>
+      <SEO title="BLOG" />
       <Header changeDisplayMode={changeDisplayMode}/>
       <main>
         {children}

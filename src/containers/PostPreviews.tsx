@@ -23,6 +23,7 @@ const GET_POST = graphql`
             date
             path
           }
+          html
         }
       }
     }

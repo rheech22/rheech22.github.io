@@ -2690,7 +2690,7 @@ type StringQueryOperatorInput = {
 type getPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly path: string | null } | null } }> } };
+type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly html: string | null, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly path: string | null } | null } }> } };
 
 type templateQueryVariables = Exact<{
   path: Scalars['String'];

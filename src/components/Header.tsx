@@ -14,6 +14,7 @@ import useOutsideClick from "../hooks/useOutsideClick";
 
 const Container = styled.header`
   position: fixed;
+  z-index: 99;
   ${flex('center', 'flex-end')}
   padding: 0 10px;
   width: 100%;
