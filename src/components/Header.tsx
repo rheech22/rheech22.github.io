@@ -8,9 +8,11 @@ import { headerBg, headerLogo } from "../styles/colors";
 import { headerHeight } from "../styles/measures";
 import { SearchIcon } from '@heroicons/react/outline';
 
+import { initialState, useGlobalContext } from "../contexts/GlobalContext";
+import useOutsideClick from "../hooks/useOutsideClick";
+
 import Button from "./Button";
 import SearchBar from "./SearchBar";
-import useOutsideClick from "../hooks/useOutsideClick";
 
 interface Props {
   changeDisplayMode: ()=> void;
@@ -19,6 +21,8 @@ interface Props {
 const Header = ({ changeDisplayMode }: Props) => {
   const [input, setInput] = useState('');
   const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
+
+  const { isDark } = useGlobalContext() ?? initialState;
 
   const handleChange = (value: string) => setInput(value);
 
@@ -35,7 +39,7 @@ const Header = ({ changeDisplayMode }: Props) => {
   const searchRef = useOutsideClick(shutSearchButton);
 
   return (
-    <Container>
+    <Container isDark={isDark}>
       <SearchBar
         ref={searchRef}
         input={input}
@@ -56,12 +60,13 @@ const Header = ({ changeDisplayMode }: Props) => {
 
 export default Header;
 
-const Container = styled.header`
+const Container = styled.header<{isDark: boolean}>`
   position: fixed;
   z-index: 99;
   ${flex('center', 'flex-end')}
   padding: 0 10px;
   width: 100%;
+  min-width: 375px;
   height: ${headerHeight};
   background-color: ${headerBg};
 
@@ -87,13 +92,14 @@ const Container = styled.header`
   & > button {
     &:nth-of-type(1) {
       border-radius: 50%;
-      background-image: linear-gradient(to right, #fceabb 0%, #f8b500 51%, #fceabb 100%);
+      background-image: linear-gradient(to right, #fceabb 0%, black 100%);
       background-size: 200% auto;
       box-shadow: 0px 0px 27px #eee;
       transition: 1s;
+      background-position: ${({ isDark })=> isDark ? 'right center' : 0};
   
       &:hover {
-        background-position: right center;
+        background-position: ${({ isDark })=> isDark ? 0 : 'right center'};
         text-decoration: none;
       }
     }
