@@ -1,4 +1,4 @@
-import { darkBg, darkMain } from "./colors";
+import { darkBg, darkMain, lightBg, lightMain } from "./colors";
 
 export interface Theme {
   color: string;
@@ -11,6 +11,6 @@ export const dark = {
 };
 
 export const light = {
-  color: 'black',
-  bgColor: 'white',
+  color: lightMain,
+  bgColor: lightBg,
 };

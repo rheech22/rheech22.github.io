@@ -92,15 +92,14 @@ const Container = styled.header<{isDark: boolean}>`
   & > button {
     &:nth-of-type(1) {
       border-radius: 50%;
+      box-shadow: 0px 0px 15px #eee;
       background-image: linear-gradient(to right, #fceabb 0%, black 100%);
-      background-size: 200% auto;
-      box-shadow: 0px 0px 27px #eee;
-      transition: 1s;
       background-position: ${({ isDark })=> isDark ? 'right center' : 0};
+      background-size: 200% auto;
+      transition: 1.5s;
   
       &:hover {
-        background-position: ${({ isDark })=> isDark ? 0 : 'right center'};
-        text-decoration: none;
+        box-shadow: 0px 0px 27px #fff;
       }
     }
 
