@@ -6,7 +6,6 @@ import { flex } from "../styles/mixins";
 import { headerBold } from "../styles/fonts";
 import { headerBg, headerLogo } from "../styles/themes";
 import { headerHeight } from "../styles/measures";
-import { SearchIcon } from '@heroicons/react/outline';
 
 import useOutsideClick from "../hooks/useOutsideClick";
 
@@ -43,14 +42,10 @@ const Header = ({ changeDisplayMode }: Props) => {
       <SearchBar
         ref={searchRef}
         input={input}
-        // onClose={handleClick}
         onChange={handleChange}
         isSearchButtonClicked={isSearchButtonClicked}
       />
       <Button onClick={changeDisplayMode}/>
-      {/* <Button onClick={handleClick}>
-        <SearchIcon />
-      </Button> */}
     </Container>
   );
 };
@@ -61,7 +56,7 @@ const Container = styled.header`
   position: fixed;
   z-index: 99;
   ${flex('center', 'flex-start')}
-  padding: 0 10px;
+  padding: 16px 32px;
   width: 100%;
   min-width: 375px;
   height: ${headerHeight};

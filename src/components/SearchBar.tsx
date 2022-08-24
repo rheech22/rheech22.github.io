@@ -4,9 +4,6 @@ import { forwardRef } from "react";
 import { useDispatch } from "../contexts/GlobalContext";
 
 import styled from "styled-components";
-import { fadeIn } from "../styles/keyframes";
-import { headerHeight } from "../styles/measures";
-// import { XIcon } from '@heroicons/react/outline';
 
 import Textbox from "./Textbox";
 import Button from "./Button";
@@ -15,13 +12,11 @@ import { searchPlaceholder } from "../styles/themes";
 interface Props {
   isSearchButtonClicked: boolean
   input: string;
-  // onClose: () => void
   onChange: (value: string) => void
 }
 
 const SearchBar = forwardRef<HTMLFormElement, Props>(({
   isSearchButtonClicked,
-  // onClose,
   input,
   onChange,
 }, ref) => {
@@ -41,9 +36,6 @@ const SearchBar = forwardRef<HTMLFormElement, Props>(({
     <Container ref={ref} onSubmit={handleSubmit} isSearchButtonClicked={isSearchButtonClicked} >
       <Textbox onChange={onChange} value={input} placeholder='Search' />
       <Button type="submit" hidden />
-      {/* <Button onClick={onClose}>
-        <XIcon />
-      </Button> */}
     </Container>
   );
 });
@@ -55,13 +47,6 @@ interface ContainerProps {
 }
 
 const Container = styled.form<ContainerProps>`
-  /* display: ${(props) => props.isSearchButtonClicked ? 'block' : 'none' }; */
-  /* position: fixed; */
-  /* left: 0; */
-  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
-  /* z-index: 2; */
-  /* transform: translateY(${headerHeight}); */
-  /* animation: ${fadeIn} 0.5s forwards; */
   width: 272px;
   height: 30px;
   border: 1px solid ${({ theme }) => theme.searchBorder};
@@ -70,6 +55,7 @@ const Container = styled.form<ContainerProps>`
   transition: width 0.5s;
 
   &:focus-within {
+    // TODO: 반응형 고려해서 수치 조절하기
     width: 544px;
   }  
   
@@ -95,16 +81,4 @@ const Container = styled.form<ContainerProps>`
       color: ${searchPlaceholder};
     }
   }
-
-  /* & > button:last-of-type {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.5;
-    
-    &:hover {
-      opacity: 1;
-    }
-  } */
 `;
