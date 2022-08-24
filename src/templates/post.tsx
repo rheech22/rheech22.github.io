@@ -5,7 +5,6 @@ import Comments from "../components/Comments";
 
 import styled from "styled-components";
 import { flex, horizontalDivider } from "../styles/mixins";
-import { darkSub } from "../styles/colors";
 
 const Container = styled.article`
   ${flex('', '', 'column')};
@@ -19,7 +18,7 @@ const Container = styled.article`
 
   span {
     font-size: 14px;
-    color: ${darkSub};
+    color: ${({ theme }) => theme.subColor };
     margin-bottom: 16px;
   }
 

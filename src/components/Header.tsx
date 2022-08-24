@@ -4,11 +4,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
 import { headerBold } from "../styles/fonts";
-import { headerBg, headerLogo } from "../styles/colors";
+import { headerBg, headerLogo } from "../styles/themes";
 import { headerHeight } from "../styles/measures";
 import { SearchIcon } from '@heroicons/react/outline';
 
-import { initialState, useGlobalContext } from "../contexts/GlobalContext";
 import useOutsideClick from "../hooks/useOutsideClick";
 
 import Button from "./Button";
@@ -21,8 +20,6 @@ interface Props {
 const Header = ({ changeDisplayMode }: Props) => {
   const [input, setInput] = useState('');
   const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
-
-  const { isDark } = useGlobalContext() ?? initialState;
 
   const handleChange = (value: string) => setInput(value);
 
@@ -39,31 +36,31 @@ const Header = ({ changeDisplayMode }: Props) => {
   const searchRef = useOutsideClick(shutSearchButton);
 
   return (
-    <Container isDark={isDark}>
-      <SearchBar
-        ref={searchRef}
-        input={input}
-        onClose={handleClick}
-        onChange={handleChange}
-        isSearchButtonClicked={isSearchButtonClicked}
-      />
+    <Container>
       <Link to="/">
         <h1>CHLOG</h1>
       </Link>
+      <SearchBar
+        ref={searchRef}
+        input={input}
+        // onClose={handleClick}
+        onChange={handleChange}
+        isSearchButtonClicked={isSearchButtonClicked}
+      />
       <Button onClick={changeDisplayMode}/>
-      <Button onClick={handleClick}>
+      {/* <Button onClick={handleClick}>
         <SearchIcon />
-      </Button>
+      </Button> */}
     </Container>
   );
 };
 
 export default Header;
 
-const Container = styled.header<{isDark: boolean}>`
+const Container = styled.header`
   position: fixed;
   z-index: 99;
-  ${flex('center', 'flex-end')}
+  ${flex('center', 'flex-start')}
   padding: 0 10px;
   width: 100%;
   min-width: 375px;
@@ -73,7 +70,7 @@ const Container = styled.header<{isDark: boolean}>`
   & > a {
     color: ${headerLogo};
     text-decoration: none;
-    margin-right: auto;
+    margin-right: 16px;
 
     & > h1 {
       ${headerBold}
@@ -94,17 +91,17 @@ const Container = styled.header<{isDark: boolean}>`
       border-radius: 50%;
       box-shadow: 0px 0px 15px #eee;
       background-image: linear-gradient(to right, #fceabb 0%, black 100%);
-      background-position: ${({ isDark })=> isDark ? 'right center' : 0};
+      background-position: ${({ theme }) => theme.bgPosition};
       background-size: 200% auto;
       transition: 1.5s;
   
-      &:hover {
+      &:hover { 
         box-shadow: 0px 0px 27px #fff;
       }
     }
 
     &:last-of-type {
-      margin-left: 10px;
+      margin-left: auto;
       color: #eee;
       opacity: 0.7;
 
