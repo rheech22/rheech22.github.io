@@ -40,7 +40,7 @@ const Container = styled.li`
     margin-bottom: 5px;
 
     &:hover {
-      color: red;
+      color: ${({ theme }) => theme.blue};
     }
     
     h2 {
