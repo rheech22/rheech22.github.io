@@ -65,7 +65,7 @@ const Container = styled.form<ContainerProps>`
     padding: 0 12px;
     width: 100%;
     height: 100%;
-    color: ${({ theme }) => theme.color};
+    color: ${({ theme }) => theme.default};
     background-color: ${({ theme }) => theme.searchBg};
     font-size: 14px;
 

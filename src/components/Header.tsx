@@ -86,7 +86,7 @@ const Container = styled.header`
       border-radius: 50%;
       box-shadow: 0px 0px 15px #eee;
       background-image: linear-gradient(to right, #fceabb 0%, black 100%);
-      background-position: ${({ theme }) => theme.bgPosition};
+      background-position: ${({ theme }) => theme.themeIconPosition};
       background-size: 200% auto;
       transition: 1.5s;
   

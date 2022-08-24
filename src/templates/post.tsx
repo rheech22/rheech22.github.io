@@ -18,7 +18,7 @@ const Container = styled.article`
 
   span {
     font-size: 14px;
-    color: ${({ theme }) => theme.subColor };
+    color: ${({ theme }) => theme.mute };
     margin-bottom: 16px;
   }
 

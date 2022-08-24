@@ -57,8 +57,8 @@ const GlobalStyle = createGlobalStyle<GlobalStyle>`
   }
 
   body {
-    background-color: ${({ theme }) => (theme.bgColor)};
-    color: ${({ theme }) => (theme.color)};
+    background-color: ${({ theme }) => (theme.bg)};
+    color: ${({ theme }) => (theme.default)};
     min-height: 100%;
     min-width: 550px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
