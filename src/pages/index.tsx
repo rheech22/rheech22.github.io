@@ -41,6 +41,9 @@ const Wrapper = styled.div`
 `;
 
 const SideBar = styled.aside`
-  ${flex('normal', 'normal', 'column')}
-  min-width: 325px;
+  ${flex('normal', 'normal', 'column')};
+  width: fit-content;
+  @media ${device.tablet} {
+    padding-left: 40px;
+  }
 `;
