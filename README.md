@@ -20,7 +20,8 @@
 - [x] bio / 태그 / 리스트 / 포스트 레이아웃 잡기
 - [x] 1차 반응형 디자인(레이아웃 위주)
 - [x] bio 구현하기
-- [ ] 태그 리스트 구현하기
+- [x] 태그 리스트 구현하기
+- [ ] 태그 검색 기능 구현 및 관련된 상태 관리 리팩토링
 - [ ] 포스트 네비게이션 붙이기
 - [ ] 2차 반응형 디자인
 - [ ] 검색 엔진 최적화
@@ -34,5 +35,5 @@
 - [gatsby-browser API](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - page 컴포넌트를 감싸는 루트가 없기 때문에 전역 상태 관리를 하기 위해 활용
 - [코드 하이라이트 플러그인](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/)을 사용
 - [utterances](https://utteranc.es/?installation_id=28274981&setup_action=install)로 댓글 기능 추가
-- ThemeProvider를 적극 활용하니까 편함
-- 
+- ThemeProvider를 편하다.
+- 영문 태그의 경우 대소문자를 어떻게 관리해주는 것이 좋을까? 우선 분리하자.

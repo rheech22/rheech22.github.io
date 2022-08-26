@@ -2,6 +2,7 @@
 path: "/hello4"
 date: "2022-08-15"
 title: "새롭게 시작하는 기술"
+tags: ["태그1", "태그2"]
 ---
 
 ## Bird-in-Hand

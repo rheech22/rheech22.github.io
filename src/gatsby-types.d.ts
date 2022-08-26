@@ -570,6 +570,7 @@ type FileFieldsEnum =
   | 'childMarkdownRemark.fileAbsolutePath'
   | 'childMarkdownRemark.frontmatter.date'
   | 'childMarkdownRemark.frontmatter.path'
+  | 'childMarkdownRemark.frontmatter.tags'
   | 'childMarkdownRemark.frontmatter.title'
   | 'childMarkdownRemark.headings'
   | 'childMarkdownRemark.headings.depth'
@@ -628,6 +629,7 @@ type FileFieldsEnum =
   | 'childrenMarkdownRemark.fileAbsolutePath'
   | 'childrenMarkdownRemark.frontmatter.date'
   | 'childrenMarkdownRemark.frontmatter.path'
+  | 'childrenMarkdownRemark.frontmatter.tags'
   | 'childrenMarkdownRemark.frontmatter.title'
   | 'childrenMarkdownRemark.headings'
   | 'childrenMarkdownRemark.headings.depth'
@@ -1078,6 +1080,7 @@ type MarkdownRemarkFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter.date'
   | 'frontmatter.path'
+  | 'frontmatter.tags'
   | 'frontmatter.title'
   | 'headings'
   | 'headings.depth'
@@ -1164,6 +1167,7 @@ type MarkdownRemarkFilterListInput = {
 type MarkdownRemarkFrontmatter = {
   readonly date: Maybe<Scalars['Date']>;
   readonly path: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
 };
 
@@ -1178,6 +1182,7 @@ type MarkdownRemarkFrontmatter_dateArgs = {
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -2691,6 +2696,11 @@ type getPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly html: string | null, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly path: string | null } | null } }> } };
+
+type getTagsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type getTagsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly frontmatter: { readonly tags: ReadonlyArray<string | null> | null } | null } }> } };
 
 type templateQueryVariables = Exact<{
   path: Scalars['String'];

@@ -43,6 +43,7 @@ const Container = styled.div`
 
   @media ${device.tablet} {
     flex-direction: column;
+    margin-bottom: 30px;
     padding: 0;
   }
 `;
@@ -83,6 +84,7 @@ const Profile = styled.div`
   & > p {
     font-size: 16px;
     margin-bottom: 8px;
+    white-space: nowrap;
   }
 
   & > ul {

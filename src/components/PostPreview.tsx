@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 
 import styled from "styled-components";
+import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
 interface Props {
@@ -30,7 +31,6 @@ const PostPreview = ({
 export default PostPreview;
 
 const Container = styled.li`
-  /* height: 134px; */
   padding: 24px 0;
   
   & > a {
@@ -52,10 +52,17 @@ const Container = styled.li`
       font-weight: 300;
       margin-bottom: 5px;
     }
-  
+
     p {
+      display: none;
       font-weight: 400;
       overflow-y: hidden;
+    }
+
+    @media ${device.tablet} {
+      p {
+        display: block;
+      }
     }
   }
 `;

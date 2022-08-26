@@ -2,6 +2,7 @@
 path: "/headings"
 date: "2022-08-23"
 title: "Headings"
+tags: ["react", "js"]
 ---
 
 # Heading 1: 36px and Bold
