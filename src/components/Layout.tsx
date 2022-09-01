@@ -1,5 +1,5 @@
 import { defineCustomElements as highlightCodeBlock } from "@deckdeckgo/highlight-code/dist/loader";
-import { initialState, useGlobalContext, useDispatch } from "../contexts/GlobalContext";
+import { useGlobalContext, useDispatch } from "../contexts/GlobalContext";
 
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "../styles/themes";
@@ -16,13 +16,15 @@ interface Props {
 const Layout = ({
   children,
 }: Props) => {
-  const { isDark } = useGlobalContext() ?? initialState;
+  const { isDark } = useGlobalContext();
   const dispatch = useDispatch();
 
   const changeDisplayMode = () => {
     dispatch?.({
-      name: 'isDark',
-      payload: !isDark,
+      type: 'setDisplayMode',
+      payload: {
+        isDark: !isDark,
+      },
     });
     localStorage.setItem('isDark', JSON.stringify(!isDark));
   };

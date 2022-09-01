@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import PostPreview from '../components/PostPreview';
-import { initialState, Posts, useGlobalContext } from '../contexts/GlobalContext';
+import { useGlobalContext } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
 import LoadMore from '../components/LoadMore';
 
 const SearchResult = () => {
-  const { posts, keyword, tag } = useGlobalContext() ?? initialState;
+  const { posts, keyword, tag } = useGlobalContext();
 
-  const [filteredPosts, setFilteredPosts] = useState<Posts>(posts);
+  const [filteredPosts, setFilteredPosts] = useState(posts);
   const [offset, setOffset] = useState(10);
 
   const loadMore = () => {

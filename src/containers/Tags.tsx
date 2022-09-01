@@ -37,13 +37,8 @@ const Tags = () => {
     const tag = currentTarget.innerHTML;
 
     dispatch?.({
-      name: 'keyword',
-      payload: '',
-    });
-
-    dispatch?.({
-      name: 'tag',
-      payload: tag,
+      type: 'searchByTag',
+      payload: { tag },
     });
 
     navigate('/search');

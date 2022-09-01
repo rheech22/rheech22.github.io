@@ -44,8 +44,10 @@ const PostPreviews = () => {
   useEffect(()=>{
     if (edges.length) {
       dispatch?.({
-        name: 'posts',
-        payload: edges,
+        type: 'setPosts',
+        payload: {
+          posts: edges,
+        },
       });
     }
   }, [edges]);

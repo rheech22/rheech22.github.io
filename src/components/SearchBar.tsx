@@ -26,15 +26,14 @@ const SearchBar = forwardRef<HTMLFormElement, Props>(({
     e.preventDefault();
 
     dispatch?.({
-      name: 'tag',
-      payload: '',
+      type: 'searchByKeyword',
+      payload: {
+        keyword: input,
+      },
     });
 
-    dispatch?.({
-      name: 'keyword',
-      payload: input,
-    });
     onChange('');
+
     navigate('/search');
   };
 

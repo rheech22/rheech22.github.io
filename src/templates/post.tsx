@@ -1,10 +1,45 @@
 import { graphql, PageProps } from "gatsby";
 
-import { initialState, useGlobalContext } from "../contexts/GlobalContext";
+import { useGlobalContext } from "../contexts/GlobalContext";
 import Comments from "../components/Comments";
 
 import styled from "styled-components";
 import { flex, horizontalDivider } from "../styles/mixins";
+
+export default ({ data }: PageProps<Queries.templateQuery>) => {
+  const { markdownRemark: post } = data;
+
+  const { isDark } = useGlobalContext();
+
+  const theme = isDark ? 'github-dark-orange' : 'boxy-light';
+
+  return (
+    <>
+      {post && (
+        <Container>
+          <h1>{post.frontmatter?.title}</h1>
+          <span>{post.frontmatter?.date}</span>
+          <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+          <Comments repo="rheech22/comments" theme={theme}/>
+        </Container>
+      )}
+    </>
+  );
+};
+
+export const query = graphql`
+  query template($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      frontmatter {
+        path
+        date
+        title
+        tags
+      }
+    }
+  }
+`;
 
 const Container = styled.article`
   ${flex('', '', 'column')};
@@ -42,40 +77,5 @@ const Container = styled.article`
 
   deckgo-highlight-code {
     font-size: 16px;
-  }
-`;
-
-export default ({ data }: PageProps<Queries.templateQuery>) => {
-  const { markdownRemark: post } = data;
-
-  const { isDark } = useGlobalContext() ?? initialState;
-
-  const theme = isDark ? 'github-dark-orange' : 'boxy-light';
-
-  return (
-    <>
-      {post && (
-        <Container>
-          <h1>{post.frontmatter?.title}</h1>
-          <span>{post.frontmatter?.date}</span>
-          <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-          <Comments repo="rheech22/comments" theme={theme}/>
-        </Container>
-      )}
-    </>
-  );
-};
-
-export const query = graphql`
-  query template($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        path
-        date
-        title
-        tags
-      }
-    }
   }
 `;

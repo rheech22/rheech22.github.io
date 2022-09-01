@@ -1,52 +1,95 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { createContext } from 'react';
 import useDarkTheme from "../hooks/useDarkTheme";
 
-export type DispatchContext = ({ name, payload }: { name: string; payload: Posts | string | boolean }) => void;
-export type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
-export type State = {
+type State = {
   posts: Posts;
   keyword: string;
   tag: string;
   isDark: boolean;
 };
 
-export const initialState: State = {
+type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
+
+type Action = {
+  type: keyof typeof actionTriggers;
+  payload: any;
+}
+
+// TODO: paylod 타입 정의해보기
+// type Payload = {
+//   [key in keyof State]?: State[key];
+// };
+
+export const initialState = {
   posts: [],
   keyword: '',
   tag: '',
   isDark: true,
 };
 
-export const GlobalContext = createContext<State | null>(null);
-export const DispatchContext = createContext<DispatchContext | null>(null);
+export const GlobalContext = createContext<State>(initialState);
+export const DispatchContext = createContext<React.Dispatch<Action> | null>(null);
 
 export const useGlobalContext = () => useContext(GlobalContext);
 export const useDispatch = () => useContext(DispatchContext);
 
 export const GlobalContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
-  const [state, setState] = useState(initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const isDark = useDarkTheme();
 
-  const handleChangeState = ({ name, payload }: { name: string; payload: Posts | string | boolean })=>{
-    setState(prev => ({
-      ...prev,
-      [name]: payload,
-    }));
-  };
-
   useEffect(()=> {
-    handleChangeState({
-      name: 'isDark',
-      payload: isDark,
+    dispatch({
+      type: 'setDisplayMode',
+      payload: {
+        isDark,
+      },
     });
   }, [isDark]);
 
   return (
     <GlobalContext.Provider value={state}>
-      <DispatchContext.Provider value={handleChangeState}>
+      <DispatchContext.Provider value={dispatch}>
         {children}
       </DispatchContext.Provider>
     </GlobalContext.Provider>
   );
+};
+
+
+const reducer = (state: State, { type, payload }: Action) => {
+  return actionTriggers[type](state, payload) ?? state;
+};
+
+const actionTriggers: {
+  [key in 'setDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag']:
+  (state: State, payload: Action['payload']) => State;
+} = {
+  setDisplayMode: (state, { isDark }) => {
+    return {
+      ...state,
+      isDark,
+    };
+  },
+  setPosts: (state, { posts }) => {
+    return {
+      ...state,
+      posts,
+    };
+  },
+  searchByKeyword: (state, { keyword }) => {
+    return {
+      ...state,
+      keyword,
+      tag: '',
+    };
+  },
+  searchByTag: (state, { tag }) => {
+    return {
+      ...state,
+      keyword: '',
+      tag: tag,
+    };
+  },
 };
