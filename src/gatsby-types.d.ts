@@ -2695,7 +2695,7 @@ type StringQueryOperatorInput = {
 type getPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly html: string | null, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly path: string | null } | null } }> } };
+type getPostsQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly id: string, readonly html: string | null, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly path: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } }> } };
 
 type getTagsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2707,7 +2707,7 @@ type templateQueryVariables = Exact<{
 }>;
 
 
-type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null } | null } | null };
+type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
 
 type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 

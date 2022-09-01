@@ -1,9 +1,10 @@
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, navigate, useStaticQuery } from "gatsby";
 
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
+import { useDispatch } from "../contexts/GlobalContext";
 
 const GET_TAGS = graphql`
   query getTags {
@@ -24,18 +25,35 @@ type ReduceReturnType = {
 }
 
 const Tags = () => {
+  const dispatch = useDispatch();
+
   const data: Queries.getTagsQuery = useStaticQuery(GET_TAGS);
 
   const { edges } = data.allMarkdownRemark;
 
   const tags = edges.map(({ node })=> node.frontmatter?.tags).flat();
 
+  const handleClick = ({ currentTarget }: React.MouseEvent<HTMLSpanElement>) => {
+    const tag = currentTarget.innerHTML;
+
+    dispatch?.({
+      name: 'keyword',
+      payload: '',
+    });
+
+    dispatch?.({
+      name: 'tag',
+      payload: tag,
+    });
+
+    navigate('/search');
+  };
+
   const tagMap = Object
     .entries(tags
       .filter(Boolean)
       .reduce<ReduceReturnType>((acc, cur)=> {
       if (!cur) return acc;
-
 
       if (Reflect.has(acc, cur)) {
         acc[cur] += 1;
@@ -52,7 +70,7 @@ const Tags = () => {
       <ul>
         {tagMap && tagMap.map(([tag, count], index)=> (
           <li key={index}>
-            <span>{tag}</span>
+            <span onClick={(e) => handleClick(e)}>{tag}</span>
             <span>({count})</span>
           </li>
         ))}

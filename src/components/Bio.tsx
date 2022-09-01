@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import LinkIcon from "../assets/icons/LinkIcon";
-import LocationIcon from "../assets/icons/LocationIcon";
-import MailIcon from "../assets/icons/MailIcon";
+import Link from "../assets/icons/Link";
+import Location from "../assets/icons/Location";
+import Mail from "../assets/icons/Mail";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
@@ -16,15 +16,15 @@ const Bio = () => {
         <p>하루하루는 성실하게, 인생 전체는 되는대로</p>
         <ul>
           <li>
-            <LocationIcon />
+            <Location />
             <span>Bundang</span>
           </li>
           <li>
-            <MailIcon />
+            <Mail />
             <a href="rheech22@gmail.com">rheech22@gmail.com</a>
           </li>
           <li>
-            <LinkIcon/>
+            <Link/>
             <a href="https://github.com/rheech22">https://github.com/rheech22</a>
           </li>
         </ul>

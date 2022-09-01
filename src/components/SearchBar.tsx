@@ -24,6 +24,12 @@ const SearchBar = forwardRef<HTMLFormElement, Props>(({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    dispatch?.({
+      name: 'tag',
+      payload: '',
+    });
+
     dispatch?.({
       name: 'keyword',
       payload: input,

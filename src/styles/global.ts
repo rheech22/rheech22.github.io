@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { headerHeight } from "./measures";
 import { Theme } from "./themes";
 import reset from "styled-reset";
 
@@ -24,7 +23,7 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
     line-height: 1.5;
     
     main {
-      padding-top: ${headerHeight};
+      padding-top: 87px;
       font-size: 16px;
     }
 

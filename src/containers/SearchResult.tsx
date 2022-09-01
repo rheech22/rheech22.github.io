@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import LoadMore from '../components/LoadMore';
 
 const SearchResult = () => {
-  const { posts, keyword } = useGlobalContext() ?? initialState;
+  const { posts, keyword, tag } = useGlobalContext() ?? initialState;
 
   const [filteredPosts, setFilteredPosts] = useState<Posts>(posts);
   const [offset, setOffset] = useState(10);
@@ -15,15 +15,30 @@ const SearchResult = () => {
     setOffset(prev => prev + 10);
   };
 
+  const getPosts = () => {
+    if (keyword) {
+      return posts
+        .filter(({ node: { frontmatter, html } })=> {
+          const hasTitle = frontmatter?.title?.toLowerCase()
+            .includes(keyword.toLowerCase());
+          const hasContent = html?.toLowerCase()
+            .includes(keyword.toLowerCase());
+
+          return (hasTitle || hasContent);
+        });
+    }
+
+    if (tag) {
+      return posts
+        .filter(({ node: { frontmatter } })=>
+          frontmatter?.tags?.includes(tag.toLowerCase()));
+    }
+
+    return posts;
+  };
+
   useEffect(()=> {
-    const filteredPosts = posts
-      .filter(({ node: { frontmatter, html } })=> {
-        const hasTitle = frontmatter?.title?.toLowerCase()
-          .includes(keyword.toLowerCase());
-        const hasContent = html?.toLowerCase()
-          .includes(keyword.toLowerCase());
-        return (hasTitle || hasContent);
-      });
+    const filteredPosts = getPosts();
 
     setFilteredPosts(filteredPosts);
   }, [keyword]);

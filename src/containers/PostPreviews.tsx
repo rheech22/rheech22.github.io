@@ -18,6 +18,7 @@ const GET_POST = graphql`
             title
             date
             path
+            tags
           }
           html
         }

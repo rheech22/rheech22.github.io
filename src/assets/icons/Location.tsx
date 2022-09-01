@@ -1,4 +1,4 @@
-const LocationIcon = (props: any) => (
+const Location = (props: any) => (
   <svg
     className="octicon octicon-location"
     viewBox="0 0 16 16"
@@ -14,4 +14,4 @@ const LocationIcon = (props: any) => (
   </svg>
 );
 
-export default LocationIcon;
+export default Location;

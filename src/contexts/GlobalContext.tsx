@@ -7,12 +7,14 @@ export type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
 export type State = {
   posts: Posts;
   keyword: string;
+  tag: string;
   isDark: boolean;
 };
 
 export const initialState: State = {
   posts: [],
   keyword: '',
+  tag: '',
   isDark: true,
 };
 
