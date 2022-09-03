@@ -46,7 +46,6 @@ export const GlobalContextProvider = ({ children }: { children: JSX.Element | JS
   );
 };
 
-
 const reducer = (state: State, { type, payload }: Action) => {
   return actionTriggers[type](state, payload) ?? state;
 };

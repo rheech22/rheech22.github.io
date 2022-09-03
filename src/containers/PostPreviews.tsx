@@ -35,6 +35,7 @@ const PostPreviews = () => {
               path={post.frontmatter?.path}
               date={post.frontmatter?.date}
               title={post.frontmatter?.title}
+              tags={post.frontmatter?.tags}
               excerpt={post.excerpt}
             />
           )}

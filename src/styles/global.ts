@@ -6,7 +6,6 @@ interface GlobalStyle {
   theme: Theme
 }
 
-
 export const GlobalStyle = createGlobalStyle<GlobalStyle>`
   ${reset}
   

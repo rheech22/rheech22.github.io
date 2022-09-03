@@ -2,7 +2,7 @@
 path: "/hello3"
 date: "2022-08-15"
 title: "It shows code block"
-tags: ["회고", "TS"]
+tags: ["회고", "typescript"]
 ---
 
 The standard Lorem Ipsum passage, used since the 1500s

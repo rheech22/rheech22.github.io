@@ -2,13 +2,17 @@ import { Link } from "gatsby";
 
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
+import { white } from "../styles/themes";
 import { flex } from "../styles/mixins";
+
+import useTags from "../hooks/useTags";
 
 interface Props {
   path?: string | null;
   title?: string | null;
   date?: string | null;
   excerpt?: string | null;
+  tags?: readonly (string | null)[] | null;
 }
 
 const PostPreview = ({
@@ -16,7 +20,10 @@ const PostPreview = ({
   title = '',
   date = '',
   excerpt = '',
+  tags = [],
 }: Props) => {
+  const { searchByTag } = useTags();
+
   return (
     <Container>
       <Link to={path ?? ''}>
@@ -24,6 +31,15 @@ const PostPreview = ({
         <span>{date}</span>
         <p>{excerpt}</p>
       </Link>
+      {
+        tags?.length
+          ? <ul>{tags.map((tag, index) => (
+            <li key={index} onClick={({ currentTarget }) => searchByTag(currentTarget.innerHTML)}>
+              {tag}
+            </li>
+          ))}</ul>
+          : null
+      }
     </Container>
   );
 };
@@ -34,10 +50,10 @@ const Container = styled.li`
   padding: 24px 0;
   
   & > a {
-    ${flex('', '', 'column')}
+    ${flex('center', 'center', 'column')}
     font-weight: 600;
     text-decoration: none;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 
     &:hover {
       color: ${({ theme }) => theme.blue};
@@ -60,8 +76,42 @@ const Container = styled.li`
     }
 
     @media ${device.tablet} {
+      ${flex('flex-start', '', 'column')}
+
       p {
         display: block;
+      }
+    }
+  }
+
+  & > ul {
+    ${flex('center', 'center', 'row')}
+    flex-wrap: wrap;
+    margin: 4px 0;
+    padding: 4px 0;
+    
+    @media ${device.tablet} {
+      ${flex('center', 'flex-start', 'row')}
+    }
+
+    li {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 22px;
+      white-space: nowrap;
+      border-radius: 2em;
+      border: 1px solid rgba(0,0,0,0);
+      margin-right: 1.5px;
+      padding: 0 10px;
+      width: fit-content;
+      min-height: fit-content;
+      background-color: ${({ theme }) => theme.lightBlue};
+      color: ${({ theme }) => theme.blue};
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${({ theme }) => theme.tagBgHovered};
+        color: ${white};
       }
     }
   }

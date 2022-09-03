@@ -7,10 +7,9 @@ import styled from "styled-components";
 import { flex } from "../styles/mixins";
 import { headerBold } from "../styles/fonts";
 import { headerBg, headerLogo } from "../styles/themes";
-import { headerHeight } from "../styles/measures";
 
-import Button from "./Button";
 import SearchBar from "./SearchBar";
+import Button from "./Button";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -18,7 +17,7 @@ const Header = () => {
   const [input, setInput] = useState('');
 
   const flipDisplayMode = () => dispatch({ type: 'flipDisplayMode' });
-  
+
   const handleChange = (value: string) => setInput(value);
 
   return (
@@ -44,7 +43,7 @@ const Container = styled.header`
   padding: 16px 32px;
   width: 100%;
   min-width: 375px;
-  height: ${headerHeight};
+  height: '62px';
   background-color: ${headerBg};
 
   & > a {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
+import { white } from "../styles/themes";
 
 import useTags from "../hooks/useTags";
 
@@ -9,12 +10,10 @@ const Tags = () => {
 
   return (
     <Container>
-      <span>Tags</span>
       <ul>
-        {tags && tags.map(([tag, count], index)=> (
-          <li key={index}>
-            <span onClick={({ currentTarget }) => searchByTag(currentTarget.innerHTML)}>{tag}</span>
-            <span>({count})</span>
+        {tags && tags.map(([tag], index)=> (
+          <li key={index} onClick={({ currentTarget }) => searchByTag(currentTarget.innerHTML)}>
+            {tag}
           </li>
         ))}
       </ul>
@@ -27,6 +26,7 @@ export default Tags;
 const Container = styled.div`
   display: none;
   padding-left: 13px;
+  width: 296px;
 
   & > span {
     font-size: 24px;
@@ -36,23 +36,30 @@ const Container = styled.div`
   }
 
   & > ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+
     li {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 22px;
+      white-space: nowrap;
+      border-radius: 2em;
+      border: 1px solid rgba(0,0,0,0);
+      margin-right: 1.5px;
+      margin-bottom: 3px;
+      padding: 0 10px;
+      width: fit-content;
+      min-height: fit-content;
+      background-color: ${({ theme }) => theme.lightBlue};
+      color: ${({ theme }) => theme.blue};
       cursor: pointer;
 
-      span:nth-child(2) {
-        margin-left: 3px;
-        opacity: 0.7
-      }
-
       &:hover {
-        span:nth-child(1) {
-          text-decoration: underline;
-        }
+        background-color: ${({ theme }) => theme.tagBgHovered};
+        color: ${white};
       }
-    }
-
-    li + li {
-      margin-top: .25rem;
     }
   }
 

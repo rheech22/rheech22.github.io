@@ -2,6 +2,8 @@ import { navigate } from "gatsby";
 
 import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
 
+import { sortTags } from "../utils";
+
 type ReduceReturnType = {
   [key: string]: number;
 }
@@ -23,19 +25,20 @@ const useTags = () => {
     .entries(allTags
       .filter(Boolean)
       .reduce<ReduceReturnType>((acc, cur) => {
-        if (!cur) return acc;
 
-        if (Reflect.has(acc, cur)) {
-          acc[cur] += 1;
-          return acc;
-        }
+      if (!cur) return acc;
 
-        acc[cur] = 1;
+      if (Reflect.has(acc, cur)) {
+        acc[cur] += 1;
         return acc;
-      }, {}));
+      }
+
+      acc[cur] = 1;
+      return acc;
+    }, {}));
 
   return {
-    tags,
+    tags: sortTags(tags),
     searchByTag,
   };
 };
