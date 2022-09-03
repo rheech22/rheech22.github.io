@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import Link from "../assets/icons/Link";
-import Location from "../assets/icons/Location";
-import Mail from "../assets/icons/Mail";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
+
+import Location from "../assets/icons/Location";
+import Link from "../assets/icons/Link";
+import Mail from "../assets/icons/Mail";
 
 const Bio = () => {
   return (

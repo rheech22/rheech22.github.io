@@ -1,72 +1,45 @@
-import styled from 'styled-components';
-import { graphql, useStaticQuery } from "gatsby";
-import PostPreview from '../components/PostPreview';
+import { useEffect } from 'react';
 import { useDispatch } from '../contexts/GlobalContext';
-import { useEffect, useState } from 'react';
-import LoadMore from '../components/LoadMore';
+import usePosts from '../hooks/usePosts';
 
-const GET_POST = graphql`
-  query getPosts {
-    allMarkdownRemark (
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ){
-      edges {
-        node {
-          excerpt(pruneLength: 250)
-          id
-          frontmatter {
-            title
-            date
-            path
-            tags
-          }
-          html
-        }
-      }
-    }
-  }
- `;
+import styled from 'styled-components';
+
+import PostPreview from '../components/PostPreview';
+import LoadMore from '../components/LoadMore';
+import NoContent from '../components/NoContent';
+import useLoadMore from '../hooks/useLoadMore';
 
 const PostPreviews = () => {
-  const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
+  const posts = usePosts();
 
-  const { edges } = data.allMarkdownRemark;
+  const { offset, loadMore } = useLoadMore(posts);
 
   const dispatch = useDispatch();
 
-  const [offset, setOffset] = useState(10);
-
-  const loadMore = () => {
-    if (offset > edges.length) return;
-    setOffset(prev => prev + 10);
-  };
-
   useEffect(()=>{
-    if (edges.length) {
-      dispatch?.({
-        type: 'setPosts',
-        payload: {
-          posts: edges,
-        },
-      });
-    }
-  }, [edges]);
+    if (!posts.length) return;
 
-  if (!edges.length) return <Container><p>게시글 없음</p></Container>;
+    dispatch?.({
+      type: 'setPosts',
+      payload: { posts },
+    });
+  }, [posts]);
 
   return (
     <Container>
-      {edges && edges
-        .slice(0, offset)
-        .map(({ node: post }) =>
-          <PostPreview
-            key={post.id}
-            path={post.frontmatter?.path}
-            date={post.frontmatter?.date}
-            title={post.frontmatter?.title}
-            excerpt={post.excerpt}
-          />
-        )}
+      {posts.length === 0
+        ? <NoContent prefix='게시글이' />
+        : posts
+          .slice(0, offset)
+          .map(({ node: post }) =>
+            <PostPreview
+              key={post.id}
+              path={post.frontmatter?.path}
+              date={post.frontmatter?.date}
+              title={post.frontmatter?.title}
+              excerpt={post.excerpt}
+            />
+          )}
       <LoadMore load={loadMore}/>
     </Container>
   );
