@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 interface Props {
+  id?: string;
   name?: string;
   value?: string;
   placeholder?: string;
   onChange?: (value: string) => void;
-  id?: string;
   maxLength?: number;
   autoFocus?: boolean;
   disabled?: boolean;

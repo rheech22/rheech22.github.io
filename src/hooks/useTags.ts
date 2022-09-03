@@ -1,4 +1,5 @@
 import { navigate } from "gatsby";
+
 import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
 
 type ReduceReturnType = {
@@ -13,10 +14,7 @@ const useTags = () => {
   const allTags = posts.map(({ node }) => node.frontmatter?.tags).flat();
 
   const searchByTag = (tag: string) => {
-    dispatch?.({
-      type: 'searchByTag',
-      payload: { tag },
-    });
+    dispatch({ type: 'searchByTag', payload: { tag } });
 
     navigate('/search');
   };
@@ -25,16 +23,16 @@ const useTags = () => {
     .entries(allTags
       .filter(Boolean)
       .reduce<ReduceReturnType>((acc, cur) => {
-      if (!cur) return acc;
+        if (!cur) return acc;
 
-      if (Reflect.has(acc, cur)) {
-        acc[cur] += 1;
+        if (Reflect.has(acc, cur)) {
+          acc[cur] += 1;
+          return acc;
+        }
+
+        acc[cur] = 1;
         return acc;
-      }
-
-      acc[cur] = 1;
-      return acc;
-    }, {}));
+      }, {}));
 
   return {
     tags,

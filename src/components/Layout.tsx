@@ -1,4 +1,5 @@
 import { defineCustomElements as highlightCodeBlock } from "@deckdeckgo/highlight-code/dist/loader";
+
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 import { ThemeProvider } from "styled-components";

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 

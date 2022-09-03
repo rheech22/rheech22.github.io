@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch } from '../contexts/GlobalContext';
-import usePosts from '../hooks/usePosts';
 
 import styled from 'styled-components';
 
 import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
+
 import useLoadMore from '../hooks/useLoadMore';
+import usePosts from '../hooks/usePosts';
 
 const PostPreviews = () => {
   const posts = usePosts();
@@ -19,10 +20,7 @@ const PostPreviews = () => {
   useEffect(()=>{
     if (!posts.length) return;
 
-    dispatch?.({
-      type: 'setPosts',
-      payload: { posts },
-    });
+    dispatch({ type: 'setPosts', payload: { posts } });
   }, [posts]);
 
   return (

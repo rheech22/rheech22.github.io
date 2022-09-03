@@ -1,5 +1,15 @@
 import { graphql, useStaticQuery } from "gatsby";
 
+const usePosts = () => {
+  const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
+
+  const { edges: posts } = data.allMarkdownRemark;
+
+  return posts;
+};
+
+export default usePosts;
+
 const GET_POST = graphql`
   query getPosts {
     allMarkdownRemark (
@@ -21,13 +31,3 @@ const GET_POST = graphql`
     }
   }
  `;
-
-const usePosts = () => {
-  const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
-
-  const { edges: posts } = data.allMarkdownRemark;
-
-  return posts;
-};
-
-export default usePosts;

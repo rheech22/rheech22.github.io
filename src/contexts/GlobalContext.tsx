@@ -29,7 +29,7 @@ export const initialState = {
 };
 
 export const GlobalContext = createContext<State>(initialState);
-export const DispatchContext = createContext<React.Dispatch<Action> | null>(null);
+export const DispatchContext = createContext<React.Dispatch<Action>>({} as React.Dispatch<Action>);
 
 export const useGlobalContext = () => useContext(GlobalContext);
 export const useDispatch = () => useContext(DispatchContext);

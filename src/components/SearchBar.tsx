@@ -22,12 +22,10 @@ const SearchBar = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch?.({
-      type: 'searchByKeyword',
-      payload: { keyword: input },
-    });
+    dispatch({ type: 'searchByKeyword', payload: { keyword: input } });
 
     onChange('');
+
     navigate('/search');
   };
 
@@ -50,7 +48,6 @@ const Container = styled.form`
   transition: width 0.5s;
 
   &:focus-within {
-    // TODO: 반응형 고려해서 수치 조절하기
     width: 544px;
   }  
   
