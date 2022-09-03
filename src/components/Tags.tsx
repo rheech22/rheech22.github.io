@@ -1,55 +1,19 @@
-import { navigate } from "gatsby";
-
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
-import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
-
-type ReduceReturnType = {
-  [key: string]: number;
-}
+import useTags from "../hooks/useTags";
 
 const Tags = () => {
-  const { posts } = useGlobalContext();
-
-  const dispatch = useDispatch();
-
-  const tags = posts.map(({ node })=> node.frontmatter?.tags).flat();
-
-  const handleClick = ({ currentTarget }: React.MouseEvent<HTMLSpanElement>) => {
-    const tag = currentTarget.innerHTML;
-
-    dispatch?.({
-      type: 'searchByTag',
-      payload: { tag },
-    });
-
-    navigate('/search');
-  };
-
-  const tagMap = Object
-    .entries(tags
-      .filter(Boolean)
-      .reduce<ReduceReturnType>((acc, cur)=> {
-      if (!cur) return acc;
-
-      if (Reflect.has(acc, cur)) {
-        acc[cur] += 1;
-        return acc;
-      }
-
-      acc[cur] = 1;
-      return acc;
-    }, {}));
+  const { tags, searchByTag } = useTags();
 
   return (
     <Container>
       <span>Tags</span>
       <ul>
-        {tagMap && tagMap.map(([tag, count], index)=> (
+        {tags && tags.map(([tag, count], index)=> (
           <li key={index}>
-            <span onClick={(e) => handleClick(e)}>{tag}</span>
+            <span onClick={({ currentTarget }) => searchByTag(currentTarget.innerHTML)}>{tag}</span>
             <span>({count})</span>
           </li>
         ))}

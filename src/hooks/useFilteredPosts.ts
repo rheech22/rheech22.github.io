@@ -3,6 +3,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 
 const useFilteredPosts = () => {
   const { posts, keyword, tag } = useGlobalContext();
+
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   const getPosts = () => {

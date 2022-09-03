@@ -9,9 +9,7 @@ const LoadMore = ({ load }: Props) => {
 
   useEffect(() => {
     const loadMoreObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-      if (!isIntersecting) {
-        return;
-      }
+      if (!isIntersecting) return;
       load();
     });
 

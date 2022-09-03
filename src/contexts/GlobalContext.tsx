@@ -1,6 +1,6 @@
-import { useContext, useEffect, useReducer } from "react";
-import { createContext } from 'react';
-import useDarkTheme from "../hooks/useDarkTheme";
+import { useContext, useReducer, createContext } from "react";
+
+import { getLocalDisplayMode } from "../utils";
 
 type State = {
   posts: Posts;
@@ -13,7 +13,7 @@ type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
 
 type Action = {
   type: keyof typeof actionTriggers;
-  payload: any;
+  payload?: any;
 }
 
 // TODO: paylod 타입 정의해보기
@@ -25,7 +25,7 @@ export const initialState = {
   posts: [],
   keyword: '',
   tag: '',
-  isDark: true,
+  isDark: getLocalDisplayMode(),
 };
 
 export const GlobalContext = createContext<State>(initialState);
@@ -36,17 +36,6 @@ export const useDispatch = () => useContext(DispatchContext);
 
 export const GlobalContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const isDark = useDarkTheme();
-
-  useEffect(()=> {
-    dispatch({
-      type: 'setDisplayMode',
-      payload: {
-        isDark,
-      },
-    });
-  }, [isDark]);
 
   return (
     <GlobalContext.Provider value={state}>
@@ -63,13 +52,15 @@ const reducer = (state: State, { type, payload }: Action) => {
 };
 
 const actionTriggers: {
-  [key in 'setDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag']:
+  [key in 'flipDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag']:
   (state: State, payload: Action['payload']) => State;
 } = {
-  setDisplayMode: (state, { isDark }) => {
+  flipDisplayMode: (state) => {
+    localStorage.setItem('isDark', JSON.stringify(!state.isDark));
+
     return {
       ...state,
-      isDark,
+      isDark: !state.isDark,
     };
   },
   setPosts: (state, { posts }) => {

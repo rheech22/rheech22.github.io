@@ -1,25 +1,22 @@
 import { navigate } from "gatsby";
 
-import { forwardRef } from "react";
 import { useDispatch } from "../contexts/GlobalContext";
 
 import styled from "styled-components";
+import { searchPlaceholder } from "../styles/themes";
 
 import Textbox from "./Textbox";
 import Button from "./Button";
-import { searchPlaceholder } from "../styles/themes";
 
 interface Props {
-  isSearchButtonClicked: boolean
   input: string;
   onChange: (value: string) => void
 }
 
-const SearchBar = forwardRef<HTMLFormElement, Props>(({
-  isSearchButtonClicked,
+const SearchBar = ({
   input,
   onChange,
-}, ref) => {
+}: Props) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,31 +24,24 @@ const SearchBar = forwardRef<HTMLFormElement, Props>(({
 
     dispatch?.({
       type: 'searchByKeyword',
-      payload: {
-        keyword: input,
-      },
+      payload: { keyword: input },
     });
 
     onChange('');
-
     navigate('/search');
   };
 
   return (
-    <Container ref={ref} onSubmit={handleSubmit} isSearchButtonClicked={isSearchButtonClicked} >
+    <Container onSubmit={handleSubmit} >
       <Textbox onChange={onChange} value={input} placeholder='Search' />
       <Button type="submit" hidden />
     </Container>
   );
-});
+};
 
 export default SearchBar;
 
-interface ContainerProps {
-  isSearchButtonClicked: boolean;
-}
-
-const Container = styled.form<ContainerProps>`
+const Container = styled.form`
   width: 272px;
   height: 30px;
   border: 1px solid ${({ theme }) => theme.searchBorder};

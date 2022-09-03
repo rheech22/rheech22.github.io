@@ -1,5 +1,7 @@
 import { Link } from "gatsby";
+
 import { useState } from "react";
+import { useDispatch } from "../contexts/GlobalContext";
 
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
@@ -7,32 +9,19 @@ import { headerBold } from "../styles/fonts";
 import { headerBg, headerLogo } from "../styles/themes";
 import { headerHeight } from "../styles/measures";
 
-import useOutsideClick from "../hooks/useOutsideClick";
-
 import Button from "./Button";
 import SearchBar from "./SearchBar";
 
-interface Props {
-  changeDisplayMode: ()=> void;
-}
+const Header = () => {
+  const dispatch = useDispatch();
 
-const Header = ({ changeDisplayMode }: Props) => {
   const [input, setInput] = useState('');
-  const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
+
+  const flipDisplayMode = () => {
+    dispatch?.({ type: 'flipDisplayMode' });
+  };
 
   const handleChange = (value: string) => setInput(value);
-
-  const handleClick = () => {
-    handleChange('');
-    setIsSearchButtonClicked(prev => !prev);
-  };
-
-  const shutSearchButton = () => {
-    if (isSearchButtonClicked === false) return;
-    handleClick();
-  };
-
-  const searchRef = useOutsideClick(shutSearchButton);
 
   return (
     <Container>
@@ -40,12 +29,10 @@ const Header = ({ changeDisplayMode }: Props) => {
         <h1>CHLOG</h1>
       </Link>
       <SearchBar
-        ref={searchRef}
         input={input}
         onChange={handleChange}
-        isSearchButtonClicked={isSearchButtonClicked}
       />
-      <Button onClick={changeDisplayMode}/>
+      <Button onClick={flipDisplayMode}/>
     </Container>
   );
 };
