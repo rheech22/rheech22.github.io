@@ -1,37 +1,21 @@
-import { graphql, navigate, useStaticQuery } from "gatsby";
+import { navigate } from "gatsby";
 
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
-import { useDispatch } from "../contexts/GlobalContext";
-
-const GET_TAGS = graphql`
-  query getTags {
-    allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            tags
-          }
-        }
-      }
-    }
-  }
- `;
+import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
 
 type ReduceReturnType = {
   [key: string]: number;
 }
 
 const Tags = () => {
+  const { posts } = useGlobalContext();
+
   const dispatch = useDispatch();
 
-  const data: Queries.getTagsQuery = useStaticQuery(GET_TAGS);
-
-  const { edges } = data.allMarkdownRemark;
-
-  const tags = edges.map(({ node })=> node.frontmatter?.tags).flat();
+  const tags = posts.map(({ node })=> node.frontmatter?.tags).flat();
 
   const handleClick = ({ currentTarget }: React.MouseEvent<HTMLSpanElement>) => {
     const tag = currentTarget.innerHTML;
