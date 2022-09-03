@@ -24,21 +24,15 @@ const Tags = () => {
 export default Tags;
 
 const Container = styled.div`
-  display: none;
+  ${flex('center', 'center', 'row')}
   padding-left: 13px;
-  width: 296px;
-
-  & > span {
-    font-size: 24px;
-    font-weight: 600;
-    display: block;
-    padding: 16px 0;
-  }
+  width: 100%;
 
   & > ul {
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-top: 30px;
 
     li {
       font-size: 12px;
@@ -64,6 +58,11 @@ const Container = styled.div`
   }
 
   @media ${device.tablet} {
-    ${flex('normal', 'normal', 'column')}
+    ${flex('normal', 'normal', 'column')};
+    width: 296px;
+
+    & > ul {
+      margin-top: 0;
+    }
   }
 `;
