@@ -41,7 +41,7 @@ const SearchResult = () => {
     const filteredPosts = getPosts();
 
     setFilteredPosts(filteredPosts);
-  }, [keyword]);
+  }, [keyword, tag]);
 
   if (!filteredPosts.length) {
     return <Container><p>검색결과 없음</p></Container>;

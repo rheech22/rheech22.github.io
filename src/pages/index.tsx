@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 import PostPreviews from '../containers/PostPreviews';
-import Tags from '../containers/Tags';
-import Bio from '../components/Bio';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
+import Sidebar from '../components/Sidebar';
 
 export default () => (
   <Wrapper>
-    <SideBar>
-      <Bio />
-      <Tags />
-    </SideBar>
+    <Sidebar />
     <PostPreviews />
   </Wrapper>
 );
@@ -37,14 +33,5 @@ const Wrapper = styled.div`
       margin: 0 auto;
       padding: 0 40px;
     }
-  }
-`;
-
-const SideBar = styled.aside`
-  ${flex('normal', 'normal', 'column')};
-  width: fit-content;
-
-  @media ${device.tablet} {
-    padding-left: 40px;
   }
 `;
