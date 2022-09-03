@@ -1,7 +1,9 @@
-import styled from 'styled-components';
-import PostPreview from '../components/PostPreview';
-import { useGlobalContext } from '../contexts/GlobalContext';
 import { useEffect, useState } from 'react';
+import { useGlobalContext } from '../contexts/GlobalContext';
+
+import styled from 'styled-components';
+
+import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';
 
 const SearchResult = () => {

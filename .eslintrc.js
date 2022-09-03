@@ -28,5 +28,6 @@ module.exports = {
     'linebreak-style': 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
+    'eol-last': ['error', 'always'],
   },
 };
