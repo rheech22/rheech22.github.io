@@ -5,7 +5,9 @@ import { device } from "../styles/breakpoints";
 import { white } from "../styles/themes";
 import { flex } from "../styles/mixins";
 
+import { useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
+import Tag from "./Tag";
 
 interface Props {
   path?: string | null;
@@ -22,6 +24,8 @@ const PostPreview = ({
   excerpt = '',
   tags = [],
 }: Props) => {
+  const { tag: selectedTag } = useGlobalContext();
+
   const { searchByTag } = useTags();
 
   return (
@@ -34,9 +38,12 @@ const PostPreview = ({
       {
         tags?.length
           ? <ul>{tags.map((tag, index) => (
-            <li key={index} onClick={({ currentTarget }) => searchByTag(currentTarget.innerHTML)}>
-              {tag}
-            </li>
+            <Tag
+              key={index}
+              tag={tag}
+              onClick={searchByTag}
+              isSelected={tag === selectedTag}
+            />
           ))}</ul>
           : null
       }

@@ -3,18 +3,26 @@ import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 import { white } from "../styles/themes";
 
+import { useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
 
+import Tag from "./Tag";
+
 const Tags = () => {
+  const { tag: selectedTag } = useGlobalContext();
+
   const { tags, searchByTag } = useTags();
 
   return (
     <Container>
       <ul>
         {tags && tags.map(([tag], index)=> (
-          <li key={index} onClick={({ currentTarget }) => searchByTag(currentTarget.innerHTML)}>
-            {tag}
-          </li>
+          <Tag
+            key={index}
+            tag={tag}
+            onClick={searchByTag}
+            isSelected={tag === selectedTag}
+          />
         ))}
       </ul>
     </Container>
@@ -34,7 +42,7 @@ const Container = styled.div`
     align-items: center;
     margin-top: 30px;
 
-    li {
+    & > li {
       font-size: 12px;
       font-weight: 500;
       line-height: 22px;
