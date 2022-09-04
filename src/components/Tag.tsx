@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { preventUserDrag } from "../styles/mixins";
 import { white } from "../styles/themes";
 
 interface Props {
@@ -27,6 +28,8 @@ interface Container {
 }
 
 const Container = styled.li<Container>`
+  ${preventUserDrag}
+
   background-color: ${({ theme, isSelected }) => isSelected ? theme.tagBgHovered : theme.lightBlue } !important;
   color: ${({ theme, isSelected }) => isSelected ? white : theme.blue } !important;
 `;

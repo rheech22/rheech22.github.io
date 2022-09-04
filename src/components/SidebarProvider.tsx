@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     margin-left: 0;
 
     @media ${device.tablet} {
-      margin-left: 10px;
+      margin: 0 10px;
     }
   }
 `;

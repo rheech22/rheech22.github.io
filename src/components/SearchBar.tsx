@@ -7,6 +7,7 @@ import { searchPlaceholder } from "../styles/themes";
 
 import Textbox from "./Textbox";
 import Button from "./Button";
+import { device } from "../styles/breakpoints";
 
 interface Props {
   input: string;
@@ -45,11 +46,13 @@ const Container = styled.form`
   border: 1px solid ${({ theme }) => theme.searchBorder};
   border-radius: 6px;
   font-weight: 400;
-  transition: width 0.5s;
-
-  &:focus-within {
-    width: 544px;
-  }  
+  
+  @media ${device.tablet} {
+    &:focus-within {
+      width: 544px;
+      transition: width 0.5s;
+    }
+  }
   
   & > input {
     border-radius: 6px;

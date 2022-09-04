@@ -77,14 +77,22 @@ const Profile = styled.div`
   & > span{
     padding: 8px 0;
     display: block;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
+    
+    @media ${device.tablet} {
+      font-size: 24px;
+    }
   }
 
   & > p {
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 8px;
     white-space: nowrap;
+
+    @media ${device.tablet} {
+      font-size: 16px;
+    }
   }
 
   & > ul {
