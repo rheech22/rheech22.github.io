@@ -51,7 +51,7 @@ const reducer = (state: State, { type, payload }: Action) => {
 };
 
 const actionTriggers: {
-  [key in 'flipDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag']:
+  [key in 'flipDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch']:
   (state: State, payload: Action['payload']) => State;
 } = {
   flipDisplayMode: (state) => {
@@ -79,7 +79,14 @@ const actionTriggers: {
     return {
       ...state,
       keyword: '',
-      tag: tag,
+      tag: tag !== state.tag ? tag : '',
+    };
+  },
+  clearSearch: (state) => {
+    return {
+      ...state,
+      keyword: '',
+      tag: '',
     };
   },
 };

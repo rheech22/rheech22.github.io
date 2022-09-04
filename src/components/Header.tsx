@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <Container>
-      <Link to="/">
+      <Link to="/" onClick={()=> dispatch({ type: 'clearSearch' })}>
         <h1>CHLOG</h1>
       </Link>
       <SearchBar
