@@ -28,8 +28,12 @@
 - [x] 태그 아이콘 디자인 변경
 - [x] 태그 sorting
 - [x] 작은 화면에서도 태그 보이도록
-- [ ] 포스트 디자인
+- [ ] 선택된 태그 하이라이트
+- [ ] 미리보기 한줄로 + 레이아웃 jusify center
+- [ ] 검색 선택 가능하게 (제목+내용, 제목, 내용)
+- [ ] 포스트 디자인 레이아웃
 - [ ] 포스트 네비게이션 붙이기
+- [ ] pinned area 추가
 - [ ] 2차 반응형 디자인
 - [ ] 검색 엔진 최적화
 - [ ] 반응형 디자인 마무리
@@ -42,6 +46,6 @@
 - [gatsby-browser API](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - page 컴포넌트를 감싸는 루트가 없기 때문에 전역 상태 관리를 하기 위해 활용
 - [코드 하이라이트 플러그인](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/)을 사용
 - [utterances](https://utteranc.es/?installation_id=28274981&setup_action=install)로 댓글 기능 추가
-- ThemeProvider를 편하다.
-- 태그 대소문자를 구분
+- ThemeProvider 편하다.
+- 태그 대소문자를 구분?
 - 전체 구조는 포스트, 404 제외 두 페이지, 두 컨테이너, 다수의 컴포넌트로

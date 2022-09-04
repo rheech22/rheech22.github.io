@@ -2,11 +2,7 @@ import { navigate } from "gatsby";
 
 import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
 
-import { sortTags } from "../utils";
-
-type ReduceReturnType = {
-  [key: string]: number;
-}
+import { enrichTags, sortTags } from "../utils";
 
 const useTags = () => {
   const { posts } = useGlobalContext();
@@ -15,30 +11,16 @@ const useTags = () => {
 
   const allTags = posts.map(({ node }) => node.frontmatter?.tags).flat();
 
+  const tags = sortTags(enrichTags(allTags));
+
   const searchByTag = (tag: string) => {
     dispatch({ type: 'searchByTag', payload: { tag } });
 
     navigate('/search');
   };
 
-  const tags = Object
-    .entries(allTags
-      .filter(Boolean)
-      .reduce<ReduceReturnType>((acc, cur) => {
-
-      if (!cur) return acc;
-
-      if (Reflect.has(acc, cur)) {
-        acc[cur] += 1;
-        return acc;
-      }
-
-      acc[cur] = 1;
-      return acc;
-    }, {}));
-
   return {
-    tags: sortTags(tags),
+    tags,
     searchByTag,
   };
 };

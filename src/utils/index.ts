@@ -1,3 +1,7 @@
+type ReduceReturnType = {
+  [key: string]: number;
+}
+
 export const getLocalDisplayMode = () => {
   let prefersDarkTheme = null;
   let themeString = 'false';
@@ -8,6 +12,24 @@ export const getLocalDisplayMode = () => {
   }
 
   return JSON.parse(themeString);
+};
+
+export const enrichTags = (tags: (string | null | undefined)[]) => {
+  return Object
+    .entries(tags
+      .map(tag => tag?.toLowerCase())
+      .reduce<ReduceReturnType>((acc, cur) => {
+      if (!cur) return acc;
+
+      if (Reflect.has(acc, cur)) {
+        acc[cur] += 1;
+        return acc;
+      }
+
+      acc[cur] = 1;
+
+      return acc;
+    }, {}));
 };
 
 export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {
