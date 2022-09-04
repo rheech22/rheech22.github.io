@@ -18,26 +18,20 @@ const SidebarProvider = ({ children }: Props) => (
 export default SidebarProvider;
 
 const Wrapper = styled.div`
-  ${flex('normal', 'normal', 'column')}
+  ${flex('normal', 'center', 'column')}
   
   @media ${device.tablet} {
     flex-direction: row;
   }
   
   & > ul {
-    padding: 0 50px;
-    max-width: 1440px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr;
-    
-    @media ${device.laptopM} {
-      grid-template-columns: 1fr 1fr;
-    }
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin-left: 0;
 
     @media ${device.tablet} {
-      margin: 0 auto;
-      padding: 0 40px;
+      margin-left: 10px;
     }
   }
 `;

@@ -33,7 +33,6 @@ export default Tags;
 
 const Container = styled.div`
   ${flex('center', 'center', 'row')}
-  padding-left: 13px;
   width: 100%;
 
   & > ul {
@@ -67,6 +66,7 @@ const Container = styled.div`
 
   @media ${device.tablet} {
     ${flex('normal', 'normal', 'column')};
+    padding-left: 13px;
     width: 296px;
 
     & > ul {

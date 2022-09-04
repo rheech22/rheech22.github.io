@@ -47,5 +47,4 @@ const PostPreviews = () => {
 export default PostPreviews;
 
 const Container = styled.ul`
-  margin-top: 40px;
 `;

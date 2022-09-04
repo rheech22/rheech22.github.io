@@ -37,10 +37,9 @@ const Bio = () => {
 export default Bio;
 
 const Container = styled.div`
-  ${flex('center', 'normal', 'row')}
+  ${flex('center', 'center', 'row')}
   width: 100%;
   height: fit-content;
-  padding: 0 40px;
 
   @media ${device.tablet} {
     flex-direction: column;

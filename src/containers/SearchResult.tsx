@@ -35,6 +35,4 @@ const SearchResult = () => {
 
 export default SearchResult;
 
-const Container = styled.ul`
-  margin-top: 40px;
-`;
+const Container = styled.ul``;
