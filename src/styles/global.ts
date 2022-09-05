@@ -17,12 +17,11 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
     background-color: ${({ theme }) => (theme.bg)};
     color: ${({ theme }) => (theme.default)};
     min-height: 100%;
-    min-width: 550px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.5;
     
     main {
-      padding-top: 87px;
+      padding-top: 68px;
       font-size: 16px;
     }
 

@@ -4,7 +4,7 @@ import { white } from "../styles/themes";
 
 interface Props {
   onClick: (value: string) => void;
-  isSelected: boolean;
+  isSelected?: boolean;
   tag: string | null;
 }
 
@@ -24,12 +24,29 @@ export default Tag;
 
 interface Container {
   onClick: React.MouseEventHandler<HTMLLIElement>;
-  isSelected: boolean;
+  isSelected?: boolean;
 }
 
 const Container = styled.li<Container>`
   ${preventUserDrag}
 
-  background-color: ${({ theme, isSelected }) => isSelected ? theme.tagBgHovered : theme.lightBlue } !important;
-  color: ${({ theme, isSelected }) => isSelected ? white : theme.blue } !important;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 22px;
+  white-space: nowrap;
+  border-radius: 2em;
+  border: 1px solid rgba(0,0,0,0);
+  margin-right: 1.5px;
+  margin-bottom: 3px;
+  padding: 0 10px;
+  width: fit-content;
+  min-height: fit-content;
+  background-color: ${({ theme, isSelected }) => isSelected ? theme.tagBgHovered : theme.lightBlue };
+  color: ${({ theme, isSelected }) => isSelected ? white : theme.blue };
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.tagBgHovered};
+    color: ${white};
+  }
 `;

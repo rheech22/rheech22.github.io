@@ -5,21 +5,22 @@ title: "Headings"
 tags: ["react", "javascript"]
 ---
 
-# Heading 1: 36px and Bold
+# Heading 1
 <br>
 
-## Heading 2: 24px and Bold
+## Heading 2
 <br>
 
-### Heading 3: Only Bold
+### Heading 3
 <br>
 
-##### Heading 4: Only Bold
+##### Heading 4
 <br>
 
-###### Heading 5: Only Bold
+###### Heading 5
 <br>
 
-###### Heading 6: Only Bold
+###### Heading 6
 <br>
-weeee
+
+`weeee`

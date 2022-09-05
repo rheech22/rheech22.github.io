@@ -40,28 +40,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     align-items: center;
     margin-top: 30px;
-
-    & > li {
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 22px;
-      white-space: nowrap;
-      border-radius: 2em;
-      border: 1px solid rgba(0,0,0,0);
-      margin-right: 1.5px;
-      margin-bottom: 3px;
-      padding: 0 10px;
-      width: fit-content;
-      min-height: fit-content;
-      background-color: ${({ theme }) => theme.lightBlue};
-      color: ${({ theme }) => theme.blue};
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${({ theme }) => theme.tagBgHovered};
-        color: ${white};
-      }
-    }
   }
 
   @media ${device.tablet} {

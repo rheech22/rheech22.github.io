@@ -19,6 +19,7 @@ export default SidebarProvider;
 
 const Wrapper = styled.div`
   ${flex('normal', 'center', 'column')}
+  padding-top: 48px;
   
   @media ${device.tablet} {
     flex-direction: row;
@@ -27,11 +28,19 @@ const Wrapper = styled.div`
   & > ul {
     display: flex;
     flex-direction: column;
-    max-width: 900px;
     margin-left: 0;
-
+    width: auto;
+    
+    & > p {
+      margin-top: 50px;
+      text-align: center;
+      width: 100%;
+    }
+    
     @media ${device.tablet} {
       margin: 0 10px;
+      width: 900px;
     }
   }
+
 `;

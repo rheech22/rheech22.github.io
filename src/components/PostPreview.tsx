@@ -100,26 +100,5 @@ const Container = styled.li`
     @media ${device.tablet} {
       ${flex('center', 'flex-start', 'row')}
     }
-
-    li {
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 22px;
-      white-space: nowrap;
-      border-radius: 2em;
-      border: 1px solid rgba(0,0,0,0);
-      margin-right: 1.5px;
-      padding: 0 10px;
-      width: fit-content;
-      min-height: fit-content;
-      background-color: ${({ theme }) => theme.lightBlue};
-      color: ${({ theme }) => theme.blue};
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${({ theme }) => theme.tagBgHovered};
-        color: ${white};
-      }
-    }
   }
 `;

@@ -14,6 +14,7 @@ const darkTheme = {
   searchBgFocused: '#161b22',
   searchPlaceholderFocused: '#757D86',
   tagBgHovered: '#1f6feb',
+  codeBg: 'rgba(110,118,129,0.4)',
   themeIconPosition: 'right center',
 };
 
@@ -28,6 +29,7 @@ const lightTheme = {
   searchBgFocused: '#F6F8FA',
   searchPlaceholderFocused: '#57606a',
   tagBgHovered: '#0969da',
+  codeBg: 'rgba(175,184,193,0.2)',
   themeIconPosition: '0',
 };
 
@@ -42,6 +44,7 @@ export const dark = {
   searchBgFocused: darkTheme.searchBgFocused,
   searchPlaceholderFocused: darkTheme.searchPlaceholderFocused,
   tagBgHovered: darkTheme.tagBgHovered,
+  codeBg: darkTheme.codeBg,
   themeIconPosition: darkTheme.themeIconPosition,
 };
 
@@ -56,6 +59,7 @@ export const light = {
   searchBgFocused: lightTheme.searchBgFocused,
   searchPlaceholderFocused: lightTheme.searchPlaceholderFocused,
   tagBgHovered: lightTheme.tagBgHovered,
+  codeBg: lightTheme.codeBg,
   themeIconPosition: lightTheme.themeIconPosition,
 };
 

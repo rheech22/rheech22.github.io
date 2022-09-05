@@ -1,28 +1,51 @@
 import { graphql, PageProps } from "gatsby";
 
 import { useGlobalContext } from "../contexts/GlobalContext";
-import Comments from "../components/Comments";
+import useTags from "../hooks/useTags";
 
 import styled from "styled-components";
-import { flex, horizontalDivider } from "../styles/mixins";
+import { white } from "../styles/themes";
+import { flex } from "../styles/mixins";
+
+import Comments from "../components/Comments";
+import Tag from "../components/Tag";
+import { device } from "../styles/breakpoints";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
   const { isDark } = useGlobalContext();
+  const { searchByTag } = useTags();
 
   const theme = isDark ? 'github-dark-orange' : 'boxy-light';
 
   return (
     <>
       {post && (
-        <Container>
-          <h1>{post.frontmatter?.title}</h1>
-          <span>{post.frontmatter?.date}</span>
-          <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-          <Comments repo="rheech22/comments" theme={theme}/>
-        </Container>
+        <PostSection>
+          <article>
+            <header>
+              <h1>{post.frontmatter?.title}</h1>
+              <time dateTime={''}>{post.frontmatter?.date}</time>
+            </header>
+            <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+          </article>
+          {
+            post?.frontmatter && post.frontmatter.tags?.length
+              ? <ul>{post.frontmatter.tags.map((tag, index) => (
+                <Tag
+                  key={index}
+                  tag={tag}
+                  onClick={searchByTag}
+                />
+              ))}</ul>
+              : null
+          }
+        </PostSection>
       )}
+      <CommentSection>
+        <Comments repo="rheech22/comments" theme={theme}/>
+      </CommentSection>
     </>
   );
 };
@@ -41,41 +64,111 @@ export const query = graphql`
   }
 `;
 
-const Container = styled.article`
-  ${flex('', '', 'column')};
-  margin-top: 24px;
+const PostSection = styled.section`
+  ${flex('normal', 'flex-start', 'column')};
+  max-width: 726px;
+  margin: 72px auto 0 auto;
+  padding: 48px 8px;
+  
+  & > article {
+    ${flex('flex-start', 'normal', 'column')};
 
-  & > h1 {
-    height: 48px;
-    font-size: 32px;
-    font-weight: 600;
+    & > header {
+      margin-bottom: 56px;
+      width: 100%;
+
+      & > h1 {
+        font-size: 42px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+  
+      & > time {
+        font-size: 14px;
+        color: ${({ theme }) => theme.mute };
+      }
+    }
+
+    & > div {
+      font-size: 16px;
+      width: 100%;
+  
+      @media ${device.tablet} {
+        font-size: 18px;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        margin-block-start: 0.43em;
+        margin-block-end: 0.43em;
+      }
+  
+      h1 {
+        font-size: 32px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+      }
+  
+      h2 {
+        font-size: 28.8px;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+      }
+
+      p {
+        display: block;
+        line-height: 1.8em;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        word-break: break-word;
+
+      }
+
+      ol, ul {
+        padding-left: 40px;
+      }
+
+      ul {
+        list-style-type: disc;
+      }
+
+      ol {
+        list-style-type: decimal;
+      }
+
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+
+      code {
+        padding: 0.2em 0.4em;
+        margin: 0;
+        font-size: 85%;
+        background-color: ${({ theme }) => theme.codeBg };
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+      }
+    }
   }
 
-  span {
-    font-size: 14px;
-    color: ${({ theme }) => theme.mute };
-    margin-bottom: 16px;
-  }
-
-  div {
-    font-size: 18px;
-
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      ${horizontalDivider}
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 32px;
-    }
-
-    h2 {
-      font-size: 24px;
-    }
+  & > ul {
+    ${flex('center', 'flex-start', 'row')}
+    flex-wrap: wrap;
+    margin: 32px 0;
+    padding: 4px 0;
   }
 
   deckgo-highlight-code {
-    font-size: 16px;
+    font-size: 14px;
+    padding: 0.5em 0;
   }
+
+  & > div {
+    height: fit-content;
+  }
+`;
+
+const CommentSection = styled.section`
+  padding: 48px 8px;
 `;
