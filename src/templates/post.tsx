@@ -4,7 +4,6 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
 
 import styled from "styled-components";
-import { white } from "../styles/themes";
 import { flex } from "../styles/mixins";
 
 import Comments from "../components/Comments";
@@ -77,6 +76,7 @@ const PostSection = styled.section`
       margin-bottom: 56px;
       width: 100%;
 
+      
       & > h1 {
         font-size: 42px;
         font-weight: 600;
@@ -96,15 +96,17 @@ const PostSection = styled.section`
       @media ${device.tablet} {
         font-size: 18px;
       }
-
+      
       h1, h2, h3, h4, h5, h6 {
         font-weight: 600;
-        margin-block-start: 0.43em;
-        margin-block-end: 0.43em;
+
+        .header-anchor {
+          fill: ${({ theme }) => theme.default };
+        }
       }
   
       h1 {
-        font-size: 32px;
+        font-size: 36px;
         margin-block-start: 1em;
         margin-block-end: 1em;
       }
@@ -113,6 +115,18 @@ const PostSection = styled.section`
         font-size: 28.8px;
         margin-block-start: 0.83em;
         margin-block-end: 0.83em;
+      }
+
+      h3 {
+        font-size: 21.6px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+      }
+
+      h4 {
+        font-size: 19.8px;
+        margin-block-start: 1.22em;
+        margin-block-end: 1.22em;
       }
 
       p {
