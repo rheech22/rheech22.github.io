@@ -9,6 +9,7 @@ import { flex } from "../styles/mixins";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import { device } from "../styles/breakpoints";
+import TOC from "../components/TOC";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
@@ -27,7 +28,10 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               <h1>{post.frontmatter?.title}</h1>
               <time dateTime={''}>{post.frontmatter?.date}</time>
             </header>
-            <div dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+            <main>
+              <section dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+              <TOC headings={post.headings}/>
+            </main>
           </article>
           {
             post?.frontmatter && post.frontmatter.tags?.length
@@ -53,6 +57,11 @@ export const query = graphql`
   query template($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
+      headings {
+        id
+        value
+        depth
+      }
       frontmatter {
         path
         date
@@ -68,6 +77,7 @@ const PostSection = styled.section`
   max-width: 726px;
   margin: 72px auto 0 auto;
   padding: 48px 8px;
+  height: 100%;
   
   & > article {
     ${flex('flex-start', 'normal', 'column')};
@@ -89,79 +99,82 @@ const PostSection = styled.section`
       }
     }
 
-    & > div {
-      font-size: 16px;
-      width: 100%;
-  
-      @media ${device.tablet} {
-        font-size: 18px;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        font-weight: 600;
+    & > main {
 
-        .header-anchor {
-          fill: ${({ theme }) => theme.default };
+      & > section:nth-child(1){
+        font-size: 16px;
+        width: 100%;
+    
+        @media ${device.tablet} {
+          font-size: 18px;
         }
-      }
-  
-      h1 {
-        font-size: 36px;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-      }
-  
-      h2 {
-        font-size: 28.8px;
-        margin-block-start: 0.83em;
-        margin-block-end: 0.83em;
-      }
+        
+        h1, h2, h3, h4, h5, h6 {
+          font-weight: 600;
 
-      h3 {
-        font-size: 21.6px;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-      }
+          .header-anchor {
+            fill: ${({ theme }) => theme.default };
+          }
+        }
+    
+        h1 {
+          font-size: 36px;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+        }
+    
+        h2 {
+          font-size: 28.8px;
+          margin-block-start: 0.83em;
+          margin-block-end: 0.83em;
+        }
 
-      h4 {
-        font-size: 19.8px;
-        margin-block-start: 1.22em;
-        margin-block-end: 1.22em;
-      }
+        h3 {
+          font-size: 21.6px;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+        }
 
-      p {
-        display: block;
-        line-height: 1.8em;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        word-break: break-word;
+        h4 {
+          font-size: 19.8px;
+          margin-block-start: 1.22em;
+          margin-block-end: 1.22em;
+        }
 
-      }
+        p {
+          display: block;
+          line-height: 1.8em;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          word-break: break-word;
 
-      ol, ul {
-        padding-left: 40px;
-      }
+        }
 
-      ul {
-        list-style-type: disc;
-      }
+        ol, ul {
+          padding-left: 40px;
+        }
 
-      ol {
-        list-style-type: decimal;
-      }
+        ul {
+          list-style-type: disc;
+        }
 
-      li {
-        display: list-item;
-        text-align: -webkit-match-parent;
-      }
+        ol {
+          list-style-type: decimal;
+        }
 
-      code {
-        padding: 0.2em 0.4em;
-        margin: 0;
-        font-size: 85%;
-        background-color: ${({ theme }) => theme.codeBg };
-        border-radius: 6px;
-        font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+        li {
+          display: list-item;
+          text-align: -webkit-match-parent;
+        }
+
+        code {
+          padding: 0.2em 0.4em;
+          margin: 0;
+          font-size: 85%;
+          background-color: ${({ theme }) => theme.codeBg };
+          border-radius: 6px;
+          font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+        }
       }
     }
   }

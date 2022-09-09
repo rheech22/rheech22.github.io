@@ -37,13 +37,11 @@ const Header = () => {
 export default Header;
 
 const Container = styled.header`
-  position: fixed;
-  z-index: 99;
   ${flex('center', 'flex-start')}
   padding: 16px 32px;
   width: 100%;
   min-width: 375px;
-  height: '62px';
+  height: 62px;
   background-color: ${headerBg};
 
   & > a {

@@ -21,7 +21,6 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
     line-height: 1.5;
     
     main {
-      padding-top: 68px;
       font-size: 16px;
     }
 
