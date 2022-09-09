@@ -7,6 +7,7 @@ type State = {
   keyword: string;
   tag: string;
   isDark: boolean;
+  headingId: string,
 };
 
 type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
@@ -26,6 +27,7 @@ export const initialState = {
   keyword: '',
   tag: '',
   isDark: getLocalDisplayMode(),
+  headingId: '',
 };
 
 export const GlobalContext = createContext<State>(initialState);
@@ -51,7 +53,7 @@ const reducer = (state: State, { type, payload }: Action) => {
 };
 
 const actionTriggers: {
-  [key in 'flipDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch']:
+  [key in 'flipDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch' | 'setIntersecting']:
   (state: State, payload: Action['payload']) => State;
 } = {
   flipDisplayMode: (state) => {
@@ -87,6 +89,12 @@ const actionTriggers: {
       ...state,
       keyword: '',
       tag: '',
+    };
+  },
+  setIntersecting: (state, { headingId }) => {
+    return {
+      ...state,
+      headingId,
     };
   },
 };

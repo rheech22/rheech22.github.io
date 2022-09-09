@@ -1,23 +1,54 @@
 import { graphql, PageProps } from "gatsby";
 
-import { useGlobalContext } from "../contexts/GlobalContext";
+import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
 
 import styled from "styled-components";
+import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
-import { device } from "../styles/breakpoints";
 import TOC from "../components/TOC";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
+  const dispatch = useDispatch();
   const { isDark } = useGlobalContext();
   const { searchByTag } = useTags();
 
-  const theme = isDark ? 'github-dark-orange' : 'boxy-light';
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(()=> {
+    if (!ref.current) return;
+
+    const anchors = ref.current.querySelectorAll('.header-anchor');
+
+    const observer = new IntersectionObserver(([{ target, isIntersecting }]) => {
+      if (!isIntersecting) {
+        dispatch({
+          type: 'setIntersecting',
+          payload: { headingId: target.getAttribute('href')?.substring(1) },
+        });
+      }
+
+      if (isIntersecting) {
+        dispatch({
+          type: 'setIntersecting',
+          payload: { headingId: target.getAttribute('href')?.substring(1) },
+        });
+      }
+    }, {
+      rootMargin: '0px 0px 2000px 0px',
+    });
+
+    anchors.forEach((a) => observer.observe(a));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -29,7 +60,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               <time dateTime={''}>{post.frontmatter?.date}</time>
             </header>
             <main>
-              <section dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+              <section ref={ref} dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
               <TOC headings={post.headings}/>
             </main>
           </article>
@@ -47,7 +78,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
         </PostSection>
       )}
       <CommentSection>
-        <Comments repo="rheech22/comments" theme={theme}/>
+        <Comments repo="rheech22/comments" theme={isDark ? 'github-dark-orange' : 'boxy-light'}/>
       </CommentSection>
     </>
   );

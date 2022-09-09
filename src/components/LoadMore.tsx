@@ -18,7 +18,7 @@ const LoadMore = ({ load }: Props) => {
     }
 
     return () => loadMoreObserver.disconnect();
-  }, [fetch]);
+  }, []);
 
   return (
     <div

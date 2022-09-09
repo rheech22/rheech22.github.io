@@ -1,6 +1,9 @@
 import { Link } from "gatsby";
+
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
+
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 interface Props {
   headings: readonly ({
@@ -11,14 +14,17 @@ interface Props {
 }
 
 const TOC = ({ headings }: Props) => {
+  const { headingId } = useGlobalContext();
+
   return (
     <Container>
+      <h2>ON THIS PAGE</h2>
       <ul>
         {headings?.map(heading => {
           if (!heading) null;
 
           return (
-            <List key={heading?.id} depth={heading?.depth}>
+            <List key={heading?.id} depth={heading?.depth} isIntersecting={heading?.id === headingId}>
               <Link to={`#${heading?.id ?? ''}`}>{heading?.value}</Link>
             </List>
           );
@@ -41,18 +47,31 @@ const Container = styled.aside`
     display: block;
   }
 
+  h2 {
+    min-width: 320px;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .025em;
+  }
+
   li + li {
     margin-top: 8px;
   }
 `;
 
-const List = styled.li<{depth?: number | null}>`
+const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   display: flex;
   align-items: center;
   font-size: 14px;
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
-  min-width: 304px;
+  width: 304px;
+  margin-left: auto;
+
+  color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.default };
+  background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.lightBlue : 'none' };
 
   &:hover {
     color: ${({ theme }) => theme.blue};
