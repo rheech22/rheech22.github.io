@@ -13,6 +13,11 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
     box-sizing: border-box;
   }
 
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: ${({ theme }) => (theme.bg)};
     color: ${({ theme }) => (theme.default)};

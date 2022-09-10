@@ -69,6 +69,7 @@ const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   border-bottom-left-radius: 0.5em;
   width: 304px;
   margin-left: auto;
+  transition: all 50ms ease-in-out;
 
   color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.default };
   background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.lightBlue : 'none' };

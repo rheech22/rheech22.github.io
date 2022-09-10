@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { graphql, PageProps } from "gatsby";
 
 import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
@@ -10,8 +11,6 @@ import { flex } from "../styles/mixins";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
-import { useRef } from "react";
-import { useEffect } from "react";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
@@ -25,29 +24,41 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   useEffect(()=> {
     if (!ref.current) return;
 
-    const anchors = ref.current.querySelectorAll('.header-anchor');
+    const postRef = ref.current;
+    const headings = postRef.querySelectorAll('[id^="heading"]');
 
-    const observer = new IntersectionObserver(([{ target, isIntersecting }]) => {
-      if (!isIntersecting) {
-        dispatch({
-          type: 'setIntersecting',
-          payload: { headingId: target.getAttribute('href')?.substring(1) },
+    let tick = false;
+    let currentHeading: Element;
+
+    const handleScroll = () => {
+      if (tick) return;
+
+      tick = true;
+
+      return requestAnimationFrame(() => {
+        headings.forEach(heading => {
+          if (heading === currentHeading) return;
+
+          const marginTop = heading.getBoundingClientRect().top;
+
+          if (marginTop < 10 && marginTop > -30) {
+            currentHeading = heading;
+
+            console.log(currentHeading);
+
+            const headingId = currentHeading.firstElementChild?.getAttribute('href')?.substring(1);
+
+            dispatch({ type: 'setIntersecting', payload: { headingId } });
+          }
         });
-      }
 
-      if (isIntersecting) {
-        dispatch({
-          type: 'setIntersecting',
-          payload: { headingId: target.getAttribute('href')?.substring(1) },
-        });
-      }
-    }, {
-      rootMargin: '0px 0px 2000px 0px',
-    });
+        tick = false;
+      });
+    };
 
-    anchors.forEach((a) => observer.observe(a));
+    document.addEventListener('scroll', handleScroll);
 
-    return () => observer.disconnect();
+    return () => document.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -61,7 +72,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             </header>
             <main>
               <section ref={ref} dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-              <TOC headings={post.headings}/>
+              {post.headings && post.headings?.length > 0 ? <TOC headings={post.headings}/> : null}
             </main>
           </article>
           {
