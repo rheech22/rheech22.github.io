@@ -37,18 +37,20 @@ const TOC = ({ headings }: Props) => {
 export default TOC;
 
 const Container = styled.aside`
-  display: none;
-  position: fixed;
-  top: 198px;
-  right: 0;
-  color: ${({ theme }) => theme.default};
-
   @media ${device.laptopM} {
     display: block;
+    margin-left: 80px;
   }
 
+  display: none;
+  color: ${({ theme }) => theme.default};
+  position: sticky;
+  top: 16px;
+  max-height: 80vh;
+  overflow-y: scroll;
+
   h2 {
-    min-width: 320px;
+    min-width: 287px;
     padding: 8px 10px;
     margin-bottom: 12px;
     font-size: 16px;
@@ -67,7 +69,7 @@ const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   font-size: 14px;
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
-  width: 304px;
+  width: 256px;
   margin-left: auto;
   transition: all 50ms ease-in-out;
 

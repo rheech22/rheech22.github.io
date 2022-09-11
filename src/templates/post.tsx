@@ -1,7 +1,6 @@
-import { useRef, useEffect } from "react";
 import { graphql, PageProps } from "gatsby";
 
-import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
+import { useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
 
 import styled from "styled-components";
@@ -11,55 +10,14 @@ import { flex } from "../styles/mixins";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
+import useSpyHeadings from "../hooks/useSpyHeadings";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
-  const dispatch = useDispatch();
   const { isDark } = useGlobalContext();
   const { searchByTag } = useTags();
-
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(()=> {
-    if (!ref.current) return;
-
-    const postRef = ref.current;
-    const headings = postRef.querySelectorAll('[id^="heading"]');
-
-    let tick = false;
-    let currentHeading: Element;
-
-    const handleScroll = () => {
-      if (tick) return;
-
-      tick = true;
-
-      return requestAnimationFrame(() => {
-        headings.forEach(heading => {
-          if (heading === currentHeading) return;
-
-          const marginTop = heading.getBoundingClientRect().top;
-
-          if (marginTop < 10 && marginTop > -30) {
-            currentHeading = heading;
-
-            console.log(currentHeading);
-
-            const headingId = currentHeading.firstElementChild?.getAttribute('href')?.substring(1);
-
-            dispatch({ type: 'setIntersecting', payload: { headingId } });
-          }
-        });
-
-        tick = false;
-      });
-    };
-
-    document.addEventListener('scroll', handleScroll);
-
-    return () => document.removeEventListener('scroll', handleScroll);
-  }, []);
+  const spyHeadingsRef = useSpyHeadings();
 
   return (
     <>
@@ -71,21 +29,21 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               <time dateTime={''}>{post.frontmatter?.date}</time>
             </header>
             <main>
-              <section ref={ref} dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
-              {post.headings && post.headings?.length > 0 ? <TOC headings={post.headings}/> : null}
+              <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+              {
+                post?.frontmatter && post.frontmatter.tags?.length
+                  ? <ul>{post.frontmatter.tags.map((tag, index) => (
+                    <Tag
+                      key={index}
+                      tag={tag}
+                      onClick={searchByTag}
+                    />
+                  ))}</ul>
+                  : null
+              }
             </main>
           </article>
-          {
-            post?.frontmatter && post.frontmatter.tags?.length
-              ? <ul>{post.frontmatter.tags.map((tag, index) => (
-                <Tag
-                  key={index}
-                  tag={tag}
-                  onClick={searchByTag}
-                />
-              ))}</ul>
-              : null
-          }
+          {post.headings && post.headings?.length > 0 ? <TOC headings={post.headings}/> : null}
         </PostSection>
       )}
       <CommentSection>
@@ -115,14 +73,18 @@ export const query = graphql`
 `;
 
 const PostSection = styled.section`
-  ${flex('normal', 'flex-start', 'column')};
-  max-width: 726px;
+  ${flex('flex-start', 'center', 'row')};
   margin: 72px auto 0 auto;
-  padding: 48px 8px;
-  height: 100%;
+  padding: 48px 16px;
+  height: auto;
+
+  @media ${device.laptopM} {
+    justify-content: flex-end;
+  }
   
   & > article {
     ${flex('flex-start', 'normal', 'column')};
+    width: 726px;
 
     & > header {
       margin-bottom: 56px;
@@ -142,7 +104,6 @@ const PostSection = styled.section`
     }
 
     & > main {
-
       & > section:nth-child(1){
         font-size: 16px;
         width: 100%;
@@ -218,14 +179,14 @@ const PostSection = styled.section`
           font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
         }
       }
-    }
-  }
 
-  & > ul {
-    ${flex('center', 'flex-start', 'row')}
-    flex-wrap: wrap;
-    margin: 32px 0;
-    padding: 4px 0;
+      & > ul {
+        ${flex('center', 'flex-start', 'row')}
+        flex-wrap: wrap;
+        margin: 32px 0;
+        padding: 4px 0;
+      }
+    }
   }
 
   deckgo-highlight-code {
