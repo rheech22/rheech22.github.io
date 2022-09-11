@@ -4,14 +4,14 @@ type ReduceReturnType = {
 
 export const getLocalDisplayMode = () => {
   let prefersDarkTheme = null;
-  let themeString = 'false';
+  let displayMode = 'day';
 
   if (typeof window !== "undefined") {
     prefersDarkTheme = `${window.matchMedia('(prefers-color-scheme: dark)').matches}`;
-    themeString = localStorage.getItem('isDark') ?? prefersDarkTheme ?? 'false';
+    displayMode = localStorage.getItem('display-mode') ?? prefersDarkTheme ?? 'day';
   }
 
-  return JSON.parse(themeString);
+  return JSON.parse(displayMode);
 };
 
 export const enrichTags = (tags: (string | null | undefined)[]) => {
@@ -59,8 +59,8 @@ export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {
   return bLevel - aLevel;
 });
 
-export const getDateString = (date: string) => {
+export const getDateString = ({ date, addPrefix, getYear }: {date: string, addPrefix?: boolean, getYear?: boolean}) => {
   const dateString = new Intl.DateTimeFormat("en-GB", { dateStyle: 'medium' }).format(new Date(date));
 
-  return `Updated on ${dateString.slice(0, -5)}`;
+  return `${addPrefix ? 'Updated on' : ''} ${getYear ? dateString : dateString.slice(0, -5) }`;
 };

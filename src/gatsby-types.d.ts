@@ -2702,7 +2702,7 @@ type templateQueryVariables = Exact<{
 }>;
 
 
-type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly headings: ReadonlyArray<{ readonly id: string | null, readonly value: string | null, readonly depth: number | null } | null> | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
+type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly timeToRead: number | null, readonly headings: ReadonlyArray<{ readonly id: string | null, readonly value: string | null, readonly depth: number | null } | null> | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
 
 type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 

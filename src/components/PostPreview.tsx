@@ -32,7 +32,7 @@ const PostPreview = ({
     <Container>
       <Link to={path ?? ''}>
         <h2>{title}</h2>
-        <span>{date ? getDateString(date) : ''}</span>
+        <span>{date ? getDateString({ date, addPrefix: true }) : ''}</span>
         <p>{excerpt}</p>
       </Link>
       {
@@ -58,9 +58,9 @@ const Container = styled.li`
   
   & > a {
     ${flex('center', 'center', 'column')}
+    margin-bottom: 8px;
     font-weight: 600;
     text-decoration: none;
-    margin-bottom: 8px;
 
     &:hover {
       color: ${({ theme }) => theme.blue};
@@ -71,9 +71,9 @@ const Container = styled.li`
     }
     
     span {
+      margin-bottom: 5px;
       font-size: 12px;
       font-weight: 300;
-      margin-bottom: 5px;
     }
 
     p {

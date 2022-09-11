@@ -1,4 +1,3 @@
-import { navigate } from "gatsby";
 import { useContext, useReducer, createContext } from "react";
 
 import { getLocalDisplayMode } from "../utils";
@@ -7,7 +6,7 @@ type State = {
   posts: Posts;
   keyword: string;
   tag: string;
-  isDark: boolean;
+  displayMode: 'day' | 'night';
   headingId: string,
 };
 
@@ -27,7 +26,7 @@ export const initialState = {
   posts: [],
   keyword: '',
   tag: '',
-  isDark: getLocalDisplayMode(),
+  displayMode: getLocalDisplayMode(),
   headingId: '',
 };
 
@@ -58,11 +57,13 @@ const actionTriggers: {
   (state: State, payload: Action['payload']) => State;
 } = {
   setDisplayMode: (state) => {
-    localStorage.setItem('isDark', JSON.stringify(!state.isDark));
+    const displayMode = state.displayMode === 'day' ? 'night' : 'day';
+
+    localStorage.setItem('display-mode', JSON.stringify(displayMode));
 
     return {
       ...state,
-      isDark: !state.isDark,
+      displayMode,
     };
   },
   setPosts: (state, { posts }) => {

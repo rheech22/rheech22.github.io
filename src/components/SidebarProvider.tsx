@@ -33,8 +33,8 @@ const Wrapper = styled.div`
     
     & > p {
       margin-top: 50px;
-      text-align: center;
       width: 100%;
+      text-align: center;
     }
     
     @media ${device.tablet} {

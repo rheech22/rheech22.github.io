@@ -75,8 +75,8 @@ const Avatar = styled.div`
 
 const Profile = styled.div`
   & > span{
-    padding: 8px 0;
     display: block;
+    padding: 8px 0;
     font-size: 16px;
     font-weight: 600;
     
@@ -86,9 +86,9 @@ const Profile = styled.div`
   }
 
   & > p {
-    font-size: 12px;
     margin-bottom: 8px;
     white-space: nowrap;
+    font-size: 12px;
 
     @media ${device.tablet} {
       font-size: 16px;
@@ -97,13 +97,13 @@ const Profile = styled.div`
 
   & > ul {
     svg {
-      fill: ${({ theme })=>theme.mute};
       margin-right: 8px;
+      fill: ${({ theme })=>theme.mute};
     }
 
     li {
-      height: 25px;
       ${flex('center')}
+      height: 25px;
     }
 
     a, span {
@@ -114,8 +114,8 @@ const Profile = styled.div`
       text-decoration: none;
 
       &:hover {
-        text-decoration: underline;
         color: ${({ theme })=>theme.blue};
+        text-decoration: underline;
       }
     }
   }

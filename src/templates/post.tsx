@@ -1,22 +1,23 @@
 import { graphql, PageProps } from "gatsby";
 
-import { useGlobalContext } from "../contexts/GlobalContext";
-import useTags from "../hooks/useTags";
-
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
+import { useGlobalContext } from "../contexts/GlobalContext";
+import useSpyHeadings from "../hooks/useSpyHeadings";
+import useTags from "../hooks/useTags";
+
+import { getDateString } from "../utils";
+
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
-import useSpyHeadings from "../hooks/useSpyHeadings";
-import { getDateString } from "../utils";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
-  const { isDark } = useGlobalContext();
+  const { displayMode } = useGlobalContext();
   const { searchByTag } = useTags();
   const spyHeadingsRef = useSpyHeadings();
 
@@ -25,6 +26,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const contents = post?.html ?? '';
   const tags = post?.frontmatter?.tags ?? [];
   const headings = post?.headings ?? [];
+  const timeToRead = post?.timeToRead ?? '';
 
   return (
     <>
@@ -33,28 +35,33 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <article>
             <header>
               <h1>{title}</h1>
-              <time dateTime='updated at'>{date}</time>
+              <ul>
+                <time dateTime='updated at'>{getDateString({ date, getYear: true })}</time>
+                <span> — {timeToRead} min read</span>
+              </ul>
+              {
+                tags.length
+                  ? <ul>{
+                    tags.map((tag, index) =>(
+                      <Tag
+                        key={index}
+                        tag={tag}
+                        onClick={searchByTag}
+                      />)
+                    )}</ul>
+                  : null
+              }
             </header>
             <main>
               <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: contents }}/>
-              {
-                tags.length > 0
-                  ? <ul>{tags.map((tag, index) => (
-                    <Tag
-                      key={index}
-                      tag={tag}
-                      onClick={searchByTag}
-                    />
-                  ))}</ul>
-                  : null
-              }
+
             </main>
           </article>
           <TOC headings={headings}/>
         </PostSection>
       )}
       <CommentSection>
-        <Comments repo="rheech22/comments" theme={isDark ? 'github-dark-orange' : 'boxy-light'}/>
+        <Comments repo="rheech22/comments" theme={displayMode === 'day' ? 'boxy-light' : 'github-dark-orange' }/>
       </CommentSection>
     </>
   );
@@ -64,6 +71,7 @@ export const query = graphql`
   query template($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
+      timeToRead
       headings {
         id
         value
@@ -97,23 +105,29 @@ const PostSection = styled.section`
       margin-bottom: 56px;
       width: 100%;
 
-      
       & > h1 {
+        margin-bottom: 4px;
         font-size: 42px;
         font-weight: 600;
-        margin-bottom: 4px;
       }
-  
-      & > time {
-        font-size: 14px;
+
+      & > ul:first-of-type {
         color: ${({ theme }) => theme.mute };
+        font-size: 14px;
+
+      }
+
+      & > ul:nth-of-type(2) {
+        ${flex('center', 'flex-start', 'row')}
+        flex-wrap: wrap;
+        margin-top: 14px;
       }
     }
 
     & > main {
       & > section:nth-child(1){
-        font-size: 16px;
         width: 100%;
+        font-size: 16px;
     
         @media ${device.tablet} {
           font-size: 18px;
@@ -128,36 +142,35 @@ const PostSection = styled.section`
         }
     
         h1 {
-          font-size: 36px;
           margin-block-start: 1em;
           margin-block-end: 1em;
+          font-size: 36px;
         }
     
         h2 {
-          font-size: 28.8px;
           margin-block-start: 0.83em;
           margin-block-end: 0.83em;
+          font-size: 28.8px;
         }
 
         h3 {
-          font-size: 21.6px;
           margin-block-start: 1em;
           margin-block-end: 1em;
+          font-size: 21.6px;
         }
 
         h4 {
-          font-size: 19.8px;
           margin-block-start: 1.22em;
           margin-block-end: 1.22em;
+          font-size: 19.8px;
         }
 
         p {
           display: block;
-          line-height: 1.8em;
           margin-block-start: 1em;
           margin-block-end: 1em;
           word-break: break-word;
-
+          line-height: 1.8em;
         }
 
         ol, ul {
@@ -178,27 +191,20 @@ const PostSection = styled.section`
         }
 
         code {
-          padding: 0.2em 0.4em;
           margin: 0;
-          font-size: 85%;
+          padding: 0.2em 0.4em;
           background-color: ${({ theme }) => theme.codeBg };
           border-radius: 6px;
+          font-size: 85%;
           font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
         }
-      }
-
-      & > ul {
-        ${flex('center', 'flex-start', 'row')}
-        flex-wrap: wrap;
-        margin: 32px 0;
-        padding: 4px 0;
       }
     }
   }
 
   deckgo-highlight-code {
-    font-size: 14px;
     padding: 0.5em 0;
+    font-size: 14px;
   }
 
   & > div {

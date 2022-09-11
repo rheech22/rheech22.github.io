@@ -43,16 +43,16 @@ const Container = styled.aside`
   }
 
   display: none;
-  color: ${({ theme }) => theme.default};
   position: sticky;
   top: 16px;
+  min-width: 273px;
   max-height: 80vh;
+  color: ${({ theme }) => theme.default};
   overflow-y: scroll;
-  min-width: 287px;
 
   h2 {
-    padding: 8px 10px;
     margin-bottom: 12px;
+    padding: 8px 10px;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: .025em;
@@ -66,27 +66,25 @@ const Container = styled.aside`
 const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   display: flex;
   align-items: center;
-  font-size: 14px;
+  margin-left: auto;
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
-  width: 256px;
-  margin-left: auto;
-  transition: all 50ms ease-in-out;
-
-  color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.default };
-  background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.lightBlue : 'none' };
-
-  &:hover {
-    color: ${({ theme }) => theme.blue};
-    background-color: ${({ theme }) => theme.lightBlue};
-  }
-
   padding-left: ${({ depth }) => depth && depth > 1 ? `${depth * 8}px` : '8px' };
   padding-right: 8px;
+  width: 253px;
+  background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.lightBlue : 'none' };
+  color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.default };
+  transition: all 50ms ease-in-out;
+  font-size: 14px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.lightBlue};
+    color: ${({ theme }) => theme.blue};
+  }
 
   a {
+    padding: 8px 0;
     width: 100%;
     text-decoration: unset;
-    padding: 8px 0;
   }
 `;

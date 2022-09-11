@@ -30,19 +30,19 @@ interface Container {
 const Container = styled.li<Container>`
   ${preventUserDrag}
 
+  margin-right: 1.5px;
+  margin-bottom: 3px;
+  border: 1px solid rgba(0,0,0,0);
+  border-radius: 2em;
+  padding: 0 10px;
+  min-height: fit-content;
+  width: fit-content;
+  background-color: ${({ theme, isSelected }) => isSelected ? theme.tagBgHovered : theme.lightBlue };
+  color: ${({ theme, isSelected }) => isSelected ? white : theme.blue };
+  white-space: nowrap;
   font-size: 12px;
   font-weight: 500;
   line-height: 22px;
-  white-space: nowrap;
-  border-radius: 2em;
-  border: 1px solid rgba(0,0,0,0);
-  margin-right: 1.5px;
-  margin-bottom: 3px;
-  padding: 0 10px;
-  width: fit-content;
-  min-height: fit-content;
-  background-color: ${({ theme, isSelected }) => isSelected ? theme.tagBgHovered : theme.lightBlue };
-  color: ${({ theme, isSelected }) => isSelected ? white : theme.blue };
   cursor: pointer;
 
   &:hover {

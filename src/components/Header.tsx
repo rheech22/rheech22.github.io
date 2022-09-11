@@ -39,15 +39,15 @@ export default Header;
 const Container = styled.header`
   ${flex('center', 'flex-start')}
   padding: 16px 32px;
-  width: 100%;
   min-width: 375px;
+  width: 100%;
   height: 62px;
   background-color: ${headerBg};
 
   & > a {
+    margin-right: 16px;
     color: ${headerLogo};
     text-decoration: none;
-    margin-right: 16px;
 
     & > h1 {
       ${headerBold}
@@ -65,11 +65,11 @@ const Container = styled.header`
 
   & > button {
     &:nth-of-type(1) {
-      border-radius: 50%;
-      box-shadow: 0px 0px 15px #eee;
       background-image: linear-gradient(to right, #fceabb 0%, black 100%);
       background-position: ${({ theme }) => theme.themeIconPosition};
       background-size: 200% auto;
+      box-shadow: 0px 0px 15px #eee;
+      border-radius: 50%;
       transition: 1.5s;
   
       &:hover { 

@@ -37,14 +37,16 @@
 - [x] 날짜 표출 방식 개선하기
 - [x] 새로고침 후에 태그, 키워드 검색 남아있도록 개선하기
 - [x] 레이아웃에서 graphql 요청하도록 개선하기
-- [ ] 코드 리팩토링하기
-- [ ] dark and light 사용 어휘 바꾸기
-- [ ] 검색 선택 가능하게 (제목+내용, 제목, 내용)
-- [ ] pinned area 추가
-- [ ] 2차 반응형 디자인
-- [ ] SEO 구현
-- [ ] 반응형 디자인 마무리
-- [ ] 연관된 글 보여주기 - 그래프 라이브러리 활용?
+- [x] 코드 정리하기
+- [x] isDark 상태 리팩토링
+- [x] time to read 추가하기
+- [ ] 전체 레이아웃 사이즈 조정하기 (특히 bio)
+- [ ] 검색 카테고리 선택하기 (제목+내용, 제목, 내용)
+- [ ] pinned area 추가하기
+- [ ] 2차 반응형 디자인하기
+- [ ] SEO 구현하기
+- [ ] 반응형 디자인 마무리하기
+- [ ] 연관된 글 보여주기 - 그래프 라이브러리 활용하기?
 
 ## Findings
 
@@ -53,8 +55,6 @@
 - [gatsby-browser API](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - page 컴포넌트를 감싸는 루트가 없기 때문에 전역 상태 관리를 하기 위해 활용
 - [코드 하이라이트 플러그인](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/)을 사용
 - [utterances](https://utteranc.es/?installation_id=28274981&setup_action=install)로 댓글 기능 추가
-- ThemeProvider 편하다.
-- 태그 대소문자를 구분?
-- 전체 구조는 포스트, 404 제외 두 페이지, 두 컨테이너, 다수의 컴포넌트로
+- ThemeProvider 편하다
 - TOC 하이라이트를 intersectionObserver로 구현하려 했지만, 클릭해서 이동할 때 제대로 intersection을 감지하지 못함, 스크롤 이벤트를 최적화하는 방법으로 사용해야 할듯
 - sticky position을 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함

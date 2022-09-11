@@ -41,10 +41,10 @@ const SearchBar = ({
 export default SearchBar;
 
 const Container = styled.form`
-  width: 272px;
-  height: 30px;
   border: 1px solid ${({ theme }) => theme.searchBorder};
   border-radius: 6px;
+  width: 272px;
+  height: 30px;
   font-weight: 400;
   
   @media ${device.tablet} {
@@ -55,13 +55,13 @@ const Container = styled.form`
   }
   
   & > input {
-    border-radius: 6px;
     border: none;
+    border-radius: 6px;
     padding: 0 12px;
     width: 100%;
     height: 100%;
-    color: ${({ theme }) => theme.default};
     background-color: ${({ theme }) => theme.searchBg};
+    color: ${({ theme }) => theme.default};
     font-size: 14px;
 
     &:focus {

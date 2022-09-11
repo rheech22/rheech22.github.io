@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import { defineCustomElements as highlightCodeBlock } from "@deckdeckgo/highlight-code/dist/loader";
-
 import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
 import usePosts from "../hooks/usePosts";
 
@@ -12,6 +10,10 @@ import { GlobalStyle } from "../styles/global";
 import Header from "./Header";
 import SEO from "./SEO";
 
+import {
+  defineCustomElements as highlightCodeBlock,
+} from "@deckdeckgo/highlight-code/dist/loader";
+
 interface Props {
   children: JSX.Element | null;
   theme?: string;
@@ -20,7 +22,7 @@ interface Props {
 const Layout = ({
   children,
 }: Props) => {
-  const { isDark } = useGlobalContext();
+  const { displayMode } = useGlobalContext();
   const dispatch = useDispatch();
   const posts = usePosts();
 
@@ -42,7 +44,7 @@ const Layout = ({
   highlightCodeBlock();
 
   return (
-    <ThemeProvider theme={isDark ? dark : light }>
+    <ThemeProvider theme={displayMode === 'day' ? light : dark }>
       <GlobalStyle/>
       <SEO title="BLOG" />
       <Header />
