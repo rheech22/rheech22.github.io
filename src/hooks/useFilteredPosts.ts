@@ -32,7 +32,7 @@ const useFilteredPosts = () => {
     const filteredPosts = getPosts();
 
     setFilteredPosts(filteredPosts);
-  }, [keyword, tag]);
+  }, [keyword, tag, posts]);
 
   return filteredPosts;
 };

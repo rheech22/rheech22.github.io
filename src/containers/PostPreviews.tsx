@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch } from '../contexts/GlobalContext';
+import { useGlobalContext } from '../contexts/GlobalContext';
 
 import styled from 'styled-components';
 
@@ -8,19 +7,11 @@ import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
 
 import useLoadMore from '../hooks/useLoadMore';
-import usePosts from '../hooks/usePosts';
 
 const PostPreviews = () => {
-  const dispatch = useDispatch();
+  const { posts } = useGlobalContext();
 
-  const posts = usePosts();
   const { offset, loadMore } = useLoadMore(posts);
-
-  useEffect(()=>{
-    if (!posts.length) return;
-
-    dispatch({ type: 'setPosts', payload: { posts } });
-  }, [posts]);
 
   return (
     <Container>

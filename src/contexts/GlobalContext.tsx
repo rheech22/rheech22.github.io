@@ -1,3 +1,4 @@
+import { navigate } from "gatsby";
 import { useContext, useReducer, createContext } from "react";
 
 import { getLocalDisplayMode } from "../utils";
@@ -53,10 +54,10 @@ const reducer = (state: State, { type, payload }: Action) => {
 };
 
 const actionTriggers: {
-  [key in 'flipDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch' | 'setIntersecting']:
+  [key in 'setDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch' | 'setCurrentHeading']:
   (state: State, payload: Action['payload']) => State;
 } = {
-  flipDisplayMode: (state) => {
+  setDisplayMode: (state) => {
     localStorage.setItem('isDark', JSON.stringify(!state.isDark));
 
     return {
@@ -81,7 +82,7 @@ const actionTriggers: {
     return {
       ...state,
       keyword: '',
-      tag: tag !== state.tag ? tag : '',
+      tag: tag === state.tag ? '' : tag,
     };
   },
   clearSearch: (state) => {
@@ -91,7 +92,7 @@ const actionTriggers: {
       tag: '',
     };
   },
-  setIntersecting: (state, { headingId }) => {
+  setCurrentHeading: (state, { headingId }) => {
     return {
       ...state,
       headingId,

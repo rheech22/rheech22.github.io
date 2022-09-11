@@ -16,7 +16,7 @@ const Header = () => {
 
   const [input, setInput] = useState('');
 
-  const flipDisplayMode = () => dispatch({ type: 'flipDisplayMode' });
+  const flipDisplayMode = () => dispatch({ type: 'setDisplayMode' });
 
   const handleChange = (value: string) => setInput(value);
 

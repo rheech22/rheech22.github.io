@@ -27,7 +27,7 @@ const SearchBar = ({
 
     onChange('');
 
-    navigate('/search');
+    navigate(`/search?keyword=${encodeURI(input)}`);
   };
 
   return (
