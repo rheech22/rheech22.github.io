@@ -11,6 +11,7 @@ import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
 import useSpyHeadings from "../hooks/useSpyHeadings";
+import { getDateString } from "../utils";
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
@@ -19,20 +20,26 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { searchByTag } = useTags();
   const spyHeadingsRef = useSpyHeadings();
 
+  const title = post?.frontmatter?.title ?? '';
+  const date = post?.frontmatter?.date ?? '';
+  const contents = post?.html ?? '';
+  const tags = post?.frontmatter?.tags ?? [];
+  const headings = post?.headings ?? [];
+
   return (
     <>
       {post && (
         <PostSection>
           <article>
             <header>
-              <h1>{post.frontmatter?.title}</h1>
-              <time dateTime={''}>{post.frontmatter?.date}</time>
+              <h1>{title}</h1>
+              <time dateTime='updated at'>{date}</time>
             </header>
             <main>
-              <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: post.html ?? '' }}/>
+              <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: contents }}/>
               {
-                post?.frontmatter && post.frontmatter.tags?.length
-                  ? <ul>{post.frontmatter.tags.map((tag, index) => (
+                tags.length > 0
+                  ? <ul>{tags.map((tag, index) => (
                     <Tag
                       key={index}
                       tag={tag}
@@ -43,7 +50,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               }
             </main>
           </article>
-          {post.headings && post.headings?.length > 0 ? <TOC headings={post.headings}/> : null}
+          <TOC headings={headings}/>
         </PostSection>
       )}
       <CommentSection>

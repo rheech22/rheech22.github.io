@@ -11,11 +11,10 @@ import useLoadMore from '../hooks/useLoadMore';
 import usePosts from '../hooks/usePosts';
 
 const PostPreviews = () => {
-  const posts = usePosts();
-
-  const { offset, loadMore } = useLoadMore(posts);
-
   const dispatch = useDispatch();
+
+  const posts = usePosts();
+  const { offset, loadMore } = useLoadMore(posts);
 
   useEffect(()=>{
     if (!posts.length) return;
@@ -32,11 +31,11 @@ const PostPreviews = () => {
           .map(({ node: post }) =>
             <PostPreview
               key={post.id}
-              path={post.frontmatter?.path}
-              date={post.frontmatter?.date}
-              title={post.frontmatter?.title}
-              tags={post.frontmatter?.tags}
-              excerpt={post.excerpt}
+              path={post.frontmatter?.path ?? ''}
+              date={post.frontmatter?.date ?? ''}
+              title={post.frontmatter?.title ?? ''}
+              tags={post.frontmatter?.tags ?? []}
+              excerpt={post.excerpt ?? ''}
             />
           )}
       <LoadMore load={loadMore}/>

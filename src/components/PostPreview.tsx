@@ -2,12 +2,12 @@ import { Link } from "gatsby";
 
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
-import { white } from "../styles/themes";
 import { flex } from "../styles/mixins";
 
 import { useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
 import Tag from "./Tag";
+import { getDateString } from "../utils";
 
 interface Props {
   path?: string | null;
@@ -32,7 +32,7 @@ const PostPreview = ({
     <Container>
       <Link to={path ?? ''}>
         <h2>{title}</h2>
-        <span>{date}</span>
+        <span>{date ? getDateString(date) : ''}</span>
         <p>{excerpt}</p>
       </Link>
       {

@@ -58,3 +58,9 @@ export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {
 
   return bLevel - aLevel;
 });
+
+export const getDateString = (date: string) => {
+  const dateString = new Intl.DateTimeFormat("en-GB", { dateStyle: 'medium' }).format(new Date(date));
+
+  return `Updated on ${dateString.slice(0, -5)}`;
+};

@@ -18,7 +18,7 @@ const TOC = ({ headings }: Props) => {
 
   return (
     <Container>
-      <h2>ON THIS PAGE</h2>
+      {headings && headings.length > 0 ? <h2>ON THIS PAGE</h2> : null}
       <ul>
         {headings?.map(heading => {
           if (!heading) null;
@@ -48,9 +48,9 @@ const Container = styled.aside`
   top: 16px;
   max-height: 80vh;
   overflow-y: scroll;
+  min-width: 287px;
 
   h2 {
-    min-width: 287px;
     padding: 8px 10px;
     margin-bottom: 12px;
     font-size: 16px;
