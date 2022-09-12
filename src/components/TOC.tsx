@@ -55,7 +55,7 @@ const Container = styled.aside`
   h2 {
     margin-bottom: 12px;
     padding: 8px 10px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: .025em;
   }
@@ -75,9 +75,9 @@ const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   padding-right: 8px;
   width: 253px;
   background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.lightBlue : 'none' };
-  color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.default };
+  color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.mute };
   transition: all 50ms ease-in-out;
-  font-size: 14px;
+  font-size: 12px;
 
   &:hover {
     color: ${({ theme }) => theme.blue};

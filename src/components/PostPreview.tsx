@@ -68,12 +68,15 @@ const Container = styled.li`
     font-weight: 600;
     text-decoration: none;
 
-    &:hover {
+    /* &:hover {
       color: ${({ theme }) => theme.blue};
-    }
+    } */
     
     h2 {
       font-size: 20px;
+      font-weight: 600;
+      color: ${({ theme }) => theme.blue};
+      margin-bottom: 4px;
     }
     
     span {

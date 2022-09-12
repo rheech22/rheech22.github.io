@@ -77,7 +77,7 @@ const Avatar = styled.div`
 `;
 
 const Profile = styled.div`
-  width: 100%;
+  width: fit-content;
 
   & > span{
     display: block;
@@ -96,7 +96,7 @@ const Profile = styled.div`
     font-size: 12px;
 
     @media ${device.tablet} {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
@@ -108,7 +108,7 @@ const Profile = styled.div`
 
     li {
       ${flex('center')}
-      height: 25px;
+      height: 24px;
     }
 
     a, span {
@@ -126,7 +126,7 @@ const Profile = styled.div`
 
     @media ${device.tablet} {
       a, span {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
   }

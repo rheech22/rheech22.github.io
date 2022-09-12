@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import { useDispatch } from "../contexts/GlobalContext";
 
 import styled from "styled-components";
-import { searchPlaceholder } from "../styles/themes";
+import { headerLogo, searchPlaceholder } from "../styles/themes";
 
 import Textbox from "./Textbox";
 import Button from "./Button";
@@ -61,11 +61,12 @@ const Container = styled.form`
     width: 100%;
     height: 100%;
     background-color: ${({ theme }) => theme.searchBg};
-    color: ${({ theme }) => theme.default};
+    color: ${headerLogo};
     font-size: 14px;
-
+    
     &:focus {
       background-color: ${({ theme }) => theme.searchBgFocused};
+      color: ${({ theme }) => theme.default};
 
       &::placeholder {
         color: ${({ theme })=>theme.searchPlaceholderFocused};
