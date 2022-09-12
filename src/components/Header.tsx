@@ -10,14 +10,14 @@ import { headerBg, headerLogo } from "../styles/themes";
 
 import SearchBar from "./SearchBar";
 import Button from "./Button";
+import { device } from "../styles/breakpoints";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState('');
 
-  const flipDisplayMode = () => dispatch({ type: 'setDisplayMode' });
-
+  const handleClick = () => dispatch({ type: 'setDisplayMode' });
   const handleChange = (value: string) => setInput(value);
 
   return (
@@ -29,7 +29,7 @@ const Header = () => {
         input={input}
         onChange={handleChange}
       />
-      <Button onClick={flipDisplayMode}/>
+      <Button onClick={handleClick}/>
     </Container>
   );
 };
@@ -38,11 +38,15 @@ export default Header;
 
 const Container = styled.header`
   ${flex('center', 'flex-start')}
-  padding: 16px 32px;
+  padding: 8px 16px;
   min-width: 375px;
   width: 100%;
   height: 62px;
   background-color: ${headerBg};
+  
+  @media ${device.mobileM} {
+    padding: 16px 32px;
+  }
 
   & > a {
     margin-right: 16px;
@@ -57,6 +61,7 @@ const Container = styled.header`
   button {
     border: none;
     padding: 0;
+    min-width: 36px;
     width: 36px;
     height: 36px;
     background: none;
@@ -78,9 +83,13 @@ const Container = styled.header`
     }
 
     &:last-of-type {
-      margin-left: auto;
+      margin-left: 5vw;
       color: #eee;
       opacity: 0.7;
+
+      @media ${device.mobileL} {
+        margin-left: auto;
+      }
 
       &:hover {
         opacity: 1;

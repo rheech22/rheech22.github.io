@@ -1,7 +1,6 @@
 import { graphql, PageProps } from "gatsby";
 
 import styled from "styled-components";
-import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
 import { useGlobalContext } from "../contexts/GlobalContext";
@@ -13,6 +12,28 @@ import { getDateString } from "../utils";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
+import { postStyle } from "../styles/post";
+
+
+export const query = graphql`
+  query template($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      timeToRead
+      headings {
+        id
+        value
+        depth
+      }
+      frontmatter {
+        path
+        date
+        title
+        tags
+      }
+    }
+  }
+`;
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
@@ -54,10 +75,9 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             </header>
             <main>
               <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: contents }}/>
-
             </main>
           </article>
-          <TOC headings={headings}/>
+          { headings.length ? <TOC headings={headings}/> : null}
         </PostSection>
       )}
       <CommentSection>
@@ -67,25 +87,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   );
 };
 
-export const query = graphql`
-  query template($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      timeToRead
-      headings {
-        id
-        value
-        depth
-      }
-      frontmatter {
-        path
-        date
-        title
-        tags
-      }
-    }
-  }
-`;
 
 const PostSection = styled.section`
   ${flex('flex-start', 'center', 'row')};
@@ -93,17 +94,12 @@ const PostSection = styled.section`
   padding: 48px 16px;
   height: auto;
 
-  @media ${device.laptopM} {
-    justify-content: flex-end;
-  }
-  
   & > article {
     ${flex('flex-start', 'normal', 'column')};
-    width: 726px;
+    max-width: 726px;
 
     & > header {
       margin-bottom: 56px;
-      width: 100%;
 
       & > h1 {
         margin-bottom: 4px;
@@ -126,89 +122,9 @@ const PostSection = styled.section`
 
     & > main {
       & > section:nth-child(1){
-        width: 100%;
-        font-size: 16px;
-    
-        @media ${device.tablet} {
-          font-size: 18px;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-          font-weight: 600;
-
-          .header-anchor {
-            fill: ${({ theme }) => theme.default };
-          }
-        }
-    
-        h1 {
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          font-size: 36px;
-        }
-    
-        h2 {
-          margin-block-start: 0.83em;
-          margin-block-end: 0.83em;
-          font-size: 28.8px;
-        }
-
-        h3 {
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          font-size: 21.6px;
-        }
-
-        h4 {
-          margin-block-start: 1.22em;
-          margin-block-end: 1.22em;
-          font-size: 19.8px;
-        }
-
-        p {
-          display: block;
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          word-break: break-word;
-          line-height: 1.8em;
-        }
-
-        ol, ul {
-          padding-left: 40px;
-        }
-
-        ul {
-          list-style-type: disc;
-        }
-
-        ol {
-          list-style-type: decimal;
-        }
-
-        li {
-          display: list-item;
-          text-align: -webkit-match-parent;
-        }
-
-        code {
-          margin: 0;
-          padding: 0.2em 0.4em;
-          background-color: ${({ theme }) => theme.codeBg };
-          border-radius: 6px;
-          font-size: 85%;
-          font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-        }
+        ${postStyle}
       }
     }
-  }
-
-  deckgo-highlight-code {
-    padding: 0.5em 0;
-    font-size: 14px;
-  }
-
-  & > div {
-    height: fit-content;
   }
 `;
 

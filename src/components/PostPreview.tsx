@@ -55,6 +55,12 @@ export default PostPreview;
 
 const Container = styled.li`
   padding: 24px 0;
+  border-bottom: ${({ theme })=> `1px solid ${theme.border}`};
+  width: 100%;
+
+  &:first-of-type {
+    border-top: ${({ theme })=> `1px solid ${theme.border}`};
+  }
   
   & > a {
     ${flex('center', 'center', 'column')}
@@ -67,7 +73,7 @@ const Container = styled.li`
     }
     
     h2 {
-      font-size: 28px;
+      font-size: 20px;
     }
     
     span {
@@ -79,6 +85,7 @@ const Container = styled.li`
     p {
       display: none;
       font-weight: 400;
+      font-size: 14px;
       overflow-y: hidden;
     }
 

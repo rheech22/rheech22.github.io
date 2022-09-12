@@ -31,21 +31,22 @@ const Tags = () => {
 export default Tags;
 
 const Container = styled.div`
-  ${flex('center', 'center', 'row')}
-  width: 100%;
-
+  ${flex('center', 'center', 'row')};
+  margin: 0 20px;
+  padding: 10px 0;
+  
   & > ul {
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 30px;
   }
-
+  
   @media ${device.tablet} {
     ${flex('normal', 'normal', 'column')};
-    padding-left: 13px;
-    width: 296px;
-
+    border-top: ${({ theme })=> `1px solid ${theme.border}`};
+    max-width: 296px;
+    margin: 0;
+    
     & > ul {
       margin-top: 0;
     }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { postPreviews } from '../styles/postPreviews';
 
 import PostPreview from '../components/PostPreview';
 import NoContent from '../components/NoContent';
@@ -35,4 +36,6 @@ const SearchResult = () => {
 
 export default SearchResult;
 
-const Container = styled.ul``;
+const Container = styled.ul`
+  ${postPreviews}
+`;

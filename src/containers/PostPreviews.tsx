@@ -1,12 +1,15 @@
 import { useGlobalContext } from '../contexts/GlobalContext';
 
 import styled from 'styled-components';
+import { device } from '../styles/breakpoints';
 
 import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
 
 import useLoadMore from '../hooks/useLoadMore';
+import { flex } from '../styles/mixins';
+import { postPreviews } from '../styles/postPreviews';
 
 const PostPreviews = () => {
   const { posts } = useGlobalContext();
@@ -37,4 +40,5 @@ const PostPreviews = () => {
 export default PostPreviews;
 
 const Container = styled.ul`
+  ${postPreviews}
 `;

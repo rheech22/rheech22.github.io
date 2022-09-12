@@ -18,14 +18,16 @@ const TOC = ({ headings }: Props) => {
 
   return (
     <Container>
-      {headings && headings.length > 0 ? <h2>ON THIS PAGE</h2> : null}
+      <h2>ON THIS PAGE</h2>
       <ul>
         {headings?.map(heading => {
-          if (!heading) null;
+          if (!heading) return null;
+
+          const { id, depth, value } = heading;
 
           return (
-            <List key={heading?.id} depth={heading?.depth} isIntersecting={heading?.id === headingId}>
-              <Link to={`#${heading?.id ?? ''}`}>{heading?.value}</Link>
+            <List key={id} depth={depth} isIntersecting={id === headingId}>
+              <Link to={`#${id ?? ''}`}>{value}</Link>
             </List>
           );
         })}
@@ -78,7 +80,6 @@ const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   font-size: 14px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.lightBlue};
     color: ${({ theme }) => theme.blue};
   }
 

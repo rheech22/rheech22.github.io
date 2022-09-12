@@ -59,7 +59,7 @@ const actionTriggers: {
   setDisplayMode: (state) => {
     const displayMode = state.displayMode === 'day' ? 'night' : 'day';
 
-    localStorage.setItem('display-mode', JSON.stringify(displayMode));
+    localStorage.setItem('display-mode', displayMode);
 
     return {
       ...state,

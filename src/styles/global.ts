@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
   }
 
   body {
+    width: 100vw;
     background-color: ${({ theme }) => (theme.bg)};
     color: ${({ theme }) => (theme.default)};
     min-height: 100%;
@@ -27,6 +28,7 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
     
     main {
       font-size: 16px;
+      width: 100%;
     }
 
     a {

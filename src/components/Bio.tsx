@@ -14,7 +14,7 @@ const Bio = () => {
       </Avatar>
       <Profile>
         <span>Aiden</span>
-        <p>하루하루는 성실하게, 인생 전체는 되는대로</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <ul>
           <li>
             <Location />
@@ -38,19 +38,22 @@ export default Bio;
 
 const Container = styled.div`
   ${flex('center', 'center', 'row')}
+  padding: 0 40px;
   width: 100%;
   height: fit-content;
-
+  margin-bottom: 8px;
+  
   @media ${device.tablet} {
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
     padding: 0;
+    max-width: 296px;
   }
 `;
 
 const Avatar = styled.div`
   ${flex('center', 'center', 'row')};
-  margin-right: 8px;
+  margin-right: 12px;
   width: 148px;
   height: 148px;
   transition: all 1s;
@@ -63,31 +66,33 @@ const Avatar = styled.div`
 
   @media ${device.tablet} {
     margin-right: 0;
-    width: 296px;
-    height: 296px;
+    width: 100%;
+    min-height: 168px;
     
     & > img {
-      width: 260px;
-      height: 260px;
+      width: 168px;
+      height: 168px;
     }
   }
 `;
 
 const Profile = styled.div`
+  width: 100%;
+
   & > span{
     display: block;
     padding: 8px 0;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     
     @media ${device.tablet} {
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 
   & > p {
     margin-bottom: 8px;
-    white-space: nowrap;
+    width: 100%;
     font-size: 12px;
 
     @media ${device.tablet} {
@@ -107,7 +112,7 @@ const Profile = styled.div`
     }
 
     a, span {
-      font-size: 14px;
+      font-size: 12px;
     }
 
     a {
@@ -118,13 +123,15 @@ const Profile = styled.div`
         text-decoration: underline;
       }
     }
+
+    @media ${device.tablet} {
+      a, span {
+        font-size: 14px;
+      }
+    }
   }
 
   @media ${device.tablet} {
-    & > span {
-      padding: 16px 0;
-    }
-    
     & > p {
       margin-bottom: 16px;
     }

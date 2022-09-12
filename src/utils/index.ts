@@ -3,15 +3,16 @@ type ReduceReturnType = {
 }
 
 export const getLocalDisplayMode = () => {
-  let prefersDarkTheme = null;
-  let displayMode = 'day';
+  let displayMode;
 
   if (typeof window !== "undefined") {
-    prefersDarkTheme = `${window.matchMedia('(prefers-color-scheme: dark)').matches}`;
-    displayMode = localStorage.getItem('display-mode') ?? prefersDarkTheme ?? 'day';
+    const localPreference = localStorage.getItem('display-mode');
+    const devicePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'nigth' : 'day';
+
+    displayMode = localPreference || devicePreference;
   }
 
-  return JSON.parse(displayMode);
+  return displayMode as 'day' | 'night';
 };
 
 export const enrichTags = (tags: (string | null | undefined)[]) => {

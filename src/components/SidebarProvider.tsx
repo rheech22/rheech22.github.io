@@ -18,29 +18,12 @@ const SidebarProvider = ({ children }: Props) => (
 export default SidebarProvider;
 
 const Wrapper = styled.div`
-  ${flex('normal', 'center', 'column')}
+  ${flex('center', 'center', 'column')}
   padding-top: 48px;
+  width: 100%;
   
   @media ${device.tablet} {
     flex-direction: row;
+    align-items: flex-start;
   }
-  
-  & > ul {
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
-    width: auto;
-    
-    & > p {
-      margin-top: 50px;
-      width: 100%;
-      text-align: center;
-    }
-    
-    @media ${device.tablet} {
-      margin: 0 10px;
-      width: 900px;
-    }
-  }
-
 `;
