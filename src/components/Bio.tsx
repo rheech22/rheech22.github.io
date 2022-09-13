@@ -77,30 +77,42 @@ const Avatar = styled.div`
 `;
 
 const Profile = styled.div`
+  @media ${device.tablet} {
+    & > p {
+      margin-bottom: 16px;
+    }
+  }
+
   width: fit-content;
 
   & > span{
+    @media ${device.tablet} {
+      font-size: 20px;
+    }
+
     display: block;
     padding: 8px 0;
     font-size: 14px;
     font-weight: 600;
-    
-    @media ${device.tablet} {
-      font-size: 20px;
-    }
   }
 
   & > p {
-    margin-bottom: 8px;
-    width: 100%;
-    font-size: 12px;
-
     @media ${device.tablet} {
       font-size: 14px;
     }
+
+    margin-bottom: 8px;
+    width: 100%;
+    font-size: 12px;
   }
 
   & > ul {
+    @media ${device.tablet} {
+      a, span {
+        font-size: 12px;
+      }
+    }
+
     svg {
       margin-right: 8px;
       fill: ${({ theme })=>theme.mute};
@@ -122,18 +134,6 @@ const Profile = styled.div`
         color: ${({ theme })=>theme.blue};
         text-decoration: underline;
       }
-    }
-
-    @media ${device.tablet} {
-      a, span {
-        font-size: 12px;
-      }
-    }
-  }
-
-  @media ${device.tablet} {
-    & > p {
-      margin-bottom: 16px;
     }
   }
 `;

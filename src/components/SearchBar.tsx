@@ -3,13 +3,12 @@ import { navigate } from "gatsby";
 import { useDispatch } from "../contexts/GlobalContext";
 
 import styled from "styled-components";
-import { headerLogo, searchPlaceholder, white } from "../styles/themes";
+import { headerLogo, searchPlaceholder } from "../styles/themes";
+import { device } from "../styles/breakpoints";
 
 import Textbox from "./Textbox";
 import Button from "./Button";
-import { device } from "../styles/breakpoints";
-import Search from "../assets/icons/Search";
-import { flex } from "../styles/mixins";
+import SearchSuggestion from "./SearchSuggestion";
 
 interface Props {
   input: string;
@@ -40,22 +39,8 @@ const SearchBar = ({
     <Container onSubmit={handleSubmit} >
       <Textbox onChange={onChange} value={input} placeholder='Search' />
       <ul>
-        <li>
-          <Search/>
-          {input}
-          <Button onClick={() => searchBy('title')} disabled={!input}>
-            Only Title
-            <span>↵</span>
-          </Button>
-        </li>
-        <li>
-          <Search/>
-          {input}
-          <Button onClick={() => searchBy('content')} disabled={!input}>
-            Only Content
-            <span>↵</span>
-          </Button>
-        </li>
+        <SearchSuggestion searchBy={searchBy} input={input} title='only title' filterText="title" />
+        <SearchSuggestion searchBy={searchBy} input={input} title='only content' filterText="content" />
       </ul>
       <Button type="submit" hidden />
     </Container>
@@ -65,23 +50,23 @@ const SearchBar = ({
 export default SearchBar;
 
 const Container = styled.form`
-  border: 1px solid ${({ theme }) => theme.searchBorder};
-  border-radius: 6px;
-  width: 272px;
-  height: 30px;
-  font-weight: 400;
-  position: relative;
-  
   @media ${device.tablet} {
     &:focus-within {
       width: 544px;
-      transition: width 0.5s;
 
       & > ul {
         display: block;
       }
     }
   }
+
+  border: 1px solid ${({ theme }) => theme.searchBorder};
+  border-radius: 6px;
+  width: 272px;
+  height: 30px;
+  font-weight: 400;
+  position: relative;
+  transition: width 0.5s;
   
   & > input {
     border: none;
@@ -94,11 +79,14 @@ const Container = styled.form`
     font-size: 14px;
     
     &:focus {
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
+      @media ${device.tablet} {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+
       background-color: ${({ theme }) => theme.searchBgFocused};
       color: ${({ theme }) => theme.default};
-
+      
       &::placeholder {
         color: ${({ theme })=>theme.searchPlaceholderFocused};
       }  
@@ -125,50 +113,6 @@ const Container = styled.form`
 
     li + li {
       border-top: ${({ theme })=> `1px solid ${theme.border}`};
-    }
-
-    li {
-      ${flex('center')};
-      padding: 0 12px;
-      height: 44px;
-      font-size: 14px;
-
-      &:last-of-type {
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
-      }
-
-      &:hover {
-        background-color: ${({ theme }) => theme.blue};
-        color: ${white};
-
-        svg {
-          fill: ${white}
-        }
-      }
-
-      svg {
-        fill: ${({ theme }) => theme.mute};
-        margin-right: 12px;
-      }
-
-      button {
-        ${flex('center', 'center')};
-        margin-left: auto;
-        border: ${({ theme })=> `1px solid ${theme.border}`};
-        border-radius: 6px;
-        padding: 4px 6px;
-        background-color: ${({ theme }) => theme.searchBgFocused};
-        color: ${({ theme }) => theme.mute};
-        min-width: fit-content;
-        height: 20px;
-        font-size: 12px;
-        letter-spacing: 0.8px;
-
-        & > span {
-          margin-left: 4px;
-        }
-      }
     }
   }
 `;

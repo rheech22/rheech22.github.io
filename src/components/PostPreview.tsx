@@ -63,15 +63,15 @@ const Container = styled.li`
   }
   
   & > a {
+    @media ${device.tablet} {
+      ${flex('flex-start', '', 'column')}
+    }
+
     ${flex('center', 'center', 'column')}
     margin-bottom: 8px;
     font-weight: 600;
     text-decoration: none;
 
-    /* &:hover {
-      color: ${({ theme }) => theme.blue};
-    } */
-    
     h2 {
       font-size: 20px;
       font-weight: 600;
@@ -86,29 +86,25 @@ const Container = styled.li`
     }
 
     p {
+      @media ${device.tablet} {
+        display: block;
+      }
+
       display: none;
       font-weight: 400;
       font-size: 14px;
       overflow-y: hidden;
     }
-
-    @media ${device.tablet} {
-      ${flex('flex-start', '', 'column')}
-
-      p {
-        display: block;
-      }
-    }
   }
 
   & > ul {
+    @media ${device.tablet} {
+      ${flex('center', 'flex-start', 'row')}
+    }
+
     ${flex('center', 'center', 'row')}
     flex-wrap: wrap;
     margin: 4px 0;
     padding: 4px 0;
-    
-    @media ${device.tablet} {
-      ${flex('center', 'flex-start', 'row')}
-    }
   }
 `;

@@ -31,24 +31,23 @@ const Tags = () => {
 export default Tags;
 
 const Container = styled.div`
-  ${flex('center', 'center', 'row')};
-  margin: 0 20px;
-  padding: 10px 0;
-  
-  & > ul {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  
   @media ${device.tablet} {
     ${flex('normal', 'normal', 'column')};
     border-top: ${({ theme })=> `1px solid ${theme.border}`};
     max-width: 296px;
     margin: 0;
-    
-    & > ul {
+  }
+
+  ${flex('center', 'center', 'row')};
+  margin: 0 20px;
+  padding: 10px 0;
+  
+  & > ul {
+    @media ${device.tablet} {
       margin-top: 0;
     }
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
   }
 `;

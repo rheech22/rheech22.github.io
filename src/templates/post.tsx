@@ -13,6 +13,7 @@ import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
 import { postStyle } from "../styles/post";
+import { device } from "../styles/breakpoints";
 
 
 export const query = graphql`
@@ -98,31 +99,41 @@ const PostSection = styled.section`
     ${flex('flex-start', 'normal', 'column')};
     max-width: 726px;
 
+    
+
     & > header {
       margin-bottom: 56px;
 
       & > h1 {
+        @media ${device.mobileL} {
+          font-size: 42px;
+        }
+        
+        font-size: 36px;
         margin-bottom: 4px;
-        font-size: 42px;
         font-weight: 600;
       }
 
-      & > ul:first-of-type {
-        color: ${({ theme }) => theme.mute };
-        font-size: 14px;
-
-      }
-
-      & > ul:nth-of-type(2) {
-        ${flex('center', 'flex-start', 'row')}
-        flex-wrap: wrap;
-        margin-top: 14px;
+      & > ul {
+        &:first-of-type {
+          color: ${({ theme }) => theme.mute };
+          font-size: 14px;
+  
+        }
+  
+        &:nth-of-type(2) {
+          ${flex('center', 'flex-start', 'row')}
+          flex-wrap: wrap;
+          margin-top: 14px;
+        }
       }
     }
 
     & > main {
-      & > section:nth-child(1){
-        ${postStyle}
+      & > section {
+        &:nth-child(1){
+          ${postStyle}
+        }
       }
     }
   }
