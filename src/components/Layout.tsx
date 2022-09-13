@@ -31,9 +31,10 @@ const Layout = ({
 
     const tag = params.get('tag');
     const keyword = params.get('keyword');
+    const filter = params.get('filter');
 
-    if (tag) dispatch({ type: 'searchByTag', payload: { tag } });
-    if (keyword) dispatch({ type: 'searchByKeyword', payload: { keyword } });
+    if (tag) dispatch({ type: 'searchByTag', payload: { tag, filter } });
+    if (keyword) dispatch({ type: 'searchByKeyword', payload: { keyword, filter } });
   }, []);
 
   useEffect(()=>{

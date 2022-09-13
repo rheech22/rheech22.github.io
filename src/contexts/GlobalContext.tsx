@@ -2,9 +2,14 @@ import { useContext, useReducer, createContext } from "react";
 
 import { getLocalDisplayMode } from "../utils";
 
+type SearchFilter = {
+  filter: 'all' | 'title' | 'content';
+  keyword: string;
+}
+
 type State = {
   posts: Posts;
-  keyword: string;
+  searchFilter: SearchFilter;
   tag: string;
   displayMode: 'day' | 'night';
   headingId: string,
@@ -22,9 +27,14 @@ type Action = {
 //   [key in keyof State]?: State[key];
 // };
 
+const initialSearchFilter: SearchFilter = {
+  filter: 'all',
+  keyword: '',
+};
+
 export const initialState = {
   posts: [],
-  keyword: '',
+  searchFilter: initialSearchFilter,
   tag: '',
   displayMode: getLocalDisplayMode(),
   headingId: '',
@@ -72,24 +82,33 @@ const actionTriggers: {
       posts,
     };
   },
-  searchByKeyword: (state, { keyword }) => {
+  searchByKeyword: (state, { filter, keyword }) => {
     return {
       ...state,
-      keyword,
+      searchFilter: {
+        filter,
+        keyword,
+      },
       tag: '',
     };
   },
   searchByTag: (state, { tag }) => {
     return {
       ...state,
-      keyword: '',
+      searchFilter: {
+        filter: 'all',
+        keyword: '',
+      },
       tag: tag === state.tag ? '' : tag,
     };
   },
   clearSearch: (state) => {
     return {
       ...state,
-      keyword: '',
+      searchFilter: {
+        filter: 'all',
+        keyword: '',
+      },
       tag: '',
     };
   },
