@@ -6,8 +6,10 @@ import { flex } from "../styles/mixins";
 
 import { useGlobalContext } from "../contexts/GlobalContext";
 import useTags from "../hooks/useTags";
-import Tag from "./Tag";
+
 import { getDateString } from "../utils";
+
+import Tag from "./Tag";
 
 interface Props {
   path?: string | null;

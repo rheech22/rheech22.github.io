@@ -1,15 +1,13 @@
 import { useGlobalContext } from '../contexts/GlobalContext';
+import useLoadMore from '../hooks/useLoadMore';
 
 import styled from 'styled-components';
-import { device } from '../styles/breakpoints';
+import { postPreviews } from '../styles/postPreviews';
 
 import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
 
-import useLoadMore from '../hooks/useLoadMore';
-import { flex } from '../styles/mixins';
-import { postPreviews } from '../styles/postPreviews';
 
 const PostPreviews = () => {
   const { posts } = useGlobalContext();

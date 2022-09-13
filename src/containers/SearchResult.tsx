@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { postPreviews } from '../styles/postPreviews';
 
+import useFilteredPosts from '../hooks/useFilteredPosts';
+import useLoadMore from '../hooks/useLoadMore';
+
 import PostPreview from '../components/PostPreview';
 import NoContent from '../components/NoContent';
 import LoadMore from '../components/LoadMore';
-
-import useFilteredPosts from '../hooks/useFilteredPosts';
-import useLoadMore from '../hooks/useLoadMore';
 
 const SearchResult = () => {
   const filteredPosts = useFilteredPosts();

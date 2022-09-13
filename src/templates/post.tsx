@@ -2,6 +2,8 @@ import { graphql, PageProps } from "gatsby";
 
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
+import { device } from "../styles/breakpoints";
+import { postStyle } from "../styles/post";
 
 import { useGlobalContext } from "../contexts/GlobalContext";
 import useSpyHeadings from "../hooks/useSpyHeadings";
@@ -12,8 +14,6 @@ import { getDateString } from "../utils";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
-import { postStyle } from "../styles/post";
-import { device } from "../styles/breakpoints";
 
 
 export const query = graphql`

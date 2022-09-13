@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { Theme } from "./themes";
 import reset from "styled-reset";
+import { Theme } from "./themes";
 
 interface GlobalStyle {
   theme: Theme

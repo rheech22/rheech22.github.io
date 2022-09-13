@@ -5,11 +5,11 @@ import { useDispatch } from "../contexts/GlobalContext";
 
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
+import { device } from "../styles/breakpoints";
 import { headerBg, headerLogo } from "../styles/themes";
 
 import SearchBar from "./SearchBar";
 import Button from "./Button";
-import { device } from "../styles/breakpoints";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import { navigate } from "gatsby";
 
 import { useDispatch } from "../contexts/GlobalContext";
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { headerLogo, searchPlaceholder } from "../styles/themes";
 import { device } from "../styles/breakpoints";
 

@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import Search from "../assets/icons/Search";
 import { flex } from "../styles/mixins";
 import { white } from "../styles/themes";
+
+import Search from "../assets/icons/Search";
+
 import Button from "./Button";
 
 interface Props {
