@@ -2,7 +2,7 @@ import { navigate } from "gatsby";
 
 import { useDispatch } from "../contexts/GlobalContext";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { headerLogo, searchPlaceholder } from "../styles/themes";
 import { device } from "../styles/breakpoints";
 
@@ -36,12 +36,15 @@ const SearchBar = ({
   };
 
   return (
-    <Container onSubmit={handleSubmit} >
+    <Container onSubmit={handleSubmit} hasInput={Boolean(input)}>
       <Textbox onChange={onChange} value={input} placeholder='Search' />
-      <ul>
-        <SearchSuggestion searchBy={searchBy} input={input} title='only title' filterText="title" />
-        <SearchSuggestion searchBy={searchBy} input={input} title='only content' filterText="content" />
-      </ul>
+      {
+        input &&
+        <ul>
+          <SearchSuggestion searchBy={searchBy} input={input} title='only title' filterText="title" />
+          <SearchSuggestion searchBy={searchBy} input={input} title='only content' filterText="content" />
+        </ul>
+      }
       <Button type="submit" hidden />
     </Container>
   );
@@ -49,7 +52,7 @@ const SearchBar = ({
 
 export default SearchBar;
 
-const Container = styled.form`
+const Container = styled.form<{hasInput: boolean}>`
   @media ${device.tablet} {
     &:focus-within {
       width: 544px;
@@ -80,8 +83,8 @@ const Container = styled.form`
     
     &:focus {
       @media ${device.tablet} {
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
+        border-bottom-right-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
       }
 
       background-color: ${({ theme }) => theme.searchBgFocused};
