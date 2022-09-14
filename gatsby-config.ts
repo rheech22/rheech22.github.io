@@ -24,7 +24,7 @@ const config: GatsbyConfig = {
           {
             resolve: `gatsby-remark-highlight-code`,
             options: {
-              theme: "monokai",
+              theme: "dracula",
             },
           },
           {

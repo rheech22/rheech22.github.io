@@ -96,10 +96,12 @@ const PostSection = styled.section`
   height: auto;
 
   & > article {
-    ${flex('flex-start', 'normal', 'column')};
-    max-width: 726px;
+    @media ${device.tablet} {
+      width: 726px;
+    }
 
-    
+    ${flex('flex-start', 'normal', 'column')};
+    width: auto;
 
     & > header {
       margin-bottom: 56px;

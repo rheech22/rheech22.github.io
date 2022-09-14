@@ -52,6 +52,10 @@ const Container = styled.aside`
   color: ${({ theme }) => theme.default};
   overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   h2 {
     margin-bottom: 12px;
     padding: 8px 10px;
