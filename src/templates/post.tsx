@@ -139,6 +139,7 @@ const PostSection = styled.section`
 
     @media ${device.laptopM} {
       margin-left: auto;
+      transform: translateX(12%);
     }
     
     ${flex('flex-start', 'normal', 'column')};

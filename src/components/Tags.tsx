@@ -42,9 +42,6 @@ const Container = styled.div`
   ${flex('center', 'center', 'row')};
   margin: 0 20px;
   padding: 10px;
-
-  box-shadow: ${({ theme }) => `${theme.blue} 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px`};
-  border-radius: 10px;
   
   & > ul {
     @media ${device.laptopL} {

@@ -39,8 +39,6 @@ export default Bio;
 const Container = styled.div`
   @media ${device.laptopL} {
     flex-direction: column;
-    box-shadow: ${({ theme }) => `${theme.blue} 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px`};
-    border-radius: 20px;
     max-width: 316px;
     padding: 20px;
     margin: 0 0 18px 0;
