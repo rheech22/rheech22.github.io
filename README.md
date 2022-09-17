@@ -45,7 +45,7 @@
 - [x] 검색 카테고리 선택하기 (제목+내용, 제목, 내용)
 - [x] SEO 하기
 - [x] 404 page
-- [ ] 극단 케이스 적용해서 UI 깨짐 확인하기
+- [x] 극단 케이스 적용해서 UI 깨짐 확인하기
 - [ ] 배포 페이지 새로고침시 테마 일부 미적용 해결하기
 - [ ] 연관된 글 보여주기 - 그래프 라이브러리 활용하기
 - [ ] 반응형 디자인 마무리하기
@@ -62,4 +62,4 @@
 - [utterances](https://utteranc.es/?installation_id=28274981&setup_action=install)로 댓글 기능 추가
 - ThemeProvider 편하다
 - TOC 하이라이트를 intersectionObserver로 구현하려 했지만, 클릭해서 이동할 때 제대로 intersection을 감지하지 못함, 스크롤 이벤트를 최적화하는 방법으로 사용해야 할듯
-- sticky position을 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함
+- sticky position을 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 

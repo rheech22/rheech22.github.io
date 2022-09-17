@@ -17,7 +17,12 @@ const Header = () => {
   const [input, setInput] = useState('');
 
   const handleClick = () => dispatch({ type: 'setDisplayMode' });
-  const handleChange = (value: string) => setInput(value);
+
+  const handleChange = (value: string) => {
+    if (value.length > 40) return;
+    setInput(value);
+  };
+
   const handleReset = () => {
     setInput('');
     dispatch({ type: 'clearSearch' });

@@ -83,17 +83,20 @@ const Profile = styled.div`
     }
   }
 
-  width: fit-content;
+  max-width: 296px;
 
   & > span{
     @media ${device.tablet} {
       font-size: 20px;
     }
 
+    width: 100%;
     display: block;
     padding: 8px 0;
     font-size: 14px;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   & > p {
@@ -113,17 +116,29 @@ const Profile = styled.div`
       }
     }
 
+    width: 100%;
+
     svg {
       margin-right: 8px;
       fill: ${({ theme })=>theme.mute};
+      width: fit-content;
     }
 
     li {
       ${flex('center')}
+      width: 100%;
       height: 24px;
     }
-
+    
     a, span {
+      @media ${device.tablet} {
+        max-width: 270px;
+      }
+  
+      max-width: 170px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: 12px;
     }
 

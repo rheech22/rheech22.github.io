@@ -37,15 +37,20 @@ const Container = styled.li<Container>`
   padding: 0 10px;
   min-height: fit-content;
   width: fit-content;
+  max-width: 296px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: ${({ theme, isSelected }) => isSelected ? theme.tagBgHovered : theme.lightBlue };
   color: ${({ theme, isSelected }) => isSelected ? white : theme.blue };
-  white-space: nowrap;
   font-size: 12px;
   font-weight: 500;
   line-height: 22px;
   cursor: pointer;
 
   &:hover {
+    overflow-x: visible;
+    text-overflow: unset;
     background-color: ${({ theme }) => theme.tagBgHovered};
     color: ${white};
   }

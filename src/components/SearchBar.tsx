@@ -37,7 +37,7 @@ const SearchBar = ({
 
   return (
     <Container onSubmit={handleSubmit} hasInput={Boolean(input)}>
-      <Textbox onChange={onChange} value={input} placeholder='Search' />
+      <Textbox onChange={onChange} value={input} placeholder='Search' maxLength={40} />
       {
         input &&
         <ul>
