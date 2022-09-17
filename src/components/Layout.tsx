@@ -13,6 +13,7 @@ import SEO from "./SEO";
 import {
   defineCustomElements as highlightCodeBlock,
 } from "@deckdeckgo/highlight-code/dist/loader";
+import Footer from "./Footer";
 
 interface Props {
   children: JSX.Element | null;
@@ -51,6 +52,7 @@ const Layout = ({
       <main>
         {children}
       </main>
+      <Footer/>
     </ThemeProvider>
   );
 };

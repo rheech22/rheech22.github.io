@@ -73,6 +73,7 @@ const Container = styled.li`
     font-size: 12px;
     letter-spacing: 0.8px;
     outline: none;
+    cursor: pointer;
 
     & > span {
       margin-left: 4px;
