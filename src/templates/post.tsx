@@ -113,7 +113,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: contents }}/>
             </main>
           </article>
-          { headings.length ? <TOC headings={headings}/> : null}
+          <TOC headings={headings}/>
         </PostSection>
       )}
       <CommentSection>
@@ -124,9 +124,12 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 };
 
 const PostSection = styled.section`
-  ${flex('flex-start', 'center', 'row')};
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   margin: 72px auto 0 auto;
-  padding: 48px 16px;
+  padding: 48px 0px;
+  width: 100%;
   height: auto;
 
   & > article {
@@ -134,7 +137,12 @@ const PostSection = styled.section`
       width: 726px;
     }
 
+    @media ${device.laptopM} {
+      margin-left: auto;
+    }
+    
     ${flex('flex-start', 'normal', 'column')};
+    padding: 48px 16px;
     width: auto;
 
     & > header {

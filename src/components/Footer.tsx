@@ -13,11 +13,12 @@ const Footer = () => {
 export default Footer;
 
 const Container = styled.footer`
+  margin-top: auto;
   border-top: ${({ theme })=> `1px solid ${theme.border}`};
   width: 100%;
   text-align: center;
   font-size: 12px;
-  margin-top: auto;
+  
 
   &> section {
     padding: 48px 8px;
@@ -26,5 +27,6 @@ const Container = styled.footer`
   & > span {
     display: inline-flex;
     align-items: center;
+    color: ${({ theme })=> theme.mute};
   }
 `;

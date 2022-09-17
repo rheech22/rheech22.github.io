@@ -6,9 +6,9 @@ export const postPreviews = css`
   @media ${device.tablet} {
     margin: 0 10px;
     padding: 0px 10px;
-    max-width: 900px;
+    max-width: 780px;
   }
-  
+
   ${flex('center', 'center', 'column')}
   margin-left: 0;
   width: 100%;
@@ -18,5 +18,9 @@ export const postPreviews = css`
     margin-top: 50px;
     width: 100%;
     text-align: center;
+  }
+
+  & > li + li {
+    border-top: ${({ theme }) => `1px solid ${theme.border}`};
   }
 `;

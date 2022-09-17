@@ -15,11 +15,14 @@ const Sidebar = () => (
 export default Sidebar;
 
 const Wrapper = styled.aside`
-  @media ${device.tablet} {
-    padding-left: 40px;
+  @media ${device.laptopL} {
     width: fit-content;
+    margin-left: 20px;
+    margin-right: auto;
   }
 
   ${flex('normal', 'normal', 'column')};
+  position: static;
   width: 100%;
+  height: 100%;
 `;

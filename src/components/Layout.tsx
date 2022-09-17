@@ -8,12 +8,11 @@ import { dark, light } from "../styles/themes";
 import { GlobalStyle } from "../styles/global";
 
 import Header from "./Header";
-import SEO from "./SEO";
+import Footer from "./Footer";
 
 import {
   defineCustomElements as highlightCodeBlock,
 } from "@deckdeckgo/highlight-code/dist/loader";
-import Footer from "./Footer";
 
 interface Props {
   children: JSX.Element | null;

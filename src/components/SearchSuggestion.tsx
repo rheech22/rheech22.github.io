@@ -47,7 +47,7 @@ const Container = styled.li`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.blue};
+    background-color: ${({ theme }) => theme.searchSuggestionHovered};
     color: ${white};
 
     svg {

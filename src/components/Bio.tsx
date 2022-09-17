@@ -37,18 +37,19 @@ const Bio = () => {
 export default Bio;
 
 const Container = styled.div`
-  ${flex('center', 'center', 'row')}
-  padding: 0 40px;
-  width: 100%;
-  height: fit-content;
-  margin-bottom: 8px;
-  
-  @media ${device.tablet} {
+  @media ${device.laptopL} {
     flex-direction: column;
-    margin-bottom: 18px;
-    padding: 0;
-    max-width: 296px;
+    box-shadow: ${({ theme }) => `${theme.blue} 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px`};
+    border-radius: 20px;
+    max-width: 316px;
+    padding: 20px;
+    margin: 0 0 18px 0;
   }
+
+  ${flex('center', 'center', 'row')}
+  margin: 0 20px;
+  margin-bottom: 8px;
+  height: fit-content;
 `;
 
 const Avatar = styled.div`
@@ -64,7 +65,7 @@ const Avatar = styled.div`
     border-radius: 50%;
   }
 
-  @media ${device.tablet} {
+  @media ${device.laptopL} {
     margin-right: 0;
     width: 100%;
     min-height: 168px;
@@ -77,7 +78,7 @@ const Avatar = styled.div`
 `;
 
 const Profile = styled.div`
-  @media ${device.tablet} {
+  @media ${device.laptopL} {
     & > p {
       margin-bottom: 16px;
     }
@@ -86,7 +87,7 @@ const Profile = styled.div`
   max-width: 296px;
 
   & > span{
-    @media ${device.tablet} {
+    @media ${device.laptopL} {
       font-size: 20px;
     }
 
@@ -100,7 +101,7 @@ const Profile = styled.div`
   }
 
   & > p {
-    @media ${device.tablet} {
+    @media ${device.laptopL} {
       font-size: 14px;
     }
 
@@ -110,7 +111,7 @@ const Profile = styled.div`
   }
 
   & > ul {
-    @media ${device.tablet} {
+    @media ${device.laptopL} {
       a, span {
         font-size: 12px;
       }
@@ -131,7 +132,7 @@ const Profile = styled.div`
     }
     
     a, span {
-      @media ${device.tablet} {
+      @media ${device.laptopL} {
         max-width: 270px;
       }
   

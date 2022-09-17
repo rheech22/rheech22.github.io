@@ -57,13 +57,8 @@ export default PostPreview;
 
 const Container = styled.li`
   padding: 24px 0;
-  border-bottom: ${({ theme })=> `1px solid ${theme.border}`};
   width: 100%;
 
-  &:first-of-type {
-    border-top: ${({ theme })=> `1px solid ${theme.border}`};
-  }
-  
   & > a {
     @media ${device.tablet} {
       ${flex('flex-start', '', 'column')}
