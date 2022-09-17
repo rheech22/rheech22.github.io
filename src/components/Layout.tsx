@@ -47,7 +47,6 @@ const Layout = ({
   return (
     <ThemeProvider theme={displayMode === 'day' ? light : dark }>
       <GlobalStyle/>
-      <SEO title="BLOG" />
       <Header />
       <main>
         {children}

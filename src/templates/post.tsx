@@ -14,12 +14,15 @@ import { getDateString } from "../utils";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
+import { Helmet } from "react-helmet";
+import { title as defaultTitle, siteUrl, twitterUsername } from "../../config";
 
 
 export const query = graphql`
   query template($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
+      excerpt(truncate: true, format: PLAIN)
       timeToRead
       headings {
         id
@@ -45,13 +48,45 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const title = post?.frontmatter?.title ?? '';
   const date = post?.frontmatter?.date ?? '';
-  const contents = post?.html ?? '';
+  const path = post?.frontmatter?.path ?? '';
   const tags = post?.frontmatter?.tags ?? [];
+  const contents = post?.html ?? '';
+  const excerpt = post?.excerpt ?? '';
   const headings = post?.headings ?? [];
   const timeToRead = post?.timeToRead ?? '';
 
   return (
     <>
+      <Helmet>
+        <title>{title} | {defaultTitle}</title>
+        <meta name="description" content={excerpt} />
+        <meta name="image" content='' />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={excerpt} />
+        <meta name="og:type" content='website' />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={excerpt} />
+        <meta name="twitter:url" content={`${siteUrl}${title}`} />
+        <meta name="twitter:image" content='' />
+        <meta name="twitter:creator" content={twitterUsername} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>☕️</text></svg>" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "url": "https://rheechlog.gatsbyjs.io/${path}",
+              "headline": "${title}",
+              "datePublisehd": "${date}",
+              "dateModified": "${date}",
+              "image": "[]"
+            }
+          `}
+        </script>
+      </Helmet>
+
       {post && (
         <PostSection>
           <article>
@@ -87,7 +122,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
     </>
   );
 };
-
 
 const PostSection = styled.section`
   ${flex('flex-start', 'center', 'row')};

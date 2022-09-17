@@ -1,9 +1,12 @@
 import type { GatsbyConfig } from "gatsby";
+import { title, description, twitterUsername, siteUrl } from './config';
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `rheechlog`,
-    siteUrl: `https://rheechlog.gatsbyjs.io/`,
+    title,
+    description,
+    twitterUsername,
+    siteUrl,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

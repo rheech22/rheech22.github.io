@@ -1901,6 +1901,7 @@ type SiteFieldsEnum =
   | 'siteMetadata.description'
   | 'siteMetadata.siteUrl'
   | 'siteMetadata.title'
+  | 'siteMetadata.twitterUsername'
   | 'trailingSlash';
 
 type SiteFilterInput = {
@@ -2666,12 +2667,14 @@ type SiteSiteMetadata = {
   readonly description: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
+  readonly twitterUsername: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly twitterUsername: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSortInput = {
@@ -2702,7 +2705,7 @@ type templateQueryVariables = Exact<{
 }>;
 
 
-type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly timeToRead: number | null, readonly headings: ReadonlyArray<{ readonly id: string | null, readonly value: string | null, readonly depth: number | null } | null> | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
+type templateQuery = { readonly markdownRemark: { readonly html: string | null, readonly excerpt: string | null, readonly timeToRead: number | null, readonly headings: ReadonlyArray<{ readonly id: string | null, readonly value: string | null, readonly depth: number | null } | null> | null, readonly frontmatter: { readonly path: string | null, readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
 
 type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 
