@@ -7,7 +7,7 @@ export const getLocalDisplayMode = () => {
 
   if (typeof window !== "undefined") {
     const localPreference = localStorage.getItem('display-mode');
-    const devicePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'nigth' : 'day';
+    const devicePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
 
     displayMode = localPreference || devicePreference;
   }
