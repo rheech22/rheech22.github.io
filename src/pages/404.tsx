@@ -35,7 +35,6 @@ const Container = styled.div`
   }
 `;
 
-
 export const Head = () => (
   <SEO subTitle='404'/>
 );
