@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 import { useEffect } from "react";
 
-import { useDispatch } from "../contexts/GlobalContext";
+import { useDispatch } from "../store/context";
 
 const usePosts = () => {
   const data: Queries.getPostsQuery = useStaticQuery(GET_POST);

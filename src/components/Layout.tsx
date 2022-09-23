@@ -12,7 +12,7 @@ import Footer from "./Footer";
 import {
   defineCustomElements as highlightCodeBlock,
 } from "@deckdeckgo/highlight-code/dist/loader";
-import { useGlobalContext } from "../contexts/GlobalContext";
+import { useContext } from "../store/context";
 
 interface Props {
   children: JSX.Element | null;
@@ -30,7 +30,7 @@ const Layout = ({
 
   highlightCodeBlock();
 
-  const { displayMode } = useGlobalContext();
+  const { displayMode } = useContext();
 
   return (
     <ThemeProvider theme={displayMode === 'day' ? light : dark }>

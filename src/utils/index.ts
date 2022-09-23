@@ -2,17 +2,8 @@ type ReduceReturnType = {
   [key: string]: number;
 }
 
-export const getLocalDisplayMode = () => {
-  let displayMode;
-
-  if (typeof window !== "undefined") {
-    const localPreference = localStorage.getItem('display-mode');
-    const devicePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
-
-    displayMode = localPreference || devicePreference;
-  }
-
-  return displayMode as 'day' | 'night';
+export const getTheme = (displayMode: 'day' | 'night' | null) => {
+  return displayMode === 'day' ? 'night' : 'day';
 };
 
 export const enrichTags = (tags: (string | null | undefined)[]) => {

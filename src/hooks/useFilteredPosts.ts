@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useGlobalContext } from "../contexts/GlobalContext";
+import { useContext } from "../store/context";
 
 const useFilteredPosts = () => {
-  const { posts, searchFilter: { filter, keyword }, tag } = useGlobalContext();
+  const { posts, searchFilter: { filter, keyword }, tag } = useContext();
 
   const [filteredPosts, setFilteredPosts] = useState(posts);
 

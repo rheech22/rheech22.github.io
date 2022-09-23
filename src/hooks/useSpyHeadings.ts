@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useDispatch } from "../contexts/GlobalContext";
+import { useDispatch } from "../store/context";
 
 const useSpyHeadings = () => {
   const ref = useRef<HTMLDivElement>(null);

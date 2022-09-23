@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
 
-import { useGlobalContext } from "../contexts/GlobalContext";
+import { useContext } from "../store/context";
 import useTags from "../hooks/useTags";
 
 import { getDateString } from "../utils";
@@ -26,7 +26,7 @@ const PostPreview = ({
   excerpt = '',
   tags = [],
 }: Props) => {
-  const { tag: selectedTag } = useGlobalContext();
+  const { tag: selectedTag } = useContext();
 
   const { searchByTag } = useTags();
 

@@ -1,6 +1,6 @@
 import { navigate } from "gatsby";
 
-import { useDispatch } from "../contexts/GlobalContext";
+import { useDispatch } from "../store/context";
 
 import styled from "styled-components";
 import { headerLogo, searchPlaceholder } from "../styles/themes";

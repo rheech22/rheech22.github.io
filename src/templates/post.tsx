@@ -5,7 +5,7 @@ import { flex } from "../styles/mixins";
 import { device } from "../styles/breakpoints";
 import { postStyle } from "../styles/post";
 
-import { useGlobalContext } from "../contexts/GlobalContext";
+import { useContext } from "../store/context";
 import useSpyHeadings from "../hooks/useSpyHeadings";
 import useTags from "../hooks/useTags";
 
@@ -42,7 +42,7 @@ export const query = graphql`
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { markdownRemark: post } = data;
 
-  const { displayMode } = useGlobalContext();
+  const { displayMode } = useContext();
   const { searchByTag } = useTags();
   const spyHeadingsRef = useSpyHeadings();
 
@@ -54,6 +54,8 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const excerpt = post?.excerpt ?? '';
   const headings = post?.headings ?? [];
   const timeToRead = post?.timeToRead ?? '';
+
+  console.log(displayMode);
 
   return (
     <>
@@ -116,9 +118,14 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <TOC headings={headings}/>
         </PostSection>
       )}
-      <CommentSection>
-        <Comments repo="rheech22/comments" theme={displayMode === 'day' ? 'boxy-light' : 'github-dark-orange' }/>
-      </CommentSection>
+      {displayMode
+        ? (
+          <CommentSection>
+            <Comments repo="rheech22/comments" theme={displayMode === 'day' ? 'boxy-light' : 'github-dark-orange' }/>
+          </CommentSection>
+        )
+        : null
+      }
     </>
   );
 };

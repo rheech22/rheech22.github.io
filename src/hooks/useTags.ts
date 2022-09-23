@@ -1,12 +1,12 @@
 import { navigate } from "gatsby";
 
-import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
+import { useDispatch, useContext } from "../store/context";
 
 import { enrichTags, sortTags } from "../utils";
 
 const useTags = () => {
   const dispatch = useDispatch();
-  const { posts } = useGlobalContext();
+  const { posts } = useContext();
 
   const allTags = posts.map(({ node }) => node.frontmatter?.tags).flat();
   const tags = sortTags(enrichTags(allTags));

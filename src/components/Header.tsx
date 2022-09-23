@@ -1,7 +1,10 @@
 import { Link } from "gatsby";
 
 import { useState } from "react";
-import { useDispatch } from "../contexts/GlobalContext";
+
+import { useContext, useDispatch } from "../store/context";
+
+import { getTheme } from "../utils";
 
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
@@ -12,11 +15,12 @@ import SearchBar from "./SearchBar";
 import Button from "./Button";
 
 const Header = () => {
+  const { displayMode } = useContext();
   const dispatch = useDispatch();
 
   const [input, setInput] = useState('');
 
-  const handleClick = () => dispatch({ type: 'setDisplayMode' });
+  const handleClick = () => dispatch({ type: 'setDisplayMode', payload: { displayMode: getTheme(displayMode) } });
 
   const handleChange = (value: string) => {
     if (value.length > 40) return;

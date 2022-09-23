@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 
-import { useGlobalContext } from "../contexts/GlobalContext";
+import { useContext } from "../store/context";
 
 interface Props {
   headings: readonly ({
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const TOC = ({ headings }: Props) => {
-  const { headingId } = useGlobalContext();
+  const { headingId } = useContext();
 
   return (
     <Container>

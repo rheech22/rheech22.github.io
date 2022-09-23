@@ -1,4 +1,4 @@
-import { useGlobalContext } from '../contexts/GlobalContext';
+import { useContext } from '../store/context';
 import useLoadMore from '../hooks/useLoadMore';
 
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ import NoContent from '../components/NoContent';
 
 
 const PostPreviews = () => {
-  const { posts } = useGlobalContext();
+  const { posts } = useContext();
 
   const { offset, loadMore } = useLoadMore(posts);
 

@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "./src/components/Layout";
 
-import { GlobalContextProvider } from "./src/contexts/GlobalContext";
+import { ContextProvider } from "./src/store/context";
 
 export default ({ element, props }) => {
   return (
-    <GlobalContextProvider>
+    <ContextProvider>
       <Layout {...props}>{element}</Layout>
-    </GlobalContextProvider>
+    </ContextProvider>
   );
 };
