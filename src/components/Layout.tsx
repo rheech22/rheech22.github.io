@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-
-import { useDispatch, useGlobalContext } from "../contexts/GlobalContext";
+import useSearchParams from "../hooks/useSearchParams";
 import usePosts from "../hooks/usePosts";
+import useTheme from "../hooks/useTheme";
 
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "../styles/themes";
@@ -13,6 +12,7 @@ import Footer from "./Footer";
 import {
   defineCustomElements as highlightCodeBlock,
 } from "@deckdeckgo/highlight-code/dist/loader";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 interface Props {
   children: JSX.Element | null;
@@ -22,27 +22,15 @@ interface Props {
 const Layout = ({
   children,
 }: Props) => {
-  const { displayMode } = useGlobalContext();
-  const dispatch = useDispatch();
-  const posts = usePosts();
+  useTheme();
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
+  useSearchParams();
 
-    const tag = params.get('tag');
-    const keyword = params.get('keyword');
-    const filter = params.get('filter');
-
-    if (tag) dispatch({ type: 'searchByTag', payload: { tag, filter } });
-    if (keyword) dispatch({ type: 'searchByKeyword', payload: { keyword, filter } });
-  }, []);
-
-  useEffect(()=>{
-    if (!posts.length) return;
-    dispatch({ type: 'setPosts', payload: { posts } });
-  }, [posts]);
+  usePosts();
 
   highlightCodeBlock();
+
+  const { displayMode } = useGlobalContext();
 
   return (
     <ThemeProvider theme={displayMode === 'day' ? light : dark }>

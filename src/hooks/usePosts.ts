@@ -1,11 +1,20 @@
 import { graphql, useStaticQuery } from "gatsby";
 
+import { useEffect } from "react";
+
+import { useDispatch } from "../contexts/GlobalContext";
+
 const usePosts = () => {
   const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
 
   const { edges: posts } = data.allMarkdownRemark;
 
-  return posts;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!posts.length) return;
+    dispatch({ type: 'setPosts', payload: { posts } });
+  }, [posts]);
 };
 
 export default usePosts;
