@@ -58,7 +58,7 @@ const config: GatsbyConfig = {
         background_color: themeColor,
         theme_color: themeColor,
         display: `standalone`,
-        icon: `src/images/default512.png`,
+        icon: `src/images/icon512.png`,
         icons: [
           {
             src: `/favicons/android-chrome-192x192.png`,
