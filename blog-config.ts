@@ -1,5 +1,5 @@
 const config = {
-  title: 'nihil',
+  title: 'git log',
   description: '주로 프론트엔드 개발에 대한 주제를 이야기 합니다.',
   author: 'Aiden',
   language: 'ko-KR',

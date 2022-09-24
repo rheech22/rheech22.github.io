@@ -4,6 +4,7 @@ import configs from './blog-config';
 const { title, description, twitterUsername, siteUrl, themeColor } = configs;
 
 const config: GatsbyConfig = {
+  pathPrefix: '/rheech22',
   siteMetadata: {
     title,
     description,
@@ -69,6 +70,7 @@ const config: GatsbyConfig = {
             src: '/favicons/android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png',
+            purpose: 'any maskable',
           },
         ],
       },

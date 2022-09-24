@@ -33,8 +33,6 @@ const SEO = ({ subTitle, description, pathname, children }: Props) => {
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={seo.twitterUsername} />
-      <link rel="icon" type="image/png" href="../images/favicon.png" />
-      <link rel="apple-touch-icon" href="../images/icon180.png" />
       {children}
     </>
   );

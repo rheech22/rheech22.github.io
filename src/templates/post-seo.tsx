@@ -27,8 +27,6 @@ export default ({ title, excerpt, path, date }: Props) => {
       <meta name="twitter:image" content="" />
       <meta name="twitter:creator" content={twitterUsername} />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <link rel="icon" type="image/png" href="../images/favicon.png" />
-      <link rel="apple-touch-icon" href="../images/icon180.png" />
       <script type="application/ld+json">
         {`
             {
