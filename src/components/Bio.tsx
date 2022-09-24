@@ -1,3 +1,5 @@
+import { StaticImage } from "gatsby-plugin-image";
+
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
 import { flex } from "../styles/mixins";
@@ -8,13 +10,19 @@ import Mail from "../assets/icons/Mail";
 
 import config from "../../blog-config";
 
-const { avatarUrl, author, description, location, email, github } = config;
-
 const Bio = () => {
+  const { author, description, location, email, github } = config;
+
   return (
     <Container>
       <Avatar>
-        <img alt='avatar' src={avatarUrl} />
+        <StaticImage
+          src="../images/avatar.jpeg"
+          alt="avatar"
+          placeholder="blurred"
+          width={168}
+          height={168}
+        />
       </Avatar>
       <Profile>
         <Author>{author}</Author>
@@ -52,7 +60,6 @@ const Container = styled.div`
     padding: 20px;
     margin: 0 0 18px 0;
   }
-
 `;
 
 const Avatar = styled.div`
@@ -61,7 +68,7 @@ const Avatar = styled.div`
   width: 148px;
   height: 148px;
 
-  & > img {
+  img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
@@ -72,7 +79,7 @@ const Avatar = styled.div`
     width: 100%;
     min-height: 168px;  
 
-    & > img {
+    img {
       width: 168px;
       height: 168px;
     }

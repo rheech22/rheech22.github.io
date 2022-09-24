@@ -2,6 +2,30 @@ import { css } from "styled-components";
 import { device } from "./breakpoints";
 import { border, flex } from "./mixins";
 
+export const avatarWrapper = css`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  margin-right: 12px;
+  width: 148px;
+  height: 148px;
+  
+  @media ${device.widerThanLaptop} {
+    margin-right: 0;
+    width: 100%;
+    min-height: 168px;  
+  }
+`;
+
+export const avatar = css`
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+
+  @media ${device.widerThanLaptop} {
+    width: 168px;
+    height: 168px;
+  }
+`;
+
 export const previews = css`
   @media ${device.widerThanTablet} {
     margin: 0 10px;

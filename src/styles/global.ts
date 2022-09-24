@@ -13,7 +13,6 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
   * {
     box-sizing: border-box;
   }
-
   
   html, body {
     scroll-behavior: smooth;
