@@ -1,0 +1,66 @@
+import styled from "styled-components";
+import { device } from "../styles/breakpoints";
+import { md } from "../styles/md";
+import { flex } from "../styles/mixins";
+
+export const Section = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 72px auto 0 auto;
+  padding: 48px 0px;
+  width: 100%;
+  height: auto;
+`;
+
+export const Article = styled.article`
+  @media ${device.widerThanTablet} {
+    width: 726px;
+  }
+
+  @media ${device.widerThanLaptopS} {
+    margin-left: auto;
+    transform: translateX(12%);
+  }
+  
+  ${flex('flex-start', 'normal', 'column')};
+  padding: 48px 16px;
+  width: auto;
+`;
+
+export const Header = styled.header`
+  margin-bottom: 56px;
+`;
+
+export const Main = styled.main`
+  & > section {
+    &:nth-child(1){
+      ${md}
+    }
+  }
+`;
+
+export const Title = styled.h1`
+  @media ${device.widerThanMobile} {
+    font-size: 42px;
+  }
+  
+  font-size: 36px;
+  margin-bottom: 4px;
+  font-weight: 600;
+`;
+
+export const SubTitle = styled.div`
+  color: ${({ theme }) => theme.mute};
+  font-size: 14px;
+`;
+
+export const Tags = styled.ul`
+  ${flex('center', 'flex-start', 'row')}
+  flex-wrap: wrap;
+  margin-top: 14px;
+`;
+
+export const Comments = styled.section`
+  padding: 48px 8px;
+`;

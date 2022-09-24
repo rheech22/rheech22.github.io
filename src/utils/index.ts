@@ -56,3 +56,22 @@ export const getDateString = ({ date, addPrefix, getYear }: {date: string, addPr
 
   return `${addPrefix ? 'Updated on' : ''} ${getYear ? dateString : dateString.slice(0, -5) }`;
 };
+
+export const takePost = (data: Queries.templateQuery) => {
+  const { markdownRemark } = data;
+
+  const post = {
+    title: markdownRemark?.frontmatter?.title ?? '',
+    date: markdownRemark?.frontmatter?.date ?? '',
+    path: markdownRemark?.frontmatter?.path ?? '',
+    tags: markdownRemark?.frontmatter?.tags ?? [],
+    contents: markdownRemark?.html ?? '',
+    excerpt: markdownRemark?.excerpt ?? '',
+    headings: markdownRemark?.headings ?? [],
+    timeToRead: markdownRemark?.timeToRead ?? '',
+  };
+
+  return post;
+};
+
+export default takePost;
