@@ -53,7 +53,7 @@
 - [x] 상태 관리 로직 리팩토링하기
 - [x] css-breakpoint 직관적으로 변경하기
 - [x] 스타일 코드 리팩토링하기
-- [ ] lighthuouse 점수 올리기
+- [x] lighthuouse 점수 올리기
 - [ ] PWA 적용하기
 - [ ] eslint 더 엄격하게 사용하기
 - [ ] gh-pages에 배포하기

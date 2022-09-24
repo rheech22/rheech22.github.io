@@ -34,6 +34,7 @@ const SEO = ({ subTitle, description, pathname, children }: Props) => {
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={seo.twitterUsername} />
       <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>☕️</text></svg>" />
+      <link rel="apple-touch-icon" href="../images/default180.png" />
       {children}
     </>
   );

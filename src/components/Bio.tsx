@@ -108,6 +108,7 @@ const Description = styled.p`
   margin-bottom: 8px;
   width: 100%;
   font-size: 12px;
+  word-break: keep-all;
 
   @media ${device.widerThanLaptop} {
     font-size: 14px;

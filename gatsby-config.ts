@@ -1,7 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 import configs from './blog-config';
 
-const { title, description, twitterUsername, siteUrl } = configs;
+const { title, description, twitterUsername, siteUrl, themeColor } = configs;
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -45,6 +45,40 @@ const config: GatsbyConfig = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: title,
+        short_name: title,
+        description,
+        id: `/`,
+        start_url: `/`,
+        background_color: themeColor,
+        theme_color: themeColor,
+        display: `standalone`,
+        icon: `src/images/default512.png`,
+        icons: [
+          {
+            src: `/favicons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/src/images/*'],
+        },
       },
     },
   ],

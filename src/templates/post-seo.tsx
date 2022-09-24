@@ -28,6 +28,7 @@ export default ({ title, excerpt, path, date }: Props) => {
       <meta name="twitter:creator" content={twitterUsername} />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>☕️</text></svg>" />
+      <link rel="apple-touch-icon" href="../images/default180.png" />
       <script type="application/ld+json">
         {`
             {

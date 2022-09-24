@@ -9,6 +9,7 @@ const config = {
   github: `https://github.com/rheech22`,
   siteUrl: `https://rheechlog.gatsbyjs.io/`,
   avatarUrl: `https://user-images.githubusercontent.com/57756798/186722103-fab30337-6059-4a92-ad19-2b4f5a2fea9f.jpeg`,
+  themeColor: `#161b22`,
 };
 
 export default config;
