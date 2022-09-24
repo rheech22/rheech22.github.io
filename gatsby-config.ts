@@ -4,7 +4,6 @@ import configs from './blog-config';
 const { title, description, twitterUsername, siteUrl, themeColor } = configs;
 
 const config: GatsbyConfig = {
-  pathPrefix: '/rheech22',
   siteMetadata: {
     title,
     description,
