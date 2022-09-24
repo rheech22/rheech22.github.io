@@ -22,12 +22,10 @@ const Tag = ({ onClick, isSelected, tag }: Props) => {
 
 export default Tag;
 
-interface Container {
+const Container = styled.li<{
   onClick: React.MouseEventHandler<HTMLLIElement>;
   isSelected?: boolean;
-}
-
-const Container = styled.li<Container>`
+}>`
   ${preventUserDrag}
 
   margin-right: 1.5px;

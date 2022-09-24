@@ -21,7 +21,7 @@ export const previews = css`
   }
 
   & > li + li {
-    ${border.top}
+    ${border.top};
   }
 `;
 

@@ -49,16 +49,16 @@ const Header = () => {
 export default Header;
 
 const Container = styled.header`
-  @media ${device.widerThanLaptop} {
-    padding: 16px 32px;
-  }
-
   ${flex({ alignItems: 'center' })}
   padding: 8px 16px;
   min-width: 375px;
   width: 100%;
   height: 62px;
   background-color: ${headerBg};
+  
+  @media ${device.widerThanLaptop} {
+    padding: 16px 32px;
+  }
 
   & > a {
     margin-right: 16px;

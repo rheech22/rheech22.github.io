@@ -14,13 +14,12 @@ const Footer = () => {
 export default Footer;
 
 const Container = styled.footer`
+  ${border.top};
   margin-top: auto;
-  ${border.top}
   width: 100%;
-  text-align: center;
   font-size: 12px;
+  text-align: center;
   
-
   &> section {
     padding: 48px 8px;
   }

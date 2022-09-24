@@ -4,7 +4,7 @@ const config = {
   author: `Aiden`,
   language: 'ko-KR',
   twitterUsername: `@rheech22`,
-  locaiton: `Seoul`,
+  location: `Seoul`,
   email: `rheech22@gmail.com`,
   github: `https://github.com/rheech22`,
   siteUrl: `https://rheechlog.gatsbyjs.io/`,

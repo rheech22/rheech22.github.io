@@ -8,7 +8,7 @@ import Mail from "../assets/icons/Mail";
 
 import config from "../../blog-config";
 
-const { avatarUrl, author, description, locaiton, email, github } = config;
+const { avatarUrl, author, description, location, email, github } = config;
 
 const Bio = () => {
   return (
@@ -17,12 +17,12 @@ const Bio = () => {
         <img alt='avatar' src={avatarUrl} />
       </Avatar>
       <Profile>
-        <span>{author}</span>
-        <p>{description}</p>
-        <ul>
+        <Author>{author}</Author>
+        <Description>{description}</Description>
+        <Info>
           <li>
             <Location />
-            <span>{locaiton}</span>
+            <span>{location}</span>
           </li>
           <li>
             <Mail />
@@ -32,7 +32,7 @@ const Bio = () => {
             <Link/>
             <a href={github}>{github}</a>
           </li>
-        </ul>
+        </Info>
       </Profile>
     </Container>
   );
@@ -41,6 +41,11 @@ const Bio = () => {
 export default Bio;
 
 const Container = styled.div`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  margin: 0 20px;
+  margin-bottom: 8px;
+  height: fit-content;
+
   @media ${device.widerThanLaptop} {
     flex-direction: column;
     max-width: 316px;
@@ -48,10 +53,6 @@ const Container = styled.div`
     margin: 0 0 18px 0;
   }
 
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  margin: 0 20px;
-  margin-bottom: 8px;
-  height: fit-content;
 `;
 
 const Avatar = styled.div`
@@ -59,7 +60,6 @@ const Avatar = styled.div`
   margin-right: 12px;
   width: 148px;
   height: 148px;
-  transition: all 1s;
 
   & > img {
     width: 130px;
@@ -70,8 +70,8 @@ const Avatar = styled.div`
   @media ${device.widerThanLaptop} {
     margin-right: 0;
     width: 100%;
-    min-height: 168px;
-    
+    min-height: 168px;  
+
     & > img {
       width: 168px;
       height: 168px;
@@ -80,78 +80,70 @@ const Avatar = styled.div`
 `;
 
 const Profile = styled.div`
+  max-width: 296px;
+`;
+
+const Author = styled.span`
+  width: 100%;
+  display: block;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   @media ${device.widerThanLaptop} {
-    & > p {
-      margin-bottom: 16px;
-    }
+    font-size: 20px;
+  }
+`;
+
+const Description = styled.p`
+  margin-bottom: 8px;
+  width: 100%;
+  font-size: 12px;
+
+  @media ${device.widerThanLaptop} {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+`;
+
+const Info = styled.ul`
+  width: 100%;
+
+  svg {
+    margin-right: 8px;
+    fill: ${({ theme })=>theme.mute};
+    width: fit-content;
   }
 
-  max-width: 296px;
-
-  & > span{
-    @media ${device.widerThanLaptop} {
-      font-size: 20px;
-    }
-
+  li {
+    ${flex({ alignItems: 'center' })}
     width: 100%;
-    display: block;
-    padding: 8px 0;
-    font-size: 14px;
-    font-weight: 600;
+    height: 24px;
+  }
+  
+  a, span {
+    max-width: 170px;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  & > p {
-    @media ${device.widerThanLaptop} {
-      font-size: 14px;
-    }
-
-    margin-bottom: 8px;
-    width: 100%;
+    white-space: nowrap;
     font-size: 12px;
-  }
-
-  & > ul {
-    @media ${device.widerThanLaptop} {
-      a, span {
-        font-size: 12px;
-      }
-    }
-
-    width: 100%;
-
-    svg {
-      margin-right: 8px;
-      fill: ${({ theme })=>theme.mute};
-      width: fit-content;
-    }
-
-    li {
-      ${flex({ alignItems: 'center' })}
-      width: 100%;
-      height: 24px;
-    }
     
-    a, span {
-      @media ${device.widerThanLaptop} {
-        max-width: 270px;
-      }
-  
-      max-width: 170px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    @media ${device.widerThanLaptop} {
+      max-width: 270px;
       font-size: 12px;
     }
+  }
 
-    a {
-      text-decoration: none;
+  a {
+    text-decoration: none;
 
-      &:hover {
-        color: ${({ theme })=>theme.blue};
-        text-decoration: underline;
-      }
+    &:hover {
+      color: ${({ theme })=>theme.blue};
+      text-decoration: underline;
     }
   }
 `;
+
+

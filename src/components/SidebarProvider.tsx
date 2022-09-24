@@ -18,15 +18,15 @@ const SidebarProvider = ({ children }: Props) => (
 export default SidebarProvider;
 
 const Wrapper = styled.div`
+  ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
+  padding-top: 48px;
+  width: 100%;
+
   @media ${device.widerThanLaptop} {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
   }
-  
-  ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
-  padding-top: 48px;
-  width: 100%;
 
   & > ul {
     @media ${device.widerThanLaptop} {

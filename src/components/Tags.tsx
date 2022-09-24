@@ -31,6 +31,10 @@ const Tags = () => {
 export default Tags;
 
 const Container = styled.div`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  margin: 0 20px;
+  padding: 10px;
+
   @media ${device.widerThanLaptop} {
     ${flex({ flexDirection: 'column' })};
     margin: 0;
@@ -38,10 +42,6 @@ const Container = styled.div`
     padding: 20px;
     max-width: 316px;
   }
-  
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  margin: 0 20px;
-  padding: 10px;
   
   & > ul {
     @media ${device.widerThanLaptop} {

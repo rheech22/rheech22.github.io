@@ -33,22 +33,20 @@ const PostPreview = ({
   return (
     <Container>
       <Link to={path ?? ''}>
-        <h2>{title}</h2>
-        <span>{date ? getDateString({ date, addPrefix: true }) : ''}</span>
-        <p>{excerpt}</p>
+        <Heading>{title}</Heading>
+        <Date>{date ? getDateString({ date, addPrefix: true }) : ''}</Date>
+        <Excerpt>{excerpt}</Excerpt>
       </Link>
-      {
-        tags?.length
-          ? <ul>{tags.map((tag, index) => (
-            <Tag
-              key={index}
-              tag={tag}
-              onClick={searchByTag}
-              isSelected={tag === selectedTag}
-            />
-          ))}</ul>
-          : null
-      }
+      {tags?.length
+        ? <Tags>{tags.map((tag, index) => (
+          <Tag
+            key={index}
+            tag={tag}
+            onClick={searchByTag}
+            isSelected={tag === selectedTag}
+          />
+        ))}</Tags>
+        : null}
     </Container>
   );
 };
@@ -60,48 +58,48 @@ const Container = styled.li`
   width: 100%;
 
   & > a {
-    @media ${device.widerThanTablet} {
-      ${flex({ flexDirection: 'column' })}
-    }
-
     ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
     margin-bottom: 8px;
     font-weight: 600;
     text-decoration: none;
 
-    h2 {
-      font-size: 20px;
-      font-weight: 600;
-      color: ${({ theme }) => theme.blue};
-      margin-bottom: 4px;
-    }
-    
-    span {
-      margin-bottom: 5px;
-      font-size: 12px;
-      font-weight: 300;
-    }
-
-    p {
-      @media ${device.widerThanTablet} {
-        display: block;
-      }
-
-      display: none;
-      font-weight: 400;
-      font-size: 14px;
-      overflow-y: hidden;
+    @media ${device.widerThanTablet} {
+      ${flex({ flexDirection: 'column' })}
     }
   }
+`;
 
-  & > ul {
-    @media ${device.widerThanTablet} {
-      ${flex({ alignItems: 'center' })}
-    }
+const Heading = styled.h2`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.blue};
+  margin-bottom: 4px;
+`;
 
-    ${flex({ alignItems: 'center', justifyContent: 'center' })}
-    flex-wrap: wrap;
-    margin: 4px 0;
-    padding: 4px 0;
+const Date = styled.span`
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 300;
+`;
+
+const Excerpt = styled.p`
+  display: none;
+  font-weight: 400;
+  font-size: 14px;
+  overflow-y: hidden;
+
+  @media ${device.widerThanTablet} {
+    display: block;
+  }
+`;
+
+const Tags = styled.ul`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  flex-wrap: wrap;
+  margin: 4px 0;
+  padding: 4px 0;
+
+  @media ${device.widerThanTablet} {
+    ${flex({ alignItems: 'center' })}
   }
 `;

@@ -15,14 +15,14 @@ const Sidebar = () => (
 export default Sidebar;
 
 const Wrapper = styled.aside`
+  ${flex({ flexDirection: 'column' })};
+  position: static;
+  width: 100%;
+  height: 100%;
+
   @media ${device.widerThanLaptop} {
     width: fit-content;
     margin-left: 20px;
     margin-right: auto;
   }
-
-  ${flex({ flexDirection: 'column' })};
-  position: static;
-  width: 100%;
-  height: 100%;
 `;

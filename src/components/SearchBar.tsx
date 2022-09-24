@@ -41,10 +41,10 @@ const SearchBar = ({
       <Textbox onChange={onChange} value={searchKeyword} placeholder='Search' maxLength={40} />
       {
         searchKeyword &&
-        <ul>
+        <Suggestions>
           <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only title' filterText="title" />
           <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only content' filterText="content" />
-        </ul>
+        </Suggestions>
       }
       <Button type="submit" hidden />
     </Container>
@@ -54,6 +54,14 @@ const SearchBar = ({
 export default SearchBar;
 
 const Container = styled.form<{hasInput: boolean}>`
+  border: 1px solid ${({ theme }) => theme.searchBorder};
+  border-radius: 6px;
+  width: 272px;
+  height: 30px;
+  font-weight: 400;
+  position: relative;
+  transition: width 0.5s;
+
   @media ${device.widerThanTablet} {
     &:focus-within {
       width: 544px;
@@ -63,14 +71,6 @@ const Container = styled.form<{hasInput: boolean}>`
       }
     }
   }
-
-  border: 1px solid ${({ theme }) => theme.searchBorder};
-  border-radius: 6px;
-  width: 272px;
-  height: 30px;
-  font-weight: 400;
-  position: relative;
-  transition: width 0.5s;
   
   & > input {
     border: none;
@@ -100,23 +100,23 @@ const Container = styled.form<{hasInput: boolean}>`
       color: ${searchPlaceholder};
     }
   }
+`;
 
-  & > ul {
-    display: none;
-    border: ${({ theme })=> `1px solid ${theme.border}`};
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    background-color: ${({ theme }) => theme.searchSuggestionBg};
-    color: ${({ theme }) => theme.default};
-    width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 35;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+const Suggestions = styled.ul`
+  display: none;
+  border: ${({ theme })=> `1px solid ${theme.border}`};
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: ${({ theme }) => theme.searchSuggestionBg};
+  color: ${({ theme }) => theme.default};
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 35;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
 
-    li + li {
-      ${border.top}
-    }
+  li + li {
+    ${border.top};
   }
 `;
