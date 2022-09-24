@@ -14,7 +14,7 @@ const SEO = ({ subTitle, description, pathname, children }: Props) => {
     title: subTitle ? `${subTitle} | ${title}` : title,
     description: description || defaultDescription,
     image: `${siteUrl}${image}`,
-    url: `${siteUrl}${pathname || ``}`,
+    url: `${siteUrl}${pathname || ''}`,
     twitterUsername,
   };
 
@@ -26,7 +26,7 @@ const SEO = ({ subTitle, description, pathname, children }: Props) => {
       <meta name="image" content={seo.image} />
       <meta name="og:title" content={seo.title} />
       <meta name="og:description" content={seo.description} />
-      <meta name="og:type" content='website' />
+      <meta name="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:url" content={seo.url} />

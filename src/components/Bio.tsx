@@ -1,14 +1,14 @@
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage } from 'gatsby-plugin-image';
 
-import styled from "styled-components";
-import { device } from "../styles/breakpoints";
-import { flex } from "../styles/mixins";
+import styled from 'styled-components';
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
 
-import Location from "../assets/icons/Location";
-import Link from "../assets/icons/Link";
-import Mail from "../assets/icons/Mail";
+import Location from '../assets/icons/Location';
+import Link from '../assets/icons/Link';
+import Mail from '../assets/icons/Mail';
 
-import config from "../../blog-config";
+import config from '../../blog-config';
 
 const Bio = () => {
   const { author, description, location, email, github } = config;

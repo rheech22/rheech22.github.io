@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { CreatePagesArgs } from "gatsby";
+import { CreatePagesArgs } from 'gatsby';
 
-const path = require("path");
+const path = require('path');
 
 exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) => {
   const { createPage } = actions;
 
-  const postTemplate = path.resolve(`src/templates/post.tsx`);
+  const postTemplate = path.resolve('src/templates/post.tsx');
 
   const result = await graphql<Queries.createPageQuery>(`
     query createPage {
@@ -25,7 +25,7 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
   `);
 
   if (result.errors) {
-    return reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return reporter.panicOnBuild('Error while running GraphQL query.');
   }
 
   if (result.data) {

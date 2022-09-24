@@ -1,8 +1,8 @@
-import { navigate } from "gatsby";
+import { navigate } from 'gatsby';
 
-import { useDispatch, useContext } from "../store/context";
+import { useDispatch, useContext } from '../store/context';
 
-import { enrichTags, sortTags } from "../utils";
+import { enrichTags, sortTags } from '../utils';
 
 const useTags = () => {
   const dispatch = useDispatch();

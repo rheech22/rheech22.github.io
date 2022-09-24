@@ -1,4 +1,4 @@
-import { ActionType, BaseState, Payload } from "./types";
+import { ActionType, BaseState, Payload } from './types';
 
 const actions: {
   [key in ActionType]:

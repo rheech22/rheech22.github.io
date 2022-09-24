@@ -1,15 +1,15 @@
-import { Link } from "gatsby";
+import { Link } from 'gatsby';
 
-import styled from "styled-components";
-import { device } from "../styles/breakpoints";
-import { flex } from "../styles/mixins";
+import styled from 'styled-components';
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
 
-import { useContext } from "../store/context";
-import useTags from "../hooks/useTags";
+import { useContext } from '../store/context';
+import useTags from '../hooks/useTags';
 
-import { getDateString } from "../utils";
+import { getDateString } from '../utils';
 
-import Tag from "./Tag";
+import Tag from './Tag';
 
 interface Props {
   path?: string | null;

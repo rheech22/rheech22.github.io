@@ -1,9 +1,9 @@
-import { Link } from "gatsby";
+import { Link } from 'gatsby';
 
-import styled from "styled-components";
-import { device } from "../styles/breakpoints";
+import styled from 'styled-components';
+import { device } from '../styles/breakpoints';
 
-import { useContext } from "../store/context";
+import { useContext } from '../store/context';
 
 interface Props {
   headings: readonly ({

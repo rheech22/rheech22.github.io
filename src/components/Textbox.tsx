@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Props {
   id?: string;
@@ -23,7 +23,7 @@ const Textbox = ({
 }: Props) => {
   return (
     <Input
-      type='text'
+      type="text"
       id={id}
       name={name}
       value={value}

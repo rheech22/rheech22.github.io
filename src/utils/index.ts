@@ -52,7 +52,7 @@ export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {
 });
 
 export const getDateString = ({ date, addPrefix, getYear }: {date: string, addPrefix?: boolean, getYear?: boolean}) => {
-  const dateString = new Intl.DateTimeFormat("en-GB", { dateStyle: 'medium' }).format(new Date(date));
+  const dateString = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' }).format(new Date(date));
 
   return `${addPrefix ? 'Updated on' : ''} ${getYear ? dateString : dateString.slice(0, -5) }`;
 };

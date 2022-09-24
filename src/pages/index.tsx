@@ -10,5 +10,5 @@ export default () => (
 );
 
 export const Head = () => (
-  <SEO subTitle='모든 글'/>
+  <SEO subTitle="모든 글"/>
 );

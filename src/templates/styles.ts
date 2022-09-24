@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { device } from "../styles/breakpoints";
-import { markdown } from "../styles/modules";
-import { flex } from "../styles/mixins";
+import styled from 'styled-components';
+import { device } from '../styles/breakpoints';
+import { markdown } from '../styles/modules';
+import { flex } from '../styles/mixins';
 
 export const Section = styled.section`
   ${flex({ justifyContent: 'center' })}

@@ -1,7 +1,7 @@
-import React from "react";
-import Layout from "./src/components/Layout";
+import React from 'react';
+import Layout from './src/components/Layout';
 
-import { ContextProvider } from "./src/store/context";
+import { ContextProvider } from './src/store/context';
 
 export default ({ element, props }) => {
   return (

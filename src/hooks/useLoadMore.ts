@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const INITIAL_OFFSET = 10;
 

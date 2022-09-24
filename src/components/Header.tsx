@@ -1,18 +1,18 @@
-import { Link } from "gatsby";
+import { Link } from 'gatsby';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useContext, useDispatch } from "../store/context";
+import { useContext, useDispatch } from '../store/context';
 
-import { getTheme } from "../utils";
+import { getTheme } from '../utils';
 
-import styled from "styled-components";
-import { flex } from "../styles/mixins";
-import { device } from "../styles/breakpoints";
-import { headerBg, headerLogo } from "../styles/themes";
+import styled from 'styled-components';
+import { flex } from '../styles/mixins';
+import { device } from '../styles/breakpoints';
+import { headerBg, headerLogo } from '../styles/themes';
 
-import SearchBar from "./SearchBar";
-import Button from "./Button";
+import SearchBar from './SearchBar';
+import Button from './Button';
 
 const Header = () => {
   const { displayMode } = useContext();
@@ -41,7 +41,7 @@ const Header = () => {
         searchKeyword={searchKeyword}
         onChange={handleChange}
       />
-      <Button onClick={handleClick} accessibleName='Change Display Mode'/>
+      <Button onClick={handleClick} accessibleName="Change Display Mode"/>
     </Container>
   );
 };

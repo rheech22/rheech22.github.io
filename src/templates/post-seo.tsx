@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
-import config from "../../blog-config";
+import config from '../../blog-config';
 
 const { title: defaultTitle, siteUrl, twitterUsername } = config;
 
@@ -16,15 +16,15 @@ export default ({ title, excerpt, path, date }: Props) => {
     <Helmet>
       <title>{title} | {defaultTitle}</title>
       <meta name="description" content={excerpt} />
-      <meta name="image" content='' />
+      <meta name="image" content="" />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={excerpt} />
-      <meta name="og:type" content='website' />
+      <meta name="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={excerpt} />
       <meta name="twitter:url" content={`${siteUrl}${title}`} />
-      <meta name="twitter:image" content='' />
+      <meta name="twitter:image" content="" />
       <meta name="twitter:creator" content={twitterUsername} />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <link rel="icon" type="image/png" href="../images/favicon.png" />

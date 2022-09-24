@@ -1,8 +1,8 @@
-import { useContext as getContext, useReducer, createContext, Reducer } from "react";
+import { useContext as getContext, useReducer, createContext, Reducer } from 'react';
 
-import reducer from "./reducer";
+import reducer from './reducer';
 
-import { Action, State } from "./types";
+import { Action, State } from './types';
 
 const initialState: State = {
   posts: [],

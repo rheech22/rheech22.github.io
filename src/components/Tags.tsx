@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { device } from "../styles/breakpoints";
-import { flex } from "../styles/mixins";
+import styled from 'styled-components';
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
 
-import { useContext } from "../store/context";
-import useTags from "../hooks/useTags";
+import { useContext } from '../store/context';
+import useTags from '../hooks/useTags';
 
-import Tag from "./Tag";
+import Tag from './Tag';
 
 const Tags = () => {
   const { tag: selectedTag } = useContext();

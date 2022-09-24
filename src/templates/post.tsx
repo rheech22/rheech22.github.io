@@ -1,16 +1,16 @@
-import { graphql, PageProps } from "gatsby";
+import { graphql, PageProps } from 'gatsby';
 
-import * as Styled from "./styles";
+import * as Styled from './styles';
 
-import { useContext } from "../store/context";
-import useSpyHeadings from "../hooks/useSpyHeadings";
-import useTags from "../hooks/useTags";
+import { useContext } from '../store/context';
+import useSpyHeadings from '../hooks/useSpyHeadings';
+import useTags from '../hooks/useTags';
 
-import { takePost, getDateString } from "../utils";
+import { takePost, getDateString } from '../utils';
 
-import Comments from "../components/Comments";
-import Tag from "../components/Tag";
-import TOC from "../components/TOC";
+import Comments from '../components/Comments';
+import Tag from '../components/Tag';
+import TOC from '../components/TOC';
 import SEO from './post-seo';
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
@@ -29,7 +29,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <Styled.Header>
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
-              <time dateTime='updated at'>{getDateString({ date, getYear: true })}</time>
+              <time dateTime="updated at">{getDateString({ date, getYear: true })}</time>
               <span> — {timeToRead} min read</span>
             </Styled.SubTitle>
             {tags.length

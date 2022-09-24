@@ -1,6 +1,6 @@
-import { css } from "styled-components";
-import { device } from "./breakpoints";
-import { border, flex } from "./mixins";
+import { css } from 'styled-components';
+import { device } from './breakpoints';
+import { border, flex } from './mixins';
 
 export const avatarWrapper = css`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}

@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch } from "../store/context";
+import { useEffect } from 'react';
+import { useDispatch } from '../store/context';
 
 const useSearchParams = () => {
   const dispatch = useDispatch();

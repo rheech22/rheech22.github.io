@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 module.exports = {
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
-    "indent": "off",
-    "@typescript-eslint/indent": ["error", 2],
+    'indent': 'off',
+    '@typescript-eslint/indent': ['error', 2],
     'no-trailing-spaces': 'error',
     'semi': ['error', 'always'],
     'brace-style': 'error',
@@ -29,5 +29,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'eol-last': ['error', 'always'],
+    'quotes': ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-double'],
   },
 };

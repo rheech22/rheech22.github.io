@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { flex } from "../styles/mixins";
-import { white } from "../styles/themes";
+import styled from 'styled-components';
+import { flex } from '../styles/mixins';
+import { white } from '../styles/themes';
 
-import Search from "../assets/icons/Search";
+import Search from '../assets/icons/Search';
 
-import Button from "./Button";
+import Button from './Button';
 
 interface Props {
   title: string;

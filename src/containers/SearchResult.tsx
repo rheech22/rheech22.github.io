@@ -16,7 +16,7 @@ const SearchResult = () => {
   return (
     <Container>
       {filteredPosts.length === 0
-        ? <NoContent prefix='검색 결과가'/>
+        ? <NoContent prefix="검색 결과가"/>
         : filteredPosts
           .slice(0, offset)
           .map(({ node: post }) =>

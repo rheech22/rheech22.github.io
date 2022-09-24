@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useContext } from "../store/context";
+import { useEffect, useState } from 'react';
+import { useContext } from '../store/context';
 
 const useFilteredPosts = () => {
   const { posts, searchFilter, searchKeyword, tag } = useContext();

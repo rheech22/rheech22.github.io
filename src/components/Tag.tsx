@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { preventUserDrag } from "../styles/modules";
-import { white } from "../styles/themes";
+import styled from 'styled-components';
+import { preventUserDrag } from '../styles/modules';
+import { white } from '../styles/themes';
 
 interface Props {
   onClick: (value: string) => void;

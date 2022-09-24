@@ -1,15 +1,15 @@
-import { navigate } from "gatsby";
+import { navigate } from 'gatsby';
 
-import { useDispatch } from "../store/context";
+import { useDispatch } from '../store/context';
 
-import styled from "styled-components";
-import { border } from "../styles/mixins";
-import { headerLogo, searchPlaceholder } from "../styles/themes";
-import { device } from "../styles/breakpoints";
+import styled from 'styled-components';
+import { border } from '../styles/mixins';
+import { headerLogo, searchPlaceholder } from '../styles/themes';
+import { device } from '../styles/breakpoints';
 
-import Textbox from "./Textbox";
-import Button from "./Button";
-import SearchSuggestion from "./SearchSuggestion";
+import Textbox from './Textbox';
+import Button from './Button';
+import SearchSuggestion from './SearchSuggestion';
 
 interface Props {
   searchKeyword: string;
@@ -38,12 +38,12 @@ const SearchBar = ({
 
   return (
     <Container onSubmit={handleSubmit} hasInput={Boolean(searchKeyword)}>
-      <Textbox onChange={onChange} value={searchKeyword} placeholder='Search' maxLength={40} />
+      <Textbox onChange={onChange} value={searchKeyword} placeholder="Search" maxLength={40} />
       {
         searchKeyword &&
         <Suggestions>
-          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only title' filterText="title" />
-          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only content' filterText="content" />
+          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title="only title" filterText="title" />
+          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title="only content" filterText="content" />
         </Suggestions>
       }
       <Button type="submit" hidden accessibleName="Submit Search"/>

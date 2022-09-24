@@ -1,7 +1,7 @@
-import { Link, navigate } from "gatsby";
-import styled from "styled-components";
+import { Link, navigate } from 'gatsby';
+import styled from 'styled-components';
 
-import SEO from "../components/SEO";
+import SEO from '../components/SEO';
 
 export default () => (
   <Container>
@@ -36,5 +36,5 @@ const Container = styled.div`
 `;
 
 export const Head = () => (
-  <SEO subTitle='404'/>
+  <SEO subTitle="404"/>
 );
