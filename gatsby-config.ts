@@ -54,7 +54,6 @@ const config: GatsbyConfig = {
         name: title,
         short_name: title,
         description,
-        id: '/',
         start_url: '/',
         background_color: themeColor,
         theme_color: themeColor,
