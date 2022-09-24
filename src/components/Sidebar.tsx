@@ -15,7 +15,7 @@ const Sidebar = () => (
 export default Sidebar;
 
 const Wrapper = styled.aside`
-  @media ${device.laptopL} {
+  @media ${device.widerThanLaptop} {
     width: fit-content;
     margin-left: 20px;
     margin-right: auto;

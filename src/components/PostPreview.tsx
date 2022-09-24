@@ -60,7 +60,7 @@ const Container = styled.li`
   width: 100%;
 
   & > a {
-    @media ${device.tablet} {
+    @media ${device.widerThanTablet} {
       ${flex('flex-start', '', 'column')}
     }
 
@@ -83,7 +83,7 @@ const Container = styled.li`
     }
 
     p {
-      @media ${device.tablet} {
+      @media ${device.widerThanTablet} {
         display: block;
       }
 
@@ -95,7 +95,7 @@ const Container = styled.li`
   }
 
   & > ul {
-    @media ${device.tablet} {
+    @media ${device.widerThanTablet} {
       ${flex('center', 'flex-start', 'row')}
     }
 

@@ -18,7 +18,7 @@ const SidebarProvider = ({ children }: Props) => (
 export default SidebarProvider;
 
 const Wrapper = styled.div`
-  @media ${device.laptopL} {
+  @media ${device.widerThanLaptop} {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   width: 100%;
 
   & > ul {
-    @media ${device.laptopL} {
+    @media ${device.widerThanLaptop} {
       margin-right: auto;
     }
   }

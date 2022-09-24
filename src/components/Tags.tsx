@@ -31,7 +31,7 @@ const Tags = () => {
 export default Tags;
 
 const Container = styled.div`
-  @media ${device.laptopL} {
+  @media ${device.widerThanLaptop} {
     ${flex('normal', 'normal', 'column')};
     margin: 0;
     box-shadow: none;
@@ -44,7 +44,7 @@ const Container = styled.div`
   padding: 10px;
   
   & > ul {
-    @media ${device.laptopL} {
+    @media ${device.widerThanLaptop} {
       margin-top: 0;
     }
     display: inline-flex;

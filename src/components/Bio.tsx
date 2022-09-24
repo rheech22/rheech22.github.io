@@ -41,7 +41,7 @@ const Bio = () => {
 export default Bio;
 
 const Container = styled.div`
-  @media ${device.laptopL} {
+  @media ${device.widerThanLaptop} {
     flex-direction: column;
     max-width: 316px;
     padding: 20px;
@@ -67,7 +67,7 @@ const Avatar = styled.div`
     border-radius: 50%;
   }
 
-  @media ${device.laptopL} {
+  @media ${device.widerThanLaptop} {
     margin-right: 0;
     width: 100%;
     min-height: 168px;
@@ -80,7 +80,7 @@ const Avatar = styled.div`
 `;
 
 const Profile = styled.div`
-  @media ${device.laptopL} {
+  @media ${device.widerThanLaptop} {
     & > p {
       margin-bottom: 16px;
     }
@@ -89,7 +89,7 @@ const Profile = styled.div`
   max-width: 296px;
 
   & > span{
-    @media ${device.laptopL} {
+    @media ${device.widerThanLaptop} {
       font-size: 20px;
     }
 
@@ -103,7 +103,7 @@ const Profile = styled.div`
   }
 
   & > p {
-    @media ${device.laptopL} {
+    @media ${device.widerThanLaptop} {
       font-size: 14px;
     }
 
@@ -113,7 +113,7 @@ const Profile = styled.div`
   }
 
   & > ul {
-    @media ${device.laptopL} {
+    @media ${device.widerThanLaptop} {
       a, span {
         font-size: 12px;
       }
@@ -134,7 +134,7 @@ const Profile = styled.div`
     }
     
     a, span {
-      @media ${device.laptopL} {
+      @media ${device.widerThanLaptop} {
         max-width: 270px;
       }
   

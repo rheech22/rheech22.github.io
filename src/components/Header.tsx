@@ -49,7 +49,7 @@ const Header = () => {
 export default Header;
 
 const Container = styled.header`
-  @media ${device.mobileL} {
+  @media ${device.widerThanLaptop} {
     padding: 16px 32px;
   }
 
@@ -96,7 +96,7 @@ const Container = styled.header`
     }
 
     &:last-of-type {
-      @media ${device.mobileL} {
+      @media ${device.widerThanLaptop} {
         margin-left: auto;
       }
 

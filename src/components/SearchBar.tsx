@@ -53,7 +53,7 @@ const SearchBar = ({
 export default SearchBar;
 
 const Container = styled.form<{hasInput: boolean}>`
-  @media ${device.tablet} {
+  @media ${device.widerThanTablet} {
     &:focus-within {
       width: 544px;
 
@@ -82,7 +82,7 @@ const Container = styled.form<{hasInput: boolean}>`
     font-size: 14px;
     
     &:focus {
-      @media ${device.tablet} {
+      @media ${device.widerThanTablet} {
         border-bottom-left-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
         border-bottom-right-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
       }

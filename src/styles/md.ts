@@ -4,7 +4,7 @@ import { device } from "./breakpoints";
 export const md = css`
   font-size: 16px;
 
-  @media ${device.tablet} {
+  @media ${device.widerThanTablet} {
     font-size: 18px;
   }
   

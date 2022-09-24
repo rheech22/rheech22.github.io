@@ -145,11 +145,11 @@ const PostSection = styled.section`
   height: auto;
 
   & > article {
-    @media ${device.tablet} {
+    @media ${device.widerThanTablet} {
       width: 726px;
     }
 
-    @media ${device.laptopM} {
+    @media ${device.widerThanLaptopS} {
       margin-left: auto;
       transform: translateX(12%);
     }
@@ -162,7 +162,7 @@ const PostSection = styled.section`
       margin-bottom: 56px;
 
       & > h1 {
-        @media ${device.mobileL} {
+        @media ${device.widerThanMobile} {
           font-size: 42px;
         }
         
