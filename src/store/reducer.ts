@@ -1,8 +1,8 @@
 import actions from "./actions";
 
-import { Actions, BaseState, Payload } from "./types";
+import { ActionType, BaseState, Payload } from "./types";
 
-const reducer = <T extends BaseState, K extends { type: Actions; payload: Payload}>(state: T, { type, payload }: K) => {
+const reducer = <T extends BaseState, K extends { type: ActionType; payload: Payload}>(state: T, { type, payload }: K) => {
   return actions[type]<T>(state, payload) ?? state;
 };
 

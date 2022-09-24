@@ -4,48 +4,38 @@ const actions: {
   [key in ActionType]:
   <T extends BaseState>(state: T, payload: Payload) => T;
 } = {
+  setPosts: (state, { posts }) => ({
+    ...state,
+    posts,
+  }),
+  setCurrentHeading: (state, { headingId }) => ({
+    ...state,
+    headingId,
+  }),
+  clearSearch: (state) => ({
+    ...state,
+    searchFilter: null,
+    searchKeyword: null,
+    tag: null,
+  }),
+  searchByTag: (state, { tag }) => ({
+    ...state,
+    searchFilter: null,
+    searchKeyword: null,
+    tag: tag === state.tag ? '' : tag,
+  }),
+  searchByKeyword: (state, { searchFilter, searchKeyword }) => ({
+    ...state,
+    searchFilter,
+    searchKeyword,
+    tag: null,
+  }),
   setDisplayMode: (state, { displayMode }) => {
     if (displayMode) localStorage.setItem('display-mode', displayMode);
 
     return {
       ...state,
       displayMode,
-    };
-  },
-  setPosts: (state, { posts }) => {
-    return {
-      ...state,
-      posts,
-    };
-  },
-  searchByKeyword: (state, { searchFilter, searchKeyword }) => {
-    return {
-      ...state,
-      searchFilter,
-      searchKeyword,
-      tag: null,
-    };
-  },
-  searchByTag: (state, { tag }) => {
-    return {
-      ...state,
-      searchFilter: null,
-      searchKeyword: null,
-      tag: tag === state.tag ? '' : tag,
-    };
-  },
-  clearSearch: (state) => {
-    return {
-      ...state,
-      searchFilter: null,
-      searchKeyword: null,
-      tag: null,
-    };
-  },
-  setCurrentHeading: (state, { headingId }) => {
-    return {
-      ...state,
-      headingId,
     };
   },
 };

@@ -69,3 +69,5 @@
 - ThemeProvider 편하다
 - TOC 하이라이트를 intersectionObserver로 구현하려 했지만, 클릭해서 이동할 때 제대로 intersection을 감지하지 못함, 스크롤 이벤트를 최적화하는 방법으로 사용해야 할듯
 - sticky position을 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
+- rehydration으로 적용안되는 부분이 생길 수 있음, 리액트 생명주기 메서드로 어렵지 않게 해결할 수 있음
+- 
