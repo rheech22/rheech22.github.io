@@ -46,7 +46,7 @@ const SearchBar = ({
           <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only content' filterText="content" />
         </Suggestions>
       }
-      <Button type="submit" hidden />
+      <Button type="submit" hidden accessibleName="Submit Search"/>
     </Container>
   );
 };

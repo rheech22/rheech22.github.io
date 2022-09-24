@@ -21,7 +21,7 @@ const LoadMore = ({ load }: Props) => {
   }, []);
 
   return (
-    <div
+    <li
       ref={loadMoreTrigger}
     />
   );

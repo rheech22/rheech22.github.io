@@ -41,7 +41,7 @@ const Header = () => {
         searchKeyword={searchKeyword}
         onChange={handleChange}
       />
-      <Button onClick={handleClick}/>
+      <Button onClick={handleClick} accessibleName='Change Display Mode'/>
     </Container>
   );
 };
@@ -96,7 +96,7 @@ const Container = styled.header`
     }
 
     &:last-of-type {
-      @media ${device.widerThanLaptop} {
+      @media ${device.widerThanMobile} {
         margin-left: auto;
       }
 

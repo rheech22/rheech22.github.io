@@ -24,7 +24,7 @@ const SearchSuggestion = ({ title, filterText, input, searchBy }: Props) => {
     <Container onMouseDown={handleClick}>
       <Search/>
       {input}
-      <Button>
+      <Button accessibleName="Search Suggestion">
         {title}
         <span>↵</span>
       </Button>
