@@ -56,6 +56,7 @@
 - [x] lighthuouse 점수 올리기
 - [x] PWA 적용하기
 - [x] eslint 더 엄격하게 사용하기
+- [ ] sitemap 적용
 - [ ] 코드 하이라이팅 다른 것도 알아보기
 - [ ] config 다듬기
 - [ ] gh-pages에 배포하기
