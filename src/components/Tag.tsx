@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { preventUserDrag } from "../styles/mixins";
+import { preventUserDrag } from "../styles/modules";
 import { white } from "../styles/themes";
 
 interface Props {

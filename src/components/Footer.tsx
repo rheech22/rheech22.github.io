@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { border } from "../styles/mixins";
 
 const Footer = () => {
   return (
@@ -14,7 +15,7 @@ export default Footer;
 
 const Container = styled.footer`
   margin-top: auto;
-  border-top: ${({ theme })=> `1px solid ${theme.border}`};
+  ${border.top}
   width: 100%;
   text-align: center;
   font-size: 12px;

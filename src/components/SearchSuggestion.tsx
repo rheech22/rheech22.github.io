@@ -35,7 +35,7 @@ const SearchSuggestion = ({ title, filterText, input, searchBy }: Props) => {
 export default SearchSuggestion;
 
 const Container = styled.li`
-  ${flex('center')};
+  ${flex({ alignItems: 'center' })};
   padding: 0 12px;
   height: 44px;
   font-size: 14px;
@@ -61,7 +61,7 @@ const Container = styled.li`
   }
 
   & > button {
-    ${flex('center', 'center')};
+    ${flex({ alignItems: 'center', justifyContent: 'center' })};
     margin-left: auto;
     border: ${({ theme })=> `1px solid ${theme.border}`};
     border-radius: 6px;

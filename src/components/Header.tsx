@@ -53,7 +53,7 @@ const Container = styled.header`
     padding: 16px 32px;
   }
 
-  ${flex('center', 'flex-start')}
+  ${flex({ alignItems: 'center' })}
   padding: 8px 16px;
   min-width: 375px;
   width: 100%;

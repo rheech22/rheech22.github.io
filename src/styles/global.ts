@@ -7,7 +7,7 @@ interface GlobalStyle {
   }
 }
 
-export const GlobalStyle = createGlobalStyle<GlobalStyle>`
+const globalStyle = createGlobalStyle<GlobalStyle>`
   ${reset}
   
   * {
@@ -44,3 +44,5 @@ export const GlobalStyle = createGlobalStyle<GlobalStyle>`
     }
   }
 `;
+
+export default globalStyle;

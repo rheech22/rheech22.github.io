@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
   }
   
-  ${flex('center', 'center', 'column')}
+  ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
   padding-top: 48px;
   width: 100%;
 

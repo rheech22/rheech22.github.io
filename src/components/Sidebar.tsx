@@ -21,7 +21,7 @@ const Wrapper = styled.aside`
     margin-right: auto;
   }
 
-  ${flex('normal', 'normal', 'column')};
+  ${flex({ flexDirection: 'column' })};
   position: static;
   width: 100%;
   height: 100%;

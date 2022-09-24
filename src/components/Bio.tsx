@@ -48,14 +48,14 @@ const Container = styled.div`
     margin: 0 0 18px 0;
   }
 
-  ${flex('center', 'center', 'row')}
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
   margin: 0 20px;
   margin-bottom: 8px;
   height: fit-content;
 `;
 
 const Avatar = styled.div`
-  ${flex('center', 'center', 'row')};
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
   margin-right: 12px;
   width: 148px;
   height: 148px;
@@ -128,7 +128,7 @@ const Profile = styled.div`
     }
 
     li {
-      ${flex('center')}
+      ${flex({ alignItems: 'center' })}
       width: 100%;
       height: 24px;
     }

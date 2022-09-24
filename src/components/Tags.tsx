@@ -32,14 +32,14 @@ export default Tags;
 
 const Container = styled.div`
   @media ${device.widerThanLaptop} {
-    ${flex('normal', 'normal', 'column')};
+    ${flex({ flexDirection: 'column' })};
     margin: 0;
     box-shadow: none;
     padding: 20px;
     max-width: 316px;
   }
   
-  ${flex('center', 'center', 'row')};
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
   margin: 0 20px;
   padding: 10px;
   

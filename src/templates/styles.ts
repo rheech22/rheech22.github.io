@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { device } from "../styles/breakpoints";
-import { md } from "../styles/md";
+import { markdown } from "../styles/modules";
 import { flex } from "../styles/mixins";
 
 export const Section = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  ${flex({ justifyContent: 'center' })}
   margin: 72px auto 0 auto;
   padding: 48px 0px;
   width: 100%;
@@ -23,7 +21,7 @@ export const Article = styled.article`
     transform: translateX(12%);
   }
   
-  ${flex('flex-start', 'normal', 'column')};
+  ${flex({ flexDirection: 'column' })};
   padding: 48px 16px;
   width: auto;
 `;
@@ -35,7 +33,7 @@ export const Header = styled.header`
 export const Main = styled.main`
   & > section {
     &:nth-child(1){
-      ${md}
+      ${markdown}
     }
   }
 `;
@@ -45,8 +43,8 @@ export const Title = styled.h1`
     font-size: 42px;
   }
   
-  font-size: 36px;
   margin-bottom: 4px;
+  font-size: 36px;
   font-weight: 600;
 `;
 
@@ -56,7 +54,7 @@ export const SubTitle = styled.div`
 `;
 
 export const Tags = styled.ul`
-  ${flex('center', 'flex-start', 'row')}
+  ${flex({ alignItems: 'center' })};
   flex-wrap: wrap;
   margin-top: 14px;
 `;

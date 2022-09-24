@@ -1,7 +1,40 @@
 import { css } from "styled-components";
 import { device } from "./breakpoints";
+import { border, flex } from "./mixins";
 
-export const md = css`
+export const previews = css`
+  @media ${device.widerThanTablet} {
+    margin: 0 10px;
+    padding: 0px 10px;
+    max-width: 780px;
+  }
+
+  ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
+  margin-left: 0;
+  padding: 0px 20px;
+  width: 100%;
+  
+  & > p {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+  }
+
+  & > li + li {
+    ${border.top}
+  }
+`;
+
+export const preventUserDrag = css`
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`;
+
+export const markdown = css`
   font-size: 16px;
 
   @media ${device.widerThanTablet} {

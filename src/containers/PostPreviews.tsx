@@ -2,7 +2,7 @@ import { useContext } from '../store/context';
 import useLoadMore from '../hooks/useLoadMore';
 
 import styled from 'styled-components';
-import { previews } from '../styles/previews';
+import { previews } from '../styles/modules';
 
 import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';

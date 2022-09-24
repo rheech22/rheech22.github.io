@@ -3,6 +3,7 @@ import { navigate } from "gatsby";
 import { useDispatch } from "../store/context";
 
 import styled from "styled-components";
+import { border } from "../styles/mixins";
 import { headerLogo, searchPlaceholder } from "../styles/themes";
 import { device } from "../styles/breakpoints";
 
@@ -115,7 +116,7 @@ const Container = styled.form<{hasInput: boolean}>`
     box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
 
     li + li {
-      border-top: ${({ theme })=> `1px solid ${theme.border}`};
+      ${border.top}
     }
   }
 `;

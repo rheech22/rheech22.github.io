@@ -4,7 +4,7 @@ import useTheme from "../hooks/useTheme";
 
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "../styles/themes";
-import { GlobalStyle } from "../styles/global";
+import GlobalStyle from "../styles/global";
 
 import Header from "./Header";
 import Footer from "./Footer";

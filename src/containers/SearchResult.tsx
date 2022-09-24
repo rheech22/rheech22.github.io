@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { previews } from '../styles/previews';
+import { previews } from '../styles/modules';
 
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';

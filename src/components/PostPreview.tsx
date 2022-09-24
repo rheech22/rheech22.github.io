@@ -61,10 +61,10 @@ const Container = styled.li`
 
   & > a {
     @media ${device.widerThanTablet} {
-      ${flex('flex-start', '', 'column')}
+      ${flex({ flexDirection: 'column' })}
     }
 
-    ${flex('center', 'center', 'column')}
+    ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
     margin-bottom: 8px;
     font-weight: 600;
     text-decoration: none;
@@ -96,10 +96,10 @@ const Container = styled.li`
 
   & > ul {
     @media ${device.widerThanTablet} {
-      ${flex('center', 'flex-start', 'row')}
+      ${flex({ alignItems: 'center' })}
     }
 
-    ${flex('center', 'center', 'row')}
+    ${flex({ alignItems: 'center', justifyContent: 'center' })}
     flex-wrap: wrap;
     margin: 4px 0;
     padding: 4px 0;
