@@ -6,13 +6,11 @@ import { Action, State } from "./types";
 
 const initialState: State = {
   posts: [],
-  searchFilter: {
-    filter: 'all',
-    keyword: '',
-  },
-  tag: '',
+  searchFilter: null,
+  searchKeyword: null,
+  tag: null,
   displayMode: null,
-  headingId: '',
+  headingId: null,
 };
 
 export const Context = createContext<State>(initialState);

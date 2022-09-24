@@ -3,7 +3,7 @@ export const headerBg = '#161b22';
 export const searchPlaceholder = '#C9D1D9';
 export const white = '#ffffff';
 
-const darkTheme = {
+export const dark = {
   default: '#C9D1D9',
   mute: '#8b949e',
   bg: '#0D1118',
@@ -21,7 +21,7 @@ const darkTheme = {
   themeIconPosition: 'right center',
 };
 
-const lightTheme = {
+export const light = {
   default: '#24292f',
   mute: '#57606a',
   bg: '#fff',
@@ -39,42 +39,3 @@ const lightTheme = {
   themeIconPosition: '0',
 };
 
-export const dark = {
-  default: darkTheme.default,
-  mute: darkTheme.mute,
-  bg: darkTheme.bg,
-  border: darkTheme.border,
-  blue: darkTheme.blue,
-  lightBlue: darkTheme.lightBlue,
-  searchBg: darkTheme.searchBg,
-  searchBorder: darkTheme.searchBorder,
-  searchBgFocused: darkTheme.searchBgFocused,
-  searchPlaceholderFocused: darkTheme.searchPlaceholderFocused,
-  searchSuggestionBg: darkTheme.searchSuggestionBg,
-  searchSuggestionHovered: darkTheme.searchSuggestionHovered,
-  tagBgHovered: darkTheme.tagBgHovered,
-  codeBg: darkTheme.codeBg,
-  themeIconPosition: darkTheme.themeIconPosition,
-};
-
-export const light = {
-  default: lightTheme.default,
-  mute: lightTheme.mute,
-  bg: lightTheme.bg,
-  border: lightTheme.border,
-  blue: lightTheme.blue,
-  lightBlue: lightTheme.lightBlue,
-  searchBg: lightTheme.searchBg,
-  searchBorder: lightTheme.searchBorder,
-  searchBgFocused: lightTheme.searchBgFocused,
-  searchPlaceholderFocused: lightTheme.searchPlaceholderFocused,
-  searchSuggestionBg: lightTheme.searchSuggestionBg,
-  searchSuggestionHovered: lightTheme.searchSuggestionHovered,
-  tagBgHovered: lightTheme.tagBgHovered,
-  codeBg: lightTheme.codeBg,
-  themeIconPosition: lightTheme.themeIconPosition,
-};
-
-export interface Theme {
-  [key: string]: string;
-}

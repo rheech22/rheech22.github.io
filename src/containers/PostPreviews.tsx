@@ -2,7 +2,7 @@ import { useContext } from '../store/context';
 import useLoadMore from '../hooks/useLoadMore';
 
 import styled from 'styled-components';
-import { postPreviews } from '../styles/postPreviews';
+import { previews } from '../styles/previews';
 
 import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';
@@ -36,5 +36,5 @@ const PostPreviews = () => {
 export default PostPreviews;
 
 const Container = styled.ul`
-  ${postPreviews}
+  ${previews}
 `;

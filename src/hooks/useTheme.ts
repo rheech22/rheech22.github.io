@@ -7,7 +7,7 @@ const useTheme = () => {
   useEffect(()=> {
     const personalPreference = localStorage.getItem('display-mode');
     const devicePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
-    const displayMode = personalPreference || devicePreference;
+    const displayMode = (personalPreference || devicePreference) as ('night' | 'day');
 
     dispatch({ type: 'setDisplayMode', payload: { displayMode } });
   }, []);

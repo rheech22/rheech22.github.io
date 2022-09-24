@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import { Theme } from "./themes";
 
 interface GlobalStyle {
-  theme: Theme
+  theme: {
+    [key: string]: string;
+  }
 }
 
 export const GlobalStyle = createGlobalStyle<GlobalStyle>`

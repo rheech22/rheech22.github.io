@@ -18,18 +18,18 @@ const Header = () => {
   const { displayMode } = useContext();
   const dispatch = useDispatch();
 
-  const [input, setInput] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const handleClick = () => dispatch({ type: 'setDisplayMode', payload: { displayMode: getTheme(displayMode) } });
 
   const handleChange = (value: string) => {
     if (value.length > 40) return;
-    setInput(value);
+    setSearchKeyword(value);
   };
 
   const handleReset = () => {
-    setInput('');
-    dispatch({ type: 'clearSearch' });
+    setSearchKeyword('');
+    dispatch({ type: 'clearSearch', payload: {} });
   };
 
   return (
@@ -38,7 +38,7 @@ const Header = () => {
         <h1>git log</h1>
       </Link>
       <SearchBar
-        input={input}
+        searchKeyword={searchKeyword}
         onChange={handleChange}
       />
       <Button onClick={handleClick}/>

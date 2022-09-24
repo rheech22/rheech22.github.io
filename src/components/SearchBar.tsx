@@ -11,22 +11,22 @@ import Button from "./Button";
 import SearchSuggestion from "./SearchSuggestion";
 
 interface Props {
-  input: string;
+  searchKeyword: string;
   onChange: (value: string) => void
 }
 
 const SearchBar = ({
-  input,
+  searchKeyword,
   onChange,
 }: Props) => {
   const dispatch = useDispatch();
 
-  const searchBy = (filter: 'all' | 'title' | 'content') => {
-    dispatch({ type: 'searchByKeyword', payload: { keyword: input, filter } });
+  const searchBy = (searchFilter: 'all' | 'title' | 'content') => {
+    dispatch({ type: 'searchByKeyword', payload: { searchKeyword, searchFilter } });
 
     onChange('');
 
-    navigate(`/search?keyword=${encodeURI(input)}&filter=${encodeURI(filter)}`);
+    navigate(`/search?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,13 +36,13 @@ const SearchBar = ({
   };
 
   return (
-    <Container onSubmit={handleSubmit} hasInput={Boolean(input)}>
-      <Textbox onChange={onChange} value={input} placeholder='Search' maxLength={40} />
+    <Container onSubmit={handleSubmit} hasInput={Boolean(searchKeyword)}>
+      <Textbox onChange={onChange} value={searchKeyword} placeholder='Search' maxLength={40} />
       {
-        input &&
+        searchKeyword &&
         <ul>
-          <SearchSuggestion searchBy={searchBy} input={input} title='only title' filterText="title" />
-          <SearchSuggestion searchBy={searchBy} input={input} title='only content' filterText="content" />
+          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only title' filterText="title" />
+          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title='only content' filterText="content" />
         </ul>
       }
       <Button type="submit" hidden />

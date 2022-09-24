@@ -6,27 +6,31 @@ import Location from "../assets/icons/Location";
 import Link from "../assets/icons/Link";
 import Mail from "../assets/icons/Mail";
 
+import config from "../../blog-config";
+
+const { avatarUrl, author, description, locaiton, email, github } = config;
+
 const Bio = () => {
   return (
     <Container>
       <Avatar>
-        <img alt='avatar' src="https://user-images.githubusercontent.com/57756798/186722103-fab30337-6059-4a92-ad19-2b4f5a2fea9f.jpeg"/>
+        <img alt='avatar' src={avatarUrl} />
       </Avatar>
       <Profile>
-        <span>Aiden</span>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <span>{author}</span>
+        <p>{description}</p>
         <ul>
           <li>
             <Location />
-            <span>Bundang</span>
+            <span>{locaiton}</span>
           </li>
           <li>
             <Mail />
-            <a href="rheech22@gmail.com">rheech22@gmail.com</a>
+            <a href={email}>{email}</a>
           </li>
           <li>
             <Link/>
-            <a href="https://github.com/rheech22">https://github.com/rheech22</a>
+            <a href={github}>{github}</a>
           </li>
         </ul>
       </Profile>

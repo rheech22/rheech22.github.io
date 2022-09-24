@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 import { device } from "./breakpoints";
 
-export const postStyle = css`
+export const md = css`
   font-size: 16px;
 
   @media ${device.tablet} {

@@ -2,7 +2,7 @@ import { css } from "styled-components";
 import { device } from "./breakpoints";
 import { flex } from "./mixins";
 
-export const postPreviews = css`
+export const previews = css`
   @media ${device.tablet} {
     margin: 0 10px;
     padding: 0px 10px;

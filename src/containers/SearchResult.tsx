@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { postPreviews } from '../styles/postPreviews';
+import { previews } from '../styles/previews';
 
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
@@ -37,5 +37,5 @@ const SearchResult = () => {
 export default SearchResult;
 
 const Container = styled.ul`
-  ${postPreviews}
+  ${previews}
 `;

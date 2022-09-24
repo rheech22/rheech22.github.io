@@ -1,22 +1,22 @@
-// actions
 
-export type Actions = 'setDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch' | 'setCurrentHeading';
+export type BaseState = { tag?: string | null; displayMode?: string | null };
 
-export type BaseState = { tag?: string; displayMode?: string | null };
-
-export type Action = { type: Actions; payload?: any };
-
-// context
 export type State = {
   posts: Posts;
-  tag: string;
-  searchFilter: {
-    filter: 'all' | 'title' | 'content';
-    keyword: string;
-  };
-  headingId: string,
+  tag: string | null;
+  searchFilter: string | null;
+  searchKeyword: string | null;
+  headingId: string | null,
   displayMode: 'day' | 'night' | null;
 };
+
+export type ActionType = 'setDisplayMode' | 'setPosts' | 'searchByKeyword' | 'searchByTag' | 'clearSearch' | 'setCurrentHeading';
+
+export type Payload = {
+  [P in keyof State]?: State[P];
+}
+
+export type Action = { type: ActionType; payload: Payload};
 
 export type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges']
 

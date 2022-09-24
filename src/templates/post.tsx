@@ -1,11 +1,13 @@
 import { graphql, PageProps } from "gatsby";
+import { Helmet } from "react-helmet";
 
 import styled from "styled-components";
 import { flex } from "../styles/mixins";
 import { device } from "../styles/breakpoints";
-import { postStyle } from "../styles/post";
+import { md } from "../styles/md";
 
 import { useContext } from "../store/context";
+
 import useSpyHeadings from "../hooks/useSpyHeadings";
 import useTags from "../hooks/useTags";
 
@@ -14,9 +16,8 @@ import { getDateString } from "../utils";
 import Comments from "../components/Comments";
 import Tag from "../components/Tag";
 import TOC from "../components/TOC";
-import { Helmet } from "react-helmet";
-import { title as defaultTitle, siteUrl, twitterUsername } from "../../config";
 
+import config from "../../blog-config";
 
 export const query = graphql`
   query template($path: String!) {
@@ -39,23 +40,27 @@ export const query = graphql`
   }
 `;
 
+const { title: defaultTitle, siteUrl, twitterUsername } = config;
+
 export default ({ data }: PageProps<Queries.templateQuery>) => {
-  const { markdownRemark: post } = data;
+  const { markdownRemark } = data;
 
   const { displayMode } = useContext();
   const { searchByTag } = useTags();
   const spyHeadingsRef = useSpyHeadings();
 
-  const title = post?.frontmatter?.title ?? '';
-  const date = post?.frontmatter?.date ?? '';
-  const path = post?.frontmatter?.path ?? '';
-  const tags = post?.frontmatter?.tags ?? [];
-  const contents = post?.html ?? '';
-  const excerpt = post?.excerpt ?? '';
-  const headings = post?.headings ?? [];
-  const timeToRead = post?.timeToRead ?? '';
+  const post = {
+    title: markdownRemark?.frontmatter?.title ?? '',
+    date: markdownRemark?.frontmatter?.date ?? '',
+    path: markdownRemark?.frontmatter?.path ?? '',
+    tags: markdownRemark?.frontmatter?.tags ?? [],
+    contents: markdownRemark?.html ?? '',
+    excerpt: markdownRemark?.excerpt ?? '',
+    headings: markdownRemark?.headings ?? [],
+    timeToRead: markdownRemark?.timeToRead ?? '',
+  };
 
-  console.log(displayMode);
+  const { title, date, path, tags, contents, excerpt, headings, timeToRead } = post;
 
   return (
     <>
@@ -79,7 +84,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             {
               "@context": "https://schema.org",
               "@type": "Article",
-              "url": "https://rheechlog.gatsbyjs.io/${path}",
+              "url": "${siteUrl}${path}",
               "headline": "${title}",
               "datePublisehd": "${date}",
               "dateModified": "${date}",
@@ -184,7 +189,7 @@ const PostSection = styled.section`
     & > main {
       & > section {
         &:nth-child(1){
-          ${postStyle}
+          ${md}
         }
       }
     }

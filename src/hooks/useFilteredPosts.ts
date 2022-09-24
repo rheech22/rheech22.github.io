@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import { useContext } from "../store/context";
 
 const useFilteredPosts = () => {
-  const { posts, searchFilter: { filter, keyword }, tag } = useContext();
+  const { posts, searchFilter, searchKeyword, tag } = useContext();
 
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   const getPosts = () => {
-    if (keyword) {
+    if (searchKeyword) {
       return posts
         .filter(({ node: { frontmatter, html } })=> {
           const hasTitle = frontmatter?.title?.toLowerCase()
-            .includes(keyword.toLowerCase());
+            .includes(searchKeyword.toLowerCase());
           const hasContent = html?.toLowerCase()
-            .includes(keyword.toLowerCase());
+            .includes(searchKeyword.toLowerCase());
 
-          if (filter === 'title') return hasTitle;
-          if (filter === 'content') return hasContent;
+          if (searchFilter === 'title') return hasTitle;
+          if (searchFilter === 'content') return hasContent;
 
           return (hasTitle || hasContent);
         });
@@ -35,7 +35,7 @@ const useFilteredPosts = () => {
     const filteredPosts = getPosts();
 
     setFilteredPosts(filteredPosts);
-  }, [keyword, tag, posts, filter]);
+  }, [posts, tag, searchKeyword, searchFilter]);
 
   return filteredPosts;
 };

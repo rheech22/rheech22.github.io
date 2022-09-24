@@ -1,5 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
-import { title, description, twitterUsername, siteUrl } from './config';
+import configs from './blog-config';
+
+const { title, description, twitterUsername, siteUrl } = configs;
 
 const config: GatsbyConfig = {
   siteMetadata: {

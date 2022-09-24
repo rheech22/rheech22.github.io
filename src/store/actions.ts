@@ -1,11 +1,11 @@
-import { Action, Actions, BaseState } from "./types";
+import { ActionType, BaseState, Payload } from "./types";
 
 const actions: {
-  [key in Actions]:
-  <T extends BaseState>(state: T, payload: Action['payload']) => T;
+  [key in ActionType]:
+  <T extends BaseState>(state: T, payload: Payload) => T;
 } = {
   setDisplayMode: (state, { displayMode }) => {
-    localStorage.setItem('display-mode', displayMode);
+    if (displayMode) localStorage.setItem('display-mode', displayMode);
 
     return {
       ...state,
@@ -18,34 +18,28 @@ const actions: {
       posts,
     };
   },
-  searchByKeyword: (state, { filter, keyword }) => {
+  searchByKeyword: (state, { searchFilter, searchKeyword }) => {
     return {
       ...state,
-      searchFilter: {
-        filter,
-        keyword,
-      },
-      tag: '',
+      searchFilter,
+      searchKeyword,
+      tag: null,
     };
   },
   searchByTag: (state, { tag }) => {
     return {
       ...state,
-      searchFilter: {
-        filter: 'all',
-        keyword: '',
-      },
+      searchFilter: null,
+      searchKeyword: null,
       tag: tag === state.tag ? '' : tag,
     };
   },
   clearSearch: (state) => {
     return {
       ...state,
-      searchFilter: {
-        filter: 'all',
-        keyword: '',
-      },
-      tag: '',
+      searchFilter: null,
+      searchKeyword: null,
+      tag: null,
     };
   },
   setCurrentHeading: (state, { headingId }) => {
