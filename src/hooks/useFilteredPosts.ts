@@ -4,7 +4,7 @@ import { useContext } from '../store/context';
 const useFilteredPosts = () => {
   const { posts, searchFilter, searchKeyword, tag } = useContext();
 
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  const [ filteredPosts, setFilteredPosts ] = useState(posts);
 
   const getPosts = () => {
     if (searchKeyword) {
@@ -35,7 +35,7 @@ const useFilteredPosts = () => {
     const filteredPosts = getPosts();
 
     setFilteredPosts(filteredPosts);
-  }, [posts, tag, searchKeyword, searchFilter]);
+  }, [ posts, tag, searchKeyword, searchFilter ]);
 
   return filteredPosts;
 };

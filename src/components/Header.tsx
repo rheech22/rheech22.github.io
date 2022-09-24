@@ -18,7 +18,7 @@ const Header = () => {
   const { displayMode } = useContext();
   const dispatch = useDispatch();
 
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [ searchKeyword, setSearchKeyword ] = useState('');
 
   const handleClick = () => dispatch({ type: 'setDisplayMode', payload: { displayMode: getTheme(displayMode) } });
 

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 
-import Location from '../assets/icons/Location';
-import Link from '../assets/icons/Link';
-import Mail from '../assets/icons/Mail';
+import LocationIcon from '../assets/icons/Location';
+import LinkIcon from '../assets/icons/Link';
+import MailIcon from '../assets/icons/Mail';
 
 import config from '../../blog-config';
 
@@ -29,15 +29,15 @@ const Bio = () => {
         <Description>{description}</Description>
         <Info>
           <li>
-            <Location />
+            <LocationIcon />
             <span>{location}</span>
           </li>
           <li>
-            <Mail />
+            <MailIcon />
             <a href={email}>{email}</a>
           </li>
           <li>
-            <Link/>
+            <LinkIcon />
             <a href={github}>{github}</a>
           </li>
         </Info>

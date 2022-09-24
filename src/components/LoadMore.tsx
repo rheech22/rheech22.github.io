@@ -8,7 +8,7 @@ const LoadMore = ({ load }: Props) => {
   const loadMoreTrigger = useRef(null);
 
   useEffect(() => {
-    const loadMoreObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+    const loadMoreObserver = new IntersectionObserver(([ { isIntersecting } ]) => {
       if (!isIntersecting) return;
       load();
     });

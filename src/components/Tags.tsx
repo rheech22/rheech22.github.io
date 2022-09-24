@@ -15,7 +15,7 @@ const Tags = () => {
   return (
     <Container>
       <ul>
-        {tags && tags.map(([tag], index)=> (
+        {tags && tags.map(([ tag ], index)=> (
           <Tag
             key={index}
             tag={tag}

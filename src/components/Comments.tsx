@@ -23,12 +23,12 @@ const Comments = memo(({ repo, theme }: Props) => {
       'async': 'true',
     };
 
-    Object.entries(attributes).forEach(([key, value]) => {
+    Object.entries(attributes).forEach(([ key, value ]) => {
       utterances.setAttribute(key, value);
     });
 
     containerRef.current.appendChild(utterances);
-  }, [repo]);
+  }, [ repo ]);
 
   useLayoutEffect(()=> {
     if (!containerRef.current) return;
@@ -36,7 +36,7 @@ const Comments = memo(({ repo, theme }: Props) => {
     const iframe = containerRef.current.firstElementChild?.firstElementChild as HTMLIFrameElement;
 
     iframe?.contentWindow?.postMessage({ type: 'set-theme', theme }, 'https://utteranc.es');
-  }, [theme]);
+  }, [ theme ]);
 
   return <div ref={containerRef} />;
 });

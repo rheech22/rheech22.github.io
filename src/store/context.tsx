@@ -20,7 +20,7 @@ export const useContext = () => getContext(Context);
 export const useDispatch = () => getContext(Dispatch);
 
 export const ContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
+  const [ state, dispatch ] = useReducer<Reducer<State, Action>>(reducer, initialState);
 
   return (
     <Context.Provider value={state}>

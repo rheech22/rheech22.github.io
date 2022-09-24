@@ -25,8 +25,8 @@ export const enrichTags = (tags: (string | null | undefined)[]) => {
 };
 
 export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {
-  const [aTag, aCount] = a;
-  const [bTag, bCount] = b;
+  const [ aTag, aCount ] = a;
+  const [ bTag, bCount ] = b;
 
   if (bCount > aCount) return 1;
   if (bCount < aCount) return -1;
@@ -34,7 +34,7 @@ export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {
   const number = /[0-9]/;
   const alphabet = /[a-zA-Z]/;
   const hangul = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-  const patterns = [number, alphabet, hangul];
+  const patterns = [ number, alphabet, hangul ];
 
   const getLevel = (s: string) => {
     const index = patterns.findIndex((pattern) => pattern.test(s));
