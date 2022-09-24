@@ -17,6 +17,7 @@ const config: GatsbyConfig = {
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-remove-serviceworker',
 
     {
       resolve: 'gatsby-source-filesystem',
@@ -72,14 +73,6 @@ const config: GatsbyConfig = {
             purpose: 'any maskable',
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        workboxConfig: {
-          globPatterns: [ '**/src/images/*' ],
-        },
       },
     },
   ],
