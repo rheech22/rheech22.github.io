@@ -51,7 +51,7 @@ export default Header;
 const Container = styled.header`
   ${flex({ alignItems: 'center' })}
   padding: 8px 16px;
-  min-width: 375px;
+  min-width: 360px;
   width: 100%;
   height: 62px;
   background-color: ${headerBg};
@@ -75,9 +75,6 @@ const Container = styled.header`
   & > button {
     border: none;
     padding: 0;
-    min-width: 36px;
-    width: 36px;
-    height: 36px;
     background: none;
     cursor: pointer;
     outline: none;
@@ -99,10 +96,13 @@ const Container = styled.header`
       @media ${device.widerThanMobile} {
         margin-left: auto;
       }
-
+      
       margin-left: 5vw;
       color: #eee;
       opacity: 0.7;
+      min-width: 36px;
+      width: 36px;
+      height: 36px;
 
       &:hover {
         opacity: 1;

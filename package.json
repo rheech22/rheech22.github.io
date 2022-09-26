@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby clean && gatsby build && gh-pages -b gh-pages -d public",
+    "deploy": "gatsby clean && gatsby build --prefix-paths && gh-pages -d public",
     "typecheck": "tsc --noEmit",
     "lint": "npx eslint --fix --ext .ts,.tsx ."
   },
@@ -31,6 +31,7 @@
     "gatsby-plugin-styled-components": "^5.14.0",
     "gatsby-remark-autolink-headers": "^5.22.0",
     "gatsby-remark-highlight-code": "^3.2.0",
+    "gatsby-remark-images": "^6.23.1",
     "gatsby-source-filesystem": "^4.23.0",
     "gatsby-transformer-remark": "^5.19.0",
     "gatsby-transformer-sharp": "^4.23.1",

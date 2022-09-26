@@ -135,4 +135,8 @@ export const markdown = css`
     max-width: 90vw;
     font-size: 14px;
   }
+
+  img {
+    max-width: 90vw;
+  }
 `;

@@ -68,18 +68,23 @@ const Avatar = styled.div`
   width: 148px;
   height: 148px;
 
-  img {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-  }
-
   @media ${device.widerThanLaptop} {
     margin-right: 0;
     width: 100%;
     min-height: 168px;  
+  }
 
-    img {
+  img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+
+    @media ${device.widerThanTablet} {
+      width: 130px;
+      height: 130px;
+    }  
+
+    @media ${device.widerThanLaptop} {
       width: 168px;
       height: 168px;
     }

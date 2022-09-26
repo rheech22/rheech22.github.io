@@ -7,6 +7,8 @@ tags: ["react", "javascript", "typescript"]
 
 ## Heading
 
+![JAVA](./pictures/java.png)
+
 Oooooh-weeee, my first blog post!
 
 1. abc
