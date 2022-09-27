@@ -17,7 +17,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { displayMode } = useContext();
   const { searchByTag } = useTags();
 
-  const spyHeadingsRef = useSpyHeadings();
+  const spyRef = useSpyHeadings();
 
   const { title, date, path, tags, contents, excerpt, headings, timeToRead } = takePost(data);
 
@@ -44,7 +44,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               : null}
           </Styled.Header>
           <Styled.Main>
-            <section ref={spyHeadingsRef} dangerouslySetInnerHTML={{ __html: contents }}/>
+            <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>
           </Styled.Main>
         </Styled.Article>
         <TOC headings={headings}/>
