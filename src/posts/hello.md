@@ -7,7 +7,7 @@ tags: ["react", "javascript", "typescript"]
 
 ## Heading
 
-![JAVA](./pictures/java.png)
+![JAVA](./images/java.png)
 
 Oooooh-weeee, my first blog post!
 

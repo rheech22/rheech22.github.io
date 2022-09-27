@@ -61,10 +61,11 @@
 - [x] 포스트 이미지 모바일에서 벗어나는 문제 해결하기
 - [x] 아이폰 12 mini 등에서 bio 깨지는 문제 해결하기
 - [x] width 360px 반응형 고려하기
-- [ ] 스크롤 이벤트 빠릿하게 고치기
+- [x] 스크롤 이벤트 빠릿하게 고치기
+- [x] gh-pages에 배포하기
+- [ ] TOC 레이아웃 조정하기
 - [ ] 코드 하이라이팅 다른 것도 알아보기
 - [ ] config 다듬기
-- [ ] gh-pages에 배포하기
 - [ ] 연관된 글 보여주기(?)
 - [ ] 다른 템플릿 사용해보기
 - [ ] 템플릿으로 만들기
@@ -80,4 +81,9 @@
 - TOC 하이라이트를 intersectionObserver로 구현하려 했지만, 클릭해서 이동할 때 제대로 intersection을 감지하지 못함, 스크롤 이벤트를 최적화하는 방법으로 사용해야 할듯
 - sticky position을 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
 - rehydration으로 적용안되는 부분이 생길 수 있음, 리액트 생명주기 메서드로 어렵지 않게 해결할 수 있음
-- 
+- 배포 순서
+  1. github에서 username.github.io 레포 생성
+  2. 자신의 로컬 원하는 곳에서 프로젝트 클론 `git clone -b develop --single-branch [원본 클론 주소] [username.github.io]`
+  4. git remote add origin [레포 원격 주소]
+  3. 레포 세팅에서 default 브랜치를 master(or main)에서 develop으로 변경
+  4. npm run deploy로 배포 실행
