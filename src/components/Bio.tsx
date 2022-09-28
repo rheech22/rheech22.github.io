@@ -67,6 +67,7 @@ const Avatar = styled.div`
   margin-right: 12px;
   width: 148px;
   height: 148px;
+  min-width: 100px;
 
   @media ${device.widerThanLaptop} {
     margin-right: 0;
@@ -77,6 +78,7 @@ const Avatar = styled.div`
   img {
     width: 95px;
     height: 95px;
+    min-width: 95px;
     border-radius: 50%;
 
     @media ${device.widerThanTablet} {
@@ -122,41 +124,45 @@ const Description = styled.p`
 `;
 
 const Info = styled.ul`
+  ${flex({ alignItems: 'flex-start', justifyContent: 'center', flexDirection: 'column' })};
   width: 100%;
   min-width: fit-content;
 
-  svg {
-    margin-right: 8px;
-    fill: ${({ theme })=>theme.mute};
-    width: fit-content;
-  }
-
-  li {
+  
+  & > li {
     ${flex({ alignItems: 'center' })}
     width: 100%;
     height: 24px;
+
+    & > svg {
+      margin-right: 8px;
+      fill: ${({ theme })=>theme.mute};
+      width: fit-content;
+    }
+
+    & > a, span {
+      max-width: 170px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 12px;
+      
+      @media ${device.widerThanLaptop} {
+        max-width: 270px;
+      }
+    }
+
+    & > a {
+      text-decoration: none;
+  
+      &:hover {
+        color: ${({ theme })=>theme.blue};
+        text-decoration: underline;
+      }
+    }
   }
   
-  a, span {
-    max-width: 170px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 12px;
-    
-    @media ${device.widerThanLaptop} {
-      max-width: 270px;
-    }
-  }
 
-  a {
-    text-decoration: none;
-
-    &:hover {
-      color: ${({ theme })=>theme.blue};
-      text-decoration: underline;
-    }
-  }
 `;
 
 
