@@ -31,8 +31,8 @@ const Tags = () => {
 export default Tags;
 
 const Container = styled.div`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  margin: 0 20px;
+  ${flex({ alignItems: 'center', justifyContent: 'center' })};
+  margin: 0 10px;
   padding: 10px;
 
   @media ${device.widerThanLaptop} {

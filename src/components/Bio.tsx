@@ -50,7 +50,7 @@ export default Bio;
 
 const Container = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  margin: 0 20px;
+  margin: 0 10px;
   margin-bottom: 8px;
   height: fit-content;
 
@@ -123,6 +123,7 @@ const Description = styled.p`
 
 const Info = styled.ul`
   width: 100%;
+  min-width: fit-content;
 
   svg {
     margin-right: 8px;
@@ -145,7 +146,6 @@ const Info = styled.ul`
     
     @media ${device.widerThanLaptop} {
       max-width: 270px;
-      font-size: 12px;
     }
   }
 
