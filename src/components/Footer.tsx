@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { border } from '../styles/mixins';
 
+import config from '../../blog-config';
+
 const Footer = () => {
   return (
     <Container>
       <section>
-        <span>© LCH 2022</span>
+        <span>© {config.copyright}</span>
       </section>
     </Container>
   );

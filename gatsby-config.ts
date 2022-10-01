@@ -1,7 +1,7 @@
 import type { GatsbyConfig } from 'gatsby';
 import configs from './blog-config';
 
-const { title, description, twitterUsername, siteUrl, themeColor } = configs;
+const { title, description, twitterUsername, siteUrl, themeColor, googleAnalyticsTrackingId } = configs;
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -119,7 +119,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
         trackingIds: [
-          'G-0DM3BCWTDS',
+          googleAnalyticsTrackingId,
         ],
       },
     },

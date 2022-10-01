@@ -14,6 +14,8 @@ import { headerBg, headerLogo } from '../styles/themes';
 import SearchBar from './SearchBar';
 import Button from './Button';
 
+import config from '../../blog-config';
+
 const Header = () => {
   const { displayMode } = useContext();
   const dispatch = useDispatch();
@@ -35,7 +37,7 @@ const Header = () => {
   return (
     <Container>
       <Link to="/" onClick={()=> handleReset()}>
-        <h1>git log</h1>
+        <h1>{config.title}</h1>
       </Link>
       <SearchBar
         searchKeyword={searchKeyword}
