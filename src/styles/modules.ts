@@ -137,6 +137,10 @@ export const markdown = css`
   }
 
   img {
+    @media ${device.widerThanTablet} {
+      max-width: 694px;
+    }
+
     max-width: 90vw;
   }
 `;

@@ -17,7 +17,7 @@ export const Article = styled.article < { hasHeadings: boolean } > `
   }
 
   @media ${device.widerThanLaptopS} {
-    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(12%);' : ''};
+    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(12%);' : 'transform: translateX(3%)'};
   }
   
   ${flex({ flexDirection: 'column' })};
@@ -66,36 +66,59 @@ export const Nav = styled.nav`
   ${flex({ alignItems: 'center', justifyContent: 'space-between', flexDirection: 'column' })};
   margin-top: 8em;
 
-  & > div {
+  & > a {
     @media ${device.widerThanMobile} {
       width: fit-content;
       min-width: 192px;
     }
 
     ${flex({ alignItems: 'center' })};
-    padding: 20px;
     border-radius: 12px;
-    width: 100%;
+    text-decoration: none;
 
     &:hover {
       background-color: ${({ theme }) => theme.lightBlue};
     }
 
-    & > svg {
-      path {
-        fill: ${({ theme }) => theme.mute};
-      }
-    }
-
     &:first-of-type {
-      svg { 
+      justify-content: flex-start;
+      margin-right: auto;
+      padding: 20px 20px 20px 10px;
+
+      & > div {
+        margin-left: 20px;
+
+        span, h3 {
+          justify-content: start;
+        }
+      }
+
+      & > svg { 
         transform: rotate(90deg);
       }
     }
 
     &:last-of-type {
-      svg { 
+      justify-content: flex-end;
+      margin-left: auto;
+      padding: 20px 10px 20px 20px;
+
+      & > div {
+        margin-right: 20px;
+
+        span, h3 {
+          justify-content: flex-end;
+        }
+      }
+
+      & > svg {
         transform: rotate(-90deg);
+      }
+    }
+
+    & > svg {
+      path {
+        fill: ${({ theme }) => theme.mute};
       }
     }
 
@@ -106,27 +129,10 @@ export const Nav = styled.nav`
         height: 30px;
       }
 
-      & > a {
+      & > span {
         ${flex({ alignItems: 'center' })};
         color: ${({ theme }) => theme.blue};
-        text-decoration: none;
         height: 30px;
-      }
-
-      &:first-of-type {
-        margin-left: 20px;
-
-        a, h3 {
-          margin-right: auto;
-        }
-      }
-
-      &:last-of-type {
-        margin-right: 20px;
-
-        a, h3 {
-          margin-left: auto;
-        }
       }
     }
   }

@@ -60,8 +60,6 @@ export const getDateString = ({ date, addPrefix, getYear }: {date: string, addPr
 export const takePost = (data: Queries.templateQuery) => {
   const { markdownRemark } = data;
 
-  console.log(markdownRemark);
-
   const post = {
     title: markdownRemark?.frontmatter?.title ?? '',
     date: markdownRemark?.frontmatter?.date ?? '',
