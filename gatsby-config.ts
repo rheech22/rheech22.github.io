@@ -11,6 +11,16 @@ const config: GatsbyConfig = {
     siteUrl,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        head: true,
+        trackingIds: [
+          googleAnalyticsTrackingId,
+        ],
+      },
+    },
+
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
@@ -115,14 +125,6 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-google-gtag',
-      options: {
-        trackingIds: [
-          googleAnalyticsTrackingId,
-        ],
-      },
-    },
   ],
   graphqlTypegen: true,
 };
