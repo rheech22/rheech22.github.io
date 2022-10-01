@@ -13,6 +13,8 @@ import Tag from '../components/Tag';
 import TOC from '../components/TOC';
 import SEO from './post-seo';
 
+import config from '../../blog-config';
+
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { displayMode } = useContext();
   const { searchByTag } = useTags();
@@ -51,7 +53,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
       </Styled.Section>
       {displayMode && (
         <Styled.Comments>
-          <Comments repo="rheech22/comments" theme={displayMode === 'day' ? 'boxy-light' : 'github-dark-orange' }/>
+          <Comments repo={config.commentRepo} theme={displayMode === 'day' ? 'boxy-light' : 'github-dark-orange' }/>
         </Styled.Comments>
       )}
     </>

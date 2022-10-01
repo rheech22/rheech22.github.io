@@ -11,13 +11,13 @@ import MailIcon from '../assets/icons/Mail';
 import config from '../../blog-config';
 
 const Bio = () => {
-  const { author, description, location, email, github, avatarPath } = config;
+  const { author, description, location, email, github } = config;
 
   return (
     <Container>
       <Avatar>
         <StaticImage
-          src={avatarPath}
+          src="../images/avatar.jpeg"
           alt="avatar"
           placeholder="blurred"
           width={168}
