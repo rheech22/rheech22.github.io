@@ -14,7 +14,17 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
         limit: 1000
       ) {
         edges {
-          node {
+          node { 
+            frontmatter {
+              path
+            }
+          }
+          previous {
+            frontmatter {
+              path
+            }
+          }
+          next {
             frontmatter {
               path
             }
@@ -29,11 +39,14 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
   }
 
   if (result.data) {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    result.data.allMarkdownRemark.edges.forEach(({ node, previous, next }) => {
       createPage({
         path: node.frontmatter?.path ?? '',
         component: postTemplate,
-        context: {},
+        context: {
+          previousPath: previous?.frontmatter?.path ?? '',
+          nextPath: next?.frontmatter?.path ?? '',
+        },
       });
     });
   }

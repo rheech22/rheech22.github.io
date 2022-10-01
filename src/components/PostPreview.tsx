@@ -72,7 +72,7 @@ const Container = styled.li`
 const Heading = styled.h2`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.blue};
+  color: ${({ theme }) => theme.default};
   margin-bottom: 4px;
 `;
 

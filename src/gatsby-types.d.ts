@@ -3454,7 +3454,7 @@ type templateQuery = { readonly markdownRemark: { readonly html: string | null, 
 type createPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type createPageQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly frontmatter: { readonly path: string | null } | null } }> } };
+type createPageQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly frontmatter: { readonly path: string | null } | null }, readonly previous: { readonly frontmatter: { readonly path: string | null } | null } | null, readonly next: { readonly frontmatter: { readonly path: string | null } | null } | null }> } };
 
 
 }

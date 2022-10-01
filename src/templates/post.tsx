@@ -15,7 +15,7 @@ import SEO from './post-seo';
 
 import config from '../../blog-config';
 
-export default ({ data }: PageProps<Queries.templateQuery>) => {
+export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
   const { displayMode } = useContext();
   const { searchByTag } = useTags();
 
@@ -23,11 +23,15 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const { title, date, path, tags, contents, excerpt, headings, timeToRead } = takePost(data);
 
+  const hasHeadings = Boolean(headings.length);
+
+  const { previousPath, nextPath } = pageContext as { previousPath: string; nextPath: string } ;
+
   return (
     <>
       <SEO title={title} excerpt={excerpt} date={date} path={path} />
       <Styled.Section>
-        <Styled.Article>
+        <Styled.Article hasHeadings={hasHeadings}>
           <Styled.Header>
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
@@ -48,8 +52,12 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>
           </Styled.Main>
+          <div>
+            <span>{previousPath}</span>
+            <span>{nextPath}</span>
+          </div>
         </Styled.Article>
-        <TOC headings={headings}/>
+        {hasHeadings && <TOC headings={headings}/>}
       </Styled.Section>
       {displayMode && (
         <Styled.Comments>

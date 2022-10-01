@@ -10,7 +10,7 @@ interface Props {
     readonly id: string | null;
     readonly value: string | null;
     readonly depth: number | null;
-  } | null)[] | null
+  } | null)[]
 }
 
 const TOC = ({ headings }: Props) => {
@@ -18,9 +18,9 @@ const TOC = ({ headings }: Props) => {
 
   return (
     <Container>
-      <h2>{headings?.length ? 'ON THIS PAGE' : ''}</h2>
+      <h2>ON THIS PAGE</h2>
       <ul>
-        {headings?.map(heading => {
+        {headings.map(heading => {
           if (!heading) return null;
 
           const { id, depth, value } = heading;
