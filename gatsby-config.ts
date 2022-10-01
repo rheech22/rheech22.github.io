@@ -115,6 +115,14 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: [
+          'G-0DM3BCWTDS',
+        ],
+      },
+    },
   ],
   graphqlTypegen: true,
 };
