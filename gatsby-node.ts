@@ -21,11 +21,13 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
           }
           previous {
             frontmatter {
+              title
               path
             }
           }
           next {
             frontmatter {
+              title
               path
             }
           }
@@ -44,8 +46,14 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
         path: node.frontmatter?.path ?? '',
         component: postTemplate,
         context: {
-          previousPath: previous?.frontmatter?.path ?? '',
-          nextPath: next?.frontmatter?.path ?? '',
+          prev: {
+            path: previous?.frontmatter?.path ?? '',
+            title: previous?.frontmatter?.title ?? '',
+          },
+          next: {
+            path: next?.frontmatter?.path ?? '',
+            title: next?.frontmatter?.title ?? '',
+          },
         },
       });
     });

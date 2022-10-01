@@ -1,6 +1,8 @@
-import { graphql, PageProps } from 'gatsby';
+import { graphql, PageProps, Link } from 'gatsby';
 
 import * as Styled from './styles';
+
+import Arrow from '../assets/icons/Arrow';
 
 import { useContext } from '../store/context';
 import useSpyHeadings from '../hooks/useSpyHeadings';
@@ -25,7 +27,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
 
   const hasHeadings = Boolean(headings.length);
 
-  const { previousPath, nextPath } = pageContext as { previousPath: string; nextPath: string } ;
+  const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } } ;
 
   return (
     <>
@@ -52,10 +54,34 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>
           </Styled.Main>
-          <div>
-            <span>{previousPath}</span>
-            <span>{nextPath}</span>
-          </div>
+          <Styled.Nav>
+            <div>
+              { Boolean(prev.path) &&
+                (
+                  <>
+                    <Arrow/>
+                    <div>
+                      <h3>PREVIOUS</h3>
+                      <Link to={prev.path}>{prev.title}</Link>
+                    </div>
+                  </>
+                )
+              }
+            </div>
+            <div>
+              { Boolean(next.path) &&
+                (
+                  <>
+                    <div>
+                      <h3>NEXT</h3>
+                      <Link to={next.path}>{next.title}</Link>
+                    </div>
+                    <Arrow/>
+                  </>
+                )
+              }
+            </div>
+          </Styled.Nav>
         </Styled.Article>
         {hasHeadings && <TOC headings={headings}/>}
       </Styled.Section>
