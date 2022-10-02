@@ -7,7 +7,7 @@ import { border, flex } from '../styles/mixins';
 const Series = () => {
   const dispatch = useDispatch();
 
-  const { posts } = useContext();
+  const { posts, series: selectedSeries } = useContext();
 
   const series = [ ...new Set(posts?.map(({ node }) => node.frontmatter?.series)) ].filter(Boolean);
 
@@ -29,7 +29,7 @@ const Series = () => {
     <Container>
       <h3>SERIES</h3>
       <ul>
-        {series.map((title, i)=> <List key={i} onClick={()=> searchBySeries(title)}>{title}</List>)}
+        {series.map((title, i)=> <List key={i} onClick={()=> searchBySeries(title)} isSelected={title === selectedSeries}>{title}</List>)}
       </ul>
     </Container>
   );
@@ -53,7 +53,7 @@ const Container = styled.div`
   }
 `;
 
-const List = styled.li`
+const List = styled.li<{isSelected: boolean}>`
   ${flex({ alignItems: 'center' })}
   ${border.left};
   border-top-right-radius: 0.5em;
@@ -62,10 +62,11 @@ const List = styled.li`
   max-width: 100%;  
   font-size: 14px;
   cursor: pointer;
+  background-color: ${({ theme, isSelected }) => isSelected ? theme.lightOrange : 'inherit'};
+  color: ${({ theme, isSelected }) => isSelected ? theme.orange : 'inherit'};
+  border-color: ${({ theme, isSelected }) => isSelected ? theme.orange : 'inherit'};
   
   &:hover {
-    background-color: ${({ theme }) => theme.lightOrange};
     color: ${({ theme }) => theme.orange };
-    border-color: ${({ theme }) => theme.orange };
   }
 `;
