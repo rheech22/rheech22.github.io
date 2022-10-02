@@ -13,11 +13,12 @@ export const Section = styled.section`
 
 export const Article = styled.article < { hasHeadings: boolean } > `
   @media ${device.widerThanTablet} {
+    transform: translateX(3%);
     width: 726px;
   }
 
   @media ${device.widerThanLaptopS} {
-    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(12%);' : 'transform: translateX(3%)'};
+    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(12%);' : ''};
   }
   
   ${flex({ flexDirection: 'column' })};

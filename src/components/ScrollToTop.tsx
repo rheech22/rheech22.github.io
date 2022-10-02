@@ -3,9 +3,15 @@ import { flex } from '../styles/mixins';
 
 import Arrow from '../assets/icons/ArrowThin';
 
+import useScrollToTop from '../hooks/useScrollToTop';
+
 const ScrollToTop = () => {
+  const { isTop, handleClickButton } = useScrollToTop();
+
+  if (isTop) return null;
+
   return (
-    <Container>
+    <Container onClick={()=> handleClickButton()}>
       <Arrow />
     </Container>
   );
@@ -23,6 +29,7 @@ const Container = styled.div`
   width: 40px;
   height: 40px;
   background-color: ${({ theme })=> theme.searchSuggestionHovered};
+  cursor: pointer;
   
   svg {
     path {

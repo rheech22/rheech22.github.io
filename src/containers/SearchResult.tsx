@@ -7,6 +7,7 @@ import useLoadMore from '../hooks/useLoadMore';
 import PostPreview from '../components/PostPreview';
 import NoContent from '../components/NoContent';
 import LoadMore from '../components/LoadMore';
+import ScrollToTop from '../components/ScrollToTop';
 
 const SearchResult = () => {
   const filteredPosts = useFilteredPosts();
@@ -30,6 +31,7 @@ const SearchResult = () => {
             />
           )}
       <LoadMore load={loadMore}/>
+      <ScrollToTop />
     </Container>
   );
 };
