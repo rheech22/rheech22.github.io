@@ -6,7 +6,7 @@ interface ThrottleParams {
 }
 
 const useScrollToTop = () => {
-  const [ isTop, setIsTop ] = useState(document.documentElement.scrollTop === 0);
+  const [ isTop, setIsTop ] = useState(true);
 
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -22,6 +22,8 @@ const useScrollToTop = () => {
   };
 
   useEffect(() => {
+    setIsTop(document.documentElement.scrollTop === 0);
+
     const handleScroll = () => setIsTop(document.documentElement.scrollTop === 0);
 
     const throttleHandler = () => throttle({ cb: handleScroll, wait: 600 });

@@ -3,6 +3,7 @@ path: "/headings"
 date: "2022-08-23"
 title: "Headings"
 tags: ["react", "javascript"]
+series: "test"
 ---
 
 # Heading 1

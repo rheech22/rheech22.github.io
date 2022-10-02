@@ -664,6 +664,7 @@ type FileFieldsEnum =
   | 'childMarkdownRemark.fileAbsolutePath'
   | 'childMarkdownRemark.frontmatter.date'
   | 'childMarkdownRemark.frontmatter.path'
+  | 'childMarkdownRemark.frontmatter.series'
   | 'childMarkdownRemark.frontmatter.tags'
   | 'childMarkdownRemark.frontmatter.title'
   | 'childMarkdownRemark.headings'
@@ -794,6 +795,7 @@ type FileFieldsEnum =
   | 'childrenMarkdownRemark.fileAbsolutePath'
   | 'childrenMarkdownRemark.frontmatter.date'
   | 'childrenMarkdownRemark.frontmatter.path'
+  | 'childrenMarkdownRemark.frontmatter.series'
   | 'childrenMarkdownRemark.frontmatter.tags'
   | 'childrenMarkdownRemark.frontmatter.title'
   | 'childrenMarkdownRemark.headings'
@@ -1735,6 +1737,7 @@ type MarkdownRemarkFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter.date'
   | 'frontmatter.path'
+  | 'frontmatter.series'
   | 'frontmatter.tags'
   | 'frontmatter.title'
   | 'headings'
@@ -1822,6 +1825,7 @@ type MarkdownRemarkFilterListInput = {
 type MarkdownRemarkFrontmatter = {
   readonly date: Maybe<Scalars['Date']>;
   readonly path: Maybe<Scalars['String']>;
+  readonly series: Maybe<Scalars['String']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
 };
@@ -1837,6 +1841,7 @@ type MarkdownRemarkFrontmatter_dateArgs = {
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
+  readonly series: InputMaybe<StringQueryOperatorInput>;
   readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
