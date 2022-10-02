@@ -62,11 +62,11 @@ const List = styled.li<{isSelected: boolean}>`
   max-width: 100%;  
   font-size: 14px;
   cursor: pointer;
-  background-color: ${({ theme, isSelected }) => isSelected ? theme.lightOrange : 'inherit'};
-  color: ${({ theme, isSelected }) => isSelected ? theme.orange : 'inherit'};
-  border-color: ${({ theme, isSelected }) => isSelected ? theme.orange : 'inherit'};
+  background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : 'inherit'};
+  color: ${({ theme, isSelected }) => isSelected ? theme.series : 'inherit'};
+  border-color: ${({ theme, isSelected }) => isSelected ? theme.series : 'inherit'};
   
   &:hover {
-    color: ${({ theme }) => theme.orange };
+    color: ${({ theme }) => theme.series };
   }
 `;

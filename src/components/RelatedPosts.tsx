@@ -59,10 +59,10 @@ const Container = styled.div`
   margin-top: 18px;
   border-radius: 8px;
   padding: 20px 10px;
-  background-color: ${({ theme }) => theme.lightOrange};
+  background-color: ${({ theme }) => theme.seriesBg};
   
   strong {
-    color: ${({ theme }) => theme.orange};
+    color: ${({ theme }) => theme.series};
     font-weight: 600;
   }
 
@@ -76,7 +76,7 @@ const Container = styled.div`
     font-weight: 600;
     cursor: pointer;
     color: ${headerLogo};
-    background-color: ${({ theme }) => theme.orange};
+    background-color: ${({ theme }) => theme.series};
     opacity: 0.6;
 
     &:hover {

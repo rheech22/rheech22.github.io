@@ -32,8 +32,6 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
 
   const relatedPosts = posts.filter(({ node }) => node.frontmatter?.series === series).map(({ node }) => node.frontmatter);
 
-  console.log(relatedPosts);
-
   return (
     <>
       <SEO title={title} excerpt={excerpt} date={date} path={path} />
