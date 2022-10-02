@@ -55,32 +55,32 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>
           </Styled.Main>
           <Styled.Nav>
-            <Link to={prev.path}>
+            <div>
               { Boolean(prev.path) &&
                 (
-                  <>
+                  <Link to={prev.path}>
                     <Arrow/>
                     <div>
                       <h3>PREVIOUS</h3>
                       <span>{prev.title}</span>
                     </div>
-                  </>
+                  </Link>
                 )
               }
-            </Link>
-            <Link to={next.path}>
+            </div>
+            <div>
               { Boolean(next.path) &&
                 (
-                  <>
+                  <Link to={next.path}>
                     <div>
                       <h3>NEXT</h3>
                       <span>{next.title}</span>
                     </div>
                     <Arrow/>
-                  </>
+                  </Link>
                 )
               }
-            </Link>
+            </div>
           </Styled.Nav>
         </Styled.Article>
         {hasHeadings && <TOC headings={headings}/>}

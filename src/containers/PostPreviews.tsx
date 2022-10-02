@@ -6,6 +6,7 @@ import { previews } from '../styles/modules';
 
 import PostPreview from '../components/PostPreview';
 import LoadMore from '../components/LoadMore';
+import ScrollToTop from '../components/ScrollToTop';
 
 const PostPreviews = () => {
   const { posts } = useContext();
@@ -29,6 +30,7 @@ const PostPreviews = () => {
           />
         )}
       <LoadMore load={loadMore}/>
+      <ScrollToTop />
     </Container>
   );
 };

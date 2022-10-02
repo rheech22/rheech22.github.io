@@ -66,76 +66,90 @@ export const Nav = styled.nav`
   ${flex({ alignItems: 'center', justifyContent: 'space-between', flexDirection: 'column' })};
   margin-top: 8em;
 
-  & > a {
-    @media ${device.widerThanMobile} {
-      width: fit-content;
-      min-width: 192px;
-    }
+  & > div {
+    width: 100%;
+    
+    & > a {
+      @media ${device.widerThanMobile} {
+        width: fit-content;
+        min-width: 192px;
+      }
+      
+      ${flex({ alignItems: 'center' })};
+      border-radius: 12px;
+      text-decoration: none;
+      width: 100%;
 
-    ${flex({ alignItems: 'center' })};
-    border-radius: 12px;
-    text-decoration: none;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.lightBlue};
+      &:hover {
+        background-color: ${({ theme }) => theme.lightBlue};
+  
+        span {
+          text-decoration: underline;
+        }
+      }
+  
+      & > svg {
+        path {
+          fill: ${({ theme }) => theme.mute};
+        }
+      }
+  
+      & > div {
+        & > h3 {
+          ${flex({ alignItems: 'center' })};
+          font-size: 12px;
+          height: 30px;
+        }
+  
+        & > span {
+          ${flex({ alignItems: 'center' })};
+          color: ${({ theme }) => theme.blue};
+          height: 30px;
+        }
+      }
     }
 
     &:first-of-type {
-      justify-content: flex-start;
-      margin-right: auto;
-      padding: 20px 20px 20px 10px;
-
-      & > div {
-        margin-left: 20px;
-
-        span, h3 {
-          justify-content: start;
+      & > a  {
+        justify-content: flex-start;
+        margin-right: auto;
+        padding: 20px 20px 20px 10px;
+  
+        & > div {
+          margin-left: 20px;
+  
+          span, h3 {
+            justify-content: start;
+          }
         }
-      }
-
-      & > svg { 
-        transform: rotate(90deg);
+  
+        & > svg { 
+          transform: rotate(90deg);
+        }
       }
     }
 
     &:last-of-type {
-      justify-content: flex-end;
-      margin-left: auto;
-      padding: 20px 10px 20px 20px;
-
-      & > div {
-        margin-right: 20px;
-
-        span, h3 {
-          justify-content: flex-end;
+      & > a {
+        justify-content: flex-end;
+        margin-left: auto;
+        padding: 20px 10px 20px 20px;
+  
+        & > div {
+          margin-right: 20px;
+  
+          span, h3 {
+            justify-content: flex-end;
+          }
         }
-      }
-
-      & > svg {
-        transform: rotate(-90deg);
-      }
-    }
-
-    & > svg {
-      path {
-        fill: ${({ theme }) => theme.mute};
-      }
-    }
-
-    & > div {
-      & > h3 {
-        ${flex({ alignItems: 'center' })};
-        font-size: 12px;
-        height: 30px;
-      }
-
-      & > span {
-        ${flex({ alignItems: 'center' })};
-        color: ${({ theme }) => theme.blue};
-        height: 30px;
+  
+        & > svg {
+          transform: rotate(-90deg);
+        }
       }
     }
   }
+
 `;
 
 export const Comments = styled.section`
