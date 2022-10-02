@@ -4,11 +4,13 @@ import { flex } from '../styles/mixins';
 
 import Tags from './Tags';
 import Bio from './Bio';
+import Series from './Series';
 
 const Sidebar = () => (
   <Wrapper>
     <Bio />
     <Tags />
+    <Series />
   </Wrapper>
 );
 

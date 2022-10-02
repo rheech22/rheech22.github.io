@@ -12,10 +12,12 @@ const Tags = () => {
 
   const { tags, searchByTag } = useTags();
 
+  if (!tags.length) return null;
+
   return (
     <Container>
       <ul>
-        {tags && tags.map(([ tag ], index)=> (
+        {tags.map(([ tag ], index)=> (
           <Tag
             key={index}
             tag={tag}

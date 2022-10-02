@@ -3,7 +3,7 @@ path: "/hello3"
 date: "2022-08-15"
 title: "It shows code block (abc)"
 tags: ["회고", "typescript"]
-series: "series1"
+series: "함수형 프로그래밍"
 ---
 
 The standard Lorem Ipsum passage, used since the 1500s

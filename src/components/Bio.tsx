@@ -162,8 +162,4 @@ const Info = styled.ul`
       }
     }
   }
-  
-
 `;
-
-

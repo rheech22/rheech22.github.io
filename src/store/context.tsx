@@ -9,6 +9,7 @@ const initialState: State = {
   searchFilter: null,
   searchKeyword: null,
   tag: null,
+  series: null,
   displayMode: null,
   headingId: null,
 };

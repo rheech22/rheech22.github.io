@@ -8,10 +8,12 @@ const useSearchParams = () => {
     const params = new URLSearchParams(location.search);
 
     const tag = params.get('tag');
+    const series = params.get('series');
     const searchKeyword = params.get('keyword');
     const searchFilter = params.get('filter');
 
-    if (tag) dispatch({ type: 'searchByTag', payload: { tag, searchFilter } });
+    if (tag) dispatch({ type: 'searchByTag', payload: { tag } });
+    if (series) dispatch({ type: 'searchBySeries', payload: { series } });
     if (searchKeyword) dispatch({ type: 'searchByKeyword', payload: { searchKeyword, searchFilter } });
   }, []);
 };
