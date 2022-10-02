@@ -65,6 +65,7 @@ export const takePost = (data: Queries.templateQuery) => {
     date: markdownRemark?.frontmatter?.date ?? '',
     path: markdownRemark?.frontmatter?.path ?? '',
     tags: markdownRemark?.frontmatter?.tags ?? [],
+    series: markdownRemark?.frontmatter?.series ?? '',
     contents: markdownRemark?.html ?? '',
     excerpt: markdownRemark?.excerpt ?? '',
     headings: markdownRemark?.headings ?? [],

@@ -64,8 +64,8 @@ const List = styled.li`
   cursor: pointer;
   
   &:hover {
-    background-color: ${({ theme }) => theme.lightBlue};
-    color: ${({ theme }) => theme.blue };
-    border-color: ${({ theme }) => theme.blue };
+    background-color: ${({ theme }) => theme.lightOrange};
+    color: ${({ theme }) => theme.orange };
+    border-color: ${({ theme }) => theme.orange };
   }
 `;

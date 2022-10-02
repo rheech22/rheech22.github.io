@@ -27,7 +27,7 @@ export const Article = styled.article < { hasHeadings: boolean } > `
 `;
 
 export const Header = styled.header`
-  margin-bottom: 56px;
+  margin-bottom: 26px;
 `;
 
 export const Main = styled.main`
@@ -77,7 +77,7 @@ export const Nav = styled.nav`
       }
       
       ${flex({ alignItems: 'center' })};
-      border-radius: 12px;
+      border-radius: 8px;
       text-decoration: none;
       width: 100%;
 

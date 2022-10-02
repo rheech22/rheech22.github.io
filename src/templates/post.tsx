@@ -10,6 +10,7 @@ import useTags from '../hooks/useTags';
 
 import { takePost, getDateString } from '../utils';
 
+import RelatedPosts from '../components/RelatedPosts';
 import Comments from '../components/Comments';
 import Tag from '../components/Tag';
 import TOC from '../components/TOC';
@@ -18,16 +19,20 @@ import SEO from './post-seo';
 import config from '../../blog-config';
 
 export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
-  const { displayMode } = useContext();
+  const { displayMode, posts } = useContext();
   const { searchByTag } = useTags();
 
   const spyRef = useSpyHeadings();
 
-  const { title, date, path, tags, contents, excerpt, headings, timeToRead } = takePost(data);
+  const { title, date, path, tags, series, contents, excerpt, headings, timeToRead } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
 
-  const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } } ;
+  const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } };
+
+  const relatedPosts = posts.filter(({ node }) => node.frontmatter?.series === series).map(({ node }) => node.frontmatter);
+
+  console.log(relatedPosts);
 
   return (
     <>
@@ -41,7 +46,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
               <span> — {timeToRead} min read</span>
             </Styled.SubTitle>
             {tags.length
-              ? <Styled.Tags>{
+              ? (<Styled.Tags>{
                 tags.map((tag, index) =>(
                   <Tag
                     key={index}
@@ -49,37 +54,32 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
                     onClick={searchByTag}
                   />)
                 )}</Styled.Tags>
-              : null}
+              ) : null}
+            <RelatedPosts title={title} series={series} relatedPosts={relatedPosts} />
           </Styled.Header>
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>
           </Styled.Main>
           <Styled.Nav>
             <div>
-              { Boolean(prev.path) &&
-                (
-                  <Link to={prev.path}>
-                    <Arrow/>
-                    <div>
-                      <h3>PREVIOUS</h3>
-                      <span>{prev.title}</span>
-                    </div>
-                  </Link>
-                )
-              }
+              {Boolean(prev.path) &&
+                (<Link to={prev.path}>
+                  <Arrow/>
+                  <div>
+                    <h3>PREVIOUS</h3>
+                    <span>{prev.title}</span>
+                  </div>
+                </Link>)}
             </div>
             <div>
-              { Boolean(next.path) &&
-                (
-                  <Link to={next.path}>
-                    <div>
-                      <h3>NEXT</h3>
-                      <span>{next.title}</span>
-                    </div>
-                    <Arrow/>
-                  </Link>
-                )
-              }
+              {Boolean(next.path) &&
+                (<Link to={next.path}>
+                  <div>
+                    <h3>NEXT</h3>
+                    <span>{next.title}</span>
+                  </div>
+                  <Arrow/>
+                </Link>)}
             </div>
           </Styled.Nav>
         </Styled.Article>
@@ -110,6 +110,7 @@ export const query = graphql`
         date
         title
         tags
+        series
       }
     }
   }
