@@ -14,7 +14,6 @@ jobs:
           git init
           git config --global user.name "rheech22"
           git config --global user.email "rheech22@gmail.com"
-          git remote add origin 'git@github.com:rheech22/rheech22.github.io.git'
       - uses: actions/setup-node@v3
         with:
           node-version: 16
