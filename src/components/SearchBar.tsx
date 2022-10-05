@@ -1,7 +1,5 @@
 import { navigate } from 'gatsby';
 
-import { useDispatch } from '../store/context';
-
 import styled from 'styled-components';
 import { border } from '../styles/mixins';
 import { headerLogo, searchPlaceholder } from '../styles/themes';
@@ -20,11 +18,7 @@ const SearchBar = ({
   searchKeyword,
   onChange,
 }: Props) => {
-  const dispatch = useDispatch();
-
   const searchBy = (searchFilter: 'all' | 'title' | 'content') => {
-    dispatch({ type: 'searchByKeyword', payload: { searchKeyword, searchFilter } });
-
     onChange('');
 
     navigate('/search', { state: { searchKeyword, searchFilter } });

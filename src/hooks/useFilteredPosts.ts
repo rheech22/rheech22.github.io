@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useContext } from '../store/context';
+import { useContext, useDispatch } from '../store/context';
 
 interface Params {
   series?: string;
@@ -9,12 +9,16 @@ interface Params {
 }
 
 const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) => {
+  const dispatch = useDispatch();
+
   const { posts } = useContext();
 
   const [ filteredPosts, setFilteredPosts ] = useState(posts);
 
   const getPosts = () => {
     if (searchKeyword) {
+      dispatch({ type: 'searchByKeyword', payload: { searchKeyword, searchFilter } });
+
       return posts
         .filter(({ node: { frontmatter, html } })=> {
           const hasTitle = frontmatter?.title?.toLowerCase()
@@ -30,12 +34,16 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
     }
 
     if (tag) {
+      dispatch({ type: 'searchByTag', payload: { tag } });
+
       return posts
         .filter(({ node: { frontmatter } })=>
           frontmatter?.tags?.includes(tag.toLowerCase()));
     }
 
     if (series) {
+      dispatch({ type: 'searchBySeries', payload: { series } });
+
       return posts
         .filter(({ node: { frontmatter } }) => frontmatter?.series === series);
     }

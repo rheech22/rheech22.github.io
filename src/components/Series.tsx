@@ -1,20 +1,16 @@
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
-import { useContext, useDispatch } from '../store/context';
+import { useContext } from '../store/context';
 import { device } from '../styles/breakpoints';
 import { border, flex } from '../styles/mixins';
 
 const Series = () => {
-  const dispatch = useDispatch();
-
   const { posts, series: selectedSeries } = useContext();
 
   const series = [ ...new Set(posts?.map(({ node }) => node.frontmatter?.series)) ].filter(Boolean);
 
   const searchBySeries = (series?: string | null) => {
     if (!series) return;
-
-    dispatch({ type: 'searchBySeries', payload: { series } });
 
     navigate('/search', { state: { series } });
   };
