@@ -14,11 +14,7 @@ const useTags = () => {
   const searchByTag = (tag: string) => {
     dispatch({ type: 'searchByTag', payload: { tag } });
 
-    const param = new URLSearchParams(location.search).get('tag');
-
-    if (param === tag) return navigate('/search');
-
-    navigate(`/search?tag=${encodeURI(tag)}`);
+    navigate('/search', { state: { tag } });
   };
 
   return {

@@ -16,11 +16,7 @@ const Series = () => {
 
     dispatch({ type: 'searchBySeries', payload: { series } });
 
-    const param = new URLSearchParams(location.search).get('series');
-
-    if (param === series) return navigate('/search');
-
-    navigate(`/search?series=${encodeURI(series)}`);
+    navigate('/search', { state: { series } });
   };
 
   if (!series.length) return null;

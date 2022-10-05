@@ -9,8 +9,15 @@ import NoContent from '../components/NoContent';
 import LoadMore from '../components/LoadMore';
 import ScrollToTop from '../components/ScrollToTop';
 
-const SearchResult = () => {
-  const filteredPosts = useFilteredPosts();
+import { SearchPageProps } from '../pages/search';
+
+const SearchResult = ({ locationState }: {locationState: SearchPageProps['location']['state']}) => {
+  const filteredPosts = useFilteredPosts({
+    tag: locationState?.tag,
+    series: locationState?.series,
+    searchFilter: locationState?.searchFilter,
+    searchKeyword: locationState?.searchKeyword,
+  });
 
   const { offset, loadMore } = useLoadMore(filteredPosts);
 

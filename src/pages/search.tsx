@@ -1,13 +1,19 @@
+import { PageProps } from 'gatsby';
+
 import SearchResult from '../containers/SearchResult';
 
 import SidebarProvider from '../components/SidebarProvider';
 import SEO from '../components/SEO';
 
-export default () => (
-  <SidebarProvider>
-    <SearchResult />
-  </SidebarProvider>
-);
+export type SearchPageProps = PageProps<object, object, Record<string, string>>;
+
+export default ({ location }: SearchPageProps) => {
+  return (
+    <SidebarProvider>
+      <SearchResult locationState = {location.state}/>
+    </SidebarProvider>
+  );
+};
 
 export const Head = () => (
   <SEO subTitle="검색" />

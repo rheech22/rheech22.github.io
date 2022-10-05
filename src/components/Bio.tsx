@@ -66,7 +66,7 @@ const Container = styled.div`
 const Avatar = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   margin-right: 12px;
-  width: 148px;
+  max-width: 100%;
   height: 148px;
   min-width: 100px;
 
@@ -99,7 +99,7 @@ const Profile = styled.div`
 `;
 
 const Author = styled.span`
-  width: 100%;
+  max-width: 100%;
   display: block;
   padding: 8px 0;
   font-size: 14px;
@@ -114,7 +114,7 @@ const Author = styled.span`
 
 const Description = styled.p`
   margin-bottom: 8px;
-  width: 100%;
+  max-width: 100%;
   font-size: 12px;
   word-break: keep-all;
 
@@ -126,13 +126,11 @@ const Description = styled.p`
 
 const Info = styled.ul`
   ${flex({ alignItems: 'flex-start', justifyContent: 'center', flexDirection: 'column' })};
-  width: 100%;
-  min-width: fit-content;
-
+  max-width: 100%;
   
   & > li {
     ${flex({ alignItems: 'center' })}
-    width: 100%;
+    max-width: 100%;
     height: 24px;
 
     & > svg {
@@ -142,14 +140,14 @@ const Info = styled.ul`
     }
 
     & > a, span {
-      max-width: 170px;
+      max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       font-size: 12px;
       
       @media ${device.widerThanLaptop} {
-        max-width: 270px;
+        max-width: 100%;
       }
     }
 

@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useContext } from '../store/context';
 
-const useFilteredPosts = () => {
-  const { posts, searchFilter, searchKeyword, tag, series } = useContext();
+interface Params {
+  series?: string;
+  searchFilter?: string;
+  searchKeyword?: string;
+  tag?: string;
+}
+
+const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) => {
+  const { posts } = useContext();
 
   const [ filteredPosts, setFilteredPosts ] = useState(posts);
 
