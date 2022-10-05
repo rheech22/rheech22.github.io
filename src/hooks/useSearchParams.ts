@@ -1,20 +1,29 @@
+import { navigate } from 'gatsby';
 import { useEffect } from 'react';
-import { useDispatch } from '../store/context';
 
 const useSearchParams = () => {
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const params = new URLSearchParams(location.search);
 
-    const tag = params.get('tag');
-    const series = params.get('series');
-    const searchKeyword = params.get('keyword');
-    const searchFilter = params.get('filter');
+    const tag = params.get('tag') ?? '';
+    const series = params.get('series') ?? '';
+    const searchKeyword = params.get('keyword') ?? '';
+    const searchFilter = params.get('filter') ?? '';
 
-    if (tag) dispatch({ type: 'searchByTag', payload: { tag } });
-    if (series) dispatch({ type: 'searchBySeries', payload: { series } });
-    if (searchKeyword) dispatch({ type: 'searchByKeyword', payload: { searchKeyword, searchFilter } });
+    if (tag) {
+      navigate(`/search?tag=${encodeURI(tag)}`, { state: { tag } });
+      return;
+    }
+
+    if (series) {
+      navigate(`/search?series=${encodeURI(series)}`, { state: { series } });
+      return;
+    }
+
+    if (searchKeyword) {
+      navigate(`/search?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, { state: { searchKeyword, searchFilter } });
+      return;
+    }
   }, []);
 };
 

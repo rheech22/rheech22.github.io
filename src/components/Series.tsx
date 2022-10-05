@@ -12,7 +12,7 @@ const Series = () => {
   const searchBySeries = (series?: string | null) => {
     if (!series) return;
 
-    navigate('/search', { state: { series } });
+    navigate(`/search?series=${encodeURI(series)}`, { state: { series } });
   };
 
   if (!series.length) return null;

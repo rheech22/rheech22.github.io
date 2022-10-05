@@ -72,9 +72,9 @@
 - [x] 시리즈 기능 추가하기
 - [x] 자동 배포 액션 추가하기
 - [x] 툴팁 추가하기
-- [ ] header link 등 hisotory, navigate 제대로 동작시키기
-- [ ] document title 바뀌지 않는 문제 해결하기
-- [ ] 사이트 첫 진입하고 태그 검색 UI 변경 딜레이되는 문제 해결하기 - hydration 이슈인듯
+- [x] header link 등 hisotory, navigate 제대로 동작시키기
+- [x] document title 바뀌지 않는 문제 해결하기
+- [ ] 리팩토링 및 불필요한 코드 제거
 - [ ] 실제 내 폰에서 bio 깨지는 문제 해결하기 - svg 문제인가? 다른 css 미디어쿼리를?
 - [ ] 다른 템플릿 사용해보고 부족한 부분 보충하기
 - [ ] README 작성
