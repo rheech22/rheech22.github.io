@@ -25,7 +25,7 @@ const useSpyHeadings = () => {
         headings.forEach((heading) => {
           if (!isTop(heading)) return;
 
-          dispatch({ type: 'setCurrentHeading', payload: { headingId: heading.id } });
+          dispatch({ type: 'setCurrentHeadingId', payload: { headingId: heading.id } });
         });
 
         isPending = false;

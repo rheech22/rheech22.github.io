@@ -6,8 +6,6 @@ import { Action, State } from './types';
 
 const initialState: State = {
   posts: [],
-  searchFilter: null,
-  searchKeyword: null,
   tag: null,
   series: null,
   displayMode: null,

@@ -17,8 +17,6 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
 
   const getPosts = () => {
     if (searchKeyword) {
-      dispatch({ type: 'searchByKeyword', payload: { searchKeyword, searchFilter } });
-
       return posts
         .filter(({ node: { frontmatter, html } })=> {
           const hasTitle = frontmatter?.title?.toLowerCase()
@@ -34,7 +32,7 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
     }
 
     if (tag) {
-      dispatch({ type: 'searchByTag', payload: { tag } });
+      dispatch({ type: 'setCurrentTag', payload: { tag } });
 
       return posts
         .filter(({ node: { frontmatter } })=>
@@ -42,7 +40,7 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
     }
 
     if (series) {
-      dispatch({ type: 'searchBySeries', payload: { series } });
+      dispatch({ type: 'setCurrentSeries', payload: { series } });
 
       return posts
         .filter(({ node: { frontmatter } }) => frontmatter?.series === series);

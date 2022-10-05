@@ -8,37 +8,24 @@ const actions: {
     ...state,
     posts,
   }),
-  setCurrentHeading: (state, { headingId }) => ({
+  setCurrentHeadingId: (state, { headingId }) => ({
     ...state,
     headingId,
   }),
   clearSearch: (state) => ({
     ...state,
-    searchFilter: null,
-    searchKeyword: null,
     tag: null,
     series: null,
   }),
-  searchByTag: (state, { tag }) => ({
+  setCurrentTag: (state, { tag }) => ({
     ...state,
-    searchFilter: null,
-    searchKeyword: null,
     series: null,
     tag: tag === state.tag ? '' : tag,
   }),
-  searchBySeries: (state, { series }) => ({
+  setCurrentSeries: (state, { series }) => ({
     ...state,
-    searchFilter: null,
-    searchKeyword: null,
     tag: null,
     series: series === state.series ? '' : series,
-  }),
-  searchByKeyword: (state, { searchFilter, searchKeyword }) => ({
-    ...state,
-    searchFilter,
-    searchKeyword,
-    tag: null,
-    series: null,
   }),
   setDisplayMode: (state, { displayMode }) => {
     if (displayMode) localStorage.setItem('display-mode', displayMode);
