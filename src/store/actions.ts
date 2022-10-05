@@ -31,7 +31,7 @@ const actions: {
     searchFilter: null,
     searchKeyword: null,
     tag: null,
-    series,
+    series: series === state.series ? '' : series,
   }),
   searchByKeyword: (state, { searchFilter, searchKeyword }) => ({
     ...state,

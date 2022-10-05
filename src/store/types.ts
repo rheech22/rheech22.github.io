@@ -1,5 +1,5 @@
 
-export type BaseState = { tag?: string | null; displayMode?: string | null };
+export type BaseState = { tag?: string | null; displayMode?: string | null, series?: string | null };
 
 export type State = {
   posts: Posts;
