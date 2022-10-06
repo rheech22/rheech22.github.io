@@ -21,7 +21,7 @@ const SearchBar = ({
   const searchBy = (searchFilter: 'all' | 'title' | 'content') => {
     onChange('');
 
-    navigate(`/search?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, { state: { searchKeyword, searchFilter } });
+    navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, { state: { searchKeyword, searchFilter } });
   };
 
   const handleSubmit = (e: React.FormEvent) => {

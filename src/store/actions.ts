@@ -2,38 +2,47 @@ import { ActionType, BaseState, Payload } from './types';
 
 const actions: {
   [key in ActionType]:
-  <T extends BaseState>(state: T, payload: Payload) => T;
+  <T extends BaseState>(state: T, payload?: Payload) => T;
 } = {
-  setPosts: (state, { posts }) => ({
-    ...state,
-    posts,
-  }),
-  setCurrentHeadingId: (state, { headingId }) => ({
-    ...state,
-    headingId,
-  }),
-  clearSearch: (state) => ({
-    ...state,
-    tag: null,
-    series: null,
-  }),
-  setCurrentTag: (state, { tag }) => ({
-    ...state,
-    series: null,
-    tag: tag === state.tag ? '' : tag,
-  }),
-  setCurrentSeries: (state, { series }) => ({
-    ...state,
-    tag: null,
-    series: series === state.series ? '' : series,
-  }),
-  setDisplayMode: (state, { displayMode }) => {
-    if (displayMode) localStorage.setItem('display-mode', displayMode);
+  setPosts: (state, payload) => {
+    if (!payload) return state;
 
-    return {
-      ...state,
-      displayMode,
-    };
+    const { posts } = payload;
+
+    return { ...state, posts };
+  },
+  setCurrentHeadingId: (state, payload) => {
+    if (!payload) return state;
+
+    const { headingId } = payload;
+
+    return { ...state, headingId };
+  },
+  clearSearch: (state) => {
+    return { ...state, tag: null, series: null };
+  },
+  setCurrentTag: (state, payload) => {
+    if (!payload) return state;
+
+    const tag = payload.tag === state.tag ? '' : payload.tag;
+
+    return { ...state, tag, series: null };
+  },
+  setCurrentSeries: (state, payload) => {
+    if (!payload) return state;
+
+    const series = payload.series === state.series ? '' : payload.series;
+
+    return { ...state, series, tag: null };
+  },
+  setDisplayMode: (state, payload) => {
+    if (!payload) return state;
+
+    const { displayMode } = payload;
+
+    localStorage.setItem('display-mode', (displayMode ?? ''));
+
+    return { ...state, displayMode };
   },
 };
 

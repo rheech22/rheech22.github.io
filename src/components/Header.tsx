@@ -29,14 +29,9 @@ const Header = () => {
     setSearchKeyword(value);
   };
 
-  const handleReset = () => {
-    setSearchKeyword('');
-    dispatch({ type: 'clearSearch', payload: {} });
-  };
-
   return (
     <Container>
-      <Link to="/" onClick={()=> handleReset()}>
+      <Link to="/">
         <h1>{config.title}</h1>
       </Link>
       <SearchBar

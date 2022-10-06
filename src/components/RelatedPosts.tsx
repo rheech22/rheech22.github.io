@@ -3,8 +3,8 @@ import { Link } from 'gatsby';
 import { useState } from 'react';
 
 import styled from 'styled-components';
+import Triangle from '../assets/icons/Triangle';
 import { flex } from '../styles/mixins';
-import { headerLogo } from '../styles/themes';
 
 import Button from './Button';
 
@@ -26,8 +26,12 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
   if (!relatedPosts.length) return null;
 
   return (
-    <Container>
-      <h3>ALL ARTICLES IN THIS <strong>SERIES - {series}</strong></h3>
+    <Container more={more}>
+      <Button onClick={()=> setMore(prev => !prev)} accessibleName="show related posts">
+        <Triangle />
+        <h3>ALL ARTICLES IN THIS SERIES </h3>
+        <strong>{series}</strong>
+      </Button>
       {
         more &&
         <List>
@@ -47,56 +51,60 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
           })}
         </List>
       }
-      <Button onClick={()=> setMore(prev => !prev)} accessibleName="show related posts">{more ? 'Hide ' : 'Show '}links</Button>
     </Container>
   );
 };
 
 export default RelatedPosts;
 
-const Container = styled.div`
+const Container = styled.div<{more: boolean}>`
   ${flex({ alignItems: 'flex-start', flexDirection: 'column' })}
-  margin-top: 18px;
+  margin-top: 32px;
   border-radius: 8px;
   padding: 20px 10px;
   background-color: ${({ theme }) => theme.seriesBg};
   
-  strong {
-    color: ${({ theme }) => theme.series};
-    font-weight: 600;
-  }
-
   & > button {
+    ${flex({ alignItems: 'center' })}
+    background: none;
     border: none;
-    border-radius: 0.5rem;
-    padding: 8px 16px;
-    margin-top: 8px;
-    margin-left: auto;
-    font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
-    color: ${headerLogo};
-    background-color: ${({ theme }) => theme.series};
-    opacity: 0.6;
+    font-size: 16px;
+    
+    & > h3 {
+      word-break: keep-all;
+      color: ${({ theme }) => theme.default};
+      line-height: 18px;
+    }
 
-    &:hover {
-      opacity: 1;
+    & > svg { 
+      margin-right: 6px;
+      fill: ${({ theme }) => theme.default};
+      transform: ${({ more }) => more ? 'rotate(90deg)' : ''};
+      transition: transform 0.5s;
+    }
+
+    & > strong {
+      padding: 0 4px;
+      color: ${({ theme }) => theme.series};
+      line-height: 18px;
+      font-weight: 600;
     }
   }
 `;
 
 const List = styled.ul`
-  padding-left: 30px;
+  margin-top: 21px;
+  padding-left: 46px;
   list-style: disc;
-  margin: 10px 0;
 
   span {
-    color: ${({ theme }) => theme.mute};
+    font-weight: 500;
   }
   
   a {
     text-decoration: none;
-    font-weight: 500;
+    color: ${({ theme }) => theme.mute};
     
     &:hover {
       text-decoration: underline;

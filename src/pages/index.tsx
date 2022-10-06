@@ -9,6 +9,7 @@ export default () => (
   </SidebarProvider>
 );
 
+
 export const Head = () => (
   <SEO subTitle="모든 글"/>
 );
