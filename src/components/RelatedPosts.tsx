@@ -89,10 +89,10 @@ const Container = styled.div<{more: boolean}>`
     }
 
     & > strong {
-      padding: 0 4px;
       color: ${({ theme }) => theme.series};
       line-height: 18px;
       font-weight: 600;
+      margin-left: 8px;
     }
 
     &:hover {
