@@ -29,7 +29,7 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
     <Container more={more}>
       <Button onClick={()=> setMore(prev => !prev)} accessibleName="show related posts">
         <Triangle />
-        <h3>ALL ARTICLES IN THIS SERIES </h3>
+        <h3>MORE</h3>
         <strong>{series}</strong>
       </Button>
       {
@@ -66,15 +66,19 @@ const Container = styled.div<{more: boolean}>`
   
   & > button {
     ${flex({ alignItems: 'center' })}
+    padding: 10px;
+    border-radius: 8px;
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
+    width: 100%;
     
     & > h3 {
       word-break: keep-all;
       color: ${({ theme }) => theme.default};
       line-height: 18px;
+      font-weight: 300;
     }
 
     & > svg { 
@@ -89,6 +93,10 @@ const Container = styled.div<{more: boolean}>`
       color: ${({ theme }) => theme.series};
       line-height: 18px;
       font-weight: 600;
+    }
+
+    &:hover {
+      background-color: ${({ theme }) => theme.seriesBgHovered};
     }
   }
 `;

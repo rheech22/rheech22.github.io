@@ -12,6 +12,8 @@ const Series = () => {
   const searchBySeries = (series?: string | null) => {
     if (!series) return;
 
+    if (series === selectedSeries) return navigate('/');
+
     navigate(`/search/?series=${encodeURI(series)}`, { state: { series } });
   };
 
