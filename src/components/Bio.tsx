@@ -27,15 +27,21 @@ const Bio = () => {
         <Description>{description}</Description>
         <Info>
           <li>
-            <LocationIcon />
+            <div>
+              <LocationIcon />
+            </div>
             <span>{location}</span>
           </li>
           <li>
-            <MailIcon />
+            <div>
+              <MailIcon />
+            </div>
             <a href={`mailto:${email}`}>{email}</a>
           </li>
           <li>
-            <LinkIcon />
+            <div>
+              <LinkIcon />
+            </div>
             <a href={github}>{github}</a>
           </li>
         </Info>
@@ -123,16 +129,27 @@ const Info = styled.ul`
   
   & > li {
     ${flex({ alignItems: 'center' })}
+    position: relative;
     max-width: 100%;
     height: 24px;
 
-    & > svg {
-      margin-right: 8px;
-      fill: ${({ theme })=>theme.mute};
-      width: fit-content;
+    & > div {
+      ${flex({ alignItems: 'center' })}
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      & > svg {
+        fill: ${({ theme })=> theme.mute};
+        width: fit-content;
+      }
     }
 
+
     & > a, span {
+      margin-left: 24px;
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
