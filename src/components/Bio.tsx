@@ -65,7 +65,6 @@ const Avatar = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   margin-right: 12px;
   max-width: 100%;
-  height: 148px;
   min-width: fit-content;
 
   @media ${device.widerThanLaptop} {
@@ -88,6 +87,7 @@ const Avatar = styled.div`
 
 const Profile = styled.div`
   max-width: 296px;
+  height: 100%;
 `;
 
 const Author = styled.span`
