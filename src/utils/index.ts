@@ -2,10 +2,6 @@ type ReduceReturnType = {
   [key: string]: number;
 }
 
-export const getTheme = (displayMode: 'day' | 'night' | null) => {
-  return displayMode === 'day' ? 'night' : 'day';
-};
-
 export const enrichTags = (tags: (string | null | undefined)[]) => {
   return Object
     .entries(tags
@@ -22,6 +18,10 @@ export const enrichTags = (tags: (string | null | undefined)[]) => {
 
       return acc;
     }, {}));
+};
+
+export const getTheme = (displayMode: 'day' | 'night' | null) => {
+  return displayMode === 'day' ? 'night' : 'day';
 };
 
 export const sortTags = (tags: [string, number][]) => tags.sort((a, b) => {

@@ -2,8 +2,8 @@ import { Link } from 'gatsby';
 
 import { useState } from 'react';
 
-import styled from 'styled-components';
 import Triangle from '../assets/icons/Triangle';
+import styled from 'styled-components';
 import { flex } from '../styles/mixins';
 
 import Button from './Button';

@@ -16,7 +16,9 @@ interface Props {
 const SearchSuggestion = ({ title, filterText, input, searchBy }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
     if (e.button === 2) return;
+
     e.preventDefault();
+
     searchBy(filterText);
   };
 

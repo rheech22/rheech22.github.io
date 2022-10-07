@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 
+import Series from './Series';
 import Tags from './Tags';
 import Bio from './Bio';
-import Series from './Series';
 
 const Sidebar = () => (
   <Wrapper>

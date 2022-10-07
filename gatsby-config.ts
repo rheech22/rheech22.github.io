@@ -1,4 +1,5 @@
 import type { GatsbyConfig } from 'gatsby';
+
 import configs from './blog-config';
 
 const { title, description, twitterUsername, siteUrl, themeColor, googleAnalyticsTrackingId } = configs;
@@ -22,9 +23,13 @@ const config: GatsbyConfig = {
     },
 
     'gatsby-plugin-react-helmet',
+
     'gatsby-plugin-styled-components',
+
     'gatsby-plugin-image',
+
     'gatsby-plugin-sharp',
+
     'gatsby-transformer-sharp',
 
     {
@@ -63,6 +68,7 @@ const config: GatsbyConfig = {
         ],
       },
     },
+
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -89,6 +95,7 @@ const config: GatsbyConfig = {
         ],
       },
     },
+
     {
       resolve: 'gatsby-plugin-offline',
       options: {
@@ -124,6 +131,7 @@ const config: GatsbyConfig = {
         },
       },
     },
+
     'gatsby-plugin-sitemap',
   ],
   graphqlTypegen: true,

@@ -1,24 +1,23 @@
 import { Link } from 'gatsby';
 
 import { useState } from 'react';
-
 import { useContext, useDispatch } from '../store/context';
-
-import { getTheme } from '../utils';
 
 import styled from 'styled-components';
 import { flex } from '../styles/mixins';
 import { device } from '../styles/breakpoints';
 import { headerBg, headerLogo } from '../styles/themes';
 
+import config from '../../blog-config';
+import { getTheme } from '../utils';
+
 import SearchBar from './SearchBar';
 import Button from './Button';
 
-import config from '../../blog-config';
-
 const Header = () => {
-  const { displayMode } = useContext();
   const dispatch = useDispatch();
+
+  const { displayMode } = useContext();
 
   const [ searchKeyword, setSearchKeyword ] = useState('');
 
@@ -26,6 +25,7 @@ const Header = () => {
 
   const handleChange = (value: string) => {
     if (value.length > 40) return;
+
     setSearchKeyword(value);
   };
 

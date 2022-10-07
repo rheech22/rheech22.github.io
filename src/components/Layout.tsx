@@ -1,10 +1,11 @@
-import useSearchParams from '../hooks/useSearchParams';
-import usePosts from '../hooks/usePosts';
-import useTheme from '../hooks/useTheme';
-
 import { ThemeProvider } from 'styled-components';
 import { dark, light } from '../styles/themes';
 import GlobalStyle from '../styles/global';
+
+import { useContext } from '../store/context';
+import useSearchParams from '../hooks/useSearchParams';
+import usePosts from '../hooks/usePosts';
+import useTheme from '../hooks/useTheme';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -12,7 +13,6 @@ import Footer from './Footer';
 import {
   defineCustomElements as highlightCodeBlock,
 } from '@deckdeckgo/highlight-code/dist/loader';
-import { useContext } from '../store/context';
 
 interface Props {
   children: JSX.Element | null;

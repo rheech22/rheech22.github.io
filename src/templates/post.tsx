@@ -1,14 +1,14 @@
 import { graphql, PageProps, Link } from 'gatsby';
 
-import * as Styled from './styles';
-
 import Arrow from '../assets/icons/Arrow';
+import * as Styled from './styles';
 
 import { useContext } from '../store/context';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import useTags from '../hooks/useTags';
 
 import { takePost, getDateString } from '../utils';
+import config from '../../blog-config';
 
 import RelatedPosts from '../components/RelatedPosts';
 import Comments from '../components/Comments';
@@ -16,7 +16,6 @@ import Tag from '../components/Tag';
 import TOC from '../components/TOC';
 import SEO from './post-seo';
 
-import config from '../../blog-config';
 
 export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
   const { displayMode, posts } = useContext();

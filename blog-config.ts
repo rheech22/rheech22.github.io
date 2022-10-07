@@ -1,8 +1,8 @@
 const config = {
   title: 'git log', // blog name
-  description: '주로 프론트엔드 개발에 대한 주제를 이야기 합니다.', // blog description
-  author: 'Aiden', // your name
-  copyright: 'LCH 2022', // copyright text on the footer
+  description: '주로 프론트엔드 개발에 관한 주제를 다루고 있어요.', // blog description
+  author: 'aiden', // your name
+  copyright: 'rheech22 2022', // copyright text on the footer
   language: 'ko-KR', // html language attribute's value
   twitterUsername: '@rheech22', // twitter username
   location: 'Seoul', // where u at

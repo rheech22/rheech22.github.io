@@ -1,8 +1,10 @@
 import { navigate } from 'gatsby';
+
 import styled from 'styled-components';
-import { useContext } from '../store/context';
 import { device } from '../styles/breakpoints';
 import { border, flex } from '../styles/mixins';
+
+import { useContext } from '../store/context';
 
 const Series = () => {
   const { posts, series: selectedSeries } = useContext();
