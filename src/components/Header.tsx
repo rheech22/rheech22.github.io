@@ -38,7 +38,7 @@ const Header = () => {
         searchKeyword={searchKeyword}
         onChange={handleChange}
       />
-      <Button onClick={handleClick} accessibleName="Change Display Mode"/>
+      <Button onClick={handleClick} accessibleName="change display mode"/>
     </Container>
   );
 };

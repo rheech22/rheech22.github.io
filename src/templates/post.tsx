@@ -11,6 +11,7 @@ import { takePost, getDateString } from '../utils';
 import config from '../../blog-config';
 
 import RelatedPosts from '../components/RelatedPosts';
+import ScrollToTop from '../components/ScrollToTop';
 import Comments from '../components/Comments';
 import Tag from '../components/Tag';
 import TOC from '../components/TOC';
@@ -81,6 +82,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
           </Styled.Nav>
         </Styled.Article>
         {hasHeadings && <TOC headings={headings}/>}
+        <ScrollToTop />
       </Styled.Section>
       {displayMode && (
         <Styled.Comments>

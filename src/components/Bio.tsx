@@ -68,7 +68,7 @@ const Container = styled.div`
 `;
 
 const Avatar = styled.div`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  ${flex({ alignItems: 'center', justifyContent: 'flex-start' })}
   margin-right: 12px;
   max-width: 100%;
   min-width: fit-content;
@@ -94,20 +94,21 @@ const Avatar = styled.div`
 const Profile = styled.div`
   max-width: 296px;
   height: 100%;
+  width: 100%;
 `;
 
 const Author = styled.span`
   max-width: 100%;
   display: block;
-  padding: 4px 0;
+  padding: 2px 0;
   font-size: 20px;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   
   @media ${device.widerThanLaptop} {
-    padding: 8px 0;
     font-size: 24px;
+    padding-top: 4px;
   }
 `;
 
