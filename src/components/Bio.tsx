@@ -57,7 +57,7 @@ const Container = styled.div`
     flex-direction: column;
     max-width: 316px;
     padding: 20px;
-    margin: 0 0 18px 0;
+    margin: 0;
   }
 `;
 
@@ -66,7 +66,7 @@ const Avatar = styled.div`
   margin-right: 12px;
   max-width: 100%;
   height: 148px;
-  min-width: 100px;
+  min-width: fit-content;
 
   @media ${device.widerThanLaptop} {
     margin-right: 0;
@@ -75,19 +75,13 @@ const Avatar = styled.div`
   }
 
   img {
-    width: 95px;
-    height: 95px;
-    min-width: 95px;
+    width: 128px !important;
+    height: 128px !important;
     border-radius: 50%;
 
-    @media ${device.widerThanTablet} {
-      width: 130px;
-      height: 130px;
-    }  
-
     @media ${device.widerThanLaptop} {
-      width: 168px;
-      height: 168px;
+      width: 168px !important;
+      height: 168px !important;
     }
   }
 `;
@@ -99,26 +93,27 @@ const Profile = styled.div`
 const Author = styled.span`
   max-width: 100%;
   display: block;
-  padding: 8px 0;
-  font-size: 14px;
+  padding: 4px 0;
+  font-size: 20px;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  
   @media ${device.widerThanLaptop} {
-    font-size: 20px;
+    padding: 8px 0;
+    font-size: 24px;
   }
 `;
 
 const Description = styled.p`
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   max-width: 100%;
-  font-size: 12px;
+  font-size: 14px;
   word-break: keep-all;
 
   @media ${device.widerThanLaptop} {
-    font-size: 14px;
-    margin-bottom: 16px;
+    font-size: 16px;
+    margin-bottom: 12px;
   }
 `;
 

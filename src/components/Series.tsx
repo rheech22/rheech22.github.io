@@ -36,14 +36,14 @@ export default Series;
 const Container = styled.div`
   display: none;
   margin-top: 36px;
-  padding-left: 10px;
+  padding-left: 20px;
   
   @media ${device.widerThanLaptop} {
     display: block;
   }
 
   & > h3 {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     margin-bottom: 12px;
   }
