@@ -1,9 +1,9 @@
 ---
-path: "/headings"
-date: "2022-08-23"
+path: "/demo15"
+date: "2022-10-08"
 title: "Headings"
 tags: ["react", "javascript"]
-series: "테스트 주도 개발"
+series: "적당주의 프로그래머"
 ---
 
 # Heading 1
