@@ -143,7 +143,8 @@ const Info = styled.ul`
 
       & > svg {
         fill: ${({ theme })=> theme.mute};
-        width: fit-content;
+        height: 16px;
+        width: 16px;
       }
     }
 

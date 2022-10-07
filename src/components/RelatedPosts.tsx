@@ -35,7 +35,7 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
       {
         more &&
         <List>
-          {relatedPosts.map((post, i) => {
+          {relatedPosts.reverse().map((post, i) => {
             const postTitle = post?.title ?? '';
             const postPath = post?.path ?? '';
 
@@ -101,10 +101,10 @@ const Container = styled.div<{more: boolean}>`
   }
 `;
 
-const List = styled.ul`
+const List = styled.ol`
   margin-top: 21px;
   padding-left: 46px;
-  list-style: disc;
+  list-style: decimal;
 
   span {
     font-weight: 500;
