@@ -53,7 +53,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
                   />)
                 )}</Styled.Tags>
               ) : null}
-            <RelatedPosts title={title} series={series} relatedPosts={relatedPosts} />
+            <RelatedPosts title={title} series={series} relatedPosts={relatedPosts.reverse()} />
           </Styled.Header>
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>

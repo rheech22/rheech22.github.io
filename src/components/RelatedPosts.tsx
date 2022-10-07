@@ -35,7 +35,7 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
       {
         more &&
         <List>
-          {relatedPosts.reverse().map((post, i) => {
+          {relatedPosts.map((post, i) => {
             const postTitle = post?.title ?? '';
             const postPath = post?.path ?? '';
 
