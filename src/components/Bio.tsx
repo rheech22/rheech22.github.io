@@ -32,7 +32,7 @@ const Bio = () => {
           </li>
           <li>
             <MailIcon />
-            <a href={email}>{email}</a>
+            <a href={`mailto:${email}`}>{email}</a>
           </li>
           <li>
             <LinkIcon />
@@ -95,7 +95,7 @@ const Author = styled.span`
   display: block;
   padding: 4px 0;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   
@@ -109,7 +109,7 @@ const Description = styled.p`
   margin-bottom: 6px;
   max-width: 100%;
   font-size: 14px;
-  word-break: keep-all;
+  word-break: break-all;
 
   @media ${device.widerThanLaptop} {
     font-size: 16px;
