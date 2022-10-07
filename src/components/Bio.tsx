@@ -20,8 +20,6 @@ const Bio = () => {
           src="../images/avatar.jpeg"
           alt="avatar"
           placeholder="blurred"
-          width={168}
-          height={168}
         />
       </Avatar>
       <Profile>
