@@ -77,6 +77,7 @@ export const Nav = styled.nav`
       }
       
       ${flex({ alignItems: 'center' })};
+      padding: 8px;
       border-radius: 8px;
       text-decoration: none;
       width: 100%;
@@ -114,7 +115,7 @@ export const Nav = styled.nav`
       & > a  {
         justify-content: flex-start;
         margin-right: auto;
-        padding: 20px 20px 20px 10px;
+        padding-left: 4px;
   
         & > div {
           margin-left: 20px;
@@ -134,7 +135,7 @@ export const Nav = styled.nav`
       & > a {
         justify-content: flex-end;
         margin-left: auto;
-        padding: 20px 10px 20px 20px;
+        padding-right: 4px;
   
         & > div {
           margin-right: 20px;

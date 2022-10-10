@@ -48,7 +48,7 @@ cd [username].github.io
 git remote add origin [repository's url]
 npm start
 ```
-http://localhost:8000에서 시작할 수 있습니다.
+`http://localhost:8000`에서 시작할 수 있습니다.
 
 <br />
 
@@ -117,7 +117,7 @@ contents here...
 
 <br />
 
-**`develop` 브랜치에 `push` 하면 자동 배포가 되기 떄문에 직접 배포하지 않아도 됩니다.**
+**`develop` 브랜치에 `push` 하면 자동으로 배포되기 때에 직접 배포하지 않아도 됩니다.**
 
 <br />
 
