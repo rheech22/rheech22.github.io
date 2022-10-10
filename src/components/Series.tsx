@@ -2,7 +2,9 @@ import { navigate } from 'gatsby';
 
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
+import { postHovered } from '../styles/themes';
 import { border, flex } from '../styles/mixins';
+import { preventUserDrag } from '../styles/modules';
 
 import { useContext } from '../store/context';
 
@@ -50,7 +52,8 @@ const Container = styled.div`
 `;
 
 const List = styled.li<{isSelected: boolean}>`
-  ${flex({ alignItems: 'center' })}
+  ${preventUserDrag};
+  ${flex({ alignItems: 'center' })};
   ${border.left};
   border-top-right-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
@@ -63,6 +66,6 @@ const List = styled.li<{isSelected: boolean}>`
   border-color: ${({ theme, isSelected }) => isSelected ? theme.series : ''};
   
   &:hover {
-    color: ${({ theme }) => theme.series };
+    background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : postHovered};
   }
 `;
