@@ -9,8 +9,12 @@ interface Props {
 }
 
 const Tag = ({ onClick, isSelected, tag }: Props) => {
-  const handleClick = ({ currentTarget: { innerHTML } }: React.MouseEvent<HTMLLIElement>) => {
-    onClick(innerHTML);
+  const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    e.stopPropagation();
+
+    const { innerHTML: tag } = e.currentTarget;
+
+    onClick(tag);
   };
 
   return (

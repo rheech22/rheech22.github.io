@@ -1,5 +1,6 @@
 export const headerLogo = '#f0f6fc';
 export const headerBg = '#161b22';
+export const postHovered = 'rgba(177, 186, 196, 0.12)';
 export const searchPlaceholder = '#C9D1D9';
 export const tooltipBg = '#6E7681';
 export const white = '#ffffff';

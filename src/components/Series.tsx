@@ -37,6 +37,7 @@ const Container = styled.div`
   display: none;
   margin-top: 36px;
   padding-left: 20px;
+  padding-bottom: 40px;
   
   @media ${device.widerThanLaptop} {
     display: block;

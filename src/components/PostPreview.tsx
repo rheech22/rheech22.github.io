@@ -1,6 +1,7 @@
-import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
 
 import styled from 'styled-components';
+import { postHovered } from '../styles/themes';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 
@@ -31,12 +32,12 @@ const PostPreview = ({
   const { searchByTag } = useTags();
 
   return (
-    <Container>
-      <Link to={path ?? ''}>
+    <Container onClick={()=> navigate(path ?? '')}>
+      <div>
         <Heading>{title}</Heading>
         <Date>{date ? getDateString({ date, addPrefix: true }) : ''}</Date>
         <Excerpt>{excerpt}</Excerpt>
-      </Link>
+      </div>
       {tags?.length
         ? <Tags>{tags.map((tag, index) => (
           <Tag
@@ -54,10 +55,11 @@ const PostPreview = ({
 export default PostPreview;
 
 const Container = styled.li`
-  padding: 24px 0;
+  padding: 24px 8px;
   width: 100%;
+  cursor: pointer;
 
-  & > a {
+  & > div {
     ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
     margin-bottom: 8px;
     font-weight: 600;
@@ -69,9 +71,7 @@ const Container = styled.li`
   }
 
   &:hover {
-    h2, span , p {
-      color: ${({ theme }) => theme.series };
-    }
+    background-color: ${postHovered};
   }
 `;
 
