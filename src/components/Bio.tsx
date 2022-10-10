@@ -2,16 +2,16 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
-import { flex } from '../styles/mixins';
+import { border, flex } from '../styles/mixins';
 
-import LocationIcon from '../assets/icons/Location';
-import LinkIcon from '../assets/icons/Link';
-import MailIcon from '../assets/icons/Mail';
+import Github from '../assets/icons/Github';
+import Twitter from '../assets/icons/Twitter';
+import Link from '../assets/icons/LinkBig';
 
 import config from '../../blog-config';
 
 const Bio = () => {
-  const { author, description, location, email, github } = config;
+  const { author, description, twitterUsername, github } = config;
 
   return (
     <Container>
@@ -27,22 +27,19 @@ const Bio = () => {
         <Description>{description}</Description>
         <Info>
           <li>
-            <div>
-              <LocationIcon />
-            </div>
-            <span>{location}</span>
+            <a href={github}>
+              <Github />
+            </a>
           </li>
           <li>
-            <div>
-              <MailIcon />
-            </div>
-            <a href={`mailto:${email}`}>{email}</a>
+            <a href={`https://twitter.com/${twitterUsername}`}>
+              <Twitter />
+            </a>
           </li>
           <li>
-            <div>
-              <LinkIcon />
-            </div>
-            <a href={github}>{github}</a>
+            <a href={'#'}>
+              <Link />
+            </a>
           </li>
         </Info>
       </Profile>
@@ -62,7 +59,7 @@ const Container = styled.div`
   @media ${device.widerThanLaptop} {
     flex-direction: column;
     max-width: 316px;
-    padding: 20px;
+    padding: 20px 20px 4px 20px;
     margin: 0;
   }
 `;
@@ -92,9 +89,13 @@ const Avatar = styled.div`
 `;
 
 const Profile = styled.div`
+  ${flex({ flexDirection: 'column' })}
   max-width: 296px;
-  height: 100%;
-  width: 100%;
+  min-height: 128px;
+  
+  @media ${device.widerThanLaptop} {
+    width: 100%;
+  }
 `;
 
 const Author = styled.span`
@@ -125,50 +126,32 @@ const Description = styled.p`
 `;
 
 const Info = styled.ul`
-  ${flex({ alignItems: 'flex-start', justifyContent: 'center', flexDirection: 'column' })};
-  max-width: 100%;
+  ${flex()};
+  margin-top: auto;
+
+  & > li + li {
+    margin-left: 8px;
+  }
   
   & > li {
-    ${flex({ alignItems: 'center' })}
-    position: relative;
     max-width: 100%;
     height: 24px;
 
-    & > div {
-      ${flex({ alignItems: 'center' })}
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+    & > a {
+      ${flex({ alignItems: 'center', justifyContent: 'center' })};
 
       & > svg {
-        fill: ${({ theme })=> theme.mute};
-        height: 16px;
-        width: 16px;
+        height: 24px;
+        width: 24px;
+        path {
+          fill: ${({ theme })=> theme.mute};
+        }
       }
-    }
 
-
-    & > a, span {
-      margin-left: 24px;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-size: 12px;
-      
-      @media ${device.widerThanLaptop} {
-        max-width: 100%;
-      }
-    }
-
-    & > a {
-      text-decoration: none;
-  
       &:hover {
-        color: ${({ theme })=>theme.blue};
-        text-decoration: underline;
+        path {
+          fill: ${({ theme })=> theme.default};
+        }
       }
     }
   }

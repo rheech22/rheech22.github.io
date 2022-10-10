@@ -23,7 +23,7 @@ const Series = () => {
 
   return (
     <Container>
-      <h3>SERIES</h3>
+      <h3>Series</h3>
       <ul>
         {series.map((title, i)=> <List key={i} onClick={()=> searchBySeries(title)} isSelected={title === selectedSeries}>{title}</List>)}
       </ul>
@@ -35,7 +35,6 @@ export default Series;
 
 const Container = styled.div`
   display: none;
-  margin-top: 36px;
   padding-left: 20px;
   padding-bottom: 40px;
   
@@ -45,7 +44,7 @@ const Container = styled.div`
 
   & > h3 {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 300;
     margin-bottom: 12px;
   }
 `;
@@ -61,7 +60,7 @@ const List = styled.li<{isSelected: boolean}>`
   cursor: pointer;
   background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : 'inherit'};
   color: ${({ theme, isSelected }) => isSelected ? theme.series : 'inherit'};
-  border-color: ${({ theme, isSelected }) => isSelected ? theme.series : 'inherit'};
+  border-color: ${({ theme, isSelected }) => isSelected ? theme.series : ''};
   
   &:hover {
     color: ${({ theme }) => theme.series };

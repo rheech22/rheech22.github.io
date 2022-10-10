@@ -1,7 +1,7 @@
 const config = {
   title: 'git log', // blog name
-  description: 'inspired by github.', // blog description
-  author: 'Demo', // your name
+  description: 'for blog inspired by github.', // blog description
+  author: 'gatsby starter', // your name
   language: 'ko-KR', // html language attribute's value
   twitterUsername: '@rheech22', // twitter username
   location: 'Seoul', // where u at

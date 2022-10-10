@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
-import { flex } from '../styles/mixins';
+import { border, flex } from '../styles/mixins';
 
 import { useContext } from '../store/context';
 import useTags from '../hooks/useTags';
@@ -16,6 +16,7 @@ const Tags = () => {
 
   return (
     <Container>
+      <h3>Tags</h3>
       <ul>
         {tags.map(([ tag ], index)=> (
           <Tag
@@ -37,17 +38,31 @@ const Container = styled.div`
   margin: 0 10px;
   padding: 10px;
 
+  & > h3 {
+    ${border.top};
+    display: none;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  
   @media ${device.widerThanLaptop} {
     ${flex({ flexDirection: 'column' })};
     margin: 0;
     box-shadow: none;
-    padding: 20px;
+    padding: 20px 20px;
     max-width: 316px;
+
+    & > h3 {
+      padding-top: 20px;
+      display: block;
+    }
   }
-  
   & > ul {
     @media ${device.widerThanLaptop} {
       margin-top: 0;
+      padding-bottom: 20px;
+      ${border.bottom};
     }
     display: inline-flex;
     flex-wrap: wrap;

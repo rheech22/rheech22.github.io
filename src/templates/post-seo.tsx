@@ -25,7 +25,7 @@ export default ({ title, excerpt, path, date }: Props) => {
       <meta name="twitter:description" content={excerpt} />
       <meta name="twitter:url" content={`${siteUrl}${title}`} />
       <meta name="twitter:image" content="" />
-      <meta name="twitter:creator" content={twitterUsername} />
+      <meta name="twitter:creator" content={`@${twitterUsername}`} />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <script type="application/ld+json">
         {`
