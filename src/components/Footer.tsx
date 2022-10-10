@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import { border } from '../styles/mixins';
 
-import config from '../../blog-config';
-
 const Footer = () => {
   return (
     <Container>
       <section>
-        <span>© {config.copyright}</span>
+        <span>© rheech22 2022</span>
       </section>
     </Container>
   );

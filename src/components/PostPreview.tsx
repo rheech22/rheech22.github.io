@@ -67,6 +67,12 @@ const Container = styled.li`
       ${flex({ flexDirection: 'column' })}
     }
   }
+
+  &:hover {
+    h2, span , p {
+      color: ${({ theme }) => theme.series };
+    }
+  }
 `;
 
 const Heading = styled.h2`

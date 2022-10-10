@@ -2,7 +2,6 @@ const config = {
   title: 'git log', // blog name
   description: 'inspired by github.', // blog description
   author: 'Demo', // your name
-  copyright: 'rheech22 2022', // copyright text on the footer
   language: 'ko-KR', // html language attribute's value
   twitterUsername: '@rheech22', // twitter username
   location: 'Seoul', // where u at
