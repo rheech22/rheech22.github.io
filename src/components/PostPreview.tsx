@@ -1,7 +1,7 @@
 import { navigate } from 'gatsby';
 
 import styled from 'styled-components';
-import { postHovered } from '../styles/themes';
+import { bgHovered } from '../styles/themes';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 
@@ -71,7 +71,7 @@ const Container = styled.li`
   }
 
   &:hover {
-    background-color: ${postHovered};
+    background-color: ${bgHovered};
   }
 `;
 

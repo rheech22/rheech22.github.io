@@ -2,7 +2,7 @@ import { navigate } from 'gatsby';
 
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
-import { postHovered } from '../styles/themes';
+import { bgHovered } from '../styles/themes';
 import { border, flex } from '../styles/mixins';
 import { preventUserDrag } from '../styles/modules';
 
@@ -66,6 +66,6 @@ const List = styled.li<{isSelected: boolean}>`
   border-color: ${({ theme, isSelected }) => isSelected ? theme.series : ''};
   
   &:hover {
-    background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : postHovered};
+    background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : bgHovered};
   }
 `;

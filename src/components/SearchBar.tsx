@@ -2,7 +2,7 @@ import { navigate } from 'gatsby';
 
 import styled from 'styled-components';
 import { border } from '../styles/mixins';
-import { headerLogo, searchPlaceholder } from '../styles/themes';
+import { snow, gray600 } from '../styles/themes';
 import { device } from '../styles/breakpoints';
 
 import Textbox from './Textbox';
@@ -73,7 +73,7 @@ const Container = styled.form<{hasInput: boolean}>`
     width: 100%;
     height: 100%;
     background-color: ${({ theme }) => theme.searchBg};
-    color: ${headerLogo};
+    color: ${snow};
     font-size: 14px;
     
     &:focus {
@@ -91,7 +91,7 @@ const Container = styled.form<{hasInput: boolean}>`
     }
 
     &::placeholder {
-      color: ${searchPlaceholder};
+      color: ${gray600};
     }
   }
 `;

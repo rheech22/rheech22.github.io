@@ -1,11 +1,12 @@
-export const headerLogo = '#f0f6fc';
-export const headerBg = '#161b22';
-export const postHovered = 'rgba(177, 186, 196, 0.12)';
-export const searchPlaceholder = '#C9D1D9';
-export const tooltipBg = '#6E7681';
 export const white = '#ffffff';
+export const snow = '#f0f6fc';
+export const gray600 = '#C9D1D9';
+export const headerBg = '#161b22';
+export const tooltipBg = '#6E7681';
+export const bgHovered = 'rgba(177, 186, 196, 0.12)';
 
 export const dark = {
+  name: 'dark',
   default: '#C9D1D9',
   mute: '#8b949e',
   bg: '#0D1118',
@@ -27,6 +28,7 @@ export const dark = {
 };
 
 export const light = {
+  name: 'light',
   default: '#24292f',
   mute: '#57606a',
   bg: '#fff',

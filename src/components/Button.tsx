@@ -7,6 +7,7 @@ interface Props {
   disabled?: boolean;
   onClick?: ()=> void;
   accessibleName: string;
+  tabIndex?: number;
 }
 
 const Button = ({
@@ -16,9 +17,10 @@ const Button = ({
   children,
   onClick,
   accessibleName,
+  tabIndex,
 }: Props) => {
   return (
-    <button type={type} onClick={onClick} hidden={hidden} disabled={disabled} aria-label={accessibleName}>
+    <button type={type} onClick={onClick} hidden={hidden} disabled={disabled} aria-label={accessibleName} tabIndex={tabIndex}>
       {children}
     </button>
   );
