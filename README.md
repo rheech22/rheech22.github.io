@@ -1,11 +1,10 @@
 # gatsby-starter-blog-github-theme
 
-### Lighthouse Score
 <img width="640" alt="lighthouse" src="https://user-images.githubusercontent.com/57756798/195974256-db696680-d8c1-4260-9d36-f50cf36cfcdc.png">
 
 `gatsby-starter-blog-github-theme`는 기술 블로그를 위한 Gatsby Starter입니다.  
 
-- github에서 영감받은 심플한 반응형 디자인
+- github 테마, 심플, 반응형 디자인
 - 마크다운 with 코드 하이라이팅
 - 키워드, 태그, 연재물 검색
 - 프로그레시브 웹 앱(PWA)
@@ -17,7 +16,7 @@
 
 <br />
 
-## 빠른 시작
+## 🚀 Quick start
 
 이 가이드는 github pages 배포를 기준으로 작성했어요.  
 <br />
@@ -36,7 +35,7 @@ npx gatsby new [username].github.io https://github.com/rheech22/rheech22.github.
 ### 2. 레포지토리 만들기  
 <br />
 
-새로운 레포지토리를 아래처럼 만들어주세요.  
+레포지토리를 만들어주세요.  
 
 1. 레포지토리 이름을 `[username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
 2. `develop` 브랜치를 생성하고 `master`가 아닌 `develop`을 디폴트 브랜치로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
@@ -56,7 +55,7 @@ npm start
 
 <br />
 
-### 4. 블로그 설정하기  
+### 4. 블로그 설정하기
 <br />
 
 `blog-config.ts`에서 블로그의 기본 정보를 설정해주세요.
@@ -115,7 +114,7 @@ contents here...
 <br />
      
 배포하기 전
-1. github 레포지토리 이름이 `[username].github.io`가 맞는지 확인해주세요.
+1. 레포지토리 이름이 `[username].github.io`가 맞는지 확인해주세요.
 2. `blog-config.ts`를 한번 더 확인해주세요.
 3. 작업 중인 브랜치가 `develop`이 맞는지 확인해주세요.
 
@@ -125,11 +124,11 @@ contents here...
 
 <br />
 
-만약 자동 배포를 원치 않는다면 `.github` 폴더를 삭제하고 아래와 같이 직접 배포해주세요.
+자동 배포를 원치 않는다면 `.github` 폴더를 삭제하고 아래 커맨드로 직접 배포해주세요.
 
 ```
 npm run deploy
 ```
 
-`https://username.github.io/`로 가서 잘 배포가 되었는지 확인해보세요. 다소간의 시간의 걸릴 수 있습니다.
+`https://username.github.io/`에 배포된 페이지를 확인해보세요. 다소 시간이 걸릴 수 있습니다.
 
