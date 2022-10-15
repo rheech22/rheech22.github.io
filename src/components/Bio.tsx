@@ -21,9 +21,11 @@ const Bio = () => {
         />
       </Avatar>
       <Profile>
-        <Author>{author}</Author>
+        <Author>
+          <Name>{author}</Name>
+          <Links />
+        </Author>
         <Description>{description}</Description>
-        <Links />
       </Profile>
     </Container>
   );
@@ -80,10 +82,15 @@ const Profile = styled.div`
   }
 `;
 
-const Author = styled.span`
+const Author = styled.div`
+  padding-bottom: 8px;
+`;
+
+const Name = styled.span`
   max-width: 100%;
   display: block;
-  padding: 2px 0;
+  padding-top: 2px;
+  padding-bottom: 8px;
   font-size: 20px;
   font-weight: 500;
   overflow: hidden;

@@ -1,4 +1,4 @@
-const LinkBig = (props:any) => (
+const Personal = (props:any) => (
   <svg
     width="24px"
     height="24px"
@@ -22,4 +22,4 @@ const LinkBig = (props:any) => (
   </svg>
 );
 
-export default LinkBig;
+export default Personal;
