@@ -1,16 +1,26 @@
 const config = {
-  title: 'git log', // blog name
-  description: 'for blog inspired by github.', // blog description
+  // used for bio, meta tag...
+  title: 'git log', // title of the site
+  description: 'for blog inspired by github.', // describe anything about your site
+  language: 'ko-KR', // default language
   author: 'gatsby starter', // your name
-  language: 'ko-KR', // html language attribute's value
   twitterUsername: '@rheech22', // twitter username
-  location: 'Seoul', // where u at
-  email: 'rheech22@gmail.com', // ur email
-  github: 'https://github.com/rheech22', // github url
-  siteUrl: 'https://rheech22.github.io/', // production url
+  siteUrl: 'https://rheech22.github.io/', // site url
   themeColor: '#161b22', // theme color for PWA
-  googleAnalyticsTrackingId: 'G-0DM3BCWTDS', // google analytics tracking id
-  commentRepo: 'rheech22/comments', // {githubId}/{repo} - will contain comments
+
+  // google analytics
+  googleAnalyticsTrackingId: 'G-0DM3BCWTDS',
+
+  // utterance comment
+  commentRepo: 'rheech22/rheech22.github.io', // {githubId}/{repo} - will contain comments
+
+  // links - if you don't wanna add any link to your bio, just sets empty string.
+  github: 'https://github.com/rheech22',
+  twitter: 'https://twitter.com/rheech22',
+  email: 'rheech22@gmail.com',
+  instagram: '',
+  linkedIn: '',
+  personal: '',
 };
 
 export default config;
