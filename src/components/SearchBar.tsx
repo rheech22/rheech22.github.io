@@ -82,8 +82,8 @@ const Container = styled.form<{hasInput: boolean}>`
         border-bottom-right-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
       }
 
-      background-color: ${({ theme }) => theme.searchBgFocused};
       color: ${({ theme }) => theme.default};
+      background-color: ${({ theme }) => theme.searchBgFocused};
       
       &::placeholder {
         color: ${({ theme })=>theme.searchPlaceholderFocused};

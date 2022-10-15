@@ -2,7 +2,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
-import { border, flex } from '../styles/mixins';
+import { flex } from '../styles/mixins';
 
 import Github from '../assets/icons/Github';
 import Twitter from '../assets/icons/Twitter';

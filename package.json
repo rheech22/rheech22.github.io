@@ -1,9 +1,8 @@
 {
-  "name": "rheechlog",
+  "name": "gatsby-starter-blog-github-theme",
   "version": "1.0.0",
-  "private": true,
-  "description": "rheechlog",
-  "author": "Aiden",
+  "description": "inspired github's styles",
+  "author": "rheech22",
   "keywords": [
     "gatsby"
   ],

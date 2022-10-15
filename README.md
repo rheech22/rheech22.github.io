@@ -1,6 +1,9 @@
 # gatsby-starter-blog-github-theme
 
-`gatsby-starter-blog-github-theme`는 기술 블로그를 위한 Gatsby 보일러플레이트입니다.  
+### Lighthouse Score
+<img width="640" alt="lighthouse" src="https://user-images.githubusercontent.com/57756798/195974256-db696680-d8c1-4260-9d36-f50cf36cfcdc.png">
+
+`gatsby-starter-blog-github-theme`는 기술 블로그를 위한 Gatsby Starter입니다.  
 
 - github에서 영감받은 심플한 디자인
 - 마크다운, 코드 하이라이팅, 반응형 웹 지원

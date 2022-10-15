@@ -6,7 +6,9 @@ module.exports = {
   ],
   rules: {
     'indent': 'off',
-    '@typescript-eslint/indent': [ 'error', 2 ],
+    '@typescript-eslint/indent': [ 'error', 2, {
+      ignoredNodes: [ 'ArrowFunctionExpression' ],
+    } ],
     'no-trailing-spaces': 'error',
     'semi': [ 'error', 'always' ],
     'brace-style': 'error',

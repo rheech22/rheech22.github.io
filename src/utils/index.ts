@@ -7,17 +7,17 @@ export const enrichTags = (tags: (string | null | undefined)[]) => {
     .entries(tags
       .map(tag => tag?.toLowerCase())
       .reduce<ReduceReturnType>((acc, cur) => {
-      if (!cur) return acc;
+        if (!cur) return acc;
 
-      if (Reflect.has(acc, cur)) {
-        acc[cur] += 1;
+        if (Reflect.has(acc, cur)) {
+          acc[cur] += 1;
+          return acc;
+        }
+
+        acc[cur] = 1;
+
         return acc;
-      }
-
-      acc[cur] = 1;
-
-      return acc;
-    }, {}));
+      }, {}));
 };
 
 export const getTheme = (displayMode: 'day' | 'night' | null) => {

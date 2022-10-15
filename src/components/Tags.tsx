@@ -58,12 +58,14 @@ const Container = styled.div`
       display: block;
     }
   }
+
   & > ul {
     @media ${device.widerThanLaptop} {
       margin-top: 0;
       padding-bottom: 20px;
       ${border.bottom};
     }
+    
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
