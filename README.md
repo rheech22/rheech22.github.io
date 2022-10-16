@@ -22,8 +22,10 @@
 <br />
 
 ### 1. 개츠비 사이트 생성  
+
+Gatsby CLI로 시작해보세요.  
+
 <br />
-Gatsby CLI로 시작해보세요.
 
 ```
 npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-blog-github-theme.git
@@ -35,14 +37,14 @@ npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-blog-github-th
 
 ```
 cd [username].github.io
+git switch -c develop
 npm start
 ```
-`http://localhost:8000`에서 시작하세요.  
+개발은 `devleop` 브랜치에서 시작해주세요.
+
 <br />
 
 ### 3. 레포지토리 만들기  
-<br />
-
 레포지토리를 만들어주세요.  
 
 1. 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
@@ -55,8 +57,6 @@ npm start
 ```
 git remote add origin [repository's url]
 ```
-
-<br />
 
 <br />
 
@@ -150,6 +150,6 @@ contents here...
 ```
 npm run deploy
 ```
-
-`https://username.github.io/`에 배포된 페이지를 확인해보세요. 다소 시간이 걸릴 수 있습니다.
+<br />
+이제 `https://username.github.io/`에 배포된 페이지를 확인해보세요. 다소 시간이 걸릴 수 있습니다.
 
