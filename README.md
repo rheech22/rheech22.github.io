@@ -33,7 +33,6 @@ npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-blog-github-th
 <br />
 
 ### 2. 개발 시작  
-<br />
 
 ```
 cd [username].github.io
@@ -80,7 +79,7 @@ const config = {
   googleAnalyticsTrackingId: 'G-0DM3BCAAAA',
 
   // utterance comment
-  commentRepo: 'rheech22/rheech22.github.io', // {github's username}/{repository} - will contain comments
+  commentRepo: 'rheech22/rheech22.github.io', // {github's username}/{repository}
 
   // links - if you don't wanna add any link to your bio, just leave it empty string.
   linkedIn: '',
@@ -126,22 +125,17 @@ contents here...
 <br />
 
 ## :rainbow: 배포하기
-<br />
      
-배포하기 전
+### 배포하기 전
 1. 레포지토리 이름이 `[github's username].github.io`가 맞는지 확인해주세요.
 2. `blog-config.ts`를 한번 더 확인해주세요.
 3. 작업 중인 브랜치가 `develop`이 맞는지 확인해주세요.
-
-<br />
 
 ### 자동 배포
 
 :star: `.github/workflows/cicd.yml`의 주석 처리만 해제시켜 주세요.
 
-이제 `develop` 브랜치에 `push` 하면 자동 배포됩니다.
-
-<br />
+이제 `develop` 브랜치에 `push` 하면 자동 배포됩니다.  
 
 ### 수동 배포
 
@@ -150,6 +144,6 @@ contents here...
 ```
 npm run deploy
 ```
-<br />
+
 이제 `https://username.github.io/`에 배포된 페이지를 확인해보세요. 다소 시간이 걸릴 수 있습니다.
 
