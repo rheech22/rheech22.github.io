@@ -37,7 +37,7 @@ npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-blog-github-th
 cd [username].github.io
 npm start
 ```
-`http://localhost:8000`에서 시작하세요.
+`http://localhost:8000`에서 시작하세요.  
 <br />
 
 ### 3. 레포지토리 만들기  
