@@ -92,23 +92,26 @@ const ButtonWrapper = styled.div`
   transition: box-shadow 2s;
   overflow: hidden;
   z-index: 0;
-  
-  &:hover {
-    box-shadow: 
-      rgb(109,110,129) 1.5px 1.5px 3px 0px inset,
-      rgba(109,110,129,0.5) -1.5px -1.5px 3px 1px inset;
 
-    background-image: 
-      linear-gradient(
-        to right bottom, 
-        #000000, #211e1f, 
-        #3b353b, #55505a, 
-        #6d6c7b, #6d6e81, 
-        #6b7187, #69748d, 
-        #535c78, #3e4563, 
-        #2b304e, #181b3a
-      );
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 
+        rgb(109,110,129) 1.5px 1.5px 3px 0px inset,
+        rgba(109,110,129,0.5) -1.5px -1.5px 3px 1px inset;
+  
+      background-image: 
+        linear-gradient(
+          to right bottom, 
+          #000000, #211e1f, 
+          #3b353b, #55505a, 
+          #6d6c7b, #6d6e81, 
+          #6b7187, #69748d, 
+          #535c78, #3e4563, 
+          #2b304e, #181b3a
+        );
+    }
   }
+  
   
   @media ${device.widerThanMobile} {
     margin-left: auto;

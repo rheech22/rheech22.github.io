@@ -49,11 +49,13 @@ const Container = styled.li<{
   font-weight: 500;
   line-height: 22px;
   cursor: pointer;
-
-  &:hover {
-    overflow-x: visible;
-    text-overflow: unset;
-    background-color: ${({ theme }) => theme.tagBgHovered};
-    color: ${white};
+  
+  @media (hover: hover) {
+    &:hover {
+      overflow-x: visible;
+      text-overflow: unset;
+      background-color: ${({ theme }) => theme.tagBgHovered};
+      color: ${white};
+    }
   }
 `;
