@@ -91,6 +91,7 @@ const ButtonWrapper = styled.div`
   min-height: 56px;
   transition: box-shadow 2s;
   overflow: hidden;
+  z-index: 0;
   
   &:hover {
     box-shadow: 
@@ -158,6 +159,7 @@ const CircleLayout = styled.div`
     svg {
       width: 30px;
       height: 30px;
+      backface-visibility: hidden;
       transform: ${({ theme })=> theme.name === 'dark' ? 'rotate(-90deg)' : 'rotate(90deg)'};
 
       path {

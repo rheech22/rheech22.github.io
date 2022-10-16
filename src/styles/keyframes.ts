@@ -2,6 +2,7 @@ import { keyframes } from 'styled-components';
 
 export const sunset = keyframes`
   from {
+    backface-visibility: hidden;
     transform: rotate(90deg) translate(-60px) translateZ(15px);
   }
   to {
