@@ -82,14 +82,16 @@ export const Nav = styled.nav`
       text-decoration: none;
       width: 100%;
 
-      &:hover {
-        background-color: ${({ theme }) => theme.lightBlue};
-  
-        span {
-          text-decoration: underline;
+      @media (hover: hover) {
+        &:hover {
+          background-color: ${({ theme }) => theme.lightBlue};
+    
+          span {
+            text-decoration: underline;
+          }
         }
       }
-  
+
       & > svg {
         path {
           fill: ${({ theme }) => theme.mute};

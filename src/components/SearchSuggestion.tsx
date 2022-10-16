@@ -48,12 +48,14 @@ const Container = styled.li`
     border-bottom-right-radius: 6px;
   }
 
-  &:hover {
-    background-color: ${({ theme }) => theme.searchSuggestionHovered};
-    color: ${white};
-
-    svg {
-      fill: ${white}
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${({ theme }) => theme.searchSuggestionHovered};
+      color: ${white};
+  
+      svg {
+        fill: ${white}
+      }
     }
   }
 

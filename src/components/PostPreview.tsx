@@ -70,8 +70,10 @@ const Container = styled.li`
     }
   }
 
-  &:hover {
-    background-color: ${bgHovered};
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${bgHovered};
+    }
   }
 `;
 

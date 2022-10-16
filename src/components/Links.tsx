@@ -83,10 +83,12 @@ const Container = styled.div`
             fill: ${({ theme })=> theme.mute};
           }
         }
-  
-        &:hover {
-          path {
-            fill: ${({ theme })=> theme.default};
+
+        @media (hover: hover) {
+          &:hover {
+            path {
+              fill: ${({ theme })=> theme.default};
+            }
           }
         }
       }

@@ -29,7 +29,7 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
     <Container more={more}>
       <Button onClick={()=> setMore(prev => !prev)} accessibleName="show related posts">
         <Triangle />
-        <h3>MORE</h3>
+        <h3>More about</h3>
         <strong>{series}</strong>
       </Button>
       {
@@ -95,9 +95,12 @@ const Container = styled.div<{more: boolean}>`
       margin-left: 8px;
     }
 
-    &:hover {
-      background-color: ${({ theme }) => theme.seriesBgHovered};
+    @media (hover: hover) {
+      &:hover {
+        background-color: ${({ theme }) => theme.seriesBgHovered};
+      }
     }
+
   }
 `;
 
@@ -113,9 +116,11 @@ const List = styled.ol`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.mute};
-    
-    &:hover {
-      text-decoration: underline;
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   

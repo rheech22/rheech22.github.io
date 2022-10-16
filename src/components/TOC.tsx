@@ -91,8 +91,10 @@ const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
   font-size: ${({ depth }) => depth && depth > 0 ? `${14 - depth}px` : '14px' };
   transition: all 50ms ease-in-out;
 
-  &:hover {
-    color: ${({ theme }) => theme.blue};
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.blue};
+    }
   }
 
   a {
