@@ -23,7 +23,7 @@
 
 ### 1. 개츠비 사이트 생성  
 <br />
-Gatsby CLI를 이용해서 시작하세요.  
+Gatsby CLI로 시작해보세요.
 
 추후 배포 편의를 위해 프로젝트 이름을 `[username].github.io`로 하는 것을 권장합니다.
 
@@ -39,7 +39,7 @@ npx gatsby new [username].github.io https://github.com/rheech22/rheech22.github.
 
 1. 레포지토리 이름을 `[username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
 2. `develop` 브랜치를 생성하고 `master`가 아닌 `develop`을 디폴트 브랜치로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
-3. **[중요 !]** 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
+3. :star: 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
 
 <br />
 
@@ -120,7 +120,7 @@ contents here...
 
 <br />
 
-**`develop` 브랜치에 `push` 하면 자동으로 배포가 됩니다.**
+:star: `develop` 브랜치에 `push` 하면 자동으로 배포가 됩니다.
 
 <br />
 
