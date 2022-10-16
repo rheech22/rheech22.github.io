@@ -38,6 +38,7 @@ cd [username].github.io
 npm start
 ```
 `http://localhost:8000`에서 시작하세요.
+<br />
 
 ### 3. 레포지토리 만들기  
 <br />
@@ -50,6 +51,7 @@ npm start
 4. 로컬에서 방금 생성한 레포지토리를 연결해주세요.
 
 <br />
+
 ```
 git remote add origin [repository's url]
 ```
