@@ -7,13 +7,14 @@ import styled, { css } from 'styled-components';
 import { flex } from '../styles/mixins';
 import { device } from '../styles/breakpoints';
 import { headerBg, snow, gray600 } from '../styles/themes';
+import { sunrise, sunset } from '../styles/keyframes';
 
 import config from '../../blog-config';
+
 import { getTheme } from '../utils';
 
 import SearchBar from './SearchBar';
 import Button from './Button';
-import { sunrise, sunset } from '../styles/keyframes';
 import Sun from '../assets/icons/Sun';
 import Moon from '../assets/icons/Moon';
 
@@ -88,8 +89,8 @@ const ButtonWrapper = styled.div`
   border-radius: 50%;
   min-width: 56px;
   min-height: 56px;
-  overflow: hidden;
   transition: box-shadow 2s;
+  overflow: hidden;
   
   &:hover {
     box-shadow: 
@@ -121,7 +122,7 @@ const CircleLayout = styled.div`
   width: 120px;
   height: 120px;
   transition: border-color 2s;
-
+  
   &:hover {
     border-color: ${gray600};
   }
