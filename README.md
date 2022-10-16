@@ -2,7 +2,7 @@
 
 <img width="640" alt="lighthouse" src="https://user-images.githubusercontent.com/57756798/195974256-db696680-d8c1-4260-9d36-f50cf36cfcdc.png">
 
-`gatsby-starter-blog-github-theme`는 기술 블로그를 위한 Gatsby 스타터입니다.  
+`gatsby-starter-blog-github-theme`는 기술 블로그를 위한 Gatsby 스타터입니다. [(데모 페이지)](https://githubtheme.gatsbyjs.io/)
 
 - github 테마, 심플, 반응형 디자인
 - 마크다운 with 코드 하이라이팅
@@ -25,33 +25,36 @@
 <br />
 Gatsby CLI로 시작해보세요.
 
-추후 배포 편의를 위해 프로젝트 이름을 `[username].github.io`로 하는 것을 권장합니다.
-
 ```
-npx gatsby new [username].github.io https://github.com/rheech22/rheech22.github.io.git
+npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-blog-github-theme.git
 ```
 <br />
 
-### 2. 레포지토리 만들기  
-<br />
-
-레포지토리를 만들어주세요.  
-
-1. 레포지토리 이름을 `[username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
-2. `develop` 브랜치를 생성하고 `master`가 아닌 `develop`을 디폴트 브랜치로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
-3. :star: 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
-
-<br />
-
-### 3. 개발 시작  
+### 2. 개발 시작  
 <br />
 
 ```
 cd [username].github.io
-git remote add origin [repository's url]
 npm start
 ```
 `http://localhost:8000`에서 시작하세요.
+
+### 3. 레포지토리 만들기  
+<br />
+
+레포지토리를 만들어주세요.  
+
+1. 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
+2. `develop` 브랜치를 생성하고 `master`가 아닌 `develop`을 디폴트 브랜치로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
+3. :star: 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
+4. 로컬에서 방금 생성한 레포지토리를 연결해주세요.
+
+<br />
+```
+git remote add origin [repository's url]
+```
+
+<br />
 
 <br />
 
@@ -62,18 +65,28 @@ npm start
 
 ```ts
 const config = {
-  title: 'gatsby-github-theme-blog', // blog name
-  description: 'inspired by github.', // blog description
-  author: 'Demo', // your name
-  language: 'ko-KR', // html language attribute's value
-  twitterUsername: '@twitterUsername', // twitter username
-  location: 'Seoul', // where u at
-  email: 'your@email.com', // ur email
-  github: 'https://github.com/githubUsername', // github url
-  siteUrl: 'https://githubUsername.github.io/', // production url
+  // used for bio, meta tag...
+  title: 'git log', // title of the site
+  description: 'for blog inspired by github.', // describe anything about your site
+  language: 'ko-KR', // default language
+  author: 'gatsby blog starter', // your name
+  twitterUsername: '@username', // twitter username
+  siteUrl: 'https://username.github.io/', // site url
   themeColor: '#161b22', // theme color for PWA
-  googleAnalyticsTrackingId: 'G-0DM3BCAAAA', // google analytics tracking id
-  commentRepo: 'githubUsername/repo', // {githubId}/{repo} - will contain comments
+
+  // google analytics
+  googleAnalyticsTrackingId: 'G-0DM3BCAAAA',
+
+  // utterance comment
+  commentRepo: 'rheech22/rheech22.github.io', // {github's username}/{repository} - will contain comments
+
+  // links - if you don't wanna add any link to your bio, just leave it empty string.
+  linkedIn: '',
+  twitter: 'https://twitter.com/username',
+  github: 'https://github.com/username',
+  instagram: '',
+  email: 'username@gmail.com',
+  personal: '',
 };
 ```
 <br />
@@ -101,9 +114,9 @@ const config = {
 ---
 path: "/pathname"
 date: "2022-01-15"
-title: "데모2" 
+title: "개츠비 스타터" 
 tags: ["react", "etc"]
-series: "회고 모음"
+series: "개츠비 블로그 만들기"
 ---
 
 contents here...
@@ -114,15 +127,21 @@ contents here...
 <br />
      
 배포하기 전
-1. 레포지토리 이름이 `[username].github.io`가 맞는지 확인해주세요.
+1. 레포지토리 이름이 `[github's username].github.io`가 맞는지 확인해주세요.
 2. `blog-config.ts`를 한번 더 확인해주세요.
 3. 작업 중인 브랜치가 `develop`이 맞는지 확인해주세요.
 
 <br />
 
-:star: `develop` 브랜치에 `push` 하면 자동으로 배포가 됩니다.
+### 자동 배포
+
+:star: `.github/workflows/cicd.yml`의 주석 처리만 해제시켜 주세요.
+
+이제 `develop` 브랜치에 `push` 하면 자동 배포됩니다.
 
 <br />
+
+### 수동 배포
 
 자동 배포를 원치 않는다면 `.github` 폴더를 삭제하고 아래 커맨드로 직접 배포해주세요.
 
