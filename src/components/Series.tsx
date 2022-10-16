@@ -64,7 +64,6 @@ const List = styled.li<{isSelected: boolean}>`
   background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : 'inherit'};
   color: ${({ theme, isSelected }) => isSelected ? theme.series : 'inherit'};
   border-color: ${({ theme, isSelected }) => isSelected ? theme.series : ''};
-  
 
   @media (hover: hover) {
     &:hover {

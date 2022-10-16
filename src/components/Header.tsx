@@ -126,10 +126,13 @@ const CircleLayout = styled.div`
   width: 120px;
   height: 120px;
   transition: border-color 2s;
-  
-  &:hover {
-    border-color: ${gray600};
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: ${gray600};
+    }
   }
+  
 
   & > button {
     position: absolute;
