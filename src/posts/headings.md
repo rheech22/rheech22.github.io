@@ -1,9 +1,9 @@
 ---
-path: "/demo15"
+path: "/headings"
 date: "2022-10-08"
 title: "Headings"
-tags: ["react", "javascript"]
-series: "적당주의 프로그래머"
+tags: ["headings", "markdown", "toc"]
+series: "example 1"
 ---
 
 # Heading 1

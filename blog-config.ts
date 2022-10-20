@@ -1,7 +1,7 @@
 const config = {
   // used for bio, meta tag...
   title: 'git log', // title of the site
-  description: 'for blog inspired by github.', // describe anything about your site
+  description: 'inspired by github.', // describe anything about your site
   language: 'ko-KR', // default language
   author: 'gatsby blog starter', // your name
   twitterUsername: '@rheech22', // twitter username
