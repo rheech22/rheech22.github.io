@@ -17,6 +17,7 @@ const Bio = () => {
         <StaticImage
           src="../images/avatar.jpeg"
           alt="avatar"
+          placeholder="blurred"
         />
       </Avatar>
       <Profile>
