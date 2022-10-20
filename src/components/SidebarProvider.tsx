@@ -19,7 +19,7 @@ export default SidebarProvider;
 
 const Wrapper = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
-  padding-top: 48px;
+  padding: 48px 0px;
   width: 100%;
 
   @media ${device.widerThanLaptop} {
