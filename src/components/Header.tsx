@@ -165,7 +165,6 @@ const CircleLayout = styled.div`
     svg {
       width: 30px;
       height: 30px;
-      backface-visibility: hidden;
       transform: ${({ theme })=> theme.name === 'dark' ? 'rotate(-90deg)' : 'rotate(90deg)'};
 
       path {

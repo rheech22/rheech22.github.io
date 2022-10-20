@@ -1,8 +1,8 @@
-# gatsby-starter-blog-github-theme
+# gatsby-starter-github-theme-blog
 
 <img width="640" alt="lighthouse" src="https://user-images.githubusercontent.com/57756798/195974256-db696680-d8c1-4260-9d36-f50cf36cfcdc.png">
 
-`gatsby-starter-blog-github-theme`는 기술 블로그를 위한 Gatsby 스타터입니다. [(데모 페이지)](https://githubtheme.gatsbyjs.io/)
+`gatsby-starter-github-theme-blog`는 기술 블로그를 위한 Gatsby 스타터입니다. [(배포 예시)](https://rheech22.github.io)
 
 - github 테마, 심플, 반응형 디자인
 - 마크다운 with 코드 하이라이팅
@@ -23,12 +23,12 @@
 
 ### 1. 개츠비 사이트 생성  
 
-Gatsby CLI로 시작해보세요.  
+Gatsby CLI로 시작하세요.
 
 <br />
 
 ```
-npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-blog-github-theme.git
+npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-github-theme-blog.git
 ```
 <br />
 
@@ -66,7 +66,7 @@ git remote add origin [repository's url]
 
 ```ts
 const config = {
-  // used for bio, meta tag...
+  // used for bio, header and meta tag
   title: 'git log', // title of the site
   description: 'for blog inspired by github.', // describe anything about your site
   language: 'ko-KR', // default language
@@ -79,7 +79,7 @@ const config = {
   googleAnalyticsTrackingId: 'G-0DM3BCAAAA',
 
   // utterance comment
-  commentRepo: 'rheech22/rheech22.github.io', // {github's username}/{repository}
+  commentRepo: 'rheech22/rheech22.github.io', // github's username/repository
 
   // links - if you don't wanna add any link to your bio, just leave it empty string.
   linkedIn: '',
@@ -145,5 +145,4 @@ contents here...
 npm run deploy
 ```
 
-이제 `https://username.github.io/`에 배포된 페이지를 확인해보세요. 다소 시간이 걸릴 수 있습니다.
-
+배포를 마치고 `https://[github's username].github.io/`에서 확인해보세요.
