@@ -8,7 +8,7 @@ interface Props {
   tag: string | null;
 }
 
-const Tag = ({ onClick, isSelected, tag }: Props) => {
+const Tag = ({ onClick, isSelected = false, tag }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
     e.stopPropagation();
 

@@ -23,7 +23,7 @@ const Tags = () => {
             key={index}
             tag={tag}
             onClick={searchByTag}
-            isSelected={tag === selectedTag}
+            isSelected={tag.toLowerCase() === selectedTag}
           />
         ))}
       </ul>

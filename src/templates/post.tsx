@@ -1,9 +1,11 @@
 import { graphql, PageProps, Link } from 'gatsby';
 
+import { useEffect } from 'react';
+
 import Arrow from '../assets/icons/Arrow';
 import * as Styled from './styles';
 
-import { useContext } from '../store/context';
+import { useContext, useDispatch } from '../store/context';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import useTags from '../hooks/useTags';
 
@@ -19,9 +21,10 @@ import SEO from './post-seo';
 
 
 export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
+  const dispatch = useDispatch();
   const { displayMode, posts } = useContext();
-  const { searchByTag } = useTags();
 
+  const { searchByTag } = useTags();
   const spyRef = useSpyHeadings();
 
   const { title, date, path, tags, series, contents, excerpt, headings, timeToRead } = takePost(data);
@@ -31,6 +34,8 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
   const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } };
 
   const relatedPosts = posts.filter(({ node }) => node.frontmatter?.series === series).map(({ node }) => node.frontmatter);
+
+  useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 
   return (
     <>
@@ -86,7 +91,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
       </Styled.Section>
       {displayMode && (
         <Styled.Comments>
-          <Comments repo={config.commentRepo} theme={displayMode === 'day' ? 'github-light' : 'github-dark' }/>
+          <Comments repo={config.commentRepo} theme={displayMode === 'day' ? 'gitub-light' : 'github-dark' }/>
         </Styled.Comments>
       )}
     </>

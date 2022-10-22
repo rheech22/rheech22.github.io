@@ -13,7 +13,6 @@ export default ({ location }: SearchPageProps) => (
   </SidebarProvider>
 );
 
-
 export const Head = () => (
   <SEO subTitle="검색" />
 );

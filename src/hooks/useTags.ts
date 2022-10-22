@@ -12,7 +12,7 @@ const useTags = () => {
   const tags = sortTags(enrichTags(allTags));
 
   const searchByTag = (tag: string) => {
-    if (tag === currentTag) return navigate('/');
+    if (tag.toLowerCase() === currentTag) return navigate('/');
 
     navigate(`/search/?tag=${encodeURI(tag)}`, { state: { tag } });
   };
