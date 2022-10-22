@@ -39,7 +39,7 @@ cd [username].github.io
 git switch -c develop
 npm start
 ```
-`devleop` 브랜치에서 개발하는 것을 권장합니다. (아래 참고)
+`develop` 브랜치에서 개발하는 것을 권장합니다. (아래 참고)
 
 <br />
 
@@ -48,8 +48,8 @@ npm start
 
 1. 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
 2. `develop` 브랜치를 생성하고 `master`가 아닌 `develop`을 디폴트 브랜치로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
-3. :star: 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
-4. 로컬에서 방금 생성한 레포지토리를 연결해주세요.
+3. 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
+4. 로컬 CLI에서 방금 생성한 원격 레포지토리에 연결해주세요.
 
 <br />
 
@@ -126,14 +126,14 @@ Lorem sth...
 
 ## :rainbow: 배포하기
      
-### 배포하기 전
+### :star: 배포하기 전
 1. 레포지토리 이름이 `[github's username].github.io`가 맞는지 확인해주세요.
 2. `blog-config.ts`를 한번 더 확인해주세요.
 3. 작업 중인 브랜치가 `develop`이 맞는지 확인해주세요.
 
 ### 자동 배포
 
-:star: `.github/workflows/cicd.yml`의 주석 처리만 해제시켜 주세요.
+`.github/workflows/cicd.yml`의 주석 처리만 해제시켜 주세요.
 
 `develop` 브랜치에 `push` 하면 자동으로 배포합니다.
 
