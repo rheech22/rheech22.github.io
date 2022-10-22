@@ -1,4 +1,4 @@
-# gatsby-starter-github-theme-blog
+# gatsby-starter-github-theme-blog `BETA`
 
 <img width="640" alt="lighthouse" src="https://user-images.githubusercontent.com/57756798/195974256-db696680-d8c1-4260-9d36-f50cf36cfcdc.png">
 
