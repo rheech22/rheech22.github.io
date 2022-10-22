@@ -44,7 +44,7 @@
 - [x] 2차 반응형 디자인하기
 - [x] 검색 카테고리 선택하기 (제목+내용, 제목, 내용)
 - [x] SEO 하기
-- [x] 404 page
+- [x] 404 page 붙이기
 - [x] 극단 케이스 적용해서 UI 깨짐 확인하기
 - [x] hydration 이슈 해결하기
 - [x] Footer 붙이기
@@ -81,25 +81,20 @@
 - [x] 실제 내 폰에서 bio 깨지는 문제 해결하기
 - [x] 다른 템플릿 사용해보고 부족한 부분 보충하기
   - [x] Bio 아이콘으로 구성 변경하기(메일, 깃허브, 트위터, 링크?)
-- [x] CSS 피니싱
-  - [x] 야간모드 버튼
-- [ ] README 다듬기 및 영문 작성
+- [x] CSS 마무리하기
+  - [x] 야간모드 버튼 좀 더 이쁘게 만들어보기
+- [ ] README 다듬기
+- [ ] 영문 README 작성하기
 
 ## Findings
 
-- [StaticQuery](https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/)에는 variables를 전달할 수 없음(대신 페이지가 아닌 컴포넌트에서 사용 가능)
-- [GraphQL Type Generator](https://www.gatsbyjs.com/blog/how-to-use-gatsby-graphql-type-generation/)를 활용
-- [gatsby-browser API](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - page 컴포넌트를 감싸는 루트가 없기 때문에 전역 상태 관리를 하기 위해 활용
-- [코드 하이라이트 플러그인](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/)을 사용
-- [utterances](https://utteranc.es/?installation_id=28274981&setup_action=install)로 댓글 기능 추가
-- ThemeProvider 편하다
-- TOC 하이라이트를 intersectionObserver로 구현하려 했지만, 클릭해서 이동할 때 제대로 intersection을 감지하지 못함, 스크롤 이벤트를 최적화하는 방법으로 사용해야 할듯
-- sticky position을 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
-- rehydration으로 적용안되는 부분이 생길 수 있음, 리액트 생명주기 메서드로 어렵지 않게 해결할 수 있음
-- 배포 순서
-  1. github에서 username.github.io 레포 생성
-  2. 자신의 로컬 원하는 곳에서 프로젝트 클론 `git clone -b develop --single-branch [원본 클론 주소] [username.github.io]`
-  4. git remote add origin [레포 원격 주소]
-  3. 레포 세팅에서 default 브랜치를 master(or main)에서 develop으로 변경
-  4. npm run deploy로 배포 실행
-- 아이폰에서는 브라우저와 관계없이 svg layout, word-break에 문제가 있을 수 있음. 사파리를 기준으로 확인해보면 어느 정도 일치하는듯?
+- [[StaticQuery]](https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/) - 변수 전달 안됨
+- [[GraphQL Type Generator]](https://www.gatsbyjs.com/blog/how-to-use-gatsby-graphql-type-generation/) - 타입 선언 자동화 + optional chaining을 자주 써줘야 하는 단점
+- [[gatsby-browser API]](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - Context Provider를 page component에 적용하기 위해 사용
+- [[코드 하이라이트 플러그인]](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/) - 편리하다고 생각해서 갖다 쓰고 있는데 다른 플러그인을 사용하는 경우가 많이 보임
+- [[utterances]](https://utteranc.es/?installation_id=28274981&setup_action=install) - github 댓글
+- [ThemeProvider] - 편함
+- [intersectionObserver] - TOC 하이라이팅에 써보려고 했는데 교차를 완벽하게 감지하지 못함, 스크롤 이벤트를 사용하도록 변경
+- [sticky] - 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
+- [[rehydration]](https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/) - 배포 환경에서 발생할 수 있는 이슈, useEffect로 해결
+- [styles] - 아이폰에서는 브라우저와 관계없이 svg layout, word-break 등이 기대처럼 동작하지 않을 수 있음, safari로 확인하면 어느 정도 일치하는 듯

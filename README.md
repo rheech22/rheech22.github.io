@@ -39,7 +39,7 @@ cd [username].github.io
 git switch -c develop
 npm start
 ```
-개발은 `devleop` 브랜치에서 시작해주세요.
+`devleop` 브랜치에서 개발하는 것을 권장합니다. (아래 참고)
 
 <br />
 
@@ -66,9 +66,9 @@ git remote add origin [repository's url]
 
 ```ts
 const config = {
-  // used for bio, header and meta tag
+  // for bio, header and meta tag
   title: 'git log', // title of the site
-  description: 'for blog inspired by github.', // describe anything about your site
+  description: 'inspired by github.', // describe anything about your site
   language: 'ko-KR', // default language
   author: 'gatsby blog starter', // your name
   twitterUsername: '@username', // twitter username
@@ -79,14 +79,14 @@ const config = {
   googleAnalyticsTrackingId: 'G-0DM3BCAAAA',
 
   // utterance comment
-  commentRepo: 'rheech22/rheech22.github.io', // github's username/repository
+  commentRepo: 'username/username.github.io', // github's username/repository
 
   // links - if you don't wanna add any link to your bio, just leave it empty string.
   linkedIn: '',
   twitter: 'https://twitter.com/username',
   github: 'https://github.com/username',
   instagram: '',
-  email: 'username@gmail.com',
+  email: 'username@xmail.com',
   personal: '',
 };
 ```
@@ -114,13 +114,13 @@ const config = {
 ```md
 ---
 path: "/pathname"
-date: "2022-01-15"
-title: "개츠비 스타터" 
-tags: ["react", "etc"]
-series: "개츠비 블로그 만들기"
+date: "2022-10-22"
+title: "[HOW TO - 1] Gatsby Blog" 
+tags: ["blog", "gatsby"]
+series: "HOW TO"
 ---
 
-contents here...
+Lorem sth...
 ```
 <br />
 
@@ -135,7 +135,7 @@ contents here...
 
 :star: `.github/workflows/cicd.yml`의 주석 처리만 해제시켜 주세요.
 
-이제 `develop` 브랜치에 `push` 하면 자동 배포됩니다.  
+`develop` 브랜치에 `push` 하면 자동으로 배포합니다.
 
 ### 수동 배포
 
