@@ -23,7 +23,7 @@ export const Article = styled.article < { hasHeadings: boolean } > `
   
   ${flex({ flexDirection: 'column' })};
   padding: 48px 16px;
-  width: auto;
+  width: 100%;
 `;
 
 export const Header = styled.header`
