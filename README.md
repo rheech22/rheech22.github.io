@@ -46,9 +46,9 @@ npm start
 ### 3. 레포지토리 만들기  
 <br />
 
-먼저 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
+1. 먼저 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
 
-로컬 CLI에서 방금 생성한 원격 레포지토리를 연결해주세요.
+2. 로컬 CLI에서 방금 생성한 원격 레포지토리를 연결해주세요.
 ```
 git remote add origin [repository's url]
 ```
