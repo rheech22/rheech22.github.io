@@ -1,148 +1,101 @@
-# gatsby-starter-github-theme-blog `BETA`
+# 개츠비 블로그 만들기
 
-<img width="640" alt="lighthouse" src="https://user-images.githubusercontent.com/57756798/195974256-db696680-d8c1-4260-9d36-f50cf36cfcdc.png">
+## TODOS
 
-`gatsby-starter-github-theme-blog`는 기술 블로그를 위한 Gatsby 스타터입니다. [(배포 예시)](https://rheech22.github.io)
+- [x] useStaticQuery 사용
+- [x] 포스트 정보 보여주기
+- [x] 포스트 정보 요청하기
+- [x] 포스트 리스트 정렬하기
+- [x] 태그 추가하기
+- [x] 검색 기능 추가하기
+- [x] 다크 모드를 적용하기 (우선순위: 로컬 스토리지 > 디바이스 기본 값 > 다크)
+- [x] 포스트 레이아웃 적용하기
+- [x] 코드 블럭 적용하기
+- [x] 댓글 기능 추가하기
+- [x] 헤더 구체화하기
+- [x] outSideClick 추가하기
+- [x] 다크 모드 버튼 디자인하기
+- [x] 라이트 모드 디자인하기
+- [x] 검색창 다시 구현하기
+- [x] bio / 태그 / 리스트 / 포스트 레이아웃 잡아보기
+- [x] 반응형으로 디자인하기(1차: 레이아웃 위주)
+- [x] bio 구현하기
+- [x] 태그 리스트 구현하기
+- [x] 태그 검색 기능 구현하기
+- [x] 상태 관리 리팩토링하기
+- [x] 검색 결과 페이지에 사이드바 적용하고 리팩토링하기
+- [x] 커스텀 훅으로 추출하기
+- [x] 태그 아이콘 디자인하기
+- [x] 태그 정렬하기
+- [x] 작은 화면에서도 태그 보여주기
+- [x] 선택된 태그 강조하기
+- [x] 미리보기 레이아웃 잡기
+- [x] 포스트 디자인 레이아웃 잡기
+- [x] TOC 붙이기
+- [x] TOC 강조하기
+- [x] TOC sticky 적용하기
+- [x] 날짜 표출 방식 개선하기
+- [x] 새로고침 후에 태그, 키워드 검색 남아있도록 개선하기
+- [x] 레이아웃에서 graphql 요청하도록 개선하기
+- [x] 코드 정리하기
+- [x] isDark 상태 리팩토링
+- [x] time to read 추가하기
+- [x] 전체 레이아웃 사이즈 조정하기 (특히 bio)
+- [x] 2차 반응형 디자인하기
+- [x] 검색 카테고리 선택하기 (제목+내용, 제목, 내용)
+- [x] SEO 하기
+- [x] 404 page 붙이기
+- [x] 극단 케이스 적용해서 UI 깨짐 확인하기
+- [x] hydration 이슈 해결하기
+- [x] Footer 붙이기
+- [x] payload 타입 정의하기
+- [x] 반응형 디자인 마무리하기
+- [x] 상태 관리 로직 리팩토링하기
+- [x] css-breakpoint 직관적으로 변경하기
+- [x] 스타일 코드 리팩토링하기
+- [x] lighthuouse 점수 올리기
+- [x] PWA 적용하기
+- [x] eslint 더 엄격하게 사용하기
+- [x] 서비스워커 적용하기
+- [x] sitemap 적용하기
+- [x] 포스트 이미지 모바일에서 벗어나는 문제 해결하기
+- [x] 아이폰 12 mini 등에서 bio 깨지는 문제 해결하기
+- [x] width 360px 반응형 고려하기
+- [x] 스크롤 이벤트 빠릿하게 고치기
+- [x] gh-pages에 배포하기
+- [x] TOC 레이아웃 조정하기
+- [x] 구글 애널리틱스 붙이기
+- [x] config 다듬기
+- [x] TOC 없는 경우 본문 위치 조정하기
+- [x] 이전글 다음글 표시하기
+- [x] 스크롤 탑 기능 추가하기
+- [x] 시리즈 기능 추가하기
+- [x] 자동 배포 액션 추가하기
+- [x] 툴팁 추가하기
+- [x] header link 등 hisotory, navigate 제대로 동작시키기
+- [x] document title 바뀌지 않는 문제 해결하기     
+- [x] 불필요한 코드 제거하기
+- [x] 포스트 내 시리즈 보여주는 부분 UI 개선하기
+- [x] 게시글 목록 (이전글/다음글) 고려해서 정렬하기
+- [x] 시리즈 글 정렬하기
+- [x] 실제 내 폰에서 bio 깨지는 문제 해결하기
+- [x] 다른 템플릿 사용해보고 부족한 부분 보충하기
+  - [x] Bio 아이콘으로 구성 변경하기(메일, 깃허브, 트위터, 링크?)
+- [x] CSS 마무리하기
+  - [x] 야간모드 버튼 좀 더 이쁘게 만들어보기
+- [x] README 다듬기
+- [x] POST 최소 넓이 확보
+- [ ] 영문 README 작성하기
 
-- github 테마, 심플, 반응형 디자인
-- 마크다운 with 코드 하이라이팅
-- 키워드, 태그, 연재물 검색
-- 프로그레시브 웹 앱(PWA)
-- 검색 엔진 최적화(SEO)
-- Google Analystics
-- github 댓글
-- 다크모드
-- CICD
+## Findings
 
-<br />
-
-## :rocket: Quick start
-
-이 가이드는 github pages 배포를 기준으로 작성했어요.  
-<br />
-
-### 1. 개츠비 사이트 생성  
-
-Gatsby CLI로 시작하세요.
-
-<br />
-
-```
-npx gatsby new my-blog https://github.com/rheech22/gatsby-starter-github-theme-blog.git
-```
-<br />
-
-### 2. 개발 시작  
-
-```
-cd [username].github.io
-git switch -c develop
-npm start
-```
-배포 편의를 위해 `develop` 브랜치에서 개발하는 것을 권장합니다.
-
-<br />
-
-### 3. 레포지토리 만들기  
-<br />
-
-1. 먼저 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
-
-2. 로컬 CLI에서 방금 생성한 원격 레포지토리를 연결해주세요.
-```
-git remote add origin [repository's url]
-```
-
-<br />
-
-:star: 만약 디폴트 브랜치가 `develop`이 아니라면 `develop`으로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
-
-<br />
-
-## :hammer_and_wrench: 블로그 설정하기
-<br />
-
-`blog-config.ts`에서 블로그의 기본 정보를 설정해주세요.
-
-```ts
-const config = {
-  // for bio, header and meta tag
-  title: 'git log', // title of the site
-  description: 'inspired by github.', // describe anything about your site
-  language: 'ko-KR', // default language
-  author: 'gatsby blog starter', // your name
-  twitterUsername: '@username', // twitter username
-  siteUrl: 'https://username.github.io/', // site url
-  themeColor: '#161b22', // theme color for PWA
-
-  // google analytics
-  googleAnalyticsTrackingId: 'G-0DM3BCAAAA',
-
-  // utterance comment
-  commentRepo: 'username/username.github.io', // github's username/repository
-
-  // links - if you don't wanna add any link to your bio, just leave it empty string.
-  linkedIn: '',
-  twitter: 'https://twitter.com/username',
-  github: 'https://github.com/username',
-  instagram: '',
-  email: 'username@xmail.com',
-  personal: '',
-};
-```
-<br />
-
-## :pencil2: 게시글 작성하기  
-<br />
-
-`src/posts` 경로에 마크다운 파일을 생성하고 첫 글을 작성해보세요.
-<br />
-
-각 게시글은 `frontmatter`를 포함해야 합니다.
-
-| 속성   | 설명                      |
-| ------ | ------------------------- |
-| path   | 게시글 페이지 경로 (필수) |
-| date   | 업데이트 날짜 (필수)      |
-| title  | 게시글 제목 (필수)        |
-| tags   | 태그 목록 (선택)          |
-| series | 연재명 (선택)             |
-
-<br />
-
-`마크다운 예시`
-```md
----
-path: "/pathname"
-date: "2022-10-22"
-title: "[HOW TO - 1] Gatsby Blog" 
-tags: ["blog", "gatsby"]
-series: "HOW TO"
----
-
-Lorem sth...
-```
-<br />
-
-## :rainbow: 배포하기
-     
-### :star: 배포하기 전
-1. 레포지토리 이름이 `[github's username].github.io`가 맞는지 확인해주세요.
-2. `blog-config.ts`를 한번 더 확인해주세요.
-3. 작업 중인 브랜치가 `develop`이 맞는지 확인해주세요.
-
-### 자동 배포
-
-`.github/workflows/cicd.yml`의 주석 처리만 해제시켜 주세요.
-
-`develop` 브랜치에 `push` 하면 자동으로 배포합니다.
-
-### 수동 배포
-
-자동 배포를 원치 않는다면 `.github` 폴더를 삭제하고 아래 커맨드로 직접 배포해주세요.
-
-```
-npm run deploy
-```
-
-배포를 마치고 `https://[github's username].github.io/`에서 확인해보세요.
+- [[StaticQuery]](https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/) - 변수 전달 안됨
+- [[GraphQL Type Generator]](https://www.gatsbyjs.com/blog/how-to-use-gatsby-graphql-type-generation/) - 타입 선언 자동화 + optional chaining을 자주 써줘야 하는 단점
+- [[gatsby-browser API]](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - Context Provider를 page component에 적용하기 위해 사용
+- [[코드 하이라이트 플러그인]](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/) - 편리하다고 생각해서 갖다 쓰고 있는데 다른 플러그인을 사용하는 경우가 많이 보임
+- [[utterances]](https://utteranc.es/?installation_id=28274981&setup_action=install) - github 댓글
+- [ThemeProvider] - 편함
+- [intersectionObserver] - TOC 하이라이팅에 써보려고 했는데 교차를 완벽하게 감지하지 못함, 스크롤 이벤트를 사용하도록 변경
+- [sticky] - 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
+- [[rehydration]](https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/) - 배포 환경에서 발생할 수 있는 이슈, useEffect로 해결
+- [styles] - 아이폰에서는 브라우저와 관계없이 svg layout, word-break 등이 기대처럼 동작하지 않을 수 있음, safari로 확인하면 어느 정도 일치하는 듯
