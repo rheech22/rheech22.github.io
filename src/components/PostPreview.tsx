@@ -40,12 +40,12 @@ const PostPreview = ({
       </div>
       {tags?.length
         ? <Tags>{tags.map((tag, index) => (
-          <Tag
-            key={index}
-            tag={tag}
-            onClick={searchByTag}
-            isSelected={tag === selectedTag}
-          />
+            tag && (<Tag
+              key={index}
+              tag={tag.toLowerCase()}
+              onClick={searchByTag}
+              isSelected={tag?.toLowerCase() === selectedTag}
+            />)
         ))}</Tags>
         : null}
     </Container>

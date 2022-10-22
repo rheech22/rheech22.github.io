@@ -35,8 +35,9 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
       dispatch({ type: 'setCurrentTag', payload: { tag } });
 
       return posts
-        .filter(({ node: { frontmatter } })=>
-          frontmatter?.tags?.includes(tag.toLowerCase()));
+        .filter(({ node: { frontmatter } })=> {
+          return frontmatter?.tags?.some(t => t?.toLowerCase() === tag.toLowerCase());
+        });
     }
 
     if (series) {
