@@ -39,23 +39,23 @@ cd [username].github.io
 git switch -c develop
 npm start
 ```
-`develop` 브랜치에서 개발하는 것을 권장합니다. (아래 참고)
+배포 편의를 위해 `develop` 브랜치에서 개발하는 것을 권장합니다.
 
 <br />
 
 ### 3. 레포지토리 만들기  
-레포지토리를 만들어주세요.  
-
-1. 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
-2. `develop` 브랜치를 생성하고 `master`가 아닌 `develop`을 디폴트 브랜치로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
-3. 작업은 `master`가 아닌 `develop`브랜치에서 해주세요. (`master` 브랜치는 배포 전 빌드를 위해 사용합니다.)
-4. 로컬 CLI에서 방금 생성한 원격 레포지토리에 연결해주세요.
-
 <br />
 
+먼저 레포지토리 이름을 `[github's username].github.io`로 생성합니다. [[참고](https://pages.github.com/)]
+
+로컬 CLI에서 방금 생성한 원격 레포지토리를 연결해주세요.
 ```
 git remote add origin [repository's url]
 ```
+
+<br />
+
+:star: 만약 디폴트 브랜치가 `develop`이 아니라면 `develop`으로 변경해주세요. [[참고](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)]
 
 <br />
 
