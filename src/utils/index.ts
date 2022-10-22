@@ -5,7 +5,6 @@ type ReduceReturnType = {
 export const enrichTags = (tags: (string | null | undefined)[]) => {
   return Object
     .entries(tags
-      .map(tag => tag?.toLowerCase())
       .reduce<ReduceReturnType>((acc, cur) => {
         if (!cur) return acc;
 

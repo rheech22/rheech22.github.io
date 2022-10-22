@@ -2,7 +2,7 @@
 path: "/dust"
 date: "2022-09-22"
 title: "dust"
-tags: ["dust", "picture"]
+tags: ["dust", "picture", "lorem"]
 series: "example 1"
 ---
 
