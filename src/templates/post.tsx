@@ -91,7 +91,14 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
       </Styled.Section>
       {displayMode && (
         <Styled.Comments>
-          <Comments repo={config.commentRepo} theme={displayMode === 'day' ? 'gitub-light' : 'github-dark' }/>
+          <Comments
+            repo={config.commentRepo}
+            theme={
+              displayMode === 'day'
+                ? config.lightTheme
+                : config.darkTheme
+            }
+          />
         </Styled.Comments>
       )}
     </>
