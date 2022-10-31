@@ -95,6 +95,7 @@ const Container = styled.div<{more: boolean}>`
       line-height: 18px;
       font-weight: 600;
       margin-left: 8px;
+      transition: all .5s;
     }
 
     @media (hover: hover) {

@@ -18,7 +18,7 @@ export const Article = styled.article < { hasHeadings: boolean } > `
   }
 
   @media ${device.widerThanLaptopS} {
-    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(12%);' : ''};
+    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(20%);' : ''};
   }
   
   ${flex({ flexDirection: 'column' })};
