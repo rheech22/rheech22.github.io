@@ -42,6 +42,7 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
     color: ${({ theme }) => (theme.default)};
     min-height: 100vh;
     line-height: 1.5;
+    transition: all .5s;
     
     #gatsby-focus-wrapper{
       min-height: 100vh;

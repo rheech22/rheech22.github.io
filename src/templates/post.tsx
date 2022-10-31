@@ -19,7 +19,6 @@ import Tag from '../components/Tag';
 import TOC from '../components/TOC';
 import SEO from './post-seo';
 
-
 export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
   const dispatch = useDispatch();
   const { displayMode, posts } = useContext();

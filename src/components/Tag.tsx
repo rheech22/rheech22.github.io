@@ -49,6 +49,7 @@ const Container = styled.li<{
   font-weight: 500;
   line-height: 22px;
   cursor: pointer;
+  transition: all .5s;
   
   @media (hover: hover) {
     &:hover {

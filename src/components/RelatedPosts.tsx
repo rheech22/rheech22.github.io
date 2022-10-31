@@ -63,6 +63,7 @@ const Container = styled.div<{more: boolean}>`
   border-radius: 8px;
   padding: 20px 10px;
   background-color: ${({ theme }) => theme.seriesBg};
+  transition: all .5s;
   
   & > button {
     ${flex({ alignItems: 'center' })}
@@ -79,13 +80,14 @@ const Container = styled.div<{more: boolean}>`
       color: ${({ theme }) => theme.default};
       line-height: 18px;
       font-weight: 300;
+      transition: all .5s;
     }
 
     & > svg { 
       margin-right: 6px;
       fill: ${({ theme }) => theme.default};
       transform: ${({ more }) => more ? 'rotate(90deg)' : ''};
-      transition: transform 0.5s;
+      transition: all .5s;
     }
 
     & > strong {
@@ -108,7 +110,7 @@ const List = styled.ol`
   margin-top: 21px;
   padding-left: 46px;
   list-style: decimal;
-
+  
   span {
     font-weight: 500;
   }
@@ -116,6 +118,7 @@ const List = styled.ol`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.mute};
+    transition: all .5s;
 
     @media (hover: hover) {
       &:hover {

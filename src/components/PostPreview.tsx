@@ -44,7 +44,7 @@ const PostPreview = ({
               key={index}
               tag={tag}
               onClick={searchByTag}
-              isSelected={tag?.toLowerCase() === selectedTag?.toLowerCase()}
+              isSelected={tag?.toLowerCase() === selectedTag}
             />
         ))}</Tags>
         : null}
@@ -82,6 +82,7 @@ const Heading = styled.h2`
   font-weight: 600;
   color: ${({ theme }) => theme.default};
   margin-bottom: 4px;
+  transition: all .5s;
 `;
 
 const Date = styled.span`

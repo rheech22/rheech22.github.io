@@ -25,6 +25,9 @@ export const dark = {
   tagBgHovered: '#1f6feb',
   codeBg: 'rgba(110,118,129,0.4)',
   themeIconPosition: 'right center',
+  tableRowBg: '#0d1117',
+  tableCellBorder: '#30363d',
+  shadow: 'rgba(255, 255, 255, 0.03)',
 };
 
 export const light = {
@@ -47,5 +50,7 @@ export const light = {
   tagBgHovered: '#0969da',
   codeBg: 'rgba(175,184,193,0.2)',
   themeIconPosition: '0',
+  tableRowBg: '#ffffff',
+  tableCellBorder: '#d0d7de',
+  shadow: 'rgba(0, 0, 0, 0.06)',
 };
-

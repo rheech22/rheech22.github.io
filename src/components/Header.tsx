@@ -14,7 +14,6 @@ import config from '../../blog-config';
 import { getTheme } from '../utils';
 
 import SearchBar from './SearchBar';
-import Button from './Button';
 import Sun from '../assets/icons/Sun';
 import Moon from '../assets/icons/Moon';
 
@@ -42,16 +41,16 @@ const Header = () => {
         searchKeyword={searchKeyword}
         onChange={handleChange}
       />
-      <ButtonWrapper>
+      <Button onClick={handleClick} tabIndex={-1}>
         <CircleLayout>
-          <Button onClick={handleClick} accessibleName="change display mode" tabIndex={-1}>
+          <div>
             <Moon />
-          </Button>
-          <Button onClick={handleClick} accessibleName="change display mode" tabIndex={-1}>
+          </div>
+          <div>
             <Sun />
-          </Button>
+          </div>
         </CircleLayout>
-      </ButtonWrapper>
+      </Button>
     </Container>
   );
 };
@@ -83,15 +82,18 @@ const Container = styled.header`
   }
 `;
 
-const ButtonWrapper = styled.div`
+const Button = styled.button`
   position: relative;
+  z-index: 0;
   margin-left: 8px;
+  border: none;
   border-radius: 50%;
+  background: none;
   min-width: 56px;
   min-height: 56px;
-  transition: box-shadow 2s;
   overflow: hidden;
-  z-index: 0;
+  cursor: pointer;
+  transition: box-shadow 2s;
 
   @media (hover: hover) {
     &:hover {
@@ -132,9 +134,8 @@ const CircleLayout = styled.div`
       border-color: ${gray600};
     }
   }
-  
 
-  & > button {
+  & > div {
     position: absolute;
     top: 45px; right: 45px; left: auto; bottom: auto;
     border-radius: 50%;
@@ -144,7 +145,6 @@ const CircleLayout = styled.div`
     height: 30px;
     background: none;
     outline: none;
-    cursor: pointer;
     
     &:first-of-type {
       animation: 

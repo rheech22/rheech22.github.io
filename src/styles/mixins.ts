@@ -13,18 +13,23 @@ export const flex = ({ alignItems = 'normal', justifyContent = 'normal', flexDir
 
 export const border = {
   top: () => css`
-    border-top: ${({ theme }) => `1px solid ${theme.border}`}
+    border-top: ${({ theme }) => `1px solid ${theme.border}`};
+    transition: border-color .5s;
   `,
   bottom: () => css`
-    border-bottom: ${({ theme }) => `1px solid ${theme.border}`}
+    border-bottom: ${({ theme }) => `1px solid ${theme.border}`};
+    transition: border-color .5s;
   `,
   right: () => css`
-    border-right: ${({ theme }) => `1px solid ${theme.border}`}
+    border-right: ${({ theme }) => `1px solid ${theme.border}`};
+    transition: border-color .5s;
   `,
   left: () => css`
-    border-left: ${({ theme }) => `1px solid ${theme.border}`}
+    border-left: ${({ theme }) => `1px solid ${theme.border}`};
+    transition: border-color .5s;
   `,
   default: () => css`
-    border: ${({ theme }) => `1px solid ${theme.border}`}
+    border: ${({ theme }) => `1px solid ${theme.border}`};
+    transition: border-color .5s;
   `,
 };

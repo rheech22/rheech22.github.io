@@ -54,7 +54,7 @@ const Container = styled.form<{hasInput: boolean}>`
   height: 30px;
   font-weight: 400;
   position: relative;
-  transition: width 0.5s;
+  transition: all 0.5s;
 
   @media ${device.widerThanTablet} {
     &:focus-within {
@@ -75,7 +75,8 @@ const Container = styled.form<{hasInput: boolean}>`
     background-color: ${({ theme }) => theme.searchBg};
     color: ${snow};
     font-size: 14px;
-    
+    transition: all .5s;
+
     &:focus {
       @media ${device.widerThanTablet} {
         border-bottom-left-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
