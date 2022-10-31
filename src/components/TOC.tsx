@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
+import { bgHovered } from '../styles/themes';
 
 import { useContext } from '../store/context';
 
@@ -92,7 +93,9 @@ const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
 
   @media (hover: hover) {
     &:hover {
-      color: ${({ theme }) => theme.blue};
+      &:hover {
+        background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.seriesBg : bgHovered};
+      }
     }
   }
 

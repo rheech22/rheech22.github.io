@@ -99,4 +99,5 @@
 - [intersectionObserver] - TOC 하이라이팅에 써보려고 했는데 교차를 완벽하게 감지하지 못함, 스크롤 이벤트를 사용하도록 변경
 - [sticky] - 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
 - [[rehydration]](https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/) - 배포 환경에서 발생할 수 있는 이슈, useEffect로 해결
-- [styles] - 아이폰에서는 브라우저와 관계없이 svg layout, word-break 등이 기대처럼 동작하지 않을 수 있음, safari로 확인하면 어느 정도 일치하는 듯
+- [ios] - 아이폰에서는 브라우저와 관계없이 svg layout, word-break 등이 기대처럼 동작하지 않을 수 있음, safari로 확인하면 어느 정도 일치하는 듯
+- [margin] - TOS 너비가 변함에 따라 `marin-auto`만으로는 아티클 영역이 중앙 정렬되지 않음, `position: relative`와 함께 `translate`로 해결
