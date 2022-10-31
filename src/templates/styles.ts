@@ -4,7 +4,7 @@ import { markdown } from '../styles/modules';
 import { flex } from '../styles/mixins';
 
 export const Section = styled.section`
-  ${flex({ justifyContent: 'center' })}
+  ${flex({ justifyContent: 'center' })};
   margin: 72px auto 0 auto;
   padding-top: 48px;
   width: 100%;
@@ -14,13 +14,18 @@ export const Section = styled.section`
 export const Article = styled.article < { hasHeadings: boolean } > `
   @media ${device.widerThanTablet} {
     transform: translateX(3%);
-    width: 726px;
-  }
-
-  @media ${device.widerThanLaptopS} {
-    ${({ hasHeadings }) => hasHeadings ? 'margin-left: auto; transform: translateX(20%);' : ''};
+    max-width: 726px;
   }
   
+  @media ${device.widerThanLaptopS} {
+    ${({ hasHeadings }) =>
+    hasHeadings ? `
+        position: relative;
+        left: 50%;
+        transform: translateX(-47%)
+      ` : ''};
+  }
+
   ${flex({ flexDirection: 'column' })};
   padding: 48px 16px;
   width: 100%;

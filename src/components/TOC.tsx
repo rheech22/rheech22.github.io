@@ -49,7 +49,6 @@ const Container = styled.aside`
   right: 0px;
   margin-left: auto;
   margin-top: 38px;
-  max-width: 300px;
   min-width: fit-content;
   height: fit-content;
   color: ${({ theme }) => theme.default};
