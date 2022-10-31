@@ -81,6 +81,7 @@ const Container = styled.div`
           width: 20px;
           path {
             fill: ${({ theme })=> theme.mute};
+            transition: all .5s;
           }
         }
 
