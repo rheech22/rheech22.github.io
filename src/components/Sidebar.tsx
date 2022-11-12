@@ -23,7 +23,7 @@ const Wrapper = styled.aside`
   width: 100%;
   height: 100%;
 
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     width: fit-content;
     margin-left: 20px;
     margin-right: auto;

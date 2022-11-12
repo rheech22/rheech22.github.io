@@ -40,13 +40,13 @@ const Container = styled.div`
   padding-left: 20px;
   padding-bottom: 40px;
   
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     display: block;
   }
 
   & > h3 {
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 600;
     margin-bottom: 12px;
   }
 `;
@@ -64,6 +64,7 @@ const List = styled.li<{isSelected: boolean}>`
   background-color: ${({ theme, isSelected }) => isSelected ? theme.seriesBg : 'inherit'};
   color: ${({ theme, isSelected }) => isSelected ? theme.series : 'inherit'};
   border-color: ${({ theme, isSelected }) => isSelected ? theme.series : ''};
+  transition: all .5s;
 
   @media (hover: hover) {
     &:hover {

@@ -27,6 +27,7 @@ const Tags = () => {
           />
         ))}
       </ul>
+      <div/>
     </Container>
   );
 };
@@ -41,12 +42,22 @@ const Container = styled.div`
   & > h3 {
     ${border.top};
     display: none;
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 600;
     margin-bottom: 12px;
   }
   
-  @media ${device.widerThanLaptop} {
+  & > ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  & > div {
+    ${border.bottom};
+  }
+
+  @media ${device.widerThanLaptopS} {
     ${flex({ flexDirection: 'column' })};
     margin: 0;
     box-shadow: none;
@@ -57,17 +68,16 @@ const Container = styled.div`
       padding-top: 20px;
       display: block;
     }
-  }
 
-  & > ul {
-    @media ${device.widerThanLaptop} {
-      margin-top: 0;
-      padding-bottom: 20px;
-      ${border.bottom};
+    & > ul {
+      @media ${device.widerThanLaptopS} {
+        margin-top: 0;
+        padding-bottom: 20px;
+      }
     }
-    
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
+
+    & > div {
+      display: block;
+    }
   }
 `;

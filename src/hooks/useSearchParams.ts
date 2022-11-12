@@ -1,9 +1,9 @@
 import { navigate } from 'gatsby';
 
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 const useSearchParams = () => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const params = new URLSearchParams(location.search);
 
     const tag = params.get('tag') ?? '';

@@ -13,6 +13,7 @@ const usePosts = () => {
 
   useEffect(() => {
     if (!posts.length) return;
+
     dispatch({ type: 'setPosts', payload: { posts } });
   }, [ posts ]);
 };

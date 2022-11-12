@@ -40,7 +40,7 @@ const Container = styled.div`
   height: fit-content;
   max-width: 100%;
 
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     flex-direction: column;
     max-width: 316px;
     padding: 20px 20px 4px 20px;
@@ -54,7 +54,7 @@ const Avatar = styled.div`
   max-width: 100%;
   min-width: fit-content;
 
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     margin-right: 0;
     width: 100%;
     min-height: 168px;  
@@ -65,7 +65,7 @@ const Avatar = styled.div`
     height: 128px !important;
     border-radius: 50%;
 
-    @media ${device.widerThanLaptop} {
+    @media ${device.widerThanLaptopS} {
       width: 168px !important;
       height: 168px !important;
     }
@@ -77,7 +77,7 @@ const Profile = styled.div`
   max-width: 296px;
   min-height: 128px;
   
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     width: 100%;
   }
 `;
@@ -96,7 +96,7 @@ const Name = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     font-size: 24px;
     padding-top: 4px;
   }
@@ -108,7 +108,7 @@ const Description = styled.p`
   font-size: 14px;
   word-break: break-all;
 
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     font-size: 16px;
     margin-bottom: 12px;
   }

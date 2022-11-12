@@ -65,7 +65,7 @@ const Container = styled.header`
   height: 62px;
   background-color: ${headerBg};
   
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     padding: 16px 32px;
   }
 
@@ -145,27 +145,28 @@ const CircleLayout = styled.div`
     height: 30px;
     background: none;
     outline: none;
-    
+  
     &:first-of-type {
       animation: 
-        ${({ theme: { name } }) =>
-          name === 'dark'
-            ? css`${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`
-            : css`${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`};
-    }
-    
-    &:last-of-type {
-      animation: 
-        ${({ theme: { name } }) =>
+      ${({ theme: { name } }) =>
           name === 'dark'
             ? css`${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`
             : css`${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards` };
     }
 
+    &:last-of-type {
+      animation: 
+        ${({ theme: { name } }) =>
+          name === 'dark'
+            ? css`${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`
+            : css`${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`};
+
+    }
+
     svg {
       width: 30px;
       height: 30px;
-      transform: ${({ theme })=> theme.name === 'dark' ? 'rotate(-90deg)' : 'rotate(90deg)'};
+      transform: ${({ theme })=> theme.name === 'dark' ? 'rotate(90deg)' : 'rotate(-90deg)'};
 
       path {
         fill: ${gray600 };

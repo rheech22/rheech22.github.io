@@ -22,14 +22,14 @@ const Wrapper = styled.div`
   padding: 48px 0px;
   width: 100%;
 
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
   }
 
   & > ul {
-    @media ${device.widerThanLaptop} {
+    @media ${device.widerThanLaptopS} {
       margin-right: auto;
     }
   }

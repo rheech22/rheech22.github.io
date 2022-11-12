@@ -86,11 +86,9 @@
 - [x] README 다듬기
 - [x] POST 최소 넓이 확보
 - [x] 태그 대소문자 구분해주고 검색 결과는 둘다 보여주기
-- [ ] 커스텀 타입 설정으로 Nullable 타입 제거하기
-- [ ] 포스트 상태 관리 굳이 필요한가? 서치 페이지에서는 새롭게 쿼리를 날리는 것이 맞지 않나?
-- [ ] 프로필 하단 폰트 고치기
-- [ ] 중간 사이즈에도 시리즈는 표출되어야 하지 않나?
-- [ ] 태그, 시리즈가 많아지는 경우에는 어떻게 보여주지?
+- [x] 커스텀 타입 설정으로 Nullable 타입 제거하기
+- [x] 야간 모드 스위칭
+- [x] 프로필 하단 폰트 고치기
 - [ ] 영문 README 작성하기
 
 ## Findings
@@ -105,4 +103,5 @@
 - [sticky] - 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
 - [[rehydration]](https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/) - 배포 환경에서 발생할 수 있는 이슈, useEffect로 해결
 - [ios] - 아이폰에서는 브라우저와 관계없이 svg layout, word-break 등이 기대처럼 동작하지 않을 수 있음, safari로 확인하면 어느 정도 일치하는 듯
-- [margin] - TOS 너비가 변함에 따라 `marin-auto`만으로는 아티클 영역이 중앙 정렬되지 않음, `position: relative`와 함께 `translate`로 **해결**
+- [margin] - TOS 너비가 변함에 따라 `marin-auto`만으로는 아티클 영역이 중앙 정렬되지 않음, `position: relative`와 함께 `translate`로 해결
+- [검색 페이지] - search page에서 query에 filter를 걸어서 페이지 보여주고 싶은데, page query에서 variable를 전달하는 방식에 한계가 있어 보임

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useContext, useDispatch } from '../store/context';
 
 interface Params {
@@ -50,7 +50,7 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
     return posts;
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const filteredPosts = getPosts();
 
     setFilteredPosts(filteredPosts);

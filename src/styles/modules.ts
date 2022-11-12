@@ -8,7 +8,7 @@ export const avatarWrapper = css`
   width: 148px;
   height: 148px;
   
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     margin-right: 0;
     width: 100%;
     min-height: 168px;  
@@ -20,7 +20,7 @@ export const avatar = css`
   height: 130px;
   border-radius: 50%;
 
-  @media ${device.widerThanLaptop} {
+  @media ${device.widerThanLaptopS} {
     width: 168px;
     height: 168px;
   }
