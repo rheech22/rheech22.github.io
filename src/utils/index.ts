@@ -57,21 +57,33 @@ export const getDateString = ({ date, addPrefix, getYear }: {date: string, addPr
 };
 
 export const takePost = (data: Queries.templateQuery) => {
-  const { markdownRemark } = data;
+  const {
+    markdownRemark: {
+      timeToRead,
+      headings,
+      excerpt,
+      html: contents,
+      frontmatter: {
+        title,
+        date,
+        path,
+        tags,
+        series,
+      },
+    },
+  } = data;
 
-  const post = {
-    title: markdownRemark?.frontmatter?.title ?? '',
-    date: markdownRemark?.frontmatter?.date ?? '',
-    path: markdownRemark?.frontmatter?.path ?? '',
-    tags: markdownRemark?.frontmatter?.tags ?? [],
-    series: markdownRemark?.frontmatter?.series ?? '',
-    contents: markdownRemark?.html ?? '',
-    excerpt: markdownRemark?.excerpt ?? '',
-    headings: markdownRemark?.headings ?? [],
-    timeToRead: markdownRemark?.timeToRead ?? '',
+  return {
+    title,
+    date,
+    path,
+    tags: tags ?? [],
+    series: series ?? '',
+    contents: contents ?? '',
+    excerpt: excerpt ?? '',
+    headings: headings ?? [],
+    timeToRead: timeToRead ?? '',
   };
-
-  return post;
 };
 
 export default takePost;

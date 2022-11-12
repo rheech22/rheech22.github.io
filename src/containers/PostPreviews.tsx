@@ -27,14 +27,23 @@ const PostPreviews = () => {
     <Container>
       {posts
         .slice(0, offset)
-        .map(({ node: post }) =>
+        .map(({ node: {
+          id,
+          excerpt,
+          frontmatter: {
+            path,
+            date,
+            title,
+            tags,
+          },
+        } }) =>
           <PostPreview
-            key={post.id}
-            path={post.frontmatter?.path ?? ''}
-            date={post.frontmatter?.date ?? ''}
-            title={post.frontmatter?.title ?? ''}
-            tags={post.frontmatter?.tags ?? []}
-            excerpt={post.excerpt ?? ''}
+            key={id}
+            path={path}
+            date={date}
+            title={title}
+            tags={tags ?? []}
+            excerpt={excerpt}
           />
         )}
       <LoadMore load={loadMore}/>

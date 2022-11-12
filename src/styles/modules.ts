@@ -152,6 +152,7 @@ export const markdown = css`
       border-top-width: 1px;
       border-top-style: solid;
       border-top-color: ${({ theme }) => theme.border};
+      transition: all .5s;
 
       &:nth-of-type(2n) {
         background-color: ${({ theme }) => theme.searchBgFocused};
@@ -165,6 +166,7 @@ export const markdown = css`
       border-width: 1px;
       border-style: solid;
       border-color: ${({ theme }) => theme.tableCellBorder};;
+      transition: all .5s;
     }
   }
 
@@ -177,6 +179,7 @@ export const markdown = css`
     font-style: italic;
     text-align: justify;
     line-height: 1.2;
+    transition: all .5s;
   }
 
   code {

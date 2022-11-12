@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { CreatePagesArgs } from 'gatsby';
+import { CreatePagesArgs, CreateSchemaCustomizationArgs } from 'gatsby';
 
 const path = require('path');
 
 exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) => {
   const { createPage } = actions;
 
-  const postTemplate = path.resolve('src/templates/post.tsx');
+  const component = path.resolve('src/templates/post.tsx');
 
   const result = await graphql<Queries.createPageQuery>(`
     query createPage {
@@ -42,21 +42,45 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
   }
 
   if (result.data) {
-    result.data.allMarkdownRemark.edges.forEach(({ node, previous, next }) => {
+    result.data.allMarkdownRemark.edges.forEach(({ node: { frontmatter: { path } }, previous, next }) => {
       createPage({
-        path: node.frontmatter?.path ?? '',
-        component: postTemplate,
+        path,
+        component,
         context: {
           prev: {
-            path: previous?.frontmatter?.path ?? '',
-            title: previous?.frontmatter?.title ?? '',
+            path: previous?.frontmatter.path ?? '',
+            title: previous?.frontmatter.title ?? '',
           },
           next: {
-            path: next?.frontmatter?.path ?? '',
-            title: next?.frontmatter?.title ?? '',
+            path: next?.frontmatter.path ?? '',
+            title: next?.frontmatter.title ?? '',
           },
         },
       });
     });
   }
+};
+
+exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs) => {
+  const { createTypes } = actions;
+
+  const typeDefs = `
+    type templateQuery {
+      markdownRemark: MarkdownRemark!
+    }
+
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter!
+    }
+
+    type Frontmatter {
+      path: String!
+      date: String!
+      title: String!
+      tags: [String!]
+      series: String
+    }
+  `;
+
+  createTypes(typeDefs);
 };

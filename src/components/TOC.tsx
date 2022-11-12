@@ -3,15 +3,12 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
 import { bgHovered } from '../styles/themes';
-
 import { useContext } from '../store/context';
 
+import { Headings } from '../store/types';
+
 interface Props {
-  headings: readonly ({
-    readonly id: string | null;
-    readonly value: string | null;
-    readonly depth: number | null;
-  } | null)[]
+  headings: Headings;
 }
 
 const TOC = ({ headings }: Props) => {
@@ -21,7 +18,7 @@ const TOC = ({ headings }: Props) => {
     <Container>
       <h2>ON THIS PAGE</h2>
       <ul>
-        {headings.map(heading => {
+        {headings?.map(heading => {
           if (!heading) return null;
 
           const { id, depth, value } = heading;
@@ -65,6 +62,7 @@ const Container = styled.aside`
     font-size: 14px;
     font-weight: 500;
     letter-spacing: .025em;
+    transition: all .5s;
   }
 
   ul {
