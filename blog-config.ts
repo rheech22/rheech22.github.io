@@ -1,9 +1,9 @@
 const config = {
   // used for bio, meta tag...
   title: 'git log', // title of the site
-  description: 'inspired by github.', // describe anything about your site
+  description: 'nothing to lose', // describe anything about your site
   language: 'ko-KR', // default language
-  author: 'gatsby blog starter', // your name
+  author: 'aiden', // your name
   twitterUsername: '@rheech22', // twitter username
   siteUrl: 'https://rheech22.github.io/', // site url
   themeColor: '#161b22', // theme color for PWA
@@ -18,10 +18,10 @@ const config = {
 
   // links - if you don't wanna add any link to your bio, just leave it empty string.
   linkedIn: '',
-  twitter: 'https://twitter.com/rheech22',
+  twitter: 'https://twitter.com',
   github: 'https://github.com/rheech22',
   instagram: '',
-  email: 'rheech22@gmail.com',
+  email: '',
   personal: '',
 };
 
