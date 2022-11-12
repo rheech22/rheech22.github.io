@@ -11,7 +11,7 @@ import { useContext } from '../store/context';
 const Series = () => {
   const { posts, series: selectedSeries } = useContext();
 
-  const series = [ ...new Set(posts?.map(({ node }) => node.frontmatter?.series)) ].filter(Boolean);
+  const series = [ ...new Set(posts.map(({ node: { frontmatter: { series } } }) => series)) ].filter(Boolean);
 
   const searchBySeries = (series?: string | null) => {
     if (!series) return;

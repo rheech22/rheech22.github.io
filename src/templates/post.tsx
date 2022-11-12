@@ -32,7 +32,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
 
   const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } };
 
-  const relatedPosts = posts.filter(({ node }) => node.frontmatter?.series === series).map(({ node }) => node.frontmatter);
+  const relatedPosts = posts.map(({ node: { frontmatter } }) => frontmatter).filter(post => post.series === series);
 
   useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 

@@ -13,11 +13,11 @@ import { getDateString } from '../utils';
 import Tag from './Tag';
 
 interface Props {
-  path?: string | null;
-  title?: string | null;
-  date?: string | null;
-  excerpt?: string | null;
-  tags?: readonly (string | null)[] | null;
+  path: string;
+  title: string | null;
+  date: string | null;
+  excerpt: string | null;
+  tags: readonly string[] | null;
 }
 
 const PostPreview = ({

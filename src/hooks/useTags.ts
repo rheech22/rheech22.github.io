@@ -7,7 +7,7 @@ import { enrichTags, sortTags } from '../utils';
 const useTags = () => {
   const { posts, tag: currentTag } = useContext();
 
-  const allTags = posts.map(({ node }) => node.frontmatter?.tags).flat();
+  const allTags = posts.map(({ node: { frontmatter: { tags } } }) => tags).flat();
 
   const tags = sortTags(enrichTags(allTags));
 

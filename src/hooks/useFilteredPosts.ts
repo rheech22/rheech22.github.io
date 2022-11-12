@@ -18,8 +18,8 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
   const getPosts = () => {
     if (searchKeyword) {
       return posts
-        .filter(({ node: { frontmatter, html } }) => {
-          const hasTitle = frontmatter?.title?.toLowerCase()
+        .filter(({ node: { frontmatter: { title }, html } }) => {
+          const hasTitle = title.toLowerCase()
             .includes(searchKeyword.toLowerCase());
           const hasContent = html?.toLowerCase()
             .includes(searchKeyword.toLowerCase());
@@ -35,8 +35,8 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
       dispatch({ type: 'setCurrentTag', payload: { tag: tag.toLowerCase() } });
 
       return posts
-        .filter(({ node: { frontmatter } }) => {
-          return frontmatter?.tags?.some(t => t?.toLowerCase() === tag.toLowerCase());
+        .filter(({ node: { frontmatter: { tags } } }) => {
+          return tags?.some(t => t?.toLowerCase() === tag.toLowerCase());
         });
     }
 
@@ -44,7 +44,7 @@ const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) 
       dispatch({ type: 'setCurrentSeries', payload: { series } });
 
       return posts
-        .filter(({ node: { frontmatter } }) => frontmatter?.series === series);
+        .filter(({ node: { frontmatter } }) => frontmatter.series === series);
     }
 
     return posts;

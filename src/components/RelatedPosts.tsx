@@ -12,15 +12,15 @@ interface Props {
   title: string;
   series: string;
   relatedPosts: ({
-    readonly tags: readonly (string | null)[] | null;
-    readonly title: string | null;
-    readonly date: string | null;
-    readonly path: string | null;
-    readonly series: string | null;
-  } | null)[];
+    title: string;
+    date: string;
+    path: string;
+    series: string | null;
+    tags: readonly string[] | null;
+  })[];
 }
 
-const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
+const RelatedPosts = ({ title: postTitle, series, relatedPosts }: Props) => {
   const [ more, setMore ] = useState(false);
 
   if (!relatedPosts.length) return null;
@@ -35,16 +35,13 @@ const RelatedPosts = ({ title, series, relatedPosts }: Props) => {
       {
         more &&
         <List>
-          {relatedPosts.map((post, i) => {
-            const postTitle = post?.title ?? '';
-            const postPath = post?.path ?? '';
-
+          {relatedPosts.map(({ title: t, path }, i) => {
             return (
               <li key={i}>
                 {
-                  postTitle === title
-                    ? <span>{postTitle}</span>
-                    : <Link to={postPath}>{postTitle}</Link>
+                  t === postTitle
+                    ? <span>{t}</span>
+                    : <Link to={path}>{t}</Link>
                 }
               </li>
             );
