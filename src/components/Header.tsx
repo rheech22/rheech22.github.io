@@ -40,7 +40,7 @@ const Header = () => {
         searchKeyword={searchKeyword}
         onChange={handleChange}
       />
-      <Button onClick={handleClick} tabIndex={-1}>
+      <Button onClick={handleClick} tabIndex={-1} aria-label="switch display mode">
         <CircleLayout>
           <div>
             <Moon />

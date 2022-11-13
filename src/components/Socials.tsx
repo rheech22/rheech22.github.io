@@ -17,26 +17,32 @@ const Socials = () => {
 
   const LINKS = [
     {
+      label: 'link to LinkedIn',
       url: linkedIn,
       icon: <LinkedIn />,
     },
     {
+      label: 'link to Twitter',
       url: twitter,
       icon: <Twitter />,
     },
     {
+      label: 'link to GitHub',
       url: github,
       icon: <Github />,
     },
     {
+      label: 'link to Instagram',
       url: instagram,
       icon: <Instagram />,
     },
     {
+      label: 'send to Email',
       url: email,
       icon: <Email />,
     },
     {
+      label: 'link to resume',
       url: resume,
       icon: <Resume />,
     },
@@ -49,12 +55,12 @@ const Socials = () => {
       </div>
       <ul>
         {
-          LINKS.map(({ url, icon }, i)=> {
+          LINKS.map(({ url, icon, label }, i)=> {
             if (!url) return null;
 
             return (
               <li key={i}>
-                <a href={url === email ? `mailto:${url}` : url}>{icon}</a>
+                <a href={url === email ? `mailto:${url}` : url} aria-label={label}>{icon}</a>
               </li>
             );
           })
