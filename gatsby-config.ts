@@ -65,6 +65,7 @@ const config: GatsbyConfig = {
               maxWidth: 694,
             },
           },
+          'gatsby-remark-copy-linked-files',
         ],
       },
     },
