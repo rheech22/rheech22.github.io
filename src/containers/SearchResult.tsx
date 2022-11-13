@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { previews } from '../styles/modules';
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
+import BigSearch from '../assets/icons/BigSearch';
+import Series from '../assets/icons/Series';
 
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
@@ -11,6 +15,12 @@ import Post from '../components/Post';
 
 import { SearchPageProps } from '../pages/search';
 
+const ICONS: Record<string, JSX.Element | string> = {
+  'tag': '#',
+  'series': <Series/>,
+  'searchKeyword': <BigSearch/>,
+};
+
 const SearchResult = ({ locationState }: {locationState: SearchPageProps['location']['state']}) => {
   const filteredPosts = useFilteredPosts({
     tag: locationState?.tag,
@@ -21,8 +31,11 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
 
   const { offset, loadMore } = useLoadMore(filteredPosts);
 
+  const [ filter, value ] = Object.entries(locationState ?? {})[0] ?? [ '', '' ];
+
   return (
     <Container>
+      <div>{ICONS[filter]}<span>{value}</span></div>
       {filteredPosts.length === 0
         ? <NoContent prefix="검색 결과가"/>
         : filteredPosts
@@ -55,5 +68,30 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
 export default SearchResult;
 
 const Container = styled.ul`
-  ${previews}
+  & > div {
+    ${flex({ alignItems: 'center' })};
+    margin: 30px 0;
+    font-size: 28.8px;
+
+    span {
+      margin-left: 8px;
+      height: 100%;
+    }
+
+    svg {
+      height: 32px;
+      width: 32px;
+      path {
+        fill: transparent;
+        stroke: ${({ theme })=> theme.mute};
+        transition: all .5s;
+      }
+    }
+
+    @media ${device.widerThanLaptopS} {
+      margin-top: 0;
+    }
+  }
+  
+  ${previews};
 `;

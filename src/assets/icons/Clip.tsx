@@ -1,4 +1,4 @@
-const Personal = (props:any) => (
+const Clip = (props:any) => (
   <svg
     width="24px"
     height="24px"
@@ -22,4 +22,4 @@ const Personal = (props:any) => (
   </svg>
 );
 
-export default Personal;
+export default Clip;

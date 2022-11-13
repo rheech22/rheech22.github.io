@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 
-import Links from './Links';
+import Socials from './Socials';
 
 import config from '../../blog-config';
 
@@ -13,18 +13,18 @@ const Bio = () => {
 
   return (
     <Container>
-      <Avatar>
-        <StaticImage
-          src="../images/avatar.jpeg"
-          alt="avatar"
-          placeholder="blurred"
-        />
-      </Avatar>
+      <Wrapper>
+        <Avatar>
+          <StaticImage
+            src="../images/avatar.jpeg"
+            alt="avatar"
+            placeholder="blurred"
+          />
+        </Avatar>
+        <Socials />
+      </Wrapper>
       <Profile>
-        <Author>
-          <Name>{author}</Name>
-          <Links />
-        </Author>
+        <Name>{author}</Name>
         <Description>{description}</Description>
       </Profile>
     </Container>
@@ -37,20 +37,25 @@ const Container = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   margin: 0 10px;
   margin-bottom: 8px;
-  height: fit-content;
   max-width: 100%;
 
   @media ${device.widerThanLaptopS} {
     flex-direction: column;
+    align-items: flex-start;
     width: 316px;
     padding: 20px 20px 4px 20px;
     margin: 0;
   }
 `;
 
+const Wrapper = styled.div`
+  ${flex({ flexDirection: 'column', alignItems: 'center' })};
+  position: relative;
+`;
+
 const Avatar = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'flex-start' })}
-  margin-right: 12px;
+  margin-bottom: 10px;
   max-width: 100%;
   min-width: fit-content;
 
@@ -74,23 +79,20 @@ const Avatar = styled.div`
 
 const Profile = styled.div`
   ${flex({ flexDirection: 'column' })}
+  margin-left: 16px;
   max-width: 296px;
-  min-height: 128px;
+  height: 138px;
   
   @media ${device.widerThanLaptopS} {
     width: 100%;
+    height: auto;
+    margin-left: 0;
   }
-`;
-
-const Author = styled.div`
-  padding-bottom: 8px;
 `;
 
 const Name = styled.span`
   max-width: 100%;
   display: block;
-  padding-top: 2px;
-  padding-bottom: 8px;
   font-size: 20px;
   font-weight: 500;
   overflow: hidden;
@@ -103,13 +105,11 @@ const Name = styled.span`
 `;
 
 const Description = styled.p`
-  margin-bottom: 6px;
   max-width: 100%;
   font-size: 14px;
   word-break: break-all;
 
   @media ${device.widerThanLaptopS} {
     font-size: 16px;
-    margin-bottom: 12px;
   }
 `;

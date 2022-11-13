@@ -63,9 +63,15 @@ const config: GatsbyConfig = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 694,
+              backgroundColor: 'transparent',
             },
           },
-          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              ignoreFileExtensions: [ 'png', 'jpg', 'jpeg' ],
+            },
+          },
         ],
       },
     },
