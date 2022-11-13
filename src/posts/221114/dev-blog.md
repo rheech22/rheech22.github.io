@@ -1,6 +1,6 @@
 ---
 path: "/dev-blog"
-date: "2022-11-13"
+date: "2022-11-14"
 title: "Gatsby 기술 블로그 개발 후기"
 tags: ["gatsby"]
 ---
