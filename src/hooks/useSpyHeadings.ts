@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-
 import { useDispatch } from '../store/context';
 
 const useSpyHeadings = () => {

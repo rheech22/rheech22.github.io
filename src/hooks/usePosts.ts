@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
 import { useEffect } from 'react';
-
 import { useDispatch } from '../store/context';
 
 const usePosts = () => {
@@ -27,7 +26,7 @@ const GET_POST = graphql`
     ){
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 450)
           id
           frontmatter {
             tags

@@ -37,16 +37,17 @@ export default Series;
 
 const Container = styled.div`
   display: none;
-  padding-left: 20px;
-  padding-bottom: 40px;
+  padding: 0 20px 40px 20px;
   
   @media ${device.widerThanLaptopS} {
     display: block;
   }
-
+  
   & > h3 {
+    ${border.top};
     font-size: 16px;
     font-weight: 600;
+    padding-top: 20px;
     margin-bottom: 12px;
   }
 `;

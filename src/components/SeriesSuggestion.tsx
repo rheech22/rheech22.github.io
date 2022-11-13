@@ -20,7 +20,7 @@ interface Props {
   })[];
 }
 
-const RelatedPosts = ({ title: postTitle, series, relatedPosts }: Props) => {
+const SeriesSuggestion = ({ title: postTitle, series, relatedPosts }: Props) => {
   const [ more, setMore ] = useState(false);
 
   if (!relatedPosts.length) return null;
@@ -52,7 +52,7 @@ const RelatedPosts = ({ title: postTitle, series, relatedPosts }: Props) => {
   );
 };
 
-export default RelatedPosts;
+export default SeriesSuggestion;
 
 const Container = styled.div<{more: boolean}>`
   ${flex({ alignItems: 'flex-start', flexDirection: 'column' })}

@@ -5,9 +5,9 @@ import { border } from '../styles/mixins';
 import { snow, gray600 } from '../styles/themes';
 import { device } from '../styles/breakpoints';
 
+import SearchSuggestion from './SearchSuggestion';
 import Textbox from './Textbox';
 import Button from './Button';
-import SearchSuggestion from './SearchSuggestion';
 
 interface Props {
   searchKeyword: string;

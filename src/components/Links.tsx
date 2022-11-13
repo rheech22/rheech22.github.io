@@ -4,9 +4,9 @@ import { flex } from '../styles/mixins';
 import Github from '../assets/icons/Github';
 import Twitter from '../assets/icons/Twitter';
 import Personal from '../assets/icons/Personal';
-import Email from '../assets/icons/Email';
 import LinkedIn from '../assets/icons/LinkedIn';
 import Instagram from '../assets/icons/Instagram';
+import Email from '../assets/icons/Email';
 
 import config from '../../blog-config';
 

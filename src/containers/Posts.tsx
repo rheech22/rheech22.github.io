@@ -6,11 +6,11 @@ import { previews } from '../styles/modules';
 import { useContext, useDispatch } from '../store/context';
 import useLoadMore from '../hooks/useLoadMore';
 
-import PostPreview from '../components/PostPreview';
+import Post from '../components/Post';
 import LoadMore from '../components/LoadMore';
 import ScrollToTop from '../components/ScrollToTop';
 
-const PostPreviews = () => {
+const Posts = () => {
   const dispatch = useDispatch();
 
   const { posts } = useContext();
@@ -37,7 +37,7 @@ const PostPreviews = () => {
             tags,
           },
         } }) =>
-          <PostPreview
+          <Post
             key={id}
             path={path}
             date={date}
@@ -52,7 +52,7 @@ const PostPreviews = () => {
   );
 };
 
-export default PostPreviews;
+export default Posts;
 
 const Container = styled.ul`
   ${previews}

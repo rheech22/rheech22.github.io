@@ -12,7 +12,7 @@ import useTags from '../hooks/useTags';
 import { takePost, getDateString } from '../utils';
 import config from '../../blog-config';
 
-import RelatedPosts from '../components/RelatedPosts';
+import SeriesSuggestion from '../components/SeriesSuggestion';
 import ScrollToTop from '../components/ScrollToTop';
 import Comments from '../components/Comments';
 import Tag from '../components/Tag';
@@ -57,7 +57,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
                   />)
                 )}</Styled.Tags>
               ) : null}
-            <RelatedPosts title={title} series={series} relatedPosts={relatedPosts.reverse()} />
+            <SeriesSuggestion title={title} series={series} relatedPosts={relatedPosts.reverse()} />
           </Styled.Header>
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>

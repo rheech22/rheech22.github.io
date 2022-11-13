@@ -19,9 +19,7 @@ interface Props {
   theme?: string;
 }
 
-const Layout = ({
-  children,
-}: Props) => {
+const Layout = ({ children }: Props) => {
   useTheme();
 
   useSearchParams();

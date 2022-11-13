@@ -27,7 +27,6 @@ const Tags = () => {
           />
         ))}
       </ul>
-      <div/>
     </Container>
   );
 };
@@ -53,15 +52,11 @@ const Container = styled.div`
     align-items: center;
   }
 
-  & > div {
-    ${border.bottom};
-  }
-
   @media ${device.widerThanLaptopS} {
     ${flex({ flexDirection: 'column' })};
     margin: 0;
     box-shadow: none;
-    padding: 20px 20px;
+    padding: 20px 20px 0 20px;
     max-width: 316px;
 
     & > h3 {

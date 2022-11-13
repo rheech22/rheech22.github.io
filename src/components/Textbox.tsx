@@ -5,18 +5,18 @@ interface Props {
   name?: string;
   value?: string;
   placeholder?: string;
-  onChange?: (value: string) => void;
   maxLength?: number;
   autoFocus?: boolean;
   disabled?: boolean;
+  onChange?: (value: string) => void;
 }
 
 const Textbox = ({
+  id,
   name,
   value,
   onChange,
   placeholder,
-  id,
   maxLength,
   autoFocus,
   disabled,

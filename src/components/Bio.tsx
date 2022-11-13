@@ -42,7 +42,7 @@ const Container = styled.div`
 
   @media ${device.widerThanLaptopS} {
     flex-direction: column;
-    max-width: 316px;
+    width: 316px;
     padding: 20px 20px 4px 20px;
     margin: 0;
   }

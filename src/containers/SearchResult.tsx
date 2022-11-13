@@ -4,10 +4,10 @@ import { previews } from '../styles/modules';
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
 
-import PostPreview from '../components/PostPreview';
+import ScrollToTop from '../components/ScrollToTop';
 import NoContent from '../components/NoContent';
 import LoadMore from '../components/LoadMore';
-import ScrollToTop from '../components/ScrollToTop';
+import Post from '../components/Post';
 
 import { SearchPageProps } from '../pages/search';
 
@@ -37,7 +37,7 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
               tags,
             },
           } }) =>
-            <PostPreview
+            <Post
               key={id}
               path={path}
               date={date}

@@ -2,20 +2,19 @@ import { Link } from 'gatsby';
 
 import { useState } from 'react';
 import { useContext, useDispatch } from '../store/context';
+import { getTheme } from '../utils';
 
 import styled, { css } from 'styled-components';
 import { flex } from '../styles/mixins';
 import { device } from '../styles/breakpoints';
 import { headerBg, snow, gray600 } from '../styles/themes';
 import { sunrise, sunset } from '../styles/keyframes';
-
-import config from '../../blog-config';
-
-import { getTheme } from '../utils';
-
-import SearchBar from './SearchBar';
 import Sun from '../assets/icons/Sun';
 import Moon from '../assets/icons/Moon';
+
+import SearchBar from './SearchBar';
+
+import config from '../../blog-config';
 
 const Header = () => {
   const dispatch = useDispatch();

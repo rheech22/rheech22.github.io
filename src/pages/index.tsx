@@ -1,11 +1,11 @@
-import PostPreviews from '../containers/PostPreviews';
+import Posts from '../containers/Posts';
 
 import SidebarProvider from '../components/SidebarProvider';
 import SEO from '../components/SEO';
 
 export default () => (
   <SidebarProvider>
-    <PostPreviews />
+    <Posts />
   </SidebarProvider>
 );
 

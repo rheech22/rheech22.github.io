@@ -7,7 +7,6 @@ import { flex } from '../styles/mixins';
 
 import { useContext } from '../store/context';
 import useTags from '../hooks/useTags';
-
 import { getDateString } from '../utils';
 
 import Tag from './Tag';
@@ -20,7 +19,7 @@ interface Props {
   tags: readonly string[] | null;
 }
 
-const PostPreview = ({
+const Post = ({
   path = '',
   title = '',
   date = '',
@@ -52,7 +51,7 @@ const PostPreview = ({
   );
 };
 
-export default PostPreview;
+export default Post;
 
 const Container = styled.li`
   padding: 24px 8px;
