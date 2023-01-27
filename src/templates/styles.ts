@@ -27,7 +27,7 @@ export const Article = styled.article < { hasHeadings: boolean } > `
   }
 
   ${flex({ flexDirection: 'column' })};
-  padding: 48px 16px;
+  padding: 20px 30px;
   width: 100%;
 `;
 

@@ -88,8 +88,8 @@ const Button = styled.button`
   border: none;
   border-radius: 50%;
   background: none;
-  min-width: 56px;
-  min-height: 56px;
+  min-width: 38px;
+  min-height: 38px;
   overflow: hidden;
   cursor: pointer;
   transition: box-shadow 2s;
@@ -121,11 +121,11 @@ const Button = styled.button`
 
 const CircleLayout = styled.div`
   position: absolute;
-  top: 28px; right: -33px; left: auto; bottom: auto;
+  top: 19px; right: -32px;
   border: 1px dotted transparent;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   transition: border-color 2s;
 
   @media (hover: hover) {
@@ -136,12 +136,12 @@ const CircleLayout = styled.div`
 
   & > div {
     position: absolute;
-    top: 45px; right: 45px; left: auto; bottom: auto;
+    top: 40px; right: 40px; 
     border-radius: 50%;
     border: none;
     padding: 0;    
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: none;
     outline: none;
   
@@ -163,8 +163,8 @@ const CircleLayout = styled.div`
     }
 
     svg {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       transform: ${({ theme })=> theme.name === 'dark' ? 'rotate(90deg)' : 'rotate(-90deg)'};
 
       path {
