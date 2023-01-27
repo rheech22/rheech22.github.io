@@ -194,6 +194,7 @@ export const markdown = css`
   deckgo-highlight-code {
     max-width: 90vw;
     font-size: 14px;
+    --deckgo-highlight-code-carbon-toolbar-display: none;
   }
 
   img {

@@ -10,10 +10,6 @@ import useTheme from '../hooks/useTheme';
 import Header from './Header';
 import Footer from './Footer';
 
-import {
-  defineCustomElements as highlightCodeBlock,
-} from '@deckdeckgo/highlight-code/dist/loader';
-
 interface Props {
   children: JSX.Element | null;
   theme?: string;
@@ -25,8 +21,6 @@ const Layout = ({ children }: Props) => {
   useSearchParams();
 
   usePosts();
-
-  highlightCodeBlock();
 
   const { displayMode } = useContext();
 

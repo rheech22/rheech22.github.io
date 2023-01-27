@@ -11,7 +11,7 @@ tags: ["gatsby"]
 
 ## 1. 블로그를 직접 만들게 된 이유
 
-개발을 공부를 하면서 티스토리 블로그에 글을 올리곤 했다. 오픈된 공간에 학습한 내용을 보관하거나 느낀 바를 회고하는 경험은 새로웠다. 기록을 공유하며 누군가에게 정보를 공유할 수 있다는 점에서 매력을 느끼기도 했다. 그러나 취업 이후로 부족한 시간을 핑계삼아 더 이상 포스팅을 하지 않았다. 해야 한다라는 생각은 했으나 점점 미루기만 했다. 티스토리는 또 다른 핑계 중 하나였다. 충분히 편리했지만 커스텀에 분명 한계가 있었고 직접 만든 것이 아니었기에 왠지 정이 가질 않았다. 하여 직접 만들자는 생각을 갖게 됐다. 내가 만들었기에 더 큰 애착을 가질 수 있을 것 같았다. 새롭게 얻게 되는 지식과 경험은 덤이다.
+개발을 공부를 하며 티스토리에 기록을 남기곤 했다. 오픈된 공간에 학습한 내용을 보관하거나 느낀 바를 회고하는 경험은 새로웠다. 누군가에게 정보를 공유할 수 있다는 점에서 매력적이란 생각을 했다. 그러나 취업 이후로 부족한 시간을 핑계삼아 더 이상 글을 올리지 않았다. 생각만 생각만 하고 미루기만 했다. 티스토리는 또 다른 핑계 중 하나였다. 충분히 편리했지만 커스텀에는 분명 한계가 있었고 왠지 정이 가질 않았다. 하여 직접 만들자는 생각을 하기 시작했다. 내가 만들었기에 더 큰 애착을 가질 수 있겠지. 새롭게 얻게 되는 지식과 경험은 덤이다.
 
 <br />
 
@@ -26,7 +26,7 @@ tags: ["gatsby"]
 - 검색 엔진 최적화
 - [GitHub Pages](https://pages.github.com/) 배포
 
-그리고 개발 중에 한 가지가 더 늘었다.
+개발 중에 한 가지가 더 늘었다.
 
 - 다른 사람도 사용할 수 있는 프로젝트로 만들기
 
@@ -38,7 +38,7 @@ tags: ["gatsby"]
 
 ### 요약
 
-[gatsby-starter-github-theme-blog](https://github.com/rheech22/gatsby-starter-github-theme-blog)는 기술 블로그를 위한 Gatsby 스타터이다.
+[gatsby-starter-github-theme-blog](https://github.com/rheech22/gatsby-starter-github-theme-blog)는 기술 블로그를 위한 Gatsby 스타터다.
 
 - github 테마, 심플, 반응형 디자인
 - 마크다운 with 코드 하이라이팅
@@ -55,7 +55,7 @@ tags: ["gatsby"]
 ### GitHub 테마
 
 ![github](./assets/github.png)  
-디자인은 GitHub를 상당 부분 참고했다. 특히 서치 바, 프로필, 태그, 색상 등에서 그 흔적을 많이 느낄 수 있다. 심플함을 가진 레퍼런스를 찾던 중 가장 많이 방문하는 곳 중 하나인 GitHub를 떠올린 것이다. 어쩌면 지겹게 느껴질 수 있지만 그만큼 익숙하기 때문에 거부감이 없는 디자인이라 생각했다. 이 밖에도 [React Docs Beta](https://beta.reactjs.org/), 벨로퍼트님의 [velog](https://velog.io/) 등에서 영감을 받았다.
+디자인은 GitHub를 상당 부분 참고했다. 특히 서치 바, 프로필, 태그, 색상 등에서 그 흔적을 많이 느낄 수 있다. 심플함을 가진 레퍼런스를 찾던 중 가장 많이 방문하는 곳 중 하나인 GitHub를 떠올린 것이다. 어쩌면 지겹게 느껴질 수 있지만 그만큼 익숙하기 때문에 거부감이 없는 테마라 생각했다. 이 밖에도 [React Docs Beta](https://beta.reactjs.org/), 벨로퍼트님의 [velog](https://velog.io/) 등에서 영감을 받았다.
 
 <br />
 
@@ -76,7 +76,7 @@ tags: ["gatsby"]
 
 ![large](./assets/rl.png)  
 
-반응형 디자인은 크게 세 구간으로 나누었다. 가장 큰 사이즈에서는 왼쪽 영역에서 프로필, 태그, 연재 목록을 보여준다. 미디엄 사이즈에서는 연재물 영역이 제외되고 프로필과 태그는 상단에 배치된다. 스몰 사이즈는 포스트의 미리보기 내용이 제외된다. 연재물과 태그가 일정 수준 이상으로 많아지는 경우에 대해 어떻게 처리하는 것이 좋을지 여전히 고민할 필요가 있다.
+반응형 디자인은 크게 세 구간으로 나뉜다. 가장 큰 사이즈에서는 왼쪽 영역에 프로필, 태그, 연재 목록을 보여준다. 중간 크기에서는 연재물 영역을 제외하고 프로필과 태그를 상단에 배치한다. 작은 사이즈에서는 포스트의 미리보기 내용을 제외한다. 연재물과 태그가 일정 수준 이상으로 많아지는 경우에 대해서는 여전히 고민할 필요가 있다.
 
 <br />
 
@@ -85,20 +85,20 @@ tags: ["gatsby"]
 ![darkmode](./assets/switch.gif)
 
 심플하기 때문에 재미없게 느껴지기도 한다.  
-그래서 주야간 모드 버튼에 나름 신경을 썼는데 해놓고 보니 좀 식상한 것 같기도 하다...
+그래서 주야간 모드 버튼에 나름 신경을 썼는데 해놓고 보니 좀 식상한 것 같기도...
 
 <br />
 
 ### Lighthouse
 
 ![lighthouse](./assets/lighthouse.png)  
-Lighthouse 100점을 달성하면 크롬에서 폭죽이 터진다. 항상 100점이 나오는 것은 아니지만 개츠비 앱에서는 쉽게 고득점을 받을 수 있다. 크롬에서 부족한 점을 잘 알려줘서 문제를 파악하고 수정하는 것은 어렵지 않다. SEO도 개츠비에서 제공하는 [gatsby-plugin-react-helmet](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/) 플러그인이나 [Head API](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)를 활용해서 `<head />` 태그 내에 원하는 `<meta />` 태그를 쉽게 포함시킬 수 있다. 폭죽을 보기 위해서는 모든 영역이 100점인 것 이외에도 [PWA(Progressive Web App)](https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps/Introduction)의 조건을 만족해야 한다. PWA로 구현하면 일부 화면에서 오프라인 모드를 제공할 수 있고 디바이스 홈 화면에 아이콘 추가 등이 가능하다. 이 역시 후술하는 플러그인으로 쉽게 구현이 가능하다.
+Lighthouse 100점을 달성하면 크롬에서 폭죽이 터진다. 항상 100점이 나오는 것은 아니지만 개츠비 앱에서는 쉽게 고득점을 받을 수 있다. 크롬에서 부족한 점을 잘 알려주기 때문에 문제를 파악하고 수정하는 것은 어렵지 않다. SEO도 개츠비에서 제공하는 [gatsby-plugin-react-helmet](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/) 플러그인이나 [Head API](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)를 활용하여 `<head />` 태그 내에 원하는 `<meta />` 태그를 쉽게 포함시킬 수 있다. 폭죽을 보기 위해서는 모든 영역이 100점인 것 이외에도 [PWA(Progressive Web App)](https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps/Introduction)의 조건을 만족해야 한다. PWA로 구현하면 일부 화면에서 오프라인 모드를 제공할 수 있고 디바이스 홈 화면에 아이콘 추가 등이 가능하다. 이 역시 후술하는 플러그인으로 쉽게 구현이 가능하다.
 
 <br />
 
 ## 4. 내가 경험했던 개츠비
 
-개츠비는 훌륭한 DX(Development Experience)를 제공한다. 개발 경험이 그리 많지 않지만 다양한 옵션으로 원하는 기능을 간단하게 구현할 수 있는 유용한 프레임워크라는 정도는 알 수 있었다.
+개츠비는 훌륭한 DX(Development Experience)를 제공한다. 적은 경험으로도 다양한 편의성을 제공하는 유용한 프레임워크라는 사실 정도는 느낄 수 있었다.
 
 <br />
 
