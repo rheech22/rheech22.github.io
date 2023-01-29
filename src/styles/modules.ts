@@ -133,6 +133,10 @@ export const markdown = css`
   li {
     display: list-item;
     text-align: -webkit-match-parent;
+
+    p {
+      margin: 0;
+    }
   }
 
   table {
@@ -193,6 +197,10 @@ export const markdown = css`
     text-align: justify;
     line-height: 1.2;
     transition: all .5s;
+
+    p {
+      margin: 0;
+    }
   }
 
   code {

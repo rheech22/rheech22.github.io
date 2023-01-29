@@ -2,7 +2,7 @@
 path: "/frameworkless-1"
 date: "2023-01-29"
 title: "1장_프레임워크에 대한 이야기"
-tags: ["프레임워크 없는 프론트엔드 개발"]
+tags: ["javascript"]
 series: "프레임워크 없는 프론트엔드 개발"
 ---
 
