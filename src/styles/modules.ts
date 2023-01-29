@@ -97,6 +97,19 @@ export const markdown = css`
     font-size: 19.8px;
   }
 
+  em {
+    font-style: oblique;
+  }
+
+  a {
+    text-underline-position: under;
+    
+    &:hover {
+      color: ${({ theme }) => theme.series};
+    }
+
+  }
+
   p {
     display: block;
     margin-block-start: 1em;
