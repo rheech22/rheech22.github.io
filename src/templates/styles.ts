@@ -18,6 +18,10 @@ export const Article = styled.article < { hasHeadings: boolean } > `
   }
   
   @media ${device.widerThanLaptopS} {
+    max-width: 1060px;
+  }
+
+  @media ${device.widerThanLaptop} {
     ${({ hasHeadings }) =>
     hasHeadings ? `
         position: relative;

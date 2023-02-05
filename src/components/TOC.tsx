@@ -37,7 +37,7 @@ const TOC = ({ headings }: Props) => {
 export default TOC;
 
 const Container = styled.aside`
-  @media ${device.widerThanLaptopS} {
+  @media ${device.widerThanLaptop} {
     display: block;
   }
   
