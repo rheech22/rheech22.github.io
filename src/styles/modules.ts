@@ -71,6 +71,10 @@ export const markdown = css`
     .header-anchor {
       fill: ${({ theme }) => theme.default};
     }
+
+    &:not(:first-of-type){
+      margin-top: 1.2em;
+    }
   }
 
   h1 {
@@ -216,6 +220,7 @@ export const markdown = css`
     max-width: 90vw;
     font-size: 14px;
     --deckgo-highlight-code-carbon-toolbar-display: none;
+    margin-bottom: 32px;
   }
 
   img {

@@ -1,6 +1,6 @@
 const config = {
   // used for bio, meta tag...
-  title: 'git log', // title of the site
+  title: 'conerstone', // title of the site
   description: 'nothing to lose', // describe anything about your site
   language: 'ko-KR', // default language
   author: 'aiden', // your name
