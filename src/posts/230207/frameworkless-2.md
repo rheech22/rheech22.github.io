@@ -8,74 +8,19 @@ series: "프레임워크 없는 프론트엔드 개발"
 
 ## 문서 객체 모델(DOM)
 
-돔은 웹 어플리케이션을 구성하는 요소를 조작할 수 있는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. 돔은 이를 관리하는 방법이다.
-
-<br />
-
-## 렌더링 성능 모니터링
-
-웹용 렌더링 엔진을 설계할 때는 가독성과 유지보수성을 염두해야 한다.
-
-- 크롬 개발자 도구 - Show frame per seconds meter 메뉴 선택
-- [stat.js](https://github.com/Kevnz/stats.js) 라이브러리 활용하기
-- 커스텀 성능 위젯   
-```js{13-35}
-let panel;
-let start;
-let frames;
-
-const create = () => {
-  const div = document.createElement('div');
-
-  // create panel wrapper
-
-  return div;
-}
-
-const tick = () => {
-  frames++;
-
-  const now = window.performance.now();
-
-  if (now >= start + 1000) {
-    panel.innerText = frames;
-    frames = 0;
-    start = now;
-  }
-
-  window.requestAnimationFrame(tick);
-}
-
-const init = (parent = document.body) => {
-  panel = create();
-
-  window.requestAnimationFrame(() => {
-    start = window.performance.now();
-    parent.appendChild(panel);
-    tick();
-  })
-}
-
-init();
-  ```
-
-<br />
-
-## 렌더링 함수
-
-순수 함수로 요소를 렌더링한다는 것은 돔 요소가 애플리케이션의 상태에만 의존한다는 것을 의미한다.
-
-
-> view = f(state)
-
-<br />
+[DOM](https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction)은 웹 어플리케이션의 조작 방법을 제공하는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. DOM은 이를 관리하는 방법이다.  
 
 ## 컴포넌트 기반 애플리케이션
 
 ### 렌더링 함수
 
-이 챕터에 나온 것처럼 투두리스트를 만들어 보았다. 나는 [ToDoMVC](https://todomvc.com/)를 사용하지 않고 좀 더 작은 뷰를 만들었다. 
+순수 함수로 렌더링한다는 것은 DOM 요소가 애플리케이션의 상태에만 의존한다는 것을 의미한다.
 
+> view = f(state)
+
+<br >
+
+책을 보고 투두리스트 앱을 만들었다. [ToDoMVC](https://todomvc.com/)를 사용하지는 않고 좀 더 작은 뷰를 만들었다.  
 접근이 필요한 요소에는 클래스 속성을 부여한다.
 
 ```html{12, 14, 16}
@@ -129,7 +74,7 @@ const mockTodos = [
 ]
 ```
 
-`fetchTodos()`는 할 일 목록을 받아오는 API 호출 함수라고 가정하자.
+`fetchTodos()`는 할 일 목록을 받아오는 API 호출 함수라고 하자.
 
 ```js
 const fetchTodos = () => mockTodos;
@@ -140,7 +85,7 @@ const state = {
 }
 ```
 
-렌더링 함수는 `appView()`를 통해 기존의 뷰를 새로운 뷰로 대체한다. 후술할 `appView()`는 이전 요소와 현재 상태를 받아 갱신된 요소를 생성한다. 렌더링 함수는 `requestAnimationFrame()`를 사용한다.
+렌더링 함수는 `requestAnimationFrame()`를 사용한다. 후술할 `appView()`를 통해 기존 뷰를 새로운 뷰로 대체한다.
 
 ```js
 const app = document.querySelector('.todoapp');
@@ -151,11 +96,11 @@ window.requestAnimationFrame(() => {
 })
 ```
 
-- [replaceWith()](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith):  이 메서드는 어떤 요소를 새로운 요소로 대체한다.
-- [requestAnimationFrame()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame): 이 메서드는 브라우저에게 실행되기 원하는 함수를 알리고, 함수는 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행된다. 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.
+- [replaceWith()](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith): 이 메서드는 특정 요소를 새로운 요소로 대체한다.
+- [requestAnimationFrame()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame): `requestAnimationFrame()`는 브라우저에게 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행되기 원하는 함수를 알린다. 이 메서드를 사용하면 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.
 
 
-`appView()`는 갱신된 요소를 리턴한다. `targetElement`의 `list`, `counter`, `filters`를 갱신하고 모든 내용을 대체한다.
+`appView()`는 갱신된 요소를 반환한다. `targetElement`의 `list`, `counter`, `filters`를 갱신하고 모든 내용을 대체한다.
 
 ```js
 const appView = (targetElement, { todos, filter: currentFilter }) => {
@@ -211,13 +156,13 @@ const appView = (targetElement, { todos, filter: currentFilter }) => {
 }
 ```
 
-브라우저에서 상태에 맞게 렌더링된 할 일 목록을 볼 수 있다.
+브라우저에서 상태에 맞게 그려진 할 일 목록을 볼 수 있다.
 
 ![todos-1](assets/todos-1.png)
 
 ### 중간 리팩토링
 
-기능은 아직이지만 기본적인 모양은 완성됐다. 하지만 코드에서 리팩토링 신호를 포착할 수 있다. 일단 뷰 함수가 너무 거대하기 때문에 읽기 어렵다. 갱신할 뷰가 추가되면 코드가 더 복잡해지는 건 분명해 보인다. 게다가 각 요소(`todos`, `counter`, `filters`)를 새로운 것으로 대체하는, 내부 로직은 다르지만 같은 유형의 작업을 수행하고 있다. 하나의 책임을 갖는 함수들로 분리하면 좋을 것 같다.
+기능은 아직이지만 기본적인 모양은 완성됐다. 하지만 코드에서 리팩토링 신호를 포착할 수 있다. 일단 뷰 함수가 너무 거대하기 때문에 읽기 어렵다. 갱신할 뷰가 추가되면 코드가 더 복잡해지는 건 분명해 보인다. 게다가 개별 요소(`todos`, `counter`, `filters`)를 새로운 것으로 대체하는 작업, 즉 내부 로직은 다르지만 같은 유형의 작업을 수행하고 있다. 하나의 책임을 갖는 함수들로 분리하면 좋을 것 같다.
 
 예를 들어 뷰 함수는 `targetElement`와 `state`를 받아 새로운 요소를 반환한다.
 
@@ -305,8 +250,9 @@ root
 
 > 컴포넌트 기반의 애플리케이션을 작성하려면 컴포넌트 간에 선언적인 방식으로 상호작용 해야 한다.
 
-기존 `appView()`는 함수는 갱신이 필요한 뷰 함수를 직접 호출하고 있다. 이는 선언적 방식이 아니다.
+<br />
 
+기존 `appView()`는 함수는 갱신이 필요한 뷰 함수를 직접 호출하고 있다. 이는 선언적 방식이라 할 수 없다.
 ```js
 const appView = (targetElement, state) => {
   const element = targetElement.cloneNode(true)
@@ -323,7 +269,12 @@ const appView = (targetElement, state) => {
 }
 ```
 
-기존에 사용하던 `class` 대신 `data-component` 속성에 컴포넌트의 이름을 넣는다. 이제부터 뷰에서는 [데이터 속성](https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/Use_data_attributes)을 사용한다.
+선언적 방식이라면 뭔가 '해 줘' 느낌이 나야 한다.
+![do](assets/do.jpeg)
+
+<br />
+
+`class` 대신 `data-component` 속성에 컴포넌트의 이름을 넣는다. 이제부터 뷰에서 [데이터 속성](https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/Use_data_attributes)을 사용한다.
 
 ```html{12, 15, 16}
 <html>
@@ -358,8 +309,9 @@ const appView = (targetElement, state) => {
 
 > 컴포넌트 라이브러리를 위한 또 다른 필수 조건은 레지스트리로, 레지스트리는 앱에서 사용할 수 있는 모든 컴포넌트의 인덱스이다.
 
+<br />
 
-레지스트리 키는 `data-component`속성의 이름과 일치한다. 레지스트리를 통해 컴포넌트 안에서 다른 컴포넌트를 사용할 수 있다. 재사용성은 컴포넌트 기반의 애플리케이션의 필수 요소다.
+레지스트리 키는 `data-component`속성과 일치한다. 레지스트리를 사용하면 컴포넌트 안에서 다른 컴포넌트를 사용할 수 있다. 재사용성은 컴포넌트 기반 애플리케이션의 필수 요소다.
 
 ```js
 // 레지스트리 예시
@@ -371,7 +323,7 @@ const registry = {
 }
 ```
 
-먼저 컴포넌트의 느낌을 내고 싶어서 기존 뷰 함수의 이름을 `PascalCase`로 변경했다.
+컴포넌트의 느낌을 내고 싶어 기존 뷰 함수의 이름을 `PascalCase`로 변경했다.
 
 ```js{1-2, 12-13, 28-29}
 // components/Counter.js
@@ -423,7 +375,7 @@ const Todos = (targetElement, { todos }) => {
 }
 ```
 
-`appView()`의 구성은 더 이상 필요하지 않기 때문에 삭제하고, `fetchTodos()`는 `apis.js`로 분리했다. 그 밖에 레지스트리, 레지스트리 구성을 위한 공간인 `registry.js`를 추가한다.
+`appView()`의 구성은 더 이상 필요하지 않아 삭제하고, `fetchTodos()`는 `apis.js`로 분리했다. 그리고 레지스트리를 위한 공간인 `registry.js`를 추가한다.
 
 ```bash
 root
@@ -437,7 +389,7 @@ root
 └── registry.js
 ```
 
-먼저 레지스트리 등록을 위한 빈 객체를 만들어 준다.
+먼저 레지스트리 등록을 위한 빈 객체를 만들어 두었다.
 
 ```js
 // registry.js
@@ -458,7 +410,7 @@ export const addComponent = (name, component) => {
 `render()`를 좀 더 살펴보자.  
 
 
-`render()`는 기본적으로 컴포넌트(기존 뷰 함수)를 실행시켜 새롭게 갱신된 엘리먼트를 리턴한다. 또한 `data-component` 속성을 가진 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소가 있다면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 `render()`로 래핑되어 `targetElement`과 `state`만 전달되면 lazy하게 실행될 준비가 되어있다. 이 재귀적 메커니즘으로 루트만 렌더링하면 마지막 컴포넌트까지 모두 렌더링할 수 있다.
+`render()`는 기본적으로 컴포넌트(기존 뷰 함수)를 실행시켜 갱신된 엘리먼트를 리턴한다. 또한 `data-component` 속성을 가진 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소가 있다면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 `render()`로 래핑되어 `targetElement`과 `state`만 전달되면 lazy하게 실행될 준비가 되어있다. 재귀적인 구성으로 루트의 렌더링만 실행하면 마지막 컴포넌트까지 모두 렌더링된다.
 
 ```js
 // registry.js
@@ -484,7 +436,7 @@ const render = (component) => {
 }
 ```
 
-`renderRoot()`는 최초 DOM 요소인 루트를 렌더링한다. 결국 `render()`에 의해 재귀적으로 `data-component` 속성을 가진 모든 자식 요소는 갱신된다.
+`renderRoot()`는 최초 DOM 요소인 루트를 렌더링한다. `render()`에 의해 `data-component` 속성을 가진 모든 자식 요소는 재귀적으로 갱신된다.
 
 ```js
 // registry.js
@@ -538,7 +490,7 @@ export const renderRoot = (root, state) => {
 }
 ```
 
-메인 컨트롤러에서는 레지스트리에 컴포넌트를 등록한다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일을 추가시켜 렌더링하도록 했다. 이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.
+메인 컨트롤러에서 레지스트리에 컴포넌트를 등록하는 과정이 있다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일을 추가시켜 렌더링하도록 했다. (이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.)
 
 ```js{17-20, 22-29, 31-45}
 // index.js
@@ -590,13 +542,13 @@ window.setInterval(() => {
 init();
 ```
 
-브라우저에서 5초마다 새로운 할 일이 추가되는 것을 볼 수 있다.
+5초마다 새로운 할 일이 추가된다.
 
 ![todos-2](assets/todos-2.png)
 
 ### 가상 DOM
 
-가상 돔의 핵심은 비교 알고리즘이다. 이전 같이 전체 목록을 교체하지 않고 추가된 마지막 요소가 실제 돔에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 돔의 목적이다.  
+가상 DOM의 핵심은 비교 알고리즘이다. 더이상 전체 목록을 교체하지 않고 변경된 요소가 실제 DOM에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 DOM의 목적이다.  
 
 메인 컨트롤러에서 `replaceWith` 대신 `diff` 알고리즘을 사용한다.
 
@@ -617,7 +569,8 @@ const init = () => {
 ```
 
 `renderDiff`는 부모 노드, 실제 노드, 가상 노드를 인자로 받아 재귀적으로 실행되는 함수다.  
-실제 노드는 존재하지만 가상 노드가 없다면 삭제 대상이므로
+
+실제 노드는 존재하지만 가상 노드가 없다면 그 실제 노드는 삭제 대상이다.
 
 ```jsx
 // renderDiff.js
@@ -628,7 +581,7 @@ if (realNode && !virtualNode) {
 }
 ```
 
-반대로 실제 노드는 없지만 가상 노드가 있다면 추가 대상이므로
+반대로 실제 노드는 없지만 가상 노드가 있다면 그 가상 노드는 추가 대상이다.
 
 ```jsx
 // renderDiff function
@@ -639,7 +592,7 @@ if (!realNode && virtualNode) {
 }
 ```
 
-두 노드가 모두 있는 경우 비교를 해서 변경된 경우에만 실제 노드를 대체한다.
+두 노드가 모두 존재하는 경우 변경 사항이 있을 때만 실제 노드를 대체한다.
 
 ```jsx
 // renderDiff function
@@ -740,6 +693,53 @@ root
 ├── registry.js
 └── renderDiff.js
 ```
+
+## 렌더링 성능 모니터링
+
+렌더링 엔진에서 중요한 요소 중 하나는 성능이다. 저자는 성능 모니터링을 위한 여러 도구를 소개한다.
+
+- 크롬 개발자 도구 - Show frame per seconds meter 메뉴 선택
+- [stat.js](https://github.com/Kevnz/stats.js) 라이브러리 활용하기
+- 커스텀 성능 위젯   
+```js{13-35}
+let panel;
+let start;
+let frames;
+
+const create = () => {
+  const div = document.createElement('div');
+
+  // create panel wrapper
+
+  return div;
+}
+
+const tick = () => {
+  frames++;
+
+  const now = window.performance.now();
+
+  if (now >= start + 1000) {
+    panel.innerText = frames;
+    frames = 0;
+    start = now;
+  }
+
+  window.requestAnimationFrame(tick);
+}
+
+const init = (parent = document.body) => {
+  panel = create();
+
+  window.requestAnimationFrame(() => {
+    start = window.performance.now();
+    parent.appendChild(panel);
+    tick();
+  })
+}
+
+init();
+  ```
 
 ## 출처
 _프란세스코 스트라츨로, [『프레임워크 없는 프론트엔드 개발』](https://search.shopping.naver.com/book/search?bookTabType=ALL&pageIndex=1&pageSize=40&query=%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%EC%97%86%EB%8A%94%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C&sort=REL), 에이콘 출판(2021.01.21.)_
