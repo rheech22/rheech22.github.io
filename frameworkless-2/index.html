@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#161b22"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta data-react-helmet="true" name="twitter:creator" content="@@rheech22"/><meta data-react-helmet="true" name="twitter:image" content=""/><meta data-react-helmet="true" name="twitter:url" content="https://rheech22.github.io/2장_렌더링"/><meta data-react-helmet="true" name="twitter:description" content="문서 객체 모델(DOM) 돔은 웹 어플리케이션을 구성하는 요소를 조작할 수 있는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. 돔은 이를 관리하는 방법이다. 렌더링 성능 모니터링 웹용 렌더링 엔진을 설계할 때는 가독성과 유지보수성을 …"/><meta data-react-helmet="true" name="twitter:title" content="2장_렌더링"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="문서 객체 모델(DOM) 돔은 웹 어플리케이션을 구성하는 요소를 조작할 수 있는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. 돔은 이를 관리하는 방법이다. 렌더링 성능 모니터링 웹용 렌더링 엔진을 설계할 때는 가독성과 유지보수성을 …"/><meta data-react-helmet="true" name="og:title" content="2장_렌더링"/><meta data-react-helmet="true" name="image" content=""/><meta data-react-helmet="true" name="description" content="문서 객체 모델(DOM) 돔은 웹 어플리케이션을 구성하는 요소를 조작할 수 있는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. 돔은 이를 관리하는 방법이다. 렌더링 성능 모니터링 웹용 렌더링 엔진을 설계할 때는 가독성과 유지보수성을 …"/><meta name="generator" content="Gatsby 4.19.2"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><title data-react-helmet="true">2장_렌더링 | conerstone</title><script data-react-helmet="true" type="application/ld+json">
+<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#161b22"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta data-react-helmet="true" name="twitter:creator" content="@@rheech22"/><meta data-react-helmet="true" name="twitter:image" content=""/><meta data-react-helmet="true" name="twitter:url" content="https://rheech22.github.io/2장_렌더링"/><meta data-react-helmet="true" name="twitter:description" content="문서 객체 모델(DOM) DOM은 웹 어플리케이션의 조작 방법을 제공하는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. DOM은 이를 관리하는 방법이다. 컴포넌트 기반 애플리케이션 렌더링 함수 순수 함수로 렌더링한다는 것은 DOM 요…"/><meta data-react-helmet="true" name="twitter:title" content="2장_렌더링"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="문서 객체 모델(DOM) DOM은 웹 어플리케이션의 조작 방법을 제공하는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. DOM은 이를 관리하는 방법이다. 컴포넌트 기반 애플리케이션 렌더링 함수 순수 함수로 렌더링한다는 것은 DOM 요…"/><meta data-react-helmet="true" name="og:title" content="2장_렌더링"/><meta data-react-helmet="true" name="image" content=""/><meta data-react-helmet="true" name="description" content="문서 객체 모델(DOM) DOM은 웹 어플리케이션의 조작 방법을 제공하는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. DOM은 이를 관리하는 방법이다. 컴포넌트 기반 애플리케이션 렌더링 함수 순수 함수로 렌더링한다는 것은 DOM 요…"/><meta name="generator" content="Gatsby 4.19.2"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><title data-react-helmet="true">2장_렌더링 | conerstone</title><script data-react-helmet="true" type="application/ld+json">
             {
               "@context": "https://schema.org",
               "@type": "Article",
@@ -201,65 +201,16 @@ data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
       }
     })
   </script><link rel="icon" href="/favicon-32x32.png?v=6d5c0719d6ce39c07b53ce38158aed46" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="apple-touch-icon" sizes="512x512" href="/favicons/android-chrome-512x512.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 grkkQT"><a tabindex="-1" href="/"><h1>conerstone</h1></a><form class="SearchBar__Container-sc-6n5xnu-0 bwJJaN"><input type="text" value="" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 XfgtL"/><button type="submit" hidden="" aria-label="Submit Search"></button></form><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-1 fVRdgT"><div class="Header__CircleLayout-sc-z8t49p-2 iwVTNQ"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button></header><main><section class="styles__Section-sc-4114r5-0 bvyIvq"><article class="styles__Article-sc-4114r5-1 cJxWrQ"><header class="styles__Header-sc-4114r5-2 dtKHrW"><h1 class="styles__Title-sc-4114r5-4 gjAYNi">2장_렌더링</h1><div class="styles__SubTitle-sc-4114r5-5 kLCYqG"><time dateTime="updated at"> 7 Feb 2023</time><span> — <!-- -->12<!-- --> min read</span></div><ul class="styles__Tags-sc-4114r5-6 ioKSNB"><li class="Tag__Container-sc-1ml3ond-0 kZxRxZ">javascript</li></ul></header><main class="styles__Main-sc-4114r5-3 evwNkm"><section><h2 id="문서-객체-모델dom" style="position:relative;"><a href="#%EB%AC%B8%EC%84%9C-%EA%B0%9D%EC%B2%B4-%EB%AA%A8%EB%8D%B8dom" aria-label="문서 객체 모델dom permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문서 객체 모델(DOM)</h2>
-<p>돔은 웹 어플리케이션을 구성하는 요소를 조작할 수 있는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. 돔은 이를 관리하는 방법이다.</p>
-<br />
-<h2 id="렌더링-성능-모니터링" style="position:relative;"><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%84%B1%EB%8A%A5-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81" aria-label="렌더링 성능 모니터링 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>렌더링 성능 모니터링</h2>
-<p>웹용 렌더링 엔진을 설계할 때는 가독성과 유지보수성을 염두해야 한다.</p>
-<ul>
-<li>크롬 개발자 도구 - Show frame per seconds meter 메뉴 선택</li>
-<li><a href="https://github.com/Kevnz/stats.js">stat.js</a> 라이브러리 활용하기</li>
-<li>커스텀 성능 위젯</li>
-</ul>
-<deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="13,35">
-          <code slot="code">let panel;
-let start;
-let frames;
-
-const create = () =&gt; {
-  const div = document.createElement(&#39;div&#39;);
-
-  // create panel wrapper
-
-  return div;
-}
-
-const tick = () =&gt; {
-  frames++;
-
-  const now = window.performance.now();
-
-  if (now &gt;= start + 1000) {
-    panel.innerText = frames;
-    frames = 0;
-    start = now;
-  }
-
-  window.requestAnimationFrame(tick);
-}
-
-const init = (parent = document.body) =&gt; {
-  panel = create();
-
-  window.requestAnimationFrame(() =&gt; {
-    start = window.performance.now();
-    parent.appendChild(panel);
-    tick();
-  })
-}
-
-init();</code>
-        </deckgo-highlight-code>
-<br />
-<h2 id="렌더링-함수" style="position:relative;"><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%ED%95%A8%EC%88%98" aria-label="렌더링 함수 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>렌더링 함수</h2>
-<p>순수 함수로 요소를 렌더링한다는 것은 돔 요소가 애플리케이션의 상태에만 의존한다는 것을 의미한다.</p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction">DOM</a>은 웹 어플리케이션의 조작 방법을 제공하는 API다. 웹 페이지는 HTML로 정의된 트리 구조를 갖는다. DOM은 이를 관리하는 방법이다.</p>
+<h2 id="컴포넌트-기반-애플리케이션" style="position:relative;"><a href="#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98" aria-label="컴포넌트 기반 애플리케이션 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>컴포넌트 기반 애플리케이션</h2>
+<h3 id="렌더링-함수" style="position:relative;"><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%ED%95%A8%EC%88%98" aria-label="렌더링 함수 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>렌더링 함수</h3>
+<p>순수 함수로 렌더링한다는 것은 DOM 요소가 애플리케이션의 상태에만 의존한다는 것을 의미한다.</p>
 <blockquote>
 <p>view = f(state)</p>
 </blockquote>
-<br />
-<h2 id="컴포넌트-기반-애플리케이션" style="position:relative;"><a href="#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98" aria-label="컴포넌트 기반 애플리케이션 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>컴포넌트 기반 애플리케이션</h2>
-<h3 id="렌더링-함수-1" style="position:relative;"><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%ED%95%A8%EC%88%98-1" aria-label="렌더링 함수 1 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>렌더링 함수</h3>
-<p>이 챕터에 나온 것처럼 투두리스트를 만들어 보았다. 나는 <a href="https://todomvc.com/">ToDoMVC</a>를 사용하지 않고 좀 더 작은 뷰를 만들었다.</p>
-<p>접근이 필요한 요소에는 클래스 속성을 부여한다.</p>
+<br >
+<p>책을 보고 투두리스트 앱을 만들었다. <a href="https://todomvc.com/">ToDoMVC</a>를 사용하지는 않고 좀 더 작은 뷰를 만들었다.<br>
+접근이 필요한 요소에는 클래스 속성을 부여한다.</p>
 <deckgo-highlight-code language="html" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="12 14 16">
           <code slot="code">&lt;html&gt;
   &lt;head&gt;
@@ -308,7 +259,7 @@ init();</code>
   }
 ]</code>
         </deckgo-highlight-code>
-<p><code>fetchTodos()</code>는 할 일 목록을 받아오는 API 호출 함수라고 가정하자.</p>
+<p><code>fetchTodos()</code>는 할 일 목록을 받아오는 API 호출 함수라고 하자.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">const fetchTodos = () =&gt; mockTodos;
 
@@ -317,7 +268,7 @@ const state = {
   filter: &#39;All&#39;
 }</code>
         </deckgo-highlight-code>
-<p>렌더링 함수는 <code>appView()</code>를 통해 기존의 뷰를 새로운 뷰로 대체한다. 후술할 <code>appView()</code>는 이전 요소와 현재 상태를 받아 갱신된 요소를 생성한다. 렌더링 함수는 <code>requestAnimationFrame()</code>를 사용한다.</p>
+<p>렌더링 함수는 <code>requestAnimationFrame()</code>를 사용한다. 후술할 <code>appView()</code>를 통해 기존 뷰를 새로운 뷰로 대체한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">const app = document.querySelector(&#39;.todoapp&#39;);
 
@@ -327,10 +278,10 @@ window.requestAnimationFrame(() =&gt; {
 })</code>
         </deckgo-highlight-code>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith">replaceWith()</a>:  이 메서드는 어떤 요소를 새로운 요소로 대체한다.</li>
-<li><a href="https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame">requestAnimationFrame()</a>: 이 메서드는 브라우저에게 실행되기 원하는 함수를 알리고, 함수는 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행된다. 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith">replaceWith()</a>: 이 메서드는 특정 요소를 새로운 요소로 대체한다.</li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame">requestAnimationFrame()</a>: <code>requestAnimationFrame()</code>는 브라우저에게 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행되기 원하는 함수를 알린다. 이 메서드를 사용하면 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.</li>
 </ul>
-<p><code>appView()</code>는 갱신된 요소를 리턴한다. <code>targetElement</code>의 <code>list</code>, <code>counter</code>, <code>filters</code>를 갱신하고 모든 내용을 대체한다.</p>
+<p><code>appView()</code>는 갱신된 요소를 반환한다. <code>targetElement</code>의 <code>list</code>, <code>counter</code>, <code>filters</code>를 갱신하고 모든 내용을 대체한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">const appView = (targetElement, { todos, filter: currentFilter }) =&gt; {
   const element = targetElement.cloneNode(true)
@@ -384,7 +335,7 @@ window.requestAnimationFrame(() =&gt; {
   return element
 }</code>
         </deckgo-highlight-code>
-<p>브라우저에서 상태에 맞게 렌더링된 할 일 목록을 볼 수 있다.</p>
+<p>브라우저에서 상태에 맞게 그려진 할 일 목록을 볼 수 있다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; "
@@ -418,7 +369,7 @@ window.requestAnimationFrame(() =&gt; {
   </a>
     </span></p>
 <h3 id="중간-리팩토링" style="position:relative;"><a href="#%EC%A4%91%EA%B0%84-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81" aria-label="중간 리팩토링 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>중간 리팩토링</h3>
-<p>기능은 아직이지만 기본적인 모양은 완성됐다. 하지만 코드에서 리팩토링 신호를 포착할 수 있다. 일단 뷰 함수가 너무 거대하기 때문에 읽기 어렵다. 갱신할 뷰가 추가되면 코드가 더 복잡해지는 건 분명해 보인다. 게다가 각 요소(<code>todos</code>, <code>counter</code>, <code>filters</code>)를 새로운 것으로 대체하는, 내부 로직은 다르지만 같은 유형의 작업을 수행하고 있다. 하나의 책임을 갖는 함수들로 분리하면 좋을 것 같다.</p>
+<p>기능은 아직이지만 기본적인 모양은 완성됐다. 하지만 코드에서 리팩토링 신호를 포착할 수 있다. 일단 뷰 함수가 너무 거대하기 때문에 읽기 어렵다. 갱신할 뷰가 추가되면 코드가 더 복잡해지는 건 분명해 보인다. 게다가 개별 요소(<code>todos</code>, <code>counter</code>, <code>filters</code>)를 새로운 것으로 대체하는 작업, 즉 내부 로직은 다르지만 같은 유형의 작업을 수행하고 있다. 하나의 책임을 갖는 함수들로 분리하면 좋을 것 같다.</p>
 <p>예를 들어 뷰 함수는 <code>targetElement</code>와 <code>state</code>를 받아 새로운 요소를 반환한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">const viewFunction = (targetElement, state) =&gt; newElement;</code>
@@ -499,7 +450,8 @@ const appView = (targetElement, state) =&gt; {
 <blockquote>
 <p>컴포넌트 기반의 애플리케이션을 작성하려면 컴포넌트 간에 선언적인 방식으로 상호작용 해야 한다.</p>
 </blockquote>
-<p>기존 <code>appView()</code>는 함수는 갱신이 필요한 뷰 함수를 직접 호출하고 있다. 이는 선언적 방식이 아니다.</p>
+<br />
+<p>기존 <code>appView()</code>는 함수는 갱신이 필요한 뷰 함수를 직접 호출하고 있다. 이는 선언적 방식이라 할 수 없다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">const appView = (targetElement, state) =&gt; {
   const element = targetElement.cloneNode(true)
@@ -515,7 +467,41 @@ const appView = (targetElement, state) =&gt; {
   return element
 }</code>
         </deckgo-highlight-code>
-<p>기존에 사용하던 <code>class</code> 대신 <code>data-component</code> 속성에 컴포넌트의 이름을 넣는다. 이제부터 뷰에서는 <a href="https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/Use_data_attributes">데이터 속성</a>을 사용한다.</p>
+<p>선언적 방식이라면 뭔가 '해 줘' 느낌이 나야 한다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/d1eca93795fdfb19256e0f0c431c9cec/edd00/do.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 91.37931034482759%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAASABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAIEAQMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAe9mFeS2gWIk2i3/xAAaEAACAgMAAAAAAAAAAAAAAAABAgAREBIy/9oACAEBAAEFAss2ocmk5eAC5//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABcRAAMBAAAAAAAAAAAAAAAAAAEQEUH/2gAIAQIBAT8BJi1f/8QAGBAAAgMAAAAAAAAAAAAAAAAAAAEQIDH/2gAIAQEABj8CqhGR/8QAGhABAAIDAQAAAAAAAAAAAAAAAQARECExUf/aAAgBAQABPyFhgLGKqcv2J3QWxQaY/9oADAMBAAIAAwAAABC/IDz/xAAWEQEBAQAAAAAAAAAAAAAAAAABEEH/2gAIAQMBAT8QWbP/xAAXEQEBAQEAAAAAAAAAAAAAAAABABAR/9oACAECAQE/EBg9Jz//xAAcEAEAAgIDAQAAAAAAAAAAAAABABExQRAhgcH/2gAIAQEAAT8QTeajs9rjMBugvMC0DVPZa+TYDW2ENB73DKCmEDj/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="do"
+        title="do"
+        src="/static/d1eca93795fdfb19256e0f0c431c9cec/9c477/do.jpg"
+        srcset="/static/d1eca93795fdfb19256e0f0c431c9cec/583d1/do.jpg 174w,
+/static/d1eca93795fdfb19256e0f0c431c9cec/4d0aa/do.jpg 347w,
+/static/d1eca93795fdfb19256e0f0c431c9cec/9c477/do.jpg 694w,
+/static/d1eca93795fdfb19256e0f0c431c9cec/909c7/do.jpg 1041w,
+/static/d1eca93795fdfb19256e0f0c431c9cec/edd00/do.jpg 1074w"
+        sizes="(max-width: 694px) 100vw, 694px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<br />
+<p><code>class</code> 대신 <code>data-component</code> 속성에 컴포넌트의 이름을 넣는다. 이제부터 뷰에서 <a href="https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/Use_data_attributes">데이터 속성</a>을 사용한다.</p>
 <deckgo-highlight-code language="html" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="12 15 16">
           <code slot="code">&lt;html&gt;
   &lt;head&gt;
@@ -548,7 +534,8 @@ const appView = (targetElement, state) =&gt; {
 <blockquote>
 <p>컴포넌트 라이브러리를 위한 또 다른 필수 조건은 레지스트리로, 레지스트리는 앱에서 사용할 수 있는 모든 컴포넌트의 인덱스이다.</p>
 </blockquote>
-<p>레지스트리 키는 <code>data-component</code>속성의 이름과 일치한다. 레지스트리를 통해 컴포넌트 안에서 다른 컴포넌트를 사용할 수 있다. 재사용성은 컴포넌트 기반의 애플리케이션의 필수 요소다.</p>
+<br />
+<p>레지스트리 키는 <code>data-component</code>속성과 일치한다. 레지스트리를 사용하면 컴포넌트 안에서 다른 컴포넌트를 사용할 수 있다. 재사용성은 컴포넌트 기반 애플리케이션의 필수 요소다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// 레지스트리 예시
 
@@ -558,7 +545,7 @@ const registry = {
   filters: Filters,
 }</code>
         </deckgo-highlight-code>
-<p>먼저 컴포넌트의 느낌을 내고 싶어서 기존 뷰 함수의 이름을 <code>PascalCase</code>로 변경했다.</p>
+<p>컴포넌트의 느낌을 내고 싶어 기존 뷰 함수의 이름을 <code>PascalCase</code>로 변경했다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="1,2 12,13 28,29">
           <code slot="code">// components/Counter.js
 const Counter = (targetElement, { todos }) =&gt; {
@@ -608,7 +595,7 @@ const Todos = (targetElement, { todos }) =&gt; {
   return newTodoList
 }</code>
         </deckgo-highlight-code>
-<p><code>appView()</code>의 구성은 더 이상 필요하지 않기 때문에 삭제하고, <code>fetchTodos()</code>는 <code>apis.js</code>로 분리했다. 그 밖에 레지스트리, 레지스트리 구성을 위한 공간인 <code>registry.js</code>를 추가한다.</p>
+<p><code>appView()</code>의 구성은 더 이상 필요하지 않아 삭제하고, <code>fetchTodos()</code>는 <code>apis.js</code>로 분리했다. 그리고 레지스트리를 위한 공간인 <code>registry.js</code>를 추가한다.</p>
 <deckgo-highlight-code language="bash" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">root
 ├── apis.js
@@ -620,7 +607,7 @@ const Todos = (targetElement, { todos }) =&gt; {
 ├── index.js
 └── registry.js</code>
         </deckgo-highlight-code>
-<p>먼저 레지스트리 등록을 위한 빈 객체를 만들어 준다.</p>
+<p>먼저 레지스트리 등록을 위한 빈 객체를 만들어 두었다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// registry.js
 
@@ -635,7 +622,7 @@ export const addComponent = (name, component) =&gt; {
 }</code>
         </deckgo-highlight-code>
 <p><code>render()</code>를 좀 더 살펴보자.</p>
-<p><code>render()</code>는 기본적으로 컴포넌트(기존 뷰 함수)를 실행시켜 새롭게 갱신된 엘리먼트를 리턴한다. 또한 <code>data-component</code> 속성을 가진 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소가 있다면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 <code>render()</code>로 래핑되어 <code>targetElement</code>과 <code>state</code>만 전달되면 lazy하게 실행될 준비가 되어있다. 이 재귀적 메커니즘으로 루트만 렌더링하면 마지막 컴포넌트까지 모두 렌더링할 수 있다.</p>
+<p><code>render()</code>는 기본적으로 컴포넌트(기존 뷰 함수)를 실행시켜 갱신된 엘리먼트를 리턴한다. 또한 <code>data-component</code> 속성을 가진 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소가 있다면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 <code>render()</code>로 래핑되어 <code>targetElement</code>과 <code>state</code>만 전달되면 lazy하게 실행될 준비가 되어있다. 재귀적인 구성으로 루트의 렌더링만 실행하면 마지막 컴포넌트까지 모두 렌더링된다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// registry.js
 
@@ -659,7 +646,7 @@ const render = (component) =&gt; {
   }
 }</code>
         </deckgo-highlight-code>
-<p><code>renderRoot()</code>는 최초 DOM 요소인 루트를 렌더링한다. 결국 <code>render()</code>에 의해 재귀적으로 <code>data-component</code> 속성을 가진 모든 자식 요소는 갱신된다.</p>
+<p><code>renderRoot()</code>는 최초 DOM 요소인 루트를 렌더링한다. <code>render()</code>에 의해 <code>data-component</code> 속성을 가진 모든 자식 요소는 재귀적으로 갱신된다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// registry.js
 
@@ -709,7 +696,7 @@ export const renderRoot = (root, state) =&gt; {
   return render(clone)(root, state);
 }</code>
         </deckgo-highlight-code>
-<p>메인 컨트롤러에서는 레지스트리에 컴포넌트를 등록한다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일을 추가시켜 렌더링하도록 했다. 이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.</p>
+<p>메인 컨트롤러에서 레지스트리에 컴포넌트를 등록하는 과정이 있다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일을 추가시켜 렌더링하도록 했다. (이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.)</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="17,20 22,29 31,45">
           <code slot="code">// index.js
 
@@ -759,7 +746,7 @@ window.setInterval(() =&gt; {
 
 init();</code>
         </deckgo-highlight-code>
-<p>브라우저에서 5초마다 새로운 할 일이 추가되는 것을 볼 수 있다.</p>
+<p>5초마다 새로운 할 일이 추가된다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; "
@@ -793,7 +780,7 @@ init();</code>
   </a>
     </span></p>
 <h3 id="가상-dom" style="position:relative;"><a href="#%EA%B0%80%EC%83%81-dom" aria-label="가상 dom permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>가상 DOM</h3>
-<p>가상 돔의 핵심은 비교 알고리즘이다. 이전 같이 전체 목록을 교체하지 않고 추가된 마지막 요소가 실제 돔에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 돔의 목적이다.</p>
+<p>가상 DOM의 핵심은 비교 알고리즘이다. 더이상 전체 목록을 교체하지 않고 변경된 요소가 실제 DOM에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 DOM의 목적이다.</p>
 <p>메인 컨트롤러에서 <code>replaceWith</code> 대신 <code>diff</code> 알고리즘을 사용한다.</p>
 <deckgo-highlight-code language="jsx" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// index.js
@@ -810,8 +797,8 @@ const init = () =&gt; {
 
 // ...</code>
         </deckgo-highlight-code>
-<p><code>renderDiff</code>는 부모 노드, 실제 노드, 가상 노드를 인자로 받아 재귀적으로 실행되는 함수다.<br>
-실제 노드는 존재하지만 가상 노드가 없다면 삭제 대상이므로</p>
+<p><code>renderDiff</code>는 부모 노드, 실제 노드, 가상 노드를 인자로 받아 재귀적으로 실행되는 함수다.</p>
+<p>실제 노드는 존재하지만 가상 노드가 없다면 그 실제 노드는 삭제 대상이다.</p>
 <deckgo-highlight-code language="jsx" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// renderDiff.js
 
@@ -820,7 +807,7 @@ if (realNode &amp;&amp; !virtualNode) {
     return;
 }</code>
         </deckgo-highlight-code>
-<p>반대로 실제 노드는 없지만 가상 노드가 있다면 추가 대상이므로</p>
+<p>반대로 실제 노드는 없지만 가상 노드가 있다면 그 가상 노드는 추가 대상이다.</p>
 <deckgo-highlight-code language="jsx" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// renderDiff function
 
@@ -829,7 +816,7 @@ if (!realNode &amp;&amp; virtualNode) {
     return;
 }</code>
         </deckgo-highlight-code>
-<p>두 노드가 모두 있는 경우 비교를 해서 변경된 경우에만 실제 노드를 대체한다.</p>
+<p>두 노드가 모두 존재하는 경우 변경 사항이 있을 때만 실제 노드를 대체한다.</p>
 <deckgo-highlight-code language="jsx" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// renderDiff function
 
@@ -924,8 +911,54 @@ if (isNodeChanged(virtualNode, realNode)) {
 ├── registry.js
 └── renderDiff.js</code>
         </deckgo-highlight-code>
+<h2 id="렌더링-성능-모니터링" style="position:relative;"><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%84%B1%EB%8A%A5-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81" aria-label="렌더링 성능 모니터링 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>렌더링 성능 모니터링</h2>
+<p>렌더링 엔진에서 중요한 요소 중 하나는 성능이다. 저자는 성능 모니터링을 위한 여러 도구를 소개한다.</p>
+<ul>
+<li>크롬 개발자 도구 - Show frame per seconds meter 메뉴 선택</li>
+<li><a href="https://github.com/Kevnz/stats.js">stat.js</a> 라이브러리 활용하기</li>
+<li>커스텀 성능 위젯</li>
+</ul>
+<deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="13,35">
+          <code slot="code">let panel;
+let start;
+let frames;
+
+const create = () =&gt; {
+  const div = document.createElement(&#39;div&#39;);
+
+  // create panel wrapper
+
+  return div;
+}
+
+const tick = () =&gt; {
+  frames++;
+
+  const now = window.performance.now();
+
+  if (now &gt;= start + 1000) {
+    panel.innerText = frames;
+    frames = 0;
+    start = now;
+  }
+
+  window.requestAnimationFrame(tick);
+}
+
+const init = (parent = document.body) =&gt; {
+  panel = create();
+
+  window.requestAnimationFrame(() =&gt; {
+    start = window.performance.now();
+    parent.appendChild(panel);
+    tick();
+  })
+}
+
+init();</code>
+        </deckgo-highlight-code>
 <h2 id="출처" style="position:relative;"><a href="#%EC%B6%9C%EC%B2%98" aria-label="출처 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>출처</h2>
-<p><em>프란세스코 스트라츨로, <a href="https://search.shopping.naver.com/book/search?bookTabType=ALL&#x26;pageIndex=1&#x26;pageSize=40&#x26;query=%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%EC%97%86%EB%8A%94%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C&#x26;sort=REL">『프레임워크 없는 프론트엔드 개발』</a>, 에이콘 출판(2021.01.21.)</em></p></section></main><nav class="styles__Nav-sc-4114r5-7 jpfzUv"><div></div><div><a href="/frameworkless-1"><div><h3>NEXT</h3><span>1장_프레임워크에 대한 이야기</span></div><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="duration-100 ease-in transition -rotate-90 text-gray-30 dark:text-gray-50 inline group-focus:text-link dark:group-focus:text-link-dark" style="min-width:20px;min-height:20px"><g fill="none" fill-rule="evenodd" transform="translate(-446 -398)"><path fill="currentColor" fill-rule="nonzero" d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z" transform="translate(356.5 164.5)"></path><polygon points="446 418 466 418 466 398 446 398"></polygon></g></svg></a></div></nav></article><aside class="TOC__Container-sc-1ylks3q-0 gdYmwG"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#문서-객체-모델dom">문서 객체 모델(DOM)</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#렌더링-성능-모니터링">렌더링 성능 모니터링</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#렌더링-함수">렌더링 함수</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#컴포넌트-기반-애플리케이션">컴포넌트 기반 애플리케이션</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#렌더링-함수-1">렌더링 함수</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#중간-리팩토링">중간 리팩토링</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#컴포넌트-함수">컴포넌트 함수</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#가상-dom">가상 DOM</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#출처">출처</a></li></ul></aside></section></main><footer class="Footer__Container-sc-13p6nst-0 hmzBgr"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
+<p><em>프란세스코 스트라츨로, <a href="https://search.shopping.naver.com/book/search?bookTabType=ALL&#x26;pageIndex=1&#x26;pageSize=40&#x26;query=%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%EC%97%86%EB%8A%94%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C&#x26;sort=REL">『프레임워크 없는 프론트엔드 개발』</a>, 에이콘 출판(2021.01.21.)</em></p></section></main><nav class="styles__Nav-sc-4114r5-7 jpfzUv"><div></div><div><a href="/frameworkless-1"><div><h3>NEXT</h3><span>1장_프레임워크에 대한 이야기</span></div><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="duration-100 ease-in transition -rotate-90 text-gray-30 dark:text-gray-50 inline group-focus:text-link dark:group-focus:text-link-dark" style="min-width:20px;min-height:20px"><g fill="none" fill-rule="evenodd" transform="translate(-446 -398)"><path fill="currentColor" fill-rule="nonzero" d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z" transform="translate(356.5 164.5)"></path><polygon points="446 418 466 418 466 398 446 398"></polygon></g></svg></a></div></nav></article><aside class="TOC__Container-sc-1ylks3q-0 gdYmwG"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#문서-객체-모델dom">문서 객체 모델(DOM)</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#컴포넌트-기반-애플리케이션">컴포넌트 기반 애플리케이션</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#렌더링-함수">렌더링 함수</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#중간-리팩토링">중간 리팩토링</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#컴포넌트-함수">컴포넌트 함수</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-2/#가상-dom">가상 DOM</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#렌더링-성능-모니터링">렌더링 성능 모니터링</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-2/#출처">출처</a></li></ul></aside></section></main><footer class="Footer__Container-sc-13p6nst-0 hmzBgr"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
       
       
       if(true) {
