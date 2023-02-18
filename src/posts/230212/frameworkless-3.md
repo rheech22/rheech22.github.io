@@ -8,7 +8,7 @@ series: "프레임워크 없는 프론트엔드 개발"
 
 ## 이벤트 라이프사이클
 
-[Event](https://developer.mozilla.org/ko/docs/Web/API/Event) 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 이벤트 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다.
+[Event](https://developer.mozilla.org/ko/docs/Web/API/Event) 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 그 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다.
 
 이벤트 라이프 사이클은 3단계로 구성된다.
 
@@ -16,25 +16,25 @@ series: "프레임워크 없는 프론트엔드 개발"
 2. 목표 단계: 이벤트가 목표 요소에 도달한다.
 3. 버블 단계: 이벤트가 목표 요소로부터 html로 이동한다.
 
-부모와 자식 요소가 이벤트 리스너를 모두 갖고 있다면, 자식 요소의 이벤트가 발생할 때 부모 요소의 이벤트도 발생한다. 이를 이벤트 버블링이라 한다. 기본적으로 발생하는 이 현상을 막기 위해서는 `stopPropagation()` 메서드를 사용해야 한다.
+부모와 자식 요소에 이벤트 핸들러가 모두 연결되어 있다면, 자식 요소에서 이벤트가 발생할 때 부모 요소의 이벤트 핸들러도 실행된다. 이를 이벤트 버블링이라 한다. 기본적으로 발생하는 이 현상을 막기 위해서는 `stopPropagation()` 메서드를 사용해야 한다.
 
-부모와 자식 중 어느 요소에서 이벤트가 먼저 발생하는 지는 `useCapture` 옵션이 결정한다. 만약 `useCapture`가 `false`라면 버블링 단계에서 이벤트 핸들러를 실행한다. 즉 자식 요소의 이벤트 핸들러부터 실행한다. 반면, `useCapture`가 `true`인 경우 캡쳐 단계에서 이벤트 핸들러를 실행하기 때문에 부모 요소의 핸들러를 먼저 실행한다.
+부모와 자식의 이벤트 핸들러 중 무엇이 먼저 실행되는지는 `useCapture` 옵션이 결정한다. 만약 `useCapture`가 `false`라면 버블링 단계에서 이벤트 핸들러를 실행한다. 즉 자식의 이벤트 핸들러부터 실행한다. 반면, `useCapture`가 `true`인 경우 캡쳐 단계에서 이벤트 핸들러를 실행하기 때문에 부모의 이벤트 핸들러부터 실행한다.
 
 ## 이벤트 핸들러 연결하기
 
 ### On* 속성으로 이벤트 핸들러 연결
 
-쉽고 지저분한 방법, 하나의 DOM 요소에 하나의 핸들러만 연결할 수 없다.
+쉽고 지저분한 방법, 하나의 DOM 요소에 하나의 핸들러만 할당할 수 없다.
 
 ### addEventListener로 이벤트 핸들러 연결
 
-[addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)로 하나의 DOM 요소에 여러 이벤트 핸들러를 연결할 수 있다. [removeEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)로 이벤트 리스너를 삭제하여 메모리 누수를 방지할 수도 있다.
+[addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)로 하나의 DOM 요소에 여러 이벤트 핸들러를 연결할 수 있다. [removeEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)로 이벤트 핸들러를 제거하여 메모리 누수를 방지할 수도 있다.
 
 ## 커스텀 이벤트
 
 [Custom Event](https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/CustomEvent)를 만들 수도 있다. 
 
-아래 함수는 인풋 값의 길이가 5를 넘어가면 커스텀 이벤트를 생성하고 이를 실행한다. 생성자의 첫 번째 인자는 이벤트 이름, 두 번째 인자로는 `detail` 속성을 포함하는 옵션을 전달할 수 있다.
+아래 핸들러는 인풋 값의 길이가 5를 넘어가면 커스텀 이벤트를 생성 및 실행한다. 생성자의 첫 번째 인자에는 이벤트 이름, 두 번째 인자로는 `detail` 속성을 포함하는 옵션을 전달할 수 있다.
 
 ```js
 const handleChangeInput = (e) => {
@@ -55,7 +55,7 @@ input.addEventListener('customEvent', (e) => log(e.target.value, e.detail.time))
 
 ## 기존 투두리스트 애플리케이션의 문제점
 
-지난 챕터에서 만들어 본 애플리케이션은 할 일 요소를 문자열로 생성한다. 
+지난 챕터에서 만들었던 애플리케이션은 할 일 요소를 문자열로 생성한다. 
 
 ```js{7-18}
 const Todos = todo => {
@@ -79,7 +79,7 @@ const Todos = todo => {
 }
 ```
 
-그러나 문자열에는 `addEventListener()`를 사용하여 이벤트 핸들러를 추가할 수 없다. 다른 방법을 알아보자.
+그러나 문자열에는 `addEventListener()`로 이벤트 핸들러를 추가할 수 없다. 다른 방법을 알아보자.
 
 ## createElement API
 
@@ -100,11 +100,11 @@ function addElement () {
 }
 ```
 
-`createElement API`를 사용하여 새로운 DOM 노드를 생성할 수 있다. 그러나 이 방식은 가독성이 그리 좋지 않고 유지 보수하기에 어렵다는 단점이 있다.
+`createElement API`를 사용하여 새로운 DOM 노드를 생성할 수 있다. 이 방식은 가독성이 그리 좋지 않고 유지보수가 어렵다는 단점이 있다.
 
 ## Template element
 
-`<template />`요소는 동적으로 DOM 노드를 생성하는 수단이다. 페이지를 불러오는 순간 렌더링되지 않고 자바스크립트가 `<template />`기반의 돔 노드를 생성한다. 컴포넌트 함수에서 문자열로 만들던 내용을 지우고 `<template />` 을 작성한다.
+`<template />`요소는 동적으로 DOM 노드를 생성하는 수단이다. 이 요소는 페이지를 불러오는 순간에는 렌더링되지 않는다. 대신 자바스크립트가 `<template />`기반의 돔 노드를 생성할 수 있다. 컴포넌트 함수에서 문자열로 만들던 내용을 지우고 `<template />` 을 작성한다.
 
 두 개의 템플릿을 추가했다.
 
@@ -153,7 +153,7 @@ function addElement () {
 </html>
 ```
 
-`Todo` 컴포넌트는 더 이상 문자열을 리턴하지 않는다. `state.todos`를 순회하며 새로운 할일 목록을 구성하고 반환한다. 각 항목의 생성은`createNewTodo()`를 사용한다.
+`Todo` 컴포넌트는 더 이상 문자열을 리턴하지 않는다. `state.todos`를 순회하며 새로운 할 일 목록을 구성하고 반환한다. `createNewTodo()`는 각각의 할 일을 생성한다.
 
 ```js{6-8}
 const Todos = (targetElement, { todos }) => {
@@ -169,7 +169,7 @@ const Todos = (targetElement, { todos }) => {
 }
 ```
 
-`createNewTodo()`는 할 일 요소에 필요한 내용과 속성을 채워준다. 각 요소는 `todoElement()`가 생성한다.
+`createNewTodo()`는 할 일의 내용과 속성을 채워준다. `todoElement()`는 DOM 요소를 생성한다.
 
 ```js{7-14}
 const createNewTodo = (todo, index) => {
@@ -191,7 +191,7 @@ const createNewTodo = (todo, index) => {
 }
 ```
 
-`todoElement()`는 todo-item 템플릿에서 복제된 요소를 반환한다. 이처럼 템플릿을 재사용하면서 DOM 노드를 동적으로 생성할 수 있다.
+`todoElement()`는 템플릿을 복제한 요소를 반환한다. 이처럼 템플릿을 재사용하면서 DOM을 동적으로 생성할 수 있다.
 
 ```js{5}
 let template;
@@ -205,7 +205,7 @@ const todoElement = () => {
 };
 ```
 
-App 컴포넌트는 전체 앱 구성을 담고 있는 todo-app 템플릿을 활용하여 DOM 노드를 생성한다. 
+App 컴포넌트는 전체 구성을 담는 todo-app 템플릿을 복제하여 DOM을 생성한다. 
 
 ```tsx{5, 16}
 let template;
@@ -278,7 +278,7 @@ const init = () => {
 
 이전과 같이 할 일 목록을 보여준다.
 
-![스크린샷 2023-02-10 오전 12.30.03.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6b9d8ab5-ebbc-4847-9e40-4866a89d23b9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-02-10_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.30.03.png)
+![todos.png](./assets/todos.png)
 
 최종 프로젝트 구성은 아래와 같다.
 
@@ -298,7 +298,7 @@ root
 
 ## 이벤트 추가하기
 
-아직 버튼만 있고 할 일 추가와 삭제와 같은 이벤트는 발생하지 않는다. 이벤트를 추가하기 위해 컨트롤러에서 이벤트 레지스트리를 생성한다. 이제 모든 컴포넌트 함수는 세 번째 파라미터로 이벤트 레지스트리인 `events`를 받는다. 
+지금은 버튼만 존재할 뿐 할 일 추가와 같은 이벤트는 발생하지 않는다. 이벤트 추가를 위해 이벤트 레지스트리를 생성하고 등록한다. 이제 모든 컴포넌트 함수는 세 번째 파라미터로 이벤트 레지스트리 `events`를 받는다. 
 
 ```js{16-28, 34}
 // index.js
@@ -315,7 +315,7 @@ addComponent('todos', Todos);
 addComponent('counter', Counter);
 addComponent('filters', Filters);
 
-// 이벤트 레지스트리  등록
+// 이벤트 레지스트리 등록
 const events = {
   deleteItem: (index) => {
     state.todos.splice(index, 1);
@@ -343,7 +343,7 @@ const init = () => {
 init();
 ```
 
-App 컴포넌트에서 엔터 키 입력에 따라 할 일을 추가하는 이벤트 리스너를 등록한다.
+이벤트 레지스트리에서 필요한 이벤트 함수를 꺼내 이벤트 핸들러로 등록한다.
 
 ```js{11-19, 28}
 let template;
@@ -379,7 +379,7 @@ export default (targetElement, _, events) => {
 }
 ```
 
-Todo 컴포넌트에서도 할 일 삭제 이벤트 리스너를 등록한다.
+Todo 컴포넌트에서도 할 일 삭제 이벤트 핸들러를 등록한다.
 
 ```js{26, 28}
 let template;
@@ -431,16 +431,17 @@ export default Todos;
 
 ## 이벤트 위임하기
 
-Todo 컴포넌트는 각각의 할일 요소에 이벤트 리스너를 등록한다. 만약 이벤트 위임을 활용하면 할 일 목록에 하나의 이벤트 리스너만 등록하여 모든 이벤트를 처리할 수 있다. 
+Todo 컴포넌트는 각 할 일 요소에 이벤트 핸들러를 연결한다. 만약 이벤트 위임을 활용하면 여러 요소를 담는 목록에 하나의 이벤트 핸들러만 할당하여 모든 이벤트를 처리할 수 있다. 
+
+<br>
 
 ---
 
-[출처](https://ko.javascript.info/event-delegation)
+[출처: https://ko.javascript.info/event-delegation](https://ko.javascript.info/event-delegation)
 
 이벤트 위임이란?
 
 > 이벤트 위임은 비슷한 방식으로 여러 요소를 다뤄야 할 때 사용됩니다. 이벤트 위임을 사용하면 요소마다 핸들러를 할당하지 않고, 요소의 공통 조상에 이벤트 핸들러를 단 하나만 할당해도 여러 요소를 한꺼번에 다룰 수 있습니다.
-> 
 
 이벤트 위임의 장점
 
@@ -455,7 +456,9 @@ Todo 컴포넌트는 각각의 할일 요소에 이벤트 리스너를 등록한
 
 ---
 
-먼저 각 버튼에 인덱스를 부여하고 할 일 목록에 이벤트 리스너를 등록한다. [Element.matches()](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches) 메서드를 통해 삭제 버튼임을 식별하면 원하는 로직을 실행한다.
+<br>
+
+먼저 각 버튼에 인덱스를 부여하고 할 일 목록에 이벤트 리스너를 등록한다. [Element.matches()](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches) 메서드를 통해 삭제 버튼임을 식별하고 필요한 일을 한다.
 
 ```js{26, 40-44}
 let template;
@@ -509,7 +512,7 @@ const Todos = (targetElement, { todos }, events) => {
 export default Todos;
 ```
 
-만약 리스트가 아주 길다면 이러한 방식으로 성능과 메모리 사용성을 개선시킬 수 있다.
+리스트가 아주 길다면 이 같은 이벤트 위임 방식은 성능과 메모리 사용성을 개선시킬 수 있다.
 
 ## 출처
 _프란세스코 스트라츨로, [『프레임워크 없는 프론트엔드 개발』](https://search.shopping.naver.com/book/search?bookTabType=ALL&pageIndex=1&pageSize=40&query=%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%EC%97%86%EB%8A%94%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C&sort=REL), 에이콘 출판(2021.01.21.)_

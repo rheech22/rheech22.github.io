@@ -20,7 +20,7 @@ series: "프레임워크 없는 프론트엔드 개발"
 
 <br >
 
-책을 보고 투두리스트 앱을 만들었다. [ToDoMVC](https://todomvc.com/)를 사용하지는 않고 좀 더 작은 뷰를 만들었다.  
+투두리스트 앱을 만들었다. 책과 같이 [ToDoMVC](https://todomvc.com/)를 사용하지는 않고 좀 더 작은 뷰를 만들었다.  
 접근이 필요한 요소에는 클래스 속성을 부여한다.
 
 ```html{12, 14, 16}
@@ -97,7 +97,7 @@ window.requestAnimationFrame(() => {
 ```
 
 - [replaceWith()](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith): 이 메서드는 특정 요소를 새로운 요소로 대체한다.
-- [requestAnimationFrame()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame): `requestAnimationFrame()`는 브라우저에게 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행되기 원하는 함수를 알린다. 이 메서드를 사용하면 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.
+- [requestAnimationFrame()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame): `requestAnimationFrame()`는 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행될 콜백을 브라우저에게 알린다. 이 메서드를 사용하면 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.
 
 
 `appView()`는 갱신된 요소를 반환한다. `targetElement`의 `list`, `counter`, `filters`를 갱신하고 모든 내용을 대체한다.
@@ -233,7 +233,7 @@ const appView = (targetElement, state) => {
 }
 ```
 
-소스 코드의 디렉토리, 파일만 잘 구분해도 설계는 확연히 좋아질 수 있다. 관심사에 따라 디렉토리도 나눈다면 더 이해하기 쉬운 구조가 된다. 지금까지 작성된 코드가 이 책에서 작성하는 컴포넌트 라이브러리의 초안이다.
+소스 코드의 디렉토리, 파일만 잘 구분해도 설계는 확연하게 좋아질 수 있다. 관심사에 따라 디렉토리도 나눈다면 더 이해하기 쉬운 구조가 된다. 지금까지 작성한 코드가 컴포넌트 라이브러리의 초안이다.
 
 ```bash
 root
@@ -407,10 +407,10 @@ export const addComponent = (name, component) => {
 }
 ```
 
-`render()`를 좀 더 살펴보자.  
+`render()`를 좀 더 살펴보면,
 
 
-`render()`는 기본적으로 컴포넌트(기존 뷰 함수)를 실행시켜 갱신된 엘리먼트를 리턴한다. 또한 `data-component` 속성을 가진 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소가 있다면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 `render()`로 래핑되어 `targetElement`과 `state`만 전달되면 lazy하게 실행될 준비가 되어있다. 재귀적인 구성으로 루트의 렌더링만 실행하면 마지막 컴포넌트까지 모두 렌더링된다.
+컴포넌트(기존 뷰 함수)를 실행시켜 새롭게 갱신된 엘리먼트를 리턴한다. 또한 `data-component` 속성을 갖는 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소라면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 `render()`로 래핑되어 `targetElement`과 `state`만 전달되면 lazy하게 실행될 준비가 되어있다. 재귀적 구성으로 루트만 렌더링하면 마지막 컴포넌트까지 모두 그린다.
 
 ```js
 // registry.js
@@ -436,7 +436,7 @@ const render = (component) => {
 }
 ```
 
-`renderRoot()`는 최초 DOM 요소인 루트를 렌더링한다. `render()`에 의해 `data-component` 속성을 가진 모든 자식 요소는 재귀적으로 갱신된다.
+`renderRoot()`는 최초 DOM 요소인 루트를 렌더링한다. `render()`는 `data-component` 속성을 가진 모든 자식 요소를 재귀적으로 갱신한다.
 
 ```js
 // registry.js
@@ -490,7 +490,7 @@ export const renderRoot = (root, state) => {
 }
 ```
 
-메인 컨트롤러에서 레지스트리에 컴포넌트를 등록하는 과정이 있다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일을 추가시켜 렌더링하도록 했다. (이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.)
+메인 컨트롤러에서 레지스트리에 컴포넌트를 등록하는 과정이 있다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일이 추가된 목록을 그리도록 했다. (이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.)
 
 ```js{17-20, 22-29, 31-45}
 // index.js
@@ -548,7 +548,7 @@ init();
 
 ### 가상 DOM
 
-가상 DOM의 핵심은 비교 알고리즘이다. 더이상 전체 목록을 교체하지 않고 변경된 요소가 실제 DOM에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 DOM의 목적이다.  
+가상 DOM의 핵심은 비교 알고리즘이다. 더 이상 전체 목록을 교체하지 않고 변경된 요소가 실제 DOM에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 DOM의 목적이다.  
 
 메인 컨트롤러에서 `replaceWith` 대신 `diff` 알고리즘을 사용한다.
 
