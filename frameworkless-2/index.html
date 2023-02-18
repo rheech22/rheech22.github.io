@@ -209,7 +209,7 @@ data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
 <p>view = f(state)</p>
 </blockquote>
 <br >
-<p>책을 보고 투두리스트 앱을 만들었다. <a href="https://todomvc.com/">ToDoMVC</a>를 사용하지는 않고 좀 더 작은 뷰를 만들었다.<br>
+<p>투두리스트 앱을 만들었다. 책과 같이 <a href="https://todomvc.com/">ToDoMVC</a>를 사용하지는 않고 좀 더 작은 뷰를 만들었다.<br>
 접근이 필요한 요소에는 클래스 속성을 부여한다.</p>
 <deckgo-highlight-code language="html" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="12 14 16">
           <code slot="code">&lt;html&gt;
@@ -279,7 +279,7 @@ window.requestAnimationFrame(() =&gt; {
         </deckgo-highlight-code>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith">replaceWith()</a>: 이 메서드는 특정 요소를 새로운 요소로 대체한다.</li>
-<li><a href="https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame">requestAnimationFrame()</a>: <code>requestAnimationFrame()</code>는 브라우저에게 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행되기 원하는 함수를 알린다. 이 메서드를 사용하면 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.</li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame">requestAnimationFrame()</a>: <code>requestAnimationFrame()</code>는 다음 리페인트가 이벤트 루프에 스케쥴링되기 직전에 실행될 콜백을 브라우저에게 알린다. 이 메서드를 사용하면 메인 스레드를 차단하지 않고 브라우저 렌더링 성능에 최적화된 함수 호출이 가능하다.</li>
 </ul>
 <p><code>appView()</code>는 갱신된 요소를 반환한다. <code>targetElement</code>의 <code>list</code>, <code>counter</code>, <code>filters</code>를 갱신하고 모든 내용을 대체한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
@@ -435,7 +435,7 @@ const appView = (targetElement, state) =&gt; {
   return element
 }</code>
         </deckgo-highlight-code>
-<p>소스 코드의 디렉토리, 파일만 잘 구분해도 설계는 확연히 좋아질 수 있다. 관심사에 따라 디렉토리도 나눈다면 더 이해하기 쉬운 구조가 된다. 지금까지 작성된 코드가 이 책에서 작성하는 컴포넌트 라이브러리의 초안이다.</p>
+<p>소스 코드의 디렉토리, 파일만 잘 구분해도 설계는 확연하게 좋아질 수 있다. 관심사에 따라 디렉토리도 나눈다면 더 이해하기 쉬운 구조가 된다. 지금까지 작성한 코드가 컴포넌트 라이브러리의 초안이다.</p>
 <deckgo-highlight-code language="bash" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">root
 ├── views
@@ -621,8 +621,8 @@ export const addComponent = (name, component) =&gt; {
   registry[name] = render(component);
 }</code>
         </deckgo-highlight-code>
-<p><code>render()</code>를 좀 더 살펴보자.</p>
-<p><code>render()</code>는 기본적으로 컴포넌트(기존 뷰 함수)를 실행시켜 갱신된 엘리먼트를 리턴한다. 또한 <code>data-component</code> 속성을 가진 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소가 있다면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 <code>render()</code>로 래핑되어 <code>targetElement</code>과 <code>state</code>만 전달되면 lazy하게 실행될 준비가 되어있다. 재귀적인 구성으로 루트의 렌더링만 실행하면 마지막 컴포넌트까지 모두 렌더링된다.</p>
+<p><code>render()</code>를 좀 더 살펴보면,</p>
+<p>컴포넌트(기존 뷰 함수)를 실행시켜 새롭게 갱신된 엘리먼트를 리턴한다. 또한 <code>data-component</code> 속성을 갖는 모든 자식 요소를 찾는다. 만약 레지스트리에 등록된 요소라면 이를 갱신한다. 레지스트리에 등록된 컴포넌트는 <code>render()</code>로 래핑되어 <code>targetElement</code>과 <code>state</code>만 전달되면 lazy하게 실행될 준비가 되어있다. 재귀적 구성으로 루트만 렌더링하면 마지막 컴포넌트까지 모두 그린다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// registry.js
 
@@ -646,7 +646,7 @@ const render = (component) =&gt; {
   }
 }</code>
         </deckgo-highlight-code>
-<p><code>renderRoot()</code>는 최초 DOM 요소인 루트를 렌더링한다. <code>render()</code>에 의해 <code>data-component</code> 속성을 가진 모든 자식 요소는 재귀적으로 갱신된다.</p>
+<p><code>renderRoot()</code>는 최초 DOM 요소인 루트를 렌더링한다. <code>render()</code>는 <code>data-component</code> 속성을 가진 모든 자식 요소를 재귀적으로 갱신한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// registry.js
 
@@ -696,7 +696,7 @@ export const renderRoot = (root, state) =&gt; {
   return render(clone)(root, state);
 }</code>
         </deckgo-highlight-code>
-<p>메인 컨트롤러에서 레지스트리에 컴포넌트를 등록하는 과정이 있다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일을 추가시켜 렌더링하도록 했다. (이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.)</p>
+<p>메인 컨트롤러에서 레지스트리에 컴포넌트를 등록하는 과정이 있다. 동적 렌더링을 가정하려고 5초마다 새로운 할 일이 추가된 목록을 그리도록 했다. (이처럼 특정 주기마다 가상 루트 요소를 만든 다음 실제 요소로 바꾸는 방법은 대규모 프로젝트에서 성능을 저하시킬 수 있다.)</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="17,20 22,29 31,45">
           <code slot="code">// index.js
 
@@ -780,7 +780,7 @@ init();</code>
   </a>
     </span></p>
 <h3 id="가상-dom" style="position:relative;"><a href="#%EA%B0%80%EC%83%81-dom" aria-label="가상 dom permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>가상 DOM</h3>
-<p>가상 DOM의 핵심은 비교 알고리즘이다. 더이상 전체 목록을 교체하지 않고 변경된 요소가 실제 DOM에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 DOM의 목적이다.</p>
+<p>가상 DOM의 핵심은 비교 알고리즘이다. 더 이상 전체 목록을 교체하지 않고 변경된 요소가 실제 DOM에 필요한 유일한 작업이라는 사실을 시스템이 이해하도록 하는 것이 가상 DOM의 목적이다.</p>
 <p>메인 컨트롤러에서 <code>replaceWith</code> 대신 <code>diff</code> 알고리즘을 사용한다.</p>
 <deckgo-highlight-code language="jsx" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// index.js

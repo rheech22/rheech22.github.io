@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#161b22"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta data-react-helmet="true" name="twitter:creator" content="@@rheech22"/><meta data-react-helmet="true" name="twitter:image" content=""/><meta data-react-helmet="true" name="twitter:url" content="https://rheech22.github.io/3장_DOM 이벤트 관리"/><meta data-react-helmet="true" name="twitter:description" content="이벤트 라이프사이클 Event 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 이벤트 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다. 이벤트 라이프 사이클은 3단계로 구성된다. 캡쳐 단계:…"/><meta data-react-helmet="true" name="twitter:title" content="3장_DOM 이벤트 관리"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="이벤트 라이프사이클 Event 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 이벤트 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다. 이벤트 라이프 사이클은 3단계로 구성된다. 캡쳐 단계:…"/><meta data-react-helmet="true" name="og:title" content="3장_DOM 이벤트 관리"/><meta data-react-helmet="true" name="image" content=""/><meta data-react-helmet="true" name="description" content="이벤트 라이프사이클 Event 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 이벤트 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다. 이벤트 라이프 사이클은 3단계로 구성된다. 캡쳐 단계:…"/><meta name="generator" content="Gatsby 4.19.2"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><title data-react-helmet="true">3장_DOM 이벤트 관리 | conerstone</title><script data-react-helmet="true" type="application/ld+json">
+<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#161b22"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta data-react-helmet="true" name="twitter:creator" content="@@rheech22"/><meta data-react-helmet="true" name="twitter:image" content=""/><meta data-react-helmet="true" name="twitter:url" content="https://rheech22.github.io/3장_DOM 이벤트 관리"/><meta data-react-helmet="true" name="twitter:description" content="이벤트 라이프사이클 Event 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 그 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다. 이벤트 라이프 사이클은 3단계로 구성된다. 캡쳐 단계: 이…"/><meta data-react-helmet="true" name="twitter:title" content="3장_DOM 이벤트 관리"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="og:type" content="website"/><meta data-react-helmet="true" name="og:description" content="이벤트 라이프사이클 Event 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 그 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다. 이벤트 라이프 사이클은 3단계로 구성된다. 캡쳐 단계: 이…"/><meta data-react-helmet="true" name="og:title" content="3장_DOM 이벤트 관리"/><meta data-react-helmet="true" name="image" content=""/><meta data-react-helmet="true" name="description" content="이벤트 라이프사이클 Event 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 그 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다. 이벤트 라이프 사이클은 3단계로 구성된다. 캡쳐 단계: 이…"/><meta name="generator" content="Gatsby 4.19.2"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><title data-react-helmet="true">3장_DOM 이벤트 관리 | conerstone</title><script data-react-helmet="true" type="application/ld+json">
             {
               "@context": "https://schema.org",
               "@type": "Article",
@@ -201,23 +201,23 @@ data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
       }
     })
   </script><link rel="icon" href="/favicon-32x32.png?v=6d5c0719d6ce39c07b53ce38158aed46" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="apple-touch-icon" sizes="512x512" href="/favicons/android-chrome-512x512.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 grkkQT"><a tabindex="-1" href="/"><h1>conerstone</h1></a><form class="SearchBar__Container-sc-6n5xnu-0 bwJJaN"><input type="text" value="" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 XfgtL"/><button type="submit" hidden="" aria-label="Submit Search"></button></form><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-1 fVRdgT"><div class="Header__CircleLayout-sc-z8t49p-2 iwVTNQ"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button></header><main><section class="styles__Section-sc-4114r5-0 bvyIvq"><article class="styles__Article-sc-4114r5-1 cJxWrQ"><header class="styles__Header-sc-4114r5-2 dtKHrW"><h1 class="styles__Title-sc-4114r5-4 gjAYNi">3장_DOM 이벤트 관리</h1><div class="styles__SubTitle-sc-4114r5-5 kLCYqG"><time dateTime="updated at"> 12 Feb 2023</time><span> — <!-- -->10<!-- --> min read</span></div><ul class="styles__Tags-sc-4114r5-6 ioKSNB"><li class="Tag__Container-sc-1ml3ond-0 kZxRxZ">javascript</li></ul></header><main class="styles__Main-sc-4114r5-3 evwNkm"><section><h2 id="이벤트-라이프사이클" style="position:relative;"><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4" aria-label="이벤트 라이프사이클 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이벤트 라이프사이클</h2>
-<p><a href="https://developer.mozilla.org/ko/docs/Web/API/Event">Event</a> 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 이벤트 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다.</p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/API/Event">Event</a> 인터페이스는 DOM 내에 위치한 이벤트로 계층 구조를 이룬다. 그 종류에 따라 이벤트 인터페이스를 상속하는 좀 더 구체적인 이벤트 인터페이스로 구현될 수 있다.</p>
 <p>이벤트 라이프 사이클은 3단계로 구성된다.</p>
 <ol>
 <li>캡쳐 단계: 이벤트가 html부터 목표 요소로 이동한다.</li>
 <li>목표 단계: 이벤트가 목표 요소에 도달한다.</li>
 <li>버블 단계: 이벤트가 목표 요소로부터 html로 이동한다.</li>
 </ol>
-<p>부모와 자식 요소가 이벤트 리스너를 모두 갖고 있다면, 자식 요소의 이벤트가 발생할 때 부모 요소의 이벤트도 발생한다. 이를 이벤트 버블링이라 한다. 기본적으로 발생하는 이 현상을 막기 위해서는 <code>stopPropagation()</code> 메서드를 사용해야 한다.</p>
-<p>부모와 자식 중 어느 요소에서 이벤트가 먼저 발생하는 지는 <code>useCapture</code> 옵션이 결정한다. 만약 <code>useCapture</code>가 <code>false</code>라면 버블링 단계에서 이벤트 핸들러를 실행한다. 즉 자식 요소의 이벤트 핸들러부터 실행한다. 반면, <code>useCapture</code>가 <code>true</code>인 경우 캡쳐 단계에서 이벤트 핸들러를 실행하기 때문에 부모 요소의 핸들러를 먼저 실행한다.</p>
+<p>부모와 자식 요소에 이벤트 핸들러가 모두 연결되어 있다면, 자식 요소에서 이벤트가 발생할 때 부모 요소의 이벤트 핸들러도 실행된다. 이를 이벤트 버블링이라 한다. 기본적으로 발생하는 이 현상을 막기 위해서는 <code>stopPropagation()</code> 메서드를 사용해야 한다.</p>
+<p>부모와 자식의 이벤트 핸들러 중 무엇이 먼저 실행되는지는 <code>useCapture</code> 옵션이 결정한다. 만약 <code>useCapture</code>가 <code>false</code>라면 버블링 단계에서 이벤트 핸들러를 실행한다. 즉 자식의 이벤트 핸들러부터 실행한다. 반면, <code>useCapture</code>가 <code>true</code>인 경우 캡쳐 단계에서 이벤트 핸들러를 실행하기 때문에 부모의 이벤트 핸들러부터 실행한다.</p>
 <h2 id="이벤트-핸들러-연결하기" style="position:relative;"><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%ED%95%B8%EB%93%A4%EB%9F%AC-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0" aria-label="이벤트 핸들러 연결하기 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이벤트 핸들러 연결하기</h2>
 <h3 id="on-속성으로-이벤트-핸들러-연결" style="position:relative;"><a href="#on-%EC%86%8D%EC%84%B1%EC%9C%BC%EB%A1%9C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%ED%95%B8%EB%93%A4%EB%9F%AC-%EC%97%B0%EA%B2%B0" aria-label="on 속성으로 이벤트 핸들러 연결 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>On* 속성으로 이벤트 핸들러 연결</h3>
-<p>쉽고 지저분한 방법, 하나의 DOM 요소에 하나의 핸들러만 연결할 수 없다.</p>
+<p>쉽고 지저분한 방법, 하나의 DOM 요소에 하나의 핸들러만 할당할 수 없다.</p>
 <h3 id="addeventlistener로-이벤트-핸들러-연결" style="position:relative;"><a href="#addeventlistener%EB%A1%9C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%ED%95%B8%EB%93%A4%EB%9F%AC-%EC%97%B0%EA%B2%B0" aria-label="addeventlistener로 이벤트 핸들러 연결 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>addEventListener로 이벤트 핸들러 연결</h3>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">addEventListener()</a>로 하나의 DOM 요소에 여러 이벤트 핸들러를 연결할 수 있다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener">removeEventListener()</a>로 이벤트 리스너를 삭제하여 메모리 누수를 방지할 수도 있다.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">addEventListener()</a>로 하나의 DOM 요소에 여러 이벤트 핸들러를 연결할 수 있다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener">removeEventListener()</a>로 이벤트 핸들러를 제거하여 메모리 누수를 방지할 수도 있다.</p>
 <h2 id="커스텀-이벤트" style="position:relative;"><a href="#%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8" aria-label="커스텀 이벤트 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>커스텀 이벤트</h2>
 <p><a href="https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/CustomEvent">Custom Event</a>를 만들 수도 있다.</p>
-<p>아래 함수는 인풋 값의 길이가 5를 넘어가면 커스텀 이벤트를 생성하고 이를 실행한다. 생성자의 첫 번째 인자는 이벤트 이름, 두 번째 인자로는 <code>detail</code> 속성을 포함하는 옵션을 전달할 수 있다.</p>
+<p>아래 핸들러는 인풋 값의 길이가 5를 넘어가면 커스텀 이벤트를 생성 및 실행한다. 생성자의 첫 번째 인자에는 이벤트 이름, 두 번째 인자로는 <code>detail</code> 속성을 포함하는 옵션을 전달할 수 있다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">const handleChangeInput = (e) =&gt; {
   const { length } = e.target.value;
@@ -235,7 +235,7 @@ input.addEventListener(&#39;input&#39;, handleChangeInput);
 input.addEventListener(&#39;customEvent&#39;, (e) =&gt; log(e.target.value, e.detail.time))</code>
         </deckgo-highlight-code>
 <h2 id="기존-투두리스트-애플리케이션의-문제점" style="position:relative;"><a href="#%EA%B8%B0%EC%A1%B4-%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90" aria-label="기존 투두리스트 애플리케이션의 문제점 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기존 투두리스트 애플리케이션의 문제점</h2>
-<p>지난 챕터에서 만들어 본 애플리케이션은 할 일 요소를 문자열로 생성한다.</p>
+<p>지난 챕터에서 만들었던 애플리케이션은 할 일 요소를 문자열로 생성한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="7,18">
           <code slot="code">const Todos = todo =&gt; {
   const {
@@ -257,7 +257,7 @@ input.addEventListener(&#39;customEvent&#39;, (e) =&gt; log(e.target.value, e.de
       &lt;/li&gt;`
 }</code>
         </deckgo-highlight-code>
-<p>그러나 문자열에는 <code>addEventListener()</code>를 사용하여 이벤트 핸들러를 추가할 수 없다. 다른 방법을 알아보자.</p>
+<p>그러나 문자열에는 <code>addEventListener()</code>로 이벤트 핸들러를 추가할 수 없다. 다른 방법을 알아보자.</p>
 <h2 id="createelement-api" style="position:relative;"><a href="#createelement-api" aria-label="createelement api permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>createElement API</h2>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">// source: MDN
@@ -275,9 +275,9 @@ function addElement () {
   document.body.insertBefore(newDiv, currentDiv);
 }</code>
         </deckgo-highlight-code>
-<p><code>createElement API</code>를 사용하여 새로운 DOM 노드를 생성할 수 있다. 그러나 이 방식은 가독성이 그리 좋지 않고 유지 보수하기에 어렵다는 단점이 있다.</p>
+<p><code>createElement API</code>를 사용하여 새로운 DOM 노드를 생성할 수 있다. 이 방식은 가독성이 그리 좋지 않고 유지보수가 어렵다는 단점이 있다.</p>
 <h2 id="template-element" style="position:relative;"><a href="#template-element" aria-label="template element permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Template element</h2>
-<p><code>&#x3C;template /></code>요소는 동적으로 DOM 노드를 생성하는 수단이다. 페이지를 불러오는 순간 렌더링되지 않고 자바스크립트가 <code>&#x3C;template /></code>기반의 돔 노드를 생성한다. 컴포넌트 함수에서 문자열로 만들던 내용을 지우고 <code>&#x3C;template /></code> 을 작성한다.</p>
+<p><code>&#x3C;template /></code>요소는 동적으로 DOM 노드를 생성하는 수단이다. 이 요소는 페이지를 불러오는 순간에는 렌더링되지 않는다. 대신 자바스크립트가 <code>&#x3C;template /></code>기반의 돔 노드를 생성할 수 있다. 컴포넌트 함수에서 문자열로 만들던 내용을 지우고 <code>&#x3C;template /></code> 을 작성한다.</p>
 <p>두 개의 템플릿을 추가했다.</p>
 <ol>
 <li>할 일 요소 구성을 담는 todo-item 템플릿</li>
@@ -324,7 +324,7 @@ function addElement () {
   &lt;/body&gt;
 &lt;/html&gt;</code>
         </deckgo-highlight-code>
-<p><code>Todo</code> 컴포넌트는 더 이상 문자열을 리턴하지 않는다. <code>state.todos</code>를 순회하며 새로운 할일 목록을 구성하고 반환한다. 각 항목의 생성은<code>createNewTodo()</code>를 사용한다.</p>
+<p><code>Todo</code> 컴포넌트는 더 이상 문자열을 리턴하지 않는다. <code>state.todos</code>를 순회하며 새로운 할 일 목록을 구성하고 반환한다. <code>createNewTodo()</code>는 각각의 할 일을 생성한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="6,8">
           <code slot="code">const Todos = (targetElement, { todos }) =&gt; {
   const newTodoList = targetElement.cloneNode(true);
@@ -338,7 +338,7 @@ function addElement () {
   return newTodoList
 }</code>
         </deckgo-highlight-code>
-<p><code>createNewTodo()</code>는 할 일 요소에 필요한 내용과 속성을 채워준다. 각 요소는 <code>todoElement()</code>가 생성한다.</p>
+<p><code>createNewTodo()</code>는 할 일의 내용과 속성을 채워준다. <code>todoElement()</code>는 DOM 요소를 생성한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="7,14">
           <code slot="code">const createNewTodo = (todo, index) =&gt; {
   const {
@@ -358,7 +358,7 @@ function addElement () {
   return element;
 }</code>
         </deckgo-highlight-code>
-<p><code>todoElement()</code>는 todo-item 템플릿에서 복제된 요소를 반환한다. 이처럼 템플릿을 재사용하면서 DOM 노드를 동적으로 생성할 수 있다.</p>
+<p><code>todoElement()</code>는 템플릿을 복제한 요소를 반환한다. 이처럼 템플릿을 재사용하면서 DOM을 동적으로 생성할 수 있다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="5">
           <code slot="code">let template;
 
@@ -370,7 +370,7 @@ const todoElement = () =&gt; {
   return template.content.firstElementChild.cloneNode(true);
 };</code>
         </deckgo-highlight-code>
-<p>App 컴포넌트는 전체 앱 구성을 담고 있는 todo-app 템플릿을 활용하여 DOM 노드를 생성한다.</p>
+<p>App 컴포넌트는 전체 구성을 담는 todo-app 템플릿을 복제하여 DOM을 생성한다.</p>
 <deckgo-highlight-code language="tsx" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="5 16">
           <code slot="code">let template;
 
@@ -434,7 +434,37 @@ addComponent(&#39;filters&#39;, Filters);</code>
 }</code>
         </deckgo-highlight-code>
 <p>이전과 같이 할 일 목록을 보여준다.</p>
-<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6b9d8ab5-ebbc-4847-9e40-4866a89d23b9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-02-10_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.30.03.png" alt="스크린샷 2023-02-10 오전 12.30.03.png"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b810508f1bf24ac8cee2256a4889c006/6bbf7/todos.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 96.55172413793103%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAABYlAAAWJQFJUiTwAAABnElEQVQ4y6WUfYuCQBDG+/5fpfs/KKiroKIuykAtEo0MrUssX7rUXX2OWbsX7oLbzoVxYVl+O/PMM9Y2mw36/b4IVVWRpmmlqNm2jWaziXa7jclkgqqr9vMgSRIR9BrtWZahKArpqB0OB5imCdd14XmeOCQIAWm/vF3AORePSQHDMBSwXq+H0WiE4XAI3/cF8Hq9iv2hDPM8F5mcTicEQYAoiu5qQ/ekgHSZSkrTRMDm8zl0Xcd6vQbJoSgKLMv6BEsBqazz6YzwHIpOz2YzaJqG1WqF8Xgs7EQ6kwR/QcsMGUcQB7BfN1goCxiGIbJaLpfY7XbQNR3dbhektxSw4AV23hbPRgMvkylUTQUZnsomn3Y6HQGWKpk+jGXIMgbkXzp9LGpYdrOQVFPIMtSIwWAA0zR+dfT7kgJShynKCWEgxiO+u69hkWG7jVGvMzgOv2VZAch5CssK0GgwtFo0w1RqJWACTfPx9MRhmvzfsNvoldlEEYNt52CskG7A/b/Nfi9Mu1gomE6HYmoqAeM4huM4OB6PcN196ccKwHfKF8Oa/tt5DgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="todos.png"
+        title="todos.png"
+        src="/static/b810508f1bf24ac8cee2256a4889c006/31198/todos.png"
+        srcset="/static/b810508f1bf24ac8cee2256a4889c006/fe9c7/todos.png 174w,
+/static/b810508f1bf24ac8cee2256a4889c006/39e45/todos.png 347w,
+/static/b810508f1bf24ac8cee2256a4889c006/31198/todos.png 694w,
+/static/b810508f1bf24ac8cee2256a4889c006/6bbf7/todos.png 716w"
+        sizes="(max-width: 694px) 100vw, 694px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <p>최종 프로젝트 구성은 아래와 같다.</p>
 <deckgo-highlight-code language="bash" terminal="carbon" theme="shades-of-purple" line-numbers="true"  >
           <code slot="code">root
@@ -450,7 +480,7 @@ addComponent(&#39;filters&#39;, Filters);</code>
 └── renderDiff.js</code>
         </deckgo-highlight-code>
 <h2 id="이벤트-추가하기" style="position:relative;"><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0" aria-label="이벤트 추가하기 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이벤트 추가하기</h2>
-<p>아직 버튼만 있고 할 일 추가와 삭제와 같은 이벤트는 발생하지 않는다. 이벤트를 추가하기 위해 컨트롤러에서 이벤트 레지스트리를 생성한다. 이제 모든 컴포넌트 함수는 세 번째 파라미터로 이벤트 레지스트리인 <code>events</code>를 받는다.</p>
+<p>지금은 버튼만 존재할 뿐 할 일 추가와 같은 이벤트는 발생하지 않는다. 이벤트 추가를 위해 이벤트 레지스트리를 생성하고 등록한다. 이제 모든 컴포넌트 함수는 세 번째 파라미터로 이벤트 레지스트리 <code>events</code>를 받는다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="16,28 34">
           <code slot="code">// index.js
 
@@ -466,7 +496,7 @@ addComponent(&#39;todos&#39;, Todos);
 addComponent(&#39;counter&#39;, Counter);
 addComponent(&#39;filters&#39;, Filters);
 
-// 이벤트 레지스트리  등록
+// 이벤트 레지스트리 등록
 const events = {
   deleteItem: (index) =&gt; {
     state.todos.splice(index, 1);
@@ -493,7 +523,7 @@ const init = () =&gt; {
 
 init();</code>
         </deckgo-highlight-code>
-<p>App 컴포넌트에서 엔터 키 입력에 따라 할 일을 추가하는 이벤트 리스너를 등록한다.</p>
+<p>이벤트 레지스트리에서 필요한 이벤트 함수를 꺼내 이벤트 핸들러로 등록한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="11,19 28">
           <code slot="code">let template;
 
@@ -527,7 +557,7 @@ export default (targetElement, _, events) =&gt; {
   return newApp;
 }</code>
         </deckgo-highlight-code>
-<p>Todo 컴포넌트에서도 할 일 삭제 이벤트 리스너를 등록한다.</p>
+<p>Todo 컴포넌트에서도 할 일 삭제 이벤트 핸들러를 등록한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="26 28">
           <code slot="code">let template;
 
@@ -576,9 +606,10 @@ const Todos = (targetElement, { todos }, events) =&gt; {
 export default Todos;</code>
         </deckgo-highlight-code>
 <h2 id="이벤트-위임하기" style="position:relative;"><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84%ED%95%98%EA%B8%B0" aria-label="이벤트 위임하기 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이벤트 위임하기</h2>
-<p>Todo 컴포넌트는 각각의 할일 요소에 이벤트 리스너를 등록한다. 만약 이벤트 위임을 활용하면 할 일 목록에 하나의 이벤트 리스너만 등록하여 모든 이벤트를 처리할 수 있다.</p>
+<p>Todo 컴포넌트는 각 할 일 요소에 이벤트 핸들러를 연결한다. 만약 이벤트 위임을 활용하면 여러 요소를 담는 목록에 하나의 이벤트 핸들러만 할당하여 모든 이벤트를 처리할 수 있다.</p>
+<br>
 <hr>
-<p><a href="https://ko.javascript.info/event-delegation">출처</a></p>
+<p><a href="https://ko.javascript.info/event-delegation">출처: https://ko.javascript.info/event-delegation</a></p>
 <p>이벤트 위임이란?</p>
 <blockquote>
 <p>이벤트 위임은 비슷한 방식으로 여러 요소를 다뤄야 할 때 사용됩니다. 이벤트 위임을 사용하면 요소마다 핸들러를 할당하지 않고, 요소의 공통 조상에 이벤트 핸들러를 단 하나만 할당해도 여러 요소를 한꺼번에 다룰 수 있습니다.</p>
@@ -595,7 +626,8 @@ export default Todos;</code>
 <li>컨테이너 수준에 할당된 핸들러가 응답할 필요가 있는 이벤트이든 아니든 상관없이 모든 하위 컨테이너에서 발생하는 이벤트에 응답해야 하므로 CPU 작업 부하가 늘어날 수 있습니다. 그런데 이런 부하는 무시할만한 수준이므로 실제로는 잘 고려하지 않습니다.</li>
 </ul>
 <hr>
-<p>먼저 각 버튼에 인덱스를 부여하고 할 일 목록에 이벤트 리스너를 등록한다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">Element.matches()</a> 메서드를 통해 삭제 버튼임을 식별하면 원하는 로직을 실행한다.</p>
+<br>
+<p>먼저 각 버튼에 인덱스를 부여하고 할 일 목록에 이벤트 리스너를 등록한다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">Element.matches()</a> 메서드를 통해 삭제 버튼임을 식별하고 필요한 일을 한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="shades-of-purple" line-numbers="true"  highlight-lines="26 40,44">
           <code slot="code">let template;
 
@@ -647,7 +679,7 @@ const Todos = (targetElement, { todos }, events) =&gt; {
 
 export default Todos;</code>
         </deckgo-highlight-code>
-<p>만약 리스트가 아주 길다면 이러한 방식으로 성능과 메모리 사용성을 개선시킬 수 있다.</p>
+<p>리스트가 아주 길다면 이 같은 이벤트 위임 방식은 성능과 메모리 사용성을 개선시킬 수 있다.</p>
 <h2 id="출처" style="position:relative;"><a href="#%EC%B6%9C%EC%B2%98" aria-label="출처 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>출처</h2>
 <p><em>프란세스코 스트라츨로, <a href="https://search.shopping.naver.com/book/search?bookTabType=ALL&#x26;pageIndex=1&#x26;pageSize=40&#x26;query=%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%EC%97%86%EB%8A%94%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C&#x26;sort=REL">『프레임워크 없는 프론트엔드 개발』</a>, 에이콘 출판(2021.01.21.)</em></p></section></main><nav class="styles__Nav-sc-4114r5-7 jpfzUv"><div></div><div><a href="/frameworkless-2"><div><h3>NEXT</h3><span>2장_렌더링</span></div><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="duration-100 ease-in transition -rotate-90 text-gray-30 dark:text-gray-50 inline group-focus:text-link dark:group-focus:text-link-dark" style="min-width:20px;min-height:20px"><g fill="none" fill-rule="evenodd" transform="translate(-446 -398)"><path fill="currentColor" fill-rule="nonzero" d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z" transform="translate(356.5 164.5)"></path><polygon points="446 418 466 418 466 398 446 398"></polygon></g></svg></a></div></nav></article><aside class="TOC__Container-sc-1ylks3q-0 gdYmwG"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#이벤트-라이프사이클">이벤트 라이프사이클</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#이벤트-핸들러-연결하기">이벤트 핸들러 연결하기</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-3/#on-속성으로-이벤트-핸들러-연결">On* 속성으로 이벤트 핸들러 연결</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-3/#addeventlistener로-이벤트-핸들러-연결">addEventListener로 이벤트 핸들러 연결</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#커스텀-이벤트">커스텀 이벤트</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#기존-투두리스트-애플리케이션의-문제점">기존 투두리스트 애플리케이션의 문제점</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#createelement-api">createElement API</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#template-element">Template element</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#이벤트-추가하기">이벤트 추가하기</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#이벤트-위임하기">이벤트 위임하기</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-3/#출처">출처</a></li></ul></aside></section></main><footer class="Footer__Container-sc-13p6nst-0 hmzBgr"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
       
