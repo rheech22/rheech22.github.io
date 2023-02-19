@@ -48,7 +48,7 @@ const config: GatsbyConfig = {
             resolve: 'gatsby-remark-highlight-code',
             options: {
               terminal: 'carbon',
-              theme: 'shades-of-purple',
+              theme: 'nord',
               lineNumbers: true,
             },
           },
