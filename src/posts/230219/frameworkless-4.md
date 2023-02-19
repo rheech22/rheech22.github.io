@@ -10,9 +10,9 @@ series: "프레임워크 없는 프론트엔드 개발"
 
 웹 컴포넌트는 세 가지 주요 내용을 포함한다.
 
-- HMTL 템플릿: 마크업에 포함된 템플릿 요소는 화면에 그려지진 않는다. 대신 자바스크립트가 템플릿을 사용해서 DOM을 동적으로 생성할 수 있다.
-- Shadow DOM: Shadow DOM의 핵심은 캡슐화다. 메인 DOM 구조로부터 독립적인 DOM을 생성할 수 있다. 기본 태그인 `<input />`, `<video />` 등의 내부에도 Shadow DOM이 숨겨져 있다.
-- Custom Elelment: 사용자 정의 요소를 만들고 제어할 수 있다. 이 챕터에서 주로 다루게 될 주제이다.
+- HTML 템플릿: 마크업에 포함된 템플릿 요소를 화면에 그리진 않는다. 대신 자바스크립트가 템플릿을 사용해서 DOM을 동적으로 생성할 수 있다.
+- Shadow DOM: Shadow DOM의 핵심은 캡슐화로 메인 DOM 트리로부터 독립적인 DOM을 생성할 수 있다. `<input />`, `<video />`와 같은 기본 요소에도 Shadow DOM이 숨겨져 있다.
+- Custom Elelment: 사용자 정의 요소를 만들고 제어할 수 있는 API로 이 챕터에서 주로 다룰 주제이다.
 
 ## 사용자 정의 요소(Custom Element)
 
@@ -225,7 +225,7 @@ export default class Todos extends HTMLElement {
 }
 ```
 
-각각의 할 일은 이미 HMTL의 템플릿 요소로 있기 때문에 가져오기만 하면 된다.
+각 할 일 요소를 위한 구성은 이미 HMTL의 템플릿 요소로 있기 때문에 가져오기만 하면 된다.
 
 ```js{4}
 export default class Todos extends HTMLElement {
@@ -273,7 +273,7 @@ export default class Todos extends HTMLElement {
 }
 ```
 
-`update()`는 지난 챕터에서 Todos 컴포넌트가 하던 새로운 목록을 채우는 역할을 그대로 하고 있다.  
+`update()`는 새로운 목록을 채워주는 지난 챕터의 Todos 컴포넌트가 하던 역할을 그대로 하고 있다.  
 ```js
 export default class Todos extends HTMLElement {
   connectedCallback() {
@@ -306,7 +306,7 @@ export default class Todos extends HTMLElement {
 }
 ```
 
-`update()`는 `this.todos`에 접근하고 있다. 이 속성(property)은 사용자 정의 요소의 속성(attribute)으로도 할당되는 특징이 있다. 이 곳에 할 일 목록을 저장한다.
+`update()`는 `this.todos`에 접근한다. 이 속성(property)은 사용자 정의 요소의 속성(attribute)으로도 할당되는 특징이 있다. 이 곳에 할 일 목록을 저장한다.
 
 ```html
 <custom-todos todos="[]"> ... <custom-todos />
@@ -340,7 +340,7 @@ export default class Todos extends HTMLElement {
 
 ### 관찰 대상이 갱신되면 하는 일
 
-속성이 바뀔 때마다 새로운 할 일 요소를 동적으로 생성하기 위해  `attributeChangedCallback()`을 사용한다. 단순히 `update()`를 실행하는 이 함수는 `observedAttributes()`가 관찰하는 `todos`속성이 바뀔 때만 호출된다.
+속성이 바뀔 때마다 새로운 할 일 요소를 동적으로 생성하기 위해  `attributeChangedCallback()`을 사용한다. `update()`를 실행하는 이 함수는 `observedAttributes()`가 관찰하는 `todos`속성이 바뀔 때만 호출된다.
 
 ```js
 export default class Todos extends HTMLElement {
@@ -360,7 +360,7 @@ export default class Todos extends HTMLElement {
 
 ### 커스텀 이벤트는 옵저버 패턴의 구현?!
 
-마지막으로 이벤트 핸들러를 선언한다. 이 곳에서는 이벤트가 발생하는 사실만을 알려주고 그 때 처리해야 하는 일은 다른 곳에서 결정하도록 하고 싶다면 어떻게 해야 할까? 커스텀 이벤트를 사용하는 방법이 있다. 그 전에 먼저 이벤트 레지스트리를 등록한다. 구독하는 곳에서도 쉽게 접근할 수 있도록 컨트롤러에 선언한다.
+마지막으로 이벤트 핸들러를 선언한다. 이 곳에서는 이벤트가 발생하는 사실만을 알려주고 그 때 처리해야 하는 일은 다른 곳에서 결정하도록 하고 싶다면 어떻게 해야 할까? 커스텀 이벤트를 활용한 방법이 있다. 그 전에 먼저 이벤트 레지스트리를 등록한다. 구독하는 곳에서도 쉽게 접근할 수 있도록 컨트롤러에 선언한다.
 
 ```js{6-9}
 // index.js
@@ -377,7 +377,7 @@ window.customElements.define('custom-app', App);
 window.customElements.define('custom-todos', Todos);
 ```
 
-이벤트 핸들러는 아래와 같다. 특별한 일을 하진 않고 인덱스를 포함하는 커스텀 이벤트를 생성하고 이벤트를 디스패치한다. 
+이벤트 핸들러는 아래와 같다. 단순히 인덱스를 포함하는 커스텀 이벤트 객체를 생성하고 이벤트를 디스패치한다. 
 
 ```js{20-41}
 import { events } from "../index.js";
@@ -427,7 +427,7 @@ export default class Todos extends HTMLElement {
 }
 ```
 
-이 곳에서는 이벤트 발생에 따라 ‘어떤 일을 해야 할지’에 관해 관심을 두지 않아도 된다. 한편 외부에서는 ‘이벤트가 발생하는 경로’에 대해 몰라도 된다. 자연스럽게 관심사를 분리하고 각자의 역할을 수행한다. 경우에 따라서 중복 코드도 줄일 수 있다. 사실 커스텀 이벤트를 처음 접할 때는 그 효용에 관해 의심을 가졌는데, 챕터의 예제를 보고 괜히 나온 API가 아니라는 느낌을 받았다. 궁금해서 검색한 적도 있는데 커스텀 이벤트가 옵저버 패턴의 구현체라고 소개하는 글을 보기도 했다. 관심있으면 아래 링크를 참고하자.
+이 곳에서는 이벤트 발생에 따라 ‘어떤 일을 해야 할지’에 관해 관심을 두지 않아도 된다. 한편 외부에서는 ‘이벤트가 발생하는 경로’에 관한 사실을 몰라도 된다. 자연스럽게 관심사를 분리하고 각자의 역할을 수행한다. 경우에 따라서 중복 코드도 줄일 수 있다. 사실 커스텀 이벤트를 처음 접할 때 그 효용에 관해서 의심을 가졌는데, 챕터의 예제를 보고 괜히 나온 API가 아니라는 느낌을 받았다. 커스텀 이벤트가 옵저버 패턴의 구현체라고 소개하는 글을 보기도 했다. 관심있으면 아래 링크를 참고하자.
 
 [How are custom events in JavaScript different from simply calling regular functions?](https://stackoverflow.com/questions/57036994/how-are-custom-events-in-javascript-different-from-simply-calling-regular-functi)
 
@@ -481,7 +481,7 @@ export default class App extends HTMLElement {
 }
 ```
 
-이벤트가 발생하면 어떤 일을 할지는 이곳에서 정한다.
+이벤트가 발생하면 어떤 일을 할지 이곳에서 정한다.
 
 ```js{6-30}
 export default class App extends HTMLElement {
@@ -576,7 +576,7 @@ window.customElements.define('custom-footer', Footer);
 
 ## 관련 라이브러리
 
-[MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)에서 웹 컴포넌트의 추상화 레벨을 높인 여러 라이브러리를 소개하고 있는데 관심있다면 한 번 둘러보는 것을 추천한다. 나는 [snuggsi](https://github.com/devpunks/snuggsi) 맛만 살짝 봤는데 괜찮은 경험이었다.
+[MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)에서 웹 컴포넌트의 추상화 레벨을 높인 여러 라이브러리를 소개하고 있는데 관심있다면 한 번 둘러보는 것을 추천한다. 나는 [snuggsi](https://github.com/devpunks/snuggsi)의 맛만 살짝 봤는데 괜찮은 경험이었다.
 
 - [FASTElement](https://www.fast.design/docs/fast-element/getting-started/)
 - [snuggsi](https://github.com/devpunks/snuggsi)
