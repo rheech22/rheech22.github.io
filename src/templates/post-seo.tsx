@@ -27,6 +27,7 @@ export default ({ title, excerpt, path, date }: Props) => {
       <meta name="twitter:image" content="" />
       <meta name="twitter:creator" content={`@${twitterUsername}`} />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" />
       <script type="application/ld+json">
         {`
             {
