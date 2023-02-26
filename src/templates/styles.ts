@@ -14,10 +14,10 @@ export const Section = styled.section`
 export const Article = styled.article < { hasHeadings: boolean } > `
   @media ${device.widerThanTablet} {
     transform: translateX(3%);
-    max-width: 726px;
+    max-width: 826px;
   }
   
-  @media ${device.widerThanLaptopS} {
+  @media ${device.widerThanLaptopL} {
     max-width: 1060px;
   }
 

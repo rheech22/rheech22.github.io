@@ -36,7 +36,7 @@ import todo from './todo.js';
 
 const getTodoList = async () => {
   const result = await todos.list()
-	// do something
+  // do something
 }
 ```
 
@@ -83,7 +83,7 @@ const get = async (url, headers) => {
   return response.data
 }
 
-// 기타 등등...
+// post, delete 기타 등등...
 ```
 
 <br/>
@@ -94,7 +94,7 @@ const get = async (url, headers) => {
 
 이 챕터를 읽고 있을 당시 마침 회사에서 내가 맡고 있던 프로젝트는 아래와 같은 문제를 갖고 있었다.
 
-- 데이터 의존도가 매우 높다. 같은 데이터 모델을 공유하기 위해 서버의 인터페이스를 가급적 그대로 사용하는 편이지만 그렇기 때문에 인터페이스의 작은 변경에도 취약한 구조를 가진다. 데이터 특성상 그 깊이도 매우 깊다. 자료의 인터페이스가 바뀌면 커스텀 훅부터 뷰 컴포넌트까지 모두 바꿔줘야 하는 경우가 잦다.
+- 데이터 의존도가 매우 높다. 같은 데이터 모델을 공유하기 위해 서버의 인터페이스를 가급적 그대로 사용하는 편이지만 그렇기 때문에 서버 인터페이스의 작은 변경에도 취약한 구조를 가진다. 데이터 특성상 그 깊이도 매우 깊다. 자료의 인터페이스가 바뀌면 커스텀 훅부터 뷰 컴포넌트까지 모두 바꿔줘야 하는 경우가 잦다.
 - 커스텀 훅이 매우 비대하다. 상태 관리 외에도 데이터 요청, 에러 핸들링 등의 역할을 수행하고 있다. 커스텀 훅의 책임이 많은 만큼 테스트를 작성하는 것도 어렵다.
 - 여러 커스텀 훅, 심지어 컴포넌트에서도 HTTP 클라이언트 API(`Apollo Client`)를 직접 사용하고 있다. 같은 모델에 대한 데이터를 요청하는 코드가 여러 곳에 산재되어 코드 응집도(?)가 낮아 유지 보수가 어렵다. 이런 경우 중복 코드가 많아질 수 있다. 테스트를 작성할 때마다 `Apollo Client`를 모킹해야 한다.
 - HTTP 클라이언트 라이브러리에 관한 의존도가 높다. 만약 `Apollo Client`가 아닌 다른 라이브러리를 사용하게 된다면 관련 코드를 모두 찾아내어 수정해야 한다.
@@ -105,7 +105,7 @@ const get = async (url, headers) => {
 
 예를 들어, `useTodoList()`는 `todo`모델이 제공하는 메서드로 데이터를 받는다.
 
-```jsx
+```jsx{4-10}
 const useTodoList = () => {
   const [todoList, setTodoList] = useState<TodoList>();
 
@@ -113,7 +113,7 @@ const useTodoList = () => {
     (async () => {
       const todoList = await todo.list();
 
-			setTodoList(todoList);
+      setTodoList(todoList);
     })();
   }, []);
 
@@ -125,7 +125,7 @@ const useTodoList = () => {
 
 다만, 모델 객체는 컴포넌트나 훅이 아니기 때문에 Apollo Client에서 제공하는 훅을 사용할 수 없었다. 그래서 core API를 사용해야만 했는데 query, mutation은 큰 어려움이 없었지만 subscription의 경우 사용하는 곳에서 명시적으로 unsubscribe를 해야 한다는 문제가 있었다. 물론 방법이야 있겠지만 당시에는 찾지 못했다.
 
-```jsx
+```jsx{8-31}
 import { client } from '@clients/apollo/client';
 
 interface TodoModel {
@@ -139,7 +139,7 @@ const todo: TodoModel = {
       next({ data }) {
         const todoList = data.todos.map((todo) => {
           return {
-						// 클라이언트 인터페이스에 맞게 데이터 매핑, 구조 분해 할당
+            // 인터페이스에 맞게 데이터 매핑, 구조 분해 할당
           };
         });
 
