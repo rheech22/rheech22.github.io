@@ -1,8 +1,8 @@
 import { navigate } from 'gatsby';
-
 import { useLayoutEffect } from 'react';
 
 const useSearchParams = () => {
+
   useLayoutEffect(() => {
     const params = new URLSearchParams(location.search);
 
@@ -22,7 +22,10 @@ const useSearchParams = () => {
     }
 
     if (searchKeyword) {
-      navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, { state: { searchKeyword, searchFilter } });
+      navigate(
+        `/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`,
+        { state: { searchKeyword, searchFilter } }
+      );
       return;
     }
   }, []);

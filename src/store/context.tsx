@@ -21,6 +21,8 @@ export const useDispatch = () => getContext(Dispatch);
 export const ContextProvider = ({ children }: { children: JSX.Element | JSX.Element[]}) => {
   const [ state, dispatch ] = useReducer<Reducer<State, Action>>(reducer, initialState);
 
+  console.log(state);
+
   return (
     <Context.Provider value={state}>
       <Dispatch.Provider value={dispatch}>

@@ -1,5 +1,6 @@
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
 import { useContext, useDispatch } from '../store/context';
+import { Posts } from '../store/types';
 
 interface Params {
   series?: string;
@@ -8,53 +9,53 @@ interface Params {
   tag?: string;
 }
 
-const useFilteredPosts = ({ series, searchFilter, searchKeyword, tag }: Params) => {
+interface Filter extends Params {
+  posts: Posts
+}
+
+const filter = ({ posts, searchKeyword, searchFilter, tag, series }: Filter) => {
+  if (searchKeyword) {
+    return posts
+      .filter(({ node: { frontmatter: { title }, html } }) => {
+        const hasTitle = title.toLowerCase()
+          .includes(searchKeyword.toLowerCase());
+        const hasContent = html?.toLowerCase()
+          .includes(searchKeyword.toLowerCase());
+
+        if (searchFilter === 'title') return hasTitle;
+        if (searchFilter === 'content') return hasContent;
+
+        return (hasTitle || hasContent);
+      });
+  }
+
+  if (tag) {
+    return posts
+      .filter(({ node: { frontmatter: { tags } } }) => {
+        return tags?.some(t => t?.toLowerCase() === tag.toLowerCase());
+      });
+  }
+
+  if (series) {
+    return posts
+      .filter(({ node: { frontmatter } }) => frontmatter.series === series);
+  }
+
+  return posts;
+};
+
+
+const useFilteredPosts = ({ searchFilter, searchKeyword, tag, series }: Params) => {
   const dispatch = useDispatch();
 
   const { posts } = useContext();
 
-  const [ filteredPosts, setFilteredPosts ] = useState(posts);
-
-  const getPosts = () => {
-    if (searchKeyword) {
-      return posts
-        .filter(({ node: { frontmatter: { title }, html } }) => {
-          const hasTitle = title.toLowerCase()
-            .includes(searchKeyword.toLowerCase());
-          const hasContent = html?.toLowerCase()
-            .includes(searchKeyword.toLowerCase());
-
-          if (searchFilter === 'title') return hasTitle;
-          if (searchFilter === 'content') return hasContent;
-
-          return (hasTitle || hasContent);
-        });
-    }
-
-    if (tag) {
-      dispatch({ type: 'setCurrentTag', payload: { tag: tag.toLowerCase() } });
-
-      return posts
-        .filter(({ node: { frontmatter: { tags } } }) => {
-          return tags?.some(t => t?.toLowerCase() === tag.toLowerCase());
-        });
-    }
-
-    if (series) {
-      dispatch({ type: 'setCurrentSeries', payload: { series } });
-
-      return posts
-        .filter(({ node: { frontmatter } }) => frontmatter.series === series);
-    }
-
-    return posts;
-  };
-
   useLayoutEffect(() => {
-    const filteredPosts = getPosts();
+    tag && dispatch({ type: 'setCurrentTag', payload: { tag: tag.toLowerCase() } });
+    series && dispatch({ type: 'setCurrentSeries', payload: { series } });
+  }, [ tag, series ]);
 
-    setFilteredPosts(filteredPosts);
-  }, [ posts, tag, series, searchKeyword, searchFilter ]);
+  const filteredPosts = filter({ posts, searchFilter, searchKeyword, series, tag });
 
   return filteredPosts;
 };
