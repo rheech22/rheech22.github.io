@@ -369,7 +369,7 @@ window.requestAnimationFrame(() =&gt; {
   </a>
     </span></p>
 <h3 id="중간-리팩토링" style="position:relative;"><a href="#%EC%A4%91%EA%B0%84-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81" aria-label="중간 리팩토링 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>중간 리팩토링</h3>
-<p>기능은 아직이지만 기본적인 모양은 완성됐다. 하지만 코드에서 리팩토링 신호를 포착할 수 있다. 일단 뷰 함수가 너무 거대하기 때문에 읽기 어렵다. 갱신할 뷰가 추가되면 코드가 더 복잡해지는 건 분명해 보인다. 게다가 개별 요소(<code>todos</code>, <code>counter</code>, <code>filters</code>)를 새로운 것으로 대체하는 작업, 즉 내부 로직은 다르지만 같은 유형의 작업을 수행하고 있다. 하나의 책임을 갖는 함수들로 분리하면 좋을 것 같다.</p>
+<p>기능은 아직이지만 기본적인 모양은 완성했다. 하지만 코드에서 리팩토링 신호를 포착할 수 있다. 일단 뷰 함수가 너무 거대하기 때문에 읽기 어렵다. 갱신할 뷰가 추가되면 코드가 더 복잡해지는 건 분명해 보인다. 게다가 개별 요소(<code>todos</code>, <code>counter</code>, <code>filters</code>)를 새로운 것으로 대체하는 작업, 즉 내부 로직은 다르지만 같은 유형의 작업을 수행하고 있다. 하나의 책임을 갖는 함수들로 분리하면 좋을 것 같다.</p>
 <p>예를 들어 뷰 함수는 <code>targetElement</code>와 <code>state</code>를 받아 새로운 요소를 반환한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  >
           <code slot="code">const viewFunction = (targetElement, state) =&gt; newElement;</code>
