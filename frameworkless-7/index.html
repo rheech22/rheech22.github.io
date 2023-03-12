@@ -426,7 +426,7 @@ export default (initalState = INITIAL_STATE) =&gt; {
 }</code>
         </deckgo-highlight-code>
 <p>컨트롤러는 모델을 사용할 뿐이다. 모델이 불변 객체를 제공하기 때문에 데이터를 조작하기 위해서는 모델이 제공하는 공개 메서드를 사용해야 한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="15,34 47">
+<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="15,34 40 46">
           <code slot="code">import { fetchTodos } from &quot;./apis.js&quot;;
 
 import App from &#39;./components/App.js&#39;;
@@ -517,10 +517,10 @@ render(model.getState());</code>
 </ul>
 <p>저자는 이러한 문제 해결을 위해 옵저버 패턴을 소개한다. 옵저버블 모델은 게터 함수 대신 <code>addChangeListener()</code>라는 메서드를 제공한다.</p>
 <ul>
-<li>모델은 리스너를 등록, 삭제할 수 있는 메서들 제공한다. - <code>addChangeListener()</code></li>
-<li>리스너를 실행하여 상태의 변경을 통지한다. - <code>invokeListeners()</code></li>
+<li>모델은 리스너를 등록, 삭제할 수 있는 수단을 제공한다. - <code>addChangeListener()</code></li>
+<li>리스너를 실행하여 상태 변경을 통지한다. - <code>invokeListeners()</code></li>
 </ul>
-<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="18,32 42 52 61 67">
+<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="12,26 36 36 55 61">
           <code slot="code">// model/model.js
 
 const INITIAL_STATE = {
@@ -595,22 +595,8 @@ export default (initalState = INITIAL_STATE) =&gt; {
         </deckgo-highlight-code>
 <p>이벤트 등록은 더 이상 컨트롤러의 관심사가 아니다. 모델의 상태 변경 함수를 이벤트에 매핑된 함수로서 사용한다. 컨트롤러는 <code>render()</code>를 직접 실행하지 않고 리스너로 등록한다. 코드가 훨씬 간결해졌다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  >
-          <code slot="code">import { fetchTodos } from &quot;./apis.js&quot;;
+          <code slot="code">// ... 생략
 
-import App from &#39;./components/App.js&#39;;
-import Todos from &#39;./components/Todos.js&#39;;
-import Counter from &#39;./components/Counter.js&#39;;
-
-import { addComponent, renderRoot } from &#39;./registry.js&#39;;
-import renderDiff from &#39;./renderDiff.js&#39;;
-import modelFactory from &quot;./model/model.js&quot;;
-
-// 레지스트리에 컴포넌트 등록
-addComponent(&#39;app&#39;, App);
-addComponent(&#39;todos&#39;, Todos);
-addComponent(&#39;counter&#39;, Counter);
-
-// 모델 생성
 const model = modelFactory({ todos: fetchTodos() });
 
 const {
@@ -634,7 +620,7 @@ addChangeListener(render);</code>
 <blockquote>
 <p>옵저버블 모델은 모델의 공개 인터페이스를 수정하지 않고 컨트롤러에 새로운 기능을 추가하는 데 유용하다.</p>
 </blockquote>
-<p>무엇을 어떻게 할지는 컨트롤러가 정하고 모델은 전달받은 리스너를 실행할 뿐이다. 만약 상태 변경을 알리는 간단한 로거를 추가하고 싶다면 리스너를 전달하기만 하면 된다.</p>
+<p>무엇을 어떻게 할지는 컨트롤러가 정한다. 모델은 등록된 리스너를 실행할 뿐이다. 만약 상태 변경을 알리는 간단한 로거를 추가하고 싶다면 리스너를 추가하기만 하면 된다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  >
           <code slot="code">addChangeListener(state =&gt; {
   console.log(`현재 시각 (${new Date()})`, state)
@@ -694,7 +680,7 @@ export default (model, stateGetter) =&gt; {
         </deckgo-highlight-code>
 <p>옵저버블 팩토리는 모델의 상태 변경 함수를 래핑하여 상태가 변경될 때마다 변경 사실을 알리도록 한다.<br>
 이제 모델은 옵저버블 객체 생성을 위한 로직을 다루지 않는다. 대신 옵저버블 팩토리로 래핑된 자신을 반환한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="51">
+<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="47">
           <code slot="code">// model/model.js
 
 import observableFactory from &quot;./observable.js&quot;
@@ -763,7 +749,7 @@ const userProxy = new Proxy(user, handler);
 console.log(userProxy.id); // 1 by Proxy
 console.log(userProxy.name); // aiden by Proxy</code>
         </deckgo-highlight-code>
-<p>프록시를 활용한 옵저버블 팩토리를 좀 더 간단하게 만들 수 있다. 프록시 생성자는 상태를 대상 객체로 받고, 핸들러는 세터를 상태가 바뀔 때마다 리스너를 실행하는 방식으로 재정의한다.</p>
+<p>프록시를 활용한 옵저버블 팩토리를 좀 더 간단하게 만들 수 있다. 프록시 생성자는 대상 객체와 핸들러 객체를 받는다. 여기서 대상 객체는 상태고 핸들러 객체는 상태가 바뀔 때마다 리스너를 실행하는 세터를 포함한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  >
           <code slot="code">export default (initialState) =&gt; {
   let listeners = [];
@@ -787,8 +773,8 @@ console.log(userProxy.name); // aiden by Proxy</code>
   return proxy
 }</code>
         </deckgo-highlight-code>
-<p>이제는 팩토리가 모델 전체를 래핑하지 않고 상태의 프록시를 리턴한다. 이제 모델을 상태를 직접 변경할 수 없고 상태의 대리인을 통해 변경해야 한다. 그렇기 때문에 상태를 직접 수정하는 메서드를 사용할 수 없음에 유의해야 한다. 대신 새로운 속성으로 교체해야 한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="8 13,15 41">
+<p>팩토리가 모델 전체를 래핑하는 대신 상태를 감싸 상태의 프록시를 반환한다. 이제 모델은 상태를 직접 변경할 수 없고 상태의 대리인을 통해 변경해야 한다. 그렇기 때문에 상태를 직접 수정하는 메서드를 사용할 수 없음에 유의해야 한다. 대신 새로운 속성으로 교체해야 한다.</p>
+<deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="8 13,16">
           <code slot="code">import observableFactory from &quot;./observable.js&quot;
 
 const INITIAL_STATE = {
@@ -842,11 +828,11 @@ export default (initalState = INITIAL_STATE) =&gt; {
 <blockquote>
 <p>이벤트 버스는 이벤트 주도 아키텍쳐(Event-Driven Architecture)를 구현하는 하나의 방법이다.</p>
 </blockquote>
-<p>이벤트 버스 패턴을 사용해 상태를 관리하는 방법이다. 리덕스를 사용해 봤다면 이 패턴과 아주 유사하다는 사실을 알 수 있다. 이벤트는 발생한 상황을 식별하는 <strong>이름</strong>과 이벤트 처리를 위한 정보를 담는 <strong>페이로드</strong>를 포함한다. (마치 리덕스의 액션과 같다).</p>
+<p>이벤트 버스 패턴을 사용해 상태를 관리하는 방법이다. 리덕스를 사용해 봤다면 이 패턴과 아주 유사하다는 사실을 알 수 있다. 이벤트는 발생한 상황을 식별하는 이름과 이벤트 처리를 위한 정보를 담는 payload를 포함한다. (마치 리덕스의 액션과 같다).</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  >
           <code slot="code">const event = { type: &#39;ADD_ITEM&#39;, payload: item }</code>
         </deckgo-highlight-code>
-<p>이벤트 버스 패턴은 이벤트를 받아 처리한다. 기본 개념은 단일 객체가 모든 이벤트를 처리한다는 것이다.</p>
+<p>이벤트 버스는 이벤트를 받아 처리한다. 기본 개념은 단일 객체가 모든 이벤트를 처리한다는 것이다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; "
@@ -1002,7 +988,7 @@ export default (initalState = INITIAL_STATE) =&gt; {
   }
 }</code>
         </deckgo-highlight-code>
-<p>컨트롤러에서는 모델을 이벤트 버스에 주입하는 정도로 사용하고 주로 이벤트 버스를 사용한다. 마찬가지로 <code>render()</code>를 리스너로 등록하고 처음에 한 번 <code>render()</code>를 실핸한다.</p>
+<p>컨트롤러는 이벤트 버스를 사용한다. <code>render()</code>를 리스너로 등록하고 처음에만 <code>render()</code>를 직접 실행한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  highlight-lines="9,10 16 22 24">
           <code slot="code">// index.js
 
@@ -1029,7 +1015,7 @@ eventBus.subscribe(render);
 
 render(eventBus.getState());</code>
         </deckgo-highlight-code>
-<p>이벤트 생성자는 이벤트 객체를 생성한다. 상태 변경에 필요한 정보가 있다면 이벤트 타입과 함께 페이로드에 정보를 실어야 한다.</p>
+<p>이벤트 생성자는 이벤트 객체를 생성한다. 상태 변경에 필요한 정보가 있다면 이벤트 타입과 함께 payload에 정보를 실어야 한다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="nord" line-numbers="true"  >
           <code slot="code">// model/eventCreator.js
 
@@ -1107,11 +1093,11 @@ export default (targetElement, _, dispatch) =&gt; {
 <h2 id="상태-관리-전략-비교" style="position:relative;"><a href="#%EC%83%81%ED%83%9C-%EA%B4%80%EB%A6%AC-%EC%A0%84%EB%9E%B5-%EB%B9%84%EA%B5%90" aria-label="상태 관리 전략 비교 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>상태 관리 전략 비교</h2>
 <p>지금까지 다뤘던 상태 관리 전략을 간단하게 비교한다. 어떤 전략이 항상 좋다고 할 수는 없다.</p>
 <h3 id="mvc" style="position:relative;"><a href="#mvc" aria-label="mvc permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MVC</h3>
-<p>MVC 패턴은 구현이 쉽고 관심사 분리에도 좋다. 그러나 모델, 뷰, 컨트롤러 중 어디에도 넣기 어려운 회색 영역이 존재하기 쉽다. 그래서 엄격하게 구현하는 것에 어려움이 따른다.</p>
+<p>MVC 패턴은 구현이 쉽고 관심사 분리에도 좋다. 그러나 모델, 뷰, 컨트롤러 중 어디에도 넣기 어려운 회색 영역이 존재하기 쉽다. 그래서 엄격하게 구현하는 것에 어려움이 따른다. 확장성도 좋다고 할 수 없다.</p>
 <h3 id="반응형-프로그래밍-1" style="position:relative;"><a href="#%EB%B0%98%EC%9D%91%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-1" aria-label="반응형 프로그래밍 1 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>반응형 프로그래밍</h3>
 <p>추상화를 통해 코드의 일관성을 유지할 수 있다. 하지만 모든 객체를 옵저버블한 객체로서 다루는 것은 쉽지 않다. 게다가 애플리케이션이 커지면서 추상화가 감당하기 어려운 내용이 생긴다면 확장성에 문제가 발생할 수 있다.</p>
 <h3 id="이벤트-버스-1" style="position:relative;"><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EC%8A%A4-1" aria-label="이벤트 버스 1 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이벤트 버스</h3>
-<p>옵저버블 패턴에 비해 상대적으로 구현이 단순하고 한 곳에서 모든 이벤트를 처리하기에 확장성도 좋다. 하지만 이벤트 발생에 따라 화면에 변경된 데이터가 반영되기까지 여러 단계를 거쳐야 하는 다변성을 갖는다. 이런 이유 내부적으로 다른 상태 관리 전략을 채택하는 곳이 있다면 결국 코드의 일관성을 지키기 어렵다.</p>
+<p>옵저버블 패턴에 비해 상대적으로 구현이 단순하고 한 곳에서 모든 이벤트를 처리하기에 확장성도 좋다. 하지만 이벤트 발생에 따라 화면에 변경된 데이터가 반영되기까지 여러 단계를 거쳐야 하는 다변성을 갖는다. 이런 이유때문에 내부적으로 다른 상태 관리 전략을 채택하는 곳이 있다면 결국 코드의 일관성을 지키기 어렵다.</p>
 <br/>
 <h2 id="출처" style="position:relative;"><a href="#%EC%B6%9C%EC%B2%98" aria-label="출처 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>출처</h2>
 <p><em>프란세스코 스트라츨로, <a href="https://search.shopping.naver.com/book/search?bookTabType=ALL&#x26;pageIndex=1&#x26;pageSize=40&#x26;query=%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%EC%97%86%EB%8A%94%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%EA%B0%9C%EB%B0%9C&#x26;sort=REL">『프레임워크 없는 프론트엔드 개발』</a>, 에이콘 출판(2021.01.21.)</em></p></section></main><nav class="styles__Nav-sc-4114r5-7 jpfzUv"><div></div><div><a href="/frameworkless-6"><div><h3>NEXT</h3><span>6장_라우터</span></div><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="duration-100 ease-in transition -rotate-90 text-gray-30 dark:text-gray-50 inline group-focus:text-link dark:group-focus:text-link-dark" style="min-width:20px;min-height:20px"><g fill="none" fill-rule="evenodd" transform="translate(-446 -398)"><path fill="currentColor" fill-rule="nonzero" d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z" transform="translate(356.5 164.5)"></path><polygon points="446 418 466 418 466 398 446 398"></polygon></g></svg></a></div></nav></article><aside class="TOC__Container-sc-1ylks3q-0 gdYmwG"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#상태-관리">상태 관리</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#사전-준비">사전 준비</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#모델-뷰-컨트롤러">모델-뷰-컨트롤러</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#옵저버블-모델">옵저버블 모델</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#반응형-프로그래밍">반응형 프로그래밍</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#네이티브-프록시">네이티브 프록시</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#이벤트-버스">이벤트 버스</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#상태-관리-전략-비교">상태 관리 전략 비교</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-7/#mvc">MVC</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-7/#반응형-프로그래밍-1">반응형 프로그래밍</a></li><li class="TOC__List-sc-1ylks3q-1 hEmMwG"><a href="/frameworkless-7/#이벤트-버스-1">이벤트 버스</a></li><li class="TOC__List-sc-1ylks3q-1 dxAYTv"><a href="/frameworkless-7/#출처">출처</a></li></ul></aside></section></main><footer class="Footer__Container-sc-13p6nst-0 hmzBgr"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
