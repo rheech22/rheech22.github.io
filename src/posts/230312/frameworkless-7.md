@@ -249,7 +249,7 @@ export default (initalState = INITIAL_STATE) => {
 
 컨트롤러는 모델을 사용할 뿐이다. 모델이 불변 객체를 제공하기 때문에 데이터를 조작하기 위해서는 모델이 제공하는 공개 메서드를 사용해야 한다.
 
-```js{15-34, 47}
+```js{15-34, 40, 46}
 import { fetchTodos } from "./apis.js";
 
 import App from './components/App.js';
@@ -313,10 +313,10 @@ MVC 기반으로 작성한 코드가 최적의 솔루션이라 할 수는 없는
 
 저자는 이러한 문제 해결을 위해 옵저버 패턴을 소개한다. 옵저버블 모델은 게터 함수 대신 `addChangeListener()`라는 메서드를 제공한다. 
 
-- 모델은 리스너를 등록, 삭제할 수 있는 메서들 제공한다. - `addChangeListener()`
-- 리스너를 실행하여 상태의 변경을 통지한다. - `invokeListeners()`
+- 모델은 리스너를 등록, 삭제할 수 있는 수단을 제공한다. - `addChangeListener()`
+- 리스너를 실행하여 상태 변경을 통지한다. - `invokeListeners()`
 
-```js{18-32, 42, 52, 61, 67}
+```js{12-26, 36, 36, 55, 61}
 // model/model.js
 
 const INITIAL_STATE = {
@@ -393,22 +393,8 @@ export default (initalState = INITIAL_STATE) => {
 이벤트 등록은 더 이상 컨트롤러의 관심사가 아니다. 모델의 상태 변경 함수를 이벤트에 매핑된 함수로서 사용한다. 컨트롤러는 `render()`를 직접 실행하지 않고 리스너로 등록한다. 코드가 훨씬 간결해졌다.
 
 ```js
-import { fetchTodos } from "./apis.js";
+// ... 생략
 
-import App from './components/App.js';
-import Todos from './components/Todos.js';
-import Counter from './components/Counter.js';
-
-import { addComponent, renderRoot } from './registry.js';
-import renderDiff from './renderDiff.js';
-import modelFactory from "./model/model.js";
-
-// 레지스트리에 컴포넌트 등록
-addComponent('app', App);
-addComponent('todos', Todos);
-addComponent('counter', Counter);
-
-// 모델 생성
 const model = modelFactory({ todos: fetchTodos() });
 
 const {
@@ -433,7 +419,7 @@ addChangeListener(render);
 > 옵저버블 모델은 모델의 공개 인터페이스를 수정하지 않고 컨트롤러에 새로운 기능을 추가하는 데 유용하다.
 > 
 
-무엇을 어떻게 할지는 컨트롤러가 정하고 모델은 전달받은 리스너를 실행할 뿐이다. 만약 상태 변경을 알리는 간단한 로거를 추가하고 싶다면 리스너를 전달하기만 하면 된다. 
+무엇을 어떻게 할지는 컨트롤러가 정한다. 모델은 등록된 리스너를 실행할 뿐이다. 만약 상태 변경을 알리는 간단한 로거를 추가하고 싶다면 리스너를 추가하기만 하면 된다. 
 
 ```js
 addChangeListener(state => {
@@ -500,7 +486,7 @@ export default (model, stateGetter) => {
 옵저버블 팩토리는 모델의 상태 변경 함수를 래핑하여 상태가 변경될 때마다 변경 사실을 알리도록 한다.  
 이제 모델은 옵저버블 객체 생성을 위한 로직을 다루지 않는다. 대신 옵저버블 팩토리로 래핑된 자신을 반환한다.
 
-```js{51}
+```js{47}
 // model/model.js
 
 import observableFactory from "./observable.js"
@@ -573,7 +559,7 @@ console.log(userProxy.id); // 1 by Proxy
 console.log(userProxy.name); // aiden by Proxy
 ```
 
-프록시를 활용한 옵저버블 팩토리를 좀 더 간단하게 만들 수 있다. 프록시 생성자는 상태를 대상 객체로 받고, 핸들러는 세터를 상태가 바뀔 때마다 리스너를 실행하는 방식으로 재정의한다. 
+프록시를 활용한 옵저버블 팩토리를 좀 더 간단하게 만들 수 있다. 프록시 생성자는 대상 객체와 핸들러 객체를 받는다. 여기서 대상 객체는 상태고 핸들러 객체는 상태가 바뀔 때마다 리스너를 실행하는 세터를 포함한다.
 
 ```js
 export default (initialState) => {
@@ -599,9 +585,9 @@ export default (initialState) => {
 }
 ```
 
-이제는 팩토리가 모델 전체를 래핑하지 않고 상태의 프록시를 리턴한다. 이제 모델을 상태를 직접 변경할 수 없고 상태의 대리인을 통해 변경해야 한다. 그렇기 때문에 상태를 직접 수정하는 메서드를 사용할 수 없음에 유의해야 한다. 대신 새로운 속성으로 교체해야 한다. 
+팩토리가 모델 전체를 래핑하는 대신 상태를 감싸 상태의 프록시를 반환한다. 이제 모델은 상태를 직접 변경할 수 없고 상태의 대리인을 통해 변경해야 한다. 그렇기 때문에 상태를 직접 수정하는 메서드를 사용할 수 없음에 유의해야 한다. 대신 새로운 속성으로 교체해야 한다. 
 
-```js{8, 13-15, 41}
+```js{8, 13-16}
 import observableFactory from "./observable.js"
 
 const INITIAL_STATE = {
@@ -658,13 +644,13 @@ export default (initalState = INITIAL_STATE) => {
 > 이벤트 버스는 이벤트 주도 아키텍쳐(Event-Driven Architecture)를 구현하는 하나의 방법이다.
 > 
 
-이벤트 버스 패턴을 사용해 상태를 관리하는 방법이다. 리덕스를 사용해 봤다면 이 패턴과 아주 유사하다는 사실을 알 수 있다. 이벤트는 발생한 상황을 식별하는 **이름**과 이벤트 처리를 위한 정보를 담는 **페이로드**를 포함한다. (마치 리덕스의 액션과 같다).
+이벤트 버스 패턴을 사용해 상태를 관리하는 방법이다. 리덕스를 사용해 봤다면 이 패턴과 아주 유사하다는 사실을 알 수 있다. 이벤트는 발생한 상황을 식별하는 이름과 이벤트 처리를 위한 정보를 담는 payload를 포함한다. (마치 리덕스의 액션과 같다).
 
 ```js
 const event = { type: 'ADD_ITEM', payload: item }
 ```
 
-이벤트 버스 패턴은 이벤트를 받아 처리한다. 기본 개념은 단일 객체가 모든 이벤트를 처리한다는 것이다.
+이벤트 버스는 이벤트를 받아 처리한다. 기본 개념은 단일 객체가 모든 이벤트를 처리한다는 것이다.
 
 ![eventbus](assets/eventbus.png)
 
@@ -794,7 +780,7 @@ export default (initalState = INITIAL_STATE) => {
 }
 ```
 
-컨트롤러에서는 모델을 이벤트 버스에 주입하는 정도로 사용하고 주로 이벤트 버스를 사용한다. 마찬가지로 `render()`를 리스너로 등록하고 처음에 한 번 `render()`를 실핸한다.
+컨트롤러는 이벤트 버스를 사용한다. `render()`를 리스너로 등록하고 처음에만 `render()`를 직접 실행한다.
 
 ```js{9-10, 16, 22, 24}
 // index.js
@@ -823,7 +809,7 @@ eventBus.subscribe(render);
 render(eventBus.getState());
 ```
 
-이벤트 생성자는 이벤트 객체를 생성한다. 상태 변경에 필요한 정보가 있다면 이벤트 타입과 함께 페이로드에 정보를 실어야 한다.
+이벤트 생성자는 이벤트 객체를 생성한다. 상태 변경에 필요한 정보가 있다면 이벤트 타입과 함께 payload에 정보를 실어야 한다.
 
 ```js
 // model/eventCreator.js
@@ -909,7 +895,7 @@ export default (targetElement, _, dispatch) => {
 
 ### MVC
 
-MVC 패턴은 구현이 쉽고 관심사 분리에도 좋다. 그러나 모델, 뷰, 컨트롤러 중 어디에도 넣기 어려운 회색 영역이 존재하기 쉽다. 그래서 엄격하게 구현하는 것에 어려움이 따른다.
+MVC 패턴은 구현이 쉽고 관심사 분리에도 좋다. 그러나 모델, 뷰, 컨트롤러 중 어디에도 넣기 어려운 회색 영역이 존재하기 쉽다. 그래서 엄격하게 구현하는 것에 어려움이 따른다. 확장성도 좋다고 할 수 없다.
 
 ### 반응형 프로그래밍
 
@@ -917,7 +903,7 @@ MVC 패턴은 구현이 쉽고 관심사 분리에도 좋다. 그러나 모델, 
 
 ### 이벤트 버스
 
-옵저버블 패턴에 비해 상대적으로 구현이 단순하고 한 곳에서 모든 이벤트를 처리하기에 확장성도 좋다. 하지만 이벤트 발생에 따라 화면에 변경된 데이터가 반영되기까지 여러 단계를 거쳐야 하는 다변성을 갖는다. 이런 이유 내부적으로 다른 상태 관리 전략을 채택하는 곳이 있다면 결국 코드의 일관성을 지키기 어렵다.
+옵저버블 패턴에 비해 상대적으로 구현이 단순하고 한 곳에서 모든 이벤트를 처리하기에 확장성도 좋다. 하지만 이벤트 발생에 따라 화면에 변경된 데이터가 반영되기까지 여러 단계를 거쳐야 하는 다변성을 갖는다. 이런 이유때문에 내부적으로 다른 상태 관리 전략을 채택하는 곳이 있다면 결국 코드의 일관성을 지키기 어렵다.
 
 <br/>
 
