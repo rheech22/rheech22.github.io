@@ -119,7 +119,7 @@ export const markdown = css`
     margin-block-start: 1em;
     margin-block-end: 1em;
     word-break: break-word;
-    line-height: 1.8em;
+    line-height: 32px;
   }
 
   ol, ul {
@@ -137,6 +137,7 @@ export const markdown = css`
   li {
     display: list-item;
     text-align: -webkit-match-parent;
+    line-height: 32px;
 
     p {
       margin: 0;

@@ -11,8 +11,8 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
   ${reset}
 
   @font-face {
-    font-family: 'pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-family: 'Spoqa Han Sans';
+    src: url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
     font-weight: 400;
     font-style: normal;
     unicode-range: U+AC00-U+D7A3;
@@ -36,7 +36,7 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
   }
   
   body {
-    font-family: BlinkMacSystemFont, 'pretendard', Arial ,sans-serif;
+    font-family: 'Spoqa Han Sans', BlinkMacSystemFont,Arial ,sans-serif;
     width: 100%;
     background-color: ${({ theme }) => (theme.bg)};
     color: ${({ theme }) => (theme.default)};
