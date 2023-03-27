@@ -216,6 +216,10 @@ export const markdown = css`
     font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
   }
 
+  strong {
+    font-weight: bold;
+  }
+
   deckgo-highlight-code {
     max-width: 90vw;
     font-size: 14px;
