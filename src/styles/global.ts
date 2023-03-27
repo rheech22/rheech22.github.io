@@ -9,14 +9,6 @@ interface GlobalStyle {
 
 const globalStyle = createGlobalStyle<GlobalStyle>`
   ${reset}
-
-  @font-face {
-    font-family: 'Spoqa Han Sans';
-    src: url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
-    font-weight: 400;
-    font-style: normal;
-    unicode-range: U+AC00-U+D7A3;
-  }
   
   @font-face {
     font-family: BlinkMacSystemFont;
