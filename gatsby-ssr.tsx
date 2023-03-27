@@ -14,7 +14,6 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       rel="preload"
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
       as="font"
-      type="text/css"
     />,
   ]);
 };
