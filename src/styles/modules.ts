@@ -211,9 +211,10 @@ export const markdown = css`
     margin: 0;
     padding: 0.2em 0.4em;
     background-color: ${({ theme }) => theme.codeBg};
+    color: ${({ theme }) => theme.codeFontColor};
     border-radius: 6px;
     font-size: 85%;
-    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-family: SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace;
   }
 
   strong {
