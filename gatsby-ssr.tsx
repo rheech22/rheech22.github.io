@@ -11,9 +11,10 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   });
   setHeadComponents([
     <link
-      rel="preload"
+      key="font"
+      as="style"
+      rel="stylesheet preload prefetch"
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
-      as="font"
     />,
   ]);
 };

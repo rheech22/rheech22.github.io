@@ -34,6 +34,7 @@ const SEO = ({ subTitle, description, pathname, children }: Props) => {
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={`@${seo.twitterUsername}`} />
       <meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" />
+      <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
       {children}
     </>
   );

@@ -5,7 +5,7 @@ import { flex } from '../styles/mixins';
 
 export const Section = styled.section`
   ${flex({ justifyContent: 'center' })};
-  margin: 72px auto 0 auto;
+  margin: 72px auto;
   padding-top: 48px;
   width: 100%;
   height: auto;
@@ -166,6 +166,21 @@ export const Nav = styled.nav`
 `;
 
 export const Comments = styled.section`
+  ${flex({ justifyContent: 'center' })};
   width: 100%;
   padding: 0 8px 3em 8px;
+
+  & > giscus-widget {
+    @media ${device.widerThanTablet} {
+      transform: translateX(3%);
+      max-width: 826px;
+    }
+  
+    @media ${device.widerThanLaptopL} {
+      max-width: 1060px;
+    }
+
+    width: 100% !important;
+    padding: 20px 30px;
+  }
 `;

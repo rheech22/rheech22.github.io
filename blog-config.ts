@@ -11,11 +11,6 @@ const config = {
   // google analytics
   googleAnalyticsTrackingId: 'G-0DM3BCWTDS',
 
-  // utterance - https://utteranc.es/
-  commentRepo: 'rheech22/rheech22.github.io', // {github's username}/{repository} - will contain comments
-  darkTheme: 'github-dark', // dark theme for utterance
-  lightTheme: 'github-light', // light theme for utterance
-
   // links - if you don't wanna add any link to your bio, just leave it empty string.
   linkedIn: '',
   twitter: 'https://twitter.com',

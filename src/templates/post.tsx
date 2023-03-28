@@ -1,4 +1,5 @@
 import { graphql, PageProps, Link } from 'gatsby';
+import Giscus from '@giscus/react';
 
 import { useEffect } from 'react';
 
@@ -10,11 +11,10 @@ import useSpyHeadings from '../hooks/useSpyHeadings';
 import useTags from '../hooks/useTags';
 
 import { takePost, getDateString } from '../utils';
-import config from '../../blog-config';
 
 import SeriesSuggestion from '../components/SeriesSuggestion';
 import ScrollToTop from '../components/ScrollToTop';
-import Comments from '../components/Comments';
+
 import Tag from '../components/Tag';
 import TOC from '../components/TOC';
 import SEO from './post-seo';
@@ -90,13 +90,20 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
       </Styled.Section>
       {displayMode && (
         <Styled.Comments>
-          <Comments
-            repo={config.commentRepo}
-            theme={
-              displayMode === 'day'
-                ? config.lightTheme
-                : config.darkTheme
-            }
+          <Giscus
+            id="R_kgDOIEmslg"
+            repo="rheech22/rheech22.github.io"
+            repoId="R_kgDOIEmslg"
+            category="Comments"
+            categoryId="DIC_kwDOIEmsls4CVXnH"
+            mapping="pathname"
+            term="Welcome to @giscus/react component!"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="top"
+            theme="transparent_dark"
+            lang="ko"
+            loading="lazy"
           />
         </Styled.Comments>
       )}
