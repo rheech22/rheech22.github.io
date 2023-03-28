@@ -26,7 +26,7 @@ const GET_POST = graphql`
     ){
       edges {
         node {
-          excerpt(pruneLength: 450)
+          excerpt(pruneLength: 320)
           id
           frontmatter {
             tags

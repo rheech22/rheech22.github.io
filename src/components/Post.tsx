@@ -54,7 +54,7 @@ const Post = ({
 export default Post;
 
 const Container = styled.li`
-  padding: 24px 8px;
+  padding: 20px 8px 12px 8px;
   width: 100%;
   cursor: pointer;
 
@@ -85,16 +85,18 @@ const Heading = styled.h2`
 `;
 
 const Date = styled.span`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 12px;
   font-weight: 300;
 `;
 
 const Excerpt = styled.p`
   display: none;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   overflow-y: hidden;
+  opacity: 0.5;
+  font-style: italic;
 
   @media ${device.widerThanTablet} {
     display: block;

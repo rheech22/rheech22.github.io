@@ -26,7 +26,7 @@ tags: ["regex"]
 
 인풋에서는 숫자의 입력만 받고 싶다. `keydown` 이벤트 핸들러에서 숫자 입력이 아닌 경우에 이벤트의 기본 동작을 제한한다. `match()` 메서드는 문자열이 정규식에 매칭되는지 검사한다. 만약 매칭된다면 문자열이 포함된 배열을 반환하고, 없다면 `null`을 반환한다.
 
-```js{4-6}
+```js{3-7}
 const input = document.querySelector('input');
 
 input.addEventListener('keydown', (e) => {
@@ -45,7 +45,7 @@ input.addEventListener('keydown', (e) => {
 
 숫자 외에도 커서 이동을 위한 방향 키, 폼 제출을 위한 엔터 키, 그리고 삭제를 위한 백스페이스 키도 입력이 가능해야 한다. 입력 가능한 키를 하나의 정규 표현식 그룹에 담는다. 입력된 키가 `whitelist`에 속하지 않으면 이벤트의 기본 동작을 막는다. 정규 표현식의 `test()`메서드는 주어진 문자열이 정규식을 만족하는지 검사한다.
 
-```js{2, 4}
+```js
 input.addEventListener('keydown', (e) => {
   const whitelist = /(\d|ArrowLeft|ArrowRight|Backspace|Enter)/;
 
@@ -63,7 +63,7 @@ input.addEventListener('keydown', (e) => {
 
 숫자 입력만 받기 때문에 자동으로 점을 찍어주려 한다. 먼저 시도해 볼 것은 8자리의 숫자를 입력할 때 `yyyy.mm.dd`와 같은 형태로 점을 찍어주는 것이다. `replace()`의 두 번째 매개변수 타입이 `string`일 때 해당 문자열은 특수한 교체 패턴을 포함할 수 있다. 아래의 `'$1.$2.$3'`문자열 같이 `$n`의 패턴이 놓인 자리에는 정규 표현식에서 소괄호로 묶인 n번째 그룹으로 매치된 문자열을 삽입한다. 만약 정규 표현식을 각각 (4자리), (2자리), (2자리) 숫자로 묶인 세 그룹으로 구성한다면, `11112233`와 같은 문자열을 `1111.22.33`로 대체한다. 문자열이 포함하는 특수 교체 패턴에 각 그룹으로 매치된 문자열을 삽입하기 때문이다.
 
-```js{4}
+```js
 input.addEventListener('input', (e) => {
   let date = e.target.value;
 
@@ -138,7 +138,7 @@ input.addEventListener('input', (e) => {
 
 지금까지는 백스페이스로 삭제를 하더라도 패턴에 의해 점이 다시 찍히기 때문에 삭제 기능이 사실상 동작하지 않는다. 삭제를 할 때는 자동 포맷팅을 하지 않도록 해야 한다. 이런 경우에 `InputEvent` 인터페이스가 제공하는 `inputType` 속성을 사용할 수 있다. `inputType`속성은 타이핑에 의한 **텍스트 주입**이라면 `“insertText”` 값을 갖는다. 이로써 값을 입력할 때만 문자열을 대체하기 때문에 삭제를 할 수 있다.
 
-```js{4}
+```js{4, 9}
 input.addEventListener('input', (e) => {
   let date = e.target.value;
   
