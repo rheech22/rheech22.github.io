@@ -98,7 +98,7 @@ data-styled.g13[id="styles__Header-sc-4114r5-2"]{content:"dtKHrW,"}/*!sc*/
 .jnyrbr > section:nth-child(1) blockquote p{margin:0;}/*!sc*/
 .jnyrbr > section:nth-child(1) code{margin:0;padding:0.2em 0.4em;background-color:rgba(135,131,120,0.15);color:#EB5757;border-radius:6px;font-size:85%;font-family:SFMono-Regular,Menlo,Consolas,Liberation Mono,monospace;}/*!sc*/
 .jnyrbr > section:nth-child(1) strong{font-weight:bold;}/*!sc*/
-.jnyrbr > section:nth-child(1) deckgo-highlight-code{max-width:90vw;font-size:14px;--deckgo-highlight-code-carbon-toolbar-display:none;margin-bottom:32px;}/*!sc*/
+.jnyrbr > section:nth-child(1) deckgo-highlight-code{--deckgo-highlight-code-carbon-toolbar-display:none;--deckgo-highlight-code-white-space:pre;max-width:90vw;font-size:14px;margin-bottom:32px;}/*!sc*/
 .jnyrbr > section:nth-child(1) img{max-width:90vw;}/*!sc*/
 @media (min-width:768px){.jnyrbr > section:nth-child(1) img{max-width:694px;}}/*!sc*/
 data-styled.g14[id="styles__Main-sc-4114r5-3"]{content:"jnyrbr,"}/*!sc*/
@@ -218,7 +218,7 @@ data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
 <h2 id="커스텀-이벤트" style="position:relative;"><a href="#%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8" aria-label="커스텀 이벤트 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>커스텀 이벤트</h2>
 <p><a href="https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/CustomEvent">Custom Event</a>를 만들 수도 있다.</p>
 <p>아래 핸들러는 인풋 값의 길이가 5를 넘어가면 커스텀 이벤트를 생성 및 실행한다. 생성자의 첫 번째 인자에는 이벤트 이름, 두 번째 인자로는 <code>detail</code> 속성을 포함하는 옵션을 전달할 수 있다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  >
           <code slot="code">const handleChangeInput = (e) =&gt; {
   const { length } = e.target.value;
 
@@ -236,7 +236,7 @@ input.addEventListener(&#39;customEvent&#39;, (e) =&gt; log(e.target.value, e.de
         </deckgo-highlight-code>
 <h2 id="기존-투두리스트-애플리케이션의-문제점" style="position:relative;"><a href="#%EA%B8%B0%EC%A1%B4-%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90" aria-label="기존 투두리스트 애플리케이션의 문제점 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기존 투두리스트 애플리케이션의 문제점</h2>
 <p>지난 챕터에서 만들었던 애플리케이션은 할 일 요소를 문자열로 생성한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="7,18">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="7,18">
           <code slot="code">const Todos = todo =&gt; {
   const {
     text,
@@ -259,7 +259,7 @@ input.addEventListener(&#39;customEvent&#39;, (e) =&gt; log(e.target.value, e.de
         </deckgo-highlight-code>
 <p>그러나 문자열에는 <code>addEventListener()</code>로 이벤트 핸들러를 추가할 수 없다. 다른 방법을 알아보자.</p>
 <h2 id="createelement-api" style="position:relative;"><a href="#createelement-api" aria-label="createelement api permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>createElement API</h2>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  >
           <code slot="code">// source: MDN
 
 function addElement () {
@@ -283,7 +283,7 @@ function addElement () {
 <li>할 일 요소 구성을 담는 todo-item 템플릿</li>
 <li>전체 앱의 구성을 담는 todo-app 템플릿</li>
 </ol>
-<deckgo-highlight-code language="html" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="6,36">
+<deckgo-highlight-code language="html" terminal="carbon" theme="one-dark"  highlight-lines="6,36">
           <code slot="code">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;todos&lt;/title&gt;
@@ -325,7 +325,7 @@ function addElement () {
 &lt;/html&gt;</code>
         </deckgo-highlight-code>
 <p><code>Todo</code> 컴포넌트는 더 이상 문자열을 리턴하지 않는다. <code>state.todos</code>를 순회하며 새로운 할 일 목록을 구성하고 반환한다. <code>createNewTodo()</code>는 각각의 할 일을 생성한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="6,8">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="6,8">
           <code slot="code">const Todos = (targetElement, { todos }) =&gt; {
   const newTodoList = targetElement.cloneNode(true);
 
@@ -339,7 +339,7 @@ function addElement () {
 }</code>
         </deckgo-highlight-code>
 <p><code>createNewTodo()</code>는 할 일의 내용과 속성을 채워준다. <code>todoElement()</code>는 DOM 요소를 생성한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="7,14">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="7,14">
           <code slot="code">const createNewTodo = (todo, index) =&gt; {
   const {
     text,
@@ -359,7 +359,7 @@ function addElement () {
 }</code>
         </deckgo-highlight-code>
 <p><code>todoElement()</code>는 템플릿을 복제한 요소를 반환한다. 이처럼 템플릿을 재사용하면서 DOM을 동적으로 생성할 수 있다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="5">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="5">
           <code slot="code">let template;
 
 const todoElement = () =&gt; {
@@ -371,7 +371,7 @@ const todoElement = () =&gt; {
 };</code>
         </deckgo-highlight-code>
 <p>App 컴포넌트는 전체 구성을 담는 todo-app 템플릿을 복제하여 DOM을 생성한다.</p>
-<deckgo-highlight-code language="tsx" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="5 16">
+<deckgo-highlight-code language="tsx" terminal="carbon" theme="one-dark"  highlight-lines="5 16">
           <code slot="code">let template;
 
 const getTemplate = () =&gt; {
@@ -393,7 +393,7 @@ export default (targetElement) =&gt; {
 }</code>
         </deckgo-highlight-code>
 <p>App 컴포넌트도 다른 컴포넌트와 마찬가지로 레지스트리에 등록한다.</p>
-<deckgo-highlight-code language="tsx" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="tsx" terminal="carbon" theme="one-dark"  >
           <code slot="code">// index.js
 
 addComponent(&#39;app&#39;, App);
@@ -402,7 +402,7 @@ addComponent(&#39;counter&#39;, Counter);
 addComponent(&#39;filters&#39;, Filters);</code>
         </deckgo-highlight-code>
 <p>뷰에도 App 컴포넌트가 들어갈 자리가 필요하다.</p>
-<deckgo-highlight-code language="html" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="12,14">
+<deckgo-highlight-code language="html" terminal="carbon" theme="one-dark"  highlight-lines="12,14">
           <code slot="code">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;todos&lt;/title&gt;
@@ -422,7 +422,7 @@ addComponent(&#39;filters&#39;, Filters);</code>
 &lt;/html&gt;</code>
         </deckgo-highlight-code>
 <p>렌더링 함수는 <code>.todoapp</code>이 아닌 <code>root div</code>에 접근한다.</p>
-<deckgo-highlight-code language="tsx" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="tsx" terminal="carbon" theme="one-dark"  >
           <code slot="code">const init = () =&gt; {
   window.requestAnimationFrame(() =&gt; {
     const app = document.querySelector(&#39;#root&#39;);
@@ -466,7 +466,7 @@ addComponent(&#39;filters&#39;, Filters);</code>
   </a>
     </span></p>
 <p>최종 프로젝트 구성은 아래와 같다.</p>
-<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
           <code slot="code">root
 ├── apis.js
 ├── components
@@ -481,7 +481,7 @@ addComponent(&#39;filters&#39;, Filters);</code>
         </deckgo-highlight-code>
 <h2 id="이벤트-추가하기" style="position:relative;"><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0" aria-label="이벤트 추가하기 permalink" class="header-anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이벤트 추가하기</h2>
 <p>지금은 버튼만 존재할 뿐 할 일 추가와 같은 이벤트는 발생하지 않는다. 이벤트 추가를 위해 이벤트 레지스트리를 생성하고 등록한다. 이제 모든 컴포넌트 함수는 세 번째 파라미터로 이벤트 레지스트리 <code>events</code>를 받는다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="16,28 34">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="16,28 34">
           <code slot="code">// index.js
 
 // set state
@@ -524,7 +524,7 @@ const init = () =&gt; {
 init();</code>
         </deckgo-highlight-code>
 <p>이벤트 레지스트리에서 필요한 이벤트 함수를 꺼내 이벤트 핸들러로 등록한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="11,19 28">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="11,19 28">
           <code slot="code">let template;
 
 const getTemplate = () =&gt; {
@@ -558,7 +558,7 @@ export default (targetElement, _, events) =&gt; {
 }</code>
         </deckgo-highlight-code>
 <p>Todo 컴포넌트에서도 할 일 삭제 이벤트 핸들러를 등록한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="26 28">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="26 28">
           <code slot="code">let template;
 
 const todoElement = () =&gt; {
@@ -628,7 +628,7 @@ export default Todos;</code>
 <hr>
 <br>
 <p>먼저 각 버튼에 인덱스를 부여하고 할 일 목록에 이벤트 리스너를 등록한다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/matches">Element.matches()</a> 메서드를 통해 삭제 버튼임을 식별하고 필요한 일을 한다.</p>
-<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="26 40,44">
+<deckgo-highlight-code language="js" terminal="carbon" theme="one-dark"  highlight-lines="26 40,44">
           <code slot="code">let template;
 
 const todoElement = () =&gt; {
@@ -691,4 +691,4 @@ export default Todos;</code>
 
         gtag('config', 'G-0DM3BCWTDS', {"send_page_view":false});
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/frameworkless-3";window.___webpackCompilationHash="fd757c728b336d23f722";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-dadc8b59b893048b70af.js"],"app":["/app-7189bc9a6ec222d611c6.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-8fd8d54da84af1dc8b55.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-7047ee637475e8e02da4.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-d98e242543c9ad465a2c.js"],"component---src-pages-search-tsx":["/component---src-pages-search-tsx-63b570cb48302c1cad27.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-24f9b3b853a75f5df514.js"]};/*]]>*/</script><script src="/polyfill-dadc8b59b893048b70af.js" nomodule=""></script><script src="/app-7189bc9a6ec222d611c6.js" async=""></script><script src="/framework-77ed06daf83b64477fde.js" async=""></script><script src="/webpack-runtime-c28ebb3b1b44429dc2c1.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/frameworkless-3";window.___webpackCompilationHash="3f83a7c84ea501a38297";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-dadc8b59b893048b70af.js"],"app":["/app-7189bc9a6ec222d611c6.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-8fd8d54da84af1dc8b55.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-7047ee637475e8e02da4.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-d98e242543c9ad465a2c.js"],"component---src-pages-search-tsx":["/component---src-pages-search-tsx-63b570cb48302c1cad27.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-24f9b3b853a75f5df514.js"]};/*]]>*/</script><script src="/polyfill-dadc8b59b893048b70af.js" nomodule=""></script><script src="/app-7189bc9a6ec222d611c6.js" async=""></script><script src="/framework-77ed06daf83b64477fde.js" async=""></script><script src="/webpack-runtime-c5793ca0a94bb947e93b.js" async=""></script></body></html>

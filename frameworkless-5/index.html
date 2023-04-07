@@ -98,7 +98,7 @@ data-styled.g13[id="styles__Header-sc-4114r5-2"]{content:"dtKHrW,"}/*!sc*/
 .jnyrbr > section:nth-child(1) blockquote p{margin:0;}/*!sc*/
 .jnyrbr > section:nth-child(1) code{margin:0;padding:0.2em 0.4em;background-color:rgba(135,131,120,0.15);color:#EB5757;border-radius:6px;font-size:85%;font-family:SFMono-Regular,Menlo,Consolas,Liberation Mono,monospace;}/*!sc*/
 .jnyrbr > section:nth-child(1) strong{font-weight:bold;}/*!sc*/
-.jnyrbr > section:nth-child(1) deckgo-highlight-code{max-width:90vw;font-size:14px;--deckgo-highlight-code-carbon-toolbar-display:none;margin-bottom:32px;}/*!sc*/
+.jnyrbr > section:nth-child(1) deckgo-highlight-code{--deckgo-highlight-code-carbon-toolbar-display:none;--deckgo-highlight-code-white-space:pre;max-width:90vw;font-size:14px;margin-bottom:32px;}/*!sc*/
 .jnyrbr > section:nth-child(1) img{max-width:90vw;}/*!sc*/
 @media (min-width:768px){.jnyrbr > section:nth-child(1) img{max-width:694px;}}/*!sc*/
 data-styled.g14[id="styles__Main-sc-4114r5-3"]{content:"jnyrbr,"}/*!sc*/
@@ -216,7 +216,7 @@ data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
 </blockquote>
 <br/>
 <p>예를 들어 어떤 함수는 직접 네트워크를 요청하지 않고 모델 객체가 제공하는 메서드로 원하는 것을 얻는다.</p>
-<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark"  >
           <code slot="code">// index.js
 
 import todo from &#39;./todo.js&#39;;
@@ -227,7 +227,7 @@ const getTodoList = async () =&gt; {
 }</code>
         </deckgo-highlight-code>
 <p>모델은 HTTP 인터페이스를 통해 모델의 특정 데이터를 제공하는 메서드를 갖는다.</p>
-<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark"  >
           <code slot="code">// todo.js
 
 import http from &#39;./http.js&#39;;
@@ -235,7 +235,7 @@ import http from &#39;./http.js&#39;;
 const list = () =&gt; http.get(BASE_URL);</code>
         </deckgo-highlight-code>
 <p>HTTP 인터페이스는 실제 사용하고 있는 HTTP 클라이언트 API를 래핑하고 내부 구현을 감춘다.</p>
-<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark" line-numbers="true"  >
+<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark"  >
           <code slot="code">// http.js
 
 const request = async params =&gt; {
@@ -312,7 +312,7 @@ const get = async (url, headers) =&gt; {
   </a>
     </span></p>
 <p>예를 들어, <code>useTodoList()</code>는 <code>todo</code>모델이 제공하는 메서드로 데이터를 받는다.</p>
-<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="4,10">
+<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark"  highlight-lines="4,10">
           <code slot="code">const useTodoList = () =&gt; {
   const [todoList, setTodoList] = useState&lt;TodoList&gt;();
 
@@ -330,7 +330,7 @@ const get = async (url, headers) =&gt; {
 };</code>
         </deckgo-highlight-code>
 <p>다만, 모델 객체는 컴포넌트나 훅이 아니기 때문에 Apollo Client에서 제공하는 훅을 사용할 수 없었다. 그래서 core API를 사용해야만 했는데 query, mutation은 큰 어려움이 없었지만 subscription의 경우 사용하는 곳에서 명시적으로 unsubscribe를 해야 한다는 문제가 있었다. 물론 방법이야 있겠지만 당시에는 찾지 못했다.</p>
-<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark" line-numbers="true"  highlight-lines="8,31">
+<deckgo-highlight-code language="jsx" terminal="carbon" theme="one-dark"  highlight-lines="8,31">
           <code slot="code">import { client } from &#39;@clients/apollo/client&#39;;
 
 interface TodoModel {
@@ -411,4 +411,4 @@ export default todo;</code>
 
         gtag('config', 'G-0DM3BCWTDS', {"send_page_view":false});
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/frameworkless-5";window.___webpackCompilationHash="fd757c728b336d23f722";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-dadc8b59b893048b70af.js"],"app":["/app-7189bc9a6ec222d611c6.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-8fd8d54da84af1dc8b55.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-7047ee637475e8e02da4.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-d98e242543c9ad465a2c.js"],"component---src-pages-search-tsx":["/component---src-pages-search-tsx-63b570cb48302c1cad27.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-24f9b3b853a75f5df514.js"]};/*]]>*/</script><script src="/polyfill-dadc8b59b893048b70af.js" nomodule=""></script><script src="/app-7189bc9a6ec222d611c6.js" async=""></script><script src="/framework-77ed06daf83b64477fde.js" async=""></script><script src="/webpack-runtime-c28ebb3b1b44429dc2c1.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/frameworkless-5";window.___webpackCompilationHash="3f83a7c84ea501a38297";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-dadc8b59b893048b70af.js"],"app":["/app-7189bc9a6ec222d611c6.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-8fd8d54da84af1dc8b55.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-7047ee637475e8e02da4.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-d98e242543c9ad465a2c.js"],"component---src-pages-search-tsx":["/component---src-pages-search-tsx-63b570cb48302c1cad27.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-24f9b3b853a75f5df514.js"]};/*]]>*/</script><script src="/polyfill-dadc8b59b893048b70af.js" nomodule=""></script><script src="/app-7189bc9a6ec222d611c6.js" async=""></script><script src="/framework-77ed06daf83b64477fde.js" async=""></script><script src="/webpack-runtime-c5793ca0a94bb947e93b.js" async=""></script></body></html>
