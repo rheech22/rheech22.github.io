@@ -223,9 +223,10 @@ export const markdown = css`
   }
 
   deckgo-highlight-code {
+    --deckgo-highlight-code-carbon-toolbar-display: none;
+    --deckgo-highlight-code-white-space: pre;
     max-width: 90vw;
     font-size: 14px;
-    --deckgo-highlight-code-carbon-toolbar-display: none;
     margin-bottom: 32px;
   }
 

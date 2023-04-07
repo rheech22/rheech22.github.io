@@ -49,7 +49,7 @@ const config: GatsbyConfig = {
             options: {
               terminal: 'carbon',
               theme: 'one-dark',
-              lineNumbers: true,
+              lineNumbers: false,
             },
           },
           {
