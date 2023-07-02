@@ -8,10 +8,11 @@ interface Props {
   title: string;
   excerpt: string;
   path: string;
-  date: string;
+  created: string;
+  updated: string;
 }
 
-export default ({ title, excerpt, path, date }: Props) => {
+export default ({ title, excerpt, path, created, updated }: Props) => {
   return (
     <Helmet>
       <title>{title} | {defaultTitle}</title>
@@ -36,8 +37,8 @@ export default ({ title, excerpt, path, date }: Props) => {
               "@type": "Article",
               "url": "${siteUrl}${path}",
               "headline": "${title}",
-              "datePublisehd": "${date}",
-              "dateModified": "${date}",
+              "datePublisehd": "${created}",
+              "dateModified": "${updated}",
               "image": "[]"
             }
           `}

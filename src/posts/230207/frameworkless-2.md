@@ -1,6 +1,7 @@
 ---
 path: "/frameworkless-2"
-date: "2023-02-07"
+created: "2023-02-07"
+updated: "2023-02-07"
 title: "2장_렌더링"
 tags: ["javascript"]
 series: "프레임워크 없는 프론트엔드 개발"

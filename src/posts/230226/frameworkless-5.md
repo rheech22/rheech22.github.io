@@ -1,6 +1,7 @@
 ---
 path: "/frameworkless-5"
-date: "2023-02-26"
+created: "2023-02-26"
+updated: "2023-02-26"
 title: "5장_HTTP 요청"
 tags: ["javascript"]
 series: "프레임워크 없는 프론트엔드 개발"
@@ -129,7 +130,7 @@ const useTodoList = () => {
 import { client } from '@clients/apollo/client';
 
 interface TodoModel {
-  list: (update: (data: TodoList) => void) => Subscription;
+  list: (upcreated: (data: TodoList) => void) => Subscription;
   item: (todoId: string) => Promise<Todo>;
 }
 

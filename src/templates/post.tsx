@@ -26,7 +26,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
   const { searchByTag } = useTags();
   const spyRef = useSpyHeadings();
 
-  const { title, date, path, tags, series, contents, excerpt, headings, timeToRead } = takePost(data);
+  const { title, created, updated, path, tags, series, contents, excerpt, headings, timeToRead } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
 
@@ -36,15 +36,17 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
 
   useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 
+  console.log(data);
+
   return (
     <>
-      <SEO title={title} excerpt={excerpt} date={date} path={path} />
+      <SEO title={title} excerpt={excerpt} updated={updated} created={created} path={path} />
       <Styled.Section>
         <Styled.Article hasHeadings={hasHeadings}>
           <Styled.Header>
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
-              <time dateTime="updated at">{getDateString({ date, getYear: true })}</time>
+              <time dateTime="updated at">{getDateString({ date: updated, getYear: true })}</time>
               <span> — {timeToRead} min read</span>
             </Styled.SubTitle>
             {tags.length
@@ -124,7 +126,8 @@ export const query = graphql`
       }
       frontmatter {
         path
-        date
+        created
+        updated
         title
         tags
         series

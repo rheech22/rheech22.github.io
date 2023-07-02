@@ -13,7 +13,7 @@ interface Props {
   series: string;
   relatedPosts: ({
     title: string;
-    date: string;
+    created: string;
     path: string;
     series: string | null;
     tags: readonly string[] | null;

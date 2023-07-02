@@ -14,7 +14,7 @@ import Tag from './Tag';
 interface Props {
   path: string;
   title: string | null;
-  date: string | null;
+  updated: string | null;
   excerpt: string | null;
   tags: readonly string[] | null;
 }
@@ -22,7 +22,7 @@ interface Props {
 const Post = ({
   path = '',
   title = '',
-  date = '',
+  updated = '',
   excerpt = '',
   tags = [],
 }: Props) => {
@@ -34,7 +34,7 @@ const Post = ({
     <Container onClick={()=> navigate(path ?? '')}>
       <div>
         <Heading>{title}</Heading>
-        <Date>{date ? getDateString({ date, addPrefix: true }) : ''}</Date>
+        <Date>{updated ? getDateString({ date: updated, addPrefix: true }) : ''}</Date>
         <Excerpt>{excerpt}</Excerpt>
       </div>
       {tags?.length

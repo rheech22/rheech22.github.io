@@ -1,6 +1,7 @@
 ---
 path: "/frameworkless-7"
-date: "2023-03-12"
+created: "2023-03-12"
+updated: "2023-03-12"
 title: "7장_상태 관리"
 tags: ["javascript"]
 series: "프레임워크 없는 프론트엔드 개발"

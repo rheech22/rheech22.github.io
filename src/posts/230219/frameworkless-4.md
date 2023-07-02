@@ -1,6 +1,7 @@
 ---
 path: "/frameworkless-4"
-date: "2023-02-19"
+created: "2023-02-19"
+updated: "2023-02-19"
 title: "4장_웹 컴포넌트"
 tags: ["javascript"]
 series: "프레임워크 없는 프론트엔드 개발"

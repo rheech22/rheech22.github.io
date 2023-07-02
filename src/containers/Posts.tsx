@@ -32,7 +32,7 @@ const Posts = () => {
           excerpt,
           frontmatter: {
             path,
-            date,
+            updated,
             title,
             tags,
           },
@@ -40,7 +40,7 @@ const Posts = () => {
           <Post
             key={id}
             path={path}
-            date={date}
+            updated={updated}
             title={title}
             tags={tags ?? []}
             excerpt={excerpt}

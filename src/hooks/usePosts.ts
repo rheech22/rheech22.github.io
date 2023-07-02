@@ -14,16 +14,14 @@ const usePosts = () => {
     if (!posts.length) return;
 
     dispatch({ type: 'setPosts', payload: { posts } });
-  }, [ posts ]);
+  }, [posts]);
 };
 
 export default usePosts;
 
 const GET_POST = graphql`
   query getPosts {
-    allMarkdownRemark (
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ){
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___updated] }) {
       edges {
         node {
           excerpt(pruneLength: 320)
@@ -31,7 +29,8 @@ const GET_POST = graphql`
           frontmatter {
             tags
             title
-            date
+            created
+            updated
             path
             series
           }
@@ -40,4 +39,4 @@ const GET_POST = graphql`
       }
     }
   }
- `;
+`;

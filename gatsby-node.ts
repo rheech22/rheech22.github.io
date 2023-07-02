@@ -3,7 +3,11 @@ import { CreatePagesArgs, CreateSchemaCustomizationArgs } from 'gatsby';
 
 const path = require('path');
 
-exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) => {
+exports.createPages = async ({
+  actions,
+  graphql,
+  reporter,
+}: CreatePagesArgs) => {
   const { createPage } = actions;
 
   const component = path.resolve('src/templates/post.tsx');
@@ -12,10 +16,10 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
     query createPage {
       allMarkdownRemark(
         limit: 1000
-        sort: {order: ASC, fields: [frontmatter___date]}
+        sort: { order: ASC, fields: [frontmatter___updated] }
       ) {
         edges {
-          node { 
+          node {
             frontmatter {
               path
             }
@@ -42,26 +46,36 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
   }
 
   if (result.data) {
-    result.data.allMarkdownRemark.edges.forEach(({ node: { frontmatter: { path } }, previous, next }) => {
-      createPage({
-        path,
-        component,
-        context: {
-          prev: {
-            path: previous?.frontmatter.path ?? '',
-            title: previous?.frontmatter.title ?? '',
-          },
-          next: {
-            path: next?.frontmatter.path ?? '',
-            title: next?.frontmatter.title ?? '',
-          },
+    result.data.allMarkdownRemark.edges.forEach(
+      ({
+        node: {
+          frontmatter: { path },
         },
-      });
-    });
+        previous,
+        next,
+      }) => {
+        createPage({
+          path,
+          component,
+          context: {
+            prev: {
+              path: previous?.frontmatter.path ?? '',
+              title: previous?.frontmatter.title ?? '',
+            },
+            next: {
+              path: next?.frontmatter.path ?? '',
+              title: next?.frontmatter.title ?? '',
+            },
+          },
+        });
+      }
+    );
   }
 };
 
-exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs) => {
+exports.createSchemaCustomization = ({
+  actions,
+}: CreateSchemaCustomizationArgs) => {
   const { createTypes } = actions;
 
   const typeDefs = `
@@ -74,9 +88,10 @@ exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs)
     }
 
     type Frontmatter {
-      path: String!
-      date: String!
       title: String!
+      path: String!
+      created: String!
+      updated: String!
       tags: [String!]
       series: String
     }
