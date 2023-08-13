@@ -30,7 +30,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 
-  const parsedContents = contents.replace(/\[\[(.*)\]\]/g, (_, value)=> {
+  const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value)=> {
     const path = value.replace('/index.md', '');
 
     return `<a href="${slug}/${path}">${path.replaceAll('_', ' ')}</a>`;
