@@ -42,21 +42,21 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
           .slice(0, offset)
           .map(({ node: {
             id,
-            excerpt,
             frontmatter: {
-              path,
-              date,
+              updated,
               title,
               tags,
+            },
+            fields: {
+              slug,
             },
           } }) =>
             <Post
               key={id}
-              path={path}
-              date={date}
+              path={slug}
+              updated={updated}
               title={title}
               tags={tags ?? []}
-              excerpt={excerpt}
             />
           )}
       <LoadMore load={loadMore}/>

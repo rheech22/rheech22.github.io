@@ -62,6 +62,24 @@ export const Title = styled.h1`
 export const SubTitle = styled.div`
   color: ${({ theme }) => theme.mute};
   font-size: 14px;
+
+  & > nav {
+    display: flex;
+
+    & > span {
+      margin-right: 4px;
+    }
+
+    & > div {
+      & > a {
+        text-underline-position: under;
+      }
+
+      & > span {
+        margin: 0 4px;
+      }
+    }
+  }
 `;
 
 export const Tags = styled.ul`

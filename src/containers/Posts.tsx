@@ -29,7 +29,6 @@ const Posts = () => {
         .slice(0, offset)
         .map(({ node: {
           id,
-          excerpt,
           frontmatter: {
             updated,
             title,
@@ -45,7 +44,6 @@ const Posts = () => {
             updated={updated}
             title={title}
             tags={tags ?? []}
-            excerpt={excerpt}
           />
         )}
       <LoadMore load={loadMore}/>

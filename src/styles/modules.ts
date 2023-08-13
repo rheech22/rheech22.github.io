@@ -7,11 +7,11 @@ export const avatarWrapper = css`
   margin-right: 12px;
   width: 148px;
   height: 148px;
-  
+
   @media ${device.widerThanLaptopS} {
     margin-right: 0;
     width: 100%;
-    min-height: 168px;  
+    min-height: 168px;
   }
 `;
 
@@ -33,11 +33,15 @@ export const previews = css`
     max-width: 780px;
   }
 
-  ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
+  ${flex({
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  })}
   margin-left: 0;
   padding: 0px 20px;
   width: 100%;
-  
+
   & > p {
     margin-top: 50px;
     width: 100%;
@@ -64,15 +68,20 @@ export const markdown = css`
   @media ${device.widerThanTablet} {
     font-size: 18px;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 600;
 
     .header-anchor {
       fill: ${({ theme }) => theme.default};
     }
 
-    &:not(:first-of-type){
+    &:not(:first-of-type) {
       margin-top: 1.2em;
     }
   }
@@ -107,11 +116,10 @@ export const markdown = css`
 
   a {
     text-underline-position: under;
-    
+
     &:hover {
       color: ${({ theme }) => theme.series};
     }
-
   }
 
   p {
@@ -122,7 +130,8 @@ export const markdown = css`
     line-height: 32px;
   }
 
-  ol, ul {
+  ol,
+  ul {
     padding-left: 40px;
   }
 
@@ -153,7 +162,7 @@ export const markdown = css`
     max-width: 100%;
     overflow: auto;
     font-size: 16px;
-    
+
     thead {
       display: table-header-group;
       vertical-align: middle;
@@ -174,21 +183,22 @@ export const markdown = css`
       border-top-width: 1px;
       border-top-style: solid;
       border-top-color: ${({ theme }) => theme.border};
-      transition: all .5s;
+      transition: all 0.5s;
 
       &:nth-of-type(2n) {
         background-color: ${({ theme }) => theme.searchBgFocused};
       }
     }
 
-    th, td {
+    th,
+    td {
       display: table-cell;
       vertical-align: inherit;
       padding: 6px 13px;
       border-width: 1px;
       border-style: solid;
-      border-color: ${({ theme }) => theme.tableCellBorder};;
-      transition: all .5s;
+      border-color: ${({ theme }) => theme.tableCellBorder};
+      transition: all 0.5s;
     }
   }
 
@@ -201,7 +211,7 @@ export const markdown = css`
     font-style: italic;
     text-align: justify;
     line-height: 1.2;
-    transition: all .5s;
+    transition: all 0.5s;
 
     p {
       margin: 0;

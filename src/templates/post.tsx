@@ -1,4 +1,4 @@
-import { graphql, PageProps } from 'gatsby';
+import { graphql, Link, PageProps } from 'gatsby';
 import Giscus from '@giscus/react';
 
 import { useEffect } from 'react';
@@ -11,7 +11,6 @@ import useTags from '../hooks/useTags';
 
 import { takePost, getDateString } from '../utils';
 
-import SeriesSuggestion from '../components/SeriesSuggestion';
 import ScrollToTop from '../components/ScrollToTop';
 
 import Tag from '../components/Tag';
@@ -20,16 +19,14 @@ import SEO from './post-seo';
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const dispatch = useDispatch();
-  const { displayMode, posts } = useContext();
+  const { displayMode } = useContext();
 
   const { searchByTag } = useTags();
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, tags, series, contents, excerpt, headings, timeToRead, slug } = takePost(data);
+  const { title, created, updated, tags, contents, excerpt, headings, timeToRead, slug } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
-
-  const relatedPosts = posts.map(({ node: { frontmatter } }) => frontmatter).filter(post => post.series === series);
 
   useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 
@@ -41,14 +38,15 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const slugs = slug.split('/');
 
-  const parents = slugs.slice(1, slugs.length - 1).reduce<string[]>((acc, cur, index) => {
-    const prevPath = acc[index - 1] || '';
-    const newPath = `${prevPath}/${cur}`;
+  const parents = slugs.slice(1, slugs.length - 1).reduce<{path: string, value: string}[]>((acc, cur, index) => {
+    const prevPath = acc[index - 1]?.path || '';
 
-    return [...acc, newPath];
+    return [...acc, {
+      path: `${prevPath}/${cur}`,
+      value: cur.replaceAll('/', '').replaceAll('_', ' '),
+    }];
   }, []);
 
-  console.log(slugs, parents);
 
   return (
     <>
@@ -58,18 +56,20 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <Styled.Header>
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
-              <time dateTime="updated at">{getDateString({ date: updated, getYear: true })}</time>
-              <span> — {timeToRead} min read</span>
-              <div>
+              <nav>
+                <span>상위 문서: </span>
                 {
-                  parents.map((path) => {
-                    return <>
-                      <a href={path}>{path.replace('/', '')}</a>
-                      <span>{'-'}</span>
-                    </>;
-                  })
+                  parents.length ? parents.map(({ path, value }, index, { length }) => {
+                    return <div>
+                      <Link key={value} to={path}>{value}</Link>
+                      {Boolean(index + 1 < length) && (<span>/</span>) }
+                    </div>;
+                  }) : <span>없음</span>
                 }
-              </div>
+              </nav>
+              <span>{timeToRead} min read,</span>
+              <time dateTime="created at"> Created on {getDateString({ date: created, getYear: true })},</time>
+              <time dateTime="updated at"> Updated on {getDateString({ date: updated, getYear: true })}</time>
             </Styled.SubTitle>
             {tags.length
               ? (<Styled.Tags>{
@@ -81,7 +81,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
                   />)
                 )}</Styled.Tags>
               ) : null}
-            <SeriesSuggestion title={title} series={series} relatedPosts={relatedPosts.reverse()} />
           </Styled.Header>
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }}/>

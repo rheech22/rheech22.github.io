@@ -15,7 +15,6 @@ interface Props {
   path: string;
   title: string | null;
   updated: string | null;
-  excerpt: string | null;
   tags: readonly string[] | null;
 }
 
@@ -23,7 +22,6 @@ const Post = ({
   path = '',
   title = '',
   updated = '',
-  excerpt = '',
   tags = [],
 }: Props) => {
   const { tag: selectedTag } = useContext();
@@ -35,7 +33,7 @@ const Post = ({
       <div>
         <Heading>{title}</Heading>
         <Date>{updated ? getDateString({ date: updated, addPrefix: true }) : ''}</Date>
-        <Excerpt>{excerpt}</Excerpt>
+
       </div>
       {tags?.length
         ? <Tags>{tags.map((tag, index) => (
@@ -88,19 +86,6 @@ const Date = styled.span`
   margin-bottom: 10px;
   font-size: 12px;
   font-weight: 300;
-`;
-
-const Excerpt = styled.p`
-  display: none;
-  font-weight: 500;
-  font-size: 14px;
-  overflow-y: hidden;
-  opacity: 0.5;
-  font-style: italic;
-
-  @media ${device.widerThanTablet} {
-    display: block;
-  }
 `;
 
 const Tags = styled.ul`
