@@ -57,19 +57,20 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
               <nav>
-                <span>상위 문서: </span>
                 {
                   parents.length ? parents.map(({ path, value }, index, { length }) => {
                     return <div>
                       <Link key={value} to={path}>{value}</Link>
                       {Boolean(index + 1 < length) && (<span>/</span>) }
                     </div>;
-                  }) : <span>없음</span>
+                  }) : <span>top level</span>
                 }
               </nav>
-              <span>{timeToRead} min read,</span>
-              <time dateTime="created at"> Created on {getDateString({ date: created, getYear: true })},</time>
-              <time dateTime="updated at"> Updated on {getDateString({ date: updated, getYear: true })}</time>
+              <div>
+                <time dateTime="created at">created on {getDateString({ date: created, getYear: true })}</time>
+                <time dateTime="updated at">updated on {getDateString({ date: updated, getYear: true })}</time>
+                <span>{timeToRead} min read</span>
+              </div>
             </Styled.SubTitle>
             {tags.length
               ? (<Styled.Tags>{

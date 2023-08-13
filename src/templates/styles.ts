@@ -63,12 +63,10 @@ export const SubTitle = styled.div`
   color: ${({ theme }) => theme.mute};
   font-size: 14px;
 
+  /* tree */
   & > nav {
     display: flex;
-
-    & > span {
-      margin-right: 4px;
-    }
+    justify-content: flex-end;
 
     & > div {
       & > a {
@@ -79,6 +77,11 @@ export const SubTitle = styled.div`
         margin: 0 4px;
       }
     }
+  }
+
+  /* time */
+  & > div {
+    ${flex({ alignItems: 'flex-end', flexDirection: 'column' })};
   }
 `;
 
