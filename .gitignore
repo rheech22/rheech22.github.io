@@ -3,3 +3,4 @@ node_modules/
 public
 TODO.md
 gatsby-types.d.ts
+src/posts/parents/**

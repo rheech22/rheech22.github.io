@@ -1,5 +1,4 @@
 ---
-path: "/frameworkless-5"
 created: "2023-02-26"
 updated: "2023-02-26"
 title: "5장_HTTP 요청"

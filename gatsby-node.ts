@@ -111,7 +111,6 @@ exports.createSchemaCustomization = ({
 
     type Frontmatter {
       title: String!
-      path: String!
       created: String!
       updated: String!
       tags: [String!]

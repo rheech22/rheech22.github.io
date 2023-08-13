@@ -1,9 +1,8 @@
-import { graphql, PageProps, Link } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Giscus from '@giscus/react';
 
 import { useEffect } from 'react';
 
-import Arrow from '../assets/icons/Arrow';
 import * as Styled from './styles';
 
 import { useContext, useDispatch } from '../store/context';
@@ -26,11 +25,9 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { searchByTag } = useTags();
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, path, tags, series, contents, excerpt, headings, timeToRead, slug } = takePost(data);
+  const { title, created, updated, tags, series, contents, excerpt, headings, timeToRead, slug } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
-
-  // const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } };
 
   const relatedPosts = posts.map(({ node: { frontmatter } }) => frontmatter).filter(post => post.series === series);
 
@@ -55,7 +52,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   return (
     <>
-      <SEO title={title} excerpt={excerpt} updated={updated} created={created} path={path} />
+      <SEO title={title} excerpt={excerpt} updated={updated} created={created} path={slug} />
       <Styled.Section>
         <Styled.Article hasHeadings={hasHeadings}>
           <Styled.Header>
@@ -89,28 +86,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }}/>
           </Styled.Main>
-          <Styled.Nav>
-            {/* <div>
-              {Boolean(prev.path) &&
-                (<Link to={prev.path}>
-                  <Arrow/>
-                  <div>
-                    <h3>PREVIOUS</h3>
-                    <span>{prev.title}</span>
-                  </div>
-                </Link>)}
-            </div>
-            <div>
-              {Boolean(next.path) &&
-                (<Link to={next.path}>
-                  <div>
-                    <h3>NEXT</h3>
-                    <span>{next.title}</span>
-                  </div>
-                  <Arrow/>
-                </Link>)}
-            </div> */}
-          </Styled.Nav>
         </Styled.Article>
         {hasHeadings && <TOC headings={headings}/>}
         <ScrollToTop />
@@ -150,7 +125,6 @@ export const query = graphql`
         depth
       }
       frontmatter {
-        path
         created
         updated
         title

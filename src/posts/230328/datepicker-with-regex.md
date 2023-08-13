@@ -1,5 +1,4 @@
 ---
-path: "/datepicker-with-regex"
 created: "2023-03-28"
 updated: "2023-03-28"
 title: "정규 표현식으로 날짜 자동 포맷팅하기"

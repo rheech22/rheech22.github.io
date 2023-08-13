@@ -1,5 +1,4 @@
 ---
-path: "/frameworkless-7"
 created: "2023-03-12"
 updated: "2023-03-12"
 title: "7장_상태 관리"

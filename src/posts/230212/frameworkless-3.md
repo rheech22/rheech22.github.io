@@ -1,5 +1,4 @@
 ---
-path: "/frameworkless-3"
 created: "2023-02-12"
 updated: "2023-02-12"
 title: "3장_DOM 이벤트 관리"

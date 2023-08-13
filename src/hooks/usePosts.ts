@@ -31,7 +31,6 @@ const GET_POST = graphql`
             title
             created
             updated
-            path
             series
           }
           html

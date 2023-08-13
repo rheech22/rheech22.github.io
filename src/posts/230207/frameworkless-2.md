@@ -1,5 +1,4 @@
 ---
-path: "/frameworkless-2"
 created: "2023-02-07"
 updated: "2023-02-07"
 title: "2장_렌더링"

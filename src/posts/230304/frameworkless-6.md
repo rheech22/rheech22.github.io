@@ -1,5 +1,4 @@
 ---
-path: "/frameworkless-6"
 created: "2023-03-04"
 updated: "2023-03-04"
 title: "6장_라우터"

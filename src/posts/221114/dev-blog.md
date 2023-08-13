@@ -1,5 +1,4 @@
 ---
-path: "/dev-blog"
 created: "2022-11-14"
 updated: "2022-11-14"
 title: "Gatsby 기술 블로그 개발 후기"
