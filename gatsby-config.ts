@@ -42,7 +42,7 @@ const config: GatsbyConfig = {
       options: {
         name: 'posts',
         path: `${__dirname}/src/posts`,
-        ignore: ['**/index*'],
+        ignore: ['**/src/posts/index.md'],
       },
     },
 

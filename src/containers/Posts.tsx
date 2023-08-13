@@ -31,15 +31,17 @@ const Posts = () => {
           id,
           excerpt,
           frontmatter: {
-            path,
             updated,
             title,
             tags,
           },
+          fields: {
+            slug,
+          },
         } }) =>
           <Post
             key={id}
-            path={path}
+            path={slug}
             updated={updated}
             title={title}
             tags={tags ?? []}

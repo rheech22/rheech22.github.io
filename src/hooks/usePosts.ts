@@ -35,6 +35,9 @@ const GET_POST = graphql`
             series
           }
           html
+          fields {
+            slug
+          }
         }
       }
     }

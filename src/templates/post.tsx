@@ -19,24 +19,39 @@ import Tag from '../components/Tag';
 import TOC from '../components/TOC';
 import SEO from './post-seo';
 
-export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
+export default ({ data }: PageProps<Queries.templateQuery>) => {
   const dispatch = useDispatch();
   const { displayMode, posts } = useContext();
 
   const { searchByTag } = useTags();
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, path, tags, series, contents, excerpt, headings, timeToRead } = takePost(data);
+  const { title, created, updated, path, tags, series, contents, excerpt, headings, timeToRead, slug } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
 
-  const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } };
+  // const { prev, next } = pageContext as { prev: { path: string; title: string }; next: { path: string; title: string } };
 
   const relatedPosts = posts.map(({ node: { frontmatter } }) => frontmatter).filter(post => post.series === series);
 
   useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 
-  console.log(data);
+  const parsedContents = contents.replace(/\[\[(.*)\]\]/g, (_, value)=> {
+    const path = value.replace('/index.md', '');
+
+    return `<a href="${slug}/${path}">${path}</a>`;
+  });
+
+  const slugs = slug.split('/');
+
+  const parents = slugs.slice(1, slugs.length - 1).reduce<string[]>((acc, cur, index) => {
+    const prevPath = acc[index - 1] || '';
+    const newPath = `${prevPath}/${cur}`;
+
+    return [...acc, newPath];
+  }, []);
+
+  console.log(slugs, parents);
 
   return (
     <>
@@ -48,6 +63,16 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
             <Styled.SubTitle>
               <time dateTime="updated at">{getDateString({ date: updated, getYear: true })}</time>
               <span> — {timeToRead} min read</span>
+              <div>
+                {
+                  parents.map((path) => {
+                    return <>
+                      <a href={path}>{path.replace('/', '')}</a>
+                      <span>{'-'}</span>
+                    </>;
+                  })
+                }
+              </div>
             </Styled.SubTitle>
             {tags.length
               ? (<Styled.Tags>{
@@ -62,10 +87,10 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
             <SeriesSuggestion title={title} series={series} relatedPosts={relatedPosts.reverse()} />
           </Styled.Header>
           <Styled.Main>
-            <section ref={spyRef} dangerouslySetInnerHTML={{ __html: contents }}/>
+            <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }}/>
           </Styled.Main>
           <Styled.Nav>
-            <div>
+            {/* <div>
               {Boolean(prev.path) &&
                 (<Link to={prev.path}>
                   <Arrow/>
@@ -84,7 +109,7 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
                   </div>
                   <Arrow/>
                 </Link>)}
-            </div>
+            </div> */}
           </Styled.Nav>
         </Styled.Article>
         {hasHeadings && <TOC headings={headings}/>}
@@ -114,8 +139,8 @@ export default ({ data, pageContext }: PageProps<Queries.templateQuery>) => {
 };
 
 export const query = graphql`
-  query template($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query template($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       excerpt(truncate: true, format: PLAIN)
       timeToRead
@@ -131,6 +156,9 @@ export const query = graphql`
         title
         tags
         series
+      }
+      fields {
+        slug
       }
     }
   }
