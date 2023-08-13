@@ -36,7 +36,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const parsedContents = contents.replace(/\[\[(.*)\]\]/g, (_, value)=> {
     const path = value.replace('/index.md', '');
 
-    return `<a href="${slug}/${path}">${path}</a>`;
+    return `<a href="${slug}/${path}">${path.replaceAll('_', ' ')}</a>`;
   });
 
   const slugs = slug.split('/');

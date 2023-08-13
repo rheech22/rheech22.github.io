@@ -3,7 +3,6 @@ created: "2023-03-04"
 updated: "2023-03-04"
 title: "6장_라우터"
 tags: ["javascript"]
-series: "프레임워크 없는 프론트엔드 개발"
 ---
 
 ## 싱글 페이지 애플리케이션
