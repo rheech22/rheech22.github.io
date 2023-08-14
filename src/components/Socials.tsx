@@ -18,33 +18,33 @@ const Socials = () => {
     {
       label: 'link to LinkedIn',
       url: linkedIn,
-      icon: <LinkedIn />,
+      icon: <LinkedIn />
     },
     {
       label: 'link to Twitter',
       url: twitter,
-      icon: <Twitter />,
+      icon: <Twitter />
     },
     {
       label: 'link to GitHub',
       url: github,
-      icon: <Github />,
+      icon: <Github />
     },
     {
       label: 'link to Instagram',
       url: instagram,
-      icon: <Instagram />,
+      icon: <Instagram />
     },
     {
       label: 'send to Email',
       url: email,
-      icon: <Email />,
+      icon: <Email />
     },
     {
       label: 'link to resume',
       url: resume,
-      icon: <Resume />,
-    },
+      icon: <Resume />
+    }
   ];
 
   return (
@@ -53,17 +53,17 @@ const Socials = () => {
         <Clip />
       </div>
       <ul>
-        {
-          LINKS.map(({ url, icon, label }, i)=> {
-            if (!url) return null;
+        {LINKS.map(({ url, icon, label }, i) => {
+          if (!url) return null;
 
-            return (
-              <li key={i}>
-                <a href={url === email ? `mailto:${url}` : url} aria-label={label}>{icon}</a>
-              </li>
-            );
-          })
-        }
+          return (
+            <li key={i}>
+              <a href={url === email ? `mailto:${url}` : url} aria-label={label}>
+                {icon}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </Container>
   );
@@ -78,11 +78,13 @@ const Container = styled.div`
   bottom: 10px;
   width: 40px;
   min-height: 40px;
-  background-color: ${({ theme }) => theme.bg };
+  background-color: ${({ theme }) => theme.bg};
   border-radius: 19px;
   border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
-  transition: background-color .5s, border-color .5s;
+  transition:
+    background-color 0.5s,
+    border-color 0.5s;
 
   @media ${device.widerThanLaptopS} {
     left: 128px;
@@ -103,7 +105,7 @@ const Container = styled.div`
     ${flex({ alignItems: 'center' })};
     height: 100%;
     width: fit-content;
-    
+
     & > li {
       width: 38px;
 
@@ -117,15 +119,15 @@ const Container = styled.div`
     height: 20px;
     width: 20px;
     path {
-      fill: ${({ theme })=> theme.mute};
-      transition: all .5s;
+      fill: ${({ theme }) => theme.mute};
+      transition: all 0.5s;
     }
   }
 
   @media (hover: hover) {
     &:hover {
       path {
-        fill: ${({ theme })=> theme.default};
+        fill: ${({ theme }) => theme.default};
       }
     }
   }

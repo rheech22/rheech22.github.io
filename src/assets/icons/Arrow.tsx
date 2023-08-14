@@ -7,10 +7,9 @@ const Arrow = (props: any) => (
     className="duration-100 ease-in transition -rotate-90 text-gray-30 dark:text-gray-50 inline group-focus:text-link dark:group-focus:text-link-dark"
     style={{
       minWidth: 20,
-      minHeight: 20,
+      minHeight: 20
     }}
-    {...props}
-  >
+    {...props}>
     <g fill="none" fillRule="evenodd" transform="translate(-446 -398)">
       <path
         fill="currentColor"

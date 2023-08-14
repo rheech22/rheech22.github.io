@@ -9,6 +9,7 @@ import { getDateString, takePost } from '../utils';
 import SEO from './post-seo';
 import * as Styled from './styles';
 
+// eslint-disable-next-line react/display-name
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { displayMode } = useContext();
 
@@ -18,7 +19,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const hasHeadings = Boolean(headings.length);
 
-  const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value)=> {
+  const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value) => {
     const path = value.replace('/index.md', '');
 
     return `<a href="${slug}/${path}">${path.replaceAll('_', ' ')}</a>`;
@@ -26,15 +27,19 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const slugs = slug.split('/');
 
-  const parents = slugs.slice(1, slugs.length - 1).reduce<{path: string, value: string}[]>((acc, cur, index) => {
-    const prevPath = acc[index - 1]?.path || '';
+  const parents = slugs
+    .slice(1, slugs.length - 1)
+    .reduce<{ path: string; value: string }[]>((acc, cur, index) => {
+      const prevPath = acc[index - 1]?.path || '';
 
-    return [...acc, {
-      path: `${prevPath}/${cur}`,
-      value: cur.replaceAll('/', '').replaceAll('_', ' '),
-    }];
-  }, []);
-
+      return [
+        ...acc,
+        {
+          path: `${prevPath}/${cur}`,
+          value: cur.replaceAll('/', '').replaceAll('_', ' ')
+        }
+      ];
+    }, []);
 
   return (
     <>
@@ -45,27 +50,37 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
               <nav>
-                {
-                  parents.length ? parents.map(({ path, value }, index, { length }) => {
-                    return <div>
-                      <Link key={value} to={path}>{value}</Link>
-                      {Boolean(index + 1 < length) && (<span>/</span>) }
-                    </div>;
-                  }) : <span>top level</span>
-                }
+                {parents.length ? (
+                  parents.map(({ path, value }, index, { length }) => {
+                    return (
+                      <div key={value}>
+                        <Link key={value} to={path}>
+                          {value}
+                        </Link>
+                        {Boolean(index + 1 < length) && <span>/</span>}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <span>top level</span>
+                )}
               </nav>
               <div>
-                <time dateTime="created at">created on {getDateString({ date: created, getYear: true })}</time>
-                <time dateTime="updated at">updated on {getDateString({ date: updated, getYear: true })}</time>
+                <time dateTime="created at">
+                  created on {getDateString({ date: created, getYear: true })}
+                </time>
+                <time dateTime="updated at">
+                  updated on {getDateString({ date: updated, getYear: true })}
+                </time>
                 <span>{timeToRead} min read</span>
               </div>
             </Styled.SubTitle>
           </Styled.Header>
           <Styled.Main>
-            <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }}/>
+            <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }} />
           </Styled.Main>
         </Styled.Article>
-        {hasHeadings && <TOC headings={headings}/>}
+        {hasHeadings && <TOC headings={headings} />}
         <ScrollToTop />
       </Styled.Section>
       {displayMode && (

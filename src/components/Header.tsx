@@ -18,9 +18,10 @@ const Header = () => {
 
   const { displayMode } = useContext();
 
-  const [ searchKeyword, setSearchKeyword ] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
 
-  const handleClick = () => dispatch({ type: 'setDisplayMode', payload: { displayMode: getTheme(displayMode) } });
+  const handleClick = () =>
+    dispatch({ type: 'setDisplayMode', payload: { displayMode: getTheme(displayMode) } });
 
   const handleChange = (value: string) => {
     if (value.length > 40) return;
@@ -33,10 +34,7 @@ const Header = () => {
       <Link to="/" tabIndex={-1}>
         <h1>{config.title}</h1>
       </Link>
-      <SearchBar
-        searchKeyword={searchKeyword}
-        onChange={handleChange}
-      />
+      <SearchBar searchKeyword={searchKeyword} onChange={handleChange} />
       <Button onClick={handleClick} tabIndex={-1} aria-label="switch display mode">
         <CircleLayout>
           <div>
@@ -60,7 +58,7 @@ const Container = styled.header`
   width: 100%;
   height: 62px;
   background-color: ${headerBg};
-  
+
   @media ${device.widerThanLaptopS} {
     padding: 16px 32px;
   }
@@ -93,24 +91,28 @@ const Button = styled.button`
 
   @media (hover: hover) {
     &:hover {
-      box-shadow: 
-        rgb(109,110,129) 1.5px 1.5px 3px 0px inset,
-        rgba(109,110,129,0.5) -1.5px -1.5px 3px 1px inset;
-  
-      background-image: 
-        linear-gradient(
-          to right bottom, 
-          #000000, #211e1f, 
-          #3b353b, #55505a, 
-          #6d6c7b, #6d6e81, 
-          #6b7187, #69748d, 
-          #535c78, #3e4563, 
-          #2b304e, #181b3a
-        );
+      box-shadow:
+        rgb(109, 110, 129) 1.5px 1.5px 3px 0px inset,
+        rgba(109, 110, 129, 0.5) -1.5px -1.5px 3px 1px inset;
+
+      background-image: linear-gradient(
+        to right bottom,
+        #000000,
+        #211e1f,
+        #3b353b,
+        #55505a,
+        #6d6c7b,
+        #6d6e81,
+        #6b7187,
+        #69748d,
+        #535c78,
+        #3e4563,
+        #2b304e,
+        #181b3a
+      );
     }
   }
-  
-  
+
   @media ${device.widerThanMobile} {
     margin-left: auto;
   }
@@ -118,7 +120,8 @@ const Button = styled.button`
 
 const CircleLayout = styled.div`
   position: absolute;
-  top: 19px; right: -32px;
+  top: 19px;
+  right: -32px;
   border: 1px dotted transparent;
   border-radius: 50%;
   width: 100px;
@@ -133,39 +136,45 @@ const CircleLayout = styled.div`
 
   & > div {
     position: absolute;
-    top: 40px; right: 40px; 
+    top: 40px;
+    right: 40px;
     border-radius: 50%;
     border: none;
-    padding: 0;    
+    padding: 0;
     width: 20px;
     height: 20px;
     background: none;
     outline: none;
-  
+
     &:first-of-type {
-      animation: 
-      ${({ theme: { name } }) =>
-          name === 'dark'
-            ? css`${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`
-            : css`${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards` };
+      animation: ${({ theme: { name } }) =>
+        name === 'dark'
+          ? css`
+              ${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards
+            `
+          : css`
+              ${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards
+            `};
     }
 
     &:last-of-type {
-      animation: 
-        ${({ theme: { name } }) =>
-          name === 'dark'
-            ? css`${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`
-            : css`${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards`};
-
+      animation: ${({ theme: { name } }) =>
+        name === 'dark'
+          ? css`
+              ${sunset} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards
+            `
+          : css`
+              ${sunrise} 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards
+            `};
     }
 
     svg {
       width: 20px;
       height: 20px;
-      transform: ${({ theme })=> theme.name === 'dark' ? 'rotate(90deg)' : 'rotate(-90deg)'};
+      transform: ${({ theme }) => (theme.name === 'dark' ? 'rotate(90deg)' : 'rotate(-90deg)')};
 
       path {
-        fill: ${gray600 };
+        fill: ${gray600};
       }
     }
   }

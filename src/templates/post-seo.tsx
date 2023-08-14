@@ -12,10 +12,13 @@ interface Props {
   updated: string;
 }
 
+// eslint-disable-next-line react/display-name
 export default ({ title, excerpt, path, created, updated }: Props) => {
   return (
     <Helmet>
-      <title>{title} | {defaultTitle}</title>
+      <title>
+        {title} | {defaultTitle}
+      </title>
       <meta name="description" content={excerpt} />
       <meta name="image" content="" />
       <meta name="og:title" content={title} />
@@ -29,7 +32,7 @@ export default ({ title, excerpt, path, created, updated }: Props) => {
       <meta name="twitter:creator" content={`@${twitterUsername}`} />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" />
-      <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+      <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
       <script type="application/ld+json">
         {`
             {

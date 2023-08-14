@@ -12,10 +12,14 @@ import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
-const SearchResult = ({ locationState }: {locationState: SearchPageProps['location']['state']}) => {
+const SearchResult = ({
+  locationState
+}: {
+  locationState: SearchPageProps['location']['state'];
+}) => {
   const filteredPosts = useFilteredPosts({
     searchFilter: locationState?.searchFilter,
-    searchKeyword: locationState?.searchKeyword,
+    searchKeyword: locationState?.searchKeyword
   });
 
   const { offset, loadMore } = useLoadMore(filteredPosts);
@@ -23,31 +27,23 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
   return (
     <Container>
       <div>
-        <BigSearch/>
+        <BigSearch />
         <span>{locationState?.searchKeyword}</span>
       </div>
-      {filteredPosts.length === 0
-        ? <NoContent prefix="검색 결과가"/>
-        : filteredPosts
-          .slice(0, offset)
-          .map(({ node: {
-            id,
-            frontmatter: {
-              updated,
-              title,
-            },
-            fields: {
-              slug,
-            },
-          } }) =>
-            <Post
-              key={id}
-              path={slug}
-              updated={updated}
-              title={title}
-            />
-          )}
-      <LoadMore load={loadMore}/>
+      {filteredPosts.length === 0 ? (
+        <NoContent prefix="검색 결과가" />
+      ) : (
+        filteredPosts.slice(0, offset).map(
+          ({
+            node: {
+              id,
+              frontmatter: { updated, title },
+              fields: { slug }
+            }
+          }) => <Post key={id} path={slug} updated={updated} title={title} />
+        )
+      )}
+      <LoadMore load={loadMore} />
       <ScrollToTop />
     </Container>
   );
@@ -71,8 +67,8 @@ const Container = styled.ul`
       width: 32px;
       path {
         fill: transparent;
-        stroke: ${({ theme })=> theme.mute};
-        transition: all .5s;
+        stroke: ${({ theme }) => theme.mute};
+        transition: all 0.5s;
       }
     }
 
@@ -80,6 +76,6 @@ const Container = styled.ul`
       margin-top: 0;
     }
   }
-  
+
   ${previews};
 `;

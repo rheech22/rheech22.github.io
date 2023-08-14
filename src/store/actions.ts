@@ -25,7 +25,7 @@ const actions: {
     localStorage.setItem('display-mode', displayMode ?? '');
 
     return { ...state, displayMode };
-  },
+  }
 };
 
 export default actions;

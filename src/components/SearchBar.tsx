@@ -10,17 +10,16 @@ import Textbox from './Textbox';
 
 interface Props {
   searchKeyword: string;
-  onChange: (value: string) => void
+  onChange: (value: string) => void;
 }
 
-const SearchBar = ({
-  searchKeyword,
-  onChange,
-}: Props) => {
+const SearchBar = ({ searchKeyword, onChange }: Props) => {
   const searchBy = (searchFilter: 'all' | 'title' | 'content') => {
     onChange('');
 
-    navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, { state: { searchKeyword, searchFilter } });
+    navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, {
+      state: { searchKeyword, searchFilter }
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,21 +31,30 @@ const SearchBar = ({
   return (
     <Container onSubmit={handleSubmit} hasInput={Boolean(searchKeyword)}>
       <Textbox onChange={onChange} value={searchKeyword} placeholder="Search" maxLength={40} />
-      {
-        searchKeyword &&
+      {searchKeyword && (
         <Suggestions>
-          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title="only title" filterText="title" />
-          <SearchSuggestion searchBy={searchBy} input={searchKeyword} title="only content" filterText="content" />
+          <SearchSuggestion
+            searchBy={searchBy}
+            input={searchKeyword}
+            title="only title"
+            filterText="title"
+          />
+          <SearchSuggestion
+            searchBy={searchBy}
+            input={searchKeyword}
+            title="only content"
+            filterText="content"
+          />
         </Suggestions>
-      }
-      <Button type="submit" hidden accessibleName="Submit Search"/>
+      )}
+      <Button type="submit" hidden accessibleName="Submit Search" />
     </Container>
   );
 };
 
 export default SearchBar;
 
-const Container = styled.form<{hasInput: boolean}>`
+const Container = styled.form<{ hasInput: boolean }>`
   border: 1px solid ${({ theme }) => theme.searchBorder};
   border-radius: 6px;
   width: 272px;
@@ -64,7 +72,7 @@ const Container = styled.form<{hasInput: boolean}>`
       }
     }
   }
-  
+
   & > input {
     border: none;
     border-radius: 6px;
@@ -74,20 +82,20 @@ const Container = styled.form<{hasInput: boolean}>`
     background-color: ${({ theme }) => theme.searchBg};
     color: ${snow};
     font-size: 14px;
-    transition: all .5s;
+    transition: all 0.5s;
 
     &:focus {
       @media ${device.widerThanTablet} {
-        border-bottom-left-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
-        border-bottom-right-radius: ${({ hasInput }) => hasInput ? '0px' : '6px'};
+        border-bottom-left-radius: ${({ hasInput }) => (hasInput ? '0px' : '6px')};
+        border-bottom-right-radius: ${({ hasInput }) => (hasInput ? '0px' : '6px')};
       }
 
       color: ${({ theme }) => theme.default};
       background-color: ${({ theme }) => theme.searchBgFocused};
-      
+
       &::placeholder {
-        color: ${({ theme })=>theme.searchPlaceholderFocused};
-      }  
+        color: ${({ theme }) => theme.searchPlaceholderFocused};
+      }
     }
 
     &::placeholder {
@@ -98,7 +106,7 @@ const Container = styled.form<{hasInput: boolean}>`
 
 const Suggestions = styled.ul`
   display: none;
-  border: ${({ theme })=> `1px solid ${theme.border}`};
+  border: ${({ theme }) => `1px solid ${theme.border}`};
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   background-color: ${({ theme }) => theme.searchSuggestionBg};

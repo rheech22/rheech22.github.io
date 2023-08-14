@@ -12,13 +12,9 @@ interface Props {
   updated: string | null;
 }
 
-const Post = ({
-  path = '',
-  title = '',
-  updated = '',
-}: Props) => {
+const Post = ({ path = '', title = '', updated = '' }: Props) => {
   return (
-    <Container onClick={()=> navigate(path ?? '')}>
+    <Container onClick={() => navigate(path ?? '')}>
       <div>
         <Heading>{title}</Heading>
         <Date>{updated ? getDateString({ date: updated, addPrefix: true }) : ''}</Date>
@@ -57,7 +53,7 @@ const Heading = styled.h2`
   font-weight: 600;
   color: ${({ theme }) => theme.default};
   margin-bottom: 4px;
-  transition: all .5s;
+  transition: all 0.5s;
 `;
 
 const Date = styled.span`

@@ -5,7 +5,7 @@ import { flex } from '../styles/mixins';
 import Sidebar from './Sidebar';
 
 interface Props {
-  children: JSX.Element
+  children: JSX.Element;
 }
 
 const SidebarProvider = ({ children }: Props) => (

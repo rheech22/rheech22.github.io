@@ -3,7 +3,7 @@ import { CSSProperties, css } from 'styled-components';
 export const flex = ({
   alignItems = 'normal',
   justifyContent = 'normal',
-  flexDirection = 'row',
+  flexDirection = 'row'
 }: {
   alignItems?: CSSProperties['alignItems'];
   justifyContent?: CSSProperties['justifyContent'];
@@ -35,5 +35,5 @@ export const border = {
   default: () => css`
     border: ${({ theme }) => `1px solid ${theme.border}`};
     transition: border-color 0.5s;
-  `,
+  `
 };

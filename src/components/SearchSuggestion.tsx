@@ -23,7 +23,7 @@ const SearchSuggestion = ({ title, filterText, input, searchBy }: Props) => {
 
   return (
     <Container onMouseDown={handleClick}>
-      <Search/>
+      <Search />
       {input}
       <Button accessibleName="search suggestion">
         {title}
@@ -51,9 +51,9 @@ const Container = styled.li`
     &:hover {
       background-color: ${({ theme }) => theme.searchSuggestionHovered};
       color: ${white};
-  
+
       svg {
-        fill: ${white}
+        fill: ${white};
       }
     }
   }
@@ -66,7 +66,7 @@ const Container = styled.li`
   & > button {
     ${flex({ alignItems: 'center', justifyContent: 'center' })};
     margin-left: auto;
-    border: ${({ theme })=> `1px solid ${theme.border}`};
+    border: ${({ theme }) => `1px solid ${theme.border}`};
     border-radius: 6px;
     padding: 4px 6px;
     background-color: ${({ theme }) => theme.searchBgFocused};
@@ -81,5 +81,5 @@ const Container = styled.li`
     & > span {
       margin-left: 4px;
     }
-  } 
+  }
 `;

@@ -1,11 +1,5 @@
 const Github = (props: any) => (
-  <svg
-    width="24px"
-    height="24px"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fill="#333"
       fillRule="evenodd"

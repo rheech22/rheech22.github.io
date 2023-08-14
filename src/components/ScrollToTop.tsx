@@ -11,7 +11,7 @@ const ScrollToTop = () => {
   if (isTop) return null;
 
   return (
-    <Container onClick={()=> handleClickButton()}>
+    <Container onClick={() => handleClickButton()}>
       <Arrow />
     </Container>
   );
@@ -28,9 +28,9 @@ const Container = styled.div`
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background-color: ${({ theme })=> theme.searchSuggestionHovered};
+  background-color: ${({ theme }) => theme.searchSuggestionHovered};
   cursor: pointer;
-  
+
   svg {
     path {
       fill: white;
@@ -48,12 +48,12 @@ const Container = styled.div`
         width: 0;
         height: 0;
         color: ${tooltipBg};
-        content: "";
+        content: '';
         border: 6px solid transparent;
         border-top-color: ${tooltipBg};
         opacity: 0.7;
       }
-    
+
       &::after {
         position: absolute;
         bottom: 100%;

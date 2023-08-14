@@ -24,8 +24,7 @@ const useScrollToTop = () => {
   useEffect(() => {
     setIsTop(document.documentElement.scrollTop === 0);
 
-    const handleScroll = () =>
-      setIsTop(document.documentElement.scrollTop === 0);
+    const handleScroll = () => setIsTop(document.documentElement.scrollTop === 0);
 
     const throttleHandler = () => throttle({ cb: handleScroll, wait: 600 });
 
@@ -39,7 +38,7 @@ const useScrollToTop = () => {
 
   return {
     isTop,
-    handleClickButton,
+    handleClickButton
   };
 };
 

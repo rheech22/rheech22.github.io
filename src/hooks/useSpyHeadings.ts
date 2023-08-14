@@ -7,8 +7,7 @@ const useSpyHeadings = () => {
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const isTop = (ref: HTMLElement) =>
-    document.documentElement.scrollTop - ref.offsetTop >= -5;
+  const isTop = (ref: HTMLElement) => document.documentElement.scrollTop - ref.offsetTop >= -5;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -30,7 +29,7 @@ const useSpyHeadings = () => {
 
           dispatch({
             type: 'setCurrentHeadingId',
-            payload: { headingId: heading.id },
+            payload: { headingId: heading.id }
           });
         });
 

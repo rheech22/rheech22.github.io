@@ -7,7 +7,7 @@ export const wrapPageElement = wrapper;
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({
-    lang: config.language,
+    lang: config.language
   });
   setHeadComponents([
     <link
@@ -15,7 +15,6 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       as="style"
       rel="stylesheet preload prefetch"
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
-    />,
+    />
   ]);
 };
-

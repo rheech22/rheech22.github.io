@@ -20,14 +20,14 @@ const Container = styled.footer`
   width: 100%;
   font-size: 12px;
   text-align: center;
-  
-  &> section {
+
+  & > section {
     padding: 48px 8px;
   }
 
   & > span {
     display: inline-flex;
     align-items: center;
-    color: ${({ theme })=> theme.mute};
+    color: ${({ theme }) => theme.mute};
   }
 `;

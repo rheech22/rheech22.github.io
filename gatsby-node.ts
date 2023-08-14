@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import {
-  CreateNodeArgs,
-  CreatePagesArgs,
-  CreateSchemaCustomizationArgs,
-} from 'gatsby';
+import { CreateNodeArgs, CreatePagesArgs, CreateSchemaCustomizationArgs } from 'gatsby';
 import { createFilePath } from 'gatsby-source-filesystem';
 
 const path = require('path');
@@ -15,32 +11,25 @@ exports.onCreateNode = ({ node, getNode, actions }: CreateNodeArgs) => {
       node,
       getNode,
       basePath: 'pages',
-      trailingSlash: false,
+      trailingSlash: false
     });
 
     createNodeField({
       node,
       name: 'slug',
-      value: slug,
+      value: slug
     });
   }
 };
 
-exports.createPages = async ({
-  actions,
-  graphql,
-  reporter,
-}: CreatePagesArgs) => {
+exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) => {
   const { createPage } = actions;
 
   const component = path.resolve('src/templates/post.tsx');
 
   const result = await graphql<Queries.createPageQuery>(`
     query createPage {
-      allMarkdownRemark(
-        limit: 1000
-        sort: { order: ASC, fields: [frontmatter___updated] }
-      ) {
+      allMarkdownRemark(limit: 1000, sort: { order: ASC, fields: [frontmatter___updated] }) {
         edges {
           node {
             fields {
@@ -60,24 +49,22 @@ exports.createPages = async ({
     result.data.allMarkdownRemark.edges.forEach(
       ({
         node: {
-          fields: { slug },
-        },
+          fields: { slug }
+        }
       }) => {
         createPage({
           path: slug,
           component,
           context: {
-            slug,
-          },
+            slug
+          }
         });
       }
     );
   }
 };
 
-exports.createSchemaCustomization = ({
-  actions,
-}: CreateSchemaCustomizationArgs) => {
+exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs) => {
   const { createTypes } = actions;
 
   const typeDefs = `

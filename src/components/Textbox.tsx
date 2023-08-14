@@ -19,7 +19,7 @@ const Textbox = ({
   placeholder,
   maxLength,
   autoFocus,
-  disabled,
+  disabled
 }: Props) => {
   return (
     <Input
@@ -27,7 +27,7 @@ const Textbox = ({
       id={id}
       name={name}
       value={value}
-      onChange={({ target: { value } })=> onChange?.(value)}
+      onChange={({ target: { value } }) => onChange?.(value)}
       placeholder={placeholder}
       maxLength={maxLength}
       autoFocus={autoFocus}

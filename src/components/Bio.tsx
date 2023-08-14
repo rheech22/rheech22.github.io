@@ -13,11 +13,7 @@ const Bio = () => {
     <Container>
       <Wrapper>
         <Avatar>
-          <StaticImage
-            src="../images/avatar.jpeg"
-            alt="avatar"
-            placeholder="blurred"
-          />
+          <StaticImage src="../images/avatar.jpeg" alt="avatar" placeholder="blurred" />
         </Avatar>
         <Socials />
       </Wrapper>
@@ -60,7 +56,7 @@ const Avatar = styled.div`
   @media ${device.widerThanLaptopS} {
     margin-right: 0;
     width: 100%;
-    min-height: 168px;  
+    min-height: 168px;
   }
 
   img {
@@ -80,7 +76,7 @@ const Profile = styled.div`
   margin-left: 16px;
   max-width: 296px;
   height: 138px;
-  
+
   @media ${device.widerThanLaptopS} {
     width: 100%;
     height: auto;
@@ -95,7 +91,7 @@ const Name = styled.span`
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
-  
+
   @media ${device.widerThanLaptopS} {
     font-size: 24px;
     padding-top: 4px;

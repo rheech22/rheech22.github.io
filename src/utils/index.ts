@@ -5,19 +5,17 @@ export const getTheme = (displayMode: 'day' | 'night' | null) => {
 export const getDateString = ({
   date,
   addPrefix,
-  getYear,
+  getYear
 }: {
   date: string;
   addPrefix?: boolean;
   getYear?: boolean;
 }) => {
   const dateString = new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'medium',
+    dateStyle: 'medium'
   }).format(new Date(date));
 
-  return `${addPrefix ? 'Updated on' : ''} ${
-    getYear ? dateString : dateString.slice(0, -5)
-  }`;
+  return `${addPrefix ? 'Updated on' : ''} ${getYear ? dateString : dateString.slice(0, -5)}`;
 };
 
 export const takePost = (data: Queries.templateQuery) => {
@@ -28,8 +26,8 @@ export const takePost = (data: Queries.templateQuery) => {
       excerpt,
       html: contents,
       frontmatter: { title, created, updated },
-      fields: { slug },
-    },
+      fields: { slug }
+    }
   } = data;
 
   return {
@@ -40,7 +38,7 @@ export const takePost = (data: Queries.templateQuery) => {
     contents: contents ?? '',
     excerpt: excerpt ?? '',
     headings: headings ?? [],
-    timeToRead: timeToRead ?? '',
+    timeToRead: timeToRead ?? ''
   };
 };
 

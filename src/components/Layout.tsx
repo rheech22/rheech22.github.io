@@ -24,13 +24,11 @@ const Layout = ({ children }: Props) => {
   const { displayMode } = useContext();
 
   return (
-    <ThemeProvider theme={displayMode === 'day' ? light : dark }>
-      <GlobalStyle/>
+    <ThemeProvider theme={displayMode === 'day' ? light : dark}>
+      <GlobalStyle />
       <Header />
-      <main>
-        {children}
-      </main>
-      <Footer/>
+      <main>{children}</main>
+      <Footer />
     </ThemeProvider>
   );
 };

@@ -8,14 +8,20 @@ interface Props {
 }
 
 const SEO = ({ subTitle, description, pathname, children }: Props) => {
-  const { title, description: defaultDescription, image, siteUrl, twitterUsername } = useSiteMetadata();
+  const {
+    title,
+    description: defaultDescription,
+    image,
+    siteUrl,
+    twitterUsername
+  } = useSiteMetadata();
 
   const seo = {
     title: subTitle ? `${subTitle} | ${title}` : title,
     description: description || defaultDescription,
     image: `${siteUrl}${image}`,
     url: `${siteUrl}${pathname || ''}`,
-    twitterUsername,
+    twitterUsername
   };
 
   return (
@@ -41,5 +47,3 @@ const SEO = ({ subTitle, description, pathname, children }: Props) => {
 };
 
 export default SEO;
-
-

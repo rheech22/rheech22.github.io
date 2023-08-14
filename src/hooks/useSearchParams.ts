@@ -9,12 +9,9 @@ const useSearchParams = () => {
     const searchFilter = params.get('filter') ?? '';
 
     if (searchKeyword) {
-      navigate(
-        `/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(
-          searchFilter
-        )}`,
-        { state: { searchKeyword, searchFilter } }
-      );
+      navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, {
+        state: { searchKeyword, searchFilter }
+      });
       return;
     }
   }, []);

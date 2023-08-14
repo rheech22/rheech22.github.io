@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
 
 interface Props {
-  load: ()=> void;
+  load: () => void;
 }
 
 const LoadMore = ({ load }: Props) => {
   const loadMoreTrigger = useRef(null);
 
   useEffect(() => {
-    const loadMoreObserver = new IntersectionObserver(([ { isIntersecting } ]) => {
+    const loadMoreObserver = new IntersectionObserver(([{ isIntersecting }]) => {
       if (!isIntersecting) return;
       load();
     });
@@ -20,11 +20,7 @@ const LoadMore = ({ load }: Props) => {
     return () => loadMoreObserver.disconnect();
   }, []);
 
-  return (
-    <li
-      ref={loadMoreTrigger}
-    />
-  );
+  return <li ref={loadMoreTrigger} />;
 };
 
 export default LoadMore;

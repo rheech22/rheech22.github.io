@@ -6,12 +6,11 @@ import SearchResult from '../containers/SearchResult';
 
 export type SearchPageProps = PageProps<object, object, Record<string, string>>;
 
+// eslint-disable-next-line react/display-name
 export default ({ location }: SearchPageProps) => (
   <SidebarProvider>
-    <SearchResult locationState = {location.state}/>
+    <SearchResult locationState={location.state} />
   </SidebarProvider>
 );
 
-export const Head = () => (
-  <SEO subTitle="검색" />
-);
+export const Head = () => <SEO subTitle="검색" />;

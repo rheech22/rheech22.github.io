@@ -16,16 +16,12 @@ const filter = ({ posts, searchKeyword, searchFilter }: Filter) => {
       ({
         node: {
           frontmatter: { title },
-          html,
-        },
+          html
+        }
       }) => {
-        const hasTitle = title
-          .toLowerCase()
-          .includes(searchKeyword.toLowerCase());
+        const hasTitle = title.toLowerCase().includes(searchKeyword.toLowerCase());
 
-        const hasContent = html
-          ?.toLowerCase()
-          .includes(searchKeyword.toLowerCase());
+        const hasContent = html?.toLowerCase().includes(searchKeyword.toLowerCase());
 
         if (searchFilter === 'title') return hasTitle;
 
@@ -45,7 +41,7 @@ const useFilteredPosts = ({ searchFilter, searchKeyword }: Params) => {
   const filteredPosts = filter({
     posts,
     searchFilter,
-    searchKeyword,
+    searchKeyword
   });
 
   return filteredPosts;

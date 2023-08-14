@@ -12,7 +12,7 @@ const useLoadMore = <T>(posts: readonly T[] | T[]) => {
 
   return {
     offset,
-    loadMore,
+    loadMore
   };
 };
 

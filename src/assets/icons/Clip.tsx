@@ -1,12 +1,11 @@
-const Clip = (props:any) => (
+const Clip = (props: any) => (
   <svg
     width="24px"
     height="24px"
     viewBox="0 0 24 24"
     id="magicoon-Regular"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+    {...props}>
     <defs>
       <style>{'.cls-1{fill:#41416e;}'}</style>
     </defs>

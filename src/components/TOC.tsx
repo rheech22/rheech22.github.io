@@ -17,7 +17,7 @@ const TOC = ({ headings }: Props) => {
     <Container>
       <h2>ON THIS PAGE</h2>
       <ul>
-        {headings?.map(heading => {
+        {headings?.map((heading) => {
           if (!heading) return null;
 
           const { id, depth, value } = heading;
@@ -39,7 +39,7 @@ const Container = styled.aside`
   @media ${device.widerThanLaptop} {
     display: block;
   }
-  
+
   display: none;
   position: sticky;
   top: 10px;
@@ -50,18 +50,18 @@ const Container = styled.aside`
   height: fit-content;
   color: ${({ theme }) => theme.default};
   overflow-y: scroll;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
-  
+
   h2 {
     margin-bottom: 12px;
     padding: 8px 10px;
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: .025em;
-    transition: all .5s;
+    letter-spacing: 0.025em;
+    transition: all 0.5s;
   }
 
   ul {
@@ -73,31 +73,32 @@ const Container = styled.aside`
   }
 `;
 
-const List = styled.li<{depth?: number | null, isIntersecting: boolean }>`
+const List = styled.li<{ depth?: number | null; isIntersecting: boolean }>`
   display: flex;
   align-items: center;
   margin-left: auto;
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
-  padding-left: ${({ depth }) => depth && depth > 0 ? `${depth * 8}px` : '8px' };
+  padding-left: ${({ depth }) => (depth && depth > 0 ? `${depth * 8}px` : '8px')};
   padding-right: 10px;
   max-width: 265px;
   width: 100%;
-  background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.lightBlue : 'none' };
-  color: ${({ theme, isIntersecting }) => isIntersecting ? theme.blue : theme.mute };
-  font-size: ${({ depth }) => depth && depth > 0 ? `${14 - depth}px` : '14px' };
+  background-color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.lightBlue : 'none')};
+  color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.blue : theme.mute)};
+  font-size: ${({ depth }) => (depth && depth > 0 ? `${14 - depth}px` : '14px')};
   transition: all 50ms ease-in-out;
 
   @media (hover: hover) {
     &:hover {
       &:hover {
-        background-color: ${({ theme, isIntersecting }) => isIntersecting ? theme.seriesBg : bgHovered};
+        background-color: ${({ theme, isIntersecting }) =>
+          isIntersecting ? theme.seriesBg : bgHovered};
       }
     }
   }
 
   a {
-    padding: ${({ depth }) => depth && depth > 0 ? `${8 - depth}px 0` : '8px 0' };;
+    padding: ${({ depth }) => (depth && depth > 0 ? `${8 - depth}px 0` : '8px 0')};
     width: 100%;
     text-decoration: unset;
     white-space: nowrap;

@@ -16,26 +16,18 @@ const Posts = () => {
 
   return (
     <Container>
-      {posts
-        .slice(0, offset)
-        .map(({ node: {
-          id,
-          frontmatter: {
-            updated,
-            title,
-          },
-          fields: {
-            slug,
-          },
-        } }) =>
-          <Post
-            key={id}
-            path={slug}
-            updated={updated}
-            title={title}
-          />
-        )}
-      <LoadMore load={loadMore}/>
+      {posts.slice(0, offset).map(
+        ({
+          node: {
+            id,
+            frontmatter: { updated, title },
+            fields: { slug }
+          }
+        }) => (
+          <Post key={id} path={slug} updated={updated} title={title} />
+        )
+      )}
+      <LoadMore load={loadMore} />
       <ScrollToTop />
     </Container>
   );

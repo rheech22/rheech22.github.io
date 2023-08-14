@@ -1,14 +1,19 @@
 /* eslint-disable no-undef */
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended'
+  ],
   rules: {
     indent: 'off',
     '@typescript-eslint/indent': [
       'error',
       2,
       {
-        ignoredNodes: ['ArrowFunctionExpression'],
-      },
+        ignoredNodes: ['ArrowFunctionExpression']
+      }
     ],
     'no-trailing-spaces': 'error',
     semi: ['error', 'always'],
@@ -22,7 +27,6 @@ module.exports = {
     'keyword-spacing': ['error', { before: true, after: true }],
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'always-multiline'],
     'space-in-parens': ['error', 'never'],
     'block-spacing': 'error',
     'object-curly-spacing': ['error', 'always'],
@@ -33,5 +37,6 @@ module.exports = {
     'eol-last': ['error', 'always'],
     quotes: ['error', 'single'],
     'jsx-quotes': ['error', 'prefer-double'],
-  },
+    'comma-dangle': ['error', 'never']
+  }
 };
