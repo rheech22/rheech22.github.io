@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import wrapper from './wrapPageElement';
 import config from './blog-config';
+import wrapper from './wrapPageElement';
 
 export const wrapPageElement = wrapper;
 

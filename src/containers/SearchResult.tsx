@@ -1,22 +1,16 @@
 import styled from 'styled-components';
-import { previews } from '../styles/modules';
-import { device } from '../styles/breakpoints';
-import { flex } from '../styles/mixins';
-import BigSearch from '../assets/icons/BigSearch';
 
+import BigSearch from '../assets/icons/BigSearch';
+import LoadMore from '../components/LoadMore';
+import NoContent from '../components/NoContent';
+import Post from '../components/Post';
+import ScrollToTop from '../components/ScrollToTop';
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
-
-import ScrollToTop from '../components/ScrollToTop';
-import NoContent from '../components/NoContent';
-import LoadMore from '../components/LoadMore';
-import Post from '../components/Post';
-
 import { SearchPageProps } from '../pages/search';
-
-const ICONS: Record<string, JSX.Element | string> = {
-  'searchKeyword': <BigSearch/>,
-};
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
+import { previews } from '../styles/modules';
 
 const SearchResult = ({ locationState }: {locationState: SearchPageProps['location']['state']}) => {
   const filteredPosts = useFilteredPosts({
@@ -26,11 +20,12 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
 
   const { offset, loadMore } = useLoadMore(filteredPosts);
 
-  const [ filter, value ] = Object.entries(locationState ?? {})[0] ?? [ '', '' ];
-
   return (
     <Container>
-      <div>{ICONS[filter]}<span>{value}</span></div>
+      <div>
+        <BigSearch/>
+        <span>{locationState?.searchKeyword}</span>
+      </div>
       {filteredPosts.length === 0
         ? <NoContent prefix="검색 결과가"/>
         : filteredPosts

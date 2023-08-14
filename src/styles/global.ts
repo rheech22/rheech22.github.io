@@ -4,7 +4,7 @@ import reset from 'styled-reset';
 interface GlobalStyle {
   theme: {
     [key: string]: string;
-  }
+  };
 }
 
 const globalStyle = createGlobalStyle<GlobalStyle>`
@@ -30,8 +30,8 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
   body {
     font-family: 'Spoqa Han Sans', BlinkMacSystemFont,Arial ,sans-serif;
     width: 100%;
-    background-color: ${({ theme }) => (theme.bg)};
-    color: ${({ theme }) => (theme.default)};
+    background-color: ${({ theme }) => theme.bg};
+    color: ${({ theme }) => theme.default};
     min-height: 100vh;
     line-height: 1.5;
     transition: all .5s;

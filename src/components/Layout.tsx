@@ -1,14 +1,13 @@
 import { ThemeProvider } from 'styled-components';
-import { dark, light } from '../styles/themes';
-import GlobalStyle from '../styles/global';
 
-import { useContext } from '../store/context';
-import useSearchParams from '../hooks/useSearchParams';
 import usePosts from '../hooks/usePosts';
+import useSearchParams from '../hooks/useSearchParams';
 import useTheme from '../hooks/useTheme';
-
-import Header from './Header';
+import { useContext } from '../store/context';
+import GlobalStyle from '../styles/global';
+import { dark, light } from '../styles/themes';
 import Footer from './Footer';
+import Header from './Header';
 
 interface Props {
   children: JSX.Element | null;

@@ -1,13 +1,12 @@
 import { navigate } from 'gatsby';
-
 import styled from 'styled-components';
-import { border } from '../styles/mixins';
-import { snow, gray600 } from '../styles/themes';
-import { device } from '../styles/breakpoints';
 
+import { device } from '../styles/breakpoints';
+import { border } from '../styles/mixins';
+import { gray600, snow } from '../styles/themes';
+import Button from './Button';
 import SearchSuggestion from './SearchSuggestion';
 import Textbox from './Textbox';
-import Button from './Button';
 
 interface Props {
   searchKeyword: string;

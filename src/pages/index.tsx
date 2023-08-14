@@ -1,7 +1,6 @@
-import Posts from '../containers/Posts';
-
-import SidebarProvider from '../components/SidebarProvider';
 import SEO from '../components/SEO';
+import SidebarProvider from '../components/SidebarProvider';
+import Posts from '../containers/Posts';
 
 export default () => (
   <SidebarProvider>

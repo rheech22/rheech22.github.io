@@ -1,15 +1,13 @@
-import { graphql, Link, PageProps } from 'gatsby';
 import Giscus from '@giscus/react';
-import * as Styled from './styles';
-
-import { useContext } from '../store/context';
-import useSpyHeadings from '../hooks/useSpyHeadings';
-
-import { takePost, getDateString } from '../utils';
+import { Link, PageProps, graphql } from 'gatsby';
 
 import ScrollToTop from '../components/ScrollToTop';
 import TOC from '../components/TOC';
+import useSpyHeadings from '../hooks/useSpyHeadings';
+import { useContext } from '../store/context';
+import { getDateString, takePost } from '../utils';
 import SEO from './post-seo';
+import * as Styled from './styles';
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { displayMode } = useContext();

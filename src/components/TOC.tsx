@@ -1,11 +1,10 @@
 import { Link } from 'gatsby';
-
 import styled from 'styled-components';
+
+import { useContext } from '../store/context';
+import { Headings } from '../store/types';
 import { device } from '../styles/breakpoints';
 import { bgHovered } from '../styles/themes';
-import { useContext } from '../store/context';
-
-import { Headings } from '../store/types';
 
 interface Props {
   headings: Headings;

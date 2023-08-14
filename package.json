@@ -58,5 +58,11 @@
     "gatsby-plugin-eslint": "^4.0.2",
     "gh-pages": "^4.0.0",
     "typescript": "^4.7.4"
+  },
+  "importSort": {
+    ".js, .jsx, .es6, .es, .mjs, .ts, .tsx": {
+      "parser": "babylon",
+      "style": "import-sort-style-module"
+    }
   }
 }

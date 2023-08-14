@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { tooltipBg } from '../styles/themes';
-import { flex } from '../styles/mixins';
 
 import Arrow from '../assets/icons/ArrowThin';
-
 import useScrollToTop from '../hooks/useScrollToTop';
+import { flex } from '../styles/mixins';
+import { tooltipBg } from '../styles/themes';
 
 const ScrollToTop = () => {
   const { isTop, handleClickButton } = useScrollToTop();

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 import { useDispatch } from '../store/context';
 
 const useSpyHeadings = () => {
@@ -6,12 +7,15 @@ const useSpyHeadings = () => {
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const isTop = (ref: HTMLElement) => (document.documentElement.scrollTop - ref.offsetTop >= -5);
+  const isTop = (ref: HTMLElement) =>
+    document.documentElement.scrollTop - ref.offsetTop >= -5;
 
   useEffect(() => {
     if (!ref.current) return;
 
-    const headings: HTMLHeadingElement[] = Array.from(ref.current.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+    const headings: HTMLHeadingElement[] = Array.from(
+      ref.current.querySelectorAll('h1, h2, h3, h4, h5, h6')
+    );
 
     let isPending = false;
 
@@ -24,7 +28,10 @@ const useSpyHeadings = () => {
         headings.forEach((heading) => {
           if (!isTop(heading)) return;
 
-          dispatch({ type: 'setCurrentHeadingId', payload: { headingId: heading.id } });
+          dispatch({
+            type: 'setCurrentHeadingId',
+            payload: { headingId: heading.id },
+          });
         });
 
         isPending = false;

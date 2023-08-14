@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
-
 import { useEffect } from 'react';
+
 import { useDispatch } from '../store/context';
 
 const usePosts = () => {

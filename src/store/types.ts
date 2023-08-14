@@ -18,6 +18,6 @@ export type Action = { type: ActionType; payload?: Payload };
 
 export type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges'];
 
-export type Headings = Queries.Maybe<
-  ReadonlyArray<Queries.Maybe<Queries.MarkdownHeading>>
->;
+type MarkdownHeadings = ReadonlyArray<Queries.Maybe<Queries.MarkdownHeading>>;
+
+export type Headings = Queries.Maybe<MarkdownHeadings>;

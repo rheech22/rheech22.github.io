@@ -5,10 +5,15 @@ import { useDispatch } from '../store/context';
 const useTheme = () => {
   const dispatch = useDispatch();
 
-  useLayoutEffect(()=> {
+  useLayoutEffect(() => {
     const personalPreference = localStorage.getItem('display-mode');
-    const devicePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
-    const displayMode = (personalPreference || devicePreference) as ('night' | 'day');
+    const devicePreference = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches
+      ? 'night'
+      : 'day';
+    const displayMode = (personalPreference || devicePreference) as
+      | 'night'
+      | 'day';
 
     dispatch({ type: 'setDisplayMode', payload: { displayMode } });
   }, []);

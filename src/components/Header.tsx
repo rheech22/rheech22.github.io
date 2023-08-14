@@ -1,20 +1,17 @@
 import { Link } from 'gatsby';
-
 import { useState } from 'react';
-import { useContext, useDispatch } from '../store/context';
-import { getTheme } from '../utils';
-
 import styled, { css } from 'styled-components';
-import { flex } from '../styles/mixins';
-import { device } from '../styles/breakpoints';
-import { headerBg, snow, gray600 } from '../styles/themes';
-import { sunrise, sunset } from '../styles/keyframes';
-import Sun from '../assets/icons/Sun';
-import Moon from '../assets/icons/Moon';
-
-import SearchBar from './SearchBar';
 
 import config from '../../blog-config';
+import Moon from '../assets/icons/Moon';
+import Sun from '../assets/icons/Sun';
+import { useContext, useDispatch } from '../store/context';
+import { device } from '../styles/breakpoints';
+import { sunrise, sunset } from '../styles/keyframes';
+import { flex } from '../styles/mixins';
+import { gray600, headerBg, snow } from '../styles/themes';
+import { getTheme } from '../utils';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -1,12 +1,10 @@
 import { StaticImage } from 'gatsby-plugin-image';
-
 import styled from 'styled-components';
-import { device } from '../styles/breakpoints';
-import { flex } from '../styles/mixins';
-
-import Socials from './Socials';
 
 import config from '../../blog-config';
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
+import Socials from './Socials';
 
 const Bio = () => {
   const { author, description } = config;

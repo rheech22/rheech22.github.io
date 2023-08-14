@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-import { flex } from '../styles/mixins';
-import { device } from '../styles/breakpoints';
-
-import Github from '../assets/icons/Github';
-import Twitter from '../assets/icons/Twitter';
-import Clip from '../assets/icons/Clip';
-import LinkedIn from '../assets/icons/LinkedIn';
-import Instagram from '../assets/icons/Instagram';
-import Email from '../assets/icons/Email';
-import Resume from '../assets/icons/Resume';
 
 import config from '../../blog-config';
+import Clip from '../assets/icons/Clip';
+import Email from '../assets/icons/Email';
+import Github from '../assets/icons/Github';
+import Instagram from '../assets/icons/Instagram';
+import LinkedIn from '../assets/icons/LinkedIn';
+import Resume from '../assets/icons/Resume';
+import Twitter from '../assets/icons/Twitter';
+import { device } from '../styles/breakpoints';
+import { flex } from '../styles/mixins';
 
 const Socials = () => {
   const { github, twitter, instagram, linkedIn, email, resume } = config;

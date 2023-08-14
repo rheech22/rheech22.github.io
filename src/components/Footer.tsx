@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { border } from '../styles/mixins';
 
 const Footer = () => {

@@ -1,9 +1,8 @@
 import { PageProps } from 'gatsby';
 
-import SearchResult from '../containers/SearchResult';
-
-import SidebarProvider from '../components/SidebarProvider';
 import SEO from '../components/SEO';
+import SidebarProvider from '../components/SidebarProvider';
+import SearchResult from '../containers/SearchResult';
 
 export type SearchPageProps = PageProps<object, object, Record<string, string>>;
 

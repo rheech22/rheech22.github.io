@@ -1,10 +1,9 @@
 import { navigate } from 'gatsby';
-
 import styled from 'styled-components';
-import { bgHovered } from '../styles/themes';
+
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
-
+import { bgHovered } from '../styles/themes';
 import { getDateString } from '../utils';
 
 interface Props {

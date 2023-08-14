@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { previews } from '../styles/modules';
 
-import { useContext } from '../store/context';
-import useLoadMore from '../hooks/useLoadMore';
-
-import Post from '../components/Post';
 import LoadMore from '../components/LoadMore';
+import Post from '../components/Post';
 import ScrollToTop from '../components/ScrollToTop';
+import useLoadMore from '../hooks/useLoadMore';
+import { useContext } from '../store/context';
+import { previews } from '../styles/modules';
 
 const Posts = () => {
   const { posts } = useContext();
