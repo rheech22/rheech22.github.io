@@ -5,11 +5,7 @@ import { bgHovered } from '../styles/themes';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 
-import { useContext } from '../store/context';
-import useTags from '../hooks/useTags';
 import { getDateString } from '../utils';
-
-import Tag from './Tag';
 
 interface Props {
   path: string;
@@ -71,13 +67,13 @@ const Date = styled.span`
   font-weight: 300;
 `;
 
-const Tags = styled.ul`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  flex-wrap: wrap;
-  margin: 4px 0;
-  padding: 4px 0;
+// const Tags = styled.ul`
+//   ${flex({ alignItems: 'center', justifyContent: 'center' })}
+//   flex-wrap: wrap;
+//   margin: 4px 0;
+//   padding: 4px 0;
 
-  @media ${device.widerThanTablet} {
-    ${flex({ alignItems: 'center' })}
-  }
-`;
+//   @media ${device.widerThanTablet} {
+//     ${flex({ alignItems: 'center' })}
+//   }
+// `;

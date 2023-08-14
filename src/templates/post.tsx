@@ -114,7 +114,6 @@ export const query = graphql`
         created
         updated
         title
-        tags
         series
       }
       fields {

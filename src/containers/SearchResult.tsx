@@ -45,7 +45,6 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
             frontmatter: {
               updated,
               title,
-              tags,
             },
             fields: {
               slug,
@@ -56,7 +55,6 @@ const SearchResult = ({ locationState }: {locationState: SearchPageProps['locati
               path={slug}
               updated={updated}
               title={title}
-              tags={tags ?? []}
             />
           )}
       <LoadMore load={loadMore}/>

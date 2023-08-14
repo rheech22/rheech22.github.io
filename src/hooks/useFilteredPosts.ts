@@ -10,52 +10,60 @@ interface Params {
 }
 
 interface Filter extends Params {
-  posts: Posts
+  posts: Posts;
 }
 
-const filter = ({ posts, searchKeyword, searchFilter, tag, series }: Filter) => {
+const filter = ({ posts, searchKeyword, searchFilter }: Filter) => {
   if (searchKeyword) {
-    return posts
-      .filter(({ node: { frontmatter: { title }, html } }) => {
-        const hasTitle = title.toLowerCase()
+    return posts.filter(
+      ({
+        node: {
+          frontmatter: { title },
+          html,
+        },
+      }) => {
+        const hasTitle = title
+          .toLowerCase()
           .includes(searchKeyword.toLowerCase());
-        const hasContent = html?.toLowerCase()
+
+        const hasContent = html
+          ?.toLowerCase()
           .includes(searchKeyword.toLowerCase());
 
         if (searchFilter === 'title') return hasTitle;
         if (searchFilter === 'content') return hasContent;
 
-        return (hasTitle || hasContent);
-      });
-  }
-
-  if (tag) {
-    return posts
-      .filter(({ node: { frontmatter: { tags } } }) => {
-        return tags?.some(t => t?.toLowerCase() === tag.toLowerCase());
-      });
-  }
-
-  if (series) {
-    return posts
-      .filter(({ node: { frontmatter } }) => frontmatter.series === series);
+        return hasTitle || hasContent;
+      }
+    );
   }
 
   return posts;
 };
 
-
-const useFilteredPosts = ({ searchFilter, searchKeyword, tag, series }: Params) => {
+const useFilteredPosts = ({
+  searchFilter,
+  searchKeyword,
+  tag,
+  series,
+}: Params) => {
   const dispatch = useDispatch();
 
   const { posts } = useContext();
 
   useLayoutEffect(() => {
-    tag && dispatch({ type: 'setCurrentTag', payload: { tag: tag.toLowerCase() } });
+    tag &&
+      dispatch({ type: 'setCurrentTag', payload: { tag: tag.toLowerCase() } });
     series && dispatch({ type: 'setCurrentSeries', payload: { series } });
-  }, [ tag, series ]);
+  }, [tag, series]);
 
-  const filteredPosts = filter({ posts, searchFilter, searchKeyword, series, tag });
+  const filteredPosts = filter({
+    posts,
+    searchFilter,
+    searchKeyword,
+    series,
+    tag,
+  });
 
   return filteredPosts;
 };

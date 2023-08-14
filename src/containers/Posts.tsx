@@ -32,7 +32,6 @@ const Posts = () => {
           frontmatter: {
             updated,
             title,
-            tags,
           },
           fields: {
             slug,
@@ -43,7 +42,6 @@ const Posts = () => {
             path={slug}
             updated={updated}
             title={title}
-            tags={tags ?? []}
           />
         )}
       <LoadMore load={loadMore}/>

@@ -27,7 +27,6 @@ const GET_POST = graphql`
           excerpt(pruneLength: 320)
           id
           frontmatter {
-            tags
             title
             created
             updated
