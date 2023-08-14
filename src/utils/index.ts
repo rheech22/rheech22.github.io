@@ -76,7 +76,7 @@ export const takePost = (data: Queries.templateQuery) => {
       headings,
       excerpt,
       html: contents,
-      frontmatter: { title, created, updated, tags },
+      frontmatter: { title, created, updated },
       fields: { slug },
     },
   } = data;
@@ -86,7 +86,6 @@ export const takePost = (data: Queries.templateQuery) => {
     created,
     updated,
     slug,
-    tags: tags ?? [],
     contents: contents ?? '',
     excerpt: excerpt ?? '',
     headings: headings ?? [],

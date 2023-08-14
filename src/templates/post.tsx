@@ -7,13 +7,10 @@ import * as Styled from './styles';
 
 import { useContext, useDispatch } from '../store/context';
 import useSpyHeadings from '../hooks/useSpyHeadings';
-import useTags from '../hooks/useTags';
 
 import { takePost, getDateString } from '../utils';
 
 import ScrollToTop from '../components/ScrollToTop';
-
-import Tag from '../components/Tag';
 import TOC from '../components/TOC';
 import SEO from './post-seo';
 
@@ -21,10 +18,9 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const dispatch = useDispatch();
   const { displayMode } = useContext();
 
-  const { searchByTag } = useTags();
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, tags, contents, excerpt, headings, timeToRead, slug } = takePost(data);
+  const { title, created, updated, contents, excerpt, headings, timeToRead, slug } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
 
@@ -72,16 +68,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
                 <span>{timeToRead} min read</span>
               </div>
             </Styled.SubTitle>
-            {tags.length
-              ? (<Styled.Tags>{
-                tags.map((tag, index) =>(
-                  <Tag
-                    key={index}
-                    tag={tag}
-                    onClick={searchByTag}
-                  />)
-                )}</Styled.Tags>
-              ) : null}
           </Styled.Header>
           <Styled.Main>
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }}/>

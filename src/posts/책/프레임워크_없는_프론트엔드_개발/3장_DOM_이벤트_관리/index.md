@@ -2,7 +2,6 @@
 created: "2023-02-12"
 updated: "2023-02-12"
 title: "3장_DOM 이벤트 관리"
-tags: ["javascript"]
 ---
 
 ## 이벤트 라이프사이클

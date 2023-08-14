@@ -15,36 +15,19 @@ interface Props {
   path: string;
   title: string | null;
   updated: string | null;
-  tags: readonly string[] | null;
 }
 
 const Post = ({
   path = '',
   title = '',
   updated = '',
-  tags = [],
 }: Props) => {
-  const { tag: selectedTag } = useContext();
-
-  const { searchByTag } = useTags();
-
   return (
     <Container onClick={()=> navigate(path ?? '')}>
       <div>
         <Heading>{title}</Heading>
         <Date>{updated ? getDateString({ date: updated, addPrefix: true }) : ''}</Date>
-
       </div>
-      {tags?.length
-        ? <Tags>{tags.map((tag, index) => (
-            <Tag
-              key={index}
-              tag={tag}
-              onClick={searchByTag}
-              isSelected={tag?.toLowerCase() === selectedTag}
-            />
-        ))}</Tags>
-        : null}
     </Container>
   );
 };

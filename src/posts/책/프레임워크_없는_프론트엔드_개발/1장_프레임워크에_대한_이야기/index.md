@@ -2,7 +2,6 @@
 created: "2023-01-29"
 updated: "2023-01-29"
 title: "1장_프레임워크에 대한 이야기"
-tags: ["javascript"]
 ---
 
 ## 책 소개

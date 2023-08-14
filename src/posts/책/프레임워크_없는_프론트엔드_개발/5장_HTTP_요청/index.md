@@ -2,7 +2,6 @@
 created: "2023-02-26"
 updated: "2023-02-26"
 title: "5장_HTTP 요청"
-tags: ["javascript"]
 ---
 
 ## AJAX(Asynchronous Javascript and XML)

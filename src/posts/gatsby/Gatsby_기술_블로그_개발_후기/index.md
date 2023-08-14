@@ -2,7 +2,6 @@
 created: "2022-11-14"
 updated: "2022-11-14"
 title: "Gatsby 기술 블로그 개발 후기"
-tags: ["gatsby"]
 ---
 
 > 이 블로그는 [gatsby-starter-github-theme-blog](https://github.com/rheech22/gatsby-starter-github-theme-blog)로 만들었어요.

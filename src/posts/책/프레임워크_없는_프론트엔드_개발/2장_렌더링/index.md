@@ -2,7 +2,6 @@
 created: "2023-02-07"
 updated: "2023-02-07"
 title: "2장_렌더링"
-tags: ["javascript"]
 ---
 
 ## 문서 객체 모델(DOM)
