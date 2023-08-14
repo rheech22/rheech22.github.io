@@ -3,7 +3,6 @@ import { previews } from '../styles/modules';
 import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 import BigSearch from '../assets/icons/BigSearch';
-import Series from '../assets/icons/Series';
 
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
@@ -16,15 +15,11 @@ import Post from '../components/Post';
 import { SearchPageProps } from '../pages/search';
 
 const ICONS: Record<string, JSX.Element | string> = {
-  'tag': '#',
-  'series': <Series/>,
   'searchKeyword': <BigSearch/>,
 };
 
 const SearchResult = ({ locationState }: {locationState: SearchPageProps['location']['state']}) => {
   const filteredPosts = useFilteredPosts({
-    tag: locationState?.tag,
-    series: locationState?.series,
     searchFilter: locationState?.searchFilter,
     searchKeyword: locationState?.searchKeyword,
   });

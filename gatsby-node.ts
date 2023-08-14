@@ -94,7 +94,6 @@ exports.createSchemaCustomization = ({
       title: String!
       created: String!
       updated: String!
-      series: String
     }
 
     type MarkdownRemarkFields {

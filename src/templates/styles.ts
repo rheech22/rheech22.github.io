@@ -85,12 +85,6 @@ export const SubTitle = styled.div`
   }
 `;
 
-export const Tags = styled.ul`
-  ${flex({ alignItems: 'center' })};
-  flex-wrap: wrap;
-  margin-top: 14px;
-`;
-
 export const Comments = styled.section`
   ${flex({ justifyContent: 'center' })};
   width: 100%;

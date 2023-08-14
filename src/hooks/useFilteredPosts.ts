@@ -1,12 +1,9 @@
-import { useLayoutEffect } from 'react';
-import { useContext, useDispatch } from '../store/context';
+import { useContext } from '../store/context';
 import { Posts } from '../store/types';
 
 interface Params {
-  series?: string;
   searchFilter?: string;
   searchKeyword?: string;
-  tag?: string;
 }
 
 interface Filter extends Params {
@@ -31,6 +28,7 @@ const filter = ({ posts, searchKeyword, searchFilter }: Filter) => {
           .includes(searchKeyword.toLowerCase());
 
         if (searchFilter === 'title') return hasTitle;
+
         if (searchFilter === 'content') return hasContent;
 
         return hasTitle || hasContent;
@@ -41,28 +39,13 @@ const filter = ({ posts, searchKeyword, searchFilter }: Filter) => {
   return posts;
 };
 
-const useFilteredPosts = ({
-  searchFilter,
-  searchKeyword,
-  tag,
-  series,
-}: Params) => {
-  const dispatch = useDispatch();
-
+const useFilteredPosts = ({ searchFilter, searchKeyword }: Params) => {
   const { posts } = useContext();
-
-  useLayoutEffect(() => {
-    tag &&
-      dispatch({ type: 'setCurrentTag', payload: { tag: tag.toLowerCase() } });
-    series && dispatch({ type: 'setCurrentSeries', payload: { series } });
-  }, [tag, series]);
 
   const filteredPosts = filter({
     posts,
     searchFilter,
     searchKeyword,
-    series,
-    tag,
   });
 
   return filteredPosts;

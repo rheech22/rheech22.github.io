@@ -1,11 +1,8 @@
 import { graphql, Link, PageProps } from 'gatsby';
 import Giscus from '@giscus/react';
-
-import { useEffect } from 'react';
-
 import * as Styled from './styles';
 
-import { useContext, useDispatch } from '../store/context';
+import { useContext } from '../store/context';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 
 import { takePost, getDateString } from '../utils';
@@ -15,7 +12,6 @@ import TOC from '../components/TOC';
 import SEO from './post-seo';
 
 export default ({ data }: PageProps<Queries.templateQuery>) => {
-  const dispatch = useDispatch();
   const { displayMode } = useContext();
 
   const spyRef = useSpyHeadings();
@@ -23,8 +19,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const { title, created, updated, contents, excerpt, headings, timeToRead, slug } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
-
-  useEffect(()=> dispatch({ type: 'clearSearch' }), []);
 
   const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value)=> {
     const path = value.replace('/index.md', '');
@@ -114,7 +108,6 @@ export const query = graphql`
         created
         updated
         title
-        series
       }
       fields {
         slug

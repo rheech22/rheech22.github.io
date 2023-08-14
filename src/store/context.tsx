@@ -6,8 +6,6 @@ import { Action, State } from './types';
 
 const initialState: State = {
   posts: [],
-  tag: null,
-  series: null,
   displayMode: null,
   headingId: null,
 };

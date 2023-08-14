@@ -66,14 +66,3 @@ const Date = styled.span`
   font-size: 12px;
   font-weight: 300;
 `;
-
-// const Tags = styled.ul`
-//   ${flex({ alignItems: 'center', justifyContent: 'center' })}
-//   flex-wrap: wrap;
-//   margin: 4px 0;
-//   padding: 4px 0;
-
-//   @media ${device.widerThanTablet} {
-//     ${flex({ alignItems: 'center' })}
-//   }
-// `;

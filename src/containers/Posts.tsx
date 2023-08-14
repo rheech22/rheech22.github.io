@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
-
 import styled from 'styled-components';
 import { previews } from '../styles/modules';
 
-import { useContext, useDispatch } from '../store/context';
+import { useContext } from '../store/context';
 import useLoadMore from '../hooks/useLoadMore';
 
 import Post from '../components/Post';
@@ -11,15 +9,9 @@ import LoadMore from '../components/LoadMore';
 import ScrollToTop from '../components/ScrollToTop';
 
 const Posts = () => {
-  const dispatch = useDispatch();
-
   const { posts } = useContext();
 
   const { offset, loadMore } = useLoadMore(posts);
-
-  useEffect(()=> {
-    dispatch({ type: 'clearSearch' });
-  }, []);
 
   if (!posts.length) return null;
 

@@ -24,17 +24,15 @@ const GET_POST = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___updated] }) {
       edges {
         node {
-          excerpt(pruneLength: 320)
           id
+          html
+          fields {
+            slug
+          }
           frontmatter {
             title
             created
             updated
-            series
-          }
-          html
-          fields {
-            slug
           }
         }
       }
