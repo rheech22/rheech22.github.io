@@ -1,4 +1,5 @@
-import { CSSProperties, css } from 'styled-components';
+import { CSSProperties } from 'react';
+import { css } from 'styled-components';
 
 export const flex = ({
   alignItems = 'normal',

@@ -21,7 +21,7 @@ export default usePosts;
 
 const GET_POST = graphql`
   query getPosts {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___updated] }) {
+    allMarkdownRemark(sort: { frontmatter: { updated: DESC } }) {
       edges {
         node {
           id

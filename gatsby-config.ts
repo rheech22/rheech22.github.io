@@ -16,8 +16,10 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        head: true,
-        trackingIds: [googleAnalyticsTrackingId]
+        trackingIds: [googleAnalyticsTrackingId],
+        pluginConfig: {
+          head: true
+        }
       }
     },
 
