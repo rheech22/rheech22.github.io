@@ -23,7 +23,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value) => {
     const title = value.replace('/index.md', '');
 
-    const path = decodeURI(encodeURI(`${slug}/${title}`));
+    const path = `${slug}/${title}`;
 
     return `<a href=${path}>${title.replaceAll('_', ' ')}</a>`;
   });
