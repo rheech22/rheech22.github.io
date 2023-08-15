@@ -21,9 +21,11 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
   const hasHeadings = Boolean(headings.length);
 
   const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value) => {
-    const path = value.replace('/index.md', '');
+    const title = value.replace('/index.md', '');
 
-    return `<a href="${slug}/${path}">${path.replaceAll('_', ' ')}</a>`;
+    const path = decodeURI(encodeURI(`${slug}/${title}`));
+
+    return `<a href=${path}>${title.replaceAll('_', ' ')}</a>`;
   });
 
   const slugs = slug.split('/');
