@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, getNode, actions }: CreateNodeArgs) => {
 exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) => {
   const { createPage } = actions;
 
-  const component = path.resolve('src/templates/post.tsx');
+  const component = path.resolve('src/templates/wiki_template.tsx');
 
   const result = await graphql<Queries.createPageQuery>(`
     query createPage {

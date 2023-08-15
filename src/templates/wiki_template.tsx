@@ -2,11 +2,12 @@ import Giscus from '@giscus/react';
 import { Link, PageProps, graphql } from 'gatsby';
 
 import ScrollToTop from '../components/ScrollToTop';
+import SEO from '../components/SEO';
 import TOC from '../components/TOC';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import { useContext } from '../store/context';
 import { getDateString, takePost } from '../utils';
-import SEO from './post-seo';
 import * as Styled from './styles';
 
 // eslint-disable-next-line react/display-name
@@ -15,7 +16,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, contents, excerpt, headings, timeToRead, slug } = takePost(data);
+  const { title, created, updated, contents, headings, timeToRead, slug } = takePost(data);
 
   const hasHeadings = Boolean(headings.length);
 
@@ -43,7 +44,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   return (
     <>
-      <SEO title={title} excerpt={excerpt} updated={updated} created={created} path={slug} />
       <Styled.Section>
         <Styled.Article hasHeadings={hasHeadings}>
           <Styled.Header>
@@ -128,3 +128,23 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ data }: PageProps<Queries.templateQuery>) => {
+  const { title, image, siteUrl, twitterUsername } = useSiteMetadata();
+
+  const { title: subtitle, created, updated, excerpt, slug } = takePost(data);
+
+  return (
+    <SEO
+      title={title}
+      subtitle={subtitle}
+      description={excerpt}
+      image={image}
+      url={siteUrl}
+      pathname={slug}
+      twitterUsername={twitterUsername}
+      created={created}
+      updated={updated}
+    />
+  );
+};

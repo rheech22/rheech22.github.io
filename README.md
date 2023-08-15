@@ -97,8 +97,8 @@
 - [x] import extension 사용하기
 - [x] lint 설정 수정 및 prettier 적용
 - [x] lts 버전 마이그레이션
-- [ ] VimWikiLink로 Gatsby Link로 대체하기 - mdx 고려
-- [ ] head api 템플릿에서도 사용하기
+- [x] VimWikiLink로 Gatsby Link로 대체하기 - mdx 고려
+- [x] head api 템플릿에서도 사용하기
 - [ ] 포스트 디자인
 - [ ] 포스트 목록 디자인
 - [ ] 인덱스 페이지 구현 및 디자인

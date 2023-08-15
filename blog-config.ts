@@ -1,7 +1,7 @@
 const config = {
   // used for bio, meta tag...
   title: 'conerstone', // title of the site
-  description: 'nothing to lose', // describe anything about your site
+  description: 'wiki for reminder', // describe anything about your site
   language: 'ko-KR', // default language
   author: 'aiden', // your name
   twitterUsername: '@rheech22', // twitter username

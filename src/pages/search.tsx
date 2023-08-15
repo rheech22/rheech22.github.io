@@ -3,6 +3,7 @@ import { PageProps } from 'gatsby';
 import SEO from '../components/SEO';
 import SidebarProvider from '../components/SidebarProvider';
 import SearchResult from '../containers/SearchResult';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 export type SearchPageProps = PageProps<object, object, Record<string, string>>;
 
@@ -13,4 +14,17 @@ export default ({ location }: SearchPageProps) => (
   </SidebarProvider>
 );
 
-export const Head = () => <SEO subTitle="검색" />;
+export const Head = () => {
+  const { title, description, image, siteUrl, twitterUsername } = useSiteMetadata();
+
+  return (
+    <SEO
+      title={title}
+      subtitle="검색"
+      description={description}
+      image={image}
+      url={siteUrl}
+      twitterUsername={twitterUsername}
+    />
+  );
+};

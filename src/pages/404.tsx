@@ -2,6 +2,7 @@ import { Link, navigate } from 'gatsby';
 import styled from 'styled-components';
 
 import SEO from '../components/SEO';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 // eslint-disable-next-line react/display-name
 export default () => (
@@ -55,4 +56,17 @@ const Container = styled.div`
   }
 `;
 
-export const Head = () => <SEO subTitle="404" />;
+export const Head = () => {
+  const { title, description, image, siteUrl, twitterUsername } = useSiteMetadata();
+
+  return (
+    <SEO
+      title={title}
+      subtitle="404"
+      description={description}
+      image={image}
+      url={siteUrl}
+      twitterUsername={twitterUsername}
+    />
+  );
+};
