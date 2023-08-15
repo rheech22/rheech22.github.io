@@ -33,6 +33,8 @@ const config: GatsbyConfig = {
 
     'gatsby-transformer-sharp',
 
+    'gatsby-plugin-catch-links',
+
     {
       resolve: 'gatsby-source-filesystem',
       options: {

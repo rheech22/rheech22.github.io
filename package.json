@@ -21,6 +21,7 @@
     "@giscus/react": "^2.2.8",
     "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^5.11.0",
+    "gatsby-plugin-catch-links": "^5.11.0",
     "gatsby-plugin-google-gtag": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
