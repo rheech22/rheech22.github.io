@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import Search from '../assets/icons/Search';
 import { flex } from '../styles/mixins';
-import { white } from '../styles/themes';
 import Button from './Button';
 
 interface Props {
@@ -49,28 +48,32 @@ const Container = styled.li`
 
   @media (hover: hover) {
     &:hover {
-      background-color: ${({ theme }) => theme.searchSuggestionHovered};
-      color: ${white};
+      background-color: ${({ theme }) => theme.searchSuggestionBgHovered};
+      color: ${({ theme }) => theme.searchSuggestionHovered};
 
       svg {
-        fill: ${white};
+        fill: ${({ theme }) => theme.searchSuggestionHovered};
+      }
+
+      button {
+        color: ${({ theme }) => theme.searchSuggestionHovered};
       }
     }
   }
 
   & > svg {
-    fill: ${({ theme }) => theme.mute};
+    fill: ${({ theme }) => theme.searchSuggestion};
     margin-right: 12px;
   }
 
   & > button {
     ${flex({ alignItems: 'center', justifyContent: 'center' })};
     margin-left: auto;
-    border: ${({ theme }) => `1px solid ${theme.border}`};
+    border: none;
+    background: none;
     border-radius: 6px;
     padding: 4px 6px;
-    background-color: ${({ theme }) => theme.searchBgFocused};
-    color: ${({ theme }) => theme.mute};
+    color: ${({ theme }) => theme.searchSuggestion};
     min-width: fit-content;
     height: 20px;
     font-size: 12px;

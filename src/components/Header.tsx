@@ -6,10 +6,9 @@ import config from '../../blog-config';
 import Moon from '../assets/icons/Moon';
 import Sun from '../assets/icons/Sun';
 import { useContext, useDispatch } from '../store/context';
-import { device } from '../styles/breakpoints';
 import { sunrise, sunset } from '../styles/keyframes';
 import { flex } from '../styles/mixins';
-import { gray600, headerBg, snow } from '../styles/themes';
+import { gray600 } from '../styles/themes';
 import { getTheme } from '../utils';
 import SearchBar from './SearchBar';
 
@@ -34,7 +33,6 @@ const Header = () => {
       <Link to="/" tabIndex={-1}>
         <h1>{config.title}</h1>
       </Link>
-      <SearchBar searchKeyword={searchKeyword} onChange={handleChange} />
       <Button onClick={handleClick} tabIndex={-1} aria-label="switch display mode">
         <CircleLayout>
           <div>
@@ -45,6 +43,7 @@ const Header = () => {
           </div>
         </CircleLayout>
       </Button>
+      <SearchBar searchKeyword={searchKeyword} onChange={handleChange} />
     </Container>
   );
 };
@@ -52,21 +51,22 @@ const Header = () => {
 export default Header;
 
 const Container = styled.header`
+  position: sticky;
+  top: 0;
   ${flex({ alignItems: 'center' })}
-  padding: 8px 16px;
   min-width: 360px;
   width: 100%;
-  height: 62px;
-  background-color: ${headerBg};
-
-  @media ${device.widerThanLaptopS} {
-    padding: 16px 32px;
-  }
+  height: 71px;
+  opacity: 0.9;
+  background-color: ${({ theme }) => theme.headerBg};
+  backdrop-filter: blur(20px);
+  z-index: 1;
+  transition: all 0.5s;
 
   & > a {
-    margin-right: 16px;
-    color: ${snow};
+    color: ${({ theme }) => theme.title};
     text-decoration: none;
+    transition: color 2s;
 
     & > h1 {
       font-size: 24px;
@@ -79,7 +79,7 @@ const Container = styled.header`
 const Button = styled.button`
   position: relative;
   z-index: 0;
-  margin-left: 8px;
+  margin: 0 8px 0 4px;
   border: none;
   border-radius: 50%;
   background: none;
@@ -112,10 +112,6 @@ const Button = styled.button`
       );
     }
   }
-
-  @media ${device.widerThanMobile} {
-    margin-left: auto;
-  }
 `;
 
 const CircleLayout = styled.div`
@@ -131,6 +127,12 @@ const CircleLayout = styled.div`
   @media (hover: hover) {
     &:hover {
       border-color: ${gray600};
+
+      svg {
+        path {
+          fill: ivory;
+        }
+      }
     }
   }
 
@@ -174,7 +176,7 @@ const CircleLayout = styled.div`
       transform: ${({ theme }) => (theme.name === 'dark' ? 'rotate(90deg)' : 'rotate(-90deg)')};
 
       path {
-        fill: ${gray600};
+        fill: ${({ theme }) => theme.mode};
       }
     }
   }

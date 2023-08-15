@@ -2,8 +2,6 @@ import { navigate } from 'gatsby';
 import styled from 'styled-components';
 
 import { device } from '../styles/breakpoints';
-import { border } from '../styles/mixins';
-import { gray600, snow } from '../styles/themes';
 import Button from './Button';
 import SearchSuggestion from './SearchSuggestion';
 import Textbox from './Textbox';
@@ -36,13 +34,13 @@ const SearchBar = ({ searchKeyword, onChange }: Props) => {
           <SearchSuggestion
             searchBy={searchBy}
             input={searchKeyword}
-            title="only title"
+            title="Only Title"
             filterText="title"
           />
           <SearchSuggestion
             searchBy={searchBy}
             input={searchKeyword}
-            title="only content"
+            title="Only Content"
             filterText="content"
           />
         </Suggestions>
@@ -55,10 +53,9 @@ const SearchBar = ({ searchKeyword, onChange }: Props) => {
 export default SearchBar;
 
 const Container = styled.form<{ hasInput: boolean }>`
-  border: 1px solid ${({ theme }) => theme.searchBorder};
-  border-radius: 6px;
+  border-radius: 8px;
   width: 272px;
-  height: 30px;
+  height: 48px;
   font-weight: 400;
   position: relative;
   transition: all 0.5s;
@@ -75,14 +72,18 @@ const Container = styled.form<{ hasInput: boolean }>`
 
   & > input {
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 0 12px;
     width: 100%;
     height: 100%;
     background-color: ${({ theme }) => theme.searchBg};
-    color: ${snow};
+    color: ${({ theme }) => theme.search};
     font-size: 14px;
-    transition: all 0.5s;
+    transition: background-color 0.5s;
+
+    &::placeholder {
+      color: #a7a7a7;
+    }
 
     &:focus {
       @media ${device.widerThanTablet} {
@@ -90,35 +91,26 @@ const Container = styled.form<{ hasInput: boolean }>`
         border-bottom-right-radius: ${({ hasInput }) => (hasInput ? '0px' : '6px')};
       }
 
-      color: ${({ theme }) => theme.default};
+      color: ${({ theme }) => theme.searchFocused};
       background-color: ${({ theme }) => theme.searchBgFocused};
 
       &::placeholder {
         color: ${({ theme }) => theme.searchPlaceholderFocused};
       }
     }
-
-    &::placeholder {
-      color: ${gray600};
-    }
   }
 `;
 
 const Suggestions = styled.ul`
   display: none;
-  border: ${({ theme }) => `1px solid ${theme.border}`};
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   background-color: ${({ theme }) => theme.searchSuggestionBg};
-  color: ${({ theme }) => theme.default};
+  color: ${({ theme }) => theme.searchSuggestion};
   width: 100%;
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 35;
   box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
-
-  li + li {
-    ${border.top};
-  }
 `;

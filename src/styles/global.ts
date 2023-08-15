@@ -37,6 +37,9 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
     transition: all .5s;
     
     #gatsby-focus-wrapper{
+      max-width: 1440px;
+      padding: 0 15px;
+      margin: 0 auto;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
