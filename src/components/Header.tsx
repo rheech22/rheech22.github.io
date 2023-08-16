@@ -54,7 +54,7 @@ const Container = styled.header`
   position: sticky;
   top: 0;
   ${flex({ alignItems: 'center' })}
-  min-width: 360px;
+  /* min-width: 360px; */
   width: 100%;
   height: 71px;
   opacity: 0.9;

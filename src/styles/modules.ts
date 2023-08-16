@@ -29,8 +29,6 @@ export const avatar = css`
 
 export const previews = css`
   @media ${device.widerThanTablet} {
-    margin: 0 10px;
-    padding: 0px 10px;
     max-width: 780px;
   }
 
@@ -39,8 +37,7 @@ export const previews = css`
     justifyContent: 'center',
     flexDirection: 'column'
   })}
-  margin-left: 0;
-  padding: 0px 20px;
+
   width: 100%;
 
   & > p {

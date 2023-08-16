@@ -54,7 +54,7 @@ export default SearchBar;
 
 const Container = styled.form<{ hasInput: boolean }>`
   border-radius: 8px;
-  width: 272px;
+  width: 140px;
   height: 48px;
   font-weight: 400;
   position: relative;
