@@ -65,6 +65,7 @@ const Container = styled.header`
 
   & > a {
     color: ${({ theme }) => theme.title};
+    font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
     text-decoration: none;
     transition: color 2s;
 

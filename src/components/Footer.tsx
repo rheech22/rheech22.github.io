@@ -20,14 +20,11 @@ const Container = styled.footer`
   width: 100%;
   font-size: 12px;
   text-align: center;
+  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  color: #bac4ce;
 
   & > section {
     padding: 48px 8px;
-  }
-
-  & > span {
-    display: inline-flex;
-    align-items: center;
-    color: ${({ theme }) => theme.mute};
   }
 `;

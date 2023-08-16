@@ -1,9 +1,9 @@
 const config = {
   // used for bio, meta tag...
   title: 'conerstone', // title of the site
-  description: 'wiki for reminder', // describe anything about your site
+  description: 'wiki for REMIND', // describe anything about your site
   language: 'ko-KR', // default language
-  author: 'aiden', // your name
+  author: 'Aiden', // your name
   twitterUsername: '@rheech22', // twitter username
   siteUrl: 'https://rheech22.github.io/', // site url
   themeColor: '#161b22', // theme color for PWA

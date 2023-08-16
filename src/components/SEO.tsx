@@ -28,6 +28,16 @@ const SEO = ({
   return (
     <>
       <title>{combinedTitle}</title>
+      <link
+        as="style"
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500&display=swap"
+      />
+      <link
+        as="style"
+        rel="stylesheet"
+        href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <meta name="description" content={description} />
       <meta name="image" content={image} />

@@ -18,6 +18,16 @@ export const getDateString = ({
   return `${addPrefix ? 'Updated on' : ''} ${getYear ? dateString : dateString.slice(0, -5)}`;
 };
 
+export const getDateSegments = (date: string) => {
+  const dateString = new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'medium'
+  }).format(new Date(date));
+
+  const [d, m, y] = dateString.split(' ');
+
+  return { date: d, month: m, year: y };
+};
+
 export const takePost = (data: Queries.templateQuery) => {
   const {
     markdownRemark: {

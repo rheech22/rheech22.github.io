@@ -1,23 +1,30 @@
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
 
-import { device } from '../styles/breakpoints';
 import { flex } from '../styles/mixins';
 import { bgHovered } from '../styles/themes';
-import { getDateString } from '../utils';
+import { getDateSegments } from '../utils';
 
 interface Props {
   path: string;
-  title: string | null;
-  updated: string | null;
+  title: string;
+  updated: string;
 }
 
-const Post = ({ path = '', title = '', updated = '' }: Props) => {
+const Post = ({ path, title, updated }: Props) => {
+  const { date, month, year } = getDateSegments(updated);
+
   return (
-    <Container onClick={() => navigate(path ?? '')}>
+    <Container onClick={() => navigate(path)}>
       <div>
+        <Date>
+          <span>{date.padStart(2, '0')}</span>
+          <div>
+            <span>{month}</span>
+            <span>{year}</span>
+          </div>
+        </Date>
         <Heading>{title}</Heading>
-        <Date>{updated ? getDateString({ date: updated, addPrefix: true }) : ''}</Date>
       </div>
     </Container>
   );
@@ -31,14 +38,10 @@ const Container = styled.li`
   cursor: pointer;
 
   & > div {
-    ${flex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })}
+    ${flex({ alignItems: 'center' })}
     margin-bottom: 8px;
     font-weight: 600;
     text-decoration: none;
-
-    @media ${device.widerThanTablet} {
-      ${flex({ flexDirection: 'column' })}
-    }
   }
 
   @media (hover: hover) {
@@ -56,8 +59,20 @@ const Heading = styled.h2`
   transition: all 0.5s;
 `;
 
-const Date = styled.span`
-  margin-bottom: 10px;
-  font-size: 12px;
-  font-weight: 300;
+const Date = styled.div`
+  ${flex({ alignItems: 'flex-start' })};
+  min-width: 160px;
+  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  & > span {
+    font-size: 50px;
+    font-weight: 500;
+  }
+
+  & > div {
+    ${flex({ flexDirection: 'column' })};
+    margin: 12px 0 0 4px;
+    font-size: 16px;
+    font-weight: 200;
+  }
 `;

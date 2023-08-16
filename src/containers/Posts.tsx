@@ -5,6 +5,7 @@ import Post from '../components/Post';
 import ScrollToTop from '../components/ScrollToTop';
 import useLoadMore from '../hooks/useLoadMore';
 import { useContext } from '../store/context';
+import { border } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
 const Posts = () => {
@@ -16,6 +17,7 @@ const Posts = () => {
 
   return (
     <Container>
+      <Title>RECENT UPDATES</Title>
       {posts.slice(0, offset).map(
         ({
           node: {
@@ -37,4 +39,13 @@ export default Posts;
 
 const Container = styled.ul`
   ${previews}
+`;
+
+const Title = styled.div`
+  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  text-align: end;
+  width: 100%;
+  ${border.bottom};
 `;
