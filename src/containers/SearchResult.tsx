@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import BigSearch from '../assets/icons/BigSearch';
 import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
 import Post from '../components/Post';
@@ -8,8 +7,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
 import { SearchPageProps } from '../pages/search';
-import { device } from '../styles/breakpoints';
-import { flex } from '../styles/mixins';
+import { border } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
 const SearchResult = ({
@@ -26,10 +24,9 @@ const SearchResult = ({
 
   return (
     <Container>
-      <div>
-        <BigSearch />
-        <span>{locationState?.searchKeyword}</span>
-      </div>
+      <Title>
+        SEARCHING FOR <strong>{locationState?.searchKeyword}</strong>
+      </Title>
       {filteredPosts.length === 0 ? (
         <NoContent prefix="검색 결과가" />
       ) : (
@@ -52,30 +49,24 @@ const SearchResult = ({
 export default SearchResult;
 
 const Container = styled.ul`
-  & > div {
-    ${flex({ alignItems: 'center' })};
-    margin: 30px 0;
-    font-size: 28.8px;
+  ${previews};
 
-    span {
-      margin-left: 8px;
-      height: 100%;
-    }
+  & > p {
+    font-size: 24px;
+    font-weight: 600;
+  }
+`;
 
-    svg {
-      height: 32px;
-      width: 32px;
-      path {
-        fill: transparent;
-        stroke: ${({ theme }) => theme.mute};
-        transition: all 0.5s;
-      }
-    }
+const Title = styled.div`
+  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  width: 100%;
+  text-align: end;
 
-    @media ${device.widerThanLaptopS} {
-      margin-top: 0;
-    }
+  & > strong {
+    color: #bd4a55;
   }
 
-  ${previews};
+  ${border.bottom};
 `;
