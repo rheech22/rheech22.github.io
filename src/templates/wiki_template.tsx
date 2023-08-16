@@ -45,8 +45,6 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
       ];
     }, []);
 
-  console.log(slug);
-
   return (
     <Styled.Container>
       <Styled.Section>
@@ -74,7 +72,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
                 <span>{timeToRead} min read</span>
                 <time dateTime="created at">
                   <a
-                    href={`https://github.com/rheech22/rheech22.github.io/commits/master/src/posts${slug}/index.md`}
+                    href={`https://github.com/rheech22/rheech22.github.io/commits/devleop/src/posts${slug}/index.md`}
                     target="_blank"
                     rel="noreferrer">
                     CREATED: {new Date(created).toLocaleDateString('en-GB')}
@@ -82,14 +80,14 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
                 </time>
                 <time dateTime="updated at">
                   <a
-                    href={`https://github.com/rheech22/rheech22.github.io/commits/master/src/posts${slug}/index.md`}
+                    href={`https://github.com/rheech22/rheech22.github.io/commits/devleop/src/posts${slug}/index.md`}
                     target="_blank"
                     rel="noreferrer">
                     UPDATED: {new Date(updated).toLocaleDateString('en-GB')}
                   </a>
                 </time>
                 <a
-                  href={`https://github.com/rheech22/rheech22.github.io/blame/master/src/posts${slug}/index.md`}
+                  href={`https://github.com/rheech22/rheech22.github.io/blame/devleop/src/posts${slug}/index.md`}
                   target="_blank"
                   rel="noreferrer">
                   Blame
