@@ -1,13 +1,14 @@
 import Giscus from '@giscus/react';
 import { Link, PageProps, graphql } from 'gatsby';
 
+import ArrowThin from '../assets/icons/ArrowThin';
 import ScrollToTop from '../components/ScrollToTop';
 import SEO from '../components/SEO';
 import TOC from '../components/TOC';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import { useContext } from '../store/context';
-import { getDateString, takePost } from '../utils';
+import { takePost } from '../utils';
 import * as Styled from './styles';
 
 // eslint-disable-next-line react/display-name
@@ -44,37 +45,55 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
       ];
     }, []);
 
+  console.log(slug);
+
   return (
-    <>
+    <Styled.Container>
       <Styled.Section>
         <Styled.Article hasHeadings={hasHeadings}>
+          <Styled.Nav>
+            {parents.length ? (
+              parents.map(({ path, value }, index, { length }) => {
+                return (
+                  <div key={value}>
+                    <Link key={value} to={path}>
+                      {value}
+                    </Link>
+                    {Boolean(index + 1 < length) && <ArrowThin />}
+                  </div>
+                );
+              })
+            ) : (
+              <span>ROOT</span>
+            )}
+          </Styled.Nav>
           <Styled.Header>
             <Styled.Title>{title}</Styled.Title>
             <Styled.SubTitle>
-              <nav>
-                {parents.length ? (
-                  parents.map(({ path, value }, index, { length }) => {
-                    return (
-                      <div key={value}>
-                        <Link key={value} to={path}>
-                          {value}
-                        </Link>
-                        {Boolean(index + 1 < length) && <span>/</span>}
-                      </div>
-                    );
-                  })
-                ) : (
-                  <span>top level</span>
-                )}
-              </nav>
               <div>
+                <span>{timeToRead} min read</span>
                 <time dateTime="created at">
-                  created on {getDateString({ date: created, getYear: true })}
+                  <a
+                    href={`https://github.com/rheech22/rheech22.github.io/commits/master/src/posts${slug}/index.md`}
+                    target="_blank"
+                    rel="noreferrer">
+                    CREATED: {new Date(created).toLocaleDateString('en-GB')}
+                  </a>
                 </time>
                 <time dateTime="updated at">
-                  updated on {getDateString({ date: updated, getYear: true })}
+                  <a
+                    href={`https://github.com/rheech22/rheech22.github.io/commits/master/src/posts${slug}/index.md`}
+                    target="_blank"
+                    rel="noreferrer">
+                    UPDATED: {new Date(updated).toLocaleDateString('en-GB')}
+                  </a>
                 </time>
-                <span>{timeToRead} min read</span>
+                <a
+                  href={`https://github.com/rheech22/rheech22.github.io/blame/master/src/posts${slug}/index.md`}
+                  target="_blank"
+                  rel="noreferrer">
+                  Blame
+                </a>
               </div>
             </Styled.SubTitle>
           </Styled.Header>
@@ -82,9 +101,9 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }} />
           </Styled.Main>
         </Styled.Article>
-        {hasHeadings && <TOC headings={headings} />}
         <ScrollToTop />
       </Styled.Section>
+      {hasHeadings && <TOC headings={headings} />}
       {displayMode && (
         <Styled.Comments>
           <Giscus
@@ -104,7 +123,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           />
         </Styled.Comments>
       )}
-    </>
+    </Styled.Container>
   );
 };
 

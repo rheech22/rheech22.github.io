@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { useContext } from '../store/context';
 import { Headings } from '../store/types';
-import { device } from '../styles/breakpoints';
 import { bgHovered } from '../styles/themes';
 
 interface Props {
@@ -36,20 +35,14 @@ const TOC = ({ headings }: Props) => {
 export default TOC;
 
 const Container = styled.aside`
-  @media ${device.widerThanLaptop} {
-    display: block;
-  }
-
   display: none;
   position: sticky;
-  top: 10px;
+  top: 163px;
   right: 0px;
-  margin-left: auto;
-  margin-top: 38px;
   min-width: fit-content;
   height: fit-content;
-  color: ${({ theme }) => theme.default};
   overflow-y: scroll;
+  color: ${({ theme }) => theme.default};
 
   &::-webkit-scrollbar {
     display: none;
