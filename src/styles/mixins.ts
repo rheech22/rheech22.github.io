@@ -38,3 +38,7 @@ export const border = {
     transition: border-color 0.5s;
   `
 };
+
+export const font_sora = () => css`
+  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
+`;

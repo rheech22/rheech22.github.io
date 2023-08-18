@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { device } from '../styles/breakpoints';
-import { flex } from '../styles/mixins';
+import { flex, font_sora } from '../styles/mixins';
 import { markdown } from '../styles/modules';
 
 export const Container = styled.div`
@@ -80,6 +80,9 @@ export const Nav = styled.nav`
   & > div {
     & > a {
       text-underline-position: under;
+      &:hover {
+        color: ${({ theme }) => theme.link};
+      }
     }
 
     & > svg {
@@ -112,8 +115,8 @@ export const Title = styled.h1`
 `;
 
 export const SubTitle = styled.div`
+  ${font_sora()};
   color: ${({ theme }) => theme.mute};
-  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 14px;
 
   /* time and links*/
@@ -122,6 +125,9 @@ export const SubTitle = styled.div`
 
     a {
       text-underline-position: under;
+      &:hover {
+        color: ${({ theme }) => theme.link};
+      }
     }
   }
 `;

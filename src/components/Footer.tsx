@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { border } from '../styles/mixins';
+import { border, font_sora } from '../styles/mixins';
 
 const Footer = () => {
   return (
@@ -15,12 +15,12 @@ const Footer = () => {
 export default Footer;
 
 const Container = styled.footer`
+  ${font_sora()};
   ${border.top};
   margin-top: auto;
   width: 100%;
   font-size: 12px;
   text-align: center;
-  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   color: #bac4ce;
 

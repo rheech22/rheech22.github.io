@@ -2,8 +2,8 @@ import Giscus from '@giscus/react';
 import { Link, PageProps, graphql } from 'gatsby';
 
 import ArrowThin from '../assets/icons/ArrowThin';
-import ScrollToTop from '../components/ScrollToTop';
 import SEO from '../components/SEO';
+import ScrollToTop from '../components/ScrollToTop';
 import TOC from '../components/TOC';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
@@ -115,7 +115,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="top"
-            theme="transparent_dark"
+            theme={displayMode === 'day' ? 'light' : 'dark_dimmed'}
             lang="ko"
             loading="lazy"
           />

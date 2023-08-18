@@ -125,9 +125,11 @@ const Container = styled.div`
   }
 
   @media (hover: hover) {
-    &:hover {
-      path {
-        fill: ${({ theme }) => theme.default};
+    svg {
+      &:hover {
+        path {
+          fill: ${({ theme }) => theme.default};
+        }
       }
     }
   }

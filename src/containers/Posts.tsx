@@ -5,7 +5,7 @@ import Post from '../components/Post';
 import ScrollToTop from '../components/ScrollToTop';
 import useLoadMore from '../hooks/useLoadMore';
 import { useContext } from '../store/context';
-import { border } from '../styles/mixins';
+import { border, font_sora } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
 const Posts = () => {
@@ -42,7 +42,7 @@ const Container = styled.ul`
 `;
 
 const Title = styled.div`
-  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
+  ${font_sora()};
   font-weight: 600;
   font-size: 32px;
   text-align: end;

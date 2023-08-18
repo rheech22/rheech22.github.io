@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useContext } from '../store/context';
 import { Headings } from '../store/types';
-import { bgHovered } from '../styles/themes';
+import { font_sora } from '../styles/mixins';
 
 interface Props {
   headings: Headings;
@@ -49,6 +49,7 @@ const Container = styled.aside`
   }
 
   h2 {
+    ${font_sora()};
     margin-bottom: 12px;
     padding: 8px 10px;
     font-size: 14px;
@@ -76,8 +77,8 @@ const List = styled.li<{ depth?: number | null; isIntersecting: boolean }>`
   padding-right: 10px;
   max-width: 265px;
   width: 100%;
-  background-color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.lightBlue : 'none')};
-  color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.blue : theme.mute)};
+  background-color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.tocBg : 'none')};
+  color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.toc : theme.mute)};
   font-size: ${({ depth }) => (depth && depth > 0 ? `${14 - depth}px` : '14px')};
   transition: all 50ms ease-in-out;
 
@@ -85,7 +86,7 @@ const List = styled.li<{ depth?: number | null; isIntersecting: boolean }>`
     &:hover {
       &:hover {
         background-color: ${({ theme, isIntersecting }) =>
-          isIntersecting ? theme.seriesBg : bgHovered};
+          isIntersecting ? theme.tocBg : theme.tocBgHovered};
       }
     }
   }

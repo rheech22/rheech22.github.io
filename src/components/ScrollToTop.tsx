@@ -28,7 +28,7 @@ const Container = styled.div`
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background-color: ${({ theme }) => theme.searchSuggestionHovered};
+  background-color: ${({ theme }) => theme.scrollToTop};
   cursor: pointer;
 
   svg {

@@ -1,8 +1,7 @@
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
 
-import { flex } from '../styles/mixins';
-import { bgHovered } from '../styles/themes';
+import { flex, font_sora } from '../styles/mixins';
 import { getDateSegments } from '../utils';
 
 interface Props {
@@ -46,7 +45,7 @@ const Container = styled.li`
 
   @media (hover: hover) {
     &:hover {
-      background-color: ${bgHovered};
+      background-color: ${({ theme }) => theme.postHovered};
     }
   }
 `;
@@ -61,8 +60,8 @@ const Heading = styled.h2`
 
 const Date = styled.div`
   ${flex({ alignItems: 'flex-start' })};
+  ${font_sora()};
   min-width: 160px;
-  font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
 
   & > span {
     font-size: 50px;

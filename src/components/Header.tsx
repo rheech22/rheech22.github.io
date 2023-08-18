@@ -7,8 +7,8 @@ import Moon from '../assets/icons/Moon';
 import Sun from '../assets/icons/Sun';
 import { useContext, useDispatch } from '../store/context';
 import { sunrise, sunset } from '../styles/keyframes';
-import { flex } from '../styles/mixins';
-import { gray600 } from '../styles/themes';
+import { flex, font_sora } from '../styles/mixins';
+import { gray } from '../styles/themes';
 import { getTheme } from '../utils';
 import SearchBar from './SearchBar';
 
@@ -64,8 +64,8 @@ const Container = styled.header`
   transition: all 0.5s;
 
   & > a {
+    ${font_sora()};
     color: ${({ theme }) => theme.title};
-    font-family: 'Sora', 'Open Sans', 'Helvetica Neue', sans-serif;
     text-decoration: none;
     transition: color 2s;
 
@@ -127,7 +127,7 @@ const CircleLayout = styled.div`
 
   @media (hover: hover) {
     &:hover {
-      border-color: ${gray600};
+      border-color: ${gray};
 
       svg {
         path {

@@ -116,7 +116,7 @@ export const markdown = css`
     text-underline-position: under;
 
     &:hover {
-      color: ${({ theme }) => theme.series}; // TODO: 색상 이름 변경
+      color: ${({ theme }) => theme.link};
     }
   }
 
@@ -203,7 +203,7 @@ export const markdown = css`
   blockquote {
     padding: 12px 20px 12px 28px;
     margin: 20px 0px;
-    border-left: ${({ theme }) => `8px solid ${theme.series}`}; // TODO: 색상 이름 변경
+    border-left: ${({ theme }) => `8px solid ${theme.searchBgFocused}`};
     box-shadow: ${({ theme }) => `${theme.shadow} 0px 3px 12px`};
     font-family: Georgia, serif;
     font-style: italic;
