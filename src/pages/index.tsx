@@ -16,7 +16,7 @@ export const Head = () => {
   return (
     <SEO
       title={title}
-      subtitle="모든 글"
+      subtitle="Recent Updates"
       description={description}
       image={image}
       url={siteUrl}

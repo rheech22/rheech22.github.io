@@ -20,7 +20,7 @@ export const Head = () => {
   return (
     <SEO
       title={title}
-      subtitle="검색"
+      subtitle="Search"
       description={description}
       image={image}
       url={siteUrl}

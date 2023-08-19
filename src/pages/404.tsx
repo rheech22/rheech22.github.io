@@ -22,22 +22,7 @@ const Container = styled.div`
   padding: 3vw;
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(
-    to right bottom,
-    #776fbc,
-    #7677bf,
-    #767fc0,
-    #7787c2,
-    #7a8ec2,
-    #7e95c3,
-    #829bc4,
-    #88a1c4,
-    #90a8c5,
-    #98afc6,
-    #a2b6c6,
-    #adbcc7
-  );
-  color: white;
+  color: ${({ theme }) => theme.title};
 
   & > h1 {
     font-size: 10vh;
@@ -49,9 +34,12 @@ const Container = styled.div`
     font-size: 2vh;
 
     & > a {
-      color: #273c75;
       font-weight: 500;
-      text-decoration: none;
+      text-decoration: tocBgHovered;
+
+      &:hover {
+        color: ${({ theme }) => theme.link};
+      }
     }
   }
 `;
