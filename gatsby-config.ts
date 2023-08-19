@@ -142,8 +142,65 @@ const config: GatsbyConfig = {
         }
       }
     },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+            allMarkdownRemark {
+              nodes {
+                frontmatter {
+                  updated
+                }
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+        `,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allMarkdownRemark: { nodes: allMarkdowns }
+        }: {
+          allSitePage: Queries.SitePageConnection;
+          allMarkdownRemark: Queries.MarkdownRemarkConnection;
+        }) => {
+          const nodeMap = allMarkdowns.reduce<Record<string, Queries.MarkdownRemark>>(
+            (acc, node) => {
+              const {
+                fields: { slug }
+              } = node;
 
-    'gatsby-plugin-sitemap'
+              acc[`${slug}/`] = node;
+
+              return acc;
+            },
+            {}
+          );
+
+          return allPages.map((page) => {
+            return { ...page, lastmod: nodeMap[page.path]?.frontmatter?.updated };
+          });
+        },
+        serialize: ({ path: url, lastmod }: { path: string; lastmod?: string }) => {
+          return {
+            url,
+            lastmod
+          };
+        }
+      }
+    }
   ],
   graphqlTypegen: true
 };
