@@ -9,7 +9,7 @@ const useSlugs = () => {
   const { nodes } = data.allMarkdownRemark;
 
   useEffect(() => {
-    const slugs = nodes.map(({ fields: { slug } }) => slug);
+    const slugs = nodes.map(({ fields: { slug } }) => slug.replace('/', ''));
 
     setSlugs(slugs);
   }, [nodes]);

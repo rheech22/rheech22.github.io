@@ -44,6 +44,14 @@ const Header = () => {
         </CircleLayout>
       </Button>
       <SearchBar searchKeyword={searchKeyword} onChange={handleChange} />
+      <Index>
+        <Link
+          to="/wikis"
+          tabIndex={-1}
+          activeStyle={{ color: '#BF616A', PointerEvent: 'none', cursor: 'default ' }}>
+          <h2>INDEX VISUALIZATION</h2>
+        </Link>
+      </Index>
     </Container>
   );
 };
@@ -179,6 +187,20 @@ const CircleLayout = styled.div`
       path {
         fill: ${({ theme }) => theme.mode};
       }
+    }
+  }
+`;
+
+const Index = styled.div`
+  ${font_sora()};
+  margin-left: auto;
+  font-weight: 300;
+
+  & > a {
+    text-decoration: none;
+
+    &:hover {
+      color: ${({ theme }) => theme.link};
     }
   }
 `;
