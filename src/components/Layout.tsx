@@ -25,7 +25,7 @@ const Layout = ({ children }: Props) => {
 
   return (
     <ThemeProvider theme={displayMode === 'day' ? light : dark}>
-      <GlobalStyle />
+      <GlobalStyle theme={displayMode === 'day' ? light : dark} />
       <Header />
       <main>{children}</main>
       <Footer />

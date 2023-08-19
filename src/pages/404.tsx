@@ -35,7 +35,7 @@ const Container = styled.div`
 
     & > a {
       font-weight: 500;
-      text-decoration: tocBgHovered;
+      text-underline-position: under;
 
       &:hover {
         color: ${({ theme }) => theme.link};
