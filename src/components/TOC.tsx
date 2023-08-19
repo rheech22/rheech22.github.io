@@ -75,7 +75,7 @@ const List = styled.li<{ depth?: number | null; isIntersecting: boolean }>`
   border-bottom-left-radius: 0.5em;
   padding-left: ${({ depth }) => (depth && depth > 0 ? `${depth * 8}px` : '8px')};
   padding-right: 10px;
-  max-width: 265px;
+  max-width: 215px;
   width: 100%;
   background-color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.tocBg : 'none')};
   color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.toc : theme.mute)};
