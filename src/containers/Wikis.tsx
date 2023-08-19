@@ -1,12 +1,15 @@
+import loadable from '@loadable/component';
 import { Link, navigate } from 'gatsby-link';
 import { useEffect, useState } from 'react';
-import ForceGraph3D, { GraphData, LinkObject, NodeObject } from 'react-force-graph-3d';
+import { GraphData, LinkObject, NodeObject } from 'react-force-graph-3d';
 import { useResizeDetector } from 'react-resize-detector';
 import { styled } from 'styled-components';
 
 import ScrollToTop from '../components/ScrollToTop';
 import useSlugs from '../hooks/useSlugs';
 import { border, flex, font_sora } from '../styles/mixins';
+
+const ForceGraph3D = loadable(() => import('react-force-graph-3d'));
 
 const colorMap = new Map([
   [0, '#BF616A'],
