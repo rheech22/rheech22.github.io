@@ -7,6 +7,7 @@ import { styled } from 'styled-components';
 
 import ScrollToTop from '../components/ScrollToTop';
 import useSlugs from '../hooks/useSlugs';
+import { device } from '../styles/breakpoints';
 import { border, flex, font_sora } from '../styles/mixins';
 
 const ForceGraph3D = loadable(() => import('react-force-graph-3d'));
@@ -80,7 +81,7 @@ const Wikis = () => {
   return (
     <Container ref={ref}>
       <Title toggle={toggleOn}>
-        <span onClick={() => setToggleOn(true)}>INDEX GRAPH</span>
+        <span onClick={() => setToggleOn(true)}>GRAPH</span>
         <span onClick={() => setToggleOn(false)}>LIST</span>
       </Title>
       {toggleOn ? (
@@ -118,6 +119,11 @@ const Wikis = () => {
 export default Wikis;
 
 const Container = styled.div`
+  @media ${device.widerThanTablet} {
+    max-width: 780px;
+    margin-right: auto;
+  }
+
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -128,13 +134,13 @@ const Container = styled.div`
 `;
 
 const Title = styled.div<{ toggle: boolean }>`
-  ${flex({ justifyContent: 'flex-end' })}
+  ${flex({ justifyContent: 'flex-end' })};
   ${font_sora()};
   margin-bottom: 48px;
   font-weight: 600;
   font-size: 32px;
   width: 100%;
-  ${border.bottom}
+  ${border.bottom};
 
   span + span {
     margin-left: 40px;
@@ -143,9 +149,12 @@ const Title = styled.div<{ toggle: boolean }>`
   & > span {
     cursor: pointer;
     height: 100%;
+    transform: translateY(1px);
+    ${border.bottom};
 
     &:first-of-type {
       color: ${({ toggle, theme }) => (toggle ? theme.default : theme.mute)};
+      border-color: ${({ toggle, theme }) => (toggle ? theme.default : theme.border)};
 
       &:hover {
         color: ${({ toggle, theme }) => (toggle ? theme.default : theme.link)};
@@ -154,6 +163,7 @@ const Title = styled.div<{ toggle: boolean }>`
 
     &:last-of-type {
       color: ${({ toggle, theme }) => (toggle ? theme.mute : theme.default)};
+      border-color: ${({ toggle, theme }) => (toggle ? theme.border : theme.default)};
 
       &:hover {
         color: ${({ toggle, theme }) => (toggle ? theme.link : theme.default)};

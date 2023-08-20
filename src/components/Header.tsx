@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import { useState } from 'react';
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 import config from '../../blog-config';
 import Moon from '../assets/icons/Moon';
@@ -8,7 +8,7 @@ import Sun from '../assets/icons/Sun';
 import { useContext, useDispatch } from '../store/context';
 import { sunrise, sunset } from '../styles/keyframes';
 import { flex, font_sora } from '../styles/mixins';
-import { gray } from '../styles/themes';
+import { blue, gray, yellow } from '../styles/themes';
 import { getTheme } from '../utils';
 import SearchBar from './SearchBar';
 
@@ -48,8 +48,12 @@ const Header = () => {
         <Link
           to="/wikis"
           tabIndex={-1}
-          activeStyle={{ color: '#BF616A', PointerEvent: 'none', cursor: 'default ' }}>
-          <h2>INDEX VISUALIZATION</h2>
+          activeStyle={{
+            color: `${displayMode === 'day' ? blue : yellow}`,
+            PointerEvent: 'none',
+            cursor: 'default '
+          }}>
+          <h2>INDEX</h2>
         </Link>
       </Index>
     </Container>

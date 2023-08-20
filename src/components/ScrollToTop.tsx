@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Arrow from '../assets/icons/ArrowThin';
 import useScrollToTop from '../hooks/useScrollToTop';
 import { flex } from '../styles/mixins';
-import { tooltipBg } from '../styles/themes';
 
 const ScrollToTop = () => {
   const { isTop, handleClickButton } = useScrollToTop();
@@ -28,12 +27,12 @@ const Container = styled.div`
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background-color: ${({ theme }) => theme.scrollToTop};
+  background-color: ${({ theme }) => theme.scrollToTopBg};
   cursor: pointer;
 
   svg {
     path {
-      fill: white;
+      fill: ${({ theme }) => theme.scrollToTop};
     }
   }
 
@@ -47,10 +46,10 @@ const Container = styled.div`
         margin-right: -6px;
         width: 0;
         height: 0;
-        color: ${tooltipBg};
+        color: ${({ theme }) => theme.tooltipBg};
         content: '';
         border: 6px solid transparent;
-        border-top-color: ${tooltipBg};
+        border-top-color: ${({ theme }) => theme.tooltipBg};
         opacity: 0.7;
       }
 
@@ -64,8 +63,8 @@ const Container = styled.div`
         font-size: 12px;
         min-width: fit-content;
         white-space: nowrap;
-        background-color: ${tooltipBg};
-        color: white;
+        background-color: ${({ theme }) => theme.tooltipBg};
+        color: ${({ theme }) => theme.tooltip};
         padding: 4px 6px;
         border: none;
         border-radius: 6px;

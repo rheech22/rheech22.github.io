@@ -202,12 +202,12 @@ export const markdown = css`
 
   blockquote {
     padding: 12px 20px 12px 28px;
-    margin: 20px 0px;
-    border-left: ${({ theme }) => `8px solid ${theme.searchBgFocused}`};
-    box-shadow: ${({ theme }) => `${theme.shadow} 0px 3px 12px`};
+    margin: 30px 0px;
+    border-left: ${({ theme }) => `4px solid ${theme.default}`};
     font-family: Georgia, serif;
     font-style: italic;
     text-align: justify;
+    font-size: 24px;
     line-height: 1.2;
     transition: all 0.5s;
 

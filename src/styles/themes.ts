@@ -1,25 +1,31 @@
 export const white = '#fff';
 export const black = '#000000';
 export const gray = '#C9D1D9';
+export const darkGray = '#222222';
+export const beige = '#D3D3D3';
+export const brown = '#383838';
+export const blue = '#0500E8';
+export const yellow = '#F8EA18';
+
 export const tooltipBg = '#6E7681';
 
 export const dark = {
   name: 'dark',
   default: '#C9D1D9',
   mute: '#8b949e',
-  bg: '#2E3440',
-  border: '#4C566A',
-  headerBg: 'hsla(220, 16%, 22%, 0.5)',
-  link: '#BF616A',
+  bg: black,
+  border: darkGray,
+  headerBg: 'hsla(0, 0%, 0%, 0.5)',
+  link: yellow,
   search: white,
-  searchBg: '#4C566A',
-  searchFocused: black,
-  searchBgFocused: '#D8DEE9',
+  searchBg: darkGray,
+  searchFocused: white,
+  searchBgFocused: brown,
   searchPlaceholderFocused: '#757D86',
   searchSuggestion: black,
-  searchSuggestionBg: '#ECEFF4',
-  searchSuggestionHovered: white,
-  searchSuggestionBgHovered: '#4C566A',
+  searchSuggestionBg: beige,
+  searchSuggestionHovered: black,
+  searchSuggestionBgHovered: white,
   codeBg: 'rgba(135,131,120,0.15)',
   codeFontColor: '#BF616A',
   tableRowBg: '#0d1117',
@@ -28,10 +34,13 @@ export const dark = {
   title: '#f0f6fc',
   mode: white,
   toc: black,
-  tocBg: '#ECEFF4',
-  tocBgHovered: '#4C566A',
-  scrollToTop: '#5E81AC',
-  postHovered: '#4C566A'
+  tocBg: beige,
+  tocBgHovered: darkGray,
+  postHovered: darkGray,
+  scrollToTop: black,
+  scrollToTopBg: beige,
+  tooltip: black,
+  tooltipBg: beige
 };
 
 export const light = {
@@ -39,18 +48,18 @@ export const light = {
   default: '#24292f',
   mute: '#57606a',
   bg: white,
-  border: '#ECEFF4',
+  border: beige,
   headerBg: 'hsla(0, 0%, 100%, 0.5)',
-  link: '#BF616A',
+  link: blue,
   search: black,
-  searchBg: '#E5E9F0',
+  searchBg: beige,
   searchFocused: white,
-  searchBgFocused: '#3B4252',
+  searchBgFocused: brown,
   searchPlaceholderFocused: '#D8DEE9',
   searchSuggestion: white,
-  searchSuggestionBg: '#4C566A',
-  searchSuggestionHovered: 'black',
-  searchSuggestionBgHovered: '#D8DEE9',
+  searchSuggestionBg: darkGray,
+  searchSuggestionHovered: black,
+  searchSuggestionBgHovered: white,
   codeBg: 'rgba(135,131,120,0.15)',
   codeFontColor: '#BF616A',
   tableRowBg: '#ffffff',
@@ -59,8 +68,11 @@ export const light = {
   title: '#161b22',
   mode: black,
   toc: white,
-  tocBg: '#3B4252',
-  tocBgHovered: '#D8DEE9',
-  scrollToTop: '#3B4252',
-  postHovered: '#ECEFF4'
+  tocBg: brown,
+  tocBgHovered: beige,
+  postHovered: beige,
+  scrollToTop: white,
+  scrollToTopBg: brown,
+  tooltip: white,
+  tooltipBg: brown
 };
