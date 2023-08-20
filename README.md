@@ -104,7 +104,7 @@
 - [x] POC 디자인
 - [x] 인덱스 페이지 구현
 - [x] 인덱스 페이지 디자인
-- [ ] VimWiki 인덱스 고민
+- [x] VimWiki 인덱스 고민
   
 
 ## Findings
