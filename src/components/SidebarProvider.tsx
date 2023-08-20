@@ -28,7 +28,8 @@ const Wrapper = styled.div`
     justify-content: space-between;
   }
 
-  & > ul {
+  & > ul,
+  & > div {
     @media ${device.widerThanLaptopS} {
       margin-right: auto;
     }

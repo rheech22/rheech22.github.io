@@ -40,7 +40,9 @@ export const dark = {
   scrollToTop: black,
   scrollToTopBg: beige,
   tooltip: black,
-  tooltipBg: beige
+  tooltipBg: beige,
+  index: black,
+  indexBg: beige
 };
 
 export const light = {
@@ -74,5 +76,7 @@ export const light = {
   scrollToTop: white,
   scrollToTopBg: brown,
   tooltip: white,
-  tooltipBg: brown
+  tooltipBg: brown,
+  index: white,
+  indexBg: brown
 };

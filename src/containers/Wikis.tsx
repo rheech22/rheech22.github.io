@@ -3,7 +3,7 @@ import { Link, navigate } from 'gatsby-link';
 import { useEffect, useState } from 'react';
 import { GraphData, LinkObject, NodeObject } from 'react-force-graph-3d';
 import { useResizeDetector } from 'react-resize-detector';
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 import ScrollToTop from '../components/ScrollToTop';
 import useSlugs from '../hooks/useSlugs';
@@ -28,7 +28,7 @@ const Wikis = () => {
     navigate(`/${node.id}`);
   };
 
-  const { width, height, ref } = useResizeDetector({
+  const { width, ref } = useResizeDetector({
     handleHeight: false,
     refreshMode: 'debounce',
     refreshRate: 100
@@ -93,31 +93,41 @@ const Wikis = () => {
         <span onClick={() => setToggleOn(false)}>LIST</span>
       </Title>
       {toggleOn ? (
-        <ForceGraph3D
-          width={width}
-          height={height}
-          graphData={graphData}
-          onNodeClick={handleClickNode}
-          backgroundColor={displayMode === 'day' ? '#fff' : '#000000'}
-          linkWidth={1}
-          linkOpacity={0.4}
-          nodeOpacity={0.8}
-          nodeResolution={100}
-          nodeRelSize={2}
-        />
+        <>
+          <span>
+            Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan, Node-click: see
+            the wiki
+          </span>
+          <ForceGraph3D
+            width={width}
+            height={460}
+            graphData={graphData}
+            onNodeClick={handleClickNode}
+            backgroundColor={displayMode === 'day' ? '#fff' : '#000000'}
+            linkWidth={0.3}
+            linkOpacity={0.4}
+            nodeOpacity={0.8}
+            nodeResolution={100}
+            nodeRelSize={2}
+            showNavInfo={false}
+          />
+        </>
       ) : (
-        <ul>
-          {[...slugs].sort().map((slug) => {
-            const segments = slug.split('/');
-            const title = segments[segments.length - 1].replaceAll('_', ' ');
+        <>
+          <span>click to see the wiki</span>
+          <ul>
+            {[...slugs].sort().map((slug) => {
+              const segments = slug.split('/');
+              const title = segments[segments.length - 1].replaceAll('_', ' ');
 
-            return (
-              <List key={title} depth={segments.length - 1}>
-                <Link to={slug}>{title}</Link>
-              </List>
-            );
-          })}
-        </ul>
+              return (
+                <List key={title} depth={segments.length - 1}>
+                  <Link to={'/' + slug}>{title}</Link>
+                </List>
+              );
+            })}
+          </ul>
+        </>
       )}
       <ScrollToTop />
     </Container>
@@ -129,7 +139,6 @@ export default Wikis;
 const Container = styled.div`
   @media ${device.widerThanTablet} {
     max-width: 780px;
-    margin-right: auto;
   }
 
   width: 100%;
@@ -142,12 +151,20 @@ const Container = styled.div`
     font-weight: 500;
     text-decoration: underline;
   }
+
+  & > span {
+    ${font_sora()};
+    display: block;
+    text-align: end;
+    color: ${({ theme }) => theme.mute};
+    font-size: 14px;
+    line-height: 24px;
+  }
 `;
 
 const Title = styled.div<{ toggle: boolean }>`
   ${flex({ justifyContent: 'flex-end' })};
   ${font_sora()};
-  margin-bottom: 48px;
   font-weight: 600;
   font-size: 32px;
   width: 100%;
@@ -184,15 +201,29 @@ const Title = styled.div<{ toggle: boolean }>`
 `;
 
 const List = styled.li<{ depth: number }>`
-  padding-left: ${({ depth }) => `${depth * 30}px`};
-  margin-bottom: 10px;
-  font-size: ${({ depth }) => `${24 - depth * 4}px`};
+  padding-left: ${({ depth }) => `${depth * 32}px`};
+  font-size: ${({ depth }) => `${20 - depth * 2}px`};
+  line-height: 2rem;
+
+  &::before {
+    ${({ depth }) =>
+      depth > 0
+        ? css`
+            content: '- ';
+          `
+        : css`
+            content: '';
+          `};
+  }
 
   & > a {
-    text-underline-position: under;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 4px;
 
     &:hover {
-      color: ${({ theme }) => theme.link};
+      color: ${({ theme }) => theme.index};
+      background-color: ${({ theme }) => theme.indexBg};
     }
   }
 `;

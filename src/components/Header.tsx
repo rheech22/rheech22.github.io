@@ -54,7 +54,7 @@ const Header = () => {
             PointerEvent: 'none',
             cursor: 'default '
           }}>
-          <h2>INDEX</h2>
+          <h2>Index.</h2>
         </Link>
       </Index>
     </Container>
@@ -203,7 +203,7 @@ const CircleLayout = styled.div`
 const Index = styled.div`
   ${font_sora()};
   margin-left: auto;
-  font-weight: 300;
+  font-weight: 500;
 
   & > a {
     text-decoration: none;

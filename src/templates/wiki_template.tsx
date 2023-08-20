@@ -115,7 +115,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="top"
-            theme={displayMode === 'day' ? 'light' : 'dark_dimmed'}
+            theme={displayMode === 'day' ? 'light' : 'dark_high_contrast'}
             lang="ko"
             loading="lazy"
           />
