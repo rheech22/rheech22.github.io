@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { css, styled } from 'styled-components';
 
 import config from '../../blog-config';
+import Home from '../assets/icons/Home';
 import Moon from '../assets/icons/Moon';
 import Sun from '../assets/icons/Sun';
 import { useContext, useDispatch } from '../store/context';
@@ -31,9 +32,12 @@ const Header = () => {
 
   return (
     <Container>
-      <Link to="/" tabIndex={-1}>
+      <HomeButton to="/" tabIndex={-1}>
+        <Home />
+      </HomeButton>
+      <Title to="/" tabIndex={-1}>
         <h1>{config.title}</h1>
-      </Link>
+      </Title>
       <Button onClick={handleClick} tabIndex={-1} aria-label="switch display mode">
         <CircleLayout>
           <div>
@@ -74,30 +78,52 @@ const Container = styled.header`
   backdrop-filter: blur(20px);
   z-index: 1;
   transition: all 0.5s;
+`;
 
-  & > a {
-    ${font_sora()};
+const HomeButton = styled(Link)`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  min-width: 38px;
+  height: 38px;
+
+  @media ${device.widerThanTablet} {
     display: none;
-    color: ${({ theme }) => theme.title};
-    text-decoration: none;
-    transition: color 2s;
+  }
 
-    @media ${device.widerThanTablet} {
-      display: block;
-    }
+  transition: all 2s;
 
-    & > h1 {
-      font-size: 24px;
-      font-weight: 600;
-      white-space: nowrap;
+  svg {
+    width: 20px;
+    height: 20px;
+    transform: translateY(1px);
+
+    g > path {
+      stroke: ${({ theme }) => theme.title};
     }
+  }
+`;
+
+const Title = styled(Link)`
+  ${font_sora()};
+  display: none;
+  color: ${({ theme }) => theme.title};
+  text-decoration: none;
+  transition: color 2s;
+
+  @media ${device.widerThanTablet} {
+    display: block;
+  }
+
+  & > h1 {
+    font-size: 24px;
+    font-weight: 600;
+    white-space: nowrap;
   }
 `;
 
 const Button = styled.button`
   position: relative;
   z-index: 0;
-  margin: 0 8px 0 4px;
+  margin-right: 8px;
   border: none;
   border-radius: 50%;
   background: none;
@@ -106,6 +132,10 @@ const Button = styled.button`
   overflow: hidden;
   cursor: pointer;
   transition: box-shadow 2s;
+
+  @media ${device.widerThanTablet} {
+    margin-left: 8px;
+  }
 
   @media (hover: hover) {
     &:hover {

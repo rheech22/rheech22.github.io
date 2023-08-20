@@ -7,6 +7,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
 import { SearchPageProps } from '../pages/search';
+import { device } from '../styles/breakpoints';
 import { border, font_sora } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
@@ -60,7 +61,7 @@ const Container = styled.ul`
 const Title = styled.div`
   ${font_sora()};
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   width: 100%;
   text-align: end;
 
@@ -69,4 +70,8 @@ const Title = styled.div`
   }
 
   ${border.bottom};
+
+  @media ${device.widerThanTablet} {
+    font-size: 32px;
+  }
 `;

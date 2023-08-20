@@ -5,6 +5,7 @@ import Post from '../components/Post';
 import ScrollToTop from '../components/ScrollToTop';
 import useLoadMore from '../hooks/useLoadMore';
 import { useContext } from '../store/context';
+import { device } from '../styles/breakpoints';
 import { border, font_sora } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
@@ -44,8 +45,12 @@ const Container = styled.ul`
 const Title = styled.div`
   ${font_sora()};
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   text-align: end;
   width: 100%;
   ${border.bottom};
+
+  @media ${device.widerThanTablet} {
+    font-size: 32px;
+  }
 `;
