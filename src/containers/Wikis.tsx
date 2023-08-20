@@ -7,21 +7,16 @@ import { styled } from 'styled-components';
 
 import ScrollToTop from '../components/ScrollToTop';
 import useSlugs from '../hooks/useSlugs';
+import { useContext } from '../store/context';
 import { device } from '../styles/breakpoints';
 import { border, flex, font_sora } from '../styles/mixins';
 
 const ForceGraph3D = loadable(() => import('react-force-graph-3d'));
 
-const colorMap = new Map([
-  [0, '#BF616A'],
-  [1, '#D08770'],
-  [2, '#EBCB8B'],
-  [3, '#A3BE8C'],
-  [4, '#B48EAD']
-]);
-
 const Wikis = () => {
   const { slugs } = useSlugs();
+
+  const { displayMode } = useContext();
 
   const [graphData, setGraphData] = useState<GraphData<NodeObject, LinkObject>>();
   const [toggleOn, setToggleOn] = useState(true);
@@ -52,8 +47,11 @@ const Wikis = () => {
             {
               id: path,
               name: title,
-              val: 100 - depth * 10,
-              color: colorMap.get(depth) ?? Math.floor(Math.random() * 16777215).toString(16)
+              val: 100 - depth * 40,
+              color:
+                displayMode === 'day'
+                  ? `rgba(5, 0, 232,${1 - (depth + 1) / 10})`
+                  : `rgba(248, 234, 24,${1 - (depth + 1) / 10})`
             }
           ];
 
@@ -67,12 +65,22 @@ const Wikis = () => {
 
           return acc;
         },
-        { nodes: [{ id: 'root', name: 'root', val: 300, color: '#B31312' }], links: [] }
+        {
+          nodes: [
+            {
+              id: 'root',
+              name: 'root',
+              val: 300,
+              color: displayMode === 'day' ? 'rgb(5, 0, 232)' : 'rgb(248, 234, 24)'
+            }
+          ],
+          links: []
+        }
       );
     };
 
     setGraphData(setNodeLinks(slugs));
-  }, [slugs]);
+  }, [slugs, displayMode]);
 
   if (!graphData) {
     return null;
@@ -90,7 +98,7 @@ const Wikis = () => {
           height={height}
           graphData={graphData}
           onNodeClick={handleClickNode}
-          backgroundColor="#3B4252"
+          backgroundColor={displayMode === 'day' ? '#fff' : '#000000'}
           linkWidth={1}
           linkOpacity={0.4}
           nodeOpacity={0.8}
@@ -129,7 +137,10 @@ const Container = styled.div`
   overflow: hidden;
 
   .scene-tooltip {
+    color: ${({ theme }) => theme.default};
     font-size: 18px !important;
+    font-weight: 500;
+    text-decoration: underline;
   }
 `;
 
