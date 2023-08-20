@@ -76,7 +76,7 @@ export const markdown = css`
     font-weight: 600;
 
     .header-anchor {
-      fill: ${({ theme }) => theme.default};
+      fill: ${({ theme }) => theme.link};
     }
 
     &:not(:first-of-type) {

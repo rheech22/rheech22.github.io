@@ -6,6 +6,7 @@ import config from '../../blog-config';
 import Moon from '../assets/icons/Moon';
 import Sun from '../assets/icons/Sun';
 import { useContext, useDispatch } from '../store/context';
+import { device } from '../styles/breakpoints';
 import { sunrise, sunset } from '../styles/keyframes';
 import { flex, font_sora } from '../styles/mixins';
 import { blue, gray, yellow } from '../styles/themes';
@@ -66,9 +67,8 @@ const Container = styled.header`
   position: sticky;
   top: 0;
   ${flex({ alignItems: 'center' })}
-  /* min-width: 360px; */
   width: 100%;
-  height: 71px;
+  min-height: 71px;
   opacity: 0.9;
   background-color: ${({ theme }) => theme.headerBg};
   backdrop-filter: blur(20px);
@@ -77,9 +77,14 @@ const Container = styled.header`
 
   & > a {
     ${font_sora()};
+    display: none;
     color: ${({ theme }) => theme.title};
     text-decoration: none;
     transition: color 2s;
+
+    @media ${device.widerThanTablet} {
+      display: block;
+    }
 
     & > h1 {
       font-size: 24px;
