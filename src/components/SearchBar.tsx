@@ -102,15 +102,15 @@ const Container = styled.form<{ hasInput: boolean }>`
 `;
 
 const Suggestions = styled.ul`
-  display: none;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  background-color: ${({ theme }) => theme.searchSuggestionBg};
-  color: ${({ theme }) => theme.searchSuggestion};
-  width: 100%;
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 35;
+  display: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.searchSuggestionBg};
+  color: ${({ theme }) => theme.searchSuggestion};
   box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
 `;

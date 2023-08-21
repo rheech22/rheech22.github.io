@@ -68,18 +68,18 @@ const Container = styled.li`
 
   & > button {
     ${flex({ alignItems: 'center', justifyContent: 'center' })};
-    margin-left: auto;
     border: none;
-    background: none;
+    margin-left: auto;
     border-radius: 6px;
     padding: 4px 6px;
-    color: ${({ theme }) => theme.searchSuggestion};
+    background: none;
     min-width: fit-content;
     height: 20px;
     font-size: 12px;
     letter-spacing: 0.8px;
     outline: none;
     cursor: pointer;
+    color: ${({ theme }) => theme.searchSuggestion};
 
     & > span {
       margin-left: 4px;

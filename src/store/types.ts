@@ -3,12 +3,12 @@ export type BaseState = {
 };
 
 export type State = {
-  posts: Posts;
+  wikis: Wikis;
   headingId: string | null;
   displayMode: 'day' | 'night' | null;
 };
 
-export type ActionType = 'setDisplayMode' | 'setPosts' | 'setCurrentHeadingId';
+export type ActionType = 'setDisplayMode' | 'setWikis' | 'setCurrentHeadingId';
 
 export type Payload = {
   [P in keyof State]?: State[P];
@@ -16,7 +16,7 @@ export type Payload = {
 
 export type Action = { type: ActionType; payload?: Payload };
 
-export type Posts = Queries.getPostsQuery['allMarkdownRemark']['edges'];
+export type Wikis = Queries.getWikisQuery['allMarkdownRemark']['edges'];
 
 type MarkdownHeadings = ReadonlyArray<Queries.Maybe<Queries.MarkdownHeading>>;
 

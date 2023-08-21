@@ -1,5 +1,5 @@
 import { useContext } from '../store/context';
-import { Posts } from '../store/types';
+import { Wikis } from '../store/types';
 
 interface Params {
   searchFilter?: string;
@@ -7,12 +7,12 @@ interface Params {
 }
 
 interface Filter extends Params {
-  posts: Posts;
+  wikis: Wikis;
 }
 
-const filter = ({ posts, searchKeyword, searchFilter }: Filter) => {
+const filter = ({ wikis, searchKeyword, searchFilter }: Filter) => {
   if (searchKeyword) {
-    return posts.filter(
+    return wikis.filter(
       ({
         node: {
           frontmatter: { title },
@@ -23,28 +23,24 @@ const filter = ({ posts, searchKeyword, searchFilter }: Filter) => {
 
         const hasContent = html?.toLowerCase().includes(searchKeyword.toLowerCase());
 
-        if (searchFilter === 'title') return hasTitle;
-
-        if (searchFilter === 'content') return hasContent;
-
-        return hasTitle || hasContent;
+        return searchFilter === 'title' ? hasTitle : hasContent;
       }
     );
   }
 
-  return posts;
+  return wikis;
 };
 
-const useFilteredPosts = ({ searchFilter, searchKeyword }: Params) => {
-  const { posts } = useContext();
+const useFilteredWikis = ({ searchFilter, searchKeyword }: Params) => {
+  const { wikis } = useContext();
 
-  const filteredPosts = filter({
-    posts,
+  const filteredWikis = filter({
+    wikis,
     searchFilter,
     searchKeyword
   });
 
-  return filteredPosts;
+  return filteredWikis;
 };
 
-export default useFilteredPosts;
+export default useFilteredWikis;

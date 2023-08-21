@@ -1,15 +1,18 @@
 import Giscus from '@giscus/react';
 import { Link, PageProps, graphql } from 'gatsby';
 
+import config from '../../blog-config';
 import ArrowThin from '../assets/icons/ArrowThin';
-import SEO from '../components/SEO';
 import ScrollToTop from '../components/ScrollToTop';
+import SEO from '../components/SEO';
 import TOC from '../components/TOC';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import { useContext } from '../store/context';
-import { takePost } from '../utils';
+import { getAncestors, getWikiInfo, parseLinks } from '../utils';
 import * as Styled from './styles';
+
+const { commit, blame } = config;
 
 // eslint-disable-next-line react/display-name
 export default ({ data }: PageProps<Queries.templateQuery>) => {
@@ -17,50 +20,26 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, contents, headings, timeToRead, slug } = takePost(data);
+  const { title, created, updated, contents, headings, timeToRead, slug } = getWikiInfo(data);
 
-  const hasHeadings = Boolean(headings.length);
+  const hasHeading = Boolean(headings.length);
 
-  const parsedContents = contents.replace(/\[\[(.*)\]\](?=<)/g, (_, value) => {
-    const title = value.replace('/index.md', '');
-
-    const path = `${slug}/${title}`;
-
-    return `<a href=${path}>${title.replaceAll('_', ' ')}</a>`;
-  });
-
-  const slugs = slug.split('/');
-
-  const parents = slugs
-    .slice(1, slugs.length - 1)
-    .reduce<{ path: string; value: string }[]>((acc, cur, index) => {
-      const prevPath = acc[index - 1]?.path || '';
-
-      return [
-        ...acc,
-        {
-          path: `${prevPath}/${cur}`,
-          value: cur.replaceAll('/', '').replaceAll('_', ' ')
-        }
-      ];
-    }, []);
+  const navs = getAncestors(slug);
 
   return (
     <Styled.Container>
       <Styled.Section>
-        <Styled.Article hasHeadings={hasHeadings}>
+        <Styled.Article>
           <Styled.Nav>
-            {parents.length ? (
-              parents.map(({ path, value }, index, { length }) => {
-                return (
-                  <div key={value}>
-                    <Link key={value} to={path}>
-                      {value}
-                    </Link>
-                    {Boolean(index + 1 < length) && <ArrowThin />}
-                  </div>
-                );
-              })
+            {navs.length ? (
+              navs.map(({ path, value }, index, { length }) => (
+                <div key={value}>
+                  <Link key={value} to={path}>
+                    {value}
+                  </Link>
+                  {Boolean(index + 1 < length) && <ArrowThin />}
+                </div>
+              ))
             ) : (
               <span>ROOT</span>
             )}
@@ -71,37 +50,31 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
               <div>
                 <span>{timeToRead} min read</span>
                 <time dateTime="created at">
-                  <a
-                    href={`https://github.com/rheech22/rheech22.github.io/commits/develop/src/posts${slug}/index.md`}
-                    target="_blank"
-                    rel="noreferrer">
+                  <a href={`${commit}/src/wikis${slug}/index.md`} target="_blank" rel="noreferrer">
                     CREATED: {new Date(created).toLocaleDateString('en-GB')}
                   </a>
                 </time>
                 <time dateTime="updated at">
-                  <a
-                    href={`https://github.com/rheech22/rheech22.github.io/commits/develop/src/posts${slug}/index.md`}
-                    target="_blank"
-                    rel="noreferrer">
+                  <a href={`${commit}/src/wikis${slug}/index.md`} target="_blank" rel="noreferrer">
                     UPDATED: {new Date(updated).toLocaleDateString('en-GB')}
                   </a>
                 </time>
-                <a
-                  href={`https://github.com/rheech22/rheech22.github.io/blame/develop/src/posts${slug}/index.md`}
-                  target="_blank"
-                  rel="noreferrer">
+                <a href={`${blame}/src/wikis${slug}/index.md`} target="_blank" rel="noreferrer">
                   Blame
                 </a>
               </div>
             </Styled.SubTitle>
           </Styled.Header>
           <Styled.Main>
-            <section ref={spyRef} dangerouslySetInnerHTML={{ __html: parsedContents }} />
+            <section
+              ref={spyRef}
+              dangerouslySetInnerHTML={{ __html: parseLinks({ contents, slug }) }}
+            />
           </Styled.Main>
         </Styled.Article>
         <ScrollToTop />
       </Styled.Section>
-      {hasHeadings && <TOC headings={headings} />}
+      {hasHeading && <TOC headings={headings} />}
       {displayMode && (
         <Styled.Comments>
           <Giscus
@@ -151,7 +124,7 @@ export const query = graphql`
 export const Head = ({ data }: PageProps<Queries.templateQuery>) => {
   const { title, image, siteUrl, twitterUsername } = useSiteMetadata();
 
-  const { title: subtitle, created, updated, excerpt, slug } = takePost(data);
+  const { title: subtitle, created, updated, excerpt, slug } = getWikiInfo(data);
 
   return (
     <SEO

@@ -5,16 +5,16 @@ import { flex, font_sora } from '../styles/mixins';
 import { getDateSegments } from '../utils';
 
 interface Props {
-  path: string;
+  slug: string;
   title: string;
   updated: string;
 }
 
-const Post = ({ path, title, updated }: Props) => {
+const WikiLink = ({ slug, title, updated }: Props) => {
   const { date, month, year } = getDateSegments(updated);
 
   return (
-    <Container onClick={() => navigate(path)}>
+    <Container onClick={() => navigate(slug)}>
       <div>
         <Date>
           <span>{date.padStart(2, '0')}</span>
@@ -29,7 +29,7 @@ const Post = ({ path, title, updated }: Props) => {
   );
 };
 
-export default Post;
+export default WikiLink;
 
 const Container = styled.li`
   padding: 20px 8px 12px 8px;
@@ -51,10 +51,10 @@ const Container = styled.li`
 `;
 
 const Heading = styled.h2`
+  margin-bottom: 4px;
   font-size: 20px;
   font-weight: 600;
   color: ${({ theme }) => theme.default};
-  margin-bottom: 4px;
   transition: all 0.5s;
 `;
 

@@ -1,11 +1,12 @@
 import loadable from '@loadable/component';
 import { Link, navigate } from 'gatsby-link';
-import { useEffect, useState } from 'react';
-import { GraphData, LinkObject, NodeObject } from 'react-force-graph-3d';
+import { useState } from 'react';
+import { NodeObject } from 'react-force-graph-3d';
 import { useResizeDetector } from 'react-resize-detector';
 import { css, styled } from 'styled-components';
 
 import ScrollToTop from '../components/ScrollToTop';
+import useGraphData from '../hooks/useGraphData';
 import useSlugs from '../hooks/useSlugs';
 import { useContext } from '../store/context';
 import { device } from '../styles/breakpoints';
@@ -13,13 +14,22 @@ import { border, flex, font_sora } from '../styles/mixins';
 
 const ForceGraph3D = loadable(() => import('react-force-graph-3d'));
 
-const Wikis = () => {
-  const { slugs } = useSlugs();
-
+const WikiIndex = () => {
   const { displayMode } = useContext();
 
-  const [graphData, setGraphData] = useState<GraphData<NodeObject, LinkObject>>();
+  const { slugs } = useSlugs();
+  const { graphData } = useGraphData({ displayMode, slugs });
+  const { width, ref } = useResizeDetector({
+    handleHeight: false,
+    refreshMode: 'debounce',
+    refreshRate: 100
+  });
+
   const [toggleOn, setToggleOn] = useState(true);
+
+  if (!graphData) {
+    return null;
+  }
 
   const handleClickNode = (node: NodeObject) => {
     if (node.id === 'root') {
@@ -27,64 +37,6 @@ const Wikis = () => {
     }
     navigate(`/${node.id}`);
   };
-
-  const { width, ref } = useResizeDetector({
-    handleHeight: false,
-    refreshMode: 'debounce',
-    refreshRate: 100
-  });
-
-  useEffect(() => {
-    const setNodeLinks = (paths: string[]) => {
-      return paths.reduce<GraphData<NodeObject, LinkObject>>(
-        (acc, path) => {
-          const segments = path.split('/');
-          const depth = segments.length - 1;
-          const title = segments[segments.length - 1].replaceAll('_', ' ');
-
-          acc.nodes = [
-            ...acc.nodes,
-            {
-              id: path,
-              name: title,
-              val: 100 - depth * 40,
-              color:
-                displayMode === 'day'
-                  ? `rgba(5, 0, 232,${1 - (depth + 1) / 10})`
-                  : `rgba(248, 234, 24,${1 - (depth + 1) / 10})`
-            }
-          ];
-
-          acc.links = [
-            ...acc.links,
-            {
-              source: depth ? [...segments].slice(0, -1).join('/') : 'root',
-              target: path
-            }
-          ];
-
-          return acc;
-        },
-        {
-          nodes: [
-            {
-              id: 'root',
-              name: 'root',
-              val: 300,
-              color: displayMode === 'day' ? 'rgb(5, 0, 232)' : 'rgb(248, 234, 24)'
-            }
-          ],
-          links: []
-        }
-      );
-    };
-
-    setGraphData(setNodeLinks(slugs));
-  }, [slugs, displayMode]);
-
-  if (!graphData) {
-    return null;
-  }
 
   return (
     <Container ref={ref}>
@@ -134,7 +86,7 @@ const Wikis = () => {
   );
 };
 
-export default Wikis;
+export default WikiIndex;
 
 const Container = styled.div`
   @media ${device.widerThanTablet} {

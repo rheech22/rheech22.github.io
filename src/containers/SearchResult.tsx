@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
-import Post from '../components/Post';
 import ScrollToTop from '../components/ScrollToTop';
+import WikiLink from '../components/WikiLink';
 import useFilteredPosts from '../hooks/useFilteredPosts';
 import useLoadMore from '../hooks/useLoadMore';
 import { SearchPageProps } from '../pages/search';
@@ -38,7 +38,7 @@ const SearchResult = ({
               frontmatter: { updated, title },
               fields: { slug }
             }
-          }) => <Post key={id} path={slug} updated={updated} title={title} />
+          }) => <WikiLink key={id} slug={slug} updated={updated} title={title} />
         )
       )}
       <LoadMore load={loadMore} />

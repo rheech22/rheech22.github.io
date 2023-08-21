@@ -51,7 +51,7 @@ const Header = () => {
       <SearchBar searchKeyword={searchKeyword} onChange={handleChange} />
       <Index>
         <Link
-          to="/wikis"
+          to="/wiki-index"
           tabIndex={-1}
           activeStyle={{
             color: `${displayMode === 'day' ? blue : yellow}`,
@@ -68,9 +68,9 @@ const Header = () => {
 export default Header;
 
 const Container = styled.header`
+  ${flex({ alignItems: 'center' })}
   position: sticky;
   top: 0;
-  ${flex({ alignItems: 'center' })}
   width: 100%;
   min-height: 71px;
   opacity: 0.9;

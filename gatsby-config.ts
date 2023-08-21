@@ -36,9 +36,9 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
-        path: `${__dirname}/src/posts`,
-        ignore: ['**/src/posts/index.md']
+        name: 'wikis',
+        path: `${__dirname}/src/wikis`,
+        ignore: ['**/src/wikis/index.md']
       }
     },
 

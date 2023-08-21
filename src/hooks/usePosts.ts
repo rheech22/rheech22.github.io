@@ -6,21 +6,21 @@ import { useDispatch } from '../store/context';
 const usePosts = () => {
   const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
 
-  const { edges: posts } = data.allMarkdownRemark;
+  const { edges: wikis } = data.allMarkdownRemark;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!posts.length) return;
+    if (!wikis.length) return;
 
-    dispatch({ type: 'setPosts', payload: { posts } });
-  }, [posts]);
+    dispatch({ type: 'setWikis', payload: { wikis } });
+  }, [wikis]);
 };
 
 export default usePosts;
 
 const GET_POST = graphql`
-  query getPosts {
+  query getWikis {
     allMarkdownRemark(sort: { frontmatter: { updated: DESC } }) {
       edges {
         node {

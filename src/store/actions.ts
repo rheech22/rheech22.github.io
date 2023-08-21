@@ -3,12 +3,12 @@ import { ActionType, BaseState, Payload } from './types';
 const actions: {
   [key in ActionType]: <T extends BaseState>(state: T, payload?: Payload) => T;
 } = {
-  setPosts: (state, payload) => {
+  setWikis: (state, payload) => {
     if (!payload) return state;
 
-    const { posts } = payload;
+    const { wikis } = payload;
 
-    return { ...state, posts };
+    return { ...state, wikis };
   },
   setCurrentHeadingId: (state, payload) => {
     if (!payload) return state;

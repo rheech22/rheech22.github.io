@@ -1,12 +1,12 @@
 import SEO from '../components/SEO';
 import SidebarProvider from '../components/SidebarProvider';
-import Posts from '../containers/Posts';
+import RecentWikis from '../containers/RecentWikis';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 // eslint-disable-next-line react/display-name
 export default () => (
   <SidebarProvider>
-    <Posts />
+    <RecentWikis />
   </SidebarProvider>
 );
 

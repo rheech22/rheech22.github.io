@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 
-const target = 'src/posts/index.md';
+const target = 'src/wikis/index.md';
 const list = [];
 
 function isDirectory(path) {
@@ -31,7 +31,7 @@ function getFiles(path, list) {
 
 function getVimWikiLinks(paths) {
   return paths
-    .map((path) => path.replace('src/posts/', '').replace('/index.md', ''))
+    .map((path) => path.replace('src/wikis/', '').replace('/index.md', ''))
     .sort()
     .map((path) => {
       const segments = path.split('/');
@@ -68,7 +68,7 @@ function appendLinks(target, links) {
   });
 }
 
-getFiles('src/posts', list);
+getFiles('src/wikis', list);
 
 deleteFile(target);
 

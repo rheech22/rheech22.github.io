@@ -15,6 +15,8 @@ const config = {
   linkedIn: '',
   twitter: 'https://twitter.com',
   github: 'https://github.com/rheech22',
+  commit: 'https://github.com/rheech22/rheech22.github.io/commits/develop',
+  blame: 'https://github.com/rheech22/rheech22.github.io/blame/develop',
   instagram: '',
   email: '',
   resume: ''

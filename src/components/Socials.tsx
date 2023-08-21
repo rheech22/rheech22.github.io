@@ -76,12 +76,12 @@ const Container = styled.div`
   position: absolute;
   left: 98px;
   bottom: 10px;
+  border: ${({ theme }) => `1px solid ${theme.border}`};
+  border-radius: 19px;
   width: 40px;
   min-height: 40px;
-  background-color: ${({ theme }) => theme.bg};
-  border-radius: 19px;
-  border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
+  background-color: ${({ theme }) => theme.bg};
   transition:
     background-color 0.5s,
     border-color 0.5s;

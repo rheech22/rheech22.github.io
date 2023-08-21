@@ -4,7 +4,7 @@ import reducer from './reducer';
 import { Action, State } from './types';
 
 const initialState: State = {
-  posts: [],
+  wikis: [],
   displayMode: null,
   headingId: null
 };

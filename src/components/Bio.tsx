@@ -18,7 +18,7 @@ const Bio = () => {
         <Socials />
       </Wrapper>
       <Profile>
-        <Name>{author}</Name>
+        <Author>{author}</Author>
         <Description>{description}</Description>
       </Profile>
     </Container>
@@ -29,8 +29,7 @@ export default Bio;
 
 const Container = styled.div`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  margin: 0 10px;
-  margin-bottom: 8px;
+  margin: 0 10px 8px 10px;
   max-width: 100%;
 
   @media ${device.widerThanLaptopS} {
@@ -84,7 +83,7 @@ const Profile = styled.div`
   }
 `;
 
-const Name = styled.span`
+const Author = styled.span`
   max-width: 100%;
   display: block;
   font-size: 20px;

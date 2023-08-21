@@ -66,7 +66,7 @@ export const Section = styled.section`
   min-width: 86%;
 `;
 
-export const Article = styled.article<{ hasHeadings: boolean }>`
+export const Article = styled.article`
   padding: 20px 0;
   width: 100%;
   ${flex({ flexDirection: 'column' })};

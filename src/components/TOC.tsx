@@ -35,10 +35,10 @@ const TOC = ({ headings }: Props) => {
 export default TOC;
 
 const Container = styled.aside`
-  display: none;
   position: sticky;
   top: 163px;
   right: 0px;
+  display: none;
   min-width: fit-content;
   height: fit-content;
   overflow-y: scroll;

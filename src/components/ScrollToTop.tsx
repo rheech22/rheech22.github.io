@@ -39,38 +39,38 @@ const Container = styled.div`
   @media (hover: hover) {
     &:hover {
       &::before {
+        content: '';
         position: absolute;
         top: -6px;
         right: 50%;
         bottom: auto;
+        border: 6px solid transparent;
+        border-top-color: ${({ theme }) => theme.tooltipBg};
         margin-right: -6px;
         width: 0;
         height: 0;
         color: ${({ theme }) => theme.tooltipBg};
-        content: '';
-        border: 6px solid transparent;
-        border-top-color: ${({ theme }) => theme.tooltipBg};
         opacity: 0.7;
       }
 
       &::after {
+        content: 'Scroll to top';
         position: absolute;
         bottom: 100%;
         right: 50%;
-        transform: translateX(50%);
-        content: 'Scroll to top';
-        pointer-events: none;
         font-size: 12px;
-        min-width: fit-content;
-        white-space: nowrap;
-        background-color: ${({ theme }) => theme.tooltipBg};
-        color: ${({ theme }) => theme.tooltip};
-        padding: 4px 6px;
         border: none;
         border-radius: 6px;
         margin-bottom: 6px;
-        -webkit-font-smoothing: subpixel-antialiased;
+        padding: 4px 6px;
+        min-width: fit-content;
+        background-color: ${({ theme }) => theme.tooltipBg};
+        color: ${({ theme }) => theme.tooltip};
         opacity: 0.7;
+        transform: translateX(50%);
+        pointer-events: none;
+        white-space: nowrap;
+        -webkit-font-smoothing: subpixel-antialiased;
       }
     }
   }

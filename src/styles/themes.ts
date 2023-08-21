@@ -7,8 +7,6 @@ export const brown = '#383838';
 export const blue = '#0500E8';
 export const yellow = '#F8EA18';
 
-export const tooltipBg = '#6E7681';
-
 export const dark = {
   name: 'dark',
   default: '#C9D1D9',
