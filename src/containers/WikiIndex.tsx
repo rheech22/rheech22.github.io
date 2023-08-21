@@ -18,7 +18,7 @@ const WikiIndex = () => {
   const { displayMode } = useContext();
 
   const { slugs } = useSlugs();
-  const { graphData } = useGraphData({ displayMode, paths: slugs.map(({ path }) => path) });
+  const { graphData } = useGraphData({ displayMode, slugs });
   const { width, ref } = useResizeDetector({
     handleHeight: false,
     refreshMode: 'debounce',

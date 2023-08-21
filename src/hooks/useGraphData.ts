@@ -12,20 +12,19 @@ const rootNode = (displayMode: State['displayMode']) => ({
 
 const useGraphData = ({
   displayMode,
-  paths
+  slugs
 }: {
   displayMode: State['displayMode'];
-  paths: string[];
+  slugs: { path: string; title: string }[];
 }) => {
   const [graphData, setGraphData] = useState<GraphData<NodeObject, LinkObject>>();
 
   useEffect(() => {
-    const setNodeLinks = (paths: string[]) => {
-      return paths.reduce<GraphData<NodeObject, LinkObject>>(
-        (acc, path) => {
+    const setNodeLinks = (slugs: { path: string; title: string }[]) => {
+      return slugs.reduce<GraphData<NodeObject, LinkObject>>(
+        (acc, { path, title }) => {
           const segments = path.split('/');
           const depth = segments.length - 1;
-          const title = segments[depth].replaceAll('_', ' ');
 
           acc.nodes = [
             ...acc.nodes,
@@ -57,8 +56,8 @@ const useGraphData = ({
       );
     };
 
-    setGraphData(setNodeLinks(paths));
-  }, [paths, displayMode]);
+    setGraphData(setNodeLinks(slugs));
+  }, [slugs, displayMode]);
 
   return { graphData };
 };
