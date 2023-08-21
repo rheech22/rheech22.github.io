@@ -5,12 +5,12 @@ const useSearchParams = () => {
   useLayoutEffect(() => {
     const params = new URLSearchParams(location.search);
 
-    const searchKeyword = params.get('keyword') ?? '';
-    const searchFilter = params.get('filter') ?? '';
+    const keyword = params.get('keyword') ?? '';
+    const filter = params.get('filter') ?? '';
 
-    if (searchKeyword) {
-      navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, {
-        state: { searchKeyword, searchFilter }
+    if (keyword) {
+      navigate(`/search/?keyword=${encodeURI(keyword)}&filter=${encodeURI(filter)}`, {
+        state: { keyword, filter }
       });
       return;
     }

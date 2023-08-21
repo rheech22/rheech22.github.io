@@ -4,7 +4,7 @@ import LoadMore from '../components/LoadMore';
 import NoContent from '../components/NoContent';
 import ScrollToTop from '../components/ScrollToTop';
 import WikiLink from '../components/WikiLink';
-import useFilteredPosts from '../hooks/useFilteredPosts';
+import useFilter from '../hooks/useFilter';
 import useLoadMore from '../hooks/useLoadMore';
 import { SearchPageProps } from '../pages/search';
 import { device } from '../styles/breakpoints';
@@ -12,26 +12,21 @@ import { border, font_sora } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
 const SearchResult = ({
-  locationState
+  locationState: { keyword, filter }
 }: {
   locationState: SearchPageProps['location']['state'];
 }) => {
-  const filteredPosts = useFilteredPosts({
-    searchFilter: locationState?.searchFilter,
-    searchKeyword: locationState?.searchKeyword
-  });
+  const filtered = useFilter({ filter, keyword });
 
-  const { offset, loadMore } = useLoadMore(filteredPosts);
+  const { offset, loadMore } = useLoadMore(filtered);
 
   return (
     <Container>
       <Title>
-        SEARCHING FOR <strong>{locationState?.searchKeyword}</strong>
+        SEARCHING FOR <strong>{keyword}</strong>
       </Title>
-      {filteredPosts.length === 0 ? (
-        <NoContent prefix="검색 결과가" />
-      ) : (
-        filteredPosts.slice(0, offset).map(
+      {filtered?.length ? (
+        filtered.slice(0, offset).map(
           ({
             node: {
               id,
@@ -40,6 +35,8 @@ const SearchResult = ({
             }
           }) => <WikiLink key={id} slug={slug} updated={updated} title={title} />
         )
+      ) : (
+        <NoContent prefix="검색 결과가" />
       )}
       <LoadMore load={loadMore} />
       <ScrollToTop />

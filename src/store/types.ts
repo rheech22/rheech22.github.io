@@ -1,20 +1,16 @@
-export type BaseState = {
-  displayMode?: string | null;
-};
-
-export type State = {
+export type State = Partial<{
   wikis: Wikis;
-  headingId: string | null;
-  displayMode: 'day' | 'night' | null;
-};
+  headingId: string;
+  displayMode: 'day' | 'night';
+}>;
 
 export type ActionType = 'setDisplayMode' | 'setWikis' | 'setCurrentHeadingId';
 
 export type Payload = {
-  [P in keyof State]?: State[P];
+  [P in keyof State]: State[P];
 };
 
-export type Action = { type: ActionType; payload?: Payload };
+export type Action = { type: ActionType; payload: Payload };
 
 export type Wikis = Queries.getWikisQuery['allMarkdownRemark']['edges'];
 

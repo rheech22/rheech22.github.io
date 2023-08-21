@@ -5,8 +5,8 @@ import { Action, State } from './types';
 
 const initialState: State = {
   wikis: [],
-  displayMode: null,
-  headingId: null
+  displayMode: undefined,
+  headingId: undefined
 };
 
 export const Context = createContext<State>(initialState);

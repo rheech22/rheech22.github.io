@@ -1,4 +1,4 @@
-export const getTheme = (displayMode: 'day' | 'night' | null) => {
+export const getTheme = (displayMode?: 'day' | 'night') => {
   return displayMode === 'day' ? 'night' : 'day';
 };
 
@@ -62,4 +62,10 @@ export const getAncestors = (slug: string) => {
         }
       ];
     }, []);
+};
+
+export const has = (target?: string | null) => (value: string) => {
+  if (!target) return;
+
+  return target.toLowerCase().includes(value.toLowerCase());
 };
