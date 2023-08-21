@@ -15,7 +15,7 @@ const filter = ({ wikis, searchKeyword, searchFilter }: Filter) => {
     return wikis.filter(
       ({
         node: {
-          frontmatter: { title },
+          fields: { title },
           html
         }
       }) => {

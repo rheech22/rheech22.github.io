@@ -1,8 +1,8 @@
 import { ThemeProvider } from 'styled-components';
 
-import usePosts from '../hooks/usePosts';
 import useSearchParams from '../hooks/useSearchParams';
 import useTheme from '../hooks/useTheme';
+import useWikis from '../hooks/useWikis';
 import { useContext } from '../store/context';
 import GlobalStyle from '../styles/global';
 import { dark, light } from '../styles/themes';
@@ -19,7 +19,7 @@ const Layout = ({ children }: Props) => {
 
   useSearchParams();
 
-  usePosts();
+  useWikis();
 
   const { displayMode } = useContext();
 

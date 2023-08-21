@@ -1,7 +1,6 @@
 ---
 created: "2023-02-26"
-updated: "2023-02-26"
-title: "5장_HTTP 요청"
+updated: 2023-08-22 00:39:12 +0900
 ---
 
 ## AJAX(Asynchronous Javascript and XML)

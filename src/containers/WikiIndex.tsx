@@ -18,7 +18,7 @@ const WikiIndex = () => {
   const { displayMode } = useContext();
 
   const { slugs } = useSlugs();
-  const { graphData } = useGraphData({ displayMode, slugs });
+  const { graphData } = useGraphData({ displayMode, paths: slugs.map(({ path }) => path) });
   const { width, ref } = useResizeDetector({
     handleHeight: false,
     refreshMode: 'debounce',
@@ -68,13 +68,10 @@ const WikiIndex = () => {
         <>
           <span>click to see the wiki</span>
           <ul>
-            {[...slugs].sort().map((slug) => {
-              const segments = slug.split('/');
-              const title = segments[segments.length - 1].replaceAll('_', ' ');
-
+            {[...slugs].sort().map(({ path, title }) => {
               return (
-                <List key={title} depth={segments.length - 1}>
-                  <Link to={'/' + slug}>{title}</Link>
+                <List key={title} depth={path.split('/').length - 1}>
+                  <Link to={'/' + path}>{title}</Link>
                 </List>
               );
             })}

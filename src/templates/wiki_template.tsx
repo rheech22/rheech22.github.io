@@ -3,8 +3,8 @@ import { Link, PageProps, graphql } from 'gatsby';
 
 import config from '../../blog-config';
 import ArrowThin from '../assets/icons/ArrowThin';
-import ScrollToTop from '../components/ScrollToTop';
 import SEO from '../components/SEO';
+import ScrollToTop from '../components/ScrollToTop';
 import TOC from '../components/TOC';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
@@ -20,7 +20,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
 
   const spyRef = useSpyHeadings();
 
-  const { title, created, updated, contents, headings, timeToRead, slug } = getWikiInfo(data);
+  const { created, updated, contents, headings, timeToRead, slug, title } = getWikiInfo(data);
 
   const hasHeading = Boolean(headings.length);
 
@@ -112,10 +112,10 @@ export const query = graphql`
       frontmatter {
         created
         updated
-        title
       }
       fields {
         slug
+        title
       }
     }
   }
@@ -124,7 +124,7 @@ export const query = graphql`
 export const Head = ({ data }: PageProps<Queries.templateQuery>) => {
   const { title, image, siteUrl, twitterUsername } = useSiteMetadata();
 
-  const { title: subtitle, created, updated, excerpt, slug } = getWikiInfo(data);
+  const { created, updated, excerpt, slug, title: subtitle } = getWikiInfo(data);
 
   return (
     <SEO

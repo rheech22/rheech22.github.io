@@ -19,16 +19,16 @@ export const getWikiInfo = (data: Queries.templateQuery) => {
       headings,
       excerpt,
       html: contents,
-      frontmatter: { title, created, updated },
-      fields: { slug }
+      frontmatter: { created, updated },
+      fields: { slug, title }
     }
   } = data;
 
   return {
-    title,
     created,
     updated,
     slug,
+    title,
     contents: contents ?? '',
     excerpt: excerpt ?? '',
     headings: headings ?? [],

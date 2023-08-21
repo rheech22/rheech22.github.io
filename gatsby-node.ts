@@ -19,6 +19,12 @@ exports.onCreateNode = ({ node, getNode, actions }: CreateNodeArgs) => {
       name: 'slug',
       value: slug
     });
+
+    createNodeField({
+      node,
+      name: 'title',
+      value: slug.split('/').slice(-1).pop()?.replaceAll('_', ' ')
+    });
   }
 };
 
@@ -34,6 +40,7 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
           node {
             fields {
               slug
+              title
             }
           }
         }
@@ -49,14 +56,15 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
     result.data.allMarkdownRemark.edges.forEach(
       ({
         node: {
-          fields: { slug }
+          fields: { slug, title }
         }
       }) => {
         createPage({
           path: slug,
           component,
           context: {
-            slug
+            slug,
+            title
           }
         });
       }
@@ -78,13 +86,13 @@ exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs)
     }
 
     type Frontmatter {
-      title: String!
       created: String!
       updated: String!
     }
 
     type MarkdownRemarkFields {
       slug: String!
+      title: String!
     }
   `;
 

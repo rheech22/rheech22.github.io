@@ -12,10 +12,10 @@ const rootNode = (displayMode: State['displayMode']) => ({
 
 const useGraphData = ({
   displayMode,
-  slugs
+  paths
 }: {
   displayMode: State['displayMode'];
-  slugs: string[];
+  paths: string[];
 }) => {
   const [graphData, setGraphData] = useState<GraphData<NodeObject, LinkObject>>();
 
@@ -57,8 +57,8 @@ const useGraphData = ({
       );
     };
 
-    setGraphData(setNodeLinks(slugs));
-  }, [slugs, displayMode]);
+    setGraphData(setNodeLinks(paths));
+  }, [paths, displayMode]);
 
   return { graphData };
 };

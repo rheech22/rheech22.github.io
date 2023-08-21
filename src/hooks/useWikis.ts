@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 
 import { useDispatch } from '../store/context';
 
-const usePosts = () => {
-  const data: Queries.getPostsQuery = useStaticQuery(GET_POST);
+const useWikis = () => {
+  const data: Queries.getWikisQuery = useStaticQuery(GET_POST);
 
   const { edges: wikis } = data.allMarkdownRemark;
 
@@ -17,7 +17,7 @@ const usePosts = () => {
   }, [wikis]);
 };
 
-export default usePosts;
+export default useWikis;
 
 const GET_POST = graphql`
   query getWikis {
@@ -28,9 +28,9 @@ const GET_POST = graphql`
           html
           fields {
             slug
+            title
           }
           frontmatter {
-            title
             created
             updated
           }

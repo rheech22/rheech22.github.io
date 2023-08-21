@@ -35,8 +35,8 @@ const SearchResult = ({
           ({
             node: {
               id,
-              frontmatter: { updated, title },
-              fields: { slug }
+              frontmatter: { updated },
+              fields: { slug, title }
             }
           }) => <WikiLink key={id} slug={slug} updated={updated} title={title} />
         )
