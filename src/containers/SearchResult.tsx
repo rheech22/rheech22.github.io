@@ -23,7 +23,7 @@ const SearchResult = ({
   return (
     <Container>
       <Title>
-        SEARCHING FOR <strong>{locationState.keyword}</strong>
+        SEARCHING FOR <strong>{locationState?.keyword}</strong>
       </Title>
       {filtered?.length ? (
         filtered.slice(0, offset).map(
