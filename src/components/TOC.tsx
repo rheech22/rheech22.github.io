@@ -76,6 +76,7 @@ const List = styled.li<{ $depth?: number | null; $touch: boolean }>`
   padding-left: ${({ $depth }) => ($depth && $depth > 0 ? `${$depth * 8}px` : '8px')};
   padding-right: 10px;
   max-width: 215px;
+  min-width: 130px;
   width: 100%;
   background-color: ${({ theme, $touch }) => ($touch ? theme.tocBg : 'none')};
   color: ${({ theme, $touch }) => ($touch ? theme.toc : theme.mute)};

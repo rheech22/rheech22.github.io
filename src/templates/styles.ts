@@ -14,7 +14,7 @@ export const Container = styled.div`
     'comments';
 
   @media ${device.widerThanTabletL} {
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 10fr 10fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
       'post post toc'
@@ -29,10 +29,6 @@ export const Container = styled.div`
     @media ${device.widerThanTablet} {
       max-width: 826px;
     }
-
-    @media ${device.widerThanTabletL} {
-      max-width: 1060px;
-    }
   }
 
   // toc
@@ -40,7 +36,7 @@ export const Container = styled.div`
     grid-area: toc;
 
     @media ${device.widerThanLaptopS} {
-      display: block;
+      ${flex({ alignItems: 'flex-start', flexDirection: 'column' })}
     }
   }
 
@@ -52,10 +48,6 @@ export const Container = styled.div`
     @media ${device.widerThanTablet} {
       max-width: 826px;
     }
-
-    @media ${device.widerThanTabletL} {
-      max-width: 1060px;
-    }
   }
 `;
 
@@ -63,7 +55,7 @@ export const Section = styled.section`
   ${flex({ justifyContent: 'center' })};
   margin: 72px auto 72px auto;
   height: auto;
-  min-width: 86%;
+  width: 100%;
 `;
 
 export const Article = styled.article`
