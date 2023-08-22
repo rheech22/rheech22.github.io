@@ -22,7 +22,7 @@ const TOC = ({ headings }: Props) => {
           const { id, depth, value } = heading;
 
           return (
-            <List key={id} depth={depth} isIntersecting={id === headingId}>
+            <List key={id} depth={depth} $touch={id === headingId}>
               <Link to={`#${id ?? ''}`}>{value}</Link>
             </List>
           );
@@ -67,7 +67,7 @@ const Container = styled.aside`
   }
 `;
 
-const List = styled.li<{ depth?: number | null; isIntersecting: boolean }>`
+const List = styled.li<{ depth?: number | null; $touch: boolean }>`
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -77,16 +77,15 @@ const List = styled.li<{ depth?: number | null; isIntersecting: boolean }>`
   padding-right: 10px;
   max-width: 215px;
   width: 100%;
-  background-color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.tocBg : 'none')};
-  color: ${({ theme, isIntersecting }) => (isIntersecting ? theme.toc : theme.mute)};
+  background-color: ${({ theme, $touch }) => ($touch ? theme.tocBg : 'none')};
+  color: ${({ theme, $touch }) => ($touch ? theme.toc : theme.mute)};
   font-size: ${({ depth }) => (depth && depth > 0 ? `${14 - depth}px` : '14px')};
   transition: all 50ms ease-in-out;
 
   @media (hover: hover) {
     &:hover {
       &:hover {
-        background-color: ${({ theme, isIntersecting }) =>
-          isIntersecting ? theme.tocBg : theme.tocBgHovered};
+        background-color: ${({ theme, $touch }) => ($touch ? theme.tocBg : theme.tocBgHovered)};
       }
     }
   }

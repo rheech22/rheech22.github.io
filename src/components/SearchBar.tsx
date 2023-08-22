@@ -27,7 +27,7 @@ const SearchBar = ({ searchKeyword, onChange }: Props) => {
   };
 
   return (
-    <Container onSubmit={handleSubmit} hasInput={Boolean(searchKeyword)}>
+    <Container onSubmit={handleSubmit} $keyword={Boolean(searchKeyword)}>
       <Textbox onChange={onChange} value={searchKeyword} placeholder="Search" maxLength={40} />
       {searchKeyword && (
         <Suggestions>
@@ -52,7 +52,7 @@ const SearchBar = ({ searchKeyword, onChange }: Props) => {
 
 export default SearchBar;
 
-const Container = styled.form<{ hasInput: boolean }>`
+const Container = styled.form<{ $keyword: boolean }>`
   border-radius: 8px;
   width: 140px;
   height: 48px;
@@ -87,8 +87,8 @@ const Container = styled.form<{ hasInput: boolean }>`
 
     &:focus {
       @media ${device.widerThanTablet} {
-        border-bottom-left-radius: ${({ hasInput }) => (hasInput ? '0px' : '6px')};
-        border-bottom-right-radius: ${({ hasInput }) => (hasInput ? '0px' : '6px')};
+        border-bottom-left-radius: ${({ $keyword }) => ($keyword ? '0px' : '6px')};
+        border-bottom-right-radius: ${({ $keyword }) => ($keyword ? '0px' : '6px')};
       }
 
       color: ${({ theme }) => theme.searchFocused};

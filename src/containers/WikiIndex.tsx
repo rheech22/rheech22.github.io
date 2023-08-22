@@ -40,7 +40,7 @@ const WikiIndex = () => {
 
   return (
     <Container ref={ref}>
-      <Title toggle={toggleOn}>
+      <Title $toggle={toggleOn}>
         <span onClick={() => setToggleOn(true)}>GRAPH</span>
         <span onClick={() => setToggleOn(false)}>LIST</span>
       </Title>
@@ -68,13 +68,15 @@ const WikiIndex = () => {
         <>
           <span>click to see the wiki</span>
           <ul>
-            {[...slugs].sort().map(({ path, title }) => {
-              return (
-                <List key={title} depth={path.split('/').length - 1}>
-                  <Link to={'/' + path}>{title}</Link>
-                </List>
-              );
-            })}
+            {[...slugs]
+              .sort(({ path: a }, { path: b }) => (a > b ? 1 : -1))
+              .map(({ path, title }) => {
+                return (
+                  <List key={title} $depth={path.split('/').length - 1}>
+                    <Link to={'/' + path}>{title}</Link>
+                  </List>
+                );
+              })}
           </ul>
         </>
       )}
@@ -111,7 +113,7 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.div<{ toggle: boolean }>`
+const Title = styled.div<{ $toggle: boolean }>`
   ${flex({ justifyContent: 'flex-end' })};
   ${font_sora()};
   font-weight: 600;
@@ -130,33 +132,33 @@ const Title = styled.div<{ toggle: boolean }>`
     ${border.bottom};
 
     &:first-of-type {
-      color: ${({ toggle, theme }) => (toggle ? theme.default : theme.mute)};
-      border-color: ${({ toggle, theme }) => (toggle ? theme.default : theme.border)};
+      color: ${({ $toggle, theme }) => ($toggle ? theme.default : theme.mute)};
+      border-color: ${({ $toggle, theme }) => ($toggle ? theme.default : theme.border)};
 
       &:hover {
-        color: ${({ toggle, theme }) => (toggle ? theme.default : theme.link)};
+        color: ${({ $toggle, theme }) => ($toggle ? theme.default : theme.link)};
       }
     }
 
     &:last-of-type {
-      color: ${({ toggle, theme }) => (toggle ? theme.mute : theme.default)};
-      border-color: ${({ toggle, theme }) => (toggle ? theme.border : theme.default)};
+      color: ${({ $toggle, theme }) => ($toggle ? theme.mute : theme.default)};
+      border-color: ${({ $toggle, theme }) => ($toggle ? theme.border : theme.default)};
 
       &:hover {
-        color: ${({ toggle, theme }) => (toggle ? theme.link : theme.default)};
+        color: ${({ $toggle, theme }) => ($toggle ? theme.link : theme.default)};
       }
     }
   }
 `;
 
-const List = styled.li<{ depth: number }>`
-  padding-left: ${({ depth }) => `${depth * 32}px`};
-  font-size: ${({ depth }) => `${20 - depth * 2}px`};
+const List = styled.li<{ $depth: number }>`
+  padding-left: ${({ $depth }) => `${$depth * 32}px`};
+  font-size: ${({ $depth }) => `${20 - $depth * 2}px`};
   line-height: 2rem;
 
   &::before {
-    ${({ depth }) =>
-      depth > 0
+    ${({ $depth }) =>
+      $depth > 0
         ? css`
             content: '- ';
           `

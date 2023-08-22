@@ -29,20 +29,22 @@ const globalStyle = createGlobalStyle<GlobalStyle>`
   
   body {
     font-family: 'Spoqa Han Sans', BlinkMacSystemFont,Arial ,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     width: 100%;
     background-color: ${({ theme }) => theme.bg};
     color: ${({ theme }) => theme.default};
     min-height: 100vh;
     line-height: 1.5;
     transition: all .5s;
-    
+
     #gatsby-focus-wrapper{
       max-width: 1440px;
       padding: 0 15px;
       margin: 0 auto;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
+      flex-direction: column;   
     }
     
     main {
