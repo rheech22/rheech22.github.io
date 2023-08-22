@@ -14,7 +14,7 @@ const RecentWikis = () => {
 
   const { offset, loadMore } = useLoadMore(wikis);
 
-  if (!wikis.length) return null;
+  if (!wikis?.length) return null;
 
   return (
     <Container>
