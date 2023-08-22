@@ -12,18 +12,18 @@ import { border, font_sora } from '../styles/mixins';
 import { previews } from '../styles/modules';
 
 const SearchResult = ({
-  locationState: { keyword, filter }
+  locationState
 }: {
   locationState: SearchPageProps['location']['state'];
 }) => {
-  const filtered = useFilter({ filter, keyword });
+  const filtered = useFilter({ filter: locationState?.filter, keyword: locationState?.keyword });
 
   const { offset, loadMore } = useLoadMore(filtered);
 
   return (
     <Container>
       <Title>
-        SEARCHING FOR <strong>{keyword}</strong>
+        SEARCHING FOR <strong>{locationState?.keyword}</strong>
       </Title>
       {filtered?.length ? (
         filtered.slice(0, offset).map(
