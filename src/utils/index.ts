@@ -5,7 +5,7 @@ export const getTheme = (displayMode?: 'day' | 'night') => {
 export const getDateSegments = (date: string) => {
   const dateString = new Intl.DateTimeFormat('en-GB', {
     dateStyle: 'medium'
-  }).format(new Date(date));
+  }).format(new Date(date.replace(/-/g, '/')));
 
   const [d, m, y] = dateString.split(' ');
 
