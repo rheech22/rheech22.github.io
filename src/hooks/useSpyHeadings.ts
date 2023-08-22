@@ -16,6 +16,10 @@ const useSpyHeadings = () => {
       ref.current.querySelectorAll('h1, h2, h3, h4, h5, h6')
     );
 
+    if (!headings.length) {
+      return;
+    }
+
     dispatch({
       type: 'setCurrentHeadingId',
       payload: { headingId: headings[0].id }
