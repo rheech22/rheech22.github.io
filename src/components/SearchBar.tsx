@@ -7,16 +7,16 @@ import SearchSuggestion from './SearchSuggestion';
 import Textbox from './Textbox';
 
 interface Props {
-  searchKeyword: string;
+  keyword: string;
   onChange: (value: string) => void;
 }
 
-const SearchBar = ({ searchKeyword, onChange }: Props) => {
-  const searchBy = (searchFilter: 'all' | 'title' | 'content') => {
+const SearchBar = ({ keyword, onChange }: Props) => {
+  const searchBy = (filter: 'all' | 'title' | 'content') => {
     onChange('');
 
-    navigate(`/search/?keyword=${encodeURI(searchKeyword)}&filter=${encodeURI(searchFilter)}`, {
-      state: { searchKeyword, searchFilter }
+    navigate(`/search/?keyword=${encodeURI(keyword)}&filter=${encodeURI(filter)}`, {
+      state: { keyword, filter }
     });
   };
 
@@ -27,19 +27,19 @@ const SearchBar = ({ searchKeyword, onChange }: Props) => {
   };
 
   return (
-    <Container onSubmit={handleSubmit} $keyword={Boolean(searchKeyword)}>
-      <Textbox onChange={onChange} value={searchKeyword} placeholder="Search" maxLength={40} />
-      {searchKeyword && (
+    <Container onSubmit={handleSubmit} $keyword={Boolean(keyword)}>
+      <Textbox onChange={onChange} value={keyword} placeholder="Search" maxLength={40} />
+      {keyword && (
         <Suggestions>
           <SearchSuggestion
             searchBy={searchBy}
-            input={searchKeyword}
+            input={keyword}
             title="Only Title"
             filterText="title"
           />
           <SearchSuggestion
             searchBy={searchBy}
-            input={searchKeyword}
+            input={keyword}
             title="Only Content"
             filterText="content"
           />

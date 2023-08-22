@@ -22,7 +22,7 @@ const TOC = ({ headings }: Props) => {
           const { id, depth, value } = heading;
 
           return (
-            <List key={id} depth={depth} $touch={id === headingId}>
+            <List key={id} $depth={depth} $touch={id === headingId}>
               <Link to={`#${id ?? ''}`}>{value}</Link>
             </List>
           );
@@ -67,19 +67,19 @@ const Container = styled.aside`
   }
 `;
 
-const List = styled.li<{ depth?: number | null; $touch: boolean }>`
+const List = styled.li<{ $depth?: number | null; $touch: boolean }>`
   display: flex;
   align-items: center;
   margin-left: auto;
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
-  padding-left: ${({ depth }) => (depth && depth > 0 ? `${depth * 8}px` : '8px')};
+  padding-left: ${({ $depth }) => ($depth && $depth > 0 ? `${$depth * 8}px` : '8px')};
   padding-right: 10px;
   max-width: 215px;
   width: 100%;
   background-color: ${({ theme, $touch }) => ($touch ? theme.tocBg : 'none')};
   color: ${({ theme, $touch }) => ($touch ? theme.toc : theme.mute)};
-  font-size: ${({ depth }) => (depth && depth > 0 ? `${14 - depth}px` : '14px')};
+  font-size: ${({ $depth }) => ($depth && $depth > 0 ? `${14 - $depth}px` : '14px')};
   transition: all 50ms ease-in-out;
 
   @media (hover: hover) {
@@ -91,7 +91,7 @@ const List = styled.li<{ depth?: number | null; $touch: boolean }>`
   }
 
   a {
-    padding: ${({ depth }) => (depth && depth > 0 ? `${8 - depth}px 0` : '8px 0')};
+    padding: ${({ $depth }) => ($depth && $depth > 0 ? `${8 - $depth}px 0` : '8px 0')};
     width: 100%;
     text-decoration: unset;
     white-space: nowrap;

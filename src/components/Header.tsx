@@ -19,7 +19,7 @@ const Header = () => {
 
   const { displayMode } = useContext();
 
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [keyword, setKeyword] = useState('');
 
   const handleClick = () =>
     dispatch({ type: 'setDisplayMode', payload: { displayMode: getTheme(displayMode) } });
@@ -27,7 +27,7 @@ const Header = () => {
   const handleChange = (value: string) => {
     if (value.length > 40) return;
 
-    setSearchKeyword(value);
+    setKeyword(value);
   };
 
   return (
@@ -48,7 +48,7 @@ const Header = () => {
           </div>
         </CircleLayout>
       </Button>
-      <SearchBar searchKeyword={searchKeyword} onChange={handleChange} />
+      <SearchBar keyword={keyword} onChange={handleChange} />
       <Index>
         <Link
           to="/wiki-index"

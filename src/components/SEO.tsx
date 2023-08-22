@@ -51,7 +51,7 @@ const SEO = ({
       <meta name="twitter:image" content={`${url}${image}`} />
       <meta name="twitter:creator" content={`@${twitterUsername}`} />
       <meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" />
-      <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
+      <meta httpEquiv="Permissions-Policy" content="interest-cohort=(), user-id=()" />
       <script type="application/ld+json">
         {`
             {
