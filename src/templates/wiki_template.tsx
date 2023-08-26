@@ -9,7 +9,7 @@ import TOC from '../components/TOC';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import { useContext } from '../store/context';
-import { getAncestors, getWikiInfo, parseLinks } from '../utils';
+import { getAncestors, getWikiInfo, parseDateString, parseLinks } from '../utils';
 import * as Styled from './styles';
 
 const { commit, blame } = config;
@@ -51,12 +51,12 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
                 <span>{timeToRead} min read</span>
                 <time dateTime="created at">
                   <a href={`${commit}/src/wikis${slug}/index.md`} target="_blank" rel="noreferrer">
-                    CREATED: {new Date(created).toLocaleDateString('en-GB')}
+                    CREATED: {new Date(parseDateString(created)).toLocaleDateString('en-GB')}
                   </a>
                 </time>
                 <time dateTime="updated at">
                   <a href={`${commit}/src/wikis${slug}/index.md`} target="_blank" rel="noreferrer">
-                    UPDATED: {new Date(updated).toLocaleDateString('en-GB')}
+                    UPDATED: {new Date(parseDateString(updated)).toLocaleDateString('en-GB')}
                   </a>
                 </time>
                 <a href={`${blame}/src/wikis${slug}/index.md`} target="_blank" rel="noreferrer">
