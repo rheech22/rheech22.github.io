@@ -237,10 +237,15 @@ export const markdown = css`
 
   deckgo-highlight-code {
     --deckgo-highlight-code-carbon-toolbar-display: none;
-    --deckgo-highlight-code-white-space: pre;
+    --deckgo-highlight-code-white-space: pre-wrap;
+
     max-width: 90vw;
-    font-size: 14px;
+    font-size: 3vw;
     margin-bottom: 32px;
+
+    @media ${device.widerThanMobile} {
+      font-size: 14px;
+    }
   }
 
   img {
