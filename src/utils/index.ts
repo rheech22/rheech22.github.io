@@ -39,8 +39,8 @@ export const getWikiInfo = (data: Queries.templateQuery) => {
 };
 
 export const parseLinks = ({ contents, slug }: { contents: string; slug: string }) => {
-  return contents.replace(/\[\[(.*)\]\](?!<\/code>)/g, (_, value) => {
-    const title = value.replace('/index.md', '');
+  return contents.replace(/\[\[([ㄱ-ㅎ가-힣\w\-_./]+?)\]\](?![\S]*<\/code>)/g, (_, captured) => {
+    const title = captured.replace('/index.md', '');
 
     const path = `${slug}/${title}`;
 
