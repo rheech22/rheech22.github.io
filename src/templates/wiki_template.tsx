@@ -41,7 +41,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
                 </div>
               ))
             ) : (
-              <span>ROOT</span>
+              <Link to="/wiki-index">ROOT</Link>
             )}
           </Styled.Nav>
           <Styled.Header>
