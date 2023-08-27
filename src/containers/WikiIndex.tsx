@@ -3,7 +3,7 @@ import { Link, navigate } from 'gatsby-link';
 import { useState } from 'react';
 import { NodeObject } from 'react-force-graph-3d';
 import { useResizeDetector } from 'react-resize-detector';
-import { css, styled } from 'styled-components';
+import { styled } from 'styled-components';
 
 import ScrollToTop from '../components/ScrollToTop';
 import useGraphData from '../hooks/useGraphData';
@@ -152,29 +152,15 @@ const Title = styled.div<{ $toggle: boolean }>`
 `;
 
 const List = styled.li<{ $depth: number }>`
-  padding-left: ${({ $depth }) => `${$depth * 32}px`};
-  font-size: ${({ $depth }) => `${20 - $depth * 2}px`};
-  line-height: 2rem;
-
-  &::before {
-    ${({ $depth }) =>
-      $depth > 0
-        ? css`
-            content: '- ';
-          `
-        : css`
-            content: '';
-          `};
-  }
+  padding-left: ${({ $depth }) => `${$depth * 12}px`};
+  margin-bottom: 4px;
 
   & > a {
-    text-decoration: none;
-    padding: 6px;
-    border-radius: 4px;
+    ${font_sora()};
+    text-underline-position: under;
 
     &:hover {
-      color: ${({ theme }) => theme.index};
-      background-color: ${({ theme }) => theme.indexBg};
+      color: ${({ theme }) => theme.link};
     }
   }
 `;
