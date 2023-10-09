@@ -1,6 +1,6 @@
 ---
 created: 2023-10-09 21:28:24 +0900
-updated: 2023-10-09 22:46:11 +0900
+updated: 2023-10-09 22:47:09 +0900
 ---
 
 [Alacritty](https://github.com/alacritty/alacritty)는 Rust로 작성된 GPU 가속 터미널 에뮬레이터다. iTerm에서만 한글 입력 중 백스페이스가 한번 씹히는 현상이 있어서 다른 툴을 찾아보던 중 알게 됐다. 사실 Alacritty에서는 한글 입력 중 특수문자가 씹히는 또다른 문제 현상이 있었는데 정작 언급한 두 가지 문제는 구름 입력기를 설치하는 것으로 해결했다. (문제 해결에 도움을 주신 이종립님 감사합니다 흑흑) 짧게나마 사용하면서 확실히 iTerm보다는 가볍고 빠르다고 느껴서 이번 경험하려고 한다.
@@ -49,7 +49,7 @@ key_bindings:
 
 ```
 
-# 디버깅
+## 디버깅
 
 - 한글 입력 중 커서가 입력 중인 문자를 포커스하고 있을 때 특수문자 입력이 씹히는 현상은 [구름 입력기](https://gureum.io/)를 사용하니까 문제가 해결됐다.
 - git commit을 날릴 때 vim을 에디터로 사용하고 있는데 `'tmux-256color': unknown terminal type.`이라는 콘솔이 찍히는 현상이 있었다. `.gitconfig`의 `core.editor` 속성에 `TERM=xterm-256color`를 추가하는 방식으로 해결했다.
@@ -59,7 +59,7 @@ key_bindings:
     editor = TERM=xterm-256color vim -c 'norm! ggA ' -c 'startinsert'
   ```
 
-# 사용 예시
+## 사용 예시
 
 1. Alacritty를 실행하면 바로 tmux와 함께 켜진다.
 2. `Command + d` 단축키로 탭을 수직 분할한다.
