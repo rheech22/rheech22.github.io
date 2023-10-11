@@ -1,6 +1,6 @@
 ---
 created: 2023-10-09 21:28:24 +0900
-updated: 2023-10-12 03:13:51 +0900
+updated: 2023-10-12 03:21:17 +0900
 ---
 
 [Alacritty](https://github.com/alacritty/alacritty)는 Rust로 작성된 GPU 가속 터미널 에뮬레이터라고 한다. 유독 iTerm에서만 한글을 입력하다가 백스페이스가 한번씩 씹히는 현상이 있어서 다른 도구를 찾던 중 알게 됐다. 사실 Alacritty에서는 특수문자가 씹히는 또다른 현상이 있었는데 정작 언급한 두 문제는 구름 입력기를 설치하는 것으로 해결했다. (문제 해결에 도움을 주신 이종립님 감사합니다 흑흑) 그러던 중 iTerm보다는 가볍고 빠르다고 느껴서 이번 기회에 사용해 보려고 한다.
@@ -25,6 +25,7 @@ brew install tmux
 # ~/.config/alacritty.yml
 
 # 요즘은 gruvbox 테마에 빠져있음
+# 테마 설치는 https://github.com/alacritty/alacritty-theme 참고
 import:
   - ~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.yaml
 
@@ -64,6 +65,8 @@ set-option -g history-limit 20000
 # 나머지는 동일
 ```
 
+tmux-gruvbox 테마는 [링크](https://github.com/egel/tmux-gruvbox)를 참고
+
 ## 디버깅
 
 - 한글 입력 중 커서가 입력 중인 문자를 포커스할 때 특수문자 입력이 씹히는 현상은 [구름 입력기](https://gureum.io/)를 사용하니까 발생하지 않았다. Mac 기본 한글 입력기의 문제일까?
@@ -92,5 +95,7 @@ set-option -g history-limit 20000
 ## 참고
 
 - [이종립님 위키](https://johngrib.github.io/wiki/tools/alacritty/)
-- [alarcritty](https://github.com/alacritty/alacritty)
+- [alacritty](https://github.com/alacritty/alacritty)
 - [tmux](https://github.com/tmux/tmux)
+- [alacritty-theme](https://github.com/alacritty/alacritty-theme)
+- [tmux-gruvbox](https://github.com/egel/tmux-gruvbox) 
