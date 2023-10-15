@@ -38,14 +38,18 @@ export const getWikiInfo = (data: Queries.templateQuery) => {
   };
 };
 
-export const parseLinks = ({ contents, slug }: { contents: string; slug: string }) => {
-  return contents.replace(/\[\[([ㄱ-ㅎ가-힣\w\-_./]+?)\]\](?![\S]*<\/code>)/g, (_, captured) => {
+export const convertVimWikiLinks = ({ contents, slug }: { contents: string; slug: string }) => {
+  contents = contents.replace(/\\\[\[(.+?)\]\]/g, '\\[\\[$1\\]\\]');
+
+  contents = contents.replace(/\[\[\/?(.+?)\s*\]\]/g, (_, captured) => {
     const title = captured.replace('/index.md', '');
 
-    const path = `${slug}/${title}`;
-
-    return `<a href=${path}>${title.replaceAll('_', ' ')}</a>`;
+    return `<a href=${`${slug}/${title}`}>${title.replaceAll('_', ' ')}</a>`;
   });
+
+  contents = contents.replace(/\\\[\\\[(.+?)\\\]\\\]/g, '[[$1]]');
+
+  return contents;
 };
 
 export const getAncestors = (slug: string) => {

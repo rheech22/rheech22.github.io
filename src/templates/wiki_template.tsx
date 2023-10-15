@@ -9,7 +9,7 @@ import TOC from '../components/TOC';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import useSpyHeadings from '../hooks/useSpyHeadings';
 import { useContext } from '../store/context';
-import { getAncestors, getWikiInfo, parseDateString, parseLinks } from '../utils';
+import { convertVimWikiLinks, getAncestors, getWikiInfo, parseDateString } from '../utils';
 import * as Styled from './styles';
 
 const { commit, blame } = config;
@@ -68,7 +68,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
           <Styled.Main>
             <section
               ref={spyRef}
-              dangerouslySetInnerHTML={{ __html: parseLinks({ contents, slug }) }}
+              dangerouslySetInnerHTML={{ __html: convertVimWikiLinks({ contents, slug }) }}
             />
           </Styled.Main>
         </Styled.Article>
@@ -90,7 +90,7 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             inputPosition="top"
             theme={displayMode === 'day' ? 'light' : 'dark_high_contrast'}
             lang="ko"
-            loading="lazy"
+            data-loading="lazy"
           />
         </Styled.Comments>
       )}

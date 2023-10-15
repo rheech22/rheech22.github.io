@@ -1,14 +1,14 @@
 ---
 created: 2023-08-22 00:00:26 +0900
-updated: 2023-08-27 03:33:15 +0900
+updated: 2023-10-15 23:05:32 +0900
 ---
 
 
 # 요약
 
-- 블로그를 위키 형식으로 구성해 보았다.
-- Vimwiki를 사용하여 로컬에서 문서를 작성한다.
-- 문서는 개츠비를 통해 GitHub Pages에 배포된다.
+- 개츠비 블로그를 위키 형식으로 구성해 보았다.
+- Vim, Vimwiki로 문서를 작성한다.
+- Git push로 GitHub Pages에 배포된다.
 - 계층 구조로 문서를 관리하여 상위 문서를 모두 확인할 수 있다.
 - 문서의 변경 날짜와 히스토리를 쉽게 알 수 있다.
 - 커밋 시점에 Vimwiki 인덱스를 자동으로 갱신한다.
@@ -20,7 +20,7 @@ updated: 2023-08-27 03:33:15 +0900
 
 # WHY Vimwiki
 
-Vimwiki를 사용하면 쉽게 문서와 그 링크를 만들 수 있다. 예를 들어 `바나나`라는 단어를 입력하고 엔터 키를 누르면 `[[바나나]]`로 바뀌면서 링크가 생성된다. 그리고 엔터 키를 한번 더 누르면 해당 문서로 이동하여 문서를 바로 작성할 수 있다. 이 글에서는 가능하면 종립님이 다루셨던 내용은 포함하지 않을 생각이다. 혹시라도 누군가 이 글을 참고할 계획이면 종립님의 글을 우선적으로 참고하길 바란다. 여기서는 개츠비 블로그를 위키 형식으로 바꾸고 Vimwiki를 접목시키는 내용을 주로 다루려고 한다.
+Vimwiki를 사용하면 쉽게 문서와 그 링크를 만들 수 있다. 예를 들어 **바나나**라는 단어를 입력하고 엔터 키를 누르면 \\[[바나나]]로 바뀌면서 링크가 생성된다. 그리고 엔터 키를 한번 더 누르면 해당 문서로 이동하여 문서를 바로 작성할 수 있다. 종립님의 블로그에서 볼 수 있는 내용은 이 글에 가급적 포함시키지 않을 생각이다. 혹시라도 누군가 이 글을 참고할 계획이면 종립님의 글을 우선적으로 참고하길 바란다. 여기서는 개츠비 블로그를 위키 형식으로 바꾸고 Vimwiki를 접목시키는 내용을 주로 다루려고 한다.
 
 # Vim 세팅
 
@@ -209,23 +209,33 @@ const navs = getAncestors(slug);
 
 # Vimwiki 링크 a 태그로 바꿔주기
 
-Vimwiki의 `[[링크]]` 형식을 `<a>` 태그로 바꿔줘야 한다. 내 위키의 경우 모두 `index.md`를 포함하고 있어서 경로에서 이를 제거하고 타이틀을 추출해야 한다. 그리고 그 타이틀을 `<a>` 태그의 `textContent`로 넣고, 한편으로는 해당 주소로부터 상대적인 `href` 속성을 전달해야 한다. Vimwiki 링크 형식을 변환하는 유틸을 만들어 사용한다.
+Vimwiki의 링크 \\[[문서]]를 타고 들어갈 수 있도록 Vimwiki 링크를 찾아 모두 `<a>` 태그로 바꿔야 한다. 하지만 문서에서 Vimwiki 링크를 그대로 보여주고 싶은 경우도 있기 때문에 예외 규칙도 필요했다. 처음에는 코드 블럭안에 포함된 Vimwiki는 링크로 변환하지 않도록 구현했지만, 멀티 라인의 코드 블럭 내부에 있는 Vimwiki 링크에는 이 규칙을 완벽하게 적용하는데 어려움이 있었다. 방법을 찾다가 종립님께 댓글로 조언을 구했는데 이스케이프 문자를 사용하는 방법을 알려주셨다. 정말 친절하게도 문서까지 작성해 주셨는데 해당 문서는 [여기](https://johngrib.github.io/wiki/blog/this/convert-html-link/)에서 볼 수 있다.
+
+마크다운 내에서 Vimwiki 형식 앞에 백슬래시를 \\\\\\[[링크]]와 같이 두 개 붙이거나, 마크다운 안에 코드블럭 내에서 \\\\[[링크]]와 같이 백슬래시 하나를 붙이면 링크를 그대로 보여준다. 코드는 아래와 같다.
+
 
 ```ts
 
-const parseLinks = ({ contents, slug }: { contents: string; slug: string }) => {
-  return contents.replace(/\[\[([ㄱ-ㅎ가-힣\w\-_./]+?)\]\](?![\S]*<\/code>)/g, (_, value) => {
-    const title = value.replace('/index.md', '');
+export const convertVimWikiLinks = ({ contents, slug }: { contents: string; slug: string }) => {
+  // 1. \\[[링크]] 패턴의 문자를 \\[\\[링크\\]\\] 패턴의 문자로 변경한다.
+  contents = contents.replace(/\\\[\[(.+?)\]\]/g, '\\[\\[$1\\]\\]');
 
-    const path = `${slug}/${title}`;
+  // 2. \[[링크]] 패턴의 문자를 a 태그로 변환한다.
+  contents = contents.replace(/\[\[\/?(.+?)\s*\]\]/g, (_, captured) => {
+    // 2-1. 내 위키의 문서 링크는 '/index.md'를 강제하기 때문에 이를 링크 제목에서 제거한다.
+    const title = captured.replace('/index.md', '');
 
-    return `<a href=${path}>${title.replaceAll('_', ' ')}</a>`;
+    // 2-2. slug를 포함한 경로를 href에 할당하고 링크 제목에서 언더스코어를 공백 문자로 대체한다.
+    return `<a href=${`${slug}/${title}`}>${title.replaceAll('_', ' ')}</a>`;
   });
+
+  // 3. 1번에서 임시로 변경했던 \\[\\[링크\\]\\] 패턴을 가진 문자를 \[[링크]]의 패턴으로 바꿔준다.
+  contents = contents.replace(/\\\[\\\[(.+?)\\\]\\\]/g, '\[[$1]]');
+
+  return contents;
 };
 
 ```
-
-코드 블럭에 포함된 경우에는 변환시키지 않으려고 다소 긴 정규 표현식을 사용했다. 문서 경로 -> 문서 제목 -> pathname 으로 사용하고 있기 때문에 어렵지 않게 Vimwiki 링크를 찾아낼 수 있지만 완전한 형태는 아니다. 인라인이 아닌 여러 줄의 코드 블럭에서는 패턴에 일치하는 경우 링크로 변환될 수 있다. 더 좋은 방법을 찾아봐야 한다.
 
 # 마크다운 내 링크에서 라우터 사용하기
 
@@ -281,7 +291,7 @@ function getVimWikiLinks(paths) {
     .map((path) => {
       const segments = path.split('/');
       const depth = segments.length - 1;
-      const link = `* [[${segments.join('/')}${isMarkdown(path) ? '' : '/index.md'}]]`;
+      const link = `* \[[${segments.join('/')}${isMarkdown(path) ? '' : '/index.md'}]]`;
 
       return link.padStart(link.length + depth, '\t');
     });
@@ -337,5 +347,10 @@ node ./generate_wiki_index.js
 커밋을 하면 아래와 같이 인덱스 문서를 생성한다.
 
 ![index](https://github.com/rheech22/rheech22.github.io/assets/57756798/67e1c6c9-ee39-4c80-8d37-34265d10c887)
+
+# 참고
+
+- [Vimwiki + Jekyll + Github.io로 나만의 위키를 만들자](https://johngrib.github.io/wiki/my-wiki/#%EA%B5%AC%ED%98%84-%EA%B2%B0%EA%B3%BC)
+- [vimwiki 링크를 html 링크로 자동 변환하는 기능](https://johngrib.github.io/wiki/blog/this/convert-html-link/)
 
 
