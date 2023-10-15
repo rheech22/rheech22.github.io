@@ -72,6 +72,6 @@ const Date = styled.div`
     ${flex({ flexDirection: 'column' })};
     margin: 12px 0 0 4px;
     font-size: 16px;
-    font-weight: 200;
+    font-weight: 300;
   }
 `;
