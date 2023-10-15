@@ -162,7 +162,6 @@ export const markdown = css`
     border-color: gray;
     border-spacing: 0;
     border-collapse: collapse;
-    width: max-content;
     max-width: 100%;
     overflow: auto;
     font-size: 16px;
