@@ -84,6 +84,12 @@ export const markdown = css`
     }
   }
 
+  h1,
+  h2 {
+    padding-bottom: 0.2em;
+    ${border.bottom};
+  }
+
   h1 {
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -160,6 +166,7 @@ export const markdown = css`
     max-width: 100%;
     overflow: auto;
     font-size: 16px;
+    transition: all 0.5s;
 
     thead {
       display: table-header-group;
@@ -181,10 +188,9 @@ export const markdown = css`
       border-top-width: 1px;
       border-top-style: solid;
       border-top-color: ${({ theme }) => theme.border};
-      transition: all 0.5s;
 
       &:nth-of-type(2n) {
-        background-color: ${({ theme }) => theme.searchBgFocused};
+        background-color: ${({ theme }) => theme.tableRowBgMuted};
       }
     }
 
@@ -196,7 +202,6 @@ export const markdown = css`
       border-width: 1px;
       border-style: solid;
       border-color: ${({ theme }) => theme.tableCellBorder};
-      transition: all 0.5s;
     }
   }
 
@@ -207,7 +212,7 @@ export const markdown = css`
     font-family: Georgia, serif;
     font-style: italic;
     text-align: justify;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.2;
     transition: all 0.5s;
 
