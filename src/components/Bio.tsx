@@ -28,13 +28,14 @@ const Bio = () => {
 export default Bio;
 
 const Container = styled.div`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  ${flex({ alignItems: 'center' })}
   margin: 0 10px 8px 10px;
   max-width: 100%;
 
   @media ${device.widerThanLaptopS} {
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     width: 316px;
     padding: 20px 20px 4px 20px;
     margin: 0;
