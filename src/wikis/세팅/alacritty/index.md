@@ -1,6 +1,6 @@
 ---
 created: 2023-10-09 21:28:24 +0900
-updated: 2023-12-25 00:28:26 +0900
+updated: 2023-12-25 05:09:05 +0900
 ---
 
 [Alacritty](https://github.com/alacritty/alacritty)는 Rust로 작성된 GPU 가속 터미널 에뮬레이터. iTerm에서 한글 입력 중 BackSpace가 씹히는 현상이 있어 다른 터미널 프로그램을 찾던 중 알게 되었다. 사실 Alacritty에서도 특수문자가 씹히는 비슷한 현상이 있었는데 정작 두 문제는 구름 입력기를 설치하여 해결했다. (문제 해결에 도움을 주신 이종립님 감사합니다 흑흑)
@@ -245,8 +245,33 @@ set-option -a terminal-overrides ",alacritty:RGB"
 # prevent to get a gap between window numbers
 set-option -g renumber-windows on
 
-# set styles
-# style 관련 설정은 생략했으니 dotfiles을 참고
+# use C-b instead of C-q
+unbind C-b
+set -g prefix C-q
+
+# bind hjkl to select pane
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# new window with current path
+bind c new-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind '"' split-window -v -c "#{pane_current_path}"
+
+# bind HJKLX to resize pane
+bind-key J resize-pane -D
+bind-key K resize-pane -U
+bind-key H resize-pane -L
+bind-key L resize-pane -R
+bind-key X kill-pane  # kill-pane을 쓰면 window를 닫기 전에 confirm을 물어보지 않는다
+
+# swap window
+bind-key C-h swap-window -t -1\; select-window -t -1
+bind-key C-l swap-window -t +1\; select-window -t +14.0
+
+# style 관련 설정은 생략
 
 ```
 
