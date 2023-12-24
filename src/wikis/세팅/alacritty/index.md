@@ -1,6 +1,6 @@
 ---
 created: 2023-10-09 21:28:24 +0900
-updated: 2023-12-24 22:39:11 +0900
+updated: 2023-12-25 00:28:26 +0900
 ---
 
 [Alacritty](https://github.com/alacritty/alacritty)는 Rust로 작성된 GPU 가속 터미널 에뮬레이터. iTerm에서 한글 입력 중 BackSpace가 씹히는 현상이 있어 다른 터미널 프로그램을 찾던 중 알게 되었다. 사실 Alacritty에서도 특수문자가 씹히는 비슷한 현상이 있었는데 정작 두 문제는 구름 입력기를 설치하여 해결했다. (문제 해결에 도움을 주신 이종립님 감사합니다 흑흑)
@@ -94,131 +94,131 @@ family = "MesloLGMDZ Nerd Font Mono"
 
 # command mode
 # (Control + q + :) to (Command + :)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011:"
 key = "Semicolon"
 mods = "Command"
 
 # command mode
 # (Control + q + :) to (Command + Shift + :)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011:"
 key = "Semicolon"
 mods = "Command|Shift"
 
 # split horizontally
 # (Control + q + ") to (Command + Shift + d)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011\""
 key = "D"
 mods = "Command|Shift"
 
 # split vertically
 # (Control + q + %) to (Command + d)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011%"
 key = "D"
 mods = "Command"
 
 # new tab
 # (Control + q + c) to (Command + t)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011c"
 key = "T"
 mods = "Command"
 
 # close pane
 # (Control + q + X) to (Command + w)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011X"
 key = "W"
 mods = "Command"
 
 # next pane
 # (Control + q + o) to (Command + o)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011o"
 key = "O"
 mods = "Command"
 
 # switch pane
 # (Control + q, Control + o) to (Command + Shift + o)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011\u000F"
 key = "O"
 mods = "Command|Shift"
 
 # next tab
 # (Control + q + p) to (Command + Shift + t)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011p"
 key = "P"
 mods = "Control"
 
 # resize pane
 # (Control + q + H) to (Command + Left)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011H"
 key = "Left"
 mods = "Command"
 
 # (Control + q + J) to (Command + Down)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011J"
 key = "Down"
 mods = "Command"
 
 # (Control + q + K) to (Command + Up)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011K"
 key = "Up"
 mods = "Command"
 
 # (Control + q + L) to (Command + Right)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0011L"
 key = "Right"
 mods = "Command"
 
 # move to next word
 # (ESC + F) to (Alt + Right)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u001BF"
 key = "Right"
 mods = "Alt"
 
 # move to previous word
 # (ESC + B) to (Alt + Left)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u001BB"
 key = "Left"
 mods = "Alt"
 
 # move to start of line
 # (ESC + O + H) to (Command + Left)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u001BOH"
 key = "Left"
 mode = "AppCursor"
 mods = "Command"
 
-# move to end of line 
+# move to end of line
 # (ESC + O + F) to (Command + Right)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u001BOF"
 key = "Right"
 mode = "AppCursor"
 mods = "Command"
 
 # delete all inputs
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u0015"
 key = "Back"
 mods = "Command"
 
 # delete previous word
 # (ESC + Delete) to (Alt + BackSpace)
-[[keyboard.bindings]]
+\[[keyboard.bindings]]
 chars = "\u001B\u007F"
 key = "Back"
 mods = "Alt"
