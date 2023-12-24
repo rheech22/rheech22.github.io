@@ -1,124 +1,35 @@
-# 개츠비 블로그 만들기
+# 개인 위키 with Gatsby + Vimwiki
 
-## TODOS
+## 개발 여정
 
-- [x] useStaticQuery 사용
-- [x] 포스트 정보 보여주기
-- [x] 포스트 정보 요청하기
-- [x] 포스트 리스트 정렬하기
-- [x] 태그 추가하기
-- [x] 검색 기능 추가하기
-- [x] 다크 모드를 적용하기 (우선순위: 로컬 스토리지 > 디바이스 기본 값 > 다크)
-- [x] 포스트 레이아웃 적용하기
-- [x] 코드 블럭 적용하기
-- [x] 댓글 기능 추가하기
-- [x] 헤더 구체화하기
-- [x] outSideClick 추가하기
-- [x] 다크 모드 버튼 디자인하기
-- [x] 라이트 모드 디자인하기
-- [x] 검색창 다시 구현하기
-- [x] bio / 태그 / 리스트 / 포스트 레이아웃 잡아보기
-- [x] 반응형으로 디자인하기(1차: 레이아웃 위주)
-- [x] bio 구현하기
-- [x] 태그 리스트 구현하기
-- [x] 태그 검색 기능 구현하기
-- [x] 상태 관리 리팩토링하기
-- [x] 검색 결과 페이지에 사이드바 적용하고 리팩토링하기
-- [x] 커스텀 훅으로 추출하기
-- [x] 태그 아이콘 디자인하기
-- [x] 태그 정렬하기
-- [x] 작은 화면에서도 태그 보여주기
-- [x] 선택된 태그 강조하기
-- [x] 미리보기 레이아웃 잡기
-- [x] 포스트 디자인 레이아웃 잡기
-- [x] TOC 붙이기
-- [x] TOC 강조하기
-- [x] TOC sticky 적용하기
-- [x] 날짜 표출 방식 개선하기
-- [x] 새로고침 후에 태그, 키워드 검색 남아있도록 개선하기
-- [x] 레이아웃에서 graphql 요청하도록 개선하기
-- [x] 코드 정리하기
-- [x] isDark 상태 리팩토링
-- [x] time to read 추가하기
-- [x] 전체 레이아웃 사이즈 조정하기 (특히 bio)
-- [x] 2차 반응형 디자인하기
-- [x] 검색 카테고리 선택하기 (제목+내용, 제목, 내용)
-- [x] SEO 하기
-- [x] 404 page 붙이기
-- [x] 극단 케이스 적용해서 UI 깨짐 확인하기
-- [x] hydration 이슈 해결하기
-- [x] Footer 붙이기
-- [x] payload 타입 정의하기
-- [x] 반응형 디자인 마무리하기
-- [x] 상태 관리 로직 리팩토링하기
-- [x] css-breakpoint 직관적으로 변경하기
-- [x] 스타일 코드 리팩토링하기
-- [x] lighthuouse 점수 올리기
-- [x] PWA 적용하기
-- [x] eslint 더 엄격하게 사용하기
-- [x] 서비스워커 적용하기
-- [x] sitemap 적용하기
-- [x] 포스트 이미지 모바일에서 벗어나는 문제 해결하기
-- [x] 아이폰 12 mini 등에서 bio 깨지는 문제 해결하기
-- [x] width 360px 반응형 고려하기
-- [x] 스크롤 이벤트 빠릿하게 고치기
-- [x] gh-pages에 배포하기
-- [x] TOC 레이아웃 조정하기
-- [x] 구글 애널리틱스 붙이기
-- [x] config 다듬기
-- [x] TOC 없는 경우 본문 위치 조정하기
-- [x] 이전글 다음글 표시하기
-- [x] 스크롤 탑 기능 추가하기
-- [x] 시리즈 기능 추가하기
-- [x] 자동 배포 액션 추가하기
-- [x] 툴팁 추가하기
-- [x] header link 등 hisotory, navigate 제대로 동작시키기
-- [x] document title 바뀌지 않는 문제 해결하기     
-- [x] 불필요한 코드 제거하기
-- [x] 포스트 내 시리즈 보여주는 부분 UI 개선하기
-- [x] 게시글 목록 (이전글/다음글) 고려해서 정렬하기
-- [x] 시리즈 글 정렬하기
-- [x] 실제 내 폰에서 bio 깨지는 문제 해결하기
-- [x] 다른 템플릿 사용해보고 부족한 부분 보충하기
-  - [x] Bio 아이콘으로 구성 변경하기(메일, 깃허브, 트위터, 링크?)
-- [x] CSS 마무리하기
-  - [x] 야간모드 버튼 좀 더 이쁘게 만들어보기
-- [x] README 다듬기
-- [x] POST 최소 넓이 확보
-- [x] 태그 대소문자 구분해주고 검색 결과는 둘다 보여주기
-- [x] 커스텀 타입 설정으로 Nullable 타입 제거하기
-- [x] 야간 모드 스위칭
-- [x] 프로필 하단 폰트 고치기
-- [x] 링크 아바타 테두리에 붙이기 like github
-- [x] 검색 결과 헤딩 표시하기
-- [x] 불필요한 디펜던시 지우기
-- [x] 태그 관련 코드 지우기
-- [x] 이미지 매핑
-- [x] import extension 사용하기
-- [x] lint 설정 수정 및 prettier 적용
-- [x] lts 버전 마이그레이션
-- [x] VimWikiLink로 Gatsby Link로 대체하기 - mdx 고려
-- [x] head api 템플릿에서도 사용하기
-- [x] 포스트 목록 디자인
-- [x] 포스트 디자인
-- [x] POC 디자인
-- [x] 인덱스 페이지 구현
-- [x] 인덱스 페이지 디자인
-- [x] VimWiki 인덱스 고민
-- [ ] 리드미 작성하기
-  
+- [개츠비 기술 블로그 개발 후기](https://rheech22.github.io/%EA%B0%9C%EC%B8%A0%EB%B9%84/%EA%B0%9C%EC%B8%A0%EB%B9%84_%EA%B8%B0%EC%88%A0_%EB%B8%94%EB%A1%9C%EA%B7%B8_%EA%B0%9C%EB%B0%9C_%ED%9B%84%EA%B8%B0/)
+- [개츠비와 Vimwiki 접목시키기](https://rheech22.github.io/%EA%B0%9C%EC%B8%A0%EB%B9%84/%EA%B0%9C%EC%B8%A0%EB%B9%84%EC%99%80_Vimwiki_%EC%A0%91%EB%AA%A9%EC%8B%9C%ED%82%A4%EA%B8%B0/)
 
-## Findings
+## 주안점
 
-- [[StaticQuery]](https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/) - 변수 전달 안됨
-- [[GraphQL Type Generator]](https://www.gatsbyjs.com/blog/how-to-use-gatsby-graphql-type-generation/) - 타입 선언 자동화 + optional chaining을 자주 써줘야 하는 단점
-- [[gatsby-browser API]](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) - Context Provider를 page component에 적용하기 위해 사용
-- [[코드 하이라이트 플러그인]](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/) - 편리하다고 생각해서 갖다 쓰고 있는데 다른 플러그인을 사용하는 경우가 많이 보임
-- [[utterances]](https://utteranc.es/?installation_id=28274981&setup_action=install) - github 댓글
-- [ThemeProvider] - 편함
-- [intersectionObserver] - TOC 하이라이팅에 써보려고 했는데 교차를 완벽하게 감지하지 못함, 스크롤 이벤트를 사용하도록 변경
-- [sticky] - 사용할 때 부모 요소의 align-items 속성을 유심히 봐야 함 
-- [[rehydration]](https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/) - 배포 환경에서 발생할 수 있는 이슈, useEffect로 해결
-- [ios] - 아이폰에서는 브라우저와 관계없이 svg layout, word-break 등이 기대처럼 동작하지 않을 수 있음, safari로 확인하면 어느 정도 일치하는 듯
-- [margin] - TOS 너비가 변함에 따라 `marin-auto`만으로는 아티클 영역이 중앙 정렬되지 않음, `position: relative`와 함께 `translate`로 해결
-- [검색 페이지] - search page에서 query에 filter를 걸어서 페이지 보여주고 싶은데, page query에서 variable를 전달하는 방식에 한계가 있어 보임
+- 심플하고 절제된 반응형 디자인
+- 위키 형식
+  - 최근 업데이트된 문서 목록을 제공하는 메인 페이지
+  - 문서에서 상위 문서를 확인하고 네비게이션할 수 있음
+  - 문서에서 갱신 내역(commit, blame, date)를 확인할 수 있음
+  - 인덱스 페이지 제공
+  - Vimwiki와 연동
+
+## 스크린샷
+
+### #day
+
+![Recent Updates _ conerstone](https://github.com/rheech22/rheech22.github.io/assets/57756798/be435266-1c08-4183-b97c-70120066e645)
+![____ Vimwiki _____ _ conerstone](https://github.com/rheech22/rheech22.github.io/assets/57756798/f2b15023-f415-4b0b-99a4-da031466d747)
+![Wiki Index _ conerstone · 7 20am · 12-25](https://github.com/rheech22/rheech22.github.io/assets/57756798/271507a6-ec08-4df3-b406-e1c025a3fd46)
+
+### #night
+
+![Recent Updates _ conerstone · 7 19am · 12-25](https://github.com/rheech22/rheech22.github.io/assets/57756798/50f690ba-1c43-47af-b267-8c74a9f49cd9)
+![____ Vimwiki _____ _ conerstone · 7 21am · 12-25](https://github.com/rheech22/rheech22.github.io/assets/57756798/e3e462f8-36c3-458d-b628-944ff2c733d5)
+![Wiki Index _ conerstone](https://github.com/rheech22/rheech22.github.io/assets/57756798/dd6efe5a-e350-424a-9eab-48f4bdb790ed)
+
+### #responsive
+
+<img width="1630" alt="스크린샷 2023-12-25 오전 7 36 03" src="https://github.com/rheech22/rheech22.github.io/assets/57756798/c8663439-e90b-4334-bbbf-e7eabd10b085">
+<img width="1336" alt="스크린샷 2023-12-25 오전 7 37 09" src="https://github.com/rheech22/rheech22.github.io/assets/57756798/5c63beb5-b31f-47c0-8810-de7df1e2cf4b">
