@@ -1,6 +1,6 @@
 ---
 created: 2023-12-25 17:15:56 +0900
-updated: 2023-12-25 18:11:13 +0900
+updated: 2023-12-25 18:34:55 +0900
 ---
 
 ## 유닉스
@@ -21,8 +21,7 @@ updated: 2023-12-25 18:11:13 +0900
 
 ## 참고
 
-- [맥은*유닉스인가요?*리눅스인가요?](https://www.clien.net/service/board/kin/118544460)
-- [유닉스\_위키백과](<https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%89%EC%8A%A4#:~:text=%EC%9C%A0%EB%8B%89%EC%8A%A4(%EC%98%81%EC%96%B4%3A%20Unix)%EB%8A%94,%EC%9A%A9%EC%9C%BC%EB%A1%9C%20%EC%B2%98%EC%9D%8C%20%EA%B0%9C%EB%B0%9C%ED%95%98%EC%98%80%EB%8B%A4.>)
-- [리눅스\_나무위키](https://namu.wiki/w/Linux)
-- [리누스*토발즈는*정말*리눅스를*창작했을까?](https://zdnet.co.kr/view/?no=00000010068900)
-- [유닉스*계열*위키백과](https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%89%EC%8A%A4_%EA%B3%84%EC%97%B4)
+- [유닉스 위키백과](<https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%89%EC%8A%A4#:~:text=%EC%9C%A0%EB%8B%89%EC%8A%A4(%EC%98%81%EC%96%B4%3A%20Unix)%EB%8A%94,%EC%9A%A9%EC%9C%BC%EB%A1%9C%20%EC%B2%98%EC%9D%8C%20%EA%B0%9C%EB%B0%9C%ED%95%98%EC%98%80%EB%8B%A4.>)
+- [리눅스 나무위키](https://namu.wiki/w/Linux)
+- [리누스 토발즈는 정말 리눅스를 창작했을까?](https://zdnet.co.kr/view/?no=00000010068900)
+- [유닉스 계열 위키백과](https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%89%EC%8A%A4_%EA%B3%84%EC%97%B4)
