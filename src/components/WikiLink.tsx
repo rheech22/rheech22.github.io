@@ -1,4 +1,4 @@
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import { flex, font_sora } from '../styles/mixins';
@@ -14,8 +14,8 @@ const WikiLink = ({ slug, title, updated }: Props) => {
   const { date, month, year } = getDateSegments(updated);
 
   return (
-    <Container onClick={() => navigate(slug)}>
-      <div>
+    <Container>
+      <Link to={slug}>
         <Date>
           <span>{date.padStart(2, '0')}</span>
           <div>
@@ -24,7 +24,7 @@ const WikiLink = ({ slug, title, updated }: Props) => {
           </div>
         </Date>
         <Heading>{title}</Heading>
-      </div>
+      </Link>
     </Container>
   );
 };
@@ -32,13 +32,11 @@ const WikiLink = ({ slug, title, updated }: Props) => {
 export default WikiLink;
 
 const Container = styled.li`
-  padding: 20px 8px 12px 8px;
   width: 100%;
-  cursor: pointer;
 
-  & > div {
+  & > a {
     ${flex({ alignItems: 'center' })}
-    margin-bottom: 8px;
+    padding: 20px 8px 20px 8px;
     font-weight: 600;
     text-decoration: none;
   }
