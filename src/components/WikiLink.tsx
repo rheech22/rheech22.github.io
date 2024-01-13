@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import { flex, font_sora } from '../styles/mixins';
-import { getDateSegments } from '../utils';
+import { getAncestors, getDateSegments } from '../utils';
 
 interface Props {
   slug: string;
@@ -12,6 +12,10 @@ interface Props {
 
 const WikiLink = ({ slug, title, updated }: Props) => {
   const { date, month, year } = getDateSegments(updated);
+
+  const path = getAncestors(slug)
+    .map(({ value }) => value)
+    .join('/');
 
   return (
     <Container>
@@ -23,7 +27,10 @@ const WikiLink = ({ slug, title, updated }: Props) => {
             <span>{year}</span>
           </div>
         </Date>
-        <Heading>{title}</Heading>
+        <Heading>
+          <span>{path}</span>
+          {title}
+        </Heading>
       </Link>
     </Container>
   );
@@ -49,11 +56,17 @@ const Container = styled.li`
 `;
 
 const Heading = styled.h2`
+  ${flex({ flexDirection: 'column' })};
   margin-bottom: 4px;
   font-size: 20px;
   font-weight: 600;
   color: ${({ theme }) => theme.default};
   transition: all 0.5s;
+
+  & > span {
+    font-size: 12px;
+    color: ${({ theme }) => theme.mute};
+  }
 `;
 
 const Date = styled.div`
