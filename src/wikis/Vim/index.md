@@ -4,4 +4,4 @@ updated: 2023-12-25 07:13:28 +0900
 ---
 
 - [[Vim_조작법/index.md]]
-- [[neovim/index.md]]
+- [[Neovim/index.md]]
