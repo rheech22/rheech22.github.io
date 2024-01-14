@@ -1,9 +1,9 @@
 ---
 created: 2024-01-13 17:29:25 +0900
-updated: 2024-01-14 04:28:05 +0900
+updated: 2024-01-14 18:41:13 +0900
 ---
 
-# 데이터베이스 만들고 psql 사용해보기
+# DB 생성
 
 `mydb`라는 이름의 데이터베이스를 만들어 본다.
 ```bash
@@ -62,7 +62,7 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXI
 
 psql에서 나오고 싶다면 `\q`을 입력하자. `\?`를 입력하면 여러 명령어를 확인할 수 있다.
 
-# 테이블 생성
+# CREATE TABLE
 
 아래처럼 weather 테이블을 생성한다.
 ```
@@ -91,7 +91,7 @@ point는 지리적 위치를 표현하는 데이터 타입으로 PostgreSQL에�
 
 `box`, `line`, `point`, `lseg`, `polygon`, `inet`, `macaddr`
 
-# 테이블 채우기
+# INSERT INFO
 
 INSERT 문으로 테이블에 데이터를 채워보자. 튜토리얼을 보고 아래와 같은 순서로 데이터를 삽입했다.
 
@@ -125,7 +125,7 @@ COPY 명령을 통해 파일로부터 로드하는 방법도 있다.
 COPY weather FROM '/home/user/weather.txt';
 ```
 
-# 테이블 쿼리하기
+# SELECT
 
 SELECT 문으로 테이블에서 데이터를 쿼리할 수 있다. SELECT 문은 테이블에서 가져올 컬럼을 명시하는 부분, 가져올 테이블을 명시하는 부분, 그리고 가져올 데이터를 한정하는 부분(옵셔널)으로 구분하여 사용한다. 이전 챕터에서 weather 테이블에 데이터를 채워놨으니 모두 조회해보자.
 ```
@@ -200,7 +200,7 @@ mydb=# SELECT DISTINCT city FROM weather;
 (2개 행)
 ```
 
-# 테이블 조인하기
+# JOIN
 
 `JOIN`을 사용하면 한 번에 여러 테이블에 접근할 수 있다. 만약 날씨 기록을 관련된 도시와 함께 요청하고 싶다면
 ```
@@ -331,7 +331,7 @@ SELECT city, count(*) FILTER (WHERE temp_lo < 45), max(temp_lo)
 (2개 행)
 ```
 
-# Updates
+# UPDATE
 
 `UPDATE`를 사용하여 데이터를 수정할 수 있다.
 ```
@@ -350,7 +350,7 @@ mydb=# SELECT * FROM weather;
 (3 rows)
 ```
 
-# Deletions
+# DELETE
 
 삭제는 다음과 같다.
 ```
@@ -369,7 +369,7 @@ mydb=# SELECT * FROM weather;
 DELETE FROM tablename;
 ```
 
-# Views
+# VIEW
 
 `VIEW`를 사용하면 매번 필요할 때마다 같은 쿼리를 입력하지 않아도 된다.
 ```
@@ -421,7 +421,7 @@ ERROR:  insert or update on table "weather" violates foreign key constraint "wea
 상세정보:  Key (city)=(Berkeley) is not present in table "cities".
 ```
 
-먼저 도시를 cities에 저장하고 다시 시도하면 `INSERT` 성공
+먼저 cities에 데이터를 저장한 후 재시도하면 `INSERT` 성공
 ```
 mydb=# INSERT INTO cities VALUES ('Berkeley', '(-194.0, 53.0)');
 INSERT 0 1
@@ -433,4 +433,206 @@ mydb=# SELECT * FROM weather;
  Berkeley |      45 |      53 |    0 | 1994-11-28
 (1개 행)
 ```
+
+# Transactions
+
+트랜잭션은 데이터베이스 시스템의 기본 개념이다. 그 핵심은 여러 단계를 전부 처리되는 것이 아니면 전부 처리되지 않는 단일 작업으로 묶는 것이다. 각 단계의 중간 상태는 동시에 진행 중인 다른 트랜잭션에서는 볼 수 없고 트랜잭션이 완료되지 않으면 데이터베이스에 아무런 영향도 끼치지 않아야 한다.
+
+은행 시스템이 좋은 예시가 될 수 있다. Alice의 계좌에서 100달러를 인출하여 Bob의 계좌로 송금한다고 가정한다.
+```
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+UPDATE branches SET balance = balance - 100.00
+    WHERE name = (SELECT branch_name FROM accounts WHERE name = 'Alice');
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Bob';
+UPDATE branches SET balance = balance + 100.00
+    WHERE name = (SELECT branch_name FROM accounts WHERE name = 'Bob');
+```
+
+위 예시처럼 여러 단계의 업데이트로 목표를 달성할 수는 있지만 은행의 시스템 장애 때문에 어느 한쪽에서만 인출이 발생하는 등 여러 문제 상황이 발생하는 것을 반드시 막아야 한다. 이를 보장하기 위해 트랜잭션이 필요하다. 여러 업데이트를 트랜잭션으로 묶어 완전히 성공하거나 전혀 발생하지 않도록 할 수 있다. 이를 원자적 트랜잭션(Atomic Transaction)이라 한다.
+
+한편 데이터베이스 시스템은 트랜잭션의 완료가 보고되기 전에 트랜잭션에서 수행한 업데이트를 기록하여 데이터의 안정성을 보장한다. 만약 트랜잭션이 중간에 실패하거나 시스템에 문제가 발생하더라도, 로그에 저장된 정보를 사용하여 이전 상태로 복원할 수 있다.
+
+또한 트랜잭션은 일반적으로 고립된 환경에서 수행된다. 동시에 실행되는 여러 트랜잭션은 서로에게 영향을 미치지 않고 독립적으로 수행되어야 한다. 동시에 실행 중인 트랜잭션은 서로의 작업을 직접적으로 볼 수 없다. 이는 트랜잭션의 일관성을 유지하고, 데이터의 정확성을 보장하기 위한 개념이다.
+
+PostgreSQL에서는 `BEGIN`과 `COMMIT` 명령을 통해 트랜잭션을 구현할 수 있다. 둘러쌓인 하나의 그룹을 Transaction Block이라고도 부른다. PostgreSQL은 암묵적으로 위 명령으로 둘러싸지 않은 모든 SQL 문을 트랜잭션으로 간주한다.
+```
+BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+-- etc etc
+COMMIT;
+```
+만약 `COMMIT`이 아닌 `ROLLBACK`을 입력하면 트랜잭션의 모든 업데이트를 취소할 수 있다. 
+
+`SAVEPOINT`와 `ROLLBACK TO`를 사용하면 좀 더 세밀하게 트랜잭션을 제어할 수 있다. Bob이 아닌 Wally의 계좌에 입금해야 한다는 사실을 도중에 알게 되었다면 아래와 같은 방법으로 제어권을 되찾을 수 있다.
+```
+BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+SAVEPOINT my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Bob';
+-- oops ... forget that and use Wally's account
+ROLLBACK TO my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Wally';
+COMMIT;
+```
+# Window Functions
+
+Window Function은 행에 대한 계산을 수행한다는 점에 있어서 Aggregate Function과 유사하지만, 실행 결과를 단일 행으로 그룹화시키지 않는다는 점에서 차이가 있다. Window Function은 개별 행을 모두 출력한다.
+
+`OVER` 절을 통해 Window Function을 사용할 수 있다. 아래는 모든 직원들의 연봉 테이블과 함께 각 부서를 기준으로 평균 연봉을 확인하는 예제다.
+```
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
+  depname  | empno | salary |          avg
+-----------+-------+--------+-----------------------
+ develop   |    11 |   5200 | 5020.0000000000000000
+ develop   |     7 |   4200 | 5020.0000000000000000
+ develop   |     9 |   4500 | 5020.0000000000000000
+ develop   |     8 |   6000 | 5020.0000000000000000
+ develop   |    10 |   5200 | 5020.0000000000000000
+ personnel |     5 |   3500 | 3700.0000000000000000
+ personnel |     2 |   3900 | 3700.0000000000000000
+ sales     |     3 |   4800 | 4866.6666666666666667
+ sales     |     1 |   5000 | 4866.6666666666666667
+ sales     |     4 |   4800 | 4866.6666666666666667
+(10 rows)
+```
+
+일반적인 Aggregate Function에 `OVER`절을 함께 사용한 형태가 Window Function의 모양이다. `PARTITION BY` 절은 Window Function이 수행되는 행의 기준을 정렬한다. 아래처럼 `ORDER BY`를 통해 정렬도 가능하다.
+```
+SELECT depname, empno, salary,
+       rank() OVER (PARTITION BY depname ORDER BY salary DESC)
+FROM empsalary;
+  depname  | empno | salary | rank
+-----------+-------+--------+------
+ develop   |     8 |   6000 |    1
+ develop   |    10 |   5200 |    2
+ develop   |    11 |   5200 |    2
+ develop   |     9 |   4500 |    4
+ develop   |     7 |   4200 |    5
+ personnel |     2 |   3900 |    1
+ personnel |     5 |   3500 |    2
+ sales     |     1 |   5000 |    1
+ sales     |     4 |   4800 |    2
+ sales     |     3 |   4800 |    2
+(10 rows)
+```
+
+`rank()` 함수에 필요한 인자는 `OVER`를 통해 결정되기 때문에 명시적으로 전달하지 않아도 된다.
+
+`OVER`에 파티션을 작성하지 않으면 전체 테이블 행에 대한 계산을 수행한다.
+```
+SELECT salary, sum(salary) OVER () FROM empsalary;
+ salary |  sum
+--------+-------
+   5200 | 47100
+   5000 | 47100
+   3500 | 47100
+   4800 | 47100
+   3900 | 47100
+   4200 | 47100
+   4500 | 47100
+   4800 | 47100
+   6000 | 47100
+   5200 | 47100
+(10 rows)
+```
+
+만약 `ORDER BY`만을 전달하면 전혀 다른 결과를 보여준다.
+```
+SELECT salary, sum(salary) OVER (ORDER BY salary) FROM empsalary;
+ salary |  sum
+--------+-------
+   3500 |  3500
+   3900 |  7400
+   4200 | 11600
+   4500 | 16100
+   4800 | 25700
+   4800 | 25700
+   5000 | 30700
+   5200 | 41100
+   5200 | 41100
+   6000 | 47100
+(10 rows)
+```
+
+이런 결과를 보여주는 이유는 window frame이라는 개념이 있기 때문이다. 파티션 안의 모든 행에는 프레임이 존재하고 어떤 Window Function은 파티션 전체가 아닌 프레임에 대해서만 동작하기도 한다. `ORDER BY`가 있다면 프레임은 파티션의 시작부터 현재 행까지, 그리고 현재 행과 동일한 다음 행으로 구성된다. 만약 `ORDER BY`가 생략되면 기본 프레임은 파티션의 모든 행으로 구성된다.
+
+Window Function은 `SELECT` 목록 내에서 사용할 수 있고 필요에 따라 `ORDER BY`를 사용할 수 있다. `GROUP BY`, `HAVING`, `WHERE`와는 사용이 불가능한데 언급한 절들이 모두 평가되고 난 후 실행되어야 하기 때문이다. 또한 Window Function은 Aggregate Function이 수행된 후 실행된다.
+
+만약 Window Function이 수행된 후 데이터를 걸러내거나 그룹을 묶어줘야 한다면 서브 셀렉트를 사용할 수 있다. 아래는 연봉 순위가 3 미만인 데이터를 가져오는 예시다.
+```
+SELECT depname, empno, salary, enroll_date
+FROM
+  (SELECT depname, empno, salary, enroll_date,
+          rank() OVER (PARTITION BY depname ORDER BY salary DESC, empno) AS pos
+     FROM empsalary
+  ) AS ss
+WHERE pos < 3;
+```
+
+만약 여러 Window Function을 적용해야 하고 그 내용이 같다면 아래와 같은 방법으로 중복 작성을 피할 수 있다.
+```
+SELECT sum(salary) OVER w, avg(salary) OVER w
+  FROM empsalary
+  WINDOW w AS (PARTITION BY depname ORDER BY salary DESC);
+```
+
+# Inheritance
+
+상속은 객체지향 데이터베이스의 컨셉 중 하나이다.
+
+각 나라의 수도가 저장된 capitals 테이블과 수도가 아닌 도시가 저장된 non_cities 테이블이 있다고 하자. 수도 또한 도시이기 때문에 모든 도시를 확인하기 위해서는 두 테이블이 모두 필요하다. 두 테이블을 합친 VIEW를 생각해볼 수도 있다.
+```
+CREATE TABLE capitals (
+  name       text,
+  population real,
+  elevation  int,    -- (in ft)
+  state      char(2)
+);
+
+CREATE TABLE non_capitals (
+  name       text,
+  population real,
+  elevation  int     -- (in ft)
+);
+
+CREATE VIEW cities AS
+  SELECT name, population, elevation FROM capitals
+    UNION
+  SELECT name, population, elevation FROM non_capitals;
+```
+
+이런 경우 상속을 사용하는 것이 더 낫다.
+```
+CREATE TABLE cities (
+  name       text,
+  population real,
+  elevation  int     -- (in ft)
+);
+
+CREATE TABLE capitals (
+  state      char(2) UNIQUE NOT NULL
+) INHERITS (cities);
+```
+
+아래는 고도가 500 피트가 넘는 모든 도시를 가져온다.
+```
+SELECT name, elevation
+  FROM cities
+  WHERE elevation > 500;
+```
+
+만약 수도가 아닌 도시만 가져오고 싶다면, `ONLY`를 사용한다.
+```
+SELECT name, elevation
+    FROM ONLY cities
+    WHERE elevation > 500;
+```
+
+`ONLY`를 통해 아래 계층의 데이터를 제외시킬 수 있다.
 
