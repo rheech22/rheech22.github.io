@@ -1,11 +1,11 @@
 ---
 created: 2024-01-13 17:29:25 +0900
-updated: 2024-01-14 18:41:13 +0900
+updated: 2024-01-21 13:04:32 +0900
 ---
 
 # DB 생성
 
-`mydb`라는 이름의 데이터베이스를 만들어 본다.
+`mydb`라는 이름으로 데이터베이스 생성
 ```bash
 createdb mydb
 ```
@@ -45,7 +45,7 @@ mydb=# SELECT 1 + 4;
 (1개 행)
 ```
 
-psql에는 SQL이 아닌 `\`으로 시작하는 여러 명령어가 있다. `\h`를 입력하면 사용 가능한 도움말 목록을 출력한다. 그 중에서 `CREATE TABLE`을 확인하면 이런 내용이 나온다.
+psql에는 `\`로 시작하는 여러 명령어가 있다. `\h`는 사용 가능한 도움말 목록을 출력한다. 그 중에서 `CREATE TABLE`는 이런 내용을 보여준다.
 ```
 명령: CREATE TABLE
 설명: 새 테이블 만들기
@@ -64,7 +64,7 @@ psql에서 나오고 싶다면 `\q`을 입력하자. `\?`를 입력하면 여러
 
 # CREATE TABLE
 
-아래처럼 weather 테이블을 생성한다.
+`weather` 테이블을 생성
 ```
 mydb=# CREATE TABLE weather (
     city            varchar(80),
@@ -75,11 +75,11 @@ mydb=# CREATE TABLE weather (
 );
 CREATE TABLE
 ```
-psql에서 공백, 탭, 줄바꿈은 자유롭게 사용할 수 있다. 세미콜론(;)이 오기 전까지 명령은 종료되지 않는 것으로 인식한다. 마치 lua처럼 `--`기호는 주석을 표현할 때 사용한다. 또한 쌍따옴표로 묶인 경우를 제외하고는 SQL 구문에서 대소문자를 구분하지 않는다.
+psql에서 공백, 탭, 줄바꿈은 자유롭게 사용할 수 있다. 세미콜론(;)이 오기 전까지 명령은 종료되지 않는 것으로 인식한다. `--`는 주석을 표현할 때 사용한다. 쌍따옴표로 묶인 경우를 제외하고는 SQL 구문에서 대소문자를 구분하지 않는다.
 
-varchar(80)은 최대 80자 길이의 문자열을 저장할 수 있는 데이터 타입을 의미한다. int는 일반적인 정수, real은 4바이트 부동 소수점 타입이다. date는 단어 그대로 날짜 타입이다.
+`varchar(80)`은 최대 80자 길이의 문자열을 저장할 수 있는 데이터 타입을 의미한다. `int`는 일반적인 정수, `real`은 4 바이트 부동 소수점 타입이다. `date`는 단어 그대로 날짜 타입이다.
 
-cites라는 테이블을 하나 더 만들었다.
+`cities`라는 테이블을 하나 더 만들었다.
 ```
 mydb=# CREATE TABLE cities (
     name            varchar(80),
@@ -87,13 +87,13 @@ mydb=# CREATE TABLE cities (
 );
 CREATE TABLE
 ```
-point는 지리적 위치를 표현하는 데이터 타입으로 PostgreSQL에서 제공하는 특별한 타입 중 하나이다.
+`point`는 지리적 위치를 표현하는 데이터 타입으로 PostgreSQL에서 제공하는 특별한 타입 중 하나이다.
 
 `box`, `line`, `point`, `lseg`, `polygon`, `inet`, `macaddr`
 
 # INSERT INFO
 
-INSERT 문으로 테이블에 데이터를 채워보자. 튜토리얼을 보고 아래와 같은 순서로 데이터를 삽입했다.
+`INSERT` 문으로 테이블에 데이터를 채워보자. 튜토리얼을 보고 아래와 같은 순서로 데이터를 삽입했다.
 
 인풋은 `,`로 구분하고 타입에 맞는 데이터로 넣어줘야 한다.
 ```
@@ -101,7 +101,7 @@ mydb=# INSERT INTO weather VALUES ('San Francisco', 46, 50, 0.25, '1994-11-27');
 INSERT 0 1
 ```
 
-point 타입은 아래와 같이 형태를 요구한다.
+`point` 타입은 아래와 같이 형태를 요구한다.
 ```
 INSERT INTO cities VALUES ('San Francisco', '(-194.0, 53.0)');
 INSERT 0 1
@@ -120,14 +120,16 @@ INSERT INTO weather (date, city, temp_hi, temp_lo)
     VALUES ('1994-11-29', 'Hayward', 54, 37);
 ```
 
-COPY 명령을 통해 파일로부터 로드하는 방법도 있다.
+`COPY` 명령을 통해 파일로부터 로드하는 방법도 있다.
 ```
 COPY weather FROM '/home/user/weather.txt';
 ```
 
 # SELECT
 
-SELECT 문으로 테이블에서 데이터를 쿼리할 수 있다. SELECT 문은 테이블에서 가져올 컬럼을 명시하는 부분, 가져올 테이블을 명시하는 부분, 그리고 가져올 데이터를 한정하는 부분(옵셔널)으로 구분하여 사용한다. 이전 챕터에서 weather 테이블에 데이터를 채워놨으니 모두 조회해보자.
+`SELECT` 문으로 테이블에서 데이터를 조회할 수 있다.
+
+이전 챕터에서 `weather` 테이블에 데이터를 채워놨으니 모두 조회해보자.
 ```
 mydb=# SELECT * FROM weather;
      city      | temp_lo | temp_hi | prcp |    date
@@ -156,7 +158,7 @@ mydb=# SELECT city, (temp_hi+temp_lo)/2 AS temp_avg, date FROM weather;
 ```
 `AS`절은 출력되는 컬럼의 이름을 재정의한다.
 
-한편, `WHERE`절로 원하는 데이터만 출력할 수 있다. `WHERE`절은 boolean 표현식을 포함하는데 표현식을 통해 참으로 평가되는 행만 반환시킨다. `AND`, `OR`, `NOT`과 같은 boolean 연산자도 함께 사용할 수 있다.
+한편, `WHERE`절로 원하는 데이터만 출력할 수 있다. `WHERE`절은 Boolean 표현식을 포함하는데 표현식을 통해 참으로 평가되는 행만 반환시킨다. `AND`, `OR`, `NOT`과 같은 Boolean 연산자도 함께 사용할 수 있다.
 ```
 mydb=# SELECT * FROM weather
     WHERE city = 'San Francisco' AND prcp > 0.0;
@@ -178,7 +180,7 @@ mydb=# SELECT * FROM weather
 (3개 행)
 ```
 
-San Francisco도 완전히 정렬시키고 싶다면,
+`San Francisco`도 완전히 정렬시키고 싶다면,
 ```
 mydb=# SELECT * FROM weather
     ORDER BY city, temp_lo;
@@ -214,7 +216,7 @@ mydb=# SELECT * FROM weather JOIN cities ON city = name;
 
 여기서는 `*`을 사용하여 모든 컬럼을 가져오도록 했지만, 실제 프로덕션 레벨에서는 항상 명시적으로 컬럼을 작성하는 것이 좋다. 만약 테이블에 컬럼이 추가되면 결과도 달라질 것이기 때문이다.
 
-현재 weather의 컬럼과 cities의 컬럼의 이름이 겹치는 경우는 없지만, 만약에 그런 경우가 있다면 아래와 같이 작성해야 한다.
+현재 `weather`의 컬럼과 `cities`의 컬럼의 이름이 겹치는 경우는 없지만, 만약에 그런 경우가 있다면 아래와 같이 작성해야 한다.
 ```
 mydb=# SELECT weather.city, weather.temp_lo, weather.temp_hi,
        weather.prcp, weather.date, cities.location
@@ -235,7 +237,7 @@ mydb=# SELECT *
 
 이 방법은 `JOIN/ON` 구문보다 앞선 방식으로 좀 더 단순해 보이지만, 쿼리를 읽는 사람 입장에서는 `JOIN/ON` 구문을 사용하는 것이 더 쉽게 이해하기 좋다. `JOIN`을 위한 조건이 `WHERE` 절에 섞여있지 않아도 된다.
 
-앞선 예제에서는 Hayward가 결과에서 제외됐다. `ON`에 작성된 조건을 만족하지 못했기 때문인데 만약 조건에 만족하지 못한 경우에도 결과에 포함시키고 싶다면 어떻게 해야할까? 이런 경우 `OUTER JOIN`을 사용할 수 있다. (지금까지 했던 것은 사실 `INNER JOIN`이다.)
+앞선 예제에서는 `Hayward`가 결과에서 제외됐다. `ON`에 작성된 조건을 만족하지 못했기 때문인데 만약 조건에 만족하지 못한 경우에도 결과에 포함시키고 싶다면 어떻게 해야할까? 이런 경우 `OUTER JOIN`을 사용할 수 있다. (지금까지 했던 것은 사실 `INNER JOIN`이다.)
 ```
 SELECT *
     FROM weather LEFT OUTER JOIN cities ON weather.city = cities.name;
@@ -388,7 +390,7 @@ mydb=# SELECT * FROM myview;
 
 # Foreign Keys
 
-앞서 활용한 테이블 weather와 cities에서 cities에 포함된 도시만 weather에 넣을 수 있도록 해야 한다고 가정해보자. 이런 경우 먼저 cities를 살펴 일치하는 기록이 있는지 확인한 후 새로운 날씨 데이터를 weather에 넣을 수 있도록 하거나 혹은 넣지 못하도록 해야할 것이다. 이처럼 테이블간의 관계를 일관되게 유지시킴으로써 데이터베이스의 신뢰도를 높이는 것을 데이터의 참조 무결성(referential integrity)라 한다. 다만 위와 같은 과정을 매번 거쳐야 하는 것은 매우 귀찮은 일이기 때문에 primary key와 foreign key를 사용하여 테이블의 관계를 선언할 수 있다. 우선 테이블을 다시 생성하기 전에 삭제부터 한다.
+앞서 활용한 테이블 `weather`와 `cities`에서 `cities`에 포함된 도시만 `weather`에 넣을 수 있도록 해야 한다고 가정해보자. 이런 경우 먼저 `cities`를 살펴 일치하는 기록이 있는지 확인한 후 새로운 날씨 데이터를 `weather`에 넣을 수 있도록 하거나 혹은 넣지 못하도록 해야할 것이다. 이처럼 테이블간의 관계를 일관되게 유지시킴으로써 데이터베이스의 신뢰도를 높이는 것을 데이터의 참조 무결성(referential integrity)라 한다. 다만 위와 같은 과정을 매번 거쳐야 하는 것은 매우 귀찮은 일이기 때문에 primary key와 foreign key를 사용하여 테이블의 관계를 선언할 수 있다. 우선 테이블을 다시 생성하기 전에 삭제부터 한다.
 ```
 mydb=# DROP VIEW myview;
 DROP VIEW
@@ -414,14 +416,14 @@ CREATE TABLE weather (
 );
 ```
 
-weather에 `INSERT`를 시도하면 cities에 없는 도시를 저장하려 했기에 실패한다.
+`weather`에 `INSERT`를 시도하면 `cities`에 없는 도시를 저장하려 했기에 실패한다.
 ```
 mydb=# INSERT INTO weather VALUES ('Berkeley', 45, 53, 0.0, '1994-11-28');
 ERROR:  insert or update on table "weather" violates foreign key constraint "weather_city_fkey"
 상세정보:  Key (city)=(Berkeley) is not present in table "cities".
 ```
 
-먼저 cities에 데이터를 저장한 후 재시도하면 `INSERT` 성공
+먼저 `cities`에 데이터를 저장한 후 재시도하면 `INSERT` 성공
 ```
 mydb=# INSERT INTO cities VALUES ('Berkeley', '(-194.0, 53.0)');
 INSERT 0 1
@@ -560,7 +562,7 @@ SELECT salary, sum(salary) OVER (ORDER BY salary) FROM empsalary;
 (10 rows)
 ```
 
-이런 결과를 보여주는 이유는 window frame이라는 개념이 있기 때문이다. 파티션 안의 모든 행에는 프레임이 존재하고 어떤 Window Function은 파티션 전체가 아닌 프레임에 대해서만 동작하기도 한다. `ORDER BY`가 있다면 프레임은 파티션의 시작부터 현재 행까지, 그리고 현재 행과 동일한 다음 행으로 구성된다. 만약 `ORDER BY`가 생략되면 기본 프레임은 파티션의 모든 행으로 구성된다.
+이런 결과를 보여주는 이유는 window frame이라는 개념이 있기 때문이다. 파티션 안의 모든 행에는 프레임이 존재한다. 어떤 Window Function은 파티션 전체가 아닌 프레임에 대해서만 동작하기도 한다. `ORDER BY`가 있다면 프레임은 파티션의 시작부터 현재 행까지, 그리고 현재 행과 동일한 다음 행으로 구성된다. 만약 `ORDER BY`가 생략되면 기본 프레임은 파티션의 모든 행으로 구성된다.
 
 Window Function은 `SELECT` 목록 내에서 사용할 수 있고 필요에 따라 `ORDER BY`를 사용할 수 있다. `GROUP BY`, `HAVING`, `WHERE`와는 사용이 불가능한데 언급한 절들이 모두 평가되고 난 후 실행되어야 하기 때문이다. 또한 Window Function은 Aggregate Function이 수행된 후 실행된다.
 
@@ -586,7 +588,7 @@ SELECT sum(salary) OVER w, avg(salary) OVER w
 
 상속은 객체지향 데이터베이스의 컨셉 중 하나이다.
 
-각 나라의 수도가 저장된 capitals 테이블과 수도가 아닌 도시가 저장된 non_cities 테이블이 있다고 하자. 수도 또한 도시이기 때문에 모든 도시를 확인하기 위해서는 두 테이블이 모두 필요하다. 두 테이블을 합친 VIEW를 생각해볼 수도 있다.
+각 나라의 수도가 저장된 `capitals` 테이블과 수도가 아닌 도시가 저장된 `non_cities` 테이블이 있다고 하자. 수도 또한 도시이기 때문에 모든 도시를 확인하기 위해서는 두 테이블이 모두 필요하다. 두 테이블을 합친 `VIEW`를 생각해볼 수도 있다.
 ```
 CREATE TABLE capitals (
   name       text,
