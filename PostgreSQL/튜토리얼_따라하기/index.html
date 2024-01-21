@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.11.0"/><meta name="theme-color" content="#161b22"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-gatsby-head="true"/><meta name="description" content="DB 생성 mydb라는 이름의 데이터베이스를 만들어 본다. DB 접속 다음과 같이 나오면 성공 마지막 줄에 # 기호가 있다면 superuser라는 의미다. 아닌 경우에는 # 대신 &gt; 기호를 출력한다. 튜토리얼을 따라 아래 명령어를 입력했다. psql…" data-gatsby-head="true"/><meta name="image" data-gatsby-head="true"/><meta name="og:title" content="conerstone" data-gatsby-head="true"/><meta name="og:description" content="DB 생성 mydb라는 이름의 데이터베이스를 만들어 본다. DB 접속 다음과 같이 나오면 성공 마지막 줄에 # 기호가 있다면 superuser라는 의미다. 아닌 경우에는 # 대신 &gt; 기호를 출력한다. 튜토리얼을 따라 아래 명령어를 입력했다. psql…" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="튜토리얼 따라하기 | conerstone" data-gatsby-head="true"/><meta name="twitter:url" content="https://rheech22.github.io/PostgreSQL/튜토리얼_따라하기" data-gatsby-head="true"/><meta name="twitter:description" content="DB 생성 mydb라는 이름의 데이터베이스를 만들어 본다. DB 접속 다음과 같이 나오면 성공 마지막 줄에 # 기호가 있다면 superuser라는 의미다. 아닌 경우에는 # 대신 &gt; 기호를 출력한다. 튜토리얼을 따라 아래 명령어를 입력했다. psql…" data-gatsby-head="true"/><meta name="twitter:image" content="https://rheech22.github.ioundefined" data-gatsby-head="true"/><meta name="twitter:creator" content="@@rheech22" data-gatsby-head="true"/><meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" data-gatsby-head="true"/><meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" data-gatsby-head="true"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
+<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.11.0"/><meta name="theme-color" content="#161b22"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-gatsby-head="true"/><meta name="description" content="DB 생성 mydb라는 이름으로 데이터베이스 생성 DB 접속 다음과 같이 나오면 성공 마지막 줄에 # 기호가 있다면 superuser라는 의미다. 아닌 경우에는 # 대신 &gt; 기호를 출력한다. 튜토리얼을 따라 아래 명령어를 입력했다. psql에는 \로…" data-gatsby-head="true"/><meta name="image" data-gatsby-head="true"/><meta name="og:title" content="conerstone" data-gatsby-head="true"/><meta name="og:description" content="DB 생성 mydb라는 이름으로 데이터베이스 생성 DB 접속 다음과 같이 나오면 성공 마지막 줄에 # 기호가 있다면 superuser라는 의미다. 아닌 경우에는 # 대신 &gt; 기호를 출력한다. 튜토리얼을 따라 아래 명령어를 입력했다. psql에는 \로…" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="튜토리얼 따라하기 | conerstone" data-gatsby-head="true"/><meta name="twitter:url" content="https://rheech22.github.io/PostgreSQL/튜토리얼_따라하기" data-gatsby-head="true"/><meta name="twitter:description" content="DB 생성 mydb라는 이름으로 데이터베이스 생성 DB 접속 다음과 같이 나오면 성공 마지막 줄에 # 기호가 있다면 superuser라는 의미다. 아닌 경우에는 # 대신 &gt; 기호를 출력한다. 튜토리얼을 따라 아래 명령어를 입력했다. psql에는 \로…" data-gatsby-head="true"/><meta name="twitter:image" content="https://rheech22.github.ioundefined" data-gatsby-head="true"/><meta name="twitter:creator" content="@@rheech22" data-gatsby-head="true"/><meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" data-gatsby-head="true"/><meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" data-gatsby-head="true"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
       
       
       if(true) {
@@ -197,11 +197,11 @@ data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
               "url": "https://rheech22.github.io/PostgreSQL/튜토리얼_따라하기",
               "headline": "conerstone",
               "datePublished": "2024-01-13 17:29:25 +0900",
-              "dateModified": "2024-01-14 18:41:13 +0900",
+              "dateModified": "2024-01-21 13:04:32 +0900",
               "image": "[]"
             }
-          </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 cgshUI"><a tabindex="-1" class="Header__HomeButton-sc-z8t49p-1 erKfrX" href="/"><svg viewBox="0 0 21 21" fill="currentColor" height="1em" width="1em"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 10.5l9-9 9 9"></path><path d="M3.5 8.5v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></g></svg></a><a tabindex="-1" class="Header__Title-sc-z8t49p-2 fWSnbl" href="/"><h1>conerstone</h1></a><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-3 iscvfN"><div class="Header__CircleLayout-sc-z8t49p-4 dkdLLc"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button><form class="SearchBar__Container-sc-6n5xnu-0 hRTaSi"><input type="text" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 esCaBN" value=""/><button type="submit" hidden="" aria-label="Submit Search"></button></form><div class="Header__Index-sc-z8t49p-5 eVMkLI"><a tabindex="-1" href="/wiki-index/"><h2>Index.</h2></a></div></header><main><div class="styles__Container-sc-4114r5-0 bpQNeS"><section class="styles__Section-sc-4114r5-1 cOLaBC"><article class="styles__Article-sc-4114r5-2 iQVJjY"><nav class="styles__Nav-sc-4114r5-3 hLCEhK"><div><a href="/PostgreSQL/">PostgreSQL</a></div></nav><header class="styles__Header-sc-4114r5-4 dwxKPC"><h1 class="styles__Title-sc-4114r5-6 ibrFQC">튜토리얼 따라하기</h1><div class="styles__SubTitle-sc-4114r5-7 kJnDSb"><div><span>11<!-- --> min read</span><time dateTime="created at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/PostgreSQL/튜토리얼_따라하기/index.md" target="_blank" rel="noreferrer">CREATED: <!-- -->13/01/2024</a></time><time dateTime="updated at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/PostgreSQL/튜토리얼_따라하기/index.md" target="_blank" rel="noreferrer">UPDATED: <!-- -->14/01/2024</a></time><a href="https://github.com/rheech22/rheech22.github.io/blame/develop/src/wikis/PostgreSQL/튜토리얼_따라하기/index.md" target="_blank" rel="noreferrer">Blame</a></div></div></header><main class="styles__Main-sc-4114r5-5 KuGeo"><section><h1 id="db-생성" style="position:relative;">DB 생성<a href="#db-%EC%83%9D%EC%84%B1" aria-label="db 생성 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
-<p><code>mydb</code>라는 이름의 데이터베이스를 만들어 본다.</p>
+          </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 cgshUI"><a tabindex="-1" class="Header__HomeButton-sc-z8t49p-1 erKfrX" href="/"><svg viewBox="0 0 21 21" fill="currentColor" height="1em" width="1em"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 10.5l9-9 9 9"></path><path d="M3.5 8.5v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></g></svg></a><a tabindex="-1" class="Header__Title-sc-z8t49p-2 fWSnbl" href="/"><h1>conerstone</h1></a><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-3 iscvfN"><div class="Header__CircleLayout-sc-z8t49p-4 dkdLLc"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button><form class="SearchBar__Container-sc-6n5xnu-0 hRTaSi"><input type="text" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 esCaBN" value=""/><button type="submit" hidden="" aria-label="Submit Search"></button></form><div class="Header__Index-sc-z8t49p-5 eVMkLI"><a tabindex="-1" href="/wiki-index/"><h2>Index.</h2></a></div></header><main><div class="styles__Container-sc-4114r5-0 bpQNeS"><section class="styles__Section-sc-4114r5-1 cOLaBC"><article class="styles__Article-sc-4114r5-2 iQVJjY"><nav class="styles__Nav-sc-4114r5-3 hLCEhK"><div><a href="/PostgreSQL/">PostgreSQL</a></div></nav><header class="styles__Header-sc-4114r5-4 dwxKPC"><h1 class="styles__Title-sc-4114r5-6 ibrFQC">튜토리얼 따라하기</h1><div class="styles__SubTitle-sc-4114r5-7 kJnDSb"><div><span>11<!-- --> min read</span><time dateTime="created at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/PostgreSQL/튜토리얼_따라하기/index.md" target="_blank" rel="noreferrer">CREATED: <!-- -->13/01/2024</a></time><time dateTime="updated at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/PostgreSQL/튜토리얼_따라하기/index.md" target="_blank" rel="noreferrer">UPDATED: <!-- -->21/01/2024</a></time><a href="https://github.com/rheech22/rheech22.github.io/blame/develop/src/wikis/PostgreSQL/튜토리얼_따라하기/index.md" target="_blank" rel="noreferrer">Blame</a></div></div></header><main class="styles__Main-sc-4114r5-5 KuGeo"><section><h1 id="db-생성" style="position:relative;">DB 생성<a href="#db-%EC%83%9D%EC%84%B1" aria-label="db 생성 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p><code>mydb</code>라는 이름으로 데이터베이스 생성</p>
 <deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
           <code slot="code">createdb mydb</code>
         </deckgo-highlight-code>
@@ -237,7 +237,7 @@ mydb=# SELECT 1 + 4;
         5
 (1개 행)</code>
         </deckgo-highlight-code>
-<p>psql에는 SQL이 아닌 <code>\</code>으로 시작하는 여러 명령어가 있다. <code>\h</code>를 입력하면 사용 가능한 도움말 목록을 출력한다. 그 중에서 <code>CREATE TABLE</code>을 확인하면 이런 내용이 나온다.</p>
+<p>psql에는 <code>\</code>로 시작하는 여러 명령어가 있다. <code>\h</code>는 사용 가능한 도움말 목록을 출력한다. 그 중에서 <code>CREATE TABLE</code>는 이런 내용을 보여준다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">명령: CREATE TABLE
 설명: 새 테이블 만들기
@@ -253,7 +253,7 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXI
         </deckgo-highlight-code>
 <p>psql에서 나오고 싶다면 <code>\q</code>을 입력하자. <code>\?</code>를 입력하면 여러 명령어를 확인할 수 있다.</p>
 <h1 id="create-table" style="position:relative;">CREATE TABLE<a href="#create-table" aria-label="create table permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
-<p>아래처럼 weather 테이블을 생성한다.</p>
+<p><code>weather</code> 테이블을 생성</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# CREATE TABLE weather (
     city            varchar(80),
@@ -264,9 +264,9 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXI
 );
 CREATE TABLE</code>
         </deckgo-highlight-code>
-<p>psql에서 공백, 탭, 줄바꿈은 자유롭게 사용할 수 있다. 세미콜론(;)이 오기 전까지 명령은 종료되지 않는 것으로 인식한다. 마치 lua처럼 <code>--</code>기호는 주석을 표현할 때 사용한다. 또한 쌍따옴표로 묶인 경우를 제외하고는 SQL 구문에서 대소문자를 구분하지 않는다.</p>
-<p>varchar(80)은 최대 80자 길이의 문자열을 저장할 수 있는 데이터 타입을 의미한다. int는 일반적인 정수, real은 4바이트 부동 소수점 타입이다. date는 단어 그대로 날짜 타입이다.</p>
-<p>cites라는 테이블을 하나 더 만들었다.</p>
+<p>psql에서 공백, 탭, 줄바꿈은 자유롭게 사용할 수 있다. 세미콜론(;)이 오기 전까지 명령은 종료되지 않는 것으로 인식한다. <code>--</code>는 주석을 표현할 때 사용한다. 쌍따옴표로 묶인 경우를 제외하고는 SQL 구문에서 대소문자를 구분하지 않는다.</p>
+<p><code>varchar(80)</code>은 최대 80자 길이의 문자열을 저장할 수 있는 데이터 타입을 의미한다. <code>int</code>는 일반적인 정수, <code>real</code>은 4 바이트 부동 소수점 타입이다. <code>date</code>는 단어 그대로 날짜 타입이다.</p>
+<p><code>cities</code>라는 테이블을 하나 더 만들었다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# CREATE TABLE cities (
     name            varchar(80),
@@ -274,16 +274,16 @@ CREATE TABLE</code>
 );
 CREATE TABLE</code>
         </deckgo-highlight-code>
-<p>point는 지리적 위치를 표현하는 데이터 타입으로 PostgreSQL에서 제공하는 특별한 타입 중 하나이다.</p>
+<p><code>point</code>는 지리적 위치를 표현하는 데이터 타입으로 PostgreSQL에서 제공하는 특별한 타입 중 하나이다.</p>
 <p><code>box</code>, <code>line</code>, <code>point</code>, <code>lseg</code>, <code>polygon</code>, <code>inet</code>, <code>macaddr</code></p>
 <h1 id="insert-info" style="position:relative;">INSERT INFO<a href="#insert-info" aria-label="insert info permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
-<p>INSERT 문으로 테이블에 데이터를 채워보자. 튜토리얼을 보고 아래와 같은 순서로 데이터를 삽입했다.</p>
+<p><code>INSERT</code> 문으로 테이블에 데이터를 채워보자. 튜토리얼을 보고 아래와 같은 순서로 데이터를 삽입했다.</p>
 <p>인풋은 <code>,</code>로 구분하고 타입에 맞는 데이터로 넣어줘야 한다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# INSERT INTO weather VALUES (&#39;San Francisco&#39;, 46, 50, 0.25, &#39;1994-11-27&#39;);
 INSERT 0 1</code>
         </deckgo-highlight-code>
-<p>point 타입은 아래와 같이 형태를 요구한다.</p>
+<p><code>point</code> 타입은 아래와 같이 형태를 요구한다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">INSERT INTO cities VALUES (&#39;San Francisco&#39;, &#39;(-194.0, 53.0)&#39;);
 INSERT 0 1</code>
@@ -299,12 +299,13 @@ INSERT 01</code>
           <code slot="code">INSERT INTO weather (date, city, temp_hi, temp_lo)
     VALUES (&#39;1994-11-29&#39;, &#39;Hayward&#39;, 54, 37);</code>
         </deckgo-highlight-code>
-<p>COPY 명령을 통해 파일로부터 로드하는 방법도 있다.</p>
+<p><code>COPY</code> 명령을 통해 파일로부터 로드하는 방법도 있다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">COPY weather FROM &#39;/home/user/weather.txt&#39;;</code>
         </deckgo-highlight-code>
 <h1 id="select" style="position:relative;">SELECT<a href="#select" aria-label="select permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
-<p>SELECT 문으로 테이블에서 데이터를 쿼리할 수 있다. SELECT 문은 테이블에서 가져올 컬럼을 명시하는 부분, 가져올 테이블을 명시하는 부분, 그리고 가져올 데이터를 한정하는 부분(옵셔널)으로 구분하여 사용한다. 이전 챕터에서 weather 테이블에 데이터를 채워놨으니 모두 조회해보자.</p>
+<p><code>SELECT</code> 문으로 테이블에서 데이터를 조회할 수 있다.</p>
+<p>이전 챕터에서 <code>weather</code> 테이블에 데이터를 채워놨으니 모두 조회해보자.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# SELECT * FROM weather;
      city      | temp_lo | temp_hi | prcp |    date
@@ -330,7 +331,7 @@ INSERT 01</code>
 (3개 행)</code>
         </deckgo-highlight-code>
 <p><code>AS</code>절은 출력되는 컬럼의 이름을 재정의한다.</p>
-<p>한편, <code>WHERE</code>절로 원하는 데이터만 출력할 수 있다. <code>WHERE</code>절은 boolean 표현식을 포함하는데 표현식을 통해 참으로 평가되는 행만 반환시킨다. <code>AND</code>, <code>OR</code>, <code>NOT</code>과 같은 boolean 연산자도 함께 사용할 수 있다.</p>
+<p>한편, <code>WHERE</code>절로 원하는 데이터만 출력할 수 있다. <code>WHERE</code>절은 Boolean 표현식을 포함하는데 표현식을 통해 참으로 평가되는 행만 반환시킨다. <code>AND</code>, <code>OR</code>, <code>NOT</code>과 같은 Boolean 연산자도 함께 사용할 수 있다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# SELECT * FROM weather
     WHERE city = &#39;San Francisco&#39; AND prcp &gt; 0.0;
@@ -350,7 +351,7 @@ INSERT 01</code>
  San Francisco |      43 |      57 |    0 | 1994-11-29
 (3개 행)</code>
         </deckgo-highlight-code>
-<p>San Francisco도 완전히 정렬시키고 싶다면,</p>
+<p><code>San Francisco</code>도 완전히 정렬시키고 싶다면,</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# SELECT * FROM weather
     ORDER BY city, temp_lo;
@@ -381,7 +382,7 @@ INSERT 01</code>
 (2개 행)</code>
         </deckgo-highlight-code>
 <p>여기서는 <code>*</code>을 사용하여 모든 컬럼을 가져오도록 했지만, 실제 프로덕션 레벨에서는 항상 명시적으로 컬럼을 작성하는 것이 좋다. 만약 테이블에 컬럼이 추가되면 결과도 달라질 것이기 때문이다.</p>
-<p>현재 weather의 컬럼과 cities의 컬럼의 이름이 겹치는 경우는 없지만, 만약에 그런 경우가 있다면 아래와 같이 작성해야 한다.</p>
+<p>현재 <code>weather</code>의 컬럼과 <code>cities</code>의 컬럼의 이름이 겹치는 경우는 없지만, 만약에 그런 경우가 있다면 아래와 같이 작성해야 한다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# SELECT weather.city, weather.temp_lo, weather.temp_hi,
        weather.prcp, weather.date, cities.location
@@ -399,7 +400,7 @@ INSERT 01</code>
 (2개 행)</code>
         </deckgo-highlight-code>
 <p>이 방법은 <code>JOIN/ON</code> 구문보다 앞선 방식으로 좀 더 단순해 보이지만, 쿼리를 읽는 사람 입장에서는 <code>JOIN/ON</code> 구문을 사용하는 것이 더 쉽게 이해하기 좋다. <code>JOIN</code>을 위한 조건이 <code>WHERE</code> 절에 섞여있지 않아도 된다.</p>
-<p>앞선 예제에서는 Hayward가 결과에서 제외됐다. <code>ON</code>에 작성된 조건을 만족하지 못했기 때문인데 만약 조건에 만족하지 못한 경우에도 결과에 포함시키고 싶다면 어떻게 해야할까? 이런 경우 <code>OUTER JOIN</code>을 사용할 수 있다. (지금까지 했던 것은 사실 <code>INNER JOIN</code>이다.)</p>
+<p>앞선 예제에서는 <code>Hayward</code>가 결과에서 제외됐다. <code>ON</code>에 작성된 조건을 만족하지 못했기 때문인데 만약 조건에 만족하지 못한 경우에도 결과에 포함시키고 싶다면 어떻게 해야할까? 이런 경우 <code>OUTER JOIN</code>을 사용할 수 있다. (지금까지 했던 것은 사실 <code>INNER JOIN</code>이다.)</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">SELECT *
     FROM weather LEFT OUTER JOIN cities ON weather.city = cities.name;
@@ -531,7 +532,7 @@ mydb=# SELECT * FROM myview;
 (2개 행)</code>
         </deckgo-highlight-code>
 <h1 id="foreign-keys" style="position:relative;">Foreign Keys<a href="#foreign-keys" aria-label="foreign keys permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
-<p>앞서 활용한 테이블 weather와 cities에서 cities에 포함된 도시만 weather에 넣을 수 있도록 해야 한다고 가정해보자. 이런 경우 먼저 cities를 살펴 일치하는 기록이 있는지 확인한 후 새로운 날씨 데이터를 weather에 넣을 수 있도록 하거나 혹은 넣지 못하도록 해야할 것이다. 이처럼 테이블간의 관계를 일관되게 유지시킴으로써 데이터베이스의 신뢰도를 높이는 것을 데이터의 참조 무결성(referential integrity)라 한다. 다만 위와 같은 과정을 매번 거쳐야 하는 것은 매우 귀찮은 일이기 때문에 primary key와 foreign key를 사용하여 테이블의 관계를 선언할 수 있다. 우선 테이블을 다시 생성하기 전에 삭제부터 한다.</p>
+<p>앞서 활용한 테이블 <code>weather</code>와 <code>cities</code>에서 <code>cities</code>에 포함된 도시만 <code>weather</code>에 넣을 수 있도록 해야 한다고 가정해보자. 이런 경우 먼저 <code>cities</code>를 살펴 일치하는 기록이 있는지 확인한 후 새로운 날씨 데이터를 <code>weather</code>에 넣을 수 있도록 하거나 혹은 넣지 못하도록 해야할 것이다. 이처럼 테이블간의 관계를 일관되게 유지시킴으로써 데이터베이스의 신뢰도를 높이는 것을 데이터의 참조 무결성(referential integrity)라 한다. 다만 위와 같은 과정을 매번 거쳐야 하는 것은 매우 귀찮은 일이기 때문에 primary key와 foreign key를 사용하여 테이블의 관계를 선언할 수 있다. 우선 테이블을 다시 생성하기 전에 삭제부터 한다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# DROP VIEW myview;
 DROP VIEW
@@ -555,13 +556,13 @@ CREATE TABLE weather (
         date      date
 );</code>
         </deckgo-highlight-code>
-<p>weather에 <code>INSERT</code>를 시도하면 cities에 없는 도시를 저장하려 했기에 실패한다.</p>
+<p><code>weather</code>에 <code>INSERT</code>를 시도하면 <code>cities</code>에 없는 도시를 저장하려 했기에 실패한다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# INSERT INTO weather VALUES (&#39;Berkeley&#39;, 45, 53, 0.0, &#39;1994-11-28&#39;);
 ERROR:  insert or update on table &quot;weather&quot; violates foreign key constraint &quot;weather_city_fkey&quot;
 상세정보:  Key (city)=(Berkeley) is not present in table &quot;cities&quot;.</code>
         </deckgo-highlight-code>
-<p>먼저 cities에 데이터를 저장한 후 재시도하면 <code>INSERT</code> 성공</p>
+<p>먼저 <code>cities</code>에 데이터를 저장한 후 재시도하면 <code>INSERT</code> 성공</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">mydb=# INSERT INTO cities VALUES (&#39;Berkeley&#39;, &#39;(-194.0, 53.0)&#39;);
 INSERT 0 1
@@ -685,7 +686,7 @@ FROM empsalary;
    6000 | 47100
 (10 rows)</code>
         </deckgo-highlight-code>
-<p>이런 결과를 보여주는 이유는 window frame이라는 개념이 있기 때문이다. 파티션 안의 모든 행에는 프레임이 존재하고 어떤 Window Function은 파티션 전체가 아닌 프레임에 대해서만 동작하기도 한다. <code>ORDER BY</code>가 있다면 프레임은 파티션의 시작부터 현재 행까지, 그리고 현재 행과 동일한 다음 행으로 구성된다. 만약 <code>ORDER BY</code>가 생략되면 기본 프레임은 파티션의 모든 행으로 구성된다.</p>
+<p>이런 결과를 보여주는 이유는 window frame이라는 개념이 있기 때문이다. 파티션 안의 모든 행에는 프레임이 존재한다. 어떤 Window Function은 파티션 전체가 아닌 프레임에 대해서만 동작하기도 한다. <code>ORDER BY</code>가 있다면 프레임은 파티션의 시작부터 현재 행까지, 그리고 현재 행과 동일한 다음 행으로 구성된다. 만약 <code>ORDER BY</code>가 생략되면 기본 프레임은 파티션의 모든 행으로 구성된다.</p>
 <p>Window Function은 <code>SELECT</code> 목록 내에서 사용할 수 있고 필요에 따라 <code>ORDER BY</code>를 사용할 수 있다. <code>GROUP BY</code>, <code>HAVING</code>, <code>WHERE</code>와는 사용이 불가능한데 언급한 절들이 모두 평가되고 난 후 실행되어야 하기 때문이다. 또한 Window Function은 Aggregate Function이 수행된 후 실행된다.</p>
 <p>만약 Window Function이 수행된 후 데이터를 걸러내거나 그룹을 묶어줘야 한다면 서브 셀렉트를 사용할 수 있다. 아래는 연봉 순위가 3 미만인 데이터를 가져오는 예시다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
@@ -705,7 +706,7 @@ WHERE pos &lt; 3;</code>
         </deckgo-highlight-code>
 <h1 id="inheritance" style="position:relative;">Inheritance<a href="#inheritance" aria-label="inheritance permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
 <p>상속은 객체지향 데이터베이스의 컨셉 중 하나이다.</p>
-<p>각 나라의 수도가 저장된 capitals 테이블과 수도가 아닌 도시가 저장된 non_cities 테이블이 있다고 하자. 수도 또한 도시이기 때문에 모든 도시를 확인하기 위해서는 두 테이블이 모두 필요하다. 두 테이블을 합친 VIEW를 생각해볼 수도 있다.</p>
+<p>각 나라의 수도가 저장된 <code>capitals</code> 테이블과 수도가 아닌 도시가 저장된 <code>non_cities</code> 테이블이 있다고 하자. 수도 또한 도시이기 때문에 모든 도시를 확인하기 위해서는 두 테이블이 모두 필요하다. 두 테이블을 합친 <code>VIEW</code>를 생각해볼 수도 있다.</p>
 <deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
           <code slot="code">CREATE TABLE capitals (
   name       text,
