@@ -15,16 +15,37 @@ export const getDateSegments = (date: string) => {
 };
 
 export const getWikiInfo = (data: Queries.templateQuery) => {
-  const {
-    markdownRemark: {
+  const { markdownRemark, mdx } = data;
+
+  if (markdownRemark) {
+    const {
       timeToRead,
-      headings,
       excerpt,
+      headings,
       html: contents,
       frontmatter: { created, updated },
       fields: { slug, title }
-    }
-  } = data;
+    } = markdownRemark;
+
+    return {
+      created,
+      updated,
+      slug,
+      title,
+      contents: contents ?? '',
+      excerpt: excerpt ?? '',
+      headings: headings ?? [],
+      timeToRead: timeToRead ?? '',
+      isMdx: false
+    };
+  }
+
+  const {
+    frontmatter: { created, updated },
+    fields: { slug, title },
+    body: contents,
+    excerpt
+  } = mdx;
 
   return {
     created,
@@ -33,8 +54,9 @@ export const getWikiInfo = (data: Queries.templateQuery) => {
     title,
     contents: contents ?? '',
     excerpt: excerpt ?? '',
-    headings: headings ?? [],
-    timeToRead: timeToRead ?? ''
+    headings: [],
+    timeToRead: '',
+    isMdx: true
   };
 };
 

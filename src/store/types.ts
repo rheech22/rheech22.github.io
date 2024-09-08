@@ -12,7 +12,14 @@ export type Payload = {
 
 export type Action = { type: ActionType; payload: Payload };
 
-export type Wikis = Queries.getWikisQuery['allMarkdownRemark']['edges'];
+export type Wikis = ReadonlyArray<{
+  readonly node: {
+    readonly id: string;
+    readonly html: string | null;
+    readonly fields: { readonly slug: string; readonly title: string };
+    readonly frontmatter: { readonly created: string; readonly updated: string };
+  };
+}>;
 
 type MarkdownHeadings = ReadonlyArray<Queries.Maybe<Queries.MarkdownHeading>>;
 

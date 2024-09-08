@@ -33,6 +33,8 @@ const config: GatsbyConfig = {
 
     'gatsby-plugin-catch-links',
 
+    'gatsby-plugin-mdx',
+
     {
       resolve: 'gatsby-source-filesystem',
       options: {

@@ -8,6 +8,7 @@ import GlobalStyle from '../styles/global';
 import { dark, light } from '../styles/themes';
 import Footer from './Footer';
 import Header from './Header';
+import { MDXProvider } from '@mdx-js/react';
 
 interface Props {
   children: JSX.Element | null;
@@ -26,9 +27,11 @@ const Layout = ({ children }: Props) => {
   return (
     <ThemeProvider theme={displayMode === 'day' ? light : dark}>
       <GlobalStyle theme={displayMode === 'day' ? light : dark} />
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <MDXProvider>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </MDXProvider>
     </ThemeProvider>
   );
 };

@@ -15,16 +15,19 @@ import * as Styled from './styles';
 const { commit, blame } = config;
 
 // eslint-disable-next-line react/display-name
-export default ({ data }: PageProps<Queries.templateQuery>) => {
+export default ({ data, children }: PageProps<Queries.templateQuery>) => {
   const { displayMode } = useContext();
 
   const spyRef = useSpyHeadings();
 
-  const { created, updated, contents, headings, timeToRead, slug, title } = getWikiInfo(data);
+  const { created, updated, contents, headings, timeToRead, slug, title, isMdx } =
+    getWikiInfo(data);
 
   const hasHeading = Boolean(headings.length);
 
   const navs = getAncestors(slug);
+
+  console.log(contents);
 
   return (
     <Styled.Container>
@@ -66,10 +69,14 @@ export default ({ data }: PageProps<Queries.templateQuery>) => {
             </Styled.SubTitle>
           </Styled.Header>
           <Styled.Main>
-            <section
-              ref={spyRef}
-              dangerouslySetInnerHTML={{ __html: convertVimWikiLinks({ contents, slug }) }}
-            />
+            {isMdx ? (
+              children
+            ) : (
+              <section
+                ref={spyRef}
+                dangerouslySetInnerHTML={{ __html: convertVimWikiLinks({ contents, slug }) }}
+              />
+            )}
           </Styled.Main>
         </Styled.Article>
         <ScrollToTop />
@@ -113,6 +120,19 @@ export const query = graphql`
         created
         updated
       }
+      fields {
+        slug
+        title
+      }
+    }
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
+      excerpt
+      frontmatter {
+        created
+        updated
+      }
+      tableOfContents
       fields {
         slug
         title

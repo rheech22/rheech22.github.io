@@ -6,15 +6,20 @@ import { useDispatch } from '../store/context';
 const useWikis = () => {
   const data: Queries.getWikisQuery = useStaticQuery(GET_WIKIS);
 
-  const { edges: wikis } = data.allMarkdownRemark;
+  const { edges: mdList } = data.allMarkdownRemark;
+  const { edges: mdxList } = data.allMdx;
+
+  const wikis = [...mdList, ...mdxList];
 
   const dispatch = useDispatch();
+
+  // console.log(wikis);
 
   useEffect(() => {
     if (!wikis.length) return;
 
     dispatch({ type: 'setWikis', payload: { wikis } });
-  }, [wikis]);
+  }, []);
 };
 
 export default useWikis;
@@ -26,6 +31,22 @@ const GET_WIKIS = graphql`
         node {
           id
           html
+          fields {
+            slug
+            title
+          }
+          frontmatter {
+            created
+            updated
+          }
+        }
+      }
+    }
+    allMdx(sort: { frontmatter: { updated: DESC } }) {
+      edges {
+        node {
+          id
+          html: body
           fields {
             slug
             title

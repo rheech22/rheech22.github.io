@@ -26,6 +26,27 @@ exports.onCreateNode = ({ node, getNode, actions }: CreateNodeArgs) => {
       value: slug.split('/').slice(-1).pop()?.replaceAll('_', ' ')
     });
   }
+
+  if (node.internal.type === 'Mdx') {
+    const slug = createFilePath({
+      node,
+      getNode,
+      basePath: 'pages',
+      trailingSlash: false
+    });
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug
+    });
+
+    createNodeField({
+      node,
+      name: 'title',
+      value: slug.split('/').slice(-1).pop()?.replaceAll('_', ' ')
+    });
+  }
 };
 
 exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) => {
@@ -45,6 +66,16 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
           }
         }
       }
+      allMdx(limit: 1000, sort: { frontmatter: { updated: ASC } }) {
+        edges {
+          node {
+            fields {
+              slug
+              title
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -52,8 +83,27 @@ exports.createPages = async ({ actions, graphql, reporter }: CreatePagesArgs) =>
     return reporter.panicOnBuild('Error while running GraphQL query.');
   }
 
-  if (result.data) {
+  if (result.data?.allMarkdownRemark) {
     result.data.allMarkdownRemark.edges.forEach(
+      ({
+        node: {
+          fields: { slug, title }
+        }
+      }) => {
+        createPage({
+          path: slug,
+          component,
+          context: {
+            slug,
+            title
+          }
+        });
+      }
+    );
+  }
+
+  if (result.data?.allMdx) {
+    result.data.allMdx.edges.forEach(
       ({
         node: {
           fields: { slug, title }
@@ -78,9 +128,19 @@ exports.createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs)
   const typeDefs = `
     type templateQuery {
       markdownRemark: MarkdownRemark!
+      mdx: Mdx!
     }
 
     type MarkdownRemark implements Node {
+      frontmatter: Frontmatter!
+      fields: MarkdownRemarkFields!
+    }
+
+    type Mdx implements Node {
+      id: ID!
+      body: String
+      excerpt: String
+      tableOfContents: JSON
       frontmatter: Frontmatter!
       fields: MarkdownRemarkFields!
     }
