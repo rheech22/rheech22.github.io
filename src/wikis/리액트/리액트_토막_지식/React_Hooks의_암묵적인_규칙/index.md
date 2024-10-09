@@ -1,7 +1,9 @@
 ---
 created: 2024-10-09 13:47:44 +0900
-updated: 2024-10-09 14:40:35 +0900
+updated: 2024-10-09 17:48:00 +0900
 ---
+
+> [The unspoken rules of React hooks](https://macwright.com/2024/09/19/the-extra-rules-of-hooks)를 읽고 요약한 글입니다.
 
 `useEffect`의 종속성 배열에는 콜백 내에서 참조되는 모든 변수가 포함되어야 한다는 규칙이 있다. 규칙 위반을 방지하기 위해 eslint의 `react-hooks/exhaustive-dpeps` 규칙을 설정하기도 하는데, 종속성 배열에서 누락된 참조가 있다면 알려주는 식이다.
 
