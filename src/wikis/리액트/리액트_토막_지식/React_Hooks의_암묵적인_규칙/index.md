@@ -1,6 +1,6 @@
 ---
 created: 2024-10-09 13:47:44 +0900
-updated: 2024-10-09 14:38:20 +0900
+updated: 2024-10-09 14:39:48 +0900
 ---
 
 useEffect의 종속성 배열에는 콜백 내에서 참조되는 모든 변수가 포함되어야 한다는 규칙이 있다. 규칙 위반을 방지하기 위해 eslint의 `react-hooks/exhaustive-dpeps` 규칙을 설정하기도 하는데, 종속성 배열에서 누락된 참조가 있다면 알려주는 식이다.
@@ -8,18 +8,20 @@ useEffect의 종속성 배열에는 콜백 내에서 참조되는 모든 변수�
 하지만, 이 규칙에도 예외가 있는데 일부 "안정적인 것으로 알려져 있는" 값은 종속성 배열에 추가하지 않아도 된다는 내용이다. [eslint 규칙 구현](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/src/ExhaustiveDeps.js#L177-L188)에서도 그 일부를 확인할 수 있다.
 
 ```js
-// Some are known to be stable based on Hook calls.
-// const [state, setState] = useState() / React.useState()
-//               ^^^ true for this reference
-// const [state, dispatch] = useReducer() / React.useReducer()
-//               ^^^ true for this reference
-// const [state, dispatch] = useActionState() / React.useActionState()
-//               ^^^ true for this reference
-// const ref = useRef()
-//       ^^^ true for this reference
-// const onStuff = useEffectEvent(() => {})
-//       ^^^ true for this reference
-// False for everything else.
+Some are known to be stable based on Hook calls.
+
+const [state, setState] = useState() / React.useState()
+              ^^^ true for this reference
+const [state, dispatch] = useReducer() / React.useReducer()
+              ^^^ true for this reference
+const [state, dispatch] = useActionState() / React.useActionState()
+              ^^^ true for this reference
+const ref = useRef()
+      ^^^ true for this reference
+const onStuff = useEffectEvent(() => {})
+      ^^^ true for this reference
+
+False for everything else.
 ```
 
 [리액트 공식 문서](https://react.dev/learn/synchronizing-with-effects#why-was-the-ref-omitted-from-the-dependency-array)도 이 내용을 언급하고 있는데 요약하자면,
