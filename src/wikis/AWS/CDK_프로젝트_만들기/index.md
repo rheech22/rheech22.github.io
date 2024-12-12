@@ -250,6 +250,8 @@ curl https://<api-id>.lambda-url.<Region>.on.aws/
 "Hello World!"%
 ```
 
+전체 코드는 [여기서](https://github.com/rheech22/cdk-hello-world) 확인 가능
+
 # 참고
 
 - [Tutorial: Create your first AWS CDK app](https://docs.aws.amazon.com/cdk/v2/guide/hello_world.html) 외 연결 문서
