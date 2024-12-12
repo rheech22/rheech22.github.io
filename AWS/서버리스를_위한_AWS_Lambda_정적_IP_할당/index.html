@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.11.0"/><meta name="theme-color" content="#161b22"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-gatsby-head="true"/><meta name="description" content="최근 Vercel이나 Netlify 덕분에 별도의 서버 구축 없이도 간단한 프로젝트의 배포가 편리해졌지만 대부분의, 아마 거의 모든 서비스 공급자들이, 정적 IP를 제공하지는 않는 것으로 보인다. 그래서 아웃바운드를 위한 정적 IP가 필요한 경우에는…" data-gatsby-head="true"/><meta name="image" data-gatsby-head="true"/><meta name="og:title" content="conerstone" data-gatsby-head="true"/><meta name="og:description" content="최근 Vercel이나 Netlify 덕분에 별도의 서버 구축 없이도 간단한 프로젝트의 배포가 편리해졌지만 대부분의, 아마 거의 모든 서비스 공급자들이, 정적 IP를 제공하지는 않는 것으로 보인다. 그래서 아웃바운드를 위한 정적 IP가 필요한 경우에는…" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="서버리스를 위한 AWS Lambda 정적 IP 할당 | conerstone" data-gatsby-head="true"/><meta name="twitter:url" content="https://rheech22.github.io/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당" data-gatsby-head="true"/><meta name="twitter:description" content="최근 Vercel이나 Netlify 덕분에 별도의 서버 구축 없이도 간단한 프로젝트의 배포가 편리해졌지만 대부분의, 아마 거의 모든 서비스 공급자들이, 정적 IP를 제공하지는 않는 것으로 보인다. 그래서 아웃바운드를 위한 정적 IP가 필요한 경우에는…" data-gatsby-head="true"/><meta name="twitter:image" content="https://rheech22.github.ioundefined" data-gatsby-head="true"/><meta name="twitter:creator" content="@@rheech22" data-gatsby-head="true"/><meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" data-gatsby-head="true"/><meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" data-gatsby-head="true"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0DM3BCWTDS', {"send_page_view":false});
+      }
+      </script><style data-styled="" data-styled-version="6.0.7">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,menu,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,main,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}/*!sc*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block;}/*!sc*/
+*[hidden]{display:none;}/*!sc*/
+body{line-height:1;}/*!sc*/
+menu,ol,ul{list-style:none;}/*!sc*/
+blockquote,q{quotes:none;}/*!sc*/
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}/*!sc*/
+table{border-collapse:collapse;border-spacing:0;}/*!sc*/
+@font-face{font-family:BlinkMacSystemFont;src:local('※');font-weight:400;font-style:normal;unicode-range:U+0041-005A,U+0061-007A,U+0030-0039;}/*!sc*/
+*{box-sizing:border-box;}/*!sc*/
+html,body{scroll-behavior:smooth;margin:0;}/*!sc*/
+body{font-family:'Spoqa Han Sans',BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;width:100%;background-color:#000000;color:#C9D1D9;min-height:100vh;line-height:1.5;transition:all .5s;}/*!sc*/
+body #gatsby-focus-wrapper{max-width:1440px;padding:0 15px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}/*!sc*/
+body main{font-size:16px;width:100%;}/*!sc*/
+body a{color:unset;}/*!sc*/
+data-styled.g2[id="sc-global-hGiQiZ1"]{content:"sc-global-hGiQiZ1,"}/*!sc*/
+.dndVdK{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;border-top:1px solid #222222;transition:border-color 0.5s;margin-top:auto;width:100%;font-size:12px;text-align:center;font-weight:400;color:#bac4ce;}/*!sc*/
+.dndVdK>section{padding:48px 8px;}/*!sc*/
+data-styled.g3[id="Footer__Container-sc-13p6nst-0"]{content:"dndVdK,"}/*!sc*/
+.esCaBN:focus{outline:none;}/*!sc*/
+data-styled.g5[id="Textbox__Input-sc-vlag4q-0"]{content:"esCaBN,"}/*!sc*/
+.hRTaSi{border-radius:8px;width:140px;height:48px;font-weight:400;position:relative;transition:all 0.5s;}/*!sc*/
+@media (min-width: 768px){.hRTaSi:focus-within{width:544px;}.hRTaSi:focus-within>ul{display:block;}}/*!sc*/
+.hRTaSi>input{border:none;border-radius:8px;padding:0 12px;width:100%;height:100%;background-color:#222222;color:#fff;font-size:14px;transition:background-color 0.5s;}/*!sc*/
+.hRTaSi>input::placeholder{color:#a7a7a7;}/*!sc*/
+.hRTaSi>input:focus{color:#fff;background-color:#383838;}/*!sc*/
+@media (min-width: 768px){.hRTaSi>input:focus{border-bottom-left-radius:6px;border-bottom-right-radius:6px;}}/*!sc*/
+.hRTaSi>input:focus::placeholder{color:#757D86;}/*!sc*/
+data-styled.g6[id="SearchBar__Container-sc-6n5xnu-0"]{content:"hRTaSi,"}/*!sc*/
+.cgshUI{display:flex;flex-direction:row;align-items:center;justify-content:normal;position:sticky;top:0;width:100%;min-height:71px;opacity:0.9;background-color:hsla(0, 0%, 0%, 0.5);backdrop-filter:blur(20px);z-index:1;transition:all 0.5s;}/*!sc*/
+data-styled.g8[id="Header__Container-sc-z8t49p-0"]{content:"cgshUI,"}/*!sc*/
+.erKfrX{display:flex;flex-direction:row;align-items:center;justify-content:center;min-width:38px;height:38px;transition:all 2s;}/*!sc*/
+@media (min-width: 768px){.erKfrX{display:none;}}/*!sc*/
+.erKfrX svg{width:20px;height:20px;transform:translateY(1px);}/*!sc*/
+.erKfrX svg g>path{stroke:#f0f6fc;}/*!sc*/
+data-styled.g9[id="Header__HomeButton-sc-z8t49p-1"]{content:"erKfrX,"}/*!sc*/
+.fWSnbl{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;display:none;color:#f0f6fc;text-decoration:none;transition:color 2s;}/*!sc*/
+@media (min-width: 768px){.fWSnbl{display:block;}}/*!sc*/
+.fWSnbl>h1{font-size:24px;font-weight:600;white-space:nowrap;}/*!sc*/
+data-styled.g10[id="Header__Title-sc-z8t49p-2"]{content:"fWSnbl,"}/*!sc*/
+.iscvfN{position:relative;z-index:0;margin-right:8px;border:none;border-radius:50%;background:none;min-width:38px;min-height:38px;overflow:hidden;cursor:pointer;transition:box-shadow 2s;}/*!sc*/
+@media (min-width: 768px){.iscvfN{margin-left:8px;}}/*!sc*/
+@media (hover:hover){.iscvfN:hover{box-shadow:rgb(109,110,129) 1.5px 1.5px 3px 0px inset,rgba(109,110,129,0.5) -1.5px -1.5px 3px 1px inset;background-image:linear-gradient( to right bottom,#000000,#211e1f,#3b353b,#55505a,#6d6c7b,#6d6e81,#6b7187,#69748d,#535c78,#3e4563,#2b304e,#181b3a );}}/*!sc*/
+data-styled.g11[id="Header__Button-sc-z8t49p-3"]{content:"iscvfN,"}/*!sc*/
+.dkdLLc{position:absolute;top:19px;right:-32px;border:1px dotted transparent;border-radius:50%;width:100px;height:100px;transition:border-color 2s;}/*!sc*/
+@media (hover:hover){.dkdLLc:hover{border-color:#C9D1D9;}.dkdLLc:hover svg path{fill:ivory;}}/*!sc*/
+.dkdLLc>div{position:absolute;top:40px;right:40px;border-radius:50%;border:none;padding:0;width:20px;height:20px;background:none;outline:none;}/*!sc*/
+.dkdLLc>div:first-of-type{animation:ZmWYm 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;}/*!sc*/
+.dkdLLc>div:last-of-type{animation:dGgAwC 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;}/*!sc*/
+.dkdLLc>div svg{width:20px;height:20px;transform:rotate(90deg);}/*!sc*/
+.dkdLLc>div svg path{fill:#fff;}/*!sc*/
+data-styled.g12[id="Header__CircleLayout-sc-z8t49p-4"]{content:"dkdLLc,"}/*!sc*/
+.eVMkLI{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;margin-left:auto;font-weight:500;}/*!sc*/
+.eVMkLI>a{text-decoration:none;}/*!sc*/
+.eVMkLI>a:hover{color:#F8EA18;}/*!sc*/
+data-styled.g13[id="Header__Index-sc-z8t49p-5"]{content:"eVMkLI,"}/*!sc*/
+.hmzKTL{position:sticky;top:163px;right:0px;display:none;min-width:fit-content;height:fit-content;overflow-y:scroll;color:#C9D1D9;}/*!sc*/
+.hmzKTL::-webkit-scrollbar{display:none;}/*!sc*/
+.hmzKTL h2{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;margin-bottom:12px;padding:8px 10px;font-size:14px;font-weight:500;letter-spacing:0.025em;transition:all 0.5s;}/*!sc*/
+.hmzKTL ul{padding-left:20px;}/*!sc*/
+.hmzKTL li+li{margin-top:8px;}/*!sc*/
+data-styled.g15[id="TOC__Container-sc-1ylks3q-0"]{content:"hmzKTL,"}/*!sc*/
+.ksAkVR{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:16px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:12px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.ksAkVR:hover:hover{background-color:#222222;}}/*!sc*/
+.ksAkVR a{padding:6px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+.bqfvvc{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:24px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:11px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.bqfvvc:hover:hover{background-color:#222222;}}/*!sc*/
+.bqfvvc a{padding:5px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+data-styled.g16[id="TOC__List-sc-1ylks3q-1"]{content:"ksAkVR,bqfvvc,"}/*!sc*/
+.bpQNeS{display:grid;grid-template-columns:auto;grid-template-rows:auto auto;grid-template-areas:'post' 'post' 'comments';}/*!sc*/
+@media (min-width: 1080px){.bpQNeS{grid-template-columns:10fr 10fr 1fr;grid-template-rows:auto auto;grid-template-areas:'post post toc' 'post post toc' 'comments comments .';}}/*!sc*/
+.bpQNeS>section{grid-area:post;}/*!sc*/
+@media (min-width: 768px){.bpQNeS>section{max-width:826px;}}/*!sc*/
+.bpQNeS>aside{grid-area:toc;}/*!sc*/
+@media (min-width: 1280px){.bpQNeS>aside{display:flex;flex-direction:column;align-items:flex-start;justify-content:normal;}}/*!sc*/
+.bpQNeS>div{grid-area:comments;margin:0 auto;}/*!sc*/
+@media (min-width: 768px){.bpQNeS>div{max-width:826px;}}/*!sc*/
+data-styled.g17[id="styles__Container-sc-4114r5-0"]{content:"bpQNeS,"}/*!sc*/
+.cOLaBC{display:flex;flex-direction:row;align-items:normal;justify-content:center;margin:72px auto 72px auto;height:auto;width:100%;}/*!sc*/
+data-styled.g18[id="styles__Section-sc-4114r5-1"]{content:"cOLaBC,"}/*!sc*/
+.iQVJjY{padding:20px 0;width:100%;display:flex;flex-direction:column;align-items:normal;justify-content:normal;}/*!sc*/
+data-styled.g19[id="styles__Article-sc-4114r5-2"]{content:"iQVJjY,"}/*!sc*/
+.hLCEhK{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;font-weight:500;padding:10px 0;}/*!sc*/
+.hLCEhK>div>a{text-underline-position:under;}/*!sc*/
+.hLCEhK>div>a:hover{color:#F8EA18;}/*!sc*/
+.hLCEhK>div>svg{margin:0 4px;transform:rotate(90deg);}/*!sc*/
+data-styled.g20[id="styles__Nav-sc-4114r5-3"]{content:"hLCEhK,"}/*!sc*/
+.dwxKPC{margin-bottom:26px;}/*!sc*/
+data-styled.g21[id="styles__Header-sc-4114r5-4"]{content:"dwxKPC,"}/*!sc*/
+.KuGeo>section:nth-child(1){font-size:16px;}/*!sc*/
+@media (min-width: 768px){.KuGeo>section:nth-child(1){font-size:18px;}}/*!sc*/
+.KuGeo>section:nth-child(1) h1,.KuGeo>section:nth-child(1) h2,.KuGeo>section:nth-child(1) h3,.KuGeo>section:nth-child(1) h4,.KuGeo>section:nth-child(1) h5,.KuGeo>section:nth-child(1) h6{font-weight:600;}/*!sc*/
+.KuGeo>section:nth-child(1) h1 .header-anchor,.KuGeo>section:nth-child(1) h2 .header-anchor,.KuGeo>section:nth-child(1) h3 .header-anchor,.KuGeo>section:nth-child(1) h4 .header-anchor,.KuGeo>section:nth-child(1) h5 .header-anchor,.KuGeo>section:nth-child(1) h6 .header-anchor{fill:#F8EA18;}/*!sc*/
+.KuGeo>section:nth-child(1) h1:not(:first-of-type),.KuGeo>section:nth-child(1) h2:not(:first-of-type),.KuGeo>section:nth-child(1) h3:not(:first-of-type),.KuGeo>section:nth-child(1) h4:not(:first-of-type),.KuGeo>section:nth-child(1) h5:not(:first-of-type),.KuGeo>section:nth-child(1) h6:not(:first-of-type){margin-top:1.2em;}/*!sc*/
+.KuGeo>section:nth-child(1) h1,.KuGeo>section:nth-child(1) h2{padding-bottom:0.2em;border-bottom:1px solid #222222;transition:border-color 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) h1{margin-block-start:1em;margin-block-end:1em;font-size:36px;}/*!sc*/
+.KuGeo>section:nth-child(1) h2{margin-block-start:0.83em;margin-block-end:0.83em;font-size:28.8px;}/*!sc*/
+.KuGeo>section:nth-child(1) h3{margin-block-start:1em;margin-block-end:1em;font-size:21.6px;}/*!sc*/
+.KuGeo>section:nth-child(1) h4{margin-block-start:1.22em;margin-block-end:1.22em;font-size:19.8px;}/*!sc*/
+.KuGeo>section:nth-child(1) em{font-style:oblique;}/*!sc*/
+.KuGeo>section:nth-child(1) a{text-underline-position:under;}/*!sc*/
+.KuGeo>section:nth-child(1) a:hover{color:#F8EA18;}/*!sc*/
+.KuGeo>section:nth-child(1) p{display:block;margin-block-start:1em;margin-block-end:1em;word-break:break-word;line-height:32px;}/*!sc*/
+.KuGeo>section:nth-child(1) ol,.KuGeo>section:nth-child(1) ul{padding-left:40px;}/*!sc*/
+.KuGeo>section:nth-child(1) ul{list-style-type:disc;}/*!sc*/
+.KuGeo>section:nth-child(1) ol{list-style-type:decimal;}/*!sc*/
+.KuGeo>section:nth-child(1) li{display:list-item;text-align:-webkit-match-parent;line-height:32px;}/*!sc*/
+.KuGeo>section:nth-child(1) li p{margin:0;}/*!sc*/
+.KuGeo>section:nth-child(1) table{display:block;border-color:gray;border-spacing:0;border-collapse:collapse;max-width:100%;overflow:auto;font-size:16px;transition:all 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) table thead{display:table-header-group;vertical-align:middle;border-color:inherit;}/*!sc*/
+.KuGeo>section:nth-child(1) table tbody{display:table-row-group;vertical-align:middle;border-color:inherit;}/*!sc*/
+.KuGeo>section:nth-child(1) table tr{display:table-row;vertical-align:inherit;border:inherit;background-color:#0d1117;border-top-width:1px;border-top-style:solid;border-top-color:#222222;}/*!sc*/
+.KuGeo>section:nth-child(1) table tr:nth-of-type(2n){background-color:#25282E;}/*!sc*/
+.KuGeo>section:nth-child(1) table th,.KuGeo>section:nth-child(1) table td{display:table-cell;vertical-align:inherit;padding:6px 13px;border-width:1px;border-style:solid;border-color:#30363d;}/*!sc*/
+.KuGeo>section:nth-child(1) blockquote{padding:12px 20px 12px 28px;margin:30px 0px;border-left:4px solid #C9D1D9;font-family:Georgia,serif;font-style:italic;text-align:justify;font-size:20px;line-height:1.2;transition:all 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) blockquote p{margin:0;}/*!sc*/
+.KuGeo>section:nth-child(1) code{margin:0;padding:0.2em 0.4em;background-color:rgba(135,131,120,0.15);color:#BF616A;border-radius:6px;font-size:85%;font-family:SFMono-Regular,Menlo,Consolas,Liberation Mono,monospace;}/*!sc*/
+.KuGeo>section:nth-child(1) strong{font-weight:bold;}/*!sc*/
+.KuGeo>section:nth-child(1) deckgo-highlight-code{--deckgo-highlight-code-carbon-toolbar-display:none;--deckgo-highlight-code-white-space:pre-wrap;max-width:90vw;font-size:3vw;margin-bottom:32px;}/*!sc*/
+@media (min-width: 425px){.KuGeo>section:nth-child(1) deckgo-highlight-code{font-size:14px;}}/*!sc*/
+.KuGeo>section:nth-child(1) img{max-width:90vw;}/*!sc*/
+@media (min-width: 768px){.KuGeo>section:nth-child(1) img{max-width:694px;}}/*!sc*/
+data-styled.g22[id="styles__Main-sc-4114r5-5"]{content:"KuGeo,"}/*!sc*/
+.ibrFQC{margin-bottom:4px;font-size:36px;font-weight:600;}/*!sc*/
+@media (min-width: 425px){.ibrFQC{font-size:42px;}}/*!sc*/
+data-styled.g23[id="styles__Title-sc-4114r5-6"]{content:"ibrFQC,"}/*!sc*/
+.kJnDSb{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;color:#8b949e;font-size:14px;}/*!sc*/
+.kJnDSb>div{display:flex;flex-direction:column;align-items:flex-end;justify-content:normal;}/*!sc*/
+.kJnDSb>div a{text-underline-position:under;}/*!sc*/
+.kJnDSb>div a:hover{color:#F8EA18;}/*!sc*/
+data-styled.g24[id="styles__SubTitle-sc-4114r5-7"]{content:"kJnDSb,"}/*!sc*/
+@keyframes ZmWYm{from{transform:rotate(90deg) translate(50px) translateZ(10px);}to{transform:rotate(270deg) translate(50px) translateZ(10px);}}/*!sc*/
+data-styled.g26[id="sc-keyframes-ZmWYm"]{content:"ZmWYm,"}/*!sc*/
+@keyframes dGgAwC{from{transform:rotate(90deg) translate(-50px) translateZ(10px);}to{transform:rotate(270deg) translate(-50px) translateZ(10px);}}/*!sc*/
+data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
+</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><style type="text/css">
+    .header-anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .header-anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .header-anchor svg,
+    h2 .header-anchor svg,
+    h3 .header-anchor svg,
+    h4 .header-anchor svg,
+    h5 .header-anchor svg,
+    h6 .header-anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .header-anchor svg,
+    h2:hover .header-anchor svg,
+    h3:hover .header-anchor svg,
+    h4:hover .header-anchor svg,
+    h5:hover .header-anchor svg,
+    h6:hover .header-anchor svg,
+    h1 .header-anchor:focus svg,
+    h2 .header-anchor:focus svg,
+    h3 .header-anchor:focus svg,
+    h4 .header-anchor:focus svg,
+    h5 .header-anchor:focus svg,
+    h6 .header-anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - -200)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="icon" href="/favicon-32x32.png?v=6d5c0719d6ce39c07b53ce38158aed46" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="apple-touch-icon" sizes="512x512" href="/favicons/android-chrome-512x512.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><title data-gatsby-head="true">서버리스를 위한 AWS Lambda 정적 IP 할당 | conerstone</title><link as="style" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500&amp;display=swap" data-gatsby-head="true"/><link as="style" rel="stylesheet" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" data-gatsby-head="true"/><script type="application/ld+json" data-gatsby-head="true">
+            {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "url": "https://rheech22.github.io/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당",
+              "headline": "conerstone",
+              "datePublished": "2024-12-10 14:19:38 +0900",
+              "dateModified": "2024-12-11 21:26:07 +0900",
+              "image": "[]"
+            }
+          </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 cgshUI"><a tabindex="-1" class="Header__HomeButton-sc-z8t49p-1 erKfrX" href="/"><svg viewBox="0 0 21 21" fill="currentColor" height="1em" width="1em"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 10.5l9-9 9 9"></path><path d="M3.5 8.5v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></g></svg></a><a tabindex="-1" class="Header__Title-sc-z8t49p-2 fWSnbl" href="/"><h1>conerstone</h1></a><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-3 iscvfN"><div class="Header__CircleLayout-sc-z8t49p-4 dkdLLc"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button><form class="SearchBar__Container-sc-6n5xnu-0 hRTaSi"><input type="text" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 esCaBN" value=""/><button type="submit" hidden="" aria-label="Submit Search"></button></form><div class="Header__Index-sc-z8t49p-5 eVMkLI"><a tabindex="-1" href="/wiki-index/"><h2>Index.</h2></a></div></header><main><div class="styles__Container-sc-4114r5-0 bpQNeS"><section class="styles__Section-sc-4114r5-1 cOLaBC"><article class="styles__Article-sc-4114r5-2 iQVJjY"><nav class="styles__Nav-sc-4114r5-3 hLCEhK"><div><a href="/AWS/">AWS</a></div></nav><header class="styles__Header-sc-4114r5-4 dwxKPC"><h1 class="styles__Title-sc-4114r5-6 ibrFQC">서버리스를 위한 AWS Lambda 정적 IP 할당</h1><div class="styles__SubTitle-sc-4114r5-7 kJnDSb"><div><span>5<!-- --> min read</span><time dateTime="created at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/index.md" target="_blank" rel="noreferrer">CREATED: <!-- -->10/12/2024</a></time><time dateTime="updated at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/index.md" target="_blank" rel="noreferrer">UPDATED: <!-- -->11/12/2024</a></time><a href="https://github.com/rheech22/rheech22.github.io/blame/develop/src/wikis/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/index.md" target="_blank" rel="noreferrer">Blame</a></div></div></header><main class="styles__Main-sc-4114r5-5 KuGeo"><section><p>최근 Vercel이나 Netlify 덕분에 별도의 서버 구축 없이도 간단한 프로젝트의 배포가 편리해졌지만 대부분의, 아마 거의 모든 서비스 공급자들이, 정적 IP를 제공하지는 않는 것으로 보인다. 그래서 아웃바운드를 위한 정적 IP가 필요한 경우에는 곤란한 경우가 있다. 최근 사이드 프로젝트에서 여러 이커머스의 오픈 API를 사용할 일이 있었는데 대부분이 어드민에 등록된 IP만 API 호출을 허용하기 때문에 이를 위한 해결 방안이 필요했다. 찾아보면 EC2에 배포를 하고 Elastic IP를 적용하는 방법, VPC와 NAT 게이트웨이의 조합 또는 로드밸런서를 활용하는 방식도 어렵지 않게 볼 수 있다.</p>
+<p>다만 문제는 편의성과 비용인데 편한 배포 서비스를 이용하면서도 적은 비용으로 정적 IP를 확보할 수 있는 방법을 찾아보고 싶었다. 그러던 중 AWS Lambda에 정적 IP(Elastic IP)를 할당하기 위한 VPC, ENI(Elastic Network Interface), 커스텀 리소스 등을 활용한 방법을 발견했고 내가 시도했던 내용을 다시 정리했다.</p>
+<h2 id="aws-lambda에-정적-ip를-할당하는-방법" style="position:relative;">AWS Lambda에 정적 IP를 할당하는 방법<a href="#aws-lambda%EC%97%90-%EC%A0%95%EC%A0%81-ip%EB%A5%BC-%ED%95%A0%EB%8B%B9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label="aws lambda에 정적 ip를 할당하는 방법 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>AWS Lambda는 기본적으로 실행 환경이 재활용되거나 재생성될 때마다 퍼블릭 IP가 변경되는 특성을 가진다. 이는 외부 서비스가 Lambda의 IP를 화이트리스트 방식으로 관리하는 경우 곤란을 야기한다. 이러한 상황에서 Lambda 함수에 고정된 퍼블릭 IP, 즉 정적 IP를 할당하려고 한다.</p>
+<p>요약하면 Lambda를 VPC 내부 퍼블릭 서브넷에 배치하고 해당 Lambda 인스턴스가 사용하는 네트워크 인터페이스(ENI)를 식별한 뒤, 그 ENI에 Elastic IP(EIP)를 할당하는 방식이다. 이를 통해 Lambda가 항상 동일한 IP로 외부에 접근할 수 있는 환경을 구축한다.</p>
+<p>구현 및 유지보수 편의를 위해 CDK를 활용할건데 이를 위해 지난 <a href="../CDK_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EB%A7%8C%EB%93%A4%EA%B8%B0/">CDK 프로젝트 만들기</a>에서 CDK 사용법을 익혔다.</p>
+<h2 id="주요-개념-정리" style="position:relative;">주요 개념 정리<a href="#%EC%A3%BC%EC%9A%94-%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC" aria-label="주요 개념 정리 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="1-vpcvirtual-private-cloud" style="position:relative;">1. VPC(Virtual Private Cloud)<a href="#1-vpcvirtual-private-cloud" aria-label="1 vpcvirtual private cloud permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>AWS에서 제공하는 가상 네트워크 환경으로, 사용자가 IP 대역, 서브넷, 라우팅 등을 원하는 대로 구성할 수 있다. Lambda를 VPC 내부에 배치하면 그 Lambda는 해당 VPC 내의 자원에 접근하거나, 특정 서브넷과 보안 그룹을 통해 트래픽을 제어할 수 있다.</p>
+<h3 id="2-enielastic-network-interface" style="position:relative;">2. ENI(Elastic Network Interface)<a href="#2-enielastic-network-interface" aria-label="2 enielastic network interface permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>VPC 내부 리소스(EC2, Lambda 등)가 활용하는 가상 네트워크 어댑터이다. ENI에는 IP 주소가 할당되며, VPC 내 통신의 기반이 된다. Lambda 함수를 VPC에 연결하면 해당 함수는 ENI를 통해 네트워크에 접속한다.</p>
+<h3 id="3-eipelastic-ip" style="position:relative;">3. EIP(Elastic IP)<a href="#3-eipelastic-ip" aria-label="3 eipelastic ip permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>정적으로 할당 가능한 공인 IP 주소이다. 특정 ENI에 EIP를 연결하면, 해당 ENI를 사용하는 리소스는 항상 동일한 퍼블릭 IP를 갖게 된다.</p>
+<h2 id="구현-절차" style="position:relative;">구현 절차<a href="#%EA%B5%AC%ED%98%84-%EC%A0%88%EC%B0%A8" aria-label="구현 절차 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="1-vpc-및-서브넷-구성" style="position:relative;">1. VPC 및 서브넷 구성<a href="#1-vpc-%EB%B0%8F-%EC%84%9C%EB%B8%8C%EB%84%B7-%EA%B5%AC%EC%84%B1" aria-label="1 vpc 및 서브넷 구성 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>NAT 게이트웨이를 사용하지 않는 간단한 VPC를 생성한다.</li>
+<li>퍼블릭 서브넷을 통해 Lambda 함수가 퍼블릭 IP를 가질 수 있는 환경을 마련한다.</li>
+<li>하나의 EIP를 사용할 예정으로 단일 AZ를 사용한다.</li>
+</ul>
+<deckgo-highlight-code language="ts" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// lib/stack.ts
+// ...
+
+export class StaticLambdaStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    const vpc = new cdk.aws_ec2.Vpc(this, &#39;Vpc&#39;, {
+      natGateways: 0, // NAT 사용 X
+      maxAzs: 1, // 단일 AZ 사용
+      subnetConfiguration: [
+        // 퍼블릭 서브넷 설정 명시
+        {
+          cidrMask: 24,
+          name: &#39;Public&#39;,
+          subnetType: cdk.aws_ec2.SubnetType.PUBLIC
+        }
+      ]
+    });
+  }
+}</code>
+        </deckgo-highlight-code>
+<h3 id="2-lambda-함수-배포" style="position:relative;">2. Lambda 함수 배포<a href="#2-lambda-%ED%95%A8%EC%88%98-%EB%B0%B0%ED%8F%AC" aria-label="2 lambda 함수 배포 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>Lambda 함수를 VPC의 퍼블릭 서브넷에 배치한다.</li>
+<li>보안 그룹(Security Group)을 통해 Lambda 접근 트래픽을 제어한다.</li>
+<li>이로써 Lambda 함수는 VPC 내부에 위치하며, 실행 시 ENI를 할당받는다.</li>
+</ul>
+<deckgo-highlight-code language="ts" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// lib/stack.ts
+// ...
+
+export class StaticLambdaStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    // ...
+
+    const securityGroup = new cdk.aws_ec2.SecurityGroup(this, &#39;SecurityGroup&#39;, {
+      vpc
+    });
+
+    const lambdaResource = new cdk.aws_lambda_nodejs.NodejsFunction(this, &#39;MyProxy&#39;, {
+      vpc,
+      allowPublicSubnet: true,
+      vpcSubnets: { subnets: vpc.publicSubnets },
+      securityGroups: [securityGroup],
+      entry: join(__dirname, &#39;../lambda/handler.ts&#39;),
+      handler: &#39;handler&#39;,
+      runtime: cdk.aws_lambda.Runtime.NODEJS_20_X
+    });
+  }
+}</code>
+        </deckgo-highlight-code>
+<h3 id="3-eni-식별을-위한-커스텀-리소스awscustomresource-활용" style="position:relative;">3. ENI 식별을 위한 커스텀 리소스(AwsCustomResource) 활용<a href="#3-eni-%EC%8B%9D%EB%B3%84%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%BB%A4%EC%8A%A4%ED%85%80-%EB%A6%AC%EC%86%8C%EC%8A%A4awscustomresource-%ED%99%9C%EC%9A%A9" aria-label="3 eni 식별을 위한 커스텀 리소스awscustomresource 활용 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>Lambda 함수가 생성된 후 <code>describeNetworkInterfaces</code> API를 호출하는 커스텀 리소스를 배치한다.</li>
+<li>Security Group ID, Subnet ID를 기준으로 Lambda에 할당된 ENI를 식별한다.</li>
+<li>이 커스텀 리소스는 CDK를 통해 쉽게 관리할 수 있다.</li>
+</ul>
+<deckgo-highlight-code language="ts" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// lib/stack.ts
+// ...
+
+export class StaticLambdaStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    // ...
+
+    // 퍼블릭 서브넷 선택
+    const subnet = vpc.publicSubnets[0];
+
+    // Lambda 함수가 사용하는 네트워크 인터페이스를 조회하는 AWS Custom Resource 생성
+    const customResource = new cdk.custom_resources.AwsCustomResource(
+      subnet,
+      &quot;customResource&quot;,
+      {
+        onUpdate: {
+          physicalResourceId: cdk.custom_resources.PhysicalResourceId.of(
+            `${securityGroup.securityGroupId}-${subnet.subnetId}-CustomResource`
+          ),
+          service: &quot;EC2&quot;,
+          action: &quot;describeNetworkInterfaces&quot;,
+          parameters: {
+            Filters: [
+              { Name: &quot;interface-type&quot;, Values: [&quot;lambda&quot;] },
+              { Name: &quot;group-id&quot;, Values: [securityGroup.securityGroupId] },
+              { Name: &quot;subnet-id&quot;, Values: [subnet.subnetId] },
+            ],
+          },
+        },
+        policy: cdk.custom_resources.AwsCustomResourcePolicy.fromSdkCalls({
+          resources:
+            cdk.custom_resources.AwsCustomResourcePolicy.ANY_RESOURCE,
+        }),
+      }
+    );
+
+    // Lambda 함수가 사용하는 네트워크 인터페이스에 의존성 추가
+    customResource.node.addDependency(lambdaResource);
+}</code>
+        </deckgo-highlight-code>
+<h3 id="4-eip-할당-및-eip-association" style="position:relative;">4. EIP 할당 및 EIP Association<a href="#4-eip-%ED%95%A0%EB%8B%B9-%EB%B0%8F-eip-association" aria-label="4 eip 할당 및 eip association permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>식별한 ENI에 EIP를 할당한다.</li>
+<li>EIP와 ENI를 연결(EIP Association)하면 해당 Lambda 함수는 해당 EIP를 통해 고정된 퍼블릭 IP로 외부에 접근할 수 있다.</li>
+<li>이를 통해 외부 서비스는 늘 동일한 IP를 확인할 수 있다.</li>
+</ul>
+<deckgo-highlight-code language="ts" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// lib/stack.ts
+// ...
+
+export class StaticLambdaStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    // ...
+    // Elastic IP 생성
+    const elasticIP = new cdk.aws_ec2.CfnEIP(subnet, &#39;EIP&#39;, {
+      domain: &#39;vpc&#39;
+    });
+
+    // Elastic IP를 Lambda 함수가 사용하는 네트워크 인터페이스에 연결
+    new cdk.aws_ec2.CfnEIPAssociation(subnet, &#39;EIPAssociation&#39;, {
+      networkInterfaceId: customResource.getResponseField(&#39;NetworkInterfaces.0.NetworkInterfaceId&#39;),
+      allocationId: elasticIP.attrAllocationId
+    });
+
+    // Elastic IP 출력
+    new cdk.CfnOutput(subnet, &#39;ElasticIP&#39;, {
+      value: elasticIP.attrPublicIp
+    });
+  }
+}</code>
+        </deckgo-highlight-code>
+<h3 id="5-주기적-lambda-호출-설정" style="position:relative;">5. 주기적 Lambda 호출 설정<a href="#5-%EC%A3%BC%EA%B8%B0%EC%A0%81-lambda-%ED%98%B8%EC%B6%9C-%EC%84%A4%EC%A0%95" aria-label="5 주기적 lambda 호출 설정 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>EventBridge 규칙을 사용하여 Lambda 함수를 일정 주기(예: 매주 특정일, 특정 시각)에 실행한다.</li>
+<li>이 주기적 호출은 Lambda의 ENI가 장기간 비활성화로 회수되는 문제를 방지한다.</li>
+<li>결과적으로 EIP가 지속적으로 Lambda ENI와 연결된 상태를 유지한다.</li>
+</ul>
+<deckgo-highlight-code language="ts" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// lib/stack.ts
+// ...
+
+export class StaticLambdaStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    // ...
+
+    new cdk.aws_events.Rule(this, &#39;LambdaCronJobEventRule&#39;, {
+      schedule: cdk.aws_events.Schedule.cron({
+        minute: &#39;0&#39;,
+        hour: &#39;10&#39;,
+        weekDay: &#39;SUN,WED&#39;
+      }),
+      targets: [new cdk.aws_events_targets.LambdaFunction(lambdaResource)]
+    });
+  }
+}</code>
+        </deckgo-highlight-code>
+<h3 id="6-api-게이트웨이-설정" style="position:relative;">6. API 게이트웨이 설정<a href="#6-api-%EA%B2%8C%EC%9D%B4%ED%8A%B8%EC%9B%A8%EC%9D%B4-%EC%84%A4%EC%A0%95" aria-label="6 api 게이트웨이 설정 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>외부에서 람다 함수를 호출할 수 있도록 API Gateway를 설정한다.</li>
+</ul>
+<deckgo-highlight-code language="ts" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// lib/stack.ts
+// ...
+
+export class StaticLambdaStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    // ...
+    const api = new apigateway.LambdaRestApi(this, &#39;MyProxyApi&#39;, {
+      handler: lambdaResource,
+      // proxy: true일 경우 / 경로로 모든 요청을 Lambda로 전달함
+      // 필요에 따라 proxy 옵션을 false로 두고 경로와 메서드를 명확히 정의할 수도 있다.
+      proxy: true
+    });
+
+    // API Gateway의 엔드포인트 URL 출력
+    new cdk.CfnOutput(this, &#39;ApiEndpoint&#39;, {
+      value: api.url
+    });
+  }
+}</code>
+        </deckgo-highlight-code>
+<h2 id="유지-보수-및-고려사항" style="position:relative;">유지 보수 및 고려사항<a href="#%EC%9C%A0%EC%A7%80-%EB%B3%B4%EC%88%98-%EB%B0%8F-%EA%B3%A0%EB%A0%A4%EC%82%AC%ED%95%AD" aria-label="유지 보수 및 고려사항 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="비용" style="position:relative;">비용<a href="#%EB%B9%84%EC%9A%A9" aria-label="비용 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>프리티어가 아니라면 다음 비용을 고려해야 한다.</p>
+<ul>
+<li><a href="https://aws.amazon.com/ko/lambda/pricing/">AWS Lambda 요금</a>: x86 아키텍처 기준, 100만 요청 발생, 요청별 duration 500ms, 할당된 메모리 128MB 기준으로 계산할 때 아래와 같음
+<deckgo-highlight-code language="yml" terminal="carbon" theme="one-dark"  >
+          <code slot="code">Unit conversions
+Amount of memory allocated: 128 MB x 0.0009765625 GB in a MB = 0.125 GB
+Amount of ephemeral storage allocated: 512 MB x 0.0009765625 GB in a MB = 0.5 GB
+Pricing calculations
+1,000,000 requests x 500 ms x 0.001 ms to sec conversion factor = 500,000.00 total compute (seconds)
+0.125 GB x 500,000.00 seconds = 62,500.00 total compute (GB-s)
+Tiered price for: 62,500.00 GB-s
+62,500 GB-s x 0.0000166667 USD = 1.04 USD
+Total tier cost = 1.0417 USD (monthly compute charges)
+Monthly compute charges: 1.04 USD
+1,000,000 requests x 0.0000002 USD = 0.20 USD (monthly request charges)
+Monthly request charges: 0.20 USD
+0.50 GB - 0.5 GB (no additional charge) = 0.00 GB billable ephemeral storage per function
+Monthly ephemeral storage charges: 0 USD
+1.04 USD + 0.20 USD = 1.24 USD
+Lambda cost (monthly): 1.24 USD</code>
+        </deckgo-highlight-code>
+(프리티어는 월별 100만 요청 무료, 초당 40만 기가바이트 컴퓨팅 시간 무료)</li>
+<li><a href="https://aws.amazon.com/ko/vpc/pricing/">EIP 요금</a>: 사용 중인 퍼블릭 IPv4 주소의 시간당 요금 $0.005, (프리티어는 매달 750시간 무료)</li>
+<li><a href="https://aws.amazon.com/ko/api-gateway/pricing/">API Gateway 요금</a>: 월별 첫 3억 건은 100만 요청 당 $1.23, 512KB 단위 사용량 계측, (프리티어는 매달 100만 요청 무료)</li>
+</ul>
+<h3 id="대안과-한계" style="position:relative;">대안과 한계<a href="#%EB%8C%80%EC%95%88%EA%B3%BC-%ED%95%9C%EA%B3%84" aria-label="대안과 한계 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li>앞서 언급한 것처럼 EC2에 배포하고 EIP를 붙이는 방식이나, NAT 게이트웨이를 사용한 방법도 있지만 확실히 비용이 더 비싸다.</li>
+<li>잠시 써보는 용도라면 <a href="https://usefixie.com/">fixie</a>라는 정적 IP를 제공하는 프록시 서비스도 있다. 월 500번의 요청은 무료로 사용할 수 있다.</li>
+<li>정석적인 방법은 아니라서 AWS의 내부 구현에 따라 리스크가 발생할 수 있다. 장기적으로 안정적인 서비스를 구축해야 한다면 적합한 방식은 아닌 것 같다.</li>
+</ul>
+<h2 id="마무리" style="position:relative;">마무리<a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC" aria-label="마무리 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>AWS Lambda에 고정된 퍼블릭 IP를 할당하기 위한 한 가지 방법을 정리했다.</li>
+<li>여러 프로젝트에서 화이트리스트를 위한 정적 IP가 필요한 경우 AWS Lambda를 경유지로 사용할 수 있는 발판을 마련했다.</li>
+<li>이 방식은 VPC, ENI, 람다 및 EIP를 적절히 결합하여 구현할 수 있으며, AWS 인프라를 코드(CDK)로 정의함으로써 유지보수하거나 재현하기 좋다.</li>
+<li>전체 코드는 <a href="https://github.com/rheech22/cdk-static-lambda">CDK Template of Lambda with Static IP</a> 레포에서 확인 가능</li>
+</ul>
+<h2 id="참고" style="position:relative;">참고<a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><a href="https://dev.to/slsbytheodo/deploy-a-lambda-with-a-static-ip-for-free-4e0l">Deploy a Lambda with a static IP for FREE</a></li>
+</ul></section></main></article></section><aside class="TOC__Container-sc-1ylks3q-0 hmzKTL"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#aws-lambda에-정적-ip를-할당하는-방법">AWS Lambda에 정적 IP를 할당하는 방법</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#주요-개념-정리">주요 개념 정리</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#1-vpcvirtual-private-cloud">1. VPC(Virtual Private Cloud)</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#2-enielastic-network-interface">2. ENI(Elastic Network Interface)</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#3-eipelastic-ip">3. EIP(Elastic IP)</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#구현-절차">구현 절차</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#1-vpc-및-서브넷-구성">1. VPC 및 서브넷 구성</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#2-lambda-함수-배포">2. Lambda 함수 배포</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#3-eni-식별을-위한-커스텀-리소스awscustomresource-활용">3. ENI 식별을 위한 커스텀 리소스(AwsCustomResource) 활용</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#4-eip-할당-및-eip-association">4. EIP 할당 및 EIP Association</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#5-주기적-lambda-호출-설  정">5. 주기적 Lambda 호출 설정</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#6-api-게이트웨이-설정">6. API 게이트웨이 설정</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#유지-보수-및-고려사항">유지 보수 및 고려사항</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#비용">비용</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#대안과-한계">대안과 한계</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#마무리">마무리</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/#참고">참고</a></li></ul></aside></div></main><footer class="Footer__Container-sc-13p6nst-0 dndVdK"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/AWS/서버리스를_위한_AWS_Lambda_정적_IP_할당/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-800d4df7d2673a7e516e.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-5bef5c84fb8d1a3b27f0.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-d0095af23451b1cf0507.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-2cd1417e3cd8bdead616.js\"],\"component---src-pages-search-tsx\":[\"/component---src-pages-search-tsx-46c45f257736c8342d78.js\"],\"component---src-pages-wiki-index-tsx\":[\"/component---src-pages-wiki-index-tsx-1eb7c72c1f5358d70c36.js\"],\"component---src-templates-wiki-template-tsx\":[\"/component---src-templates-wiki-template-tsx-ee1a2e08cc3d7afdb130.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="6bf128993759fc2b15aa";</script><script src="/webpack-runtime-c884d3580bc76665c799.js" async></script><script src="/framework-31fd9fa701293a5c6789.js" async></script><script src="/app-800d4df7d2673a7e516e.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
