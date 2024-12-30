@@ -1,0 +1,605 @@
+<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.11.0"/><meta name="theme-color" content="#161b22"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-gatsby-head="true"/><meta name="description" content="설치 main() void main()은 프로그램 실행이 시작되는 엔트리 포인트 모든 프로그램은 main 함수로 시작됨 중괄호 {}는 코드 블록의 시작과 끝 print(“Hello World!”);는 화면에 Hello World!를 출력 각 코드 문…" data-gatsby-head="true"/><meta name="image" data-gatsby-head="true"/><meta name="og:title" content="conerstone" data-gatsby-head="true"/><meta name="og:description" content="설치 main() void main()은 프로그램 실행이 시작되는 엔트리 포인트 모든 프로그램은 main 함수로 시작됨 중괄호 {}는 코드 블록의 시작과 끝 print(“Hello World!”);는 화면에 Hello World!를 출력 각 코드 문…" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="기본 | conerstone" data-gatsby-head="true"/><meta name="twitter:url" content="https://rheech22.github.io/Dart/기본" data-gatsby-head="true"/><meta name="twitter:description" content="설치 main() void main()은 프로그램 실행이 시작되는 엔트리 포인트 모든 프로그램은 main 함수로 시작됨 중괄호 {}는 코드 블록의 시작과 끝 print(“Hello World!”);는 화면에 Hello World!를 출력 각 코드 문…" data-gatsby-head="true"/><meta name="twitter:image" content="https://rheech22.github.ioundefined" data-gatsby-head="true"/><meta name="twitter:creator" content="@@rheech22" data-gatsby-head="true"/><meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" data-gatsby-head="true"/><meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" data-gatsby-head="true"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0DM3BCWTDS', {"send_page_view":false});
+      }
+      </script><style data-styled="" data-styled-version="6.0.7">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,menu,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,main,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}/*!sc*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block;}/*!sc*/
+*[hidden]{display:none;}/*!sc*/
+body{line-height:1;}/*!sc*/
+menu,ol,ul{list-style:none;}/*!sc*/
+blockquote,q{quotes:none;}/*!sc*/
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}/*!sc*/
+table{border-collapse:collapse;border-spacing:0;}/*!sc*/
+@font-face{font-family:BlinkMacSystemFont;src:local('※');font-weight:400;font-style:normal;unicode-range:U+0041-005A,U+0061-007A,U+0030-0039;}/*!sc*/
+*{box-sizing:border-box;}/*!sc*/
+html,body{scroll-behavior:smooth;margin:0;}/*!sc*/
+body{font-family:'Spoqa Han Sans',BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;width:100%;background-color:#000000;color:#C9D1D9;min-height:100vh;line-height:1.5;transition:all .5s;}/*!sc*/
+body #gatsby-focus-wrapper{max-width:1440px;padding:0 15px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}/*!sc*/
+body main{font-size:16px;width:100%;}/*!sc*/
+body a{color:unset;}/*!sc*/
+data-styled.g2[id="sc-global-hGiQiZ1"]{content:"sc-global-hGiQiZ1,"}/*!sc*/
+.dndVdK{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;border-top:1px solid #222222;transition:border-color 0.5s;margin-top:auto;width:100%;font-size:12px;text-align:center;font-weight:400;color:#bac4ce;}/*!sc*/
+.dndVdK>section{padding:48px 8px;}/*!sc*/
+data-styled.g3[id="Footer__Container-sc-13p6nst-0"]{content:"dndVdK,"}/*!sc*/
+.esCaBN:focus{outline:none;}/*!sc*/
+data-styled.g5[id="Textbox__Input-sc-vlag4q-0"]{content:"esCaBN,"}/*!sc*/
+.hRTaSi{border-radius:8px;width:140px;height:48px;font-weight:400;position:relative;transition:all 0.5s;}/*!sc*/
+@media (min-width: 768px){.hRTaSi:focus-within{width:544px;}.hRTaSi:focus-within>ul{display:block;}}/*!sc*/
+.hRTaSi>input{border:none;border-radius:8px;padding:0 12px;width:100%;height:100%;background-color:#222222;color:#fff;font-size:14px;transition:background-color 0.5s;}/*!sc*/
+.hRTaSi>input::placeholder{color:#a7a7a7;}/*!sc*/
+.hRTaSi>input:focus{color:#fff;background-color:#383838;}/*!sc*/
+@media (min-width: 768px){.hRTaSi>input:focus{border-bottom-left-radius:6px;border-bottom-right-radius:6px;}}/*!sc*/
+.hRTaSi>input:focus::placeholder{color:#757D86;}/*!sc*/
+data-styled.g6[id="SearchBar__Container-sc-6n5xnu-0"]{content:"hRTaSi,"}/*!sc*/
+.cgshUI{display:flex;flex-direction:row;align-items:center;justify-content:normal;position:sticky;top:0;width:100%;min-height:71px;opacity:0.9;background-color:hsla(0, 0%, 0%, 0.5);backdrop-filter:blur(20px);z-index:1;transition:all 0.5s;}/*!sc*/
+data-styled.g8[id="Header__Container-sc-z8t49p-0"]{content:"cgshUI,"}/*!sc*/
+.erKfrX{display:flex;flex-direction:row;align-items:center;justify-content:center;min-width:38px;height:38px;transition:all 2s;}/*!sc*/
+@media (min-width: 768px){.erKfrX{display:none;}}/*!sc*/
+.erKfrX svg{width:20px;height:20px;transform:translateY(1px);}/*!sc*/
+.erKfrX svg g>path{stroke:#f0f6fc;}/*!sc*/
+data-styled.g9[id="Header__HomeButton-sc-z8t49p-1"]{content:"erKfrX,"}/*!sc*/
+.fWSnbl{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;display:none;color:#f0f6fc;text-decoration:none;transition:color 2s;}/*!sc*/
+@media (min-width: 768px){.fWSnbl{display:block;}}/*!sc*/
+.fWSnbl>h1{font-size:24px;font-weight:600;white-space:nowrap;}/*!sc*/
+data-styled.g10[id="Header__Title-sc-z8t49p-2"]{content:"fWSnbl,"}/*!sc*/
+.iscvfN{position:relative;z-index:0;margin-right:8px;border:none;border-radius:50%;background:none;min-width:38px;min-height:38px;overflow:hidden;cursor:pointer;transition:box-shadow 2s;}/*!sc*/
+@media (min-width: 768px){.iscvfN{margin-left:8px;}}/*!sc*/
+@media (hover:hover){.iscvfN:hover{box-shadow:rgb(109,110,129) 1.5px 1.5px 3px 0px inset,rgba(109,110,129,0.5) -1.5px -1.5px 3px 1px inset;background-image:linear-gradient( to right bottom,#000000,#211e1f,#3b353b,#55505a,#6d6c7b,#6d6e81,#6b7187,#69748d,#535c78,#3e4563,#2b304e,#181b3a );}}/*!sc*/
+data-styled.g11[id="Header__Button-sc-z8t49p-3"]{content:"iscvfN,"}/*!sc*/
+.dkdLLc{position:absolute;top:19px;right:-32px;border:1px dotted transparent;border-radius:50%;width:100px;height:100px;transition:border-color 2s;}/*!sc*/
+@media (hover:hover){.dkdLLc:hover{border-color:#C9D1D9;}.dkdLLc:hover svg path{fill:ivory;}}/*!sc*/
+.dkdLLc>div{position:absolute;top:40px;right:40px;border-radius:50%;border:none;padding:0;width:20px;height:20px;background:none;outline:none;}/*!sc*/
+.dkdLLc>div:first-of-type{animation:ZmWYm 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;}/*!sc*/
+.dkdLLc>div:last-of-type{animation:dGgAwC 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;}/*!sc*/
+.dkdLLc>div svg{width:20px;height:20px;transform:rotate(90deg);}/*!sc*/
+.dkdLLc>div svg path{fill:#fff;}/*!sc*/
+data-styled.g12[id="Header__CircleLayout-sc-z8t49p-4"]{content:"dkdLLc,"}/*!sc*/
+.eVMkLI{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;margin-left:auto;font-weight:500;}/*!sc*/
+.eVMkLI>a{text-decoration:none;}/*!sc*/
+.eVMkLI>a:hover{color:#F8EA18;}/*!sc*/
+data-styled.g13[id="Header__Index-sc-z8t49p-5"]{content:"eVMkLI,"}/*!sc*/
+.hmzKTL{position:sticky;top:163px;right:0px;display:none;min-width:fit-content;height:fit-content;overflow-y:scroll;color:#C9D1D9;}/*!sc*/
+.hmzKTL::-webkit-scrollbar{display:none;}/*!sc*/
+.hmzKTL h2{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;margin-bottom:12px;padding:8px 10px;font-size:14px;font-weight:500;letter-spacing:0.025em;transition:all 0.5s;}/*!sc*/
+.hmzKTL ul{padding-left:20px;}/*!sc*/
+.hmzKTL li+li{margin-top:8px;}/*!sc*/
+data-styled.g15[id="TOC__Container-sc-1ylks3q-0"]{content:"hmzKTL,"}/*!sc*/
+.itaPoa{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:8px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:13px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.itaPoa:hover:hover{background-color:#222222;}}/*!sc*/
+.itaPoa a{padding:7px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+.ksAkVR{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:16px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:12px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.ksAkVR:hover:hover{background-color:#222222;}}/*!sc*/
+.ksAkVR a{padding:6px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+.bqfvvc{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:24px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:11px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.bqfvvc:hover:hover{background-color:#222222;}}/*!sc*/
+.bqfvvc a{padding:5px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+data-styled.g16[id="TOC__List-sc-1ylks3q-1"]{content:"itaPoa,ksAkVR,bqfvvc,"}/*!sc*/
+.bpQNeS{display:grid;grid-template-columns:auto;grid-template-rows:auto auto;grid-template-areas:'post' 'post' 'comments';}/*!sc*/
+@media (min-width: 1080px){.bpQNeS{grid-template-columns:10fr 10fr 1fr;grid-template-rows:auto auto;grid-template-areas:'post post toc' 'post post toc' 'comments comments .';}}/*!sc*/
+.bpQNeS>section{grid-area:post;}/*!sc*/
+@media (min-width: 768px){.bpQNeS>section{max-width:826px;}}/*!sc*/
+.bpQNeS>aside{grid-area:toc;}/*!sc*/
+@media (min-width: 1280px){.bpQNeS>aside{display:flex;flex-direction:column;align-items:flex-start;justify-content:normal;}}/*!sc*/
+.bpQNeS>div{grid-area:comments;margin:0 auto;}/*!sc*/
+@media (min-width: 768px){.bpQNeS>div{max-width:826px;}}/*!sc*/
+data-styled.g17[id="styles__Container-sc-4114r5-0"]{content:"bpQNeS,"}/*!sc*/
+.cOLaBC{display:flex;flex-direction:row;align-items:normal;justify-content:center;margin:72px auto 72px auto;height:auto;width:100%;}/*!sc*/
+data-styled.g18[id="styles__Section-sc-4114r5-1"]{content:"cOLaBC,"}/*!sc*/
+.iQVJjY{padding:20px 0;width:100%;display:flex;flex-direction:column;align-items:normal;justify-content:normal;}/*!sc*/
+data-styled.g19[id="styles__Article-sc-4114r5-2"]{content:"iQVJjY,"}/*!sc*/
+.hLCEhK{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;font-weight:500;padding:10px 0;}/*!sc*/
+.hLCEhK>div>a{text-underline-position:under;}/*!sc*/
+.hLCEhK>div>a:hover{color:#F8EA18;}/*!sc*/
+.hLCEhK>div>svg{margin:0 4px;transform:rotate(90deg);}/*!sc*/
+data-styled.g20[id="styles__Nav-sc-4114r5-3"]{content:"hLCEhK,"}/*!sc*/
+.dwxKPC{margin-bottom:26px;}/*!sc*/
+data-styled.g21[id="styles__Header-sc-4114r5-4"]{content:"dwxKPC,"}/*!sc*/
+.KuGeo>section:nth-child(1){font-size:16px;}/*!sc*/
+@media (min-width: 768px){.KuGeo>section:nth-child(1){font-size:18px;}}/*!sc*/
+.KuGeo>section:nth-child(1) h1,.KuGeo>section:nth-child(1) h2,.KuGeo>section:nth-child(1) h3,.KuGeo>section:nth-child(1) h4,.KuGeo>section:nth-child(1) h5,.KuGeo>section:nth-child(1) h6{font-weight:600;}/*!sc*/
+.KuGeo>section:nth-child(1) h1 .header-anchor,.KuGeo>section:nth-child(1) h2 .header-anchor,.KuGeo>section:nth-child(1) h3 .header-anchor,.KuGeo>section:nth-child(1) h4 .header-anchor,.KuGeo>section:nth-child(1) h5 .header-anchor,.KuGeo>section:nth-child(1) h6 .header-anchor{fill:#F8EA18;}/*!sc*/
+.KuGeo>section:nth-child(1) h1:not(:first-of-type),.KuGeo>section:nth-child(1) h2:not(:first-of-type),.KuGeo>section:nth-child(1) h3:not(:first-of-type),.KuGeo>section:nth-child(1) h4:not(:first-of-type),.KuGeo>section:nth-child(1) h5:not(:first-of-type),.KuGeo>section:nth-child(1) h6:not(:first-of-type){margin-top:1.2em;}/*!sc*/
+.KuGeo>section:nth-child(1) h1,.KuGeo>section:nth-child(1) h2{padding-bottom:0.2em;border-bottom:1px solid #222222;transition:border-color 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) h1{margin-block-start:1em;margin-block-end:1em;font-size:36px;}/*!sc*/
+.KuGeo>section:nth-child(1) h2{margin-block-start:0.83em;margin-block-end:0.83em;font-size:28.8px;}/*!sc*/
+.KuGeo>section:nth-child(1) h3{margin-block-start:1em;margin-block-end:1em;font-size:21.6px;}/*!sc*/
+.KuGeo>section:nth-child(1) h4{margin-block-start:1.22em;margin-block-end:1.22em;font-size:19.8px;}/*!sc*/
+.KuGeo>section:nth-child(1) em{font-style:oblique;}/*!sc*/
+.KuGeo>section:nth-child(1) a{text-underline-position:under;}/*!sc*/
+.KuGeo>section:nth-child(1) a:hover{color:#F8EA18;}/*!sc*/
+.KuGeo>section:nth-child(1) p{display:block;margin-block-start:1em;margin-block-end:1em;word-break:break-word;line-height:32px;}/*!sc*/
+.KuGeo>section:nth-child(1) ol,.KuGeo>section:nth-child(1) ul{padding-left:40px;}/*!sc*/
+.KuGeo>section:nth-child(1) ul{list-style-type:disc;}/*!sc*/
+.KuGeo>section:nth-child(1) ol{list-style-type:decimal;}/*!sc*/
+.KuGeo>section:nth-child(1) li{display:list-item;text-align:-webkit-match-parent;line-height:32px;}/*!sc*/
+.KuGeo>section:nth-child(1) li p{margin:0;}/*!sc*/
+.KuGeo>section:nth-child(1) table{display:block;border-color:gray;border-spacing:0;border-collapse:collapse;max-width:100%;overflow:auto;font-size:16px;transition:all 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) table thead{display:table-header-group;vertical-align:middle;border-color:inherit;}/*!sc*/
+.KuGeo>section:nth-child(1) table tbody{display:table-row-group;vertical-align:middle;border-color:inherit;}/*!sc*/
+.KuGeo>section:nth-child(1) table tr{display:table-row;vertical-align:inherit;border:inherit;background-color:#0d1117;border-top-width:1px;border-top-style:solid;border-top-color:#222222;}/*!sc*/
+.KuGeo>section:nth-child(1) table tr:nth-of-type(2n){background-color:#25282E;}/*!sc*/
+.KuGeo>section:nth-child(1) table th,.KuGeo>section:nth-child(1) table td{display:table-cell;vertical-align:inherit;padding:6px 13px;border-width:1px;border-style:solid;border-color:#30363d;}/*!sc*/
+.KuGeo>section:nth-child(1) blockquote{padding:12px 20px 12px 28px;margin:30px 0px;border-left:4px solid #C9D1D9;font-family:Georgia,serif;font-style:italic;text-align:justify;font-size:20px;line-height:1.2;transition:all 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) blockquote p{margin:0;}/*!sc*/
+.KuGeo>section:nth-child(1) code{margin:0;padding:0.2em 0.4em;background-color:rgba(135,131,120,0.15);color:#BF616A;border-radius:6px;font-size:85%;font-family:SFMono-Regular,Menlo,Consolas,Liberation Mono,monospace;}/*!sc*/
+.KuGeo>section:nth-child(1) strong{font-weight:bold;}/*!sc*/
+.KuGeo>section:nth-child(1) deckgo-highlight-code{--deckgo-highlight-code-carbon-toolbar-display:none;--deckgo-highlight-code-white-space:pre-wrap;max-width:90vw;font-size:3vw;margin-bottom:32px;}/*!sc*/
+@media (min-width: 425px){.KuGeo>section:nth-child(1) deckgo-highlight-code{font-size:14px;}}/*!sc*/
+.KuGeo>section:nth-child(1) img{max-width:90vw;}/*!sc*/
+@media (min-width: 768px){.KuGeo>section:nth-child(1) img{max-width:694px;}}/*!sc*/
+data-styled.g22[id="styles__Main-sc-4114r5-5"]{content:"KuGeo,"}/*!sc*/
+.ibrFQC{margin-bottom:4px;font-size:36px;font-weight:600;}/*!sc*/
+@media (min-width: 425px){.ibrFQC{font-size:42px;}}/*!sc*/
+data-styled.g23[id="styles__Title-sc-4114r5-6"]{content:"ibrFQC,"}/*!sc*/
+.kJnDSb{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;color:#8b949e;font-size:14px;}/*!sc*/
+.kJnDSb>div{display:flex;flex-direction:column;align-items:flex-end;justify-content:normal;}/*!sc*/
+.kJnDSb>div a{text-underline-position:under;}/*!sc*/
+.kJnDSb>div a:hover{color:#F8EA18;}/*!sc*/
+data-styled.g24[id="styles__SubTitle-sc-4114r5-7"]{content:"kJnDSb,"}/*!sc*/
+@keyframes ZmWYm{from{transform:rotate(90deg) translate(50px) translateZ(10px);}to{transform:rotate(270deg) translate(50px) translateZ(10px);}}/*!sc*/
+data-styled.g26[id="sc-keyframes-ZmWYm"]{content:"ZmWYm,"}/*!sc*/
+@keyframes dGgAwC{from{transform:rotate(90deg) translate(-50px) translateZ(10px);}to{transform:rotate(270deg) translate(-50px) translateZ(10px);}}/*!sc*/
+data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
+</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><style type="text/css">
+    .header-anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .header-anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .header-anchor svg,
+    h2 .header-anchor svg,
+    h3 .header-anchor svg,
+    h4 .header-anchor svg,
+    h5 .header-anchor svg,
+    h6 .header-anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .header-anchor svg,
+    h2:hover .header-anchor svg,
+    h3:hover .header-anchor svg,
+    h4:hover .header-anchor svg,
+    h5:hover .header-anchor svg,
+    h6:hover .header-anchor svg,
+    h1 .header-anchor:focus svg,
+    h2 .header-anchor:focus svg,
+    h3 .header-anchor:focus svg,
+    h4 .header-anchor:focus svg,
+    h5 .header-anchor:focus svg,
+    h6 .header-anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - -200)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="icon" href="/favicon-32x32.png?v=6d5c0719d6ce39c07b53ce38158aed46" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="apple-touch-icon" sizes="512x512" href="/favicons/android-chrome-512x512.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><title data-gatsby-head="true">기본 | conerstone</title><link as="style" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500&amp;display=swap" data-gatsby-head="true"/><link as="style" rel="stylesheet" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" data-gatsby-head="true"/><script type="application/ld+json" data-gatsby-head="true">
+            {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "url": "https://rheech22.github.io/Dart/기본",
+              "headline": "conerstone",
+              "datePublished": "2024-12-30 17:06:50 +0900",
+              "dateModified": "2024-12-30 18:03:37 +0900",
+              "image": "[]"
+            }
+          </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 cgshUI"><a tabindex="-1" class="Header__HomeButton-sc-z8t49p-1 erKfrX" href="/"><svg viewBox="0 0 21 21" fill="currentColor" height="1em" width="1em"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 10.5l9-9 9 9"></path><path d="M3.5 8.5v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></g></svg></a><a tabindex="-1" class="Header__Title-sc-z8t49p-2 fWSnbl" href="/"><h1>conerstone</h1></a><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-3 iscvfN"><div class="Header__CircleLayout-sc-z8t49p-4 dkdLLc"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button><form class="SearchBar__Container-sc-6n5xnu-0 hRTaSi"><input type="text" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 esCaBN" value=""/><button type="submit" hidden="" aria-label="Submit Search"></button></form><div class="Header__Index-sc-z8t49p-5 eVMkLI"><a tabindex="-1" href="/wiki-index/"><h2>Index.</h2></a></div></header><main><div class="styles__Container-sc-4114r5-0 bpQNeS"><section class="styles__Section-sc-4114r5-1 cOLaBC"><article class="styles__Article-sc-4114r5-2 iQVJjY"><nav class="styles__Nav-sc-4114r5-3 hLCEhK"><div><a href="/Dart/">Dart</a></div></nav><header class="styles__Header-sc-4114r5-4 dwxKPC"><h1 class="styles__Title-sc-4114r5-6 ibrFQC">기본</h1><div class="styles__SubTitle-sc-4114r5-7 kJnDSb"><div><span>4<!-- --> min read</span><time dateTime="created at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/Dart/기본/index.md" target="_blank" rel="noreferrer">CREATED: <!-- -->30/12/2024</a></time><time dateTime="updated at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/Dart/기본/index.md" target="_blank" rel="noreferrer">UPDATED: <!-- -->30/12/2024</a></time><a href="https://github.com/rheech22/rheech22.github.io/blame/develop/src/wikis/Dart/기본/index.md" target="_blank" rel="noreferrer">Blame</a></div></div></header><main class="styles__Main-sc-4114r5-5 KuGeo"><section><h1 id="설치" style="position:relative;">설치<a href="#%EC%84%A4%EC%B9%98" aria-label="설치 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">brew tap dart-lang/dart
+
+brew install dart
+
+# 설치 후 버전 확인
+dart --version</code>
+        </deckgo-highlight-code>
+<h1 id="main" style="position:relative;">main()<a href="#main" aria-label="main permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main(){
+  var firstName = &quot;John&quot;;
+  var lastName = &quot;Doe&quot;;
+  print(&quot;Full name is $firstName $lastName&quot;);
+}</code>
+        </deckgo-highlight-code>
+<ul>
+<li><code>void main()</code>은 프로그램 실행이 시작되는 엔트리 포인트</li>
+<li>모든 프로그램은 main 함수로 시작됨</li>
+<li>중괄호 <code>{}</code>는 코드 블록의 시작과 끝</li>
+<li><code>print(“Hello World!”);</code>는 화면에 <code>Hello World!</code>를 출력</li>
+<li>각 코드 문장은 세미콜론으로 끝나야 함</li>
+</ul>
+<h1 id="다트-프로젝트-만들기" style="position:relative;">다트 프로젝트 만들기<a href="#%EB%8B%A4%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-label="다트 프로젝트 만들기 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code"># 생성
+dart create dart-tutorial
+
+# 실행
+dart run</code>
+        </deckgo-highlight-code>
+<h1 id="변수" style="position:relative;">변수<a href="#%EB%B3%80%EC%88%98" aria-label="변수 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="유형" style="position:relative;">유형<a href="#%EC%9C%A0%ED%98%95" aria-label="유형 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>문자열 : 텍스트
+<ul>
+<li>예: “John” [따옴표로 묶어야 함]</li>
+</ul>
+</li>
+<li>int : 정수
+<ul>
+<li>예: 10, -10, 8555 [10진수는 포함되지 않음]</li>
+</ul>
+</li>
+<li>double : 부동 소수점
+<ul>
+<li>예: 10.0, -10.2, 85.698 [10진수 포함]</li>
+</ul>
+</li>
+<li>num : 모든 유형의 숫자
+<ul>
+<li>예: 10, 20.2, -20 [int와 double 모두]</li>
+</ul>
+</li>
+<li>bool : true, false
+<ul>
+<li>예: true, false [참 또는 거짓 값만 저장]</li>
+</ul>
+</li>
+<li>var : 모든 유형의 값
+<ul>
+<li>예: 'Bimal', 12, 'z', true</li>
+</ul>
+</li>
+</ul>
+<h2 id="규칙" style="position:relative;">규칙<a href="#%EA%B7%9C%EC%B9%99" aria-label="규칙 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>변수 이름은 대소문자를 구분합니다. 즉, a와 A는 다름</li>
+<li>변수 이름은 문자와 알파벳으로 구성될 수 있음</li>
+<li>변수 이름은 숫자로 시작할 수 없음</li>
+<li>키워드는 변수 이름으로 사용할 수 없음</li>
+<li>변수 이름에는 공백이 허용되지 않음</li>
+<li>밑줄(_)과 달러($) 기호를 제외한 특수문자는 허용되지 않음</li>
+</ul>
+<h2 id="네이밍-컨벤션" style="position:relative;">네이밍 컨벤션<a href="#%EB%84%A4%EC%9D%B4%EB%B0%8D-%EC%BB%A8%EB%B2%A4%EC%85%98" aria-label="네이밍 컨벤션 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>lowerCamelCase</li>
+</ul>
+<h2 id="상수" style="position:relative;">상수<a href="#%EC%83%81%EC%88%98" aria-label="상수 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main(){
+  const pi = 3.14;
+  pi = 4.23; // not possible
+  print(&quot;Value of PI is $pi&quot;);
+}</code>
+        </deckgo-highlight-code>
+<h1 id="데이터-유형" style="position:relative;">데이터 유형<a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9C%A0%ED%98%95" aria-label="데이터 유형 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Keyword</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numbers</td>
+<td>int, double, num</td>
+<td>It represents numeric values</td>
+</tr>
+<tr>
+<td>Strings</td>
+<td>String</td>
+<td>It represents a sequence of characters</td>
+</tr>
+<tr>
+<td>Booleans</td>
+<td>bool</td>
+<td>It represents Boolean values true and false</td>
+</tr>
+<tr>
+<td>Lists</td>
+<td>List</td>
+<td>It is an ordered group of items</td>
+</tr>
+<tr>
+<td>Maps</td>
+<td>Map</td>
+<td>It represents a set of values as key-value pairs</td>
+</tr>
+<tr>
+<td>Sets</td>
+<td>Set</td>
+<td>It is an unordered list of unique values of same types</td>
+</tr>
+<tr>
+<td>Runes</td>
+<td>runes</td>
+<td>It represents Unicode values of String</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>null</td>
+<td>It represents null value</td>
+</tr>
+</tbody>
+</table>
+<h2 id="멀티라인-스트링" style="position:relative;">멀티라인 스트링<a href="#%EB%A9%80%ED%8B%B0%EB%9D%BC%EC%9D%B8-%EC%8A%A4%ED%8A%B8%EB%A7%81" aria-label="멀티라인 스트링 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+// Multi Line Using Single Quotes
+String multiLineText = &#39;&#39;&#39;
+This is Multi Line Text
+with 3 single quote
+I am also writing here.
+&#39;&#39;&#39;;
+
+// Multi Line Using Double Quotes
+String otherMultiLineText = &quot;&quot;&quot;
+This is Multi Line Text
+with 3 double quote
+I am also writing here.
+&quot;&quot;&quot;;
+
+// Printing Information
+print(&quot;Multiline text is $multiLineText&quot;);
+print(&quot;Other multiline text is $otherMultiLineText&quot;);
+}
+
+// 출력
+// Multiline text is This is Multi Line Text
+// with 3 single quote
+// I am also writing here.
+//
+// Other multiline text is This is Multi Line Text
+// with 3 double quote
+// I am also writing here.</code>
+        </deckgo-highlight-code>
+<h2 id="raw-스트링" style="position:relative;">Raw 스트링<a href="#raw-%EC%8A%A4%ED%8A%B8%EB%A7%81" aria-label="raw 스트링 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  // Set price value
+  num price = 10;
+  String withoutRawString = &quot;The value of price is \t $price&quot;; // regular String
+  String withRawString =r&quot;The value of price is \t $price&quot;; // raw String
+
+  print(&quot;Without Raw: $withoutRawString&quot;); // regular result
+  print(&quot;With Raw: $withRawString&quot;); // with raw result
+}</code>
+        </deckgo-highlight-code>
+<h2 id="타입-변환" style="position:relative;">타입 변환<a href="#%ED%83%80%EC%9E%85-%EB%B3%80%ED%99%98" aria-label="타입 변환 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">// string to int
+int intvalue = int.parse(strvalue);
+
+// string to double
+double doublevalue = double.parse(strvalue);
+
+// int to string
+String oneInString = one.toString();
+
+// double to int
+int num2 = doublevalue.toInt();</code>
+        </deckgo-highlight-code>
+<h2 id="sets" style="position:relative;">Sets<a href="#sets" aria-label="sets permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  Set&lt;String&gt; weekday = {&quot;Sun&quot;, &quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;};
+  print(weekday);
+}</code>
+        </deckgo-highlight-code>
+<h2 id="maps" style="position:relative;">Maps<a href="#maps" aria-label="maps permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  Map&lt;String, String&gt; myDetails = {
+    &#39;name&#39;: &#39;John Doe&#39;,
+    &#39;address&#39;: &#39;USA&#39;,
+    &#39;fathername&#39;: &#39;Soe Doe&#39;
+  };
+  // displaying the output
+  print(myDetails[&#39;name&#39;]);
+}</code>
+        </deckgo-highlight-code>
+<h2 id="runes" style="position:relative;">Runes<a href="#runes" aria-label="runes permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>유니코드 값을 얻을 수 있음</p>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  String value = &quot;a&quot;;
+  print(value.runes);
+}
+
+// (97)</code>
+        </deckgo-highlight-code>
+<h2 id="런타임-타입-체크" style="position:relative;">런타임 타입 체크<a href="#%EB%9F%B0%ED%83%80%EC%9E%84-%ED%83%80%EC%9E%85-%EC%B2%B4%ED%81%AC" aria-label="런타임 타입 체크 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+   var a = 10;
+   print(a.runtimeType);
+   print(a is int); // true
+}</code>
+        </deckgo-highlight-code>
+<h2 id="dart-is-optionally-typed-language" style="position:relative;">Dart is Optionally-typed language<a href="#dart-is-optionally-typed-language" aria-label="dart is optionally typed language permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="static" style="position:relative;">Static<a href="#static" aria-label="static permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+   var myVariable = 50; // You can also use int instead of var
+   myVariable = &quot;Hello&quot;; // this will give error
+   print(myVariable);
+}</code>
+        </deckgo-highlight-code>
+<h3 id="dynamic" style="position:relative;">Dynamic<a href="#dynamic" aria-label="dynamic permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+   dynamic myVariable = 50;
+   myVariable = &quot;Hello&quot;;
+   print(myVariable);
+}</code>
+        </deckgo-highlight-code>
+<h1 id="주석" style="position:relative;">주석<a href="#%EC%A3%BC%EC%84%9D" aria-label="주석 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<ul>
+<li>단일 줄 주석: 단일 줄의 코드에 주석을 달 때 사용 - <code>// 이것은 단일 줄 주석입니다.</code></li>
+<li>다중 줄 주석: 여러 줄의 코드에 주석을 달 때 사용 - <code>/* 이것은 다중 줄 주석입니다. */</code></li>
+<li>문서 주석: 프로젝트/소프트웨어 패키지에 대한 문서 또는 참조를 생성하는 경우 <code>/// 이것은 문서 주석입니다.</code></li>
+</ul>
+<h1 id="연산자" style="position:relative;">연산자<a href="#%EC%97%B0%EC%82%B0%EC%9E%90" aria-label="연산자 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="산술" style="position:relative;">산술<a href="#%EC%82%B0%EC%88%A0" aria-label="산술 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  // declaring two numbers
+  int num1=10;
+  int num2=3;
+
+  // performing arithmetic calculation
+  int sum=num1+num2;       // addition
+  int diff=num1-num2;      // subtraction
+  int unaryMinus = -num1;    // unary minus
+  int mul=num1*num2;       // multiplication
+  double div=num1/num2;    // division
+  int div2 =num1~/num2;     // integer division
+  int mod=num1%num2;       // show remainder
+
+  //Printing info
+  print(&quot;The addition is $sum.&quot;);
+  print(&quot;The subtraction is $diff.&quot;);
+  print(&quot;The unary minus is $unaryMinus.&quot;);
+  print(&quot;The multiplication is $mul.&quot;);
+  print(&quot;The division is $div.&quot;);
+  print(&quot;The integer division is $div2.&quot;);
+  print(&quot;The modulus is $mod.&quot;);
+}</code>
+        </deckgo-highlight-code>
+<h2 id="증감" style="position:relative;">증감<a href="#%EC%A6%9D%EA%B0%90" aria-label="증감 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  // declaring two numbers
+  int num1=0;
+  int num2=0;
+
+  // performing increment / decrement operator
+
+  // pre increment
+  num2 = ++num1;
+  print(&quot;The value of num2 is $num2&quot;);
+
+  // reset value to 0
+  num1 = 0;
+  num2 = 0;
+
+  // post increment
+  num2 =  num1++;
+  print(&quot;The value of num2 is $num2&quot;);
+}</code>
+        </deckgo-highlight-code>
+<h2 id="할당" style="position:relative;">할당<a href="#%ED%95%A0%EB%8B%B9" aria-label="할당 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  double age = 24;
+  age+= 1;  // Here age+=1 means age = age + 1.
+  print(&quot;After Addition Age is $age&quot;);
+  age-= 1;  //Here age-=1 means age = age - 1.
+  print(&quot;After Subtraction Age is $age&quot;);
+  age*= 2;  //Here age*=2 means age = age * 2.
+  print(&quot;After Multiplication Age is $age&quot;);
+  age/= 2;  //Here age/=2 means age = age / 2.
+  print(&quot;After Division Age is $age&quot;);
+}</code>
+        </deckgo-highlight-code>
+<h2 id="비교" style="position:relative;">비교<a href="#%EB%B9%84%EA%B5%90" aria-label="비교 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  int num1=10;
+  int num2=5;
+
+  //printing info
+  print(num1==num2);
+  print(num1&lt;num2);
+  print(num1&gt;num2);
+  print(num1&lt;=num2);
+  print(num1&gt;=num2);
+}</code>
+        </deckgo-highlight-code>
+<h2 id="논리" style="position:relative;">논리<a href="#%EB%85%BC%EB%A6%AC" aria-label="논리 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main(){
+  int userid = 123;
+  int userpin = 456;
+
+  // Printing Info
+  print((userid == 123) &amp;&amp; (userpin== 456)); // print true
+  print((userid == 1213) &amp;&amp; (userpin== 456)); // print false.
+  print((userid == 123) || (userpin== 456)); // print true.
+  print((userid == 1213) || (userpin== 456)); // print true
+  print((userid == 123) != (userpin== 456));//print false
+}
+</code>
+        </deckgo-highlight-code>
+<h2 id="타입-체크" style="position:relative;">타입 체크<a href="#%ED%83%80%EC%9E%85-%EC%B2%B4%ED%81%AC" aria-label="타입 체크 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">void main() {
+  String value1 = &quot;Dart Tutorial&quot;;
+  int age = 10;
+
+  print(value1 is String);
+  print(age is !int);
+}</code>
+        </deckgo-highlight-code>
+<h1 id="user-input" style="position:relative;">User Input<a href="#user-input" aria-label="user input permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<deckgo-highlight-code language="dart" terminal="carbon" theme="one-dark"  >
+          <code slot="code">import &#39;dart:io&#39;;
+
+void main() {
+  String? s = stdin.readLineSync();
+  int? i = stdin.readLineSync();
+  double? d = stdin.readLineSync();
+}
+</code>
+        </deckgo-highlight-code>
+<h1 id="문자열-다루기" style="position:relative;">문자열 다루기<a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%8B%A4%EB%A3%A8%EA%B8%B0" aria-label="문자열 다루기 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="string-속성" style="position:relative;">String 속성<a href="#string-%EC%86%8D%EC%84%B1" aria-label="string 속성 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><code>codeUnits</code>: 이 문자열의 UTF-16 코드 단위의 수정 불가능한 목록을 반환</li>
+<li><code>isEmpty</code>: 이 문자열이 비어 있는지 여부를 반환</li>
+<li><code>isNotEmpty</code>: 이 문자열이 비어 있으면 false를 반환</li>
+<li><code>length</code>: 공백, 탭, 줄 바꿈 문자를 포함한 문자열의 길이를 반환</li>
+</ul>
+<h2 id="string-메서드" style="position:relative;">String 메서드<a href="#string-%EB%A9%94%EC%84%9C%EB%93%9C" aria-label="string 메서드 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><code>toLowerCase()</code>: 이 문자열의 모든 문자를 소문자로 변환</li>
+<li><code>toUpperCase()</code>: 이 문자열의 모든 문자를 대문자로 변환</li>
+<li><code>trim()</code>: 앞뒤 공백을 제외한 문자열을 반환</li>
+<li><code>compareTo()</code>: 이 객체를 다른 객체와 비교</li>
+<li><code>replaceAll()</code>: 지정된 패턴과 일치하는 모든 하위 문자열을 주어진 값으로 변환</li>
+<li><code>split()</code>: 지정된 구분 기호와 일치하는 부분에서 문자열을 분할하고 하위 문자열 목록을 반환</li>
+<li><code>toString()</code>: 이 객체의 문자열 표현을 반환</li>
+<li><code>substring()</code>: 원하는 위치의 텍스트를 반환</li>
+<li><code>codeUnitAt()</code>: 주어진 인덱스의 16비트 UTF-16 코드 단위를 반환</li>
+</ul>
+<h1 id="참고" style="position:relative;">참고<a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p><a href="https://dart-tutorial.com/introduction-and-basics/string-in-dart/">LEARN DART</a></p></section></main></article></section><aside class="TOC__Container-sc-1ylks3q-0 hmzKTL"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#설치">설치</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#main">main()</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#다트-프로젝트-만들기">다트 프로젝트 만들기</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#변수">변수</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#유형">유형</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#규칙">규칙</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#네이밍-컨벤션">네이밍 컨벤션</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#상수">상수</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#데이터-유형">데이터 유형</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#멀티라인-스트링">멀티라인 스트링</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#raw-스트링">Raw 스트링</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#타입-변환">타입 변환</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#sets">Sets</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#maps">Maps</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#runes">Runes</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#런타임-타입-체크">런타임 타입 체크</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#dart-is-optionally-typed-language">Dart is Optionally-typed language</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/Dart/기본/#static">Static</a></li><li class="TOC__List-sc-1ylks3q-1 bqfvvc"><a href="/Dart/기본/#dynamic">Dynamic</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#주석">주석</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#연산자">연산자</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#산술">산술</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#증감">증감</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#할당">할당</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#비교">비교</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#논리">논리</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#타입-체크">타입 체크</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#user-input">User Input</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#문자열-다루기">문자열 다루기</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#string-속성">String 속성</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Dart/기본/#string-메서드">String 메서드</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Dart/기본/#참고">참고</a></li></ul></aside></div></main><footer class="Footer__Container-sc-13p6nst-0 dndVdK"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Dart/기본/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-800d4df7d2673a7e516e.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-5bef5c84fb8d1a3b27f0.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-d0095af23451b1cf0507.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-2cd1417e3cd8bdead616.js\"],\"component---src-pages-search-tsx\":[\"/component---src-pages-search-tsx-46c45f257736c8342d78.js\"],\"component---src-pages-wiki-index-tsx\":[\"/component---src-pages-wiki-index-tsx-1eb7c72c1f5358d70c36.js\"],\"component---src-templates-wiki-template-tsx\":[\"/component---src-templates-wiki-template-tsx-ee1a2e08cc3d7afdb130.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="6bf128993759fc2b15aa";</script><script src="/webpack-runtime-c884d3580bc76665c799.js" async></script><script src="/framework-31fd9fa701293a5c6789.js" async></script><script src="/app-800d4df7d2673a7e516e.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
