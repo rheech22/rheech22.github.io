@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="ko-KR"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.11.0"/><meta name="theme-color" content="#161b22"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-gatsby-head="true"/><meta name="description" content="MacOS에서 iOS 앱을 개발할 때 사전 준비 Xcode16 준비: 디버깅과 native Swift나 ObjectC 코드를 컴파일할 때 사용 앱 스토어에서 다운로드 후 설치 Xcode 실행 후 iOS 컴포넌트 설치 진행함(필수인지는 모르겠으나 앱을…" data-gatsby-head="true"/><meta name="image" data-gatsby-head="true"/><meta name="og:title" content="conerstone" data-gatsby-head="true"/><meta name="og:description" content="MacOS에서 iOS 앱을 개발할 때 사전 준비 Xcode16 준비: 디버깅과 native Swift나 ObjectC 코드를 컴파일할 때 사용 앱 스토어에서 다운로드 후 설치 Xcode 실행 후 iOS 컴포넌트 설치 진행함(필수인지는 모르겠으나 앱을…" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="플러터 설치하고 개발환경 세팅 | conerstone" data-gatsby-head="true"/><meta name="twitter:url" content="https://rheech22.github.io/Flutter/플러터_설치하고_개발환경_세팅" data-gatsby-head="true"/><meta name="twitter:description" content="MacOS에서 iOS 앱을 개발할 때 사전 준비 Xcode16 준비: 디버깅과 native Swift나 ObjectC 코드를 컴파일할 때 사용 앱 스토어에서 다운로드 후 설치 Xcode 실행 후 iOS 컴포넌트 설치 진행함(필수인지는 모르겠으나 앱을…" data-gatsby-head="true"/><meta name="twitter:image" content="https://rheech22.github.ioundefined" data-gatsby-head="true"/><meta name="twitter:creator" content="@@rheech22" data-gatsby-head="true"/><meta name="naver-site-verification" content="45d911481aa02bda5a391b5f2474bc61356de3f8" data-gatsby-head="true"/><meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" data-gatsby-head="true"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0DM3BCWTDS"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0DM3BCWTDS', {"send_page_view":false});
+      }
+      </script><style data-styled="" data-styled-version="6.0.7">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,menu,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,main,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}/*!sc*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block;}/*!sc*/
+*[hidden]{display:none;}/*!sc*/
+body{line-height:1;}/*!sc*/
+menu,ol,ul{list-style:none;}/*!sc*/
+blockquote,q{quotes:none;}/*!sc*/
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}/*!sc*/
+table{border-collapse:collapse;border-spacing:0;}/*!sc*/
+@font-face{font-family:BlinkMacSystemFont;src:local('※');font-weight:400;font-style:normal;unicode-range:U+0041-005A,U+0061-007A,U+0030-0039;}/*!sc*/
+*{box-sizing:border-box;}/*!sc*/
+html,body{scroll-behavior:smooth;margin:0;}/*!sc*/
+body{font-family:'Spoqa Han Sans',BlinkMacSystemFont,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;width:100%;background-color:#000000;color:#C9D1D9;min-height:100vh;line-height:1.5;transition:all .5s;}/*!sc*/
+body #gatsby-focus-wrapper{max-width:1440px;padding:0 15px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}/*!sc*/
+body main{font-size:16px;width:100%;}/*!sc*/
+body a{color:unset;}/*!sc*/
+data-styled.g2[id="sc-global-hGiQiZ1"]{content:"sc-global-hGiQiZ1,"}/*!sc*/
+.dndVdK{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;border-top:1px solid #222222;transition:border-color 0.5s;margin-top:auto;width:100%;font-size:12px;text-align:center;font-weight:400;color:#bac4ce;}/*!sc*/
+.dndVdK>section{padding:48px 8px;}/*!sc*/
+data-styled.g3[id="Footer__Container-sc-13p6nst-0"]{content:"dndVdK,"}/*!sc*/
+.esCaBN:focus{outline:none;}/*!sc*/
+data-styled.g5[id="Textbox__Input-sc-vlag4q-0"]{content:"esCaBN,"}/*!sc*/
+.hRTaSi{border-radius:8px;width:140px;height:48px;font-weight:400;position:relative;transition:all 0.5s;}/*!sc*/
+@media (min-width: 768px){.hRTaSi:focus-within{width:544px;}.hRTaSi:focus-within>ul{display:block;}}/*!sc*/
+.hRTaSi>input{border:none;border-radius:8px;padding:0 12px;width:100%;height:100%;background-color:#222222;color:#fff;font-size:14px;transition:background-color 0.5s;}/*!sc*/
+.hRTaSi>input::placeholder{color:#a7a7a7;}/*!sc*/
+.hRTaSi>input:focus{color:#fff;background-color:#383838;}/*!sc*/
+@media (min-width: 768px){.hRTaSi>input:focus{border-bottom-left-radius:6px;border-bottom-right-radius:6px;}}/*!sc*/
+.hRTaSi>input:focus::placeholder{color:#757D86;}/*!sc*/
+data-styled.g6[id="SearchBar__Container-sc-6n5xnu-0"]{content:"hRTaSi,"}/*!sc*/
+.cgshUI{display:flex;flex-direction:row;align-items:center;justify-content:normal;position:sticky;top:0;width:100%;min-height:71px;opacity:0.9;background-color:hsla(0, 0%, 0%, 0.5);backdrop-filter:blur(20px);z-index:1;transition:all 0.5s;}/*!sc*/
+data-styled.g8[id="Header__Container-sc-z8t49p-0"]{content:"cgshUI,"}/*!sc*/
+.erKfrX{display:flex;flex-direction:row;align-items:center;justify-content:center;min-width:38px;height:38px;transition:all 2s;}/*!sc*/
+@media (min-width: 768px){.erKfrX{display:none;}}/*!sc*/
+.erKfrX svg{width:20px;height:20px;transform:translateY(1px);}/*!sc*/
+.erKfrX svg g>path{stroke:#f0f6fc;}/*!sc*/
+data-styled.g9[id="Header__HomeButton-sc-z8t49p-1"]{content:"erKfrX,"}/*!sc*/
+.fWSnbl{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;display:none;color:#f0f6fc;text-decoration:none;transition:color 2s;}/*!sc*/
+@media (min-width: 768px){.fWSnbl{display:block;}}/*!sc*/
+.fWSnbl>h1{font-size:24px;font-weight:600;white-space:nowrap;}/*!sc*/
+data-styled.g10[id="Header__Title-sc-z8t49p-2"]{content:"fWSnbl,"}/*!sc*/
+.iscvfN{position:relative;z-index:0;margin-right:8px;border:none;border-radius:50%;background:none;min-width:38px;min-height:38px;overflow:hidden;cursor:pointer;transition:box-shadow 2s;}/*!sc*/
+@media (min-width: 768px){.iscvfN{margin-left:8px;}}/*!sc*/
+@media (hover:hover){.iscvfN:hover{box-shadow:rgb(109,110,129) 1.5px 1.5px 3px 0px inset,rgba(109,110,129,0.5) -1.5px -1.5px 3px 1px inset;background-image:linear-gradient( to right bottom,#000000,#211e1f,#3b353b,#55505a,#6d6c7b,#6d6e81,#6b7187,#69748d,#535c78,#3e4563,#2b304e,#181b3a );}}/*!sc*/
+data-styled.g11[id="Header__Button-sc-z8t49p-3"]{content:"iscvfN,"}/*!sc*/
+.dkdLLc{position:absolute;top:19px;right:-32px;border:1px dotted transparent;border-radius:50%;width:100px;height:100px;transition:border-color 2s;}/*!sc*/
+@media (hover:hover){.dkdLLc:hover{border-color:#C9D1D9;}.dkdLLc:hover svg path{fill:ivory;}}/*!sc*/
+.dkdLLc>div{position:absolute;top:40px;right:40px;border-radius:50%;border:none;padding:0;width:20px;height:20px;background:none;outline:none;}/*!sc*/
+.dkdLLc>div:first-of-type{animation:ZmWYm 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;}/*!sc*/
+.dkdLLc>div:last-of-type{animation:dGgAwC 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;}/*!sc*/
+.dkdLLc>div svg{width:20px;height:20px;transform:rotate(90deg);}/*!sc*/
+.dkdLLc>div svg path{fill:#fff;}/*!sc*/
+data-styled.g12[id="Header__CircleLayout-sc-z8t49p-4"]{content:"dkdLLc,"}/*!sc*/
+.eVMkLI{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;margin-left:auto;font-weight:500;}/*!sc*/
+.eVMkLI>a{text-decoration:none;}/*!sc*/
+.eVMkLI>a:hover{color:#F8EA18;}/*!sc*/
+data-styled.g13[id="Header__Index-sc-z8t49p-5"]{content:"eVMkLI,"}/*!sc*/
+.hmzKTL{position:sticky;top:163px;right:0px;display:none;min-width:fit-content;height:fit-content;overflow-y:scroll;color:#C9D1D9;}/*!sc*/
+.hmzKTL::-webkit-scrollbar{display:none;}/*!sc*/
+.hmzKTL h2{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;margin-bottom:12px;padding:8px 10px;font-size:14px;font-weight:500;letter-spacing:0.025em;transition:all 0.5s;}/*!sc*/
+.hmzKTL ul{padding-left:20px;}/*!sc*/
+.hmzKTL li+li{margin-top:8px;}/*!sc*/
+data-styled.g15[id="TOC__Container-sc-1ylks3q-0"]{content:"hmzKTL,"}/*!sc*/
+.itaPoa{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:8px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:13px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.itaPoa:hover:hover{background-color:#222222;}}/*!sc*/
+.itaPoa a{padding:7px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+.ksAkVR{display:flex;align-items:center;margin-left:auto;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;padding-left:16px;padding-right:10px;max-width:215px;min-width:130px;width:100%;background-color:none;color:#8b949e;font-size:12px;transition:all 50ms ease-in-out;}/*!sc*/
+@media (hover:hover){.ksAkVR:hover:hover{background-color:#222222;}}/*!sc*/
+.ksAkVR a{padding:6px 0;width:100%;text-decoration:unset;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;}/*!sc*/
+data-styled.g16[id="TOC__List-sc-1ylks3q-1"]{content:"itaPoa,ksAkVR,"}/*!sc*/
+.bpQNeS{display:grid;grid-template-columns:auto;grid-template-rows:auto auto;grid-template-areas:'post' 'post' 'comments';}/*!sc*/
+@media (min-width: 1080px){.bpQNeS{grid-template-columns:10fr 10fr 1fr;grid-template-rows:auto auto;grid-template-areas:'post post toc' 'post post toc' 'comments comments .';}}/*!sc*/
+.bpQNeS>section{grid-area:post;}/*!sc*/
+@media (min-width: 768px){.bpQNeS>section{max-width:826px;}}/*!sc*/
+.bpQNeS>aside{grid-area:toc;}/*!sc*/
+@media (min-width: 1280px){.bpQNeS>aside{display:flex;flex-direction:column;align-items:flex-start;justify-content:normal;}}/*!sc*/
+.bpQNeS>div{grid-area:comments;margin:0 auto;}/*!sc*/
+@media (min-width: 768px){.bpQNeS>div{max-width:826px;}}/*!sc*/
+data-styled.g17[id="styles__Container-sc-4114r5-0"]{content:"bpQNeS,"}/*!sc*/
+.cOLaBC{display:flex;flex-direction:row;align-items:normal;justify-content:center;margin:72px auto 72px auto;height:auto;width:100%;}/*!sc*/
+data-styled.g18[id="styles__Section-sc-4114r5-1"]{content:"cOLaBC,"}/*!sc*/
+.iQVJjY{padding:20px 0;width:100%;display:flex;flex-direction:column;align-items:normal;justify-content:normal;}/*!sc*/
+data-styled.g19[id="styles__Article-sc-4114r5-2"]{content:"iQVJjY,"}/*!sc*/
+.hLCEhK{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;font-weight:500;padding:10px 0;}/*!sc*/
+.hLCEhK>div>a{text-underline-position:under;}/*!sc*/
+.hLCEhK>div>a:hover{color:#F8EA18;}/*!sc*/
+.hLCEhK>div>svg{margin:0 4px;transform:rotate(90deg);}/*!sc*/
+data-styled.g20[id="styles__Nav-sc-4114r5-3"]{content:"hLCEhK,"}/*!sc*/
+.dwxKPC{margin-bottom:26px;}/*!sc*/
+data-styled.g21[id="styles__Header-sc-4114r5-4"]{content:"dwxKPC,"}/*!sc*/
+.KuGeo>section:nth-child(1){font-size:16px;}/*!sc*/
+@media (min-width: 768px){.KuGeo>section:nth-child(1){font-size:18px;}}/*!sc*/
+.KuGeo>section:nth-child(1) h1,.KuGeo>section:nth-child(1) h2,.KuGeo>section:nth-child(1) h3,.KuGeo>section:nth-child(1) h4,.KuGeo>section:nth-child(1) h5,.KuGeo>section:nth-child(1) h6{font-weight:600;}/*!sc*/
+.KuGeo>section:nth-child(1) h1 .header-anchor,.KuGeo>section:nth-child(1) h2 .header-anchor,.KuGeo>section:nth-child(1) h3 .header-anchor,.KuGeo>section:nth-child(1) h4 .header-anchor,.KuGeo>section:nth-child(1) h5 .header-anchor,.KuGeo>section:nth-child(1) h6 .header-anchor{fill:#F8EA18;}/*!sc*/
+.KuGeo>section:nth-child(1) h1:not(:first-of-type),.KuGeo>section:nth-child(1) h2:not(:first-of-type),.KuGeo>section:nth-child(1) h3:not(:first-of-type),.KuGeo>section:nth-child(1) h4:not(:first-of-type),.KuGeo>section:nth-child(1) h5:not(:first-of-type),.KuGeo>section:nth-child(1) h6:not(:first-of-type){margin-top:1.2em;}/*!sc*/
+.KuGeo>section:nth-child(1) h1,.KuGeo>section:nth-child(1) h2{padding-bottom:0.2em;border-bottom:1px solid #222222;transition:border-color 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) h1{margin-block-start:1em;margin-block-end:1em;font-size:36px;}/*!sc*/
+.KuGeo>section:nth-child(1) h2{margin-block-start:0.83em;margin-block-end:0.83em;font-size:28.8px;}/*!sc*/
+.KuGeo>section:nth-child(1) h3{margin-block-start:1em;margin-block-end:1em;font-size:21.6px;}/*!sc*/
+.KuGeo>section:nth-child(1) h4{margin-block-start:1.22em;margin-block-end:1.22em;font-size:19.8px;}/*!sc*/
+.KuGeo>section:nth-child(1) em{font-style:oblique;}/*!sc*/
+.KuGeo>section:nth-child(1) a{text-underline-position:under;}/*!sc*/
+.KuGeo>section:nth-child(1) a:hover{color:#F8EA18;}/*!sc*/
+.KuGeo>section:nth-child(1) p{display:block;margin-block-start:1em;margin-block-end:1em;word-break:break-word;line-height:32px;}/*!sc*/
+.KuGeo>section:nth-child(1) ol,.KuGeo>section:nth-child(1) ul{padding-left:40px;}/*!sc*/
+.KuGeo>section:nth-child(1) ul{list-style-type:disc;}/*!sc*/
+.KuGeo>section:nth-child(1) ol{list-style-type:decimal;}/*!sc*/
+.KuGeo>section:nth-child(1) li{display:list-item;text-align:-webkit-match-parent;line-height:32px;}/*!sc*/
+.KuGeo>section:nth-child(1) li p{margin:0;}/*!sc*/
+.KuGeo>section:nth-child(1) table{display:block;border-color:gray;border-spacing:0;border-collapse:collapse;max-width:100%;overflow:auto;font-size:16px;transition:all 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) table thead{display:table-header-group;vertical-align:middle;border-color:inherit;}/*!sc*/
+.KuGeo>section:nth-child(1) table tbody{display:table-row-group;vertical-align:middle;border-color:inherit;}/*!sc*/
+.KuGeo>section:nth-child(1) table tr{display:table-row;vertical-align:inherit;border:inherit;background-color:#0d1117;border-top-width:1px;border-top-style:solid;border-top-color:#222222;}/*!sc*/
+.KuGeo>section:nth-child(1) table tr:nth-of-type(2n){background-color:#25282E;}/*!sc*/
+.KuGeo>section:nth-child(1) table th,.KuGeo>section:nth-child(1) table td{display:table-cell;vertical-align:inherit;padding:6px 13px;border-width:1px;border-style:solid;border-color:#30363d;}/*!sc*/
+.KuGeo>section:nth-child(1) blockquote{padding:12px 20px 12px 28px;margin:30px 0px;border-left:4px solid #C9D1D9;font-family:Georgia,serif;font-style:italic;text-align:justify;font-size:20px;line-height:1.2;transition:all 0.5s;}/*!sc*/
+.KuGeo>section:nth-child(1) blockquote p{margin:0;}/*!sc*/
+.KuGeo>section:nth-child(1) code{margin:0;padding:0.2em 0.4em;background-color:rgba(135,131,120,0.15);color:#BF616A;border-radius:6px;font-size:85%;font-family:SFMono-Regular,Menlo,Consolas,Liberation Mono,monospace;}/*!sc*/
+.KuGeo>section:nth-child(1) strong{font-weight:bold;}/*!sc*/
+.KuGeo>section:nth-child(1) deckgo-highlight-code{--deckgo-highlight-code-carbon-toolbar-display:none;--deckgo-highlight-code-white-space:pre-wrap;max-width:90vw;font-size:3vw;margin-bottom:32px;}/*!sc*/
+@media (min-width: 425px){.KuGeo>section:nth-child(1) deckgo-highlight-code{font-size:14px;}}/*!sc*/
+.KuGeo>section:nth-child(1) img{max-width:90vw;}/*!sc*/
+@media (min-width: 768px){.KuGeo>section:nth-child(1) img{max-width:694px;}}/*!sc*/
+data-styled.g22[id="styles__Main-sc-4114r5-5"]{content:"KuGeo,"}/*!sc*/
+.ibrFQC{margin-bottom:4px;font-size:36px;font-weight:600;}/*!sc*/
+@media (min-width: 425px){.ibrFQC{font-size:42px;}}/*!sc*/
+data-styled.g23[id="styles__Title-sc-4114r5-6"]{content:"ibrFQC,"}/*!sc*/
+.kJnDSb{font-family:'Sora','Open Sans','Helvetica Neue',sans-serif;color:#8b949e;font-size:14px;}/*!sc*/
+.kJnDSb>div{display:flex;flex-direction:column;align-items:flex-end;justify-content:normal;}/*!sc*/
+.kJnDSb>div a{text-underline-position:under;}/*!sc*/
+.kJnDSb>div a:hover{color:#F8EA18;}/*!sc*/
+data-styled.g24[id="styles__SubTitle-sc-4114r5-7"]{content:"kJnDSb,"}/*!sc*/
+@keyframes ZmWYm{from{transform:rotate(90deg) translate(50px) translateZ(10px);}to{transform:rotate(270deg) translate(50px) translateZ(10px);}}/*!sc*/
+data-styled.g26[id="sc-keyframes-ZmWYm"]{content:"ZmWYm,"}/*!sc*/
+@keyframes dGgAwC{from{transform:rotate(90deg) translate(-50px) translateZ(10px);}to{transform:rotate(270deg) translate(-50px) translateZ(10px);}}/*!sc*/
+data-styled.g27[id="sc-keyframes-dGgAwC"]{content:"dGgAwC,"}/*!sc*/
+</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><style type="text/css">
+    .header-anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .header-anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .header-anchor svg,
+    h2 .header-anchor svg,
+    h3 .header-anchor svg,
+    h4 .header-anchor svg,
+    h5 .header-anchor svg,
+    h6 .header-anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .header-anchor svg,
+    h2:hover .header-anchor svg,
+    h3:hover .header-anchor svg,
+    h4:hover .header-anchor svg,
+    h5:hover .header-anchor svg,
+    h6:hover .header-anchor svg,
+    h1 .header-anchor:focus svg,
+    h2 .header-anchor:focus svg,
+    h3 .header-anchor:focus svg,
+    h4 .header-anchor:focus svg,
+    h5 .header-anchor:focus svg,
+    h6 .header-anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - -200)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="icon" href="/favicon-32x32.png?v=6d5c0719d6ce39c07b53ce38158aed46" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="apple-touch-icon" sizes="512x512" href="/favicons/android-chrome-512x512.png?v=6d5c0719d6ce39c07b53ce38158aed46"/><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><title data-gatsby-head="true">플러터 설치하고 개발환경 세팅 | conerstone</title><link as="style" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500&amp;display=swap" data-gatsby-head="true"/><link as="style" rel="stylesheet" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" data-gatsby-head="true"/><script type="application/ld+json" data-gatsby-head="true">
+            {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "url": "https://rheech22.github.io/Flutter/플러터_설치하고_개발환경_세팅",
+              "headline": "conerstone",
+              "datePublished": "2024-12-31 20:49:29 +0900",
+              "dateModified": "2025-01-01 01:47:18 +0900",
+              "image": "[]"
+            }
+          </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="Header__Container-sc-z8t49p-0 cgshUI"><a tabindex="-1" class="Header__HomeButton-sc-z8t49p-1 erKfrX" href="/"><svg viewBox="0 0 21 21" fill="currentColor" height="1em" width="1em"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 10.5l9-9 9 9"></path><path d="M3.5 8.5v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></g></svg></a><a tabindex="-1" class="Header__Title-sc-z8t49p-2 fWSnbl" href="/"><h1>conerstone</h1></a><button tabindex="-1" aria-label="switch display mode" class="Header__Button-sc-z8t49p-3 iscvfN"><div class="Header__CircleLayout-sc-z8t49p-4 dkdLLc"><div><svg width="30px" height="30px" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 14.936C26.25 21.107 21.097 26.25 14.656 26.25C9.761 26.25 5.509 23.55 3.835 19.436C3.706 19.05 3.706 18.664 3.963 18.407C4.221 18.15 4.608 18.021 4.994 18.15C5.638 18.279 6.282 18.407 6.798 18.407C11.951 18.407 16.073 14.421 16.073 9.407C16.073 7.864 15.815 6.579 15.042 5.036C14.913 4.779 14.913 4.393 15.171 4.136C15.429 3.879 15.686 3.75 16.073 3.75C21.87 4.393 26.25 9.279 26.25 14.936Z" fill="#030D45"></path></svg></div><div><svg width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 9.375c-3.1 0 -5.625 2.525 -5.625 5.625s2.525 5.625 5.625 5.625 5.625 -2.525 5.625 -5.625 -2.525 -5.625 -5.625 -5.625zm14.438 4.717l-5.549 -2.771 1.963 -5.883c0.264 -0.797 -0.492 -1.553 -1.283 -1.283l-5.883 1.963 -2.777 -5.555c-0.375 -0.75 -1.441 -0.75 -1.816 0l-2.771 5.549L5.432 4.148c-0.797 -0.264 -1.553 0.492 -1.283 1.283l1.963 5.883 -5.549 2.777c-0.75 0.375 -0.75 1.441 0 1.816l5.549 2.771 -1.963 5.889c-0.264 0.797 0.492 1.553 1.283 1.283l5.883 -1.963 2.771 5.549c0.375 0.75 1.441 0.75 1.816 0l2.771 -5.549 5.883 1.963c0.797 0.264 1.553 -0.492 1.283 -1.283l-1.963 -5.883 5.549 -2.771c0.762 -0.381 0.762 -1.447 0.012 -1.822zm-9.135 6.211c-2.924 2.924 -7.682 2.924 -10.605 0 -2.924 -2.924 -2.924 -7.682 0 -10.605 2.924 -2.924 7.682 -2.924 10.605 0 2.924 2.924 2.924 7.682 0 10.605z"></path></svg></div></div></button><form class="SearchBar__Container-sc-6n5xnu-0 hRTaSi"><input type="text" placeholder="Search" maxLength="40" class="Textbox__Input-sc-vlag4q-0 esCaBN" value=""/><button type="submit" hidden="" aria-label="Submit Search"></button></form><div class="Header__Index-sc-z8t49p-5 eVMkLI"><a tabindex="-1" href="/wiki-index/"><h2>Index.</h2></a></div></header><main><div class="styles__Container-sc-4114r5-0 bpQNeS"><section class="styles__Section-sc-4114r5-1 cOLaBC"><article class="styles__Article-sc-4114r5-2 iQVJjY"><nav class="styles__Nav-sc-4114r5-3 hLCEhK"><div><a href="/Flutter/">Flutter</a></div></nav><header class="styles__Header-sc-4114r5-4 dwxKPC"><h1 class="styles__Title-sc-4114r5-6 ibrFQC">플러터 설치하고 개발환경 세팅</h1><div class="styles__SubTitle-sc-4114r5-7 kJnDSb"><div><span>3<!-- --> min read</span><time dateTime="created at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/Flutter/플러터_설치하고_개발환경_세팅/index.md" target="_blank" rel="noreferrer">CREATED: <!-- -->31/12/2024</a></time><time dateTime="updated at"><a href="https://github.com/rheech22/rheech22.github.io/commits/develop/src/wikis/Flutter/플러터_설치하고_개발환경_세팅/index.md" target="_blank" rel="noreferrer">UPDATED: <!-- -->31/12/2024</a></time><a href="https://github.com/rheech22/rheech22.github.io/blame/develop/src/wikis/Flutter/플러터_설치하고_개발환경_세팅/index.md" target="_blank" rel="noreferrer">Blame</a></div></div></header><main class="styles__Main-sc-4114r5-5 KuGeo"><section><h1 id="macos에서-ios-앱을-개발할-때" style="position:relative;">MacOS에서 iOS 앱을 개발할 때<a href="#macos%EC%97%90%EC%84%9C-ios-%EC%95%B1%EC%9D%84-%EA%B0%9C%EB%B0%9C%ED%95%A0-%EB%95%8C" aria-label="macos에서 ios 앱을 개발할 때 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="사전-준비" style="position:relative;">사전 준비<a href="#%EC%82%AC%EC%A0%84-%EC%A4%80%EB%B9%84" aria-label="사전 준비 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>Xcode16 준비: 디버깅과 native Swift나 ObjectC 코드를 컴파일할 때 사용
+<ul>
+<li>앱 스토어에서 다운로드 후 설치</li>
+<li>Xcode 실행 후 iOS 컴포넌트 설치 진행함(필수인지는 모르겠으나 앱을 개발할 예정이라 추가 설치 진행함)</li>
+</ul>
+</li>
+<li>CocoaPods 1.16 설치: 네이티브 앱에 플러터 플러그인을 동작시키는데 사용
+<ul>
+<li><code>brew install cocoapods</code></li>
+<li>xCode 라이센스 관련 에러가 출력된다면, <code>sudo xcodebuild -license accept</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="flutter-sdk-설치" style="position:relative;">Flutter SDK 설치<a href="#flutter-sdk-%EC%84%A4%EC%B9%98" aria-label="flutter sdk 설치 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>VSCode에서 <a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter">Flutter Extension</a> 설치</li>
+<li>VSCode Command Palette(<code>Command</code> + <code>Shift</code> + <code>P</code>)에서 <code>Flutter: New Project</code> 선택</li>
+<li>VSCode 알림 팝업에서 <code>Download SDK</code> 클릭하여 설치 진행</li>
+<li>아래 내용의 팝업이 나오면 설치가 완료된 것<br>
+<code>Do you want to add the Flutter SDK to PATH so it's accessible in external terminals?</code></li>
+<li>클립보드에 복사한 경로를 터미널 환경 변수에 매핑 후 터미널을 재시작해야 Flutter CLI 사용 가능
+<deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
+          <code slot="code">export PATH=&quot;$PATH:/YOUR_FLUTTER_PATH&quot;</code>
+        </deckgo-highlight-code>
+</li>
+</ul>
+<p>마지막으로 터미널에서 <code>flutter --version</code> 체크해보기</p>
+<h2 id="ios-시뮬레이터-설정" style="position:relative;">iOS 시뮬레이터 설정<a href="#ios-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0-%EC%84%A4%EC%A0%95" aria-label="ios 시뮬레이터 설정 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>터미널에서 다음 명령어 입력</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">open -a Simulator</code>
+        </deckgo-highlight-code>
+<p>시뮬레이터가 실행된다면 정상</p>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; ">
+      <a class="gatsby-resp-image-link" href="/static/92ecd45d933a6a7317d0e6f72687ee7c/077b7/ios_simulator.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 182.75862068965517%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,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'); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="ios simulator" title="" src="/static/92ecd45d933a6a7317d0e6f72687ee7c/31198/ios_simulator.png" srcset="/static/92ecd45d933a6a7317d0e6f72687ee7c/fe9c7/ios_simulator.png 174w,
+/static/92ecd45d933a6a7317d0e6f72687ee7c/39e45/ios_simulator.png 347w,
+/static/92ecd45d933a6a7317d0e6f72687ee7c/31198/ios_simulator.png 694w,
+/static/92ecd45d933a6a7317d0e6f72687ee7c/ee9b6/ios_simulator.png 1041w,
+/static/92ecd45d933a6a7317d0e6f72687ee7c/077b7/ios_simulator.png 1166w" sizes="(max-width: 694px) 100vw, 694px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+  </a>
+    </span>
+<p><strong>디바이스 설정</strong>: Xcode의 메뉴바 > <code>Window</code> > <code>Device and Simulator</code> > <code>Simulators</code> > <code>+ 버튼</code> 클릭</p>
+<h1 id="macos에서-안드로이드-앱을-개발할-때" style="position:relative;">MacOS에서 안드로이드 앱을 개발할 때<a href="#macos%EC%97%90%EC%84%9C-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%95%B1%EC%9D%84-%EA%B0%9C%EB%B0%9C%ED%95%A0-%EB%95%8C" aria-label="macos에서 안드로이드 앱을 개발할 때 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="사전-준비-1" style="position:relative;">사전 준비<a href="#%EC%82%AC%EC%A0%84-%EC%A4%80%EB%B9%84-1" aria-label="사전 준비 1 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>Android Studio 설치
+<ul>
+<li><a href="https://developer.android.com/studio/install?hl=ko">링크</a></li>
+</ul>
+</li>
+<li>설치 과정에서 다음 구성을 함께 설치해야 함(이미 설치되었다면 설정에서 선택하여 설치 가능)
+<ul>
+<li>Android SDK Platform, API 35.0.1</li>
+<li>Android SDK Command-line Tools</li>
+<li>Android SDK Build-Tools</li>
+<li>Android SDK Platform-Tools</li>
+<li>Android Emulator</li>
+</ul>
+</li>
+</ul>
+<h2 id="flutter-sdk-설치ios와-동일" style="position:relative;">Flutter SDK 설치(*iOS와 동일)<a href="#flutter-sdk-%EC%84%A4%EC%B9%98ios%EC%99%80-%EB%8F%99%EC%9D%BC" aria-label="flutter sdk 설치ios와 동일 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>VSCode에서 <a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter">Flutter Extension</a> 설치</li>
+<li>VSCode Command Palette(<code>Command</code> + <code>Shift</code> + <code>P</code>)에서 <code>Flutter: New Project</code> 선택</li>
+<li>VSCode 알림 팝업에서 <code>Download SDK</code> 클릭하여 설치 진행</li>
+<li>아래 내용의 팝업이 나오면 설치가 완료된 것<br>
+<code>Do you want to add the Flutter SDK to PATH so it's accessible in external terminals?</code></li>
+<li>클립보드에 복사한 경로를 터미널 환경 변수에 매핑 후 터미널을 재시작해야 Flutter CLI 사용 가능
+<deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
+          <code slot="code">export PATH=&quot;$PATH:/YOUR_FLUTTER_PATH&quot;</code>
+        </deckgo-highlight-code>
+</li>
+</ul>
+<p>마지막으로 터미널에서 <code>flutter --version</code> 체크해보기</p>
+<h2 id="android-라이센스-동의" style="position:relative;">Android 라이센스 동의<a href="#android-%EB%9D%BC%EC%9D%B4%EC%84%BC%EC%8A%A4-%EB%8F%99%EC%9D%98" aria-label="android 라이센스 동의 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>다음 명령어 입력</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter doctor --android-licenses
+</code>
+        </deckgo-highlight-code>
+<p>모든 라이센스가 accept되지는 않았다고 함</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">Warning: Errors during XML parse:
+Warning: Additionally, the fallback loader failed to parse the XML.
+Warning: Errors during XML parse:
+Warning: Additionally, the fallback loader failed to parse the XML.
+[=======================================] 100% Computing updates...
+3 of 6 SDK package licenses not accepted.
+Review licenses that have not been accepted (y/N)? y</code>
+        </deckgo-highlight-code>
+<p><code>y</code>를 입력 후 모든 항목에 동의함</p>
+<h1 id="환경-셋업-점검" style="position:relative;">환경 셋업 점검<a href="#%ED%99%98%EA%B2%BD-%EC%85%8B%EC%97%85-%EC%A0%90%EA%B2%80" aria-label="환경 셋업 점검 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p>위 과정이 모두 끝났다면 플러터 개발 환경이 잘 셋업되었는지 확인<br>
+flutter doctor 커맨드는 개발 환경 검사, 의존성 확인, 라이센스 점검 등을 수행</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter doctor</code>
+        </deckgo-highlight-code>
+<p>정상이라면 모든 항목이 체크되어야 함</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.0.0, on macOS 12.6.3 21G202 darwin-x64, locale ko-KR)
+[✓] Android toolchain - develop for Android devices (Android SDK version 31.0.0)
+[✓] Xcode - develop for iOS and macOS
+[✓] Chrome - develop for the web
+[✓] Android Studio (version 2021.1)
+[✓] VS Code (version 1.62.3)
+[✓] Connected device (2 available)
+
+• No issues found!</code>
+        </deckgo-highlight-code>
+<p>하지만 이미 설치되어있던 다트 때문인지 첫 항목이 체크되지 못했음</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">Doctor summary (to see all details, run flutter doctor -v):
+[!] Flutter (Channel stable, 3.27.1, on macOS 14.6.1 23G93 darwin-arm64, locale ko)
+    ! Warning: `dart` on your path resolves to /usr/local/Cellar/dart/3.6.0/libexec/bin/dart, which is not inside your current Flutter SDK checkout at /Users/username/flutter.
+      Consider adding /Users/username/flutter/bin to the front of your path.
+[✓] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+[✓] Xcode - develop for iOS and macOS (Xcode 16.2)
+[✓] Chrome - develop for the web
+[✓] Android Studio (version 2023.2)
+[✓] IntelliJ IDEA Community Edition (version 2023.2.5)
+[✓] VS Code (version 1.95.3)
+[✓] Connected device (3 available)
+[✓] Network resources</code>
+        </deckgo-highlight-code>
+<p>Flutter SDK도 Dart를 기본적으로 포함하고 있기 때문인데<br>
+예전에 설치한 Dart 경로가 아닌 Flutter의 내장 Dart를 가리키도록 함</p>
+<deckgo-highlight-code  terminal="carbon" theme="one-dark"  >
+          <code slot="code"># ~/.zshrc
+
+# ...
+
+export PATH=&quot;$HOME/flutter/bin:$PATH&quot;
+</code>
+        </deckgo-highlight-code>
+<h1 id="플러터-에뮬레이터로-구동시켜보기" style="position:relative;">플러터 에뮬레이터로 구동시켜보기<a href="#%ED%94%8C%EB%9F%AC%ED%84%B0-%EC%97%90%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0%EB%A1%9C-%EA%B5%AC%EB%8F%99%EC%8B%9C%EC%BC%9C%EB%B3%B4%EA%B8%B0" aria-label="플러터 에뮬레이터로 구동시켜보기 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="사전-준비-2" style="position:relative;">사전 준비<a href="#%EC%82%AC%EC%A0%84-%EC%A4%80%EB%B9%84-2" aria-label="사전 준비 2 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>아직 작성한 코드가 없다면 플러터 프로젝트를 하나 생성
+기본적으로 카운터 예제를 포함하고 있어서 바로 실행 가능함</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter create flutter_tutorial
+
+cd flutter_tutorial</code>
+        </deckgo-highlight-code>
+<h2 id="ios" style="position:relative;">iOS<a href="#ios" aria-label="ios permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>다음 명령어로 현재 사용 가능한 에뮬레이터를 확인할 수 있음</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter emulators</code>
+        </deckgo-highlight-code>
+<p>결과</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">Id                                                                                                                • Name
+• Manufacturer • Platform
+
+apple_ios_simulator                                                                                               • iOS Simulator
+• Apple        • ios
+</code>
+        </deckgo-highlight-code>
+<p>먼저, 에뮬레이터를 구동시킴</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter emulators --launch apple_ios_simulator</code>
+        </deckgo-highlight-code>
+<p>정상적으로 실행된 후,</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter run</code>
+        </deckgo-highlight-code>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; ">
+      <a class="gatsby-resp-image-link" href="/static/de48fab1b19c003fa0ea61e25740f0ea/2e367/app_ios.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 190.22988505747128%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,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'); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="app ios" title="" src="/static/de48fab1b19c003fa0ea61e25740f0ea/31198/app_ios.png" srcset="/static/de48fab1b19c003fa0ea61e25740f0ea/fe9c7/app_ios.png 174w,
+/static/de48fab1b19c003fa0ea61e25740f0ea/39e45/app_ios.png 347w,
+/static/de48fab1b19c003fa0ea61e25740f0ea/31198/app_ios.png 694w,
+/static/de48fab1b19c003fa0ea61e25740f0ea/ee9b6/app_ios.png 1041w,
+/static/de48fab1b19c003fa0ea61e25740f0ea/2e367/app_ios.png 1066w" sizes="(max-width: 694px) 100vw, 694px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+  </a>
+    </span>
+<h2 id="android" style="position:relative;">Android<a href="#android" aria-label="android permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>안드로이드도 동일한 과정을 거치는데 만약 미리 생성해 둔 가상 디바이스가 없다면 만들기</p>
+<p>Pixel 8 Pro로 생성함</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter emulators</code>
+        </deckgo-highlight-code>
+<p>결과</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">Id                                                                                                                • Name                                                                                                              • Manufacturer • Platform
+
+apple_ios_simulator                                                                                               • iOS Simulator                                                                                                     • Apple        • ios
+Pixel_8_Pro                                                                                                       • Pixel 8 Pro</code>
+        </deckgo-highlight-code>
+<p>에뮬레이터를 구동시키고</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter emulators --launch Pixel_8_Pro</code>
+        </deckgo-highlight-code>
+<p>정상적으로 실행된 후,</p>
+<deckgo-highlight-code language="bash" terminal="carbon" theme="one-dark"  >
+          <code slot="code">flutter run</code>
+        </deckgo-highlight-code>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; ">
+      <a class="gatsby-resp-image-link" href="/static/e1ef8bb0897414b68d4bbee57dc79038/35252/app_and.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 181.0344827586207%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAkCAYAAACJ8xqgAAAACXBIWXMAABYlAAAWJQFJUiTwAAAFIElEQVR42qWVe1BUdRTH758pr4YeorjCwsICy2OXxwKK8tBICyvHzMo/TKfJGTVzzJpKLBLlIcsr5bG8FhYUNN+jaTaTZSaaaeZzTBub8g0h78eyu59+u5ugNc4oe2e+95x77uznnnPPOXelyOkriHphJZppCwhPeoOwxNcJTXhN6FVUk2ajTpyLZspcVHEvExI7k2Dti4TGv2KPx6QuJOq5Zcx4M4P57xUwdc4nSHGz0klOW8BHi7PZsGYrRZ9tIj/diG6VkaKMRj5emsf772TafVssX6jw8yZylhXy4ey3SZqxAEPTQWxHZmETknbWB6xYnMlv35i59iPcaIabx+D6UQudp2F76WFqcnfTLvy/jlhE3GHPHejnrOEC76YtpGbrHqwWE1mlO5Gi0pbx6coCTu7q5Oi2FqFWmoWO72ij+ctWTuxs5yfh/7KnhwsHLJzfb3boa5HAEchYUkR1wxZMg/3klu9G8tc8x+qV+Zw90EXzrhuc3NvqsPtaObb7Jj/vbeHIjj85e7CLqz/A74cduvTdIHdOQXZ6DVUNWzGbB9BV7kUa661gfVYemMHSZ8Xax7D6HRZhLT1C3cMydZjt7628pJrq+m3Cs1JUsw9J7hNEXo4AWkSoV5zsUKvd/k/9DMnc4wDqy2rQGxq5c7eNYsNXSMEhcQKos2do7bX9kEeSudsBLNtYSVmVkb6BPkrq9iMFhU1yClheUkVV7Wa7v7F6F1Jk7PNOZliBvqqWAfMghaUNSLHxqehynQHqBdDAoNVCboEeabJ2snPADWWUlulFjyF99RqkeWlpFKzPHzGwokSPsa7O7q9elYG06KXpDuDgyIBVpRVsrq+3+6W6PKQvFs2mWFcwcmBJOVuM1bYxZndVMVL+W1PR5eSOuGRDWQU7NhnoFsRDBpFhqsafzMysfzfl8YHVpXp2bnXM4YHaIqQQxRjysnKHgbbVGniI+oftUMlllWzcUMy169dZsngRkibcW5S8fqjknr976LjdQfutdtputAm/3XEtZLN3b96lq6VrCNjU0ER0dBiqEH+0kUqkcNWYB4CmThO9bb128EDHAC3XWrj1xy0GuwbtcZts8XvAxvpGtNEq4rVhTJmoEh8H5Tgx2HnDTbm/ZJNofvcgpi6T3b+/9HvATXWbiVQrSUxQo1YrxKbEyMQc6h4+Nvc+WQ9pyvam7aSmaElOUpOSEoU0J9HPARzh2DQaG5iaEMy8OQnMnBEjmhIWSF72yOfQWFPP9ORIls5PIWmKBmm02xPkrMsZ8Rwaa4ykRAeSHBdEilYtgK5OAg1GZDIZYaHB+Mq8BNBllFPAelGyXBmFX1Ac4+VhtgxHOVlyPRMUEfgo4/FVTkQa5eL8OxwvV+Htp8HbXzTlWS9Pp4Ey/3BkAVomBMSKP3qZtwBmPz6wZxhoK3lCQBw+NqC7pwfrMtc51kzsq+3Jj6L262J9OqG2slbA1EwIjBNWi+TxpAvZ2dn2p1mtVh44rP/RffH2qyYst6HOUGcvebwiGplCrN5YLw+WL1vOmRO/curYKU41D+vi6YtcOX+Fy+cuc+nMpQfufbvve44fOsnajLWM9wsXGcbg7RuMpFR44Sv3ZbSLG66ubri5OeTq6mof2MDAAAICApDL5UP33Nzccfdwx9XNBR95gMguivDQCBQ+MqRA/6dJjPNj5rRwIjWhRKjVhEdEEhQahSI4Av8gDYqgSLuUKq2Ia4WNFopBGRojGqFhnFzNM14yPJ/y5B/iIRw+5P861wAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="app and" title="" src="/static/e1ef8bb0897414b68d4bbee57dc79038/31198/app_and.png" srcset="/static/e1ef8bb0897414b68d4bbee57dc79038/fe9c7/app_and.png 174w,
+/static/e1ef8bb0897414b68d4bbee57dc79038/39e45/app_and.png 347w,
+/static/e1ef8bb0897414b68d4bbee57dc79038/31198/app_and.png 694w,
+/static/e1ef8bb0897414b68d4bbee57dc79038/ee9b6/app_and.png 1041w,
+/static/e1ef8bb0897414b68d4bbee57dc79038/35252/app_and.png 1204w" sizes="(max-width: 694px) 100vw, 694px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+  </a>
+    </span>
+<p>처음에는 이것저것 다운로드하느라 시간이 좀 걸리는 것 같음</p>
+<h2 id="기타" style="position:relative;">기타<a href="#%EA%B8%B0%ED%83%80" aria-label="기타 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>VSCode Command Palette에서 <code>Flutter: Launch Emulator</code>에서 쉽게 에뮬레이터 구동이 가능함</p>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; ">
+      <a class="gatsby-resp-image-link" href="/static/704a4c075462e482b0de7b92d27cb590/5a791/emulators.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 26.436781609195403%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAqElEQVR42pWQUQ6DIBBEvY0sIAJSW2xrsJp6/xNNF2z9aGLSfrxsQpbHDBUJAUkEJeVOoxitoKVC8BbnvkMfPJw15ZwElTvfZFcl6hret0jzgHGKiDHg1DkWuTI7ZwuuNTBaozUN7AGKpZvQGaQ0IF5YFhw0J9xflttU9GlAhxC9E1qusi4jnvMd83TF8rghjZEXCIJrZOofyHtV7p3JqUyjd7a/En/zAsR3mDVGWeFMAAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="emulators" title="" src="/static/704a4c075462e482b0de7b92d27cb590/31198/emulators.png" srcset="/static/704a4c075462e482b0de7b92d27cb590/fe9c7/emulators.png 174w,
+/static/704a4c075462e482b0de7b92d27cb590/39e45/emulators.png 347w,
+/static/704a4c075462e482b0de7b92d27cb590/31198/emulators.png 694w,
+/static/704a4c075462e482b0de7b92d27cb590/ee9b6/emulators.png 1041w,
+/static/704a4c075462e482b0de7b92d27cb590/5a791/emulators.png 1248w" sizes="(max-width: 694px) 100vw, 694px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+  </a>
+    </span>
+<p><code>Flutter: Select Device</code>에서는 에뮬레이터 뿐만 아니라 기본 디바이스 선택 가능</p>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; ">
+      <a class="gatsby-resp-image-link" href="/static/3e29b66b0c1dbbc90181cfe15906711c/105d8/devices.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 32.758620689655174%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAzUlEQVR42p3Q727CIBQFcB5li5njz72UgpTaVWuNWbL3f6DjLfphSafJ/PALIRcOOaj3D8LKlvAmti7AcITmFp+uhfUJG+1lzne0othZ0B+cNdilBsevDuOQUXJEn9s6M0bDVmZFlZKQ5XDpEnaxlZC7eBMajxiCBDl5xIKJHiKhjuc9JrEfswTJRWvrZSYHLwc8U10bXvBt/4T6+Z5wmUep1WHoM1IMiLGBlcpa63+rlefTgOnQ4zAWzNNQw18Jq4HLRy71flsqGxm+4goKZ9SUiCT+1QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="devices" title="" src="/static/3e29b66b0c1dbbc90181cfe15906711c/31198/devices.png" srcset="/static/3e29b66b0c1dbbc90181cfe15906711c/fe9c7/devices.png 174w,
+/static/3e29b66b0c1dbbc90181cfe15906711c/39e45/devices.png 347w,
+/static/3e29b66b0c1dbbc90181cfe15906711c/31198/devices.png 694w,
+/static/3e29b66b0c1dbbc90181cfe15906711c/ee9b6/devices.png 1041w,
+/static/3e29b66b0c1dbbc90181cfe15906711c/105d8/devices.png 1170w" sizes="(max-width: 694px) 100vw, 694px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+  </a>
+    </span>
+<p>플러터 개발자들은 보통 무엇을 띄어놓고 개발하는지 궁금</p>
+<h1 id="vscode-추가" style="position:relative;">VSCode 추가<a href="#vscode-%EC%B6%94%EA%B0%80" aria-label="vscode 추가 permalink" class="header-anchor after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<blockquote>
+<p>개발 경험해보면서 계속 업데이트할 예정</p>
+</blockquote>
+<p>다음 익스텐션을 추가 설치함</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=alexisvt.flutter-snippets">Flutter Widget Snippet</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=circlecodesolution.ccs-flutter-color">Flutter Color</a></li>
+</ul>
+<p>다음 설정을 변경함</p>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; ">
+      <a class="gatsby-resp-image-link" href="/static/4fed64a9cea90674ce66251695d2c081/cc6fe/reload.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 13.218390804597702%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAe0lEQVR42l2MWQ6DMAxEuUxjQ4KAJFBI2oJQq97/RNMsYikf43n2k1xM4wjvHB7e4z70ULJCreTetQq93+Sf37LtJTOKz/rE9z1jeTkMVqM3XYrV7cGmDS53utvDG90kp7smP4yjKhlMBHETIEGBOcnMOZHpwuc9dnz4AxCBW/8GdVxmAAAAAElFTkSuQmCC'); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="reload" title="" src="/static/4fed64a9cea90674ce66251695d2c081/31198/reload.png" srcset="/static/4fed64a9cea90674ce66251695d2c081/fe9c7/reload.png 174w,
+/static/4fed64a9cea90674ce66251695d2c081/39e45/reload.png 347w,
+/static/4fed64a9cea90674ce66251695d2c081/31198/reload.png 694w,
+/static/4fed64a9cea90674ce66251695d2c081/ee9b6/reload.png 1041w,
+/static/4fed64a9cea90674ce66251695d2c081/c1bea/reload.png 1388w,
+/static/4fed64a9cea90674ce66251695d2c081/cc6fe/reload.png 1860w" sizes="(max-width: 694px) 100vw, 694px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+  </a>
+    </span></section></main></article></section><aside class="TOC__Container-sc-1ylks3q-0 hmzKTL"><h2>ON THIS PAGE</h2><ul><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#macos에서-ios-앱을-개발할-때">MacOS에서 iOS 앱을 개발할 때</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#사전-준비">사전 준비</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#flutter-sdk-설치">Flutter SDK 설치</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#ios-시뮬레이터-설정">iOS 시뮬레이터 설정</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#macos에서-안드로이드-앱을-개발할-때">MacOS에서 안드로이드 앱을 개발할 때</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#사전-준비-1">사전 준비</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#flutter-sdk-설치ios와-동일">Flutter SDK 설치(*iOS와 동일)</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#android-라이센스-동의">Android 라이센스 동의</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#환경-셋업-점검">환경 셋업 점검</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#플러터-에뮬레이터로-구동시켜보기">플러터 에뮬레이터로 구동시켜보기</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#사전-준비-2">사전 준비</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하 고_개발환경_세팅/#ios">iOS</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#android">Android</a></li><li class="TOC__List-sc-1ylks3q-1 ksAkVR"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#기타">기타</a></li><li class="TOC__List-sc-1ylks3q-1 itaPoa"><a href="/Flutter/플러터_설치하고_개발환경_세팅/#vscode-추가">VSCode 추가</a></li></ul></aside></div></main><footer class="Footer__Container-sc-13p6nst-0 dndVdK"><section><span>© rheech22 2022</span></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Flutter/플러터_설치하고_개발환경_세팅/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-800d4df7d2673a7e516e.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-5bef5c84fb8d1a3b27f0.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-d0095af23451b1cf0507.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-2cd1417e3cd8bdead616.js\"],\"component---src-pages-search-tsx\":[\"/component---src-pages-search-tsx-46c45f257736c8342d78.js\"],\"component---src-pages-wiki-index-tsx\":[\"/component---src-pages-wiki-index-tsx-1eb7c72c1f5358d70c36.js\"],\"component---src-templates-wiki-template-tsx\":[\"/component---src-templates-wiki-template-tsx-ee1a2e08cc3d7afdb130.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="6bf128993759fc2b15aa";</script><script src="/webpack-runtime-c884d3580bc76665c799.js" async></script><script src="/framework-31fd9fa701293a5c6789.js" async></script><script src="/app-800d4df7d2673a7e516e.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
