@@ -1,6 +1,6 @@
 ---
 created: 2024-12-31 05:47:15 +0900
-updated: 2024-12-31 06:33:45 +0900
+updated: 2024-12-31 20:09:12 +0900
 ---
 
 # Dart Null Safety
@@ -239,3 +239,7 @@ void main() {
     DataProvider().myMethod();
 }
 ```
+
+## 출처
+
+- [LEARN DART](https://dart-tutorial.com/null-safety/)

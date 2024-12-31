@@ -1,6 +1,6 @@
 ---
 created: 2024-12-30 17:06:50 +0900
-updated: 2024-12-30 18:03:37 +0900
+updated: 2024-12-31 20:09:50 +0900
 ---
 
 # 설치
@@ -379,6 +379,6 @@ void main() {
 - `substring()`: 원하는 위치의 텍스트를 반환
 - `codeUnitAt()`: 주어진 인덱스의 16비트 UTF-16 코드 단위를 반환
 
-# 참고
+# 출처
 
 [LEARN DART](https://dart-tutorial.com/introduction-and-basics/string-in-dart/)
