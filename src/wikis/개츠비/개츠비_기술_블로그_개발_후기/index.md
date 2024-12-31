@@ -1,5 +1,5 @@
 ---
-created: "2022-11-14"
+created: '2022-11-14'
 updated: 2023-08-22 00:35:57 +0900
 ---
 
@@ -28,11 +28,9 @@ updated: 2023-08-22 00:35:57 +0900
 
 - 다른 사람도 사용할 수 있는 프로젝트로 만들기
 
-
 <br />
 
 ## 3. 블로그 소개
-
 
 ### 요약
 
@@ -43,11 +41,11 @@ updated: 2023-08-22 00:35:57 +0900
 - 키워드, 태그, 연재물 검색
 - 프로그레시브 웹 앱(PWA)
 - 검색 엔진 최적화(SEO)
-- Google Analystics
+- Google Analytics
 - github 댓글
 - 다크모드
 - CICD
-  
+
 <br />
 
 ### GitHub 테마
@@ -59,20 +57,19 @@ updated: 2023-08-22 00:35:57 +0900
 
 ### 반응형 디자인
 
-
 <div style="width: 200px; margin-left: auto; margin-right: auto">
 
-![smaill](./assets/rs.png)  
+![smaill](./assets/rs.png)
 
-</div> 
+</div>
 
 <div style="width: 300px; margin-left: auto; margin-right: auto">
 
-![medium](./assets/rm.png)  
+![medium](./assets/rm.png)
 
-</div> 
+</div>
 
-![large](./assets/rl.png)  
+![large](./assets/rl.png)
 
 반응형 디자인은 크게 세 구간으로 나뉜다. 가장 큰 사이즈에서는 왼쪽 영역에 프로필, 태그, 연재 목록을 보여준다. 중간 크기에서는 연재물 영역을 제외하고 프로필과 태그를 상단에 배치한다. 작은 사이즈에서는 포스트의 미리보기 내용을 제외한다. 연재물과 태그가 일정 수준 이상으로 많아지는 경우에 대해서는 여전히 고민할 필요가 있다.
 
