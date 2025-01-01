@@ -1,6 +1,6 @@
 ---
 created: 2024-12-31 20:49:29 +0900
-updated: 2025-01-01 17:23:28 +0900
+updated: 2025-01-01 20:09:20 +0900
 ---
 
 # MacOS에서 iOS 앱을 개발할 때
@@ -38,7 +38,7 @@ open -a Simulator
 
 시뮬레이터가 실행된다면 정상
 
-<img src="./assets/ios_simulator.png" width="100" />
+<img src="./assets/ios_simulator.png" />
 
 **디바이스 설정**: Xcode의 메뉴바 > `Window` > `Device and Simulator` > `Simulators` > `+ 버튼` 클릭
 
@@ -248,6 +248,39 @@ VSCode Command Palette에서 `Flutter: Launch Emulator`에서 쉽게 에뮬레�
 아래 설정을 변경함
 
 <img src="./assets/reload.png" />
+
+`setting.json`에서는 다음 설정을 추가함
+
+```json
+{
+  // ...
+  
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code", // 기본 포맷터 설정
+    "editor.formatOnSave": true // 코드 저장할 때 포맷터 설정 적용
+  },
+  "dart.flutterHotReloadOnSave": "all", // hot reloading for flutter
+  "dart.hotReloadOnSave": "all", // hot reloading for dart 
+  "dart.previewFlutterUiGuides": false, // 위젯 트리 관계를 보여주는 옵션인데 내 취향은 아님
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit" // 코드 저장할 때 linter 설정 적용
+  }
+}
+```
+
+가령, trailling comma를 제대로 찍어주지 않으면 들여쓰기가 내가 원하는대로 정렬되지 않는 현상이 있는데
+프로젝트의 `analysis_options.yaml`에서 아래 설정을 추가하면 콤마를 자동으로 찍음
+
+```yaml
+
+# analysis_options.yaml
+
+linter:
+  rules:
+    require_trailing_commas: true
+```
+
+
 
 다양한 편의 기능을 제공하는 [device_preview](https://pub.dev/packages/device_preview) 패키지를 사용해 볼 예정
 
