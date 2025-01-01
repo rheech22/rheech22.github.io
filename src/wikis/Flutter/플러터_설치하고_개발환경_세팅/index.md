@@ -1,6 +1,6 @@
 ---
 created: 2024-12-31 20:49:29 +0900
-updated: 2025-01-01 01:47:18 +0900
+updated: 2025-01-01 17:23:28 +0900
 ---
 
 # MacOS에서 iOS 앱을 개발할 때
@@ -238,15 +238,17 @@ VSCode Command Palette에서 `Flutter: Launch Emulator`에서 쉽게 에뮬레�
 
 플러터 개발자들은 보통 무엇을 띄어놓고 개발하는지 궁금
 
-# VSCode 추가
+# 추가 설정
 
-> 개발 경험해보면서 계속 업데이트할 예정
-
-다음 익스텐션을 추가 설치함
+아래 VSCode 익스텐션을 사용해 볼 예정
 
 - [Flutter Widget Snippet](https://marketplace.visualstudio.com/items?itemName=alexisvt.flutter-snippets)
 - [Flutter Color](https://marketplace.visualstudio.com/items?itemName=circlecodesolution.ccs-flutter-color)
 
-다음 설정을 변경함
+아래 설정을 변경함
 
 <img src="./assets/reload.png" />
+
+다양한 편의 기능을 제공하는 [device_preview](https://pub.dev/packages/device_preview) 패키지를 사용해 볼 예정
+
+<img src="./assets/preview.png" />
