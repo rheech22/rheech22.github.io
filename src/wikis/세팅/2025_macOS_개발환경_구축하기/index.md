@@ -1,6 +1,6 @@
 ---
 created: 2025-01-09 19:03:40 +0900
-updated: 2025-01-09 23:14:26 +0900
+updated: 2025-01-09 23:18:03 +0900
 ---
 
 세팅할 때마다 바뀌는 것들이 많다.  
@@ -173,7 +173,7 @@ zsh에서 구문을 강조시킨다.
 brew install zsh-syntax-highlighting
 ```
 
-`~/.zsrhrc`에서 아래 내용 추가 후 재시작
+`~/.zshrc`에서 아래 내용 추가 후 재시작
 
 ```bash
 # .zshrc
@@ -190,7 +190,7 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 brew install zsh-vi-mode
 ```
 
-`~/.zsrhrc`에서 아래 내용 추가 후 재시작
+`~/.zshrc`에서 아래 내용 추가 후 재시작
 
 ```bash
 # .zshrc
@@ -201,13 +201,13 @@ source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 ## 터미널 꾸미기
 
-최근에는 starship을 사용하고 있다. 설정이 간단하다. 
+최근에는 starship을 사용하고 있다. 설정이 간단하다.
 
 ```bash
 brew install starship
 ```
 
-`~/.zsrhrc`에서 아래 내용 추가 후 재시작
+`~/.zshrc`에서 아래 내용 추가 후 재시작
 
 ```bash
 # .zshrc
