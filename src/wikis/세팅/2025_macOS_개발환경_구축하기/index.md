@@ -1,6 +1,6 @@
 ---
 created: 2025-01-09 19:03:40 +0900
-updated: 2025-01-09 22:43:02 +0900
+updated: 2025-01-09 22:48:32 +0900
 ---
 
 세팅할 때마다 바뀌는 것들이 많다.  
@@ -206,6 +206,44 @@ eval "$(starship init zsh)"
 https://starship.rs/presets/
 
 # 기타
+
+## GitHub CLI 설치
+
+일부 명령어를 git alias로 등록해서 사용하는 편이다.
+
+```bash
+brew install gh
+```
+
+## Git Alias 설정
+
+대부분의 설정을 [이종립님의 글](https://johngrib.github.io/wiki/git-alias/)을 참고했다.
+
+```bash
+[alias]
+	a = "add ."
+	b = "!git branch | grep -v '^\\*'"
+	bb = "!git checkout $(git branch -vv | grep -v '^\\*' | fzf | awk '{print $1}')"
+	bc = "switch -c"
+	bd = "!git branch -D $(git b | fzf -m)"
+	bs = "switch"
+	c = "commit"
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	pl = "!git pull --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	pr = "!gh pr view -w"
+	prc = "!gh pr create -w"
+	pu = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	puf = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\" --force"
+	rb = "rebase"
+	rba = "rebase --abort"
+	rbc = "rebase --continue"
+	st = "stash"
+	sta = "stash apply"
+	sq = "rebase -i"
+	ts = "!tsc --watch"
+	w = "!gh browse"
+	ws = "!gh status"
+```
 
 ## neovim 설치
 
