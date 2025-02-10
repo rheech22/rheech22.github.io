@@ -155,7 +155,7 @@ brew install --cask font-meslo-lg-nerd-font
 brew install zsh
 ```
 
-## 기본 쉘 설정
+## 기본 쉘로  설정
 
 ```bash
 chsh -s $(which zsh)
@@ -163,7 +163,21 @@ chsh -s $(which zsh)
 
 ## Oh My Zsh 설치
 
-[공식 문서 참고](https://ohmyz.sh/)
+~~[공식 문서 참고](https://ohmyz.sh/)~~
+
+oh my zsh는 불필요하고 내가 알 수 없는 구성을 많이 포함한다는 점에서 최근에는 사용하지 않는다.
+
+## Zsh Auto Completion
+
+
+`~/.zshrc`에서 아래 내용 추가 후 재시작
+
+```bash
+
+# .zshrc
+autoload -U compinit; compinit
+
+```
 
 ## zsh-syntax-highligting 설치
 
