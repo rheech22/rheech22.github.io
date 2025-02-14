@@ -21,7 +21,7 @@ const CommonParent = () => {
 
   React.useEffect(() => {
     (async () => {
-      http.get('https://conerstone.com').then((data) => {
+      http.get('https://cornerstone.com').then((data) => {
         setFetchInfo((prev) => ({ ...prev, products: data.products }));
       });
     })();
@@ -54,7 +54,7 @@ const CommonParent = () => {
     (async () => {
       setFetchInfo((prev) => ({ ...prev, isLoading: true }));
       http
-        .get('https://conerstone.com')
+        .get('https://cornerstone.com')
         .then((data) => {
           setFetchInfo((prev) => ({ ...prev, products: data.products }));
         })
@@ -94,7 +94,7 @@ const TopLevelCompoenent = () => {
     (async () => {
       setFetchInfo((prev) => ({ ...prev, isLoading: true }));
       http
-        .get('https://conerstone.com')
+        .get('https://cornerstone.com')
         .then((data) => {
           setFetchInfo((prev) => ({ ...prev, products: data.products }));
         })
@@ -133,7 +133,7 @@ const CommonParent = () => {
     (async () => {
       setFetchInfo((prev) => ({ ...prev, isLoading: true }));
       http
-        .get('https://conerstone.com')
+        .get('https://cornerstone.com')
         .then((data) => {
           setFetchInfo((prev) => ({ ...prev, products: data.products }));
         })
@@ -169,7 +169,7 @@ const CommonParent = () => {
     (async () => {
       setFetchInfo((prev) => ({ ...prev, isLoading: true }));
       http
-        .get('https://conerstone.com')
+        .get('https://cornerstone.com')
         .then((data) => {
           setFetchInfo((prev) => ({ ...prev, products: data.products }));
         })

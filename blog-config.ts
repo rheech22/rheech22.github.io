@@ -1,6 +1,6 @@
 const config = {
   // used for bio, meta tag...
-  title: 'conerstone', // title of the site
+  title: 'cornerstone', // title of the site
   description: 'wiki for REMIND', // describe anything about your site
   language: 'ko-KR', // default language
   author: '이창혁', // your name
